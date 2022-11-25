@@ -16,31 +16,54 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
 */
+ 
 
 
 /**
 * @defgroup devicesettings
 * @{
-* @defgroup ds
+* @defgroup hal
 * @{
 **/
 
 
-#ifndef _DS_REGISTER_LOG_H_
-#define _DS_REGISTER_LOG_H_
+#ifndef _DS_VIDEODEVICESETTINGS_H_
+#define _DS_VIDEODEVICESETTINGS_H_
 
-typedef void (*DS_LogCb)(int priority,const char *);
+#include "dsUtl.h"
+#include "dsTypes.h"
+
+
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
-void DS_RegisterForLog(DS_LogCb cb);
-#ifdef __cplusplus
+
+namespace  {
+/* 
+ * Enumerate supported DFCs.
+ */
+static const dsVideoZoom_t kSupportedDFCs[] = { dsVIDEO_ZOOM_NONE, dsVIDEO_ZOOM_FULL, dsVIDEO_ZOOM_PLATFORM};
+static const dsVideoZoom_t kDefaultDFC 	   = dsVIDEO_ZOOM_FULL;
+
+static const int kNumVideoDevices = 1;
+
+
+static const dsVideoConfig_t kConfigs[]= {
+		{
+		/*.numSupportedDFCs = */ 		dsUTL_DIM(kSupportedDFCs), // 0 means "Info available at runtime"
+		/*.supportedDFCs = */			kSupportedDFCs,
+		/*.defaultDFC = */			    dsVIDEO_ZOOM_FULL,
+		},
 };
+
+typedef int _SafetyCheck[(dsUTL_DIM(kConfigs) == kNumVideoDevices) ? 1 : -1];
+
+}
+#ifdef __cplusplus
+}
 #endif
 
-
-#endif
+#endif /* RPVIDEODEVICESETTINGS_H_ */
 
 
 /** @} */

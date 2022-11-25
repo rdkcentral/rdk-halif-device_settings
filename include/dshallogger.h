@@ -19,45 +19,37 @@
 
 
 /**
- * @file enumerable.hpp
- * @brief This file defines Enumerable class.
- */
-
-
-
-/**
 * @defgroup devicesettings
 * @{
-* @defgroup ds
+* @defgroup hal
 * @{
 **/
 
 
-#ifndef _DS_ENUMERABLE_HPP_
-#define _DS_ENUMERABLE_HPP_
+#ifndef _DS_HAL_LOGGER_H_
+#define _DS_HAL_LOGGER_H_
 
-namespace device {
+#include <stdio.h>
+#include "dshalregisterlog.h"
 
-/**
- * @class Enumerable
- * @brief This class is inherited by many classes in DS for getting the ID.
- * @ingroup devicesettingsclass
- */
-class Enumerable {
+int ds_hal_log(int priority,const char *format, ...);
 
-/**
- * @fn Enumerable::getId()
- * @brief This function is used to get the id and it is
- * implemented by the classes inheriting it.
- *
- * @return Returns id value.
- */
-	int getId() const;
-};
+#define INFO_LEVEL   0
+#define WARN_LEVEL   1
+#define ERROR_LEVEL  2
+#define DEBUG_LEVEL  3
 
-}
 
-#endif /* _DS_ENUMERABLE_HPP_ */
+
+
+#define INT_INFO(FORMAT, ...)           ds_hal_log(INFO_LEVEL ,FORMAT, ##__VA_ARGS__ )
+#define INT_WARN(FORMAT, ...)           ds_hal_log(WARN_LEVEL ,FORMAT,  ##__VA_ARGS__ )
+#define INT_ERROR(FORMAT, ...)          ds_hal_log(ERROR_LEVEL ,FORMAT,  ##__VA_ARGS__ )
+#define INT_DEBUG(FORMAT, ...)          ds_hal_log(DEBUG_LEVEL ,FORMAT,  ##__VA_ARGS__ )
+
+
+#endif
+
 
 
 /** @} */

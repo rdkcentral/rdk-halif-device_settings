@@ -18,25 +18,28 @@
 */
 
 
-
-
 /**
 * @defgroup devicesettings
 * @{
-* @defgroup ds
+* @defgroup hal
 * @{
 **/
 
 
-#ifndef _DS_HOSTEDID_H_              
-#define _DS_HOSTEDID_H_
+#ifndef _DS_HAL_REGISTER_H_
+#define _DS_HAL_REGISTER_H_
 
-#warning "CONFIGING GENERIC HOSTEDID"
-
-static unsigned char m_hostEDID[] = 
+typedef void (*DSHal_LogCb)(int priority,const char *);
+#ifdef __cplusplus
+extern "C"
 {
-    /* EMPTY */
+#endif
+void DSHal_RegisterForLog(DSHal_LogCb cb);
+#ifdef __cplusplus
 };
+#endif
+
+
 #endif
 
 
