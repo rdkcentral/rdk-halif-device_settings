@@ -42,15 +42,12 @@
  * @ingroup DSSETTINGS_HAL
  */
 
-
-
 /**
 * @defgroup devicesettings
 * @{
 * @defgroup hal
 * @{
 **/
-
 
 #ifndef _DS_HOST_H_
 #define _DS_HOST_H_
@@ -74,8 +71,6 @@ extern "C" {
  *  @{
  */
 
-
-
 /**
  * @brief Initialize the Host sub-system.
  *
@@ -83,8 +78,10 @@ extern "C" {
  * to any driver specific calls.
  *
  * @return Device Settings error code
- * @retval    ::dsError_t
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL Indicates error due to general failure.
  */
+
 dsError_t dsHostInit();
 
 /**
@@ -93,12 +90,15 @@ dsError_t dsHostInit();
  * This function sets the power mode of the host to active or standby and turns on/off
  * all the ouput ports.
  *
- * @param [in] newPower  The power mode of the host (::dsPOWER_STANDBY or ::dsPOWER_ON)
+ * @param[in] newPower    The power mode of the host (::dsPOWER_STANDBY or ::dsPOWER_ON)
+ *
  * @return Device Settings error code
- * @retval    ::dsError_t
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL Indicates error due to general failure.
  *
  * @note dsPOWER_OFF is not currently being used.
  */
+
 dsError_t dsSetHostPowerMode(int newPower);
 
 /**
@@ -106,14 +106,17 @@ dsError_t dsSetHostPowerMode(int newPower);
  *
  * This function gets the current power mode of the host. 
  *
- * @param [out] *currPower  The address of a location to hold the host's current power
- *                          mode on return. It returns one of:
+ * @param[out] currPower  The address of a location to hold the host's current power
+ *                        mode on return. It returns one of:
  *                              - ::dsPOWER_OFF
  *                              - ::dsPOWER_STANDBY
  *                              - ::dsPOWER_ON
+ *
  * @return Device Settings error code
- * @retval    ::dsError_t
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL Indicates error due to general failure.
  */
+
 dsError_t dsGetHostPowerMode(int *currPower);
 
 /**
@@ -123,38 +126,46 @@ dsError_t dsGetHostPowerMode(int *currPower);
  * handles specific to the host module.
  *
  * @return Device Settings error code
- * @retval    ::dsError_t
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL Indicates error due to general failure.
  */
+
 dsError_t dsHostTerm();
 
 /**
  * @brief This function returns the preferred sleep mode which is persisted.
  *
- * @param[out] pMode Data will be copied to this. This shall be preallocated before the call.
+ * @param[out] pMode      Data will be copied to this. This shall be preallocated before the call.
+ *
  * @return Device Settings error code
  * @retval dsERR_NONE If sucessfully dsGetPreferredSleepMode api has been called using IARM support.
  * @retval dsERR_GENERAL General failure.
  */
+
 dsError_t dsGetPreferredSleepMode(dsSleepMode_t *pMode);
 
 /**
  * @brief This function sets the preferred sleep mode which needs to be persisted.
  *
- * @param[in] mode Sleep mode that is expected to be persisted.
+ * @param[in] mode        Sleep mode that is expected to be persisted.
+ *
  * @return Device Settings error code
  * @retval dsERR_NONE If sucessfully dsSetPreferredSleepMode api has been called using IARM support.
  * @retval dsERR_GENERAL General failure.
  */
+
 dsError_t dsSetPreferredSleepMode(dsSleepMode_t mode);
 
 /**
  * @brief This function gets the CPU temperature in centrigade.
  *
  * @param[in] cpuTemperature The address of a location to hold the CPU Temperature
+ *
  * @return Device Settings error code
  * @retval dsERR_NONE If sucessfully dsGetCPUTemperature api has been called using IARM support.
  * @retval dsERR_GENERAL General failure.
  */
+
 dsError_t dsGetCPUTemperature(float *cpuTemperature);
 
 /**
@@ -169,21 +180,26 @@ dsError_t dsGetCPUTemperature(float *cpuTemperature);
  * @retval dsERR_NONE Successfully got the version number from dsHAL.
  * @retval dsERR_GENERAL Failed to get the version number.
  */
+
 dsError_t dsGetVersion(uint32_t *versionNumber);
 
 /**
  * @brief Allows the application to set the runtime version of the dsHAL
  *
- * @param[in] versionNumber 4 Bytes of version number of DS HAL
+ * @param[in] versionNumber  4 Bytes of version number of DS HAL
  *
+ * @return Device Settings error code
  * @retval dsERR_NONE Successfully set the version for dsHAL.
  * @retval dsERR_GENERAL Failed to set the version.
  */
+
 dsError_t dsSetVersion(uint32_t versionNumber);
 
 /**
  * @brief This function returns SOC ID
- * @param[in] socID The address of a location to hold SOC ID
+ *
+ * @param[in] socID       The address of a location to hold SOC ID
+ *
  * @return Device Settings error code
  * @retval dsERR_NONE If sucessfully dsSetPreferredSleepMode api has been called using IARM support.
  * @retval dsERR_UNKNOWN General failure.
@@ -192,13 +208,16 @@ dsError_t dsSetVersion(uint32_t versionNumber);
 dsError_t dsGetSocIDFromSDK(char *socID);
 
 /**
- * @brief This function is used to get the host EDID and length.
- * @param[out] edid  host EDID.
- * @param[out] length length of host EDID
+ * @brief This function is used to get the host EDID and length
+ *
+ * @param[out] edid       host EDID.
+ * @param[out] length     length of host EDID
+ *
  * @return Device Settings error code
  * @retval dsERR_NONE If sucessfully dsGetHostEDID api has been called using IARM support.
  * @retval dsERR_GENERAL General failure.
  */
+
 dsError_t dsGetHostEDID(unsigned char *edid, int *length);
 
 /**
@@ -208,7 +227,6 @@ dsError_t dsGetHostEDID(unsigned char *edid, int *length);
 }
 #endif
 #endif /* _DS_HOST_H_ */
-
 
 /** @} */
 /** @} */

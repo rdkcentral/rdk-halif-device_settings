@@ -51,15 +51,12 @@
  *
  */
 
-
-
 /**
 * @defgroup devicesettings
 * @{
 * @defgroup hal
 * @{
 **/
-
 
 #ifndef _DS_ERROR_H_ 
 #define _DS_ERROR_H_
@@ -81,13 +78,20 @@ extern "C" {
  * A non-zero value indicates an error.
  * 
  */
+
 typedef enum {
-    dsERR_NONE = 0,                   /**< No error (success).               */
-    dsERR_GENERAL = 0x1000,           /**< General failure to take action.   */
-    dsERR_INVALID_PARAM,              /**< Invalid input parameter.          */
-    dsERR_INVALID_STATE,              /**< Failure due to invalid state.     */
-    dsERR_OPERATION_NOT_SUPPORTED,    /**< Operation not supported.          */
-    dsERR_UNKNOWN                    /**< Unknown error.                    */
+    /// No error (success)
+    dsERR_NONE = 0,                   
+    /// General failure to take action
+    dsERR_GENERAL = 0x1000,           
+    /// Invalid input parameter
+    dsERR_INVALID_PARAM,              
+    /// Failure due to invalid state
+    dsERR_INVALID_STATE,              
+    /// Operation not supported
+    dsERR_OPERATION_NOT_SUPPORTED,   
+    /// Unknown error
+    dsERR_UNKNOWN                    
 } dsError_t;
 
 /* End of DSHAL_ERROR doxygen group */
@@ -99,7 +103,6 @@ typedef enum {
 }
 #endif
 #endif /* _DS_ERROR_H_ */
-
 
 /** @} */
 /** @} */

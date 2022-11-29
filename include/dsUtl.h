@@ -51,15 +51,12 @@
  *
  */
 
-
-
 /**
 * @defgroup devicesettings
 * @{
 * @defgroup hal
 * @{
 **/
-
 
 #ifndef _DS_UTILS_H_
 #define _DS_UTILS_H_
@@ -74,6 +71,7 @@
 /**
  * @brief Device Settings general Assert Failure inline definition.
  */
+
 #define dsUTL_ASSERT(x) do {\
 	if (!(x)) printf("ASSERTFAILURE at %s-%d\r\n", __FUNCTION__, __LINE__);\
 }\
@@ -82,6 +80,7 @@ while(0)
 /**
  * @brief Device Settings general Array dimension calculation inline definition.
  */
+
 #define dsUTL_DIM(arr) (sizeof((arr))/sizeof((arr)[0]))
 
 /* End of DSHAL_UTILS doxygen group */
@@ -90,7 +89,6 @@ while(0)
  */
 
 #endif /* _DS_UTILS_H_ */
-
 
 /** @} */
 /** @} */

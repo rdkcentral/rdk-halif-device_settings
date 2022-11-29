@@ -68,8 +68,8 @@ typedef void (*dsVideoFormatUpdateCB_t)(dsHDRStandard_t videoFormat);
  * 
  * This function must initialize all the video specific output ports.
  *
- * @return  dsError_t
- * @retval dsERR_NONE If sucessfully dsVideoportinit api has been called using IARM support.
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  */
 dsError_t  dsVideoPortInit();
@@ -83,8 +83,9 @@ dsError_t  dsVideoPortInit();
  * @param[in]  type       Type of video port (e.g. HDMI).
  * @param[in]  index      The index of the video device (0, 1, ...).
  * @param[out] handle    The address of a location to hold the video device handle on return.
- * @return Device Settings error code
- * @retval dsERR_NONE If sucessfully dsgetvideoport api has been called using IARM support.
+ * 
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  */
 dsError_t  dsGetVideoPort(dsVideoPortType_t type, int index, int *handle);
@@ -97,9 +98,10 @@ dsError_t  dsGetVideoPort(dsVideoPortType_t type, int index, int *handle);
  * @param[in]  handle      Handle of the video port.
  * @param[out] enabled    The address of a location to hold the video port enable state
  *                          on return (@a true when port is enabled, @a false otherwise).
- * @return Device Settings error code
- * @retval dsERR_NONE If sucessfully dsIsVideoPortEnabled api has been called using IARM support.
- * @retval dsERR_GENERAL General failure .
+ * 
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL General failure.
  */
 dsError_t  dsIsVideoPortEnabled(int handle, bool *enabled);
 
@@ -111,8 +113,9 @@ dsError_t  dsIsVideoPortEnabled(int handle, bool *enabled);
  * @param[in]  handle        Handle of the video port.
  * @param[out] connected    The address of a location to hold the connection state on
  *                            return (@a true when connected, @a false otherwise).
- * @return Device Settings error code
- * @retval dsERR_NONE If sucessfully dsIsDisplayConnected api has been called using IARM support.
+ * 
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  */
 dsError_t  dsIsDisplayConnected(int handle, bool *connected);
@@ -123,8 +126,8 @@ dsError_t  dsIsDisplayConnected(int handle, bool *connected);
  * @param[in]  handle Handle of the video port.
  * @param[out] surround It is set to True if the display supports surround audio.
  *
- * @return Device Settings error code
- * @retval dsERR_NONE Indicates dsIsDisplaySurround api has been called using IARM support.
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  */
 dsError_t  dsIsDisplaySurround(int handle, bool *surround);
@@ -135,8 +138,8 @@ dsError_t  dsIsDisplaySurround(int handle, bool *surround);
  * @param[in]  handle Handle of the video port.
  * @param[out] surround mode.
  *
- * @return Device Settings error code
- * @retval dsERR_NONE Indicates dsGetSurroundMode api has been called using IARM support.
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  */
 dsError_t  dsGetSurroundMode(int handle, int *surround);
@@ -148,8 +151,9 @@ dsError_t  dsGetSurroundMode(int handle, int *surround);
  * @param[in]  handle        Handle of the video port.
  * @param[out] connected    The address of a location to hold the connection state on
  *                            return (@a true when connected, @a false otherwise).
- * @return Device Settings error code
- * @retval dsERR_NONE If sucessfully dsIsDisplayConnected api has been called using IARM support.
+ * 
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  */
 dsError_t  dsIsVideoPortActive(int handle, bool *active);
@@ -165,8 +169,10 @@ dsError_t  dsIsVideoPortActive(int handle, bool *active);
  * @param [in] handle            Handle of the video  port.
  * @param [in] contentProtect    Flag to control DTCP content protection
  *                               (@a true for enabled, @a false for disabled).
- * @return Device Settings error code
- * @retval    ::dsError_t
+ * 
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL General failure.
  */
 dsError_t  dsEnableDTCP(int handle, bool contentProtect);
 
@@ -182,8 +188,9 @@ dsError_t  dsEnableDTCP(int handle, bool contentProtect);
  *                               (@a true for enabled, @a false for disabled).
  * @param[in] hdcpKey HDCP key.
  * @param[in] keySize HDCP key size.
- * @return Device Settings error code
- * @retval dsERR_NONE If sucessfully dsEnableHDCP api has been called using IARM support.
+ * 
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM If invalid HCDP key is used.
  */
@@ -197,11 +204,13 @@ dsError_t  dsEnableHDCP(int handle, bool contentProtect, char *hdcpKey, size_t k
  * is not supported.
  *
  * @param [in]  handle                Handle of the video port.
- * @param [out] *pContentProtected    The address of a location to hold the DTCP content
+ * @param [out] pContentProtected    The address of a location to hold the DTCP content
  *                                    protection state on return (@a true when enabled,
  *                                    @a false otherwise).
- * @return Device Settings error code
- * @retval    ::dsError_t
+ * 
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL General failure.
  */
 dsError_t  dsIsDTCPEnabled (int handle, bool* pContentProtected);
 
@@ -212,8 +221,9 @@ dsError_t  dsIsDTCPEnabled (int handle, bool* pContentProtected);
  * @param[out] enabled              The address of a location to hold the HDCP content
  *                                    protection state on return (@a true when enabled,
  *                                    @a false otherwise).
- * @return Device Settings error code
- * @retval dsERR_NONE If sucessfully dsIsHDCPEnabled api has been called using IARM support.
+ * 
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  */
 dsError_t  dsIsHDCPEnabled (int handle, bool* pContentProtected);
@@ -226,8 +236,9 @@ dsError_t  dsIsHDCPEnabled (int handle, bool* pContentProtected);
  * @param [in] handle      Handle of the video port.
  * @param [in] enabled     Flag to control the video port state 
  *                         (@a true to enable, @a false to disable)
- * @return Device Settings error code
- * @retval dsERR_NONE If sucessfully dsEnableVideoPort api has been called using IARM support.
+ * 
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  */
 dsError_t  dsEnableVideoPort(int handle, bool enabled);
@@ -238,11 +249,12 @@ dsError_t  dsEnableVideoPort(int handle, bool enabled);
  * This function sets the resolution for the video corresponding to the specified port handle.
  *
  * @param [in] handle         Handle of the video port.
- * @param [in] *resolution    The address of a structure containing the video port
+ * @param [in] resolution    The address of a structure containing the video port
  *                            resolution settings.
  * @param [in] persist        In false state allows disabling persist of resolution value.
- * @return Device Settings error code
- * @retval dsERR_NONE If sucessfully dsSetResolution api has been called using IARM support.
+ * 
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  */
 dsError_t  dsSetResolution(int handle, dsVideoPortResolution_t *resolution, bool persist);
@@ -253,10 +265,11 @@ dsError_t  dsSetResolution(int handle, dsVideoPortResolution_t *resolution, bool
  * This function Gets the resolution for the video corresponding to the specified port and index.
  *
  * @param [in] handle         Handle of the video output port.
- * @param [in] *resolution    The address of a structure containing the video output port
+ * @param [out] resolution    The address of a structure containing the video output port
  *                            resolution settings.
- * @return Device Settings error code
- * @retval dsERR_NONE If sucessfully dsGetResolution api has been called using IARM support.
+ * 
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  */
 dsError_t  dsGetResolution(int handle, dsVideoPortResolution_t *resolution);
@@ -264,10 +277,11 @@ dsError_t  dsGetResolution(int handle, dsVideoPortResolution_t *resolution);
 /**
  * @brief Set the port to the the active source.
  * 
- * @param handle Handle of the video port.
+ * @param [in] handle Handle of the video port.
  *
- * @return Device Settings error code
- * @retval    ::dsError_t
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL General failure.
  */
 dsError_t dsSetActiveSource(int handle);
 
@@ -277,8 +291,8 @@ dsError_t dsSetActiveSource(int handle);
  * This function must terminate all the video output ports. It must reset any data
  * structures used within video port module and release any video port specific handles.
  *
-* @return Device Settings error code
- * @retval dsERR_NONE If sucessfully dsVideoPortTerm api has been called using IARM support.
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  */
 dsError_t dsVideoPortTerm();
@@ -290,8 +304,9 @@ dsError_t dsVideoPortTerm();
  *
  * @param [in] Initialize the Video Resolution
  *                            
- * @return Device Settings error code
- * @retval    ::dsError_t
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL General failure.
  */
 dsError_t  dsInitResolution(dsVideoPortResolution_t *);
 
@@ -304,8 +319,6 @@ dsError_t  dsInitResolution(dsVideoPortResolution_t *);
  *
  * @param handle    Handle of the display device.
  * @param event     Display HDCP status.
- *
- *
  *
  * @return None.
  */
@@ -323,52 +336,59 @@ typedef void (*dsHDCPStatusCallback_t)(int handle, dsHdcpStatus_t status);
  *
  * @param handle Handle of the display device.
  * @param cb     The callback function.
- * @return       Error code.
- * @retval       ::dsError_t 
+ * 
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL General failure.
  */
  dsError_t dsRegisterHdcpStatusCallback (int handle, dsHDCPStatusCallback_t cb);
 
  /**
  * @brief Get current HDCP status
  *
- * @param[in] status Handle HDCP status
- * @return Device Settings error code
- * @retval dsERR_NONE If sucessfully dsGetHDCPStatus api has been called using IARM support.
+ * @param[in] handle Handle of the display device
+ * @param[in] status HDCP status of the device.
+ * 
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  */
 dsError_t dsGetHDCPStatus (int handle, dsHdcpStatus_t *status);
 
 /**
-* @brief Get STB HDCP protocol version
-*
-* @param handle Handle of the display device.
-* @param[in/out] HDCP protocol version
-* @return Device Settings error code
-* @retval dsERR_NONE If sucessfully dsGetHDCPProtocol api has been called.
-* @retval dsERR_GENERAL General failure.
-*/
+ * @brief Get STB HDCP protocol version
+ *
+ * @param [in] handle Handle of the display device.
+ * @param [out] HDCP protocol version
+ *
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL General failure.
+ */
 dsError_t dsGetHDCPProtocol (int handle,dsHdcpProtocolVersion_t *protocolVersion);
 
 /**
-* @brief Get Receiver/TV HDCP protocol version
-*
-* @param handle Handle of the display device.
-* @param[in/out] HDCP protocol version
-* @return Device Settings error code
-* @retval dsERR_NONE If sucessfully dsGetHDCPProtocol api has been called.
-* @retval dsERR_GENERAL General failure.
-*/
+ * @brief Get Receiver/TV HDCP protocol version
+ *
+ * @param [in] handle Handle of the display device.
+ * @param [out] HDCP protocol version
+ *
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL General failure.
+ */
 dsError_t dsGetHDCPReceiverProtocol (int handle,dsHdcpProtocolVersion_t *protocolVersion);
 
 /**
-* @brief Get current used HDCP protocol version
-*
-* @param handle Handle of the display device.
-* @param[in/out] HDCP protocol version
-* @return Device Settings error code
-* @retval dsERR_NONE If sucessfully dsGetHDCPProtocol api has been called.
-* @retval dsERR_GENERAL General failure.
-*/
+ * @brief Get current used HDCP protocol version
+ *
+ * @param [in] handle Handle of the display device.
+ * @param [out] HDCP protocol version
+ * 
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL General failure.
+ */
 dsError_t dsGetHDCPCurrentProtocol (int handle,dsHdcpProtocolVersion_t *protocolVersion);
 
 /**
@@ -377,8 +397,11 @@ dsError_t dsGetHDCPCurrentProtocol (int handle,dsHdcpProtocolVersion_t *protocol
  * This function is used to get the HDR capabilities supported by the TV.
  *
  * @param [in] handle   Handle for the video device (video decoder)
- * @param [out] *capabilities OR-ed value of supported HDR standards.
+ * @param [out] capabilities OR-ed value of supported HDR standards.
+ * 
  * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL General failure.
  */
 dsError_t dsGetTVHDRCapabilities(int handle, int *capabilities);
 
@@ -388,11 +411,40 @@ dsError_t dsGetTVHDRCapabilities(int handle, int *capabilities);
  * This function is used to get the TV supported resolutions.
  *
  * @param [in] handle   Handle for the video device (video decoder)
- * @param [out] *resolution OR-ed value supported by TV.
+ * @param [out] resolution OR-ed value supported by TV.
+ * 
  * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL General failure.
  */
 dsError_t dsSupportedTvResolutions(int handle, int *resolutions);
+
+/**
+ * @brief To set ForceDiable 4K support variable.
+ *
+ * This function is used to set Forcefuly disable 4K support.
+ *
+ * @param [in] handle   Handle for the video device (video decoder)
+ * @param [out] disable bool value to set the parameter.
+ * 
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL General failure.
+ */
 dsError_t dsSetForceDisable4KSupport(int handle, bool disable);
+
+/**
+ * @brief To get ForceDiable 4K support variable.
+ *
+ * This function is used to get status if the device is Forcefuly disabled 4K support.
+ *
+ * @param [in] handle   Handle for the video device (video decoder)
+ * @param [out] disable bool value to get the parameter.
+ * 
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL General failure.
+ */
 dsError_t dsGetForceDisable4KSupport(int handle, bool *disable);
 
  /**
@@ -415,7 +467,9 @@ dsError_t dsGetForceDisable4KSupport(int handle, bool *disable);
  *
  * @param[in] parameter_str - a name of parameter
  * @param[in] value_str - a value of parameter
- * @retval dsERR_NONE on success
+ * 
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  */
 dsError_t dsSetScartParameter(int handle, const char* parameter_str, const char* value_str);
@@ -426,8 +480,8 @@ dsError_t dsSetScartParameter(int handle, const char* parameter_str, const char*
  * @param[in]  handle -  Handle of the display device.
  * @param[out] video_eotf - pointer to EOFF value
  *
- * @return Device Settings error code
- * @retval dsERR_NONE on success
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  */
 dsError_t dsGetVideoEOTF(int handle, dsHDRStandard_t *video_eotf);
@@ -438,8 +492,8 @@ dsError_t dsGetVideoEOTF(int handle, dsHDRStandard_t *video_eotf);
  * @param[in]  handle -  Handle of the display device.
  * @param[out] matrix_coefficients - pointer to matrix coefficients value
  *
- * @return Device Settings error code
- * @retval dsERR_NONE on success
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  */
 dsError_t dsGetMatrixCoefficients(int handle, dsDisplayMatrixCoefficients_t *matrix_coefficients);
@@ -450,8 +504,8 @@ dsError_t dsGetMatrixCoefficients(int handle, dsDisplayMatrixCoefficients_t *mat
  * @param[in]  handle -  Handle of the display device.
  * @param[out] color_depth - pointer to color depths value.
  *
- * @return Device Settings error code
- * @retval dsERR_NONE on success
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  */
 dsError_t dsGetColorDepth(int handle, unsigned int* color_depth);
@@ -462,8 +516,8 @@ dsError_t dsGetColorDepth(int handle, unsigned int* color_depth);
  * @param[in]  handle -  Handle of the display device.
  * @param[out] color_space - pointer to color space value.
  *
- * @return Device Settings error code
- * @retval dsERR_NONE on success
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  */
 dsError_t dsGetColorSpace(int handle, dsDisplayColorSpace_t* color_space);
@@ -474,8 +528,8 @@ dsError_t dsGetColorSpace(int handle, dsDisplayColorSpace_t* color_space);
  * @param[in]  handle -  Handle of the display device.
  * @param[out] quantization_range - pointer to quantization range value.
  *
- * @return Device Settings error code
- * @retval dsERR_NONE on success
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  */
 dsError_t dsGetQuantizationRange(int handle, dsDisplayQuantizationRange_t* quantization_range);
@@ -491,8 +545,8 @@ dsError_t dsGetQuantizationRange(int handle, dsDisplayQuantizationRange_t* quant
  * @param[out] color_depth - pointer to color depths value.
  * @param[out] quantization_range - pointer to quantization range value.
  *
- * @return Device Settings error code
- * @retval dsERR_NONE on success
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  */
 dsError_t dsGetCurrentOutputSettings(int handle, dsHDRStandard_t* video_eotf, dsDisplayMatrixCoefficients_t* matrix_coefficients, dsDisplayColorSpace_t* color_space, unsigned int* color_depth, dsDisplayQuantizationRange_t* quantization_range);
@@ -503,10 +557,11 @@ dsError_t dsGetCurrentOutputSettings(int handle, dsHDRStandard_t* video_eotf, ds
  * This function checks if the video output is HDR or not.
  *
  * @param [in] handle         Handle of the video port.
- * @param [in] *hdr           The bool pointer
+ * @param [out] hdr           The bool pointer
  *
- * @return    Error Code.
- * @retval    ::dsError_t
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL General failure.
  */
 dsError_t dsIsOutputHDR(int handle, bool *hdr);
 
@@ -515,8 +570,9 @@ dsError_t dsIsOutputHDR(int handle, bool *hdr);
  *
  * This function resets the video output to SDR
  *
- * @return    Error Code.
- * @retval    ::dsError_t
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL General failure.
  */
 dsError_t dsResetOutputToSDR();
 
@@ -526,14 +582,15 @@ dsError_t dsResetOutputToSDR();
  * This function sets the Preferred HDMI Protocol
  *
  * @param [in] handle                   Handle of the video port.
- * @param [in] *hdcpCurrentProtocol     Address of the structure containing
+ * @param [in] hdcpCurrentProtocol     Address of the structure containing
  *                                      HDCP Protocol version enums
  *  dsHDCP_VERSION_1X = 0,            < HDCP Protocol version 1.x
  *  dsHDCP_VERSION_2X,                < HDCP Protocol version 2.x
  *  dsHDCP_VERSION_MAX                < Maximum index for HDCP protocol.
  *
- * @return    Error Code.
- * @retval    ::dsError_t
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL General failure.
  */
 dsError_t dsSetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentProtocol);
 
@@ -544,17 +601,30 @@ dsError_t dsSetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentPr
  * *hdcpCurrentProtocol accordingly
  *
  * @param [in] handle                   Handle of the video port.
- * @param [in] *hdcpCurrentProtocol     Address of the structure containing
+ * @param [out] hdcpCurrentProtocol     Address of the structure containing
  *                                      HDCP Protocol version enums
  *  dsHDCP_VERSION_1X = 0,            < HDCP Protocol version 1.x
  *  dsHDCP_VERSION_2X,                < HDCP Protocol version 2.x
  *  dsHDCP_VERSION_MAX                < Maximum index for HDCP protocol.
  *
- * @return    Error Code.
- * @retval    ::dsError_t
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL General failure.
  */
 dsError_t dsGetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentProtocol);
 
+/**
+ * @brief This API is used to get the IgnoreEDID status variable set in the device.
+ *
+ * This API get the status variable to understand whether to ignore the EDID data or not for Sky Devices.
+ *
+ * @param [in] handle                   Handle of the video port.
+ * @param [out] status                  Status of IgnoreEDID variable.
+ *
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL General failure.
+ */
 dsError_t dsGetIgnoreEDIDStatus(int handle, bool* status);
 
 /**
@@ -565,8 +635,9 @@ dsError_t dsGetIgnoreEDIDStatus(int handle, bool* status);
  * @param [in] handle                   Handle of the video port.
  * @param [in] color                    color to be set
  *
- * @return    Error Code.
- * @retval    ::dsError_t
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL General failure.
  */
 dsError_t dsSetBackgroundColor(int handle, dsVideoBackgroundColor_t color);
 
@@ -578,8 +649,9 @@ dsError_t dsSetBackgroundColor(int handle, dsVideoBackgroundColor_t color);
  * @param [in] handle                   Handle of the video port.
  * @param [in] mode                   dsHDRStandard_t type
  *
- * @return    Error Code.
- * @retval    ::dsError_t
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL General failure.
  */
 dsError_t dsSetForceHDRMode(int handle, dsHDRStandard_t mode);
 
@@ -589,8 +661,11 @@ dsError_t dsSetForceHDRMode(int handle, dsHDRStandard_t mode);
  * This function is used to get the supported color depth capabilities.
  *
  * @param [in] handle   Handle for the video port.
- * @param [out] *capabilities OR-ed value of supported color depth  standards.
+ * @param [out] capabilities OR-ed value of supported color depth  standards.
+ * 
  * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL General failure.
  */
 dsError_t dsColorDepthCapabilities(int handle, unsigned int *colorDepthCapability );
 
@@ -601,7 +676,10 @@ dsError_t dsColorDepthCapabilities(int handle, unsigned int *colorDepthCapabilit
  *
  * @param [in] handle   Handle for the video port.
  * @param [out] colorDepth color depth value.
+ * 
  * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL General failure.
  */
 dsError_t dsGetPreferredColorDepth(int handle, dsDisplayColorDepth_t *colorDepth, bool persist );
 
@@ -613,7 +691,10 @@ dsError_t dsGetPreferredColorDepth(int handle, dsDisplayColorDepth_t *colorDepth
  * @param [in] handle   Handle for the video port.
  * @param [in] colorDepth color depth value.
  * @param [in] persist  to persist value
+ * 
  * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL General failure.
  */
 dsError_t dsSetPreferredColorDepth(int handle,dsDisplayColorDepth_t colorDepth, bool persist );
 

@@ -17,15 +17,12 @@
  * limitations under the License.
 */
  
-
-
 /**
 * @defgroup devicesettings
 * @{
 * @defgroup hal
 * @{
 **/
-
 
 #ifndef _DS_AUDIOOUTPUTPORTSETTINGS_H
 #define _DS_AUDIOOUTPUTPORTSETTINGS_H
@@ -34,27 +31,33 @@
 extern "C" {
 #endif
 
-
 #include "dsUtl.h"
 #include "dsTypes.h"
 
 namespace  {
 
-
 /*
  * Enumerate the supported configurations here.
  */
+/// Audio supported port types	
 static const dsAudioPortType_t 	    kSupportedPortTypes[] 				= { dsAUDIOPORT_TYPE_HDMI, dsAUDIOPORT_TYPE_SPDIF };
+/// Audio supported encoding types
 static const dsAudioEncoding_t 		kSupportedHDMIEncodings[]			= { dsAUDIO_ENC_PCM, dsAUDIO_ENC_AC3};
+/// Audio supported HDMI compression types
 static const dsAudioCompression_t 	kSupportedHDMICompressions[] 		= { dsAUDIO_CMP_NONE, dsAUDIO_CMP_LIGHT, dsAUDIO_CMP_MEDIUM, dsAUDIO_CMP_HEAVY, };
+/// Audio supported HDMI stereo mode types
 static const dsAudioStereoMode_t 	kSupportedHDMIStereoModes[] 		= { dsAUDIO_STEREO_STEREO, dsAUDIO_STEREO_SURROUND, };
+/// Audio supported SPDIF encoding types
 static const dsAudioEncoding_t 		kSupportedSPDIFEncodings[] 			= { dsAUDIO_ENC_PCM, dsAUDIO_ENC_AC3, };
+/// Audio supported SPDIF compression types 
 static const dsAudioCompression_t 	kSupportedSPDIFCompressions[] 		= { dsAUDIO_CMP_NONE, dsAUDIO_CMP_LIGHT, dsAUDIO_CMP_MEDIUM, dsAUDIO_CMP_HEAVY, };
+/// Audio supported SPDIF stereo mode types
 static const dsAudioStereoMode_t 	kSupportedSPDIFStereoModes[] 		= { dsAUDIO_STEREO_STEREO, dsAUDIO_STEREO_SURROUND, };
 
 /* 
  * Enumerate the supported Audio port types 
  */
+
 static const dsAudioTypeConfig_t 	kConfigs[]= {
 		{
 		/*.typeId = */					dsAUDIOPORT_TYPE_HDMI,
@@ -81,6 +84,7 @@ static const dsAudioTypeConfig_t 	kConfigs[]= {
 /*
  * Enumerate the Video Ports that are connected to each Audio port.
  */
+
 static const dsVideoPortPortId_t connectedVOPs[dsAUDIOPORT_TYPE_MAX][dsVIDEOPORT_TYPE_MAX] = {
 		{/*VOPs connected to LR Audio */
 
@@ -96,6 +100,7 @@ static const dsVideoPortPortId_t connectedVOPs[dsAUDIOPORT_TYPE_MAX][dsVIDEOPORT
 /*
  * Enumerate the Audio Ports available on the device.  
  */
+
 static const dsAudioPortConfig_t kPorts[] = {
 		{
 		/*.typeId = */ 					{dsAUDIOPORT_TYPE_HDMI, 0},
@@ -113,8 +118,6 @@ static const dsAudioPortConfig_t kPorts[] = {
 #endif
 
 #endif
-
-
 
 /** @} */
 /** @} */

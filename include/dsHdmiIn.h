@@ -34,7 +34,6 @@
  * See the License for the specific language governing permissions and
  * limitations under
 */
-
  
 /**
  * @file dsHdmiIn.h
@@ -69,15 +68,12 @@
  *
  */
 
-
-
 /**
 * @defgroup devicesettings
 * @{
 * @defgroup hal
 * @{
 **/
-
 
 #ifndef _DS_dsHdmiInH_
 #define _DS_dsHdmiInH_
@@ -102,9 +98,12 @@ extern "C" {
  * structures.
  *
  * @param None
+ * 
  * @return Device Settings error code
- * @retval    ::dsError_t
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL Indicates error due to general failure.
  */
+
 dsError_t dsHdmiInInit (void);
 
 /**
@@ -114,9 +113,12 @@ dsError_t dsHdmiInInit (void);
  * structures.
  *
  * @param None
+ * 
  * @return Device Settings error code
- * @retval    ::dsError_t
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL Indicates error due to general failure.
  */
+
 dsError_t dsHdmiInTerm (void);
 
 /**
@@ -124,10 +126,13 @@ dsError_t dsHdmiInTerm (void);
  * 
  * This function is used to get the number of HDMI Input ports on the set-top.
  *
- * @param [in]pNumberOfInputs   number of HDMI Input ports.
+ * @param[in] pNumberOfInputs   number of HDMI Input ports.
+ * 
  * @return Device Settings error code
- * @retval    ::dsError_t
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL Indicates error due to general failure.
  */
+
 dsError_t dsHdmiInGetNumberOfInputs (uint8_t *pNumberOfInputs);
 
 /**
@@ -135,11 +140,14 @@ dsError_t dsHdmiInGetNumberOfInputs (uint8_t *pNumberOfInputs);
  * 
  * This function is used to get the current HDMI Input Status.
  *
- * @param [in]pStatus       HDMI Input enabled, HDMI Input port connected,
- *                          Active HDMI Input port, and HW Pass-Through enabled.
+ * @param[in] pStatus           HDMI Input enabled, HDMI Input port connected,
+ *                              Active HDMI Input port, and HW Pass-Through enabled.
+ *
  * @return Device Settings error code
- * @retval    ::dsError_t
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL Indicates error due to general failure.
  */
+
 dsError_t dsHdmiInGetStatus (dsHdmiInStatus_t *pStatus);
 
 /**
@@ -147,24 +155,29 @@ dsError_t dsHdmiInGetStatus (dsHdmiInStatus_t *pStatus);
  * 
  * This function is used to select the HDMI Input port for presentation.
  *
- * @param [in]ePort       HDMI Input port to be presented,
+ * @param[in] ePort             HDMI Input port to be presented,
+ * 
  * @return Device Settings error code
- * @retval    ::dsError_t
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL Indicates error due to general failure.
  */
+
 dsError_t dsHdmiInSelectPort (dsHdmiInPort_t Port);
 
 /**
  * @brief Scale the HDMI In video
  * This function is used to scale the HDMI In video.
  *
- * @param[in] x      : x coordinate for the video
- * @param[in] y      : y coordinate for the video
- * @param[in] width  : width of the video
- * @param[in] height : height of the video
+ * @param[in] x                 x coordinate for the video
+ * @param[in] y                 y coordinate for the video
+ * @param[in] width             width of the video
+ * @param[in] height            height of the video
  *
  * @return Device Settings error code
- * @retval    ::dsError_t
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL Indicates error due to general failure.
  */
+
 dsError_t dsHdmiInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t height);
 
 /**
@@ -172,10 +185,13 @@ dsError_t dsHdmiInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t heigh
  * 
  * This function is used to select the HDMI Input zoom mode.
  *
- * @param [in]requestedZoomMode       HDMI Input zoom mode,
+ * @param[in] requestedZoomMode HDMI Input zoom mode,
+ * 
  * @return Device Settings error code
- * @retval    ::dsError_t
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL Indicates error due to general failure.
  */
+
 dsError_t dsHdmiInSelectZoomMode (dsVideoZoom_t requestedZoomMode);
 
 /**
@@ -184,9 +200,12 @@ dsError_t dsHdmiInSelectZoomMode (dsVideoZoom_t requestedZoomMode);
  * This function stops the HDMI Input audio from being output via HDMI Out.
  *
  * @param None
+ * 
  * @return Device Settings error code
- * @retval    ::dsError_t
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL Indicates error due to general failure.
  */
+
 dsError_t dsHdmiInPauseAudio (void);
 
 /**
@@ -195,9 +214,12 @@ dsError_t dsHdmiInPauseAudio (void);
  * This function presents the HDMI Input audio via HDMI Out.
  *
  * @param None
+ *
  * @return Device Settings error code
- * @retval    ::dsError_t
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL Indicates error due to general failure.
  */
+
 dsError_t dsHdmiInResumeAudio (void);
 
 /**
@@ -205,10 +227,14 @@ dsError_t dsHdmiInResumeAudio (void);
  *
  * This function gets the current HDMI Input video mode.
  *
- * @param None
+ * @param[out] resolution       Current HDMI Input video mode resolution
+ *
  * @return Current HDMI Input video mode (resolution)
- * @retval    ::dsError_t
+ * @return Device Settings error code
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL Indicates error due to general failure.
  */
+
 dsError_t dsHdmiInGetCurrentVideoMode (dsVideoPortResolution_t *resolution);
 
 /**
@@ -217,12 +243,12 @@ dsError_t dsHdmiInGetCurrentVideoMode (dsVideoPortResolution_t *resolution);
  * HAL Implementation should call this method to deliver HDMI In hot plug status
  * to the application (e.g. Connect/Disconnect for Port 0/1).
  *
- * @param Port                HDMI Input port.
- * @param isPortConnected     Connection state of HDMI In Port.
- *
+ * @param[in] Port              HDMI Input port.
+ * @param[in] isPortConnected   Connection state of HDMI In Port.
  *
  * @return None.
  */
+
 typedef void (*dsHdmiInConnectCB_t)(dsHdmiInPort_t Port, bool isPortConnected);
 
 /**
@@ -231,12 +257,12 @@ typedef void (*dsHdmiInConnectCB_t)(dsHdmiInPort_t Port, bool isPortConnected);
  * HAL Implementation should call this method to deliver HDMI In signal change status
  * to the application (e.g. NoSignal/UnstableSignal/NotSupportedSignal/StableSignal for HDMI In ports).
  *
- * @param port                HDMI Input port.
- * @param sigStatus           signal Status of HDMI In Port.
- *
+ * @param[in] port              HDMI Input port.
+ * @param[in] sigStatus         signal Status of HDMI In Port.
  *
  * @return None.
  */
+
 typedef void (*dsHdmiInSignalChangeCB_t)(dsHdmiInPort_t port, dsHdmiInSignalStatus_t sigStatus);
 
 /**
@@ -245,11 +271,11 @@ typedef void (*dsHdmiInSignalChangeCB_t)(dsHdmiInPort_t port, dsHdmiInSignalStat
  * HAL Implementation should call this method to deliver HDMI Input status
  * to the application (e.g. port, isPresented(true/false) etc. for HDMI In ports).
  *
- * @param inputStatus         HDMI Input status of a specific Port.
- *
+ * @param[in] inputStatus       HDMI Input status of a specific Port.
  *
  * @return None.
  */
+
 typedef void (*dsHdmiInStatusChangeCB_t)(dsHdmiInStatus_t inputStatus);
 
 /**
@@ -258,12 +284,12 @@ typedef void (*dsHdmiInStatusChangeCB_t)(dsHdmiInStatus_t inputStatus);
  * HAL Implementation should call this method to deliver updated HDMI In video mode info
  * to the application
  *
- * @param port                HDMI Input port.
- * @param videoResolution     dsVideoPortResolution_t of HDMI In Source
- *
+ * @param[in] port              HDMI Input port.
+ * @param[in] videoResolution   dsVideoPortResolution_t of HDMI In Source
  *
  * @return None.
  */
+
 typedef void (*dsHdmiInVideoModeUpdateCB_t)(dsHdmiInPort_t port, dsVideoPortResolution_t videoResolution);
 
 /**
@@ -272,12 +298,12 @@ typedef void (*dsHdmiInVideoModeUpdateCB_t)(dsHdmiInPort_t port, dsVideoPortReso
  * HAL Implementation should call this method to deliver HDMI Input ALLM Mode
  * to the application (e.g. port, allm_mode(true/false) etc. for HDMI In ports).
  *
- * @param port                HDMI Input port.
- * @param allm_mode           ALLM Mode of HDMI In Port.
- *
+ * @param[in] port              HDMI Input port.
+ * @param[in] allm_mode         ALLM Mode of HDMI In Port.
  *
  * @return None.
  */
+
 typedef void (*dsHdmiInAllmChangeCB_t)(dsHdmiInPort_t port, bool allm_mode);
 
 /**
@@ -285,10 +311,13 @@ typedef void (*dsHdmiInAllmChangeCB_t)(dsHdmiInPort_t port, bool allm_mode);
  * 
  * This function is used to register for the HDMI Input hot plug event.
  *
- * @param[in] CBFunc HDMI Input hot plug callback function.
+ * @param[in] CBFunc            HDMI Input hot plug callback function.
+ * 
  * @return Device Settings error code
- * @retval    ::dsError_t
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL Indicates error due to general failure.
  */
+
 dsError_t dsHdmiInRegisterConnectCB (dsHdmiInConnectCB_t CBFunc);
 
 /**
@@ -296,10 +325,13 @@ dsError_t dsHdmiInRegisterConnectCB (dsHdmiInConnectCB_t CBFunc);
  *
  * This function is used to register for the HDMI Input Signal Change event.
  *
- * @param[in] CBFunc HDMI Input Signal change callback function.
+ * @param[in] CBFunc            HDMI Input Signal change callback function.
+ * 
  * @return Device Settings error code
- * @retval    ::dsError_t
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL Indicates error due to general failure.
  */
+
 dsError_t dsHdmiInRegisterSignalChangeCB (dsHdmiInSignalChangeCB_t CBFunc);
 
 /**
@@ -307,10 +339,13 @@ dsError_t dsHdmiInRegisterSignalChangeCB (dsHdmiInSignalChangeCB_t CBFunc);
  *
  * This function is used to register for the HDMI Input Status Change event.
  *
- * @param[in] CBFunc HDMI Input Status change callback function.
+ * @param[in] CBFunc            HDMI Input Status change callback function.
+ * 
  * @return Device Settings error code
- * @retval    ::dsError_t
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL Indicates error due to general failure.
  */
+
 dsError_t dsHdmiInRegisterStatusChangeCB (dsHdmiInStatusChangeCB_t CBFunc);
 
 /**
@@ -318,10 +353,13 @@ dsError_t dsHdmiInRegisterStatusChangeCB (dsHdmiInStatusChangeCB_t CBFunc);
  *
  * This function is used to register for the HDMI Input video mode Change event.
  *
- * @param[in] CBFunc HDMI Input video mode change callback function.
+ * @param[in] CBFunc            HDMI Input video mode change callback function.
+ * 
  * @return Device Settings error code
- * @retval    ::dsError_t
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL Indicates error due to general failure.
  */
+
 dsError_t dsHdmiInRegisterVideoModeUpdateCB(dsHdmiInVideoModeUpdateCB_t CBFunc);
 
 /**
@@ -329,20 +367,118 @@ dsError_t dsHdmiInRegisterVideoModeUpdateCB(dsHdmiInVideoModeUpdateCB_t CBFunc);
  *
  * This function is used to register for the HDMI Input ALLM Mode Change event.
  *
- * @param[in] CBFunc HDMI Input ALLM Mode change callback function.
+ * @param[in] CBFunc            HDMI Input ALLM Mode change callback function.
+ * 
  * @return Device Settings error code
- * @retval    ::dsError_t
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL Indicates error due to general failure.
  */
+
 dsError_t dsHdmiInRegisterAllmChangeCB (dsHdmiInAllmChangeCB_t CBFunc);
+
+/**
+ * @brief Register to check if its HDMI Arc port .
+ *
+ * This function is used to check if its HDMI Arc port.
+ *
+ * @param[in] iPort             HDMI Arc port
+ *
+ * @return Boolean returns true or false
+ */
 
 bool dsIsHdmiARCPort (int iPort);
 
+/**
+ * @brief Register to get the EDID bytes info
+ *
+ * This function is used to register to get the EDID bytes info event.
+ *
+ * @param[in] iHdmiPort         HDMI Input port
+ * @param[in] edid              EDID data for which info is required
+ * @param[in] length            Lenght of the EDID data
+ *
+ * @return Device Settings error code
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL Indicates error due to general failure.
+ */
+
 dsError_t dsGetEDIDBytesInfo (int iHdmiPort, unsigned char **edid, int *length);
+
+/**
+ * @brief Register to get the HDMI SPD info 
+ *
+ * This function is used to register to the HDMI SPD info event
+ *
+ * @param[in] iHdmiPort         HDMI Input port
+ * @param[in] data              HDMI SPD info data to get
+ *
+ * @return Device Settings error code
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL Indicates error due to general failure.
+ */
+
 dsError_t dsGetHDMISPDInfo (int iHdmiPort, unsigned char **data);
+
+/**
+ * @brief Register to set the EDID version
+ *
+ * This function is used to register to set the EDID version event
+ *
+ * @param[in] iHdmiPort         HDMI Input port
+ * @param[in] iEdidVersion      Input EDID version number to set
+ *
+ * @return Device Settings error code
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL Indicates error due to general failure.
+ */
+
 dsError_t dsSetEdidVersion (int iHdmiPort, int iEdidVersion);
+
+/**
+ * @brief Register to get the EDID version
+ *
+ * This function is used to register to get the EDID version event
+ *
+ * @param[in] iHdmiPort         HDMI Input port
+ * @param[in] iEdidVersion      Input EDID version number to get
+ *
+ * @return Device Settings error code
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL Indicates error due to general failure.
+ */
+
 dsError_t dsGetEdidVersion (int iHdmiPort, int *iEdidVersion);
+
+/**
+ * @brief Register to get all the mstatus
+ *
+ * This function is used to register to get all the mstatus details
+ *
+ * @param[in] iHdmiPort         HDMI Input port
+ * @param[in] allmStatus        mstatus details to get
+ *
+ * @return Device Settings error code
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL Indicates error due to general failure.
+ */
+
 dsError_t dsGetAllmStatus (int iHdmiPort, bool *allmStatus);
+
+/**
+ * @brief Register to get all supported game features list
+ *
+ * This function is used to register to get all supported game features list event
+ *
+ * @param[in] iHdmiPort         HDMI Input port
+ * @param[in] features          List of all supported game features
+ *
+ * @return Device Settings error code
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL Indicates error due to general failure.
+ */
+
 dsError_t dsGetSupportedGameFeaturesList (dsSupportedGameFeatureList_t* features);
+
 /* End of DSHAL_HdmiIn_API doxygen group */
 /**
  * @}

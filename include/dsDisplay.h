@@ -21,15 +21,12 @@
  * @file dsDisplay.h
  */
 
-
-
 /**
 * @defgroup devicesettings
 * @{
 * @defgroup hal
 * @{
 **/
-
 
 #ifndef _DS_VIDEODISPLAY_H_
 #define _DS_VIDEODISPLAY_H_
@@ -41,22 +38,26 @@
 extern "C" {
 #endif
 
-
 /**
  * @enum typedef enum _dsDisplayEvent_t
  * @brief This enumeration defines standard display event types. 
  * @note Vendors, please add appropriate events needed for your implementation.
  */
-typedef enum _dsDisplayEvent_t {
-    dsDISPLAY_EVENT_CONNECTED = 0,         //!< Display connected event.
-    dsDISPLAY_EVENT_DISCONNECTED,          //!< Display disconnected event.
-    dsDISPLAY_RXSENSE_ON,			       //!< Rx Sense ON event
-    dsDISPLAY_RXSENSE_OFF,			       //!< Rx Sense OFF event
-    dsDISPLAY_HDCPPROTOCOL_CHANGE,		   //!< HDCP Protocol Version Change event
 
+typedef enum _dsDisplayEvent_t {
+    ///!< Display connected event
+    dsDISPLAY_EVENT_CONNECTED = 0,      
+    ///!< Display disconnected event
+    dsDISPLAY_EVENT_DISCONNECTED,       
+    ///!< Rx Sense ON event
+    dsDISPLAY_RXSENSE_ON,		
+    ///!< Rx Sense OFF event
+    dsDISPLAY_RXSENSE_OFF,		
+    ///!< HDCP Protocol Version Change event
+    dsDISPLAY_HDCPPROTOCOL_CHANGE,	
+    ///!< Display max event
     dsDISPLAY_EVENT_MAX
 } dsDisplayEvent_t;
-
 
 /** @addtogroup DSHAL_DISPLAY_API Device Settings HAL Display Public API
  *  @ingroup devicesettingshalapi
@@ -68,23 +69,23 @@ typedef enum _dsDisplayEvent_t {
  *  @{
  */
 
-
 /**
  * @brief Callback function used to notify applications of display events.
  * 
  * HAL Implementation should call this method to delivery display events
  * to the application (e.g. connected, disconnected).
  *
- * @param handle    Handle of the display device.
- * @param event     Display event.
- * @param eventData Data associated with the event. 
- *                  This is currently a place holder.
+ * @param[in]  handle     Handle of the display device.
+ * @param[in]  event      Display event.
+ * @param[out] eventData  Data associated with the event. 
+ *                        This is currently a place holder.
  *
  * @note HAL implementation is responsible for allocation of memory needed for event data. 
  * The memory can be free'd after callback returns.
  *
  * @return None.
  */
+
 typedef void (*dsDisplayEventCallback_t)(int handle, dsDisplayEvent_t event, void *eventData/*Optional*/);
 
 /**
@@ -97,6 +98,7 @@ typedef void (*dsDisplayEventCallback_t)(int handle, dsDisplayEvent_t event, voi
  * @retval dsERR_NONE If sucessfully dsDisplayInit api has been called using IARM support.
  * @retval dsERR_GENERAL General failure.
  */
+
 dsError_t dsDisplayInit();
 
 /**
@@ -105,15 +107,16 @@ dsError_t dsDisplayInit();
  * This function will get the handle for the display device connected to the 
  * specified video port.
  *
- * @param [in]  vType    Type of video port (e.g. HDMI, COMPONENT, etc.).
- * @param [in]  index    The index of the video port (0, 1, ...).
- * @param [out] *handle  The address of a location to hold the handle for the
- *                       specified display device on return. 
+ * @param[in]  vType    Type of video port (e.g. HDMI, COMPONENT, etc.).
+ * @param[in]  index    The index of the video port (0, 1, ...).
+ * @param[out] handle   The address of a location to hold the handle for the
+ *                      specified display device on return. 
  * 
  * @return Device Settings error code
  * @retval dsERR_NONE If sucessfully dsGetDisplay api has been called using IARM support.
  * @retval dsERR_GENERAL General failure.
  */
+
  dsError_t dsGetDisplay(dsVideoPortType_t vType, int index, int *handle);
   
 /** 
@@ -122,30 +125,34 @@ dsError_t dsDisplayInit();
  * This function gets the EDID information from the HDMI/DVI display corresponding to
  * the specified display device handle.
  * 
- * @param [in]  handle  Handle of the display device.
- * @param [out] *edid   The address of a location to hold the EDID for the specified
+ * @param[in]  handle   Handle of the display device.
+ * @param[out] edid     The address of a location to hold the EDID for the specified
  *                      display device on return.
+ *
  * @return Device Settings error code
  * @retval dsERR_NONE If sucessfully dsGetEDID api has been called using IARM support.
  * @retval dsERR_GENERAL General failure.
  */
+
 dsError_t dsGetEDID(int handle, dsDisplayEDID_t *edid);
 
 /**
  * @brief This function is used to get the EDID buffer and length of the connected display.
  *
- * @param[in] handle   Handle for the video display. This must be HDMI output
+ * @param[in] handle    Handle for the video display. This must be HDMI output
  *                      handle.
- * @param[out] edid  The EDID raw buffer of the display. The HAL implementation should
+ * @param[out] edid     The EDID raw buffer of the display. The HAL implementation should
  *                      malloc() the buffer and return it to the application. The
  *                      application is required to free() the buffer after using it;
  *                      If HDMI is not connected  no data should be returned,
  *                      and the API returns dsERR_INVALID_STATE.
- * @param[out] length The length of EDID buffer data
+ * @param[out] length   The length of EDID buffer data
+ *
  * @return Device Settings error code
  * @retval dsERR_NONE If sucessfully dsGetEDIDBytes api has been called using IARM support.
  * @retval dsERR_GENERAL General failure.
  */
+
 dsError_t dsGetEDIDBytes(int handle, unsigned char **edid, int *length);
 
 /**
@@ -155,10 +162,12 @@ dsError_t dsGetEDIDBytes(int handle, unsigned char **edid, int *length);
  * @param[in]  handle         Handle of the display device.
  * @param[out] aspectRatio    The address of a location to hold the current aspect ratio
  *                            for the specified display device on return.
+ *
  * @return Device Settings error code
  * @retval dsERR_NONE If sucessfully dsGetDisplayAspectRatio api has been called using IARM support.
  * @retval dsERR_GENERAL General failure.
  */
+
 dsError_t dsGetDisplayAspectRatio(int handle, dsVideoAspectRatio_t *aspectRatio);
 
 /**
@@ -169,6 +178,7 @@ dsError_t dsGetDisplayAspectRatio(int handle, dsVideoAspectRatio_t *aspectRatio)
  * @retval dsERR_NONE If sucessfully dsDisplayTerm api has been called using IARM support.
  * @retval dsERR_GENERAL General failure.
  */
+
 dsError_t dsDisplayTerm();
 
 /**
@@ -181,11 +191,14 @@ dsError_t dsDisplayTerm();
  * Multiple listeners are supported at application layer and thus not
  * required in HAL implementation.
  *
- * @param handle Handle of the display device.
- * @param cb     The callback function.
- * @return       Error code.
- * @retval       ::dsError_t 
+ * @param[in] handle    Handle of the display device.
+ * @param[in] cb        The callback function.
+ *
+ * @return Device Settings error code
+ * @retval dsERR_NONE If sucessfully dsRegisterDisplayEventCallback api has been called using IARM support.
+ * @retval dsERR_GENERAL General failure. 
  */
+
 dsError_t dsRegisterDisplayEventCallback(int handle, dsDisplayEventCallback_t cb);
 
 /**
@@ -195,7 +208,6 @@ dsError_t dsRegisterDisplayEventCallback(int handle, dsDisplayEventCallback_t cb
 }
 #endif
 #endif
-
 
 /** @} */
 /** @} */

@@ -57,8 +57,8 @@ extern "C" {
 /**
  * @brief This function initialize all the video devices in the system.
  *
- * @return dsError_t
- * @retval dsERR_NONE If sucessfully dsVideoDeviceInit api has been called using IARM support.
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  */
 dsError_t  dsVideoDeviceInit();
@@ -69,8 +69,8 @@ dsError_t  dsVideoDeviceInit();
  * @param[in]  index      Index of video device (0, 1, ...).
  * @param[out] handle    The address of a location to hold the video device handle on
  *                         return.
- * @return dsError_t
- * @retval dsERR_NONE If sucessfully dsGetVideoDevice api has been called using IARM support.
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  */
 dsError_t  dsGetVideoDevice(int index, int *handle);
@@ -81,8 +81,8 @@ dsError_t  dsGetVideoDevice(int index, int *handle);
  *
  * @param[in] handle  Handle of the video output port.
  * @param[in] dfc     Type of zoom mode to be used.
- * @return dsError_t
- * @retval dsERR_NONE If sucessfully dsSetDFC api has been called using IARM support.
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  */
 dsError_t  dsSetDFC(int handle, dsVideoZoom_t dfc);
@@ -93,8 +93,8 @@ dsError_t  dsSetDFC(int handle, dsVideoZoom_t dfc);
  *
  * @param[in] handle  Handle of the video output port.
  * @param[in] dfc     Type of zoom mode to be used.
- * @return dsError_t
- * @retval dsERR_NONE If sucessfully dsGetDFC api has been called using IARM support.
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  */
 dsError_t  dsGetDFC(int handle, dsVideoZoom_t *dfc);
@@ -103,8 +103,8 @@ dsError_t  dsGetDFC(int handle, dsVideoZoom_t *dfc);
  * @brief This function deinitialize all the video devices in the system.
  * It reset any data structures used within this module and release any handles specific to the video devices.
  *
- * @return dsError_t
- * @retval dsERR_NONE If sucessfully dsVideoDeviceTerm has been called using IARM support.
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  */
 dsError_t  dsVideoDeviceTerm();
@@ -114,8 +114,10 @@ dsError_t  dsVideoDeviceTerm();
  * This function is used to check which HDR capabilities the SoC supports
  *
  * @param [in] handle   Handle for the video device (video decoder)
- * @param [out] *capabilities OR-ed value of supported HDR standards.
+ * @param [out] capabilities Combined values of all supported HDR standards.
  * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL General failure.
  */
 dsError_t dsGetHDRCapabilities(int handle, int *capabilities);
 
@@ -125,9 +127,11 @@ dsError_t dsGetHDRCapabilities(int handle, int *capabilities);
  * This function is used to check which video formats the SoC supports
  *
  * @param [in]   handle              Handle for the video device (video decoder)
- * @param [out]  supported_formats   OR-ed value of supported video codec formats.
+ * @param [out]  supported_formats   Combined values of all the supported video codec formats.
  *
  * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL General failure.
  */
 dsError_t dsGetSupportedVideoCodingFormats(int handle, unsigned int * supported_formats);
 
@@ -139,25 +143,114 @@ dsError_t dsGetSupportedVideoCodingFormats(int handle, unsigned int * supported_
  * @param [out]  info    Video codec information like profile, level etc.
  *
  * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL General failure.
  */
 dsError_t dsGetVideoCodecInfo(int handle, dsVideoCodingFormat_t codec, dsVideoCodecInfo_t * info); 
 
+/**
+ * @brief This API is used to forcefuly disable the HDR support of the device
+ *
+ * @param [in]   handle  Handle for the video device (video decoder)
+ * @param [in]   disable Boolean value to force diableHDR or not.
+ *
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL General failure.
+ */
 dsError_t dsForceDisableHDRSupport(int handle, bool disable);
 
+/**
+ * @brief This API is used to set the FRF mode of the device
+ *
+ * @param [in]   handle  Handle for the video device (video decoder)
+ * @param [in]   frfmode integer with correspodnign FRF value.
+ *
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL General failure.
+ */
+dsError_t dsSetFRFMode(int handle, int frfmode);
+
+/**
+ * @brief This API is used to get the FRF mode of the device
+ *
+ * @param [in]   handle  Handle for the video device (video decoder)
+ * @param [out]  frfmode integer with correspodnign FRF value of the device.
+ *
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL General failure.
+ */
+dsError_t dsGetFRFMode(int handle, int *frfmode);
+
+/**
+ * @brief This API is used to get the FRF mode of the device
+ *
+ * @param [in]   handle  Handle for the video device (video decoder)
+ * @param [out]  framerate integer with correspodnign FRF value of the device.
+ *
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL General failure.
+ */
+dsError_t dsGetCurrentDisplayframerate(int handle, char *framerate);
+
+/**
+ * @brief This API is used to set the display framerate for the device.
+ *
+ * @param [in]  handle  Handle for the video device (video decoder)
+ * @param [in]  framerate Provides the display framerate value to be set.
+ *
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL General failure.
+ */
+dsError_t dsSetDisplayframerate(int handle, char *framerate);
+
+/**
+ * @brief Call back function to called while the framerate change event is detected.
+ *
+ * @param [in]   tSecond  Time period.
+ *
+ * @return void.
+ */
+typedef void (*dsRegisterFrameratePreChangeCB_t)(unsigned int tSecond);
+
+/**
+ * @brief This API is used to register teh cllback funciton for Display framerate pre change event.
+ *
+ * @param [in]   CBFunc  Function to be registered for the event.
+ *
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful
+ * @retval dsERR_GENERAL General failure.
+ */
+dsError_t dsRegisterFrameratePreChangeCB(dsRegisterFrameratePreChangeCB_t CBFunc);
+
+/**
+ * @brief Call back function to be called after the framerate change is done.
+ *
+ * @param [in]   tSecond  Time period.
+ *
+ * @return Void
+ */
+typedef void (*dsRegisterFrameratePostChangeCB_t)(unsigned int tSecond);
+
+/**
+ * @brief This API is used to register teh cllback funciton for Display framerate post change event.
+ *
+ * @param [in]   CBFunc  Function to be registered for the event.
+ *
+ * @return dsError_t Error code.
+ * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_GENERAL General failure.
+ */
+dsError_t dsRegisterFrameratePostChangeCB(dsRegisterFrameratePostChangeCB_t CBFunc);
 /* End of DSHAL_VIDEODEVICE_API doxygen group */
 /**
  * @}
  */
-dsError_t dsSetFRFMode(int handle, int frfmode);
-dsError_t dsGetFRFMode(int handle, int *frfmode);
-dsError_t dsGetCurrentDisplayframerate(int handle, char *framerate);
-dsError_t dsSetDisplayframerate(int handle, char *framerate);
-
-typedef void (*dsRegisterFrameratePreChangeCB_t)(unsigned int tSecond);
-dsError_t dsRegisterFrameratePreChangeCB(dsRegisterFrameratePreChangeCB_t CBFunc);
-
-typedef void (*dsRegisterFrameratePostChangeCB_t)(unsigned int tSecond);
-dsError_t dsRegisterFrameratePostChangeCB(dsRegisterFrameratePostChangeCB_t CBFunc);
 #ifdef __cplusplus
 }
 #endif
