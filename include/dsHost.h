@@ -80,6 +80,8 @@ extern "C" {
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @warning  This API is Not thread safe.
+ * @see dsHostTerm()
  */
 
 dsError_t dsHostInit();
@@ -97,6 +99,9 @@ dsError_t dsHostInit();
  * @retval dsERR_GENERAL Indicates error due to general failure.
  *
  * @note dsPOWER_OFF is not currently being used.
+ * @pre dsHostInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsGetHostPowerMode()
  */
 
 dsError_t dsSetHostPowerMode(int newPower);
@@ -115,6 +120,9 @@ dsError_t dsSetHostPowerMode(int newPower);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @pre dsHostInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsSetHostPowerMode()
  */
 
 dsError_t dsGetHostPowerMode(int *currPower);
@@ -128,6 +136,9 @@ dsError_t dsGetHostPowerMode(int *currPower);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @pre dsHostInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsHostInit()
  */
 
 dsError_t dsHostTerm();
@@ -140,6 +151,9 @@ dsError_t dsHostTerm();
  * @return Device Settings error code
  * @retval dsERR_NONE If sucessfully dsGetPreferredSleepMode api has been called using IARM support.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsHostInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsSetPreferredSleepMode()
  */
 
 dsError_t dsGetPreferredSleepMode(dsSleepMode_t *pMode);
@@ -152,6 +166,9 @@ dsError_t dsGetPreferredSleepMode(dsSleepMode_t *pMode);
  * @return Device Settings error code
  * @retval dsERR_NONE If sucessfully dsSetPreferredSleepMode api has been called using IARM support.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsHostInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsGetPreferredSleepMode()
  */
 
 dsError_t dsSetPreferredSleepMode(dsSleepMode_t mode);
@@ -164,6 +181,8 @@ dsError_t dsSetPreferredSleepMode(dsSleepMode_t mode);
  * @return Device Settings error code
  * @retval dsERR_NONE If sucessfully dsGetCPUTemperature api has been called using IARM support.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsHostInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 
 dsError_t dsGetCPUTemperature(float *cpuTemperature);
@@ -179,6 +198,9 @@ dsError_t dsGetCPUTemperature(float *cpuTemperature);
  * @return Returns 4 byte Version Number
  * @retval dsERR_NONE Successfully got the version number from dsHAL.
  * @retval dsERR_GENERAL Failed to get the version number.
+ * @pre dsHostInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsSetVersion()
  */
 
 dsError_t dsGetVersion(uint32_t *versionNumber);
@@ -191,6 +213,9 @@ dsError_t dsGetVersion(uint32_t *versionNumber);
  * @return Device Settings error code
  * @retval dsERR_NONE Successfully set the version for dsHAL.
  * @retval dsERR_GENERAL Failed to set the version.
+ * @pre dsHostInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsGetVersion()
  */
 
 dsError_t dsSetVersion(uint32_t versionNumber);
@@ -203,6 +228,8 @@ dsError_t dsSetVersion(uint32_t versionNumber);
  * @return Device Settings error code
  * @retval dsERR_NONE If sucessfully dsSetPreferredSleepMode api has been called using IARM support.
  * @retval dsERR_UNKNOWN General failure.
+ * @pre dsHostInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 
 dsError_t dsGetSocIDFromSDK(char *socID);
@@ -216,6 +243,8 @@ dsError_t dsGetSocIDFromSDK(char *socID);
  * @return Device Settings error code
  * @retval dsERR_NONE If sucessfully dsGetHostEDID api has been called using IARM support.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsHostInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 
 dsError_t dsGetHostEDID(unsigned char *edid, int *length);

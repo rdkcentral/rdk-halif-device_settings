@@ -25,7 +25,6 @@
 * @{
 **/
 
-
 #ifndef _DS_HAL_REGISTER_H_
 #define _DS_HAL_REGISTER_H_
 
@@ -38,7 +37,6 @@ void DSHal_RegisterForLog(DSHal_LogCb cb);
 #ifdef __cplusplus
 };
 #endif
-
 
 #endif
 

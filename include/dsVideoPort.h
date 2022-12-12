@@ -48,12 +48,9 @@ extern "C" {
  * HAL Implementation should call this method to deliver updated Video Format info
  * to the application
  *
- * @param audioFormat     Current video format of the content playing
- *
- *
- * @return None.
  */
 typedef void (*dsVideoFormatUpdateCB_t)(dsHDRStandard_t videoFormat);
+
 /** 
  * @addtogroup DSHAL_VIDEOPORT_API Device Settings HAL Video Port Public API
  * @ingroup devicesettingshalapi
@@ -71,8 +68,11 @@ typedef void (*dsVideoFormatUpdateCB_t)(dsHDRStandard_t videoFormat);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @warning  This API is Not thread safe.
+ * @see dsVideoPortTerm()
  */
 dsError_t  dsVideoPortInit();
+
 
 /**
  * @brief Get the video port handle.
@@ -87,8 +87,11 @@ dsError_t  dsVideoPortInit();
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 dsError_t  dsGetVideoPort(dsVideoPortType_t type, int index, int *handle);
+
 
 /**
  * @brief Indicate whether a video port is enabled.
@@ -102,8 +105,12 @@ dsError_t  dsGetVideoPort(dsVideoPortType_t type, int index, int *handle);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsEnableVideoPort()
  */
 dsError_t  dsIsVideoPortEnabled(int handle, bool *enabled);
+
 
 /**
  * @brief Indicate whether a video port is connected to a display.
@@ -117,8 +124,11 @@ dsError_t  dsIsVideoPortEnabled(int handle, bool *enabled);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 dsError_t  dsIsDisplayConnected(int handle, bool *connected);
+
 
 /**
  * @brief This function is used to indicate if the display connected supports surround audio.
@@ -129,9 +139,12 @@ dsError_t  dsIsDisplayConnected(int handle, bool *connected);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 dsError_t  dsIsDisplaySurround(int handle, bool *surround);
-  
+
+
 /**
  * @brief This function is used to get supported surround mode.
  *
@@ -141,6 +154,8 @@ dsError_t  dsIsDisplaySurround(int handle, bool *surround);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 dsError_t  dsGetSurroundMode(int handle, int *surround);
 
@@ -155,6 +170,8 @@ dsError_t  dsGetSurroundMode(int handle, int *surround);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 dsError_t  dsIsVideoPortActive(int handle, bool *active);
 
@@ -173,8 +190,12 @@ dsError_t  dsIsVideoPortActive(int handle, bool *active);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsIsDTCPEnabled()
  */
 dsError_t  dsEnableDTCP(int handle, bool contentProtect);
+
 
 /**
  * @brief Toggle HDCP protection of a video port.
@@ -193,8 +214,12 @@ dsError_t  dsEnableDTCP(int handle, bool contentProtect);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM If invalid HCDP key is used.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsGetHDCPStatus(), dsIsHDCPEnabled()
  */
 dsError_t  dsEnableHDCP(int handle, bool contentProtect, char *hdcpKey, size_t keySize);
+
 
 /**
  * @brief Indicate whether a video port is DTCP protected.
@@ -211,8 +236,12 @@ dsError_t  dsEnableHDCP(int handle, bool contentProtect, char *hdcpKey, size_t k
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsEnableDTCP()
  */
 dsError_t  dsIsDTCPEnabled (int handle, bool* pContentProtected);
+
 
  /**
  * @brief Indicate whether a video port is HDCP protected.
@@ -225,8 +254,12 @@ dsError_t  dsIsDTCPEnabled (int handle, bool* pContentProtected);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsEnableHDCP()
  */
 dsError_t  dsIsHDCPEnabled (int handle, bool* pContentProtected);
+
 
  /**
  * @brief Enable/disable a video port.
@@ -240,8 +273,12 @@ dsError_t  dsIsHDCPEnabled (int handle, bool* pContentProtected);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsIsVideoPortEnabled()
  */
 dsError_t  dsEnableVideoPort(int handle, bool enabled);
+
 
 /**
  * @brief Set video port's display resolution.
@@ -256,8 +293,12 @@ dsError_t  dsEnableVideoPort(int handle, bool enabled);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsGetResolution()
  */
 dsError_t  dsSetResolution(int handle, dsVideoPortResolution_t *resolution, bool persist);
+
 
 /**
  * @brief Get the video display resolution.
@@ -271,8 +312,12 @@ dsError_t  dsSetResolution(int handle, dsVideoPortResolution_t *resolution, bool
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsSetResolution()
  */
 dsError_t  dsGetResolution(int handle, dsVideoPortResolution_t *resolution);
+
 
 /**
  * @brief Set the port to the the active source.
@@ -282,8 +327,11 @@ dsError_t  dsGetResolution(int handle, dsVideoPortResolution_t *resolution);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 dsError_t dsSetActiveSource(int handle);
+
 
  /**
  * @brief Terminate the Video Port sub-system.
@@ -294,8 +342,12 @@ dsError_t dsSetActiveSource(int handle);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsVideoPortInit()
  */
 dsError_t dsVideoPortTerm();
+
 
 /**
  * @brief Initialize the Video Resolution
@@ -307,6 +359,8 @@ dsError_t dsVideoPortTerm();
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 dsError_t  dsInitResolution(dsVideoPortResolution_t *);
 
@@ -316,11 +370,6 @@ dsError_t  dsInitResolution(dsVideoPortResolution_t *);
  * 
  * HAL Implementation should call this method to delivery HDCP status
  * to the application (e.g. Authentication , Failure etc.).
- *
- * @param handle    Handle of the display device.
- * @param event     Display HDCP status.
- *
- * @return None.
  */
 typedef void (*dsHDCPStatusCallback_t)(int handle, dsHdcpStatus_t status);
 
@@ -340,8 +389,11 @@ typedef void (*dsHDCPStatusCallback_t)(int handle, dsHdcpStatus_t status);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
  dsError_t dsRegisterHdcpStatusCallback (int handle, dsHDCPStatusCallback_t cb);
+
 
  /**
  * @brief Get current HDCP status
@@ -352,8 +404,12 @@ typedef void (*dsHDCPStatusCallback_t)(int handle, dsHdcpStatus_t status);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsEnableHDCP()
  */
 dsError_t dsGetHDCPStatus (int handle, dsHdcpStatus_t *status);
+
 
 /**
  * @brief Get STB HDCP protocol version
@@ -364,8 +420,12 @@ dsError_t dsGetHDCPStatus (int handle, dsHdcpStatus_t *status);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsEnableHDCP()
  */
 dsError_t dsGetHDCPProtocol (int handle,dsHdcpProtocolVersion_t *protocolVersion);
+
 
 /**
  * @brief Get Receiver/TV HDCP protocol version
@@ -376,8 +436,12 @@ dsError_t dsGetHDCPProtocol (int handle,dsHdcpProtocolVersion_t *protocolVersion
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsEnableHDCP()
  */
 dsError_t dsGetHDCPReceiverProtocol (int handle,dsHdcpProtocolVersion_t *protocolVersion);
+
 
 /**
  * @brief Get current used HDCP protocol version
@@ -388,8 +452,12 @@ dsError_t dsGetHDCPReceiverProtocol (int handle,dsHdcpProtocolVersion_t *protoco
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsEnableHDCP()
  */
 dsError_t dsGetHDCPCurrentProtocol (int handle,dsHdcpProtocolVersion_t *protocolVersion);
+
 
 /**
  * @brief To find the HDR capabilities of TV
@@ -402,8 +470,11 @@ dsError_t dsGetHDCPCurrentProtocol (int handle,dsHdcpProtocolVersion_t *protocol
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 dsError_t dsGetTVHDRCapabilities(int handle, int *capabilities);
+
 
 /**
  * @brief To find the TV supported resolutions.
@@ -416,8 +487,11 @@ dsError_t dsGetTVHDRCapabilities(int handle, int *capabilities);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 dsError_t dsSupportedTvResolutions(int handle, int *resolutions);
+
 
 /**
  * @brief To set ForceDiable 4K support variable.
@@ -430,8 +504,12 @@ dsError_t dsSupportedTvResolutions(int handle, int *resolutions);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsGetForceDisable4KSupport()
  */
 dsError_t dsSetForceDisable4KSupport(int handle, bool disable);
+
 
 /**
  * @brief To get ForceDiable 4K support variable.
@@ -444,8 +522,12 @@ dsError_t dsSetForceDisable4KSupport(int handle, bool disable);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsSetForceDisable4KSupport()
  */
 dsError_t dsGetForceDisable4KSupport(int handle, bool *disable);
+
 
  /**
  * @brief Sets various SCART parameters
@@ -471,8 +553,11 @@ dsError_t dsGetForceDisable4KSupport(int handle, bool *disable);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 dsError_t dsSetScartParameter(int handle, const char* parameter_str, const char* value_str);
+
 
 /**
  * @brief Get current video Electro-Optical Transfer Function (EOT) value;
@@ -483,8 +568,11 @@ dsError_t dsSetScartParameter(int handle, const char* parameter_str, const char*
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 dsError_t dsGetVideoEOTF(int handle, dsHDRStandard_t *video_eotf);
+
 
 /**
  * @brief Get current matrix coefficients value.
@@ -495,8 +583,11 @@ dsError_t dsGetVideoEOTF(int handle, dsHDRStandard_t *video_eotf);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 dsError_t dsGetMatrixCoefficients(int handle, dsDisplayMatrixCoefficients_t *matrix_coefficients);
+
 
 /**
  * @brief Get current color depth value.
@@ -507,8 +598,11 @@ dsError_t dsGetMatrixCoefficients(int handle, dsDisplayMatrixCoefficients_t *mat
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 dsError_t dsGetColorDepth(int handle, unsigned int* color_depth);
+
 
 /**
  * @brief Get current color space setting.
@@ -519,8 +613,11 @@ dsError_t dsGetColorDepth(int handle, unsigned int* color_depth);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 dsError_t dsGetColorSpace(int handle, dsDisplayColorSpace_t* color_space);
+ 
 
 /**
  * @brief Get quatization range.
@@ -531,8 +628,11 @@ dsError_t dsGetColorSpace(int handle, dsDisplayColorSpace_t* color_space);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 dsError_t dsGetQuantizationRange(int handle, dsDisplayQuantizationRange_t* quantization_range);
+
 
 /**
  * @brief Get current color space setting, color depth, matrix coefficients, video Electro-Optical Transfer Function (EOT)
@@ -548,8 +648,11 @@ dsError_t dsGetQuantizationRange(int handle, dsDisplayQuantizationRange_t* quant
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 dsError_t dsGetCurrentOutputSettings(int handle, dsHDRStandard_t* video_eotf, dsDisplayMatrixCoefficients_t* matrix_coefficients, dsDisplayColorSpace_t* color_space, unsigned int* color_depth, dsDisplayQuantizationRange_t* quantization_range);
+
 
 /**
  * @brief Check Video Output is HDR or not.
@@ -562,8 +665,11 @@ dsError_t dsGetCurrentOutputSettings(int handle, dsHDRStandard_t* video_eotf, ds
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 dsError_t dsIsOutputHDR(int handle, bool *hdr);
+
 
 /**
  * @brief Reset Video Output to SDR
@@ -573,8 +679,11 @@ dsError_t dsIsOutputHDR(int handle, bool *hdr);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 dsError_t dsResetOutputToSDR();
+
 
 /**
  * @brief This API is used to set the Preferred HDMI Protocol
@@ -591,8 +700,12 @@ dsError_t dsResetOutputToSDR();
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsGetHdmiPreference()
  */
 dsError_t dsSetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentProtocol);
+
 
 /**
  * @brief This API is used to get the Preferred HDMI Protocol
@@ -610,8 +723,12 @@ dsError_t dsSetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentPr
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsSetHdmiPreference()
  */
 dsError_t dsGetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentProtocol);
+
 
 /**
  * @brief This API is used to get the IgnoreEDID status variable set in the device.
@@ -624,8 +741,11 @@ dsError_t dsGetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentPr
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 dsError_t dsGetIgnoreEDIDStatus(int handle, bool* status);
+
 
 /**
  * @brief This API is used to set the background color for video port
@@ -638,8 +758,11 @@ dsError_t dsGetIgnoreEDIDStatus(int handle, bool* status);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 dsError_t dsSetBackgroundColor(int handle, dsVideoBackgroundColor_t color);
+
 
 /**
  * @brief This API is used to set/reset force HDR mode
@@ -652,8 +775,11 @@ dsError_t dsSetBackgroundColor(int handle, dsVideoBackgroundColor_t color);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 dsError_t dsSetForceHDRMode(int handle, dsHDRStandard_t mode);
+
 
 /**
  * @brief To find the color depth capabilities.
@@ -666,8 +792,11 @@ dsError_t dsSetForceHDRMode(int handle, dsHDRStandard_t mode);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 dsError_t dsColorDepthCapabilities(int handle, unsigned int *colorDepthCapability );
+
 
 /**
  * @brief To get the preffered color depth mode.
@@ -680,8 +809,12 @@ dsError_t dsColorDepthCapabilities(int handle, unsigned int *colorDepthCapabilit
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsSetPreferredColorDepth()
  */
 dsError_t dsGetPreferredColorDepth(int handle, dsDisplayColorDepth_t *colorDepth, bool persist );
+
 
 /**
  * @brief To set the preffered color depth mode.
@@ -695,8 +828,12 @@ dsError_t dsGetPreferredColorDepth(int handle, dsDisplayColorDepth_t *colorDepth
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsGetPreferredColorDepth()
  */
 dsError_t dsSetPreferredColorDepth(int handle,dsDisplayColorDepth_t colorDepth, bool persist );
+
 
 /**
  * @}

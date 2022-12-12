@@ -102,6 +102,8 @@ extern "C" {
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @warning  This API is Not thread safe.
+ * @see dsCompositeInTerm()
  */
 
 dsError_t dsCompositeInInit (void);
@@ -117,6 +119,9 @@ dsError_t dsCompositeInInit (void);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @pre  dsCompositeInInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsCompositeInInit()
  */
 
 dsError_t dsCompositeInTerm (void);
@@ -131,6 +136,7 @@ dsError_t dsCompositeInTerm (void);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @warning  This API is Not thread safe.
  */
 
 dsError_t dsCompositeInGetNumberOfInputs (uint8_t *pNumberOfInputs);
@@ -146,6 +152,7 @@ dsError_t dsCompositeInGetNumberOfInputs (uint8_t *pNumberOfInputs);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @warning  This API is Not thread safe.
  */
 
 dsError_t dsCompositeInGetStatus (dsCompositeInStatus_t *pStatus);
@@ -160,6 +167,7 @@ dsError_t dsCompositeInGetStatus (dsCompositeInStatus_t *pStatus);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @warning  This API is Not thread safe.
  */
 
 dsError_t dsCompositeInSelectPort (dsCompositeInPort_t Port);
@@ -176,6 +184,7 @@ dsError_t dsCompositeInSelectPort (dsCompositeInPort_t Port);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @warning  This API is Not thread safe.
  */
 
 dsError_t dsCompositeInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t height);
@@ -190,6 +199,8 @@ dsError_t dsCompositeInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t 
  * @param[in] isPortConnected Connection state of COMPOSITE In Port.
  *
  * @return None.
+ * @warning  This API is Not thread safe.
+ * @see dsCompositeInRegisterConnectCB()
  */
 
 typedef void (*dsCompositeInConnectCB_t)(dsCompositeInPort_t Port, bool isPortConnected);
@@ -204,6 +215,8 @@ typedef void (*dsCompositeInConnectCB_t)(dsCompositeInPort_t Port, bool isPortCo
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @warning  This API is Not thread safe.
+ * @see dsCompositeInConnectCB_t()
  */
 
 dsError_t dsCompositeInRegisterConnectCB (dsCompositeInConnectCB_t CBFunc);
@@ -218,6 +231,8 @@ dsError_t dsCompositeInRegisterConnectCB (dsCompositeInConnectCB_t CBFunc);
  * @param[in] sigStatus  signal Status of Composite In Port.
  *
  * @return None.
+ * @warning  This API is Not thread safe.
+ * @see dsCompositeInRegisterSignalChangeCB()
  */
 
 typedef void (*dsCompositeInSignalChangeCB_t)(dsCompositeInPort_t port, dsCompInSignalStatus_t sigStatus);
@@ -232,6 +247,8 @@ typedef void (*dsCompositeInSignalChangeCB_t)(dsCompositeInPort_t port, dsCompIn
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @warning  This API is Not thread safe.
+ * @see dsCompositeInSignalChangeCB_t()
  */
 
 dsError_t dsCompositeInRegisterSignalChangeCB (dsCompositeInSignalChangeCB_t CBFunc);
@@ -245,6 +262,8 @@ dsError_t dsCompositeInRegisterSignalChangeCB (dsCompositeInSignalChangeCB_t CBF
  * @param[in] inputStatus Composite Input status of a specific Port.
  *
  * @return None.
+ * @warning  This API is Not thread safe.
+ * @see dsCompositeInRegisterStatusChangeCB()
  */
 
 typedef void (*dsCompositeInStatusChangeCB_t)(dsCompositeInStatus_t inputStatus);
@@ -259,6 +278,8 @@ typedef void (*dsCompositeInStatusChangeCB_t)(dsCompositeInStatus_t inputStatus)
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @warning  This API is Not thread safe.
+ * @see dsCompositeInStatusChangeCB_t()
  */
 
 dsError_t dsCompositeInRegisterStatusChangeCB (dsCompositeInStatusChangeCB_t CBFunc);

@@ -39,18 +39,12 @@ int ds_hal_log(int priority,const char *format, ...);
 #define ERROR_LEVEL  2
 #define DEBUG_LEVEL  3
 
-
-
-
 #define INT_INFO(FORMAT, ...)           ds_hal_log(INFO_LEVEL ,FORMAT, ##__VA_ARGS__ )
 #define INT_WARN(FORMAT, ...)           ds_hal_log(WARN_LEVEL ,FORMAT,  ##__VA_ARGS__ )
 #define INT_ERROR(FORMAT, ...)          ds_hal_log(ERROR_LEVEL ,FORMAT,  ##__VA_ARGS__ )
 #define INT_DEBUG(FORMAT, ...)          ds_hal_log(DEBUG_LEVEL ,FORMAT,  ##__VA_ARGS__ )
 
-
 #endif
-
-
 
 /** @} */
 /** @} */

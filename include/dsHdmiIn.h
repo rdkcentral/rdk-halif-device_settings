@@ -102,6 +102,8 @@ extern "C" {
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @warning  This API is Not thread safe.
+ * @see dsHdmiInTerm()
  */
 
 dsError_t dsHdmiInInit (void);
@@ -117,6 +119,9 @@ dsError_t dsHdmiInInit (void);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @pre dsHdmiInInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsHdmiInInit()
  */
 
 dsError_t dsHdmiInTerm (void);
@@ -131,6 +136,8 @@ dsError_t dsHdmiInTerm (void);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @pre dsHdmiInInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 
 dsError_t dsHdmiInGetNumberOfInputs (uint8_t *pNumberOfInputs);
@@ -146,6 +153,8 @@ dsError_t dsHdmiInGetNumberOfInputs (uint8_t *pNumberOfInputs);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @pre dsHdmiInInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 
 dsError_t dsHdmiInGetStatus (dsHdmiInStatus_t *pStatus);
@@ -160,6 +169,8 @@ dsError_t dsHdmiInGetStatus (dsHdmiInStatus_t *pStatus);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @pre dsHdmiInInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 
 dsError_t dsHdmiInSelectPort (dsHdmiInPort_t Port);
@@ -176,6 +187,8 @@ dsError_t dsHdmiInSelectPort (dsHdmiInPort_t Port);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @pre dsHdmiInInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 
 dsError_t dsHdmiInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t height);
@@ -190,6 +203,8 @@ dsError_t dsHdmiInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t heigh
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @pre dsHdmiInInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 
 dsError_t dsHdmiInSelectZoomMode (dsVideoZoom_t requestedZoomMode);
@@ -204,6 +219,8 @@ dsError_t dsHdmiInSelectZoomMode (dsVideoZoom_t requestedZoomMode);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @pre dsHdmiInInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 
 dsError_t dsHdmiInPauseAudio (void);
@@ -218,6 +235,8 @@ dsError_t dsHdmiInPauseAudio (void);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @pre dsHdmiInInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 
 dsError_t dsHdmiInResumeAudio (void);
@@ -233,6 +252,8 @@ dsError_t dsHdmiInResumeAudio (void);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @pre dsHdmiInInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 
 dsError_t dsHdmiInGetCurrentVideoMode (dsVideoPortResolution_t *resolution);
@@ -243,10 +264,6 @@ dsError_t dsHdmiInGetCurrentVideoMode (dsVideoPortResolution_t *resolution);
  * HAL Implementation should call this method to deliver HDMI In hot plug status
  * to the application (e.g. Connect/Disconnect for Port 0/1).
  *
- * @param[in] Port              HDMI Input port.
- * @param[in] isPortConnected   Connection state of HDMI In Port.
- *
- * @return None.
  */
 
 typedef void (*dsHdmiInConnectCB_t)(dsHdmiInPort_t Port, bool isPortConnected);
@@ -257,10 +274,6 @@ typedef void (*dsHdmiInConnectCB_t)(dsHdmiInPort_t Port, bool isPortConnected);
  * HAL Implementation should call this method to deliver HDMI In signal change status
  * to the application (e.g. NoSignal/UnstableSignal/NotSupportedSignal/StableSignal for HDMI In ports).
  *
- * @param[in] port              HDMI Input port.
- * @param[in] sigStatus         signal Status of HDMI In Port.
- *
- * @return None.
  */
 
 typedef void (*dsHdmiInSignalChangeCB_t)(dsHdmiInPort_t port, dsHdmiInSignalStatus_t sigStatus);
@@ -271,9 +284,6 @@ typedef void (*dsHdmiInSignalChangeCB_t)(dsHdmiInPort_t port, dsHdmiInSignalStat
  * HAL Implementation should call this method to deliver HDMI Input status
  * to the application (e.g. port, isPresented(true/false) etc. for HDMI In ports).
  *
- * @param[in] inputStatus       HDMI Input status of a specific Port.
- *
- * @return None.
  */
 
 typedef void (*dsHdmiInStatusChangeCB_t)(dsHdmiInStatus_t inputStatus);
@@ -284,10 +294,6 @@ typedef void (*dsHdmiInStatusChangeCB_t)(dsHdmiInStatus_t inputStatus);
  * HAL Implementation should call this method to deliver updated HDMI In video mode info
  * to the application
  *
- * @param[in] port              HDMI Input port.
- * @param[in] videoResolution   dsVideoPortResolution_t of HDMI In Source
- *
- * @return None.
  */
 
 typedef void (*dsHdmiInVideoModeUpdateCB_t)(dsHdmiInPort_t port, dsVideoPortResolution_t videoResolution);
@@ -298,10 +304,6 @@ typedef void (*dsHdmiInVideoModeUpdateCB_t)(dsHdmiInPort_t port, dsVideoPortReso
  * HAL Implementation should call this method to deliver HDMI Input ALLM Mode
  * to the application (e.g. port, allm_mode(true/false) etc. for HDMI In ports).
  *
- * @param[in] port              HDMI Input port.
- * @param[in] allm_mode         ALLM Mode of HDMI In Port.
- *
- * @return None.
  */
 
 typedef void (*dsHdmiInAllmChangeCB_t)(dsHdmiInPort_t port, bool allm_mode);
@@ -316,6 +318,8 @@ typedef void (*dsHdmiInAllmChangeCB_t)(dsHdmiInPort_t port, bool allm_mode);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @pre dsHdmiInInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 
 dsError_t dsHdmiInRegisterConnectCB (dsHdmiInConnectCB_t CBFunc);
@@ -330,6 +334,8 @@ dsError_t dsHdmiInRegisterConnectCB (dsHdmiInConnectCB_t CBFunc);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @pre dsHdmiInInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 
 dsError_t dsHdmiInRegisterSignalChangeCB (dsHdmiInSignalChangeCB_t CBFunc);
@@ -344,6 +350,8 @@ dsError_t dsHdmiInRegisterSignalChangeCB (dsHdmiInSignalChangeCB_t CBFunc);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @pre dsHdmiInInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 
 dsError_t dsHdmiInRegisterStatusChangeCB (dsHdmiInStatusChangeCB_t CBFunc);
@@ -358,6 +366,8 @@ dsError_t dsHdmiInRegisterStatusChangeCB (dsHdmiInStatusChangeCB_t CBFunc);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @pre dsHdmiInInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 
 dsError_t dsHdmiInRegisterVideoModeUpdateCB(dsHdmiInVideoModeUpdateCB_t CBFunc);
@@ -372,6 +382,8 @@ dsError_t dsHdmiInRegisterVideoModeUpdateCB(dsHdmiInVideoModeUpdateCB_t CBFunc);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @pre dsHdmiInInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 
 dsError_t dsHdmiInRegisterAllmChangeCB (dsHdmiInAllmChangeCB_t CBFunc);
@@ -384,6 +396,8 @@ dsError_t dsHdmiInRegisterAllmChangeCB (dsHdmiInAllmChangeCB_t CBFunc);
  * @param[in] iPort             HDMI Arc port
  *
  * @return Boolean returns true or false
+ * @pre dsHdmiInInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 
 bool dsIsHdmiARCPort (int iPort);
@@ -400,6 +414,8 @@ bool dsIsHdmiARCPort (int iPort);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @pre dsHdmiInInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 
 dsError_t dsGetEDIDBytesInfo (int iHdmiPort, unsigned char **edid, int *length);
@@ -415,6 +431,8 @@ dsError_t dsGetEDIDBytesInfo (int iHdmiPort, unsigned char **edid, int *length);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @pre dsHdmiInInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 
 dsError_t dsGetHDMISPDInfo (int iHdmiPort, unsigned char **data);
@@ -430,6 +448,9 @@ dsError_t dsGetHDMISPDInfo (int iHdmiPort, unsigned char **data);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @pre dsHdmiInInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsGetEdidVersion()
  */
 
 dsError_t dsSetEdidVersion (int iHdmiPort, int iEdidVersion);
@@ -445,6 +466,9 @@ dsError_t dsSetEdidVersion (int iHdmiPort, int iEdidVersion);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @pre dsHdmiInInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsSetEdidVersion()
  */
 
 dsError_t dsGetEdidVersion (int iHdmiPort, int *iEdidVersion);
@@ -460,6 +484,8 @@ dsError_t dsGetEdidVersion (int iHdmiPort, int *iEdidVersion);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @pre dsHdmiInInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 
 dsError_t dsGetAllmStatus (int iHdmiPort, bool *allmStatus);
@@ -475,6 +501,8 @@ dsError_t dsGetAllmStatus (int iHdmiPort, bool *allmStatus);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @pre dsHdmiInInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 
 dsError_t dsGetSupportedGameFeaturesList (dsSupportedGameFeatureList_t* features);

@@ -60,8 +60,11 @@ extern "C" {
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @warning  This API is Not thread safe.
+ * @see dsVideoDeviceTerm()
  */
 dsError_t  dsVideoDeviceInit();
+
 
 /**
  * @brief This function gets the handle for the video device requested.
@@ -72,8 +75,11 @@ dsError_t  dsVideoDeviceInit();
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoDeviceInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 dsError_t  dsGetVideoDevice(int index, int *handle);
+
 
 /**
  * @brief This function is used to set the screen zoom mode (decoder format conversion).
@@ -84,8 +90,12 @@ dsError_t  dsGetVideoDevice(int index, int *handle);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoDeviceInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsGetDFC()
  */
 dsError_t  dsSetDFC(int handle, dsVideoZoom_t dfc);
+
 
 /**
  * @brief This function is used to get the screen zoom mode (decoder format conversion).
@@ -96,8 +106,12 @@ dsError_t  dsSetDFC(int handle, dsVideoZoom_t dfc);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoDeviceInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsSetDFC()
  */
 dsError_t  dsGetDFC(int handle, dsVideoZoom_t *dfc);
+
 
 /**
  * @brief This function deinitialize all the video devices in the system.
@@ -106,8 +120,13 @@ dsError_t  dsGetDFC(int handle, dsVideoZoom_t *dfc);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoDeviceInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsVideoDeviceInit()
  */
 dsError_t  dsVideoDeviceTerm();
+ 
+
 /**
  * @brief To find the HDR capabilities of SoC
  * 
@@ -118,8 +137,11 @@ dsError_t  dsVideoDeviceTerm();
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoDeviceInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 dsError_t dsGetHDRCapabilities(int handle, int *capabilities);
+
 
 /**
  * @brief To find the Video formats supported by the SoC.
@@ -132,8 +154,11 @@ dsError_t dsGetHDRCapabilities(int handle, int *capabilities);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoDeviceInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 dsError_t dsGetSupportedVideoCodingFormats(int handle, unsigned int * supported_formats);
+
 
 /**
  * @brief This API is used to get the video codec information.
@@ -145,8 +170,11 @@ dsError_t dsGetSupportedVideoCodingFormats(int handle, unsigned int * supported_
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoDeviceInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 dsError_t dsGetVideoCodecInfo(int handle, dsVideoCodingFormat_t codec, dsVideoCodecInfo_t * info); 
+
 
 /**
  * @brief This API is used to forcefuly disable the HDR support of the device
@@ -157,6 +185,8 @@ dsError_t dsGetVideoCodecInfo(int handle, dsVideoCodingFormat_t codec, dsVideoCo
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoDeviceInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 dsError_t dsForceDisableHDRSupport(int handle, bool disable);
 
@@ -169,8 +199,12 @@ dsError_t dsForceDisableHDRSupport(int handle, bool disable);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoDeviceInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsGetFRFMode()
  */
 dsError_t dsSetFRFMode(int handle, int frfmode);
+
 
 /**
  * @brief This API is used to get the FRF mode of the device
@@ -181,6 +215,9 @@ dsError_t dsSetFRFMode(int handle, int frfmode);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoDeviceInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsSetFRFMode()
  */
 dsError_t dsGetFRFMode(int handle, int *frfmode);
 
@@ -193,8 +230,12 @@ dsError_t dsGetFRFMode(int handle, int *frfmode);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoDeviceInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsSetDisplayframerate()
  */
 dsError_t dsGetCurrentDisplayframerate(int handle, char *framerate);
+ 
 
 /**
  * @brief This API is used to set the display framerate for the device.
@@ -205,17 +246,18 @@ dsError_t dsGetCurrentDisplayframerate(int handle, char *framerate);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoDeviceInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
+ * @see dsGetCurrentDisplayframerate()
  */
 dsError_t dsSetDisplayframerate(int handle, char *framerate);
 
 /**
  * @brief Call back function to called while the framerate change event is detected.
  *
- * @param [in]   tSecond  Time period.
- *
- * @return void.
  */
 typedef void (*dsRegisterFrameratePreChangeCB_t)(unsigned int tSecond);
+
 
 /**
  * @brief This API is used to register teh cllback funciton for Display framerate pre change event.
@@ -225,17 +267,18 @@ typedef void (*dsRegisterFrameratePreChangeCB_t)(unsigned int tSecond);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoDeviceInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 dsError_t dsRegisterFrameratePreChangeCB(dsRegisterFrameratePreChangeCB_t CBFunc);
+
 
 /**
  * @brief Call back function to be called after the framerate change is done.
  *
- * @param [in]   tSecond  Time period.
- *
- * @return Void
  */
 typedef void (*dsRegisterFrameratePostChangeCB_t)(unsigned int tSecond);
+
 
 /**
  * @brief This API is used to register teh cllback funciton for Display framerate post change event.
@@ -245,8 +288,12 @@ typedef void (*dsRegisterFrameratePostChangeCB_t)(unsigned int tSecond);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
+ * @pre dsVideoDeviceInit() should be called before calling this API.
+ * @warning  This API is Not thread safe.
  */
 dsError_t dsRegisterFrameratePostChangeCB(dsRegisterFrameratePostChangeCB_t CBFunc);
+
+
 /* End of DSHAL_VIDEODEVICE_API doxygen group */
 /**
  * @}
