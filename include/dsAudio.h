@@ -93,6 +93,8 @@ dsError_t  dsAudioPortInit();
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful. 
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -111,6 +113,8 @@ dsError_t  dsGetAudioPort(dsAudioPortType_t type, int index, int *handle);
  * @retval dsERR_OPERATION_NOT_SUPPORTED Indicates this call is not supported.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetAudioEncoding()
@@ -130,6 +134,8 @@ dsError_t  dsGetAudioEncoding(int handle, dsAudioEncoding_t *encoding);
  * @retval dsERR_OPERATION_NOT_SUPPORTED Indicates dsGetAudioFormat call is not implemented.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -148,6 +154,8 @@ dsError_t  dsGetAudioFormat(int handle, dsAudioFormat_t *audioFormat);
  * @retval dsERR_OPERATION_NOT_SUPPORTED Indicates this call is not supported.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetAudioCompression()
@@ -167,6 +175,8 @@ dsError_t  dsGetAudioCompression(int handle, int *compression);
  * @retval dsERR_OPERATION_NOT_SUPPORTED Indicates this call is not supported.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetDialogEnhancement()
@@ -186,6 +196,8 @@ dsError_t  dsGetDialogEnhancement(int handle, int *level);
  * @retval dsERR_OPERATION_NOT_SUPPORTED Indicates this call is not supported.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetDolbyVolumeMode()
@@ -206,6 +218,8 @@ dsError_t  dsGetDolbyVolumeMode(int handle, bool *mode);
  * @retval dsERR_OPERATION_NOT_SUPPORTED Indicates this call is not supported.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetIntelligentEqualizerMode()
@@ -224,6 +238,8 @@ dsError_t  dsGetIntelligentEqualizerMode(int handle, int *mode);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetVolumeLeveller()
@@ -242,6 +258,8 @@ dsError_t  dsGetVolumeLeveller(int handle, dsVolumeLeveller_t* volLeveller);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetBassEnhancer()
@@ -260,6 +278,8 @@ dsError_t  dsGetBassEnhancer(int handle, int *boost);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsEnableSurroundDecoder()
@@ -278,6 +298,8 @@ dsError_t  dsIsSurroundDecoderEnabled(int handle, bool *enabled);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetDRCMode()
@@ -296,6 +318,8 @@ dsError_t  dsGetDRCMode(int handle, int *mode);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetSurroundVirtualizer()
@@ -314,6 +338,8 @@ dsError_t  dsGetSurroundVirtualizer(int handle, dsSurroundVirtualizer_t *virtual
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetMISteering()
@@ -332,6 +358,8 @@ dsError_t  dsGetMISteering(int handle, bool *enabled);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetGraphicEqualizerMode()
@@ -350,6 +378,8 @@ dsError_t  dsGetGraphicEqualizerMode(int handle, int *mode);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetMS12AudioProfile()
@@ -368,6 +398,8 @@ dsError_t  dsGetMS12AudioProfileList(int handle, dsMS12AudioProfileList_t* profi
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetMS12AudioProfile()
@@ -386,6 +418,8 @@ dsError_t  dsGetMS12AudioProfile(int handle, char *profile);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -405,6 +439,8 @@ dsError_t dsGetSupportedARCTypes(int handle, int *types);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -422,6 +458,8 @@ dsError_t dsAudioSetSAD(int handle, dsAudioSADList_t sad_list);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -440,6 +478,8 @@ dsError_t dsAudioEnableARC(int handle, dsAudioARCStatus_t arcStatus);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetStereoMode()
@@ -458,6 +498,8 @@ dsError_t  dsGetStereoMode(int handle, dsAudioStereoMode_t *stereoMode);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetStereoAuto()
@@ -476,6 +518,8 @@ dsError_t  dsGetStereoAuto(int handle, int *autoMode);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetAudioGain()
@@ -494,6 +538,8 @@ dsError_t  dsGetAudioGain(int handle, float *gain);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetAudioDB()
@@ -512,6 +558,8 @@ dsError_t  dsGetAudioDB(int handle, float *db);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetAudioLevel()
@@ -530,6 +578,8 @@ dsError_t  dsGetAudioLevel(int handle, float *level);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -547,6 +597,8 @@ dsError_t  dsGetAudioMaxDB(int handle, float *maxDb);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -564,6 +616,8 @@ dsError_t  dsGetAudioMinDB(int handle, float *minDb);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -581,6 +635,8 @@ dsError_t  dsGetAudioOptimalLevel(int handle, float *optimalLevel);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetAudioDelay()
@@ -599,6 +655,8 @@ dsError_t dsGetAudioDelay(int handle, uint32_t *audioDelayMs);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetAudioDelayOffset()
@@ -617,6 +675,8 @@ dsError_t dsGetAudioDelayOffset(int handle, uint32_t *audioDelayOffsetMs);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -634,6 +694,8 @@ dsError_t dsSetAudioAtmosOutputMode(int handle, bool enable);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -651,6 +713,8 @@ dsError_t dsGetSinkDeviceAtmosCapability(int handle, dsATMOSCapability_t *capabi
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -668,6 +732,8 @@ dsError_t  dsIsAudioLoopThru(int handle, bool *loopThru);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetAudioMute()
@@ -685,6 +751,8 @@ dsError_t  dsIsAudioMute(int handle, bool *muted);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsEnableAudioPort()
@@ -702,6 +770,8 @@ dsError_t  dsIsAudioPortEnabled(int handle, bool *enabled);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsIsAudioPortEnabled()
@@ -720,6 +790,8 @@ dsError_t  dsEnableAudioPort(int handle, bool enabled);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetMS12AudioProfileList(), dsGetMS12AudioProfile()
@@ -737,6 +809,8 @@ dsError_t  dsEnableMS12Config(int handle, dsMS12FEATURE_t feature,const bool ena
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetLEConfig()
@@ -755,6 +829,8 @@ dsError_t  dsEnableLEConfig(int handle, const bool enable);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsEnableLEConfig()
@@ -773,6 +849,8 @@ dsError_t dsGetLEConfig(int handle, bool *enable);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetAudioEncoding()
@@ -791,6 +869,8 @@ dsError_t  dsSetAudioEncoding(int handle, dsAudioEncoding_t encoding);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetAudioCompression()
@@ -809,6 +889,8 @@ dsError_t  dsSetAudioCompression(int handle, int compression);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetDialogEnhancement()
@@ -827,6 +909,8 @@ dsError_t  dsSetDialogEnhancement(int handle, int level);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetDolbyVolumeMode()
@@ -846,6 +930,8 @@ dsError_t  dsSetDolbyVolumeMode(int handle, bool mode);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetIntelligentEqualizerMode()
@@ -864,6 +950,8 @@ dsError_t  dsSetIntelligentEqualizerMode(int handle, int mode);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetVolumeLeveller()
@@ -882,6 +970,8 @@ dsError_t  dsSetVolumeLeveller(int handle, dsVolumeLeveller_t volLeveller);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetBassEnhancer()
@@ -900,6 +990,8 @@ dsError_t  dsSetBassEnhancer(int handle, int boost);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsIsSurroundDecoderEnabled()
@@ -918,6 +1010,8 @@ dsError_t  dsEnableSurroundDecoder(int handle, bool enabled);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetDRCMode()
@@ -936,6 +1030,8 @@ dsError_t  dsSetDRCMode(int handle, int mode);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetSurroundVirtualizer()
@@ -954,6 +1050,8 @@ dsError_t  dsSetSurroundVirtualizer(int handle, dsSurroundVirtualizer_t virtuali
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetMISteering()
@@ -972,6 +1070,8 @@ dsError_t  dsSetMISteering(int handle, bool enabled);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetGraphicEqualizerMode()
@@ -990,6 +1090,8 @@ dsError_t  dsSetGraphicEqualizerMode(int handle, int mode);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetMS12AudioProfile(), dsGetMS12AudioProfileList()
@@ -1008,6 +1110,8 @@ dsError_t  dsSetMS12AudioProfile(int handle, const char* profile);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetStereoMode()
@@ -1024,6 +1128,8 @@ dsError_t  dsSetStereoMode(int handle, dsAudioStereoMode_t mode);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetStereoAuto()
@@ -1042,6 +1148,8 @@ dsError_t  dsSetStereoAuto(int handle, int autoMode);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetAudioGain()
@@ -1058,6 +1166,8 @@ dsError_t  dsSetAudioGain(int handle, float gain);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetAudioDB()
@@ -1074,6 +1184,8 @@ dsError_t  dsSetAudioDB(int handle, float db);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetAudioLevel()
@@ -1092,6 +1204,8 @@ dsError_t  dsSetAudioLevel(int handle, float level);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -1109,6 +1223,8 @@ dsError_t  dsSetAudioDucking(int handle, dsAudioDuckingAction_t action, dsAudioD
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -1126,6 +1242,8 @@ dsError_t  dsEnableLoopThru(int handle, bool loopThru);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsIsAudioMute()
@@ -1142,6 +1260,8 @@ dsError_t  dsSetAudioMute(int handle, bool mute);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -1157,6 +1277,8 @@ dsError_t  dsIsAudioMSDecode(int handle, bool *HasMS11Decode);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -1174,6 +1296,8 @@ dsError_t  dsIsAudioMS12Decode(int handle, bool *HasMS12Decode);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetAudioDelay()
@@ -1192,6 +1316,8 @@ dsError_t dsSetAudioDelay(int handle, const uint32_t audioDelayMs);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetAudioDelayOffset()
@@ -1208,6 +1334,8 @@ dsError_t dsSetAudioDelayOffset(int handle, const uint32_t audioDelayOffsetMs);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -1225,6 +1353,8 @@ dsError_t  dsAudioPortTerm();
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -1241,6 +1371,8 @@ dsError_t dsAudioOutIsConnected(int handle, bool* pisCon);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -1257,6 +1389,8 @@ dsError_t dsAudioOutRegisterConnectCB(dsAudioOutPortConnectCB_t CBFunc);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -1274,6 +1408,8 @@ dsError_t dsAudioFormatUpdateRegisterCB (dsAudioFormatUpdateCB_t cbFun);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -1291,6 +1427,8 @@ dsError_t dsGetAudioCapabilities(int handle, int *capabilities);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -1307,6 +1445,8 @@ dsError_t dsGetMS12Capabilities(int handle, int *capabilities);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -1323,6 +1463,8 @@ dsError_t dsResetDialogEnhancement(int handle);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -1339,6 +1481,8 @@ dsError_t dsResetBassEnhancer(int handle);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -1355,6 +1499,8 @@ dsError_t dsResetSurroundVirtualizer(int handle);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -1377,6 +1523,8 @@ dsError_t dsResetVolumeLeveller(int handle);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetMS12AudioProfileList(), dsGetMS12AudioProfile()
@@ -1396,6 +1544,8 @@ dsError_t  dsSetMS12AudioProfileSetttingsOverride(int handle,const char* profile
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetAssociatedAudioMixing()
@@ -1414,6 +1564,8 @@ dsError_t dsSetAssociatedAudioMixing(int handle, bool mixing);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetAssociatedAudioMixing()
@@ -1432,6 +1584,8 @@ dsError_t  dsGetAssociatedAudioMixing(int handle, bool *mixing);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetFaderControl()
@@ -1450,6 +1604,8 @@ dsError_t  dsSetFaderControl(int handle, int mixerbalance);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetFaderControl()
@@ -1468,6 +1624,8 @@ dsError_t  dsGetFaderControl(int handle, int* mixerbalance);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetPrimaryLanguage()
@@ -1486,6 +1644,8 @@ dsError_t  dsSetPrimaryLanguage(int handle, const char* pLang);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetPrimaryLanguage()
@@ -1504,6 +1664,8 @@ dsError_t  dsGetPrimaryLanguage(int handle, char* pLang);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetSecondaryLanguage()
@@ -1522,6 +1684,8 @@ dsError_t  dsSetSecondaryLanguage(int handle, const char* sLang);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetSecondaryLanguage()
@@ -1539,6 +1703,8 @@ dsError_t  dsGetSecondaryLanguage(int handle, char* sLang);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetSupportedARCTypes()

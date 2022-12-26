@@ -117,6 +117,8 @@ dsError_t dsDisplayInit();
  * @return Device Settings error code
  * @retval dsERR_NONE If sucessfully dsGetDisplay api has been called using IARM support.
  * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsDisplayInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -136,6 +138,8 @@ dsError_t dsDisplayInit();
  * @return Device Settings error code
  * @retval dsERR_NONE If sucessfully dsGetEDID api has been called using IARM support.
  * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsDisplayInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -157,6 +161,8 @@ dsError_t dsGetEDID(int handle, dsDisplayEDID_t *edid);
  * @return Device Settings error code
  * @retval dsERR_NONE If sucessfully dsGetEDIDBytes api has been called using IARM support.
  * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsDisplayInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -174,6 +180,8 @@ dsError_t dsGetEDIDBytes(int handle, unsigned char **edid, int *length);
  * @return Device Settings error code
  * @retval dsERR_NONE If sucessfully dsGetDisplayAspectRatio api has been called using IARM support.
  * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsDisplayInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -187,6 +195,8 @@ dsError_t dsGetDisplayAspectRatio(int handle, dsVideoAspectRatio_t *aspectRatio)
  * @return Device Settings error code
  * @retval dsERR_NONE If sucessfully dsDisplayTerm api has been called using IARM support.
  * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsDisplayInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsDisplayInit()
@@ -210,6 +220,8 @@ dsError_t dsDisplayTerm();
  * @return Device Settings error code
  * @retval dsERR_NONE If sucessfully dsRegisterDisplayEventCallback api has been called using IARM support.
  * @retval dsERR_GENERAL General failure. 
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @warning  This API is Not thread safe.
  */
 

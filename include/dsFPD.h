@@ -69,6 +69,8 @@ dsError_t dsFPInit (void);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates dsSetFPBlink API was successfully called using iarmbus call.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -88,6 +90,8 @@ dsError_t dsSetFPBlink (dsFPDIndicator_t eIndicator, unsigned int uBlinkDuration
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates dsSetFPBrightness API was successfully called using iarmbus call.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetFPBrightness()
@@ -105,6 +109,8 @@ dsError_t dsSetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t eBri
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates dsGetFPState API was successfully called using iarmbus call.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetFPState()
@@ -122,6 +128,8 @@ dsError_t dsGetFPState(dsFPDIndicator_t eIndicator, dsFPDState_t* state);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates dsSetFPState API was successfully called using iarmbus call.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetFPState()
@@ -142,6 +150,8 @@ dsError_t dsSetFPState(dsFPDIndicator_t eIndicator, dsFPDState_t state);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates dsGetFPBrightness API was successfully called using iarmbus call.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetFPBrightness()
@@ -162,6 +172,8 @@ dsError_t dsGetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t *pBr
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates dsGetFPColor API was successfully called using iarmbus call.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetFPColor()
@@ -182,6 +194,8 @@ dsError_t dsGetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t *pColor);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates dsSetFPColor API was successfully called using iarmbus call.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetFPColor()
@@ -205,6 +219,8 @@ dsError_t dsSetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t eColor);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates dsSetFPTime API was successfully called using iarmbus call.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetFPTimeFormat()
@@ -224,6 +240,8 @@ dsError_t dsSetFPTime (dsFPDTimeFormat_t eTimeFormat, const unsigned int uHour, 
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates dsSetFPText API was successfully called using iarmbus call.
  * @retval dsERR_GENERAL Indicates error due to general failure
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetFPTextBrightness() 
@@ -243,6 +261,8 @@ dsError_t dsSetFPText(const char* pText);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates dsSetFPTextBrightness API was successfully called using iarmbus call.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetFPTextBrightness(), dsSetFPText()
@@ -263,6 +283,8 @@ dsError_t dsSetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates dsGetFPTextBrightness API was successfully called using iarmbus call.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetFPTextBrightness()
@@ -281,6 +303,8 @@ dsError_t dsGetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates dsFPEnableCLockDisplay API was successfully called using iarmbus call.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -300,6 +324,8 @@ dsError_t dsFPEnableCLockDisplay (int enable);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates dsSetFPScroll API was successfully called using iarmbus call.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -315,6 +341,8 @@ dsError_t dsSetFPScroll(unsigned int uScrollHoldOnDur, unsigned int uHorzScrollI
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates dsFPTerm API was successfully called using iarmbus call.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsFPInit()
@@ -334,6 +362,8 @@ dsError_t dsFPTerm(void);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates dsSetFPBrightness API was successfully called using iarmbus call.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetFPTextBrightness()
@@ -354,6 +384,8 @@ dsError_t dsSetFPDBrightness(dsFPDIndicator_t eIndicator, dsFPDBrightness_t eBri
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates dsSetFPColor API was successfully called using iarmbus call.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetFPColor()
@@ -369,6 +401,8 @@ dsError_t dsSetFPDColor (dsFPDIndicator_t eIndicator, dsFPDColor_t eColor,bool t
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates dsSetFPTime API was successfully called using iarmbus call.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetFPTimeFormat()
@@ -385,6 +419,8 @@ dsError_t dsSetFPTimeFormat (dsFPDTimeFormat_t eTimeFormat);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates dsGetFPBrightness API was successfully called using iarmbus call.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetFPTimeFormat()
@@ -400,6 +436,8 @@ dsError_t dsGetFPTimeFormat (dsFPDTimeFormat_t *pTimeFormat);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates dsSetFPDMode API was successfully called using iarmbus call.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */

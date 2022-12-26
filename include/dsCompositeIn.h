@@ -119,6 +119,8 @@ dsError_t dsCompositeInInit (void);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @pre  dsCompositeInInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsCompositeInInit()
@@ -136,6 +138,8 @@ dsError_t dsCompositeInTerm (void);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @warning  This API is Not thread safe.
  */
 
@@ -152,6 +156,8 @@ dsError_t dsCompositeInGetNumberOfInputs (uint8_t *pNumberOfInputs);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @warning  This API is Not thread safe.
  */
 
@@ -167,6 +173,8 @@ dsError_t dsCompositeInGetStatus (dsCompositeInStatus_t *pStatus);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @warning  This API is Not thread safe.
  */
 
@@ -184,6 +192,8 @@ dsError_t dsCompositeInSelectPort (dsCompositeInPort_t Port);
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @warning  This API is Not thread safe.
  */
 
@@ -215,6 +225,8 @@ typedef void (*dsCompositeInConnectCB_t)(dsCompositeInPort_t Port, bool isPortCo
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @warning  This API is Not thread safe.
  * @see dsCompositeInConnectCB_t()
  */
@@ -247,6 +259,8 @@ typedef void (*dsCompositeInSignalChangeCB_t)(dsCompositeInPort_t port, dsCompIn
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @warning  This API is Not thread safe.
  * @see dsCompositeInSignalChangeCB_t()
  */
@@ -278,6 +292,8 @@ typedef void (*dsCompositeInStatusChangeCB_t)(dsCompositeInStatus_t inputStatus)
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
  * @warning  This API is Not thread safe.
  * @see dsCompositeInStatusChangeCB_t()
  */
