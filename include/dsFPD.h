@@ -22,9 +22,9 @@
  */
 
 /**
-* @defgroup devicesettings
+* @defgroup devicesettings Device Settings
 * @{
-* @defgroup hal
+* defgroup hal Device Settings HAL
 * @{
 **/
 
@@ -413,7 +413,6 @@ dsError_t dsSetFPTimeFormat (dsFPDTimeFormat_t eTimeFormat);
  /**
  * @brief This function get the Current time zone format set on 7-segment display LEDs panel.
  *
- * @param[in]               None.
  * @param[out] pTimeFormat  Pointer to hold the Current time format  value .
  *
  * @return Device Settings error code

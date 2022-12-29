@@ -18,7 +18,7 @@
 */
 
 /** 
- * @defgroup devicesettingshalapi Device Settings HAL API list
+ * @defgroup devicesettings Device Settings
  * Describe the details about Device Settings HAL API specifications.
  *
  * <b> Following abbreviations present in HAL API </b>
@@ -43,9 +43,9 @@
  */
 
 /**
-* @defgroup devicesettings
+* @defgroup devicesettings Device Settings
 * @{
-* @defgroup hal
+* @defgroup hal Device Settings HAL
 * @{
 **/
 

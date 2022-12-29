@@ -24,9 +24,9 @@
 
 
 /**
-* @defgroup devicesettings
+* @defgroup devicesettings Device Settings
 * @{
-* @defgroup hal
+* @defgroup hal Device Settings HAL
 * @{
 **/
 
@@ -174,7 +174,7 @@ dsError_t  dsGetSurroundMode(int handle, int *surround);
  * @brief This function is used to indicate whether a video port is connected to a display.
  *
  * @param[in]  handle        Handle of the video port.
- * @param[out] connected    The address of a location to hold the connection state on
+ * @param[out] active        The address of a location to hold the connection state on
  *                            return (@a true when connected, @a false otherwise).
  * 
  * @return dsError_t Error code.
@@ -264,7 +264,7 @@ dsError_t  dsIsDTCPEnabled (int handle, bool* pContentProtected);
  * @brief Indicate whether a video port is HDCP protected.
  *
  * @param[in]  handle                Handle of the video port.
- * @param[out] enabled              The address of a location to hold the HDCP content
+ * @param [out] pContentProtected    The address of a location to hold the DTCP content
  *                                    protection state on return (@a true when enabled,
  *                                    @a false otherwise).
  * 
@@ -383,7 +383,7 @@ dsError_t dsVideoPortTerm();
  *
  * This function Initialize the Video Resolution
  *
- * @param [in] Initialize the Video Resolution
+ * @param [in] resolution Initialize the Video Resolution
  *                            
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
@@ -393,7 +393,7 @@ dsError_t dsVideoPortTerm();
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
-dsError_t  dsInitResolution(dsVideoPortResolution_t *);
+dsError_t  dsInitResolution(dsVideoPortResolution_t *resolution);
 
 
 /**
@@ -414,8 +414,8 @@ typedef void (*dsHDCPStatusCallback_t)(int handle, dsHdcpStatus_t status);
  * Multiple listeners are supported at application layer and thus not
  * required in HAL implementation.
  *
- * @param handle Handle of the display device.
- * @param cb     The callback function.
+ * @param[in] handle Handle of the display device.
+ * @param[in] cb     The callback function.
  * 
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
@@ -432,7 +432,7 @@ typedef void (*dsHDCPStatusCallback_t)(int handle, dsHdcpStatus_t status);
  * @brief Get current HDCP status
  *
  * @param[in] handle Handle of the display device
- * @param[in] status HDCP status of the device.
+ * @param[out] status HDCP status of the device.
  * 
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
@@ -450,7 +450,7 @@ dsError_t dsGetHDCPStatus (int handle, dsHdcpStatus_t *status);
  * @brief Get STB HDCP protocol version
  *
  * @param [in] handle Handle of the display device.
- * @param [out] HDCP protocol version
+ * @param [out] protocolVersion HDCP protocol version
  *
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
@@ -468,7 +468,7 @@ dsError_t dsGetHDCPProtocol (int handle,dsHdcpProtocolVersion_t *protocolVersion
  * @brief Get Receiver/TV HDCP protocol version
  *
  * @param [in] handle Handle of the display device.
- * @param [out] HDCP protocol version
+ * @param [out] protocolVersion HDCP protocol version
  *
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
@@ -486,7 +486,7 @@ dsError_t dsGetHDCPReceiverProtocol (int handle,dsHdcpProtocolVersion_t *protoco
  * @brief Get current used HDCP protocol version
  *
  * @param [in] handle Handle of the display device.
- * @param [out] HDCP protocol version
+ * @param [out] protocolVersion HDCP protocol version
  * 
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
@@ -525,7 +525,7 @@ dsError_t dsGetTVHDRCapabilities(int handle, int *capabilities);
  * This function is used to get the TV supported resolutions.
  *
  * @param [in] handle   Handle for the video device (video decoder)
- * @param [out] resolution OR-ed value supported by TV.
+ * @param [out] resolutions OR-ed value supported by TV.
  * 
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
@@ -596,6 +596,8 @@ dsError_t dsGetForceDisable4KSupport(int handle, bool *disable);
  * "cgms",        "copyNoMore"
  * "port"         "on", "off"
  *
+ *
+ * @param[in] handle - Handle for the video device (video decoder)
  * @param[in] parameter_str - a name of parameter
  * @param[in] value_str - a value of parameter
  * 
@@ -864,7 +866,7 @@ dsError_t dsSetForceHDRMode(int handle, dsHDRStandard_t mode);
  * This function is used to get the supported color depth capabilities.
  *
  * @param [in] handle   Handle for the video port.
- * @param [out] capabilities OR-ed value of supported color depth  standards.
+ * @param [out] colorDepthCapability OR-ed value of supported color depth  standards.
  * 
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
@@ -884,6 +886,7 @@ dsError_t dsColorDepthCapabilities(int handle, unsigned int *colorDepthCapabilit
  *
  * @param [in] handle   Handle for the video port.
  * @param [out] colorDepth color depth value.
+ * @param [in] persist persist the value or not.
  * 
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.

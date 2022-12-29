@@ -22,9 +22,9 @@
  */
 
 /**
-* @defgroup devicesettings
+* @defgroup devicesettings Device Settings
 * @{
-* @defgroup hal
+* @defgroup hal Device Settings HAL
 * @{
 **/
 
@@ -39,7 +39,7 @@ extern "C" {
 #endif
 
 /**
- * @enum typedef enum _dsDisplayEvent_t
+ * @enum _dsDisplayEvent_t
  * @brief This enumeration defines standard display event types. 
  * @note Vendors, please add appropriate events needed for your implementation.
  */

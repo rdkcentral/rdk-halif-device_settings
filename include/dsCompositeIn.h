@@ -69,9 +69,9 @@
  */
 
 /**
-* @defgroup devicesettings
+* @defgroup devicesettings Device Settings
 * @{
-* @defgroup hal
+* @defgroup hal Device Settings HAL
 * @{
 **/
 
@@ -97,8 +97,6 @@ extern "C" {
  * This function must initialize the COMPOSITE Input module and any associated data
  * structures.
  *
- * @param[in] None
- *
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
@@ -113,8 +111,6 @@ dsError_t dsCompositeInInit (void);
  *
  * This function must terminate the COMPOSITE Input module and any associated data
  * structures.
- *
- * @param[in] None
  *
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.

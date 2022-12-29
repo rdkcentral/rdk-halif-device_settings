@@ -24,9 +24,9 @@
 
 
 /**
-* @defgroup devicesettings
+* @defgroup devicesettings Device Settings
 * @{
-* @defgroup hal
+* @defgroup hal Device Settings HAL
 * @{
 **/
 
@@ -284,7 +284,7 @@ typedef void (*dsRegisterFrameratePreChangeCB_t)(unsigned int tSecond);
 
 
 /**
- * @brief This API is used to register teh cllback funciton for Display framerate pre change event.
+ * @brief This API is used to register the cllback funciton for Display framerate pre change event.
  *
  * @param [in]   CBFunc  Function to be registered for the event.
  *
@@ -307,7 +307,7 @@ typedef void (*dsRegisterFrameratePostChangeCB_t)(unsigned int tSecond);
 
 
 /**
- * @brief This API is used to register teh cllback funciton for Display framerate post change event.
+ * @brief This API is used to register the cllback funciton for Display framerate post change event.
  *
  * @param [in]   CBFunc  Function to be registered for the event.
  *

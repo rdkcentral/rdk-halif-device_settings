@@ -22,9 +22,9 @@
  */
 
 /**
-* @defgroup devicesettings
+* @defgroup devicesettings Device Settings
 * @{
-* @defgroup hal
+* @defgroup hal Device Settings HAL
 * @{
 **/
 
@@ -434,7 +434,7 @@ dsError_t dsGetSupportedARCTypes(int handle, int *types);
  * mode is Auto
  *
  * @param[in] handle Handle for the HDMI ARC/eARC port.
- * @param[in] All SADs retrieved from connected ARC device
+ * @param[in] sad_list SADs retrieved from connected ARC device
  *
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
@@ -1210,7 +1210,7 @@ dsError_t  dsSetAudioLevel(int handle, float level);
  * @warning  This API is Not thread safe.
  */
 
-dsError_t  dsSetAudioDucking(int handle, dsAudioDuckingAction_t action, dsAudioDuckingType_t, const unsigned char level);
+dsError_t  dsSetAudioDucking(int handle, dsAudioDuckingAction_t action, dsAudioDuckingType_t type, const unsigned char level);
 
 /**
  * @brief Set loop-through mode of an audio port.
@@ -1659,7 +1659,7 @@ dsError_t  dsGetPrimaryLanguage(int handle, char* pLang);
  * This function will set AC4 Secondary language
  *
  * @param[in] handle       Handle for the output Audio port (Not Used as setting is not port specific)
- * @param[in] pLang        char* 3 letter lang code should be used as per ISO 639
+ * @param[in] sLang        char* 3 letter lang code should be used as per ISO 639
  * 
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
@@ -1679,7 +1679,7 @@ dsError_t  dsSetSecondaryLanguage(int handle, const char* sLang);
  * This function will get AC4 Secondary language
  *
  * @param[in] handle       Handle for the output Audio port (Not Used as setting is not port specific)
- * @param[out] pLang        char* 3 letter lang code should be used as per ISO 639
+ * @param[out] sLang        char* 3 letter lang code should be used as per ISO 639
  * 
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.

@@ -69,9 +69,9 @@
  */
 
 /**
-* @defgroup devicesettings
+* @defgroup devicesettings Device Settings
 * @{
-* @defgroup hal
+* @defgroup hal Device Settings HAL
 * @{
 **/
 
@@ -97,8 +97,6 @@ extern "C" {
  * This function must initialize the HDMI Input module and any associated data
  * structures.
  *
- * @param None
- * 
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
@@ -114,8 +112,6 @@ dsError_t dsHdmiInInit (void);
  * This function must terminate the HDMI Input module and any associated data
  * structures.
  *
- * @param None
- * 
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
@@ -179,7 +175,7 @@ dsError_t dsHdmiInGetStatus (dsHdmiInStatus_t *pStatus);
  * @warning  This API is Not thread safe.
  */
 
-dsError_t dsHdmiInSelectPort (dsHdmiInPort_t Port);
+dsError_t dsHdmiInSelectPort (dsHdmiInPort_t ePort);
 
 /**
  * @brief Scale the HDMI In video
@@ -224,8 +220,6 @@ dsError_t dsHdmiInSelectZoomMode (dsVideoZoom_t requestedZoomMode);
  *
  * This function stops the HDMI Input audio from being output via HDMI Out.
  *
- * @param None
- * 
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure.
@@ -241,8 +235,6 @@ dsError_t dsHdmiInPauseAudio (void);
  * @brief Start the output of HDMI Input audio.
  *
  * This function presents the HDMI Input audio via HDMI Out.
- *
- * @param None
  *
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
@@ -434,8 +426,8 @@ bool dsIsHdmiARCPort (int iPort);
  * This function is used to register to get the EDID bytes info event.
  *
  * @param[in] iHdmiPort         HDMI Input port
- * @param[in] edid              EDID data for which info is required
- * @param[in] length            Lenght of the EDID data
+ * @param[out] edid              EDID data for which info is required
+ * @param[out] length            Lenght of the EDID data
  *
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
@@ -454,7 +446,7 @@ dsError_t dsGetEDIDBytesInfo (int iHdmiPort, unsigned char **edid, int *length);
  * This function is used to register to the HDMI SPD info event
  *
  * @param[in] iHdmiPort         HDMI Input port
- * @param[in] data              HDMI SPD info data to get
+ * @param[out] data              HDMI SPD info data to get
  *
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
@@ -493,7 +485,7 @@ dsError_t dsSetEdidVersion (int iHdmiPort, int iEdidVersion);
  * This function is used to register to get the EDID version event
  *
  * @param[in] iHdmiPort         HDMI Input port
- * @param[in] iEdidVersion      Input EDID version number to get
+ * @param[out] iEdidVersion      Input EDID version number to get
  *
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
@@ -513,7 +505,7 @@ dsError_t dsGetEdidVersion (int iHdmiPort, int *iEdidVersion);
  * This function is used to register to get all the mstatus details
  *
  * @param[in] iHdmiPort         HDMI Input port
- * @param[in] allmStatus        mstatus details to get
+ * @param[out] allmStatus        mstatus details to get
  *
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
@@ -531,8 +523,7 @@ dsError_t dsGetAllmStatus (int iHdmiPort, bool *allmStatus);
  *
  * This function is used to register to get all supported game features list event
  *
- * @param[in] iHdmiPort         HDMI Input port
- * @param[in] features          List of all supported game features
+ * @param[out] features          List of all supported game features
  *
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.

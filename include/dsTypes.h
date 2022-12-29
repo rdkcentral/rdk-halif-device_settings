@@ -136,9 +136,9 @@
  */
 
 /**
-* @defgroup devicesettings
+* @defgroup devicesettings Device Settings
 * @{
-* @defgroup hal
+* @defgroup hal Device Settings HAL
 * @{
 **/
 
@@ -1042,7 +1042,7 @@ typedef enum _dsHdmiInPort_t
     dsHDMI_IN_PORT_MAX
 } dsHdmiInPort_t;
 
-/** @addtogroup DSHAL_HDMI_IN_TYPES Device Settings HAL HDMI IN Signal Status Definitions
+/** @addtogroup DSHAL_HDMI_IN_STATUS Device Settings HAL HDMI IN Signal Status Definitions
  *  @ingroup DSHAL_HDMI_IN
  *  @{
  */
@@ -1075,7 +1075,7 @@ typedef struct _dsHdmiInCap_t
  * @}
  */
 
-/** @addtogroup DSHAL_COMPOSITE_IN_TYPES Device Settings HAL Composite IN Signal Status Definitions
+/** @addtogroup DSHAL_COMPOSITE_IN_STATUS Device Settings HAL Composite IN Signal Status Definitions
  *  @ingroup DSHAL_COMPOSITE_IN
  *  @{
  */
@@ -1090,7 +1090,7 @@ typedef enum _dsCompInSignalStatus_t
     dsCOMP_IN_SIGNAL_STATUS_MAX
 } dsCompInSignalStatus_t;
 
- /** @addtogroup DSHAL_HDMI_IN_TYPES Device Settings HAL COMPOSITE IN Type Definitions
+ /** @addtogroup DSHAL_COMPOSITE_IN_TYPES Device Settings HAL COMPOSITE IN Type Definitions
  *  @ingroup DSHAL_COMPOSITE_IN
  *  @{
  */
@@ -1202,3 +1202,5 @@ typedef enum _dsAudioPortState {
 
 /** @} */
 /** @} */
+/** @} */
+
