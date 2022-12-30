@@ -1,10 +1,10 @@
-# RDK-B Wifi HAL Testing Specification
+# RDK-V Device Settings HAL Testing Specification
 
 # History
 
 |Version|Date (YY-MM-DD)|Author|
 |-------|-----|-----|
-|1.0.0| 22/07/21 |Joe Bloggs|
+|1.0.0| 22/12/30 |Akhil Baby Sarada|
  
 Version format to be defined. Proposal: Major.Minor.Doc
 
@@ -21,15 +21,5 @@ Component interface.
 
 # Description
 
-# L1 Testing Requirements
-
-- TBC
-
-# L2 Testing Requirements
-
-- TBC
-
-# L3 Testing Requirements
-
-- TBC
+  HdmiCec HAL documentation and testcases are availabe at: https://github.com/comcast-sky/rdk-components-hal-devicesettings
 

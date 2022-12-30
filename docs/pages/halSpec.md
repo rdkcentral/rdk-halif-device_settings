@@ -14,7 +14,7 @@ Device Settings HAL provides a set of APIs to initialize following modules and d
 
 The diagram below describes a high-level software architecture of the Device settings module stack. We have DS Manager acting as the middleman between the HAL and application interface or thunder layer. All the initialization and deinitialization will be done by DS Manager. HAL layer provides the APIs to DS Manager to help to communicate with the SOC specific libraries. HAL acts as a single abstraction layer for multiple SOC libraries for multiple platforms.  
 
-Device Settings Architecture Diagram
+![Device Settings Architecture Diagram](images/devicesettings_architecture_4.png)
 
 # Component Runtime Execution Requirements
 
