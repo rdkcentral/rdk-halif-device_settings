@@ -345,7 +345,7 @@ dsError_t  dsGetResolution(int handle, dsVideoPortResolution_t *resolution);
 
 
 /**
- * @brief Set the port to the the active source.
+ * @brief Set the port to the active source.
  * 
  * @param [in] handle Handle of the video port.
  *
@@ -541,7 +541,7 @@ dsError_t dsSupportedTvResolutions(int handle, int *resolutions);
 /**
  * @brief To set ForceDiable 4K support variable.
  *
- * This function is used to set Forcefuly disable 4K support.
+ * This function is used to set Forcefully disable 4K support.
  *
  * @param [in] handle   Handle for the video device (video decoder)
  * @param [out] disable bool value to set the parameter.
@@ -561,7 +561,7 @@ dsError_t dsSetForceDisable4KSupport(int handle, bool disable);
 /**
  * @brief To get ForceDiable 4K support variable.
  *
- * This function is used to get status if the device is Forcefuly disabled 4K support.
+ * This function is used to get status if the device is Forcefully disabled 4K support.
  *
  * @param [in] handle   Handle for the video device (video decoder)
  * @param [out] disable bool value to get the parameter.

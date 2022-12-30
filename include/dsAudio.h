@@ -143,7 +143,7 @@ dsError_t  dsGetAudioEncoding(int handle, dsAudioEncoding_t *encoding);
 dsError_t  dsGetAudioFormat(int handle, dsAudioFormat_t *audioFormat);
 
 /**
- * @brief Get the audio compressionof an audio port.
+ * @brief Get the audio compression of an audio port.
  *
  * This function returns the audio compression setting used in the specified audio port.
  *
@@ -330,7 +330,7 @@ dsError_t  dsGetSurroundVirtualizer(int handle, dsSurroundVirtualizer_t *virtual
 /**
  * @brief To get the audio Media intelligent Steering
  *
- * This function will get the Media Intelligent Steerinf
+ * This function will get the Media Intelligent Steering
  *
  * @param[in] handle       Handle for the output Audio port
  * @param[out] enabled      Enable/disable MI Steering
@@ -1042,7 +1042,7 @@ dsError_t  dsSetSurroundVirtualizer(int handle, dsSurroundVirtualizer_t virtuali
 /**
  * @brief To set the audio Media intelligent Steering
  *
- * This function will set the Media Intelligent Steerinf
+ * This function will set the Media Intelligent Steering
  *
  * @param[in] handle    Handle for the output Audio port
  * @param[in] enabled   enable/disable MI Steering
@@ -1198,8 +1198,8 @@ dsError_t  dsSetAudioLevel(int handle, float level);
  *
  * @param[in] handle   Handle for the output audio port.
  * @param[in] action   action type to start or stop ducking.
- * @param[in] type     ducing type is absolute or relative to current volume level.
- * @param[in] level    The volume level to be used on the audio port if output mode is expoert mode this will mute the audio.
+ * @param[in] type     ducking type is absolute or relative to current volume level.
+ * @param[in] level    The volume level to be used on the audio port if output mode is expert mode this will mute the audio.
  *
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
@@ -1364,7 +1364,7 @@ dsError_t dsAudioOutIsConnected(int handle, bool* pisCon);
 /**
  * @brief Register for the Audio Output Connect Event
  *
- * This function is used to register for the the Audio Output Connect Event
+ * This function is used to register for the Audio Output Connect Event
  *
  * @param[in] CBFunc Audio output port connect callback function.
  *
@@ -1382,7 +1382,7 @@ dsError_t dsAudioOutRegisterConnectCB(dsAudioOutPortConnectCB_t CBFunc);
 /**
  * @brief Register for the Audio Format Update Event
  *
- * This function is used to register for the the Audio Format Update Event
+ * This function is used to register for the Audio Format Update Event
  *
  * @param[in] cbFun Audio format update callback function.
  *

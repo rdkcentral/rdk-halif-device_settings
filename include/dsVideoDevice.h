@@ -191,7 +191,7 @@ dsError_t dsGetVideoCodecInfo(int handle, dsVideoCodingFormat_t codec, dsVideoCo
 
 
 /**
- * @brief This API is used to forcefuly disable the HDR support of the device
+ * @brief This API is used to forcefully disable the HDR support of the device
  *
  * @param [in]   handle  Handle for the video device (video decoder)
  * @param [in]   disable Boolean value to force diableHDR or not.
@@ -210,7 +210,7 @@ dsError_t dsForceDisableHDRSupport(int handle, bool disable);
  * @brief This API is used to set the FRF mode of the device
  *
  * @param [in]   handle  Handle for the video device (video decoder)
- * @param [in]   frfmode integer with correspodnign FRF value.
+ * @param [in]   frfmode integer with corresponding FRF value.
  *
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
@@ -228,7 +228,7 @@ dsError_t dsSetFRFMode(int handle, int frfmode);
  * @brief This API is used to get the FRF mode of the device
  *
  * @param [in]   handle  Handle for the video device (video decoder)
- * @param [out]  frfmode integer with correspodnign FRF value of the device.
+ * @param [out]  frfmode integer with corresponding FRF value of the device.
  *
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
@@ -245,7 +245,7 @@ dsError_t dsGetFRFMode(int handle, int *frfmode);
  * @brief This API is used to get the FRF mode of the device
  *
  * @param [in]   handle  Handle for the video device (video decoder)
- * @param [out]  framerate integer with correspodnign FRF value of the device.
+ * @param [out]  framerate integer with corresponding FRF value of the device.
  *
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
@@ -284,7 +284,7 @@ typedef void (*dsRegisterFrameratePreChangeCB_t)(unsigned int tSecond);
 
 
 /**
- * @brief This API is used to register the cllback funciton for Display framerate pre change event.
+ * @brief This API is used to register the callback funciton for Display framerate pre change event.
  *
  * @param [in]   CBFunc  Function to be registered for the event.
  *
@@ -307,7 +307,7 @@ typedef void (*dsRegisterFrameratePostChangeCB_t)(unsigned int tSecond);
 
 
 /**
- * @brief This API is used to register the cllback funciton for Display framerate post change event.
+ * @brief This API is used to register the callback funciton for Display framerate post change event.
  *
  * @param [in]   CBFunc  Function to be registered for the event.
  *

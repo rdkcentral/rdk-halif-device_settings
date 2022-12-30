@@ -427,7 +427,7 @@ bool dsIsHdmiARCPort (int iPort);
  *
  * @param[in] iHdmiPort         HDMI Input port
  * @param[out] edid              EDID data for which info is required
- * @param[out] length            Lenght of the EDID data
+ * @param[out] length            Length of the EDID data
  *
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.

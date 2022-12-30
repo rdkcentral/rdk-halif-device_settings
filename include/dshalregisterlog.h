@@ -33,6 +33,17 @@ typedef void (*DSHal_LogCb)(int priority,const char *);
 extern "C"
 {
 #endif
+/**
+ * @brief To regiser log api call back.
+ *
+ * This function will register the call back to loging functionality.
+ *
+ * @param[in] cb        callback function
+ *
+ * @return void
+ * @warning  This API is Not thread safe.
+ */
+
 void DSHal_RegisterForLog(DSHal_LogCb cb);
 #ifdef __cplusplus
 };

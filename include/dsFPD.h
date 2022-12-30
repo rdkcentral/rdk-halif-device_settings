@@ -48,7 +48,7 @@ extern "C" {
  * @brief This function is used to initialize the underlying front panel display sub-system.
  *
  * @return Device Settings error code
- * @retval dsERR_NONE Indicates dsFPInit API was successfully called using iarmbus call.
+ * @retval dsERR_NONE Indicates dsFPInit API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure.
  * @warning  This API is Not thread safe.
  * @see dsFPTerm()
@@ -67,7 +67,7 @@ dsError_t dsFPInit (void);
  * @param[in] uBlinkIterations  Number of times for the given LED to blink. The number of times per minute data will blink across all of the LEDs.
  * 
  * @return Device Settings error code
- * @retval dsERR_NONE Indicates dsSetFPBlink API was successfully called using iarmbus call.
+ * @retval dsERR_NONE Indicates dsSetFPBlink API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
@@ -88,7 +88,7 @@ dsError_t dsSetFPBlink (dsFPDIndicator_t eIndicator, unsigned int uBlinkDuration
  * @param[in] eBrightness   The brightness value for the specified indicator.
  *
  * @return Device Settings error code
- * @retval dsERR_NONE Indicates dsSetFPBrightness API was successfully called using iarmbus call.
+ * @retval dsERR_NONE Indicates dsSetFPBrightness API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
@@ -107,7 +107,7 @@ dsError_t dsSetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t eBri
  * @param[out] state        Pointer to hold the state of the specified indicator.
  *
  * @return Device Settings error code
- * @retval dsERR_NONE Indicates dsGetFPState API was successfully called using iarmbus call.
+ * @retval dsERR_NONE Indicates dsGetFPState API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
@@ -126,7 +126,7 @@ dsError_t dsGetFPState(dsFPDIndicator_t eIndicator, dsFPDState_t* state);
  * @param[in] state         Indicates ON or OFF state for the indicator.(ON = 1 and OFF = 0).
  *
  * @return Device Settings error code
- * @retval dsERR_NONE Indicates dsSetFPState API was successfully called using iarmbus call.
+ * @retval dsERR_NONE Indicates dsSetFPState API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
@@ -148,7 +148,7 @@ dsError_t dsSetFPState(dsFPDIndicator_t eIndicator, dsFPDState_t state);
  *                          for the specified indicator on return.
  *
  * @return Device Settings error code
- * @retval dsERR_NONE Indicates dsGetFPBrightness API was successfully called using iarmbus call.
+ * @retval dsERR_NONE Indicates dsGetFPBrightness API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
@@ -170,7 +170,7 @@ dsError_t dsGetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t *pBr
  * @param[in] pColor        The address of a location to hold the color value
  *
  * @return Device Settings error code
- * @retval dsERR_NONE Indicates dsGetFPColor API was successfully called using iarmbus call.
+ * @retval dsERR_NONE Indicates dsGetFPColor API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
@@ -192,7 +192,7 @@ dsError_t dsGetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t *pColor);
  * @param[in] eColor        The color index for the specified indicator.
  *
  * @return Device Settings error code
- * @retval dsERR_NONE Indicates dsSetFPColor API was successfully called using iarmbus call.
+ * @retval dsERR_NONE Indicates dsSetFPColor API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
@@ -217,7 +217,7 @@ dsError_t dsSetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t eColor);
  * @param[in] uMinutes      Minutes information.
  *
  * @return Device Settings error code
- * @retval dsERR_NONE Indicates dsSetFPTime API was successfully called using iarmbus call.
+ * @retval dsERR_NONE Indicates dsSetFPTime API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
@@ -238,7 +238,7 @@ dsError_t dsSetFPTime (dsFPDTimeFormat_t eTimeFormat, const unsigned int uHour, 
  * @param[in] pText         Test message
  *
  * @return Device Settings error code
- * @retval dsERR_NONE Indicates dsSetFPText API was successfully called using iarmbus call.
+ * @retval dsERR_NONE Indicates dsSetFPText API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
@@ -259,7 +259,7 @@ dsError_t dsSetFPText(const char* pText);
  * @param[in] eBrightness   The brightness value for the specified indicator.
  *
  * @return Device Settings error code
- * @retval dsERR_NONE Indicates dsSetFPTextBrightness API was successfully called using iarmbus call.
+ * @retval dsERR_NONE Indicates dsSetFPTextBrightness API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
@@ -281,7 +281,7 @@ dsError_t dsSetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_
  *                          for the specified indicator on return.
  *
  * @return Device Settings error code
- * @retval dsERR_NONE Indicates dsGetFPTextBrightness API was successfully called using iarmbus call.
+ * @retval dsERR_NONE Indicates dsGetFPTextBrightness API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
@@ -301,7 +301,7 @@ dsError_t dsGetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_
  *                          (TRUE = enable clock and FALSE = disable clock).
  *
  * @return Device Settings error code
- * @retval dsERR_NONE Indicates dsFPEnableCLockDisplay API was successfully called using iarmbus call.
+ * @retval dsERR_NONE Indicates dsFPEnableCLockDisplay API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
@@ -322,7 +322,7 @@ dsError_t dsFPEnableCLockDisplay (int enable);
  * @param[in] uVertScrollIterations  Number of iterations for which to scroll vertically.
  *
  * @return Device Settings error code
- * @retval dsERR_NONE Indicates dsSetFPScroll API was successfully called using iarmbus call.
+ * @retval dsERR_NONE Indicates dsSetFPScroll API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
@@ -339,7 +339,7 @@ dsError_t dsSetFPScroll(unsigned int uScrollHoldOnDur, unsigned int uHorzScrollI
  * and releases the front-panel specific device handles.
  *
  * @return Device Settings error code
- * @retval dsERR_NONE Indicates dsFPTerm API was successfully called using iarmbus call.
+ * @retval dsERR_NONE Indicates dsFPTerm API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
@@ -352,7 +352,7 @@ dsError_t dsFPTerm(void);
 
 /**
  * @brief This function will set the brightness of the specified discrete LED on the front
- * panel display to the specified brightness level in multi-app mode using iarmbus call.
+ * panel display to the specified brightness level in multi-app mode.
  * The brightness level shall be persisted if the input parameter toPersist passed is TRUE.
  *
  * @param[in] eIndicator    FPD Indicator index (Power LED, Record LED, and so on).
@@ -360,7 +360,7 @@ dsError_t dsFPTerm(void);
  * @param[in] toPersist     If set to TRUE, the brightness value shall be persisted.
  *
  * @return Device Settings error code
- * @retval dsERR_NONE Indicates dsSetFPBrightness API was successfully called using iarmbus call.
+ * @retval dsERR_NONE Indicates dsSetFPBrightness API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
@@ -373,7 +373,7 @@ dsError_t dsSetFPDBrightness(dsFPDIndicator_t eIndicator, dsFPDBrightness_t eBri
 
 /**
  * @brief This function sets the color of the specified LED on the front panel in
- * multi-app mode using iarmbus call. The color of the LED shall be persisted if the
+ * multi-app mode. The color of the LED shall be persisted if the
  * input parameter toPersist is set to TRUE.
  *
  * @param[in] eIndicator    FPD Indicator index (Power LED, Record LED and so on).
@@ -382,7 +382,7 @@ dsError_t dsSetFPDBrightness(dsFPDIndicator_t eIndicator, dsFPDBrightness_t eBri
  *                          (If TRUE persists the LED color else doesn't persist it)
  *
  * @return Device Settings error code
- * @retval dsERR_NONE Indicates dsSetFPColor API was successfully called using iarmbus call.
+ * @retval dsERR_NONE Indicates dsSetFPColor API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
@@ -399,7 +399,7 @@ dsError_t dsSetFPDColor (dsFPDIndicator_t eIndicator, dsFPDColor_t eColor,bool t
  * @param[in] eTimeFormat   Indicates the time format (12 hour or 24 hour).
  *
  * @return Device Settings error code
- * @retval dsERR_NONE Indicates dsSetFPTime API was successfully called using iarmbus call.
+ * @retval dsERR_NONE Indicates dsSetFPTime API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
@@ -416,7 +416,7 @@ dsError_t dsSetFPTimeFormat (dsFPDTimeFormat_t eTimeFormat);
  * @param[out] pTimeFormat  Pointer to hold the Current time format  value .
  *
  * @return Device Settings error code
- * @retval dsERR_NONE Indicates dsGetFPBrightness API was successfully called using iarmbus call.
+ * @retval dsERR_NONE Indicates dsGetFPBrightness API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
@@ -433,7 +433,7 @@ dsError_t dsGetFPTimeFormat (dsFPDTimeFormat_t *pTimeFormat);
  * @param[in] eMode         Indicates the mode (any, clock or text)
  *
  * @return Device Settings error code
- * @retval dsERR_NONE Indicates dsSetFPDMode API was successfully called using iarmbus call.
+ * @retval dsERR_NONE Indicates dsSetFPDMode API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library

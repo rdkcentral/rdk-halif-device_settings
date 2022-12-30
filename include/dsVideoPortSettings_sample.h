@@ -46,7 +46,7 @@ namespace {
 static const dsVideoPortType_t kSupportedPortTypes[] = { dsVIDEOPORT_TYPE_HDMI };
 
 /* 
- * Enumerate all configuarations for each port type. 
+ * Enumerate all configurations for each port type. 
  */
 static const dsVideoPortTypeConfig_t kConfigs[]= {
 		{

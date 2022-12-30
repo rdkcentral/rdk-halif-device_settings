@@ -39,14 +39,41 @@ extern "C" {
 #endif
 
 namespace  {
-/* 
- * Enumerate supported DFCs.
+/**
+ * @brief A static constant array of supported ZOOM settings.
+ *
+ * The array is accessible only within the current translation unit and the
+ * values cannot be modified at runtime.
+ *
+ * @note The size of the array is fixed and cannot be changed.
  */
 static const dsVideoZoom_t kSupportedDFCs[] = { dsVIDEO_ZOOM_NONE, dsVIDEO_ZOOM_FULL, dsVIDEO_ZOOM_PLATFORM};
+/**
+ * @brief Default ZOOM Settings value
+ *
+ * The variable is accessible only within the current translation unit and the
+ * values cannot be modified at runtime.
+ *
+ */
 static const dsVideoZoom_t kDefaultDFC 	   = dsVIDEO_ZOOM_FULL;
 
+/**
+ * @brief Number of Video Devices supported
+ *
+ * The variable is accessible only within the current translation unit and the
+ * values cannot be modified at runtime.
+ *
+ */
 static const int kNumVideoDevices = 1;
 
+/**
+ * @brief A static constatnt array of the device configuration
+ *
+ * The variable is accessible only within the current translation unit and the
+ * values cannot be modified at runtime.
+ *
+ * @note The size of the array is fixed and cannot be changed.
+ */
 
 static const dsVideoConfig_t kConfigs[]= {
 		{

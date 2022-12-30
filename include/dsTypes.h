@@ -158,7 +158,7 @@
 #define dsAudioPORT_NUM_MAX 4          /**< Maximum number of audio output ports.         */
 
 /**
- * This enumeration defines the type of output audio port that are avaiable.
+ * @brief This enumeration defines the type of output audio port that are avaiable.
  */
 
 typedef enum _dsAudioPortType_t{
@@ -178,7 +178,7 @@ typedef enum _dsAudioPortType_t{
 #define dsAudioType_isValid(t)  (((t) >= dsAUDIOPORT_TYPE_ID_LR ) && ((t) < dsAUDIOPORT_TYPE_MAX))
 
 /**
- * This enumeration defines the type of audio encoding that can be used.
+ * @brief This enumeration defines the type of audio encoding that can be used.
  */
 
 typedef enum _dsAudioEncoding_t{
@@ -197,7 +197,7 @@ typedef enum _dsAudioEncoding_t{
 #define dsAudioEncoding_isValid(t)  (((t) >= dsAUDIO_ENC_NONE ) && ((t) < dsAUDIO_ENC_MAX))
 
 /**
- * This enumeration defines the type of audio compression that can be used.
+ * @brief This enumeration defines the type of audio compression that can be used.
  */
 
 typedef enum _dsAudioCompression_t{
@@ -209,7 +209,7 @@ typedef enum _dsAudioCompression_t{
 } dsAudioCompression_t;
 
 /**
- * This enumeration defines the type of audio format
+ * @brief This enumeration defines the type of audio format
  */
 
 typedef enum _dsAudioFormat_t {
@@ -232,7 +232,7 @@ typedef enum _dsAudioFormat_t {
 }dsAudioFormat_t;
 
 /**
- * This enumeration defines the type of audio ducking action that can be used.
+ * @brief This enumeration defines the type of audio ducking action that can be used.
  */
 
 typedef enum _dsAudioDuckingAction_t{
@@ -241,7 +241,7 @@ typedef enum _dsAudioDuckingAction_t{
 } dsAudioDuckingAction_t;
 
 /**
- * This enumeration defines the type of audio ducking type that can be used.
+ * @brief This enumeration defines the type of audio ducking type that can be used.
  */
 
 typedef enum _dsAudioDuckingType_t{
@@ -389,7 +389,7 @@ typedef struct _dsSurroundVirtualizer_t {
 #define dsAudioCompression_isValid(t)  (((t) >= dsAUDIO_CMP_NONE ) && ((t) < dsAUDIO_CMP_MAX))
 
 /**
- * This enumeration defines the type of audio stereo mode that can be used.
+ * @brief This enumeration defines the type of audio stereo mode that can be used.
  */
 
 typedef enum StereoMode{
@@ -403,7 +403,7 @@ typedef enum StereoMode{
     dsAUDIO_STEREO_MAX        /**< Maximum index for audio stereo types. */
 } dsAudioStereoMode_t;
 
-/* This enumeration defines HDCP protocol version types */
+/* @brief This enumeration defines HDCP protocol version types */
 
 typedef enum _dsATMOSCapability_t{
     dsAUDIO_ATMOS_NOTSUPPORTED= 0,            /**< ATMOS audio not supported */
@@ -422,7 +422,7 @@ typedef enum _dsATMOSCapability_t{
  * @}
  */
 
-/* This enumeration defines HDCP protocol version types */
+/* @brief This enumeration defines HDCP protocol version types */
 
 typedef enum _dsHdcpProtocolVersion_t {
     dsHDCP_VERSION_1X = 0,            /**< HDCP Protocol version 1.x */
@@ -430,7 +430,7 @@ typedef enum _dsHdcpProtocolVersion_t {
     dsHDCP_VERSION_MAX                /**< Maximum index for HDCP protocol. */
 } dsHdcpProtocolVersion_t;
 
-/* This enumeration defines all HDCP Authentication Status */
+/* @brief This enumeration defines all HDCP Authentication Status */
 
 typedef enum _dsHdcpStatus_t {
     dsHDCP_STATUS_UNPOWERED = 0,            /**< Connected Sink Device does not support HDCP */
@@ -450,7 +450,7 @@ typedef enum _dsHdcpStatus_t {
  */
 
 /**
- * This enumeration defines all of the standard type of Video ports that are available.
+ * @brief This enumeration defines all of the standard type of Video ports that are available.
  */
 
 typedef enum _dsVideoPortType_t {
@@ -474,7 +474,7 @@ typedef enum _dsVideoPortType_t {
 #define dsVideoPortType_isValid(t)  (((t) >= dsVIDEOPORT_TYPE_RF ) && ((t) < dsVIDEOPORT_TYPE_MAX))
 
 /**
- * This enumeration defines all of the standard video port resolutions that can be used.
+ * @brief This enumeration defines all of the standard video port resolutions that can be used.
  */
 
 typedef enum _dsVideoResolution_t{
@@ -490,7 +490,7 @@ typedef enum _dsVideoResolution_t{
 }dsVideoResolution_t;
 
 /**
- * This enumeration defines all of the standard TV supported resolution with interlace information.
+ * @brief This enumeration defines all of the standard TV supported resolution with interlace information.
  */
 
 typedef enum _dsTVResolution_t{
@@ -512,7 +512,7 @@ typedef enum _dsTVResolution_t{
 #define dsVideoPortPixelResolution_isValid(t)  (((t) >= dsVIDEO_PIXELRES_720x480 ) && ((t) < dsVIDEO_PIXELRES_MAX))
 
 /**
- * This enumeration defines all of the standard frame rates at which video may be played out of the video port.
+ * @brief This enumeration defines all of the standard frame rates at which video may be played out of the video port.
  */
 
 typedef enum _dsVideoFrameRate_t{
@@ -535,7 +535,7 @@ typedef enum _dsVideoFrameRate_t{
 #define dsVideoPortFrameRate_isValid(t)  (((t) >= dsVIDEO_FRAMERATE_UNKNOWN ) && ((t) < dsVIDEO_FRAMERATE_MAX))
 
 /**
- * This enumeration defines all of the standard video port scan modes.
+ * @brief This enumeration defines all of the standard video port scan modes.
  */
 
 typedef enum _dsVideoScanMode_t{
@@ -545,7 +545,7 @@ typedef enum _dsVideoScanMode_t{
 }dsVideoScanMode_t;
 
 /**
- * This enumeration defines background color for video port.
+ * @brief This enumeration defines background color for video port.
  */
 
 typedef enum _dsVideoBackgroundColor_t{
@@ -562,7 +562,7 @@ typedef enum _dsVideoBackgroundColor_t{
 #define dsVideoPortScanMode_isValid(t)  (((t) >= dsVIDEO_SCANMODE_INTERLACED ) && ((t) < dsVIDEO_SCANMODE_MAX))
 
 /**
- * This enumeration defines all of the standard video aspect ratios.
+ * @brief This enumeration defines all of the standard video aspect ratios.
  */
 
 typedef enum _dsVideoAspectRatio_t{
@@ -578,7 +578,7 @@ typedef enum _dsVideoAspectRatio_t{
 #define dsVideoPortAspectRatio_isValid(t)  (((t)  >= dsVIDEO_ASPECT_RATIO_4x3 ) && ((t) < dsVIDEO_ASPECT_RATIO_MAX))
 
 /**
- * This enumeration defines all of the standard video Stereo Scopic modes.
+ * @brief This enumeration defines all of the standard video Stereo Scopic modes.
  */
 
 typedef enum _dsVideoStereoScopicMode_t {
@@ -596,7 +596,7 @@ typedef enum _dsVideoStereoScopicMode_t {
 #define dsVideoPortStereoScopicMode_isValid(t)  (((t) >= dsVIDEO_SSMODE_UNKNOWN ) && ((t) < dsVIDEO_SSMODE_MAX))
 
 /**
- * This enumeration defines all of the standard screen zoom (format conversion) modes.
+ * @brief This enumeration defines all of the standard screen zoom (format conversion) modes.
  */
 
 typedef enum _dsVideoZoom_t {
@@ -843,7 +843,7 @@ typedef int32_t dsFPDIndicator_t;
 #define dsFPDIndicator_isValid(t)  (true)
 
 /**
- * This enumeration defines the FPD text display types.
+ * @brief This enumeration defines the FPD text display types.
  */
 
 typedef enum __dsFPDTextDisplay_t
@@ -859,7 +859,7 @@ typedef enum __dsFPDTextDisplay_t
 #define dsFPDTextDisplay_isValid(t)  (((t)  >= dsFPD_TEXTDISP_TEXT ) && ((t) < dsFPD_TEXTDISP_MAX))
 
 /**
- * This enumeration defines the front panel display state.
+ * @brief This enumeration defines the front panel display state.
  */
 
 typedef enum __dsFPDState_t
@@ -869,7 +869,7 @@ typedef enum __dsFPDState_t
 }dsFPDState_t;
 
 /**
- * This enumeration defines the time formats to be used in the Front panel text display
+ * @brief This enumeration defines the time formats to be used in the Front panel text display
  */
 
 typedef enum __dsFPDTimeFormat_t
@@ -893,7 +893,7 @@ typedef enum __dsFPDTimeFormat_t
 typedef uint32_t dsFPDBrightness_t;
 
 /**
- * This enumeration defines the front panel display mode.
+ * @brief This enumeration defines the front panel display mode.
  */
 
 typedef enum __dsFPDMode_t{
@@ -945,7 +945,7 @@ typedef struct _dsDisplayEDID_t {
 } dsDisplayEDID_t;
 
 /**
- * This enumeration defines the type of sleep modes that can be used.
+ * @brief This enumeration defines the type of sleep modes that can be used.
  */
 
 typedef enum _dsSleepMode_t{
@@ -954,12 +954,18 @@ typedef enum _dsSleepMode_t{
     dsHOST_SLEEP_MODE_MAX,         /**< Maximum index for sleep modes                    */
 } dsSleepMode_t;
 
+/**
+ * @brief This enumeration defines the types of powerstate
+ */
 typedef enum _dsPowerState_t{
 	dsPOWER_ON =1,     /**< Host Power-on state   */
 	dsPOWER_STANDBY,   /**< Host Standby state.   */
 	dsPOWER_OFF,       /**< Host Power-off state. */
 }dsPowerState_t;
 
+/**
+ * @brief This enumeration defines the type of Matrix coefficients.
+ */
 typedef enum _dsDisplayMatrixCoefficients_t
 {
     dsDISPLAY_MATRIXCOEFFICIENT_UNKNOWN = 0,  /* Unknown Matrix Coefficient. */
@@ -976,6 +982,9 @@ typedef enum _dsDisplayMatrixCoefficients_t
     dsDISPLAY_MATRIXCOEFFICIENT_eSMPTE_240M,         /* eSMPTE 240M Matrix Coefficient. */
     dsDISPLAY_MATRIXCOEFFICIENT_eHDMI_FR_YCbCr       /* eHDMI Full Range YcbCr Matrix Coefficient. */
 } dsDisplayMatrixCoefficients_t;
+/**
+ * @brief This enumeration defines the type of display colorimetry
+ */
 
 typedef enum _dsDisplayColorimetryInfo_t
 {
@@ -990,6 +999,9 @@ typedef enum _dsDisplayColorimetryInfo_t
     dsDISPLAY_COLORIMETRY_INFO_BT2020RGB = 0x80,    /* Colorimetry based on ITU-R BT.2020 [39] R’G’B’ */
     dsDISPLAY_COLORIMETRY_INFO_DCI_P3 = 0x100       /* Colorimetry based on DCI-P3 */
 } dsDisplayColorimetryInfo_t;
+/**
+ * @brief This enumeration defines the type of display color spaces supported
+ */
 
 typedef enum _dsDisplayColorSpace_t
 {
@@ -1000,6 +1012,9 @@ typedef enum _dsDisplayColorSpace_t
     dsDISPLAY_COLORSPACE_YCbCr420 = 4,    /* YCbCr4.2.0 color space */
     dsDISPLAY_COLORSPACE_AUTO = 5         /* Automatic color space */
 } dsDisplayColorSpace_t;
+/**
+ * @brief This enumeration defines the type of display quantization ranges
+ */
 
 typedef enum _dsDisplayQuantizationRange_t
 {
@@ -1007,6 +1022,9 @@ typedef enum _dsDisplayQuantizationRange_t
     dsDISPLAY_QUANTIZATIONRANGE_LIMITED = 1,
     dsDISPLAY_QUANTIZATIONRANGE_FULL = 2
 } dsDisplayQuantizationRange_t;
+/**
+ * @brief This enumeration defines the type of display Color depth.
+ */
 
 typedef enum _dsDisplayColorDepth_t
 {
@@ -1032,6 +1050,9 @@ typedef enum _dsDisplayColorDepth_t
  *  @ingroup DSHAL_HDMI_IN
  *  @{
  */
+/**
+ * @brief This enumeration defines the type of HDMI ports.
+ */
 
 typedef enum _dsHdmiInPort_t
 {
@@ -1047,6 +1068,9 @@ typedef enum _dsHdmiInPort_t
  *  @{
  */
 
+/**
+ * @brief This enumeration defines the type of HDMI siganl status.
+ */
 typedef enum _dsHdmiInSignalStatus_t
 {
     dsHDMI_IN_SIGNAL_STATUS_NONE = -1,
@@ -1057,6 +1081,9 @@ typedef enum _dsHdmiInSignalStatus_t
     dsHDMI_IN_SIGNAL_STATUS_MAX
 } dsHdmiInSignalStatus_t;
 
+/**
+ * @brief Structure type for HDMI input status.
+ */
 typedef struct _dsHdmiInStatus_t
 {
     bool             isPresented;                          /**< Boolean flag indicating Hdmi Input is enabled for presentation by client */
@@ -1064,7 +1091,9 @@ typedef struct _dsHdmiInStatus_t
     dsHdmiInPort_t   activePort;                           /**< Hdmi Input Port selected as the currently active port (to the set-top)
                                                               - note that only one HDMI Input port can be active at a time */
 } dsHdmiInStatus_t;
-
+/**
+ * @brief Structure type for HDMI input ARC Capability.
+ */
 typedef struct _dsHdmiInCap_t
 {
     bool             isPortArcCapable[dsHDMI_IN_PORT_MAX]; /**< Boolean flag indicating Hdmi source is ARC capable */
@@ -1078,6 +1107,9 @@ typedef struct _dsHdmiInCap_t
 /** @addtogroup DSHAL_COMPOSITE_IN_STATUS Device Settings HAL Composite IN Signal Status Definitions
  *  @ingroup DSHAL_COMPOSITE_IN
  *  @{
+ */
+/**
+ * @brief This enumeration defines the type composite signal status.
  */
 
 typedef enum _dsCompInSignalStatus_t
@@ -1094,6 +1126,9 @@ typedef enum _dsCompInSignalStatus_t
  *  @ingroup DSHAL_COMPOSITE_IN
  *  @{
  */
+/**
+ * @brief This enumeration defines the type of composite ports.
+ */
 
 typedef enum _dsCompositeInPort_t
 {
@@ -1102,7 +1137,9 @@ typedef enum _dsCompositeInPort_t
     dsCOMPOSITE_IN_PORT_1,
     dsCOMPOSITE_IN_PORT_MAX
 } dsCompositeInPort_t;
-
+/**
+ * @brief Structure type for Composite input status.
+ */
 typedef struct _dsCompositeInStatus_t
 {
     bool             isPresented;                          /**< Boolean flag indicating Composite Input is enabled for presentation by client */
@@ -1116,7 +1153,9 @@ typedef struct _dsCompositeInStatus_t
  * @}
  */
 
-/* List of video compression formats that may be supported by the decoder. */
+/**
+ * @brief List of video compression formats that may be supported by the decoder. 
+ * **/
 
 typedef enum
 {
@@ -1126,6 +1165,9 @@ typedef enum
 } dsVideoCodingFormat_t;
 
 /* HEVC version 1 profiles are listed. More may be added to it as the support becomes available.*/
+/**
+ * @brief List of HEVC Profiles. 
+ * **/
 
 typedef enum
 {
@@ -1133,19 +1175,25 @@ typedef enum
     dsVIDEO_CODEC_HEVC_PROFILE_MAIN10 = (0x01 << 1),
     dsVIDEO_CODEC_HEVC_PROFILE_MAINSTILLPICTURE = (0x01 << 2),
 } dsVideoCodecHevcProfiles_t;
-
+/**
+ * @brief Structure type for HEVC profiles.
+ */
 typedef struct
 {
    dsVideoCodecHevcProfiles_t profile;
    float level;
 } dsVideoCodecProfileSupport_t;
-
+/**
+ * @brief Structure type for Video codec info.
+ */
 typedef struct
 {
     unsigned int num_entries;
     dsVideoCodecProfileSupport_t entries[10];
 } dsVideoCodecInfo_t;
-
+/**
+ * @brief Structure type for spd info frame.
+ */
 struct dsSpd_infoframe_st {
     uint8_t pkttype;
     uint8_t version;
@@ -1160,6 +1208,9 @@ struct dsSpd_infoframe_st {
     uint8_t source_info;
 } ;
 
+/**
+ * @brief List of HDMI EDID versions. 
+ * **/
 typedef enum tv_hdmi_edid_version_e {
     HDMI_EDID_VER_14 = 0,
     HDMI_EDID_VER_20,
@@ -1177,6 +1228,9 @@ typedef struct _dsSupportedGameFeatureList_t {
     int gameFeatureCount;                                // Total number of supported game features
 } dsSupportedGameFeatureList_t;
 
+/**
+ * @brief List of Audio port state. 
+ * **/
 typedef enum _dsAudioPortState {
    dsAUDIOPORT_STATE_UNINITIALIZED,
    dsAUDIOPORT_STATE_INITIALIZED,

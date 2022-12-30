@@ -95,7 +95,7 @@ typedef void (*dsDisplayEventCallback_t)(int handle, dsDisplayEvent_t event, voi
  * associated data structures.
  *
  * @return Device Settings error code
- * @retval dsERR_NONE If sucessfully dsDisplayInit api has been called using IARM support.
+ * @retval dsERR_NONE If successfully dsDisplayInit api has been called.
  * @retval dsERR_GENERAL General failure.
  * @warning  This API is Not thread safe.
  * @see dsDisplayTerm()
@@ -115,7 +115,7 @@ dsError_t dsDisplayInit();
  *                      specified display device on return. 
  * 
  * @return Device Settings error code
- * @retval dsERR_NONE If sucessfully dsGetDisplay api has been called using IARM support.
+ * @retval dsERR_NONE If successfully dsGetDisplay api has been called.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
@@ -136,7 +136,7 @@ dsError_t dsDisplayInit();
  *                      display device on return.
  *
  * @return Device Settings error code
- * @retval dsERR_NONE If sucessfully dsGetEDID api has been called using IARM support.
+ * @retval dsERR_NONE If successfully dsGetEDID api has been called.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
@@ -159,7 +159,7 @@ dsError_t dsGetEDID(int handle, dsDisplayEDID_t *edid);
  * @param[out] length   The length of EDID buffer data
  *
  * @return Device Settings error code
- * @retval dsERR_NONE If sucessfully dsGetEDIDBytes api has been called using IARM support.
+ * @retval dsERR_NONE If successfully dsGetEDIDBytes api has been called.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
@@ -178,7 +178,7 @@ dsError_t dsGetEDIDBytes(int handle, unsigned char **edid, int *length);
  *                            for the specified display device on return.
  *
  * @return Device Settings error code
- * @retval dsERR_NONE If sucessfully dsGetDisplayAspectRatio api has been called using IARM support.
+ * @retval dsERR_NONE If successfully dsGetDisplayAspectRatio api has been called.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
@@ -193,7 +193,7 @@ dsError_t dsGetDisplayAspectRatio(int handle, dsVideoAspectRatio_t *aspectRatio)
  * This function deallocates the data structures used within the display module and releases any display specific handles.
  *
  * @return Device Settings error code
- * @retval dsERR_NONE If sucessfully dsDisplayTerm api has been called using IARM support.
+ * @retval dsERR_NONE If successfully dsDisplayTerm api has been called.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
@@ -218,7 +218,7 @@ dsError_t dsDisplayTerm();
  * @param[in] cb        The callback function.
  *
  * @return Device Settings error code
- * @retval dsERR_NONE If sucessfully dsRegisterDisplayEventCallback api has been called using IARM support.
+ * @retval dsERR_NONE If successfully dsRegisterDisplayEventCallback api has been called.
  * @retval dsERR_GENERAL General failure. 
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
