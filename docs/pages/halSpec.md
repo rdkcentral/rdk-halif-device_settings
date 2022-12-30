@@ -10,7 +10,7 @@
 
 # Description
 
-Device Settings HAL provides a set of APIs to initialize following modules and driver and communicate with peripheral devices like Front Pane display, Video Ports, Audio Ports etc. HAL APIs corresponds to each functionality and status of the devices and modules. the APIs are provided to initialize, select specific device using its handle and set or get a specific property of the device.  
+Device Settings HAL provides a set of APIs to initialize following modules and driver and communicate with peripheral devices like Front Panel display, Video Ports, Audio Ports etc. HAL APIs corresponds to each functionality and status of the devices and modules. the APIs are provided to initialize,select specific device using its handle and set or get a specific property of the peripheral of the device.
 
 The diagram below describes a high-level software architecture of the Device settings module stack. We have DS Manager acting as the middleman between the HAL and application interface or thunder layer. All the initialization and deinitialization will be done by DS Manager. HAL layer provides the APIs to DS Manager to help to communicate with the SOC specific libraries. HAL acts as a single abstraction layer for multiple SOC libraries for multiple platforms.  
 
@@ -25,7 +25,7 @@ unexpected behavior.
 
 ## Initialization and Startup
 
-Initialization is expected to be done from ds manger using Device::Manager::Initialize call.
+Initialization for each device peripheral HAL interface is expected to be done from ds manger using Device::Manager::Initialize call.
 
 ## Threading Model
 
@@ -55,7 +55,7 @@ Asynchronous call should be handled by call backs
 All the Device Settings HAL API's should return error synchronously as a return argument. HAL is responsible to handle system errors (e.g. out of memory) internally.
 
 ## Persistence Model
-There is no requirement for HAL to persist any setting information. Application/Client is responsible to persist any settings related to Device Settings feature.
+There is no requirement for HAL to persist any setting information. Application/Client is responsible to persist any settings related to Device Settings feature and apply during the device boot up process.
 
 # Nonfunctional requirements
 
