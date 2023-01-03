@@ -99,7 +99,8 @@ extern "C" {
  *
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
+ * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
  * @warning  This API is Not thread safe.
  * @see dsCompositeInTerm()
  */
@@ -114,9 +115,10 @@ dsError_t dsCompositeInInit (void);
  *
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
+ * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
+ * This usually indicates the underlying unkown SOC error.
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  dsCompositeInInit () or  preceding dsCompositeInInit has failed
  * @pre  dsCompositeInInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsCompositeInInit()
@@ -127,15 +129,17 @@ dsError_t dsCompositeInTerm (void);
 /**
  * @brief Get the number of COMPOSITE Input ports on the set-top.
  *
- * This function is used to get the number of COMPOSITE Input ports on the set-top.
+ * This function is used to get the number of COMPOSITE Input ports on the specific platform for eg: set-top.
  *
  * @param[in] pNumberOfInputs   number of COMPOSITE Input ports.
  *
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
+ * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
+ * This usually indicates the underlying unkown SOC error.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  dsCompositeInInit () or  preceding dsCompositeInInit has failed
  * @warning  This API is Not thread safe.
  */
 
@@ -151,9 +155,11 @@ dsError_t dsCompositeInGetNumberOfInputs (uint8_t *pNumberOfInputs);
  * 
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
+ * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
+ * This usually indicates the underlying unkown SOC error.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  dsCompositeInInit () or  preceding dsCompositeInInit has failed
  * @warning  This API is Not thread safe.
  */
 
@@ -168,9 +174,11 @@ dsError_t dsCompositeInGetStatus (dsCompositeInStatus_t *pStatus);
  * 
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
+ * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
+ * This usually indicates the underlying unkown SOC error.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  dsCompositeInInit () or  preceding dsCompositeInInit has failed
  * @warning  This API is Not thread safe.
  */
 
@@ -187,9 +195,11 @@ dsError_t dsCompositeInSelectPort (dsCompositeInPort_t Port);
  *
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
+ * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
+ * This usually indicates the underlying unkown SOC error.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  dsCompositeInInit () or  preceding dsCompositeInInit has failed
  * @warning  This API is Not thread safe.
  */
 
@@ -220,9 +230,11 @@ typedef void (*dsCompositeInConnectCB_t)(dsCompositeInPort_t Port, bool isPortCo
  * 
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
+ * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
+ * This usually indicates the underlying unkown SOC error.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  dsCompositeInInit () or  preceding dsCompositeInInit has failed
  * @warning  This API is Not thread safe.
  * @see dsCompositeInConnectCB_t()
  */
@@ -254,9 +266,11 @@ typedef void (*dsCompositeInSignalChangeCB_t)(dsCompositeInPort_t port, dsCompIn
  * 
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
+ * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
+ * This usually indicates the underlying unkown SOC error.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  dsCompositeInInit () or  preceding dsCompositeInInit has failed
  * @warning  This API is Not thread safe.
  * @see dsCompositeInSignalChangeCB_t()
  */
@@ -287,9 +301,11 @@ typedef void (*dsCompositeInStatusChangeCB_t)(dsCompositeInStatus_t inputStatus)
  * 
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
+ * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
+ * This usually indicates the underlying unkown SOC error.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  dsCompositeInInit () or  preceding dsCompositeInInit has failed
  * @warning  This API is Not thread safe.
  * @see dsCompositeInStatusChangeCB_t()
  */
