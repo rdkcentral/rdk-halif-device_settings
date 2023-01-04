@@ -189,7 +189,7 @@ dsError_t dsSetPreferredSleepMode(dsSleepMode_t mode);
 /**
  * @brief This function gets the CPU temperature in centrigade.
  *
- * @param[in] cpuTemperature The address of a location to hold the CPU Temperature
+ * @param[out] cpuTemperature The address of a location to hold the CPU Temperature
  *
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE If sucessfully dsGetCPUTemperature api has been called.
@@ -242,7 +242,7 @@ dsError_t dsSetVersion(uint32_t versionNumber);
 /**
  * @brief This function returns SOC ID
  *
- * @param[in] socID       The address of a location to hold SOC ID
+ * @param[out] socID       The address of a location to hold SOC ID
  *
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE If sucessfully dsSetPreferredSleepMode api has been called.

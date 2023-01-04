@@ -47,6 +47,7 @@ extern "C" {
  *
  * HAL Implementation should call this method to deliver updated Video Format info
  * to the application
+ * @param[in] videoFormat Current video format.
  *
  */
 typedef void (*dsVideoFormatUpdateCB_t)(dsHDRStandard_t videoFormat);

@@ -129,7 +129,7 @@ dsError_t dsHdmiInTerm (void);
  * 
  * This function is used to get the number of HDMI Input ports on the set-top.
  *
- * @param[in] pNumberOfInputs   number of HDMI Input ports.
+ * @param[out] pNumberOfInputs   number of HDMI Input ports.
  * 
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
@@ -148,7 +148,8 @@ dsError_t dsHdmiInGetNumberOfInputs (uint8_t *pNumberOfInputs);
  * 
  * This function is used to get the current HDMI Input Status.
  *
- * @param[in] pStatus           HDMI Input enabled, HDMI Input port connected,
+ * @param[out] pStatus          returns the current status of HdmiInput port: Possible statuses are
+ *                              HDMI Input enabled, HDMI Input port connected,
  *                              Active HDMI Input port, and HW Pass-Through enabled.
  *
  * @return dsError_t - Device Settings error code
@@ -281,6 +282,8 @@ dsError_t dsHdmiInGetCurrentVideoMode (dsVideoPortResolution_t *resolution);
  *
  * HAL Implementation should call this method to deliver HDMI In hot plug status
  * to the application (e.g. Connect/Disconnect for Port 0/1).
+ * @param[in] Port Port id where connection status is changed.
+ * @param[in] isPortConnected Port connection status.
  *
  */
 
@@ -291,6 +294,8 @@ typedef void (*dsHdmiInConnectCB_t)(dsHdmiInPort_t Port, bool isPortConnected);
  *
  * HAL Implementation should call this method to deliver HDMI In signal change status
  * to the application (e.g. NoSignal/UnstableSignal/NotSupportedSignal/StableSignal for HDMI In ports).
+ * @param[in] port Port id where signal status is changed
+ * @param[in] sigStatus Current signal status of the port.
  *
  */
 
@@ -301,6 +306,7 @@ typedef void (*dsHdmiInSignalChangeCB_t)(dsHdmiInPort_t port, dsHdmiInSignalStat
  *
  * HAL Implementation should call this method to deliver HDMI Input status
  * to the application (e.g. port, isPresented(true/false) etc. for HDMI In ports).
+ * @param[in] inputStatus Present hdmi input status
  *
  */
 
@@ -311,6 +317,8 @@ typedef void (*dsHdmiInStatusChangeCB_t)(dsHdmiInStatus_t inputStatus);
  *
  * HAL Implementation should call this method to deliver updated HDMI In video mode info
  * to the application
+ * @param[in] port Port in which video mode updated.
+ * @param[in] videoResolution current video resolution of the port.
  *
  */
 
@@ -321,6 +329,8 @@ typedef void (*dsHdmiInVideoModeUpdateCB_t)(dsHdmiInPort_t port, dsVideoPortReso
  *
  * HAL Implementation should call this method to deliver HDMI Input ALLM Mode
  * to the application (e.g. port, allm_mode(true/false) etc. for HDMI In ports).
+ * @param[in] port Hdmi port number in which ALLM Mode changed.
+ * @param[in] allm_mode Current ALLM mode of the port.
  *
  */
 

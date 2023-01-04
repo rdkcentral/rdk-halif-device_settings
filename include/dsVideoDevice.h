@@ -109,7 +109,7 @@ dsError_t  dsSetDFC(int handle, dsVideoZoom_t dfc);
  * This function Gets the screen zoom mode (None,Full ,Pan & Scan, LetterBox, PillarBox, etc.) for the specified video device.
  *
  * @param[in] handle  Handle of the video output port.
- * @param[in] dfc     Type of zoom mode to be used.
+ * @param[out] dfc     Type of zoom mode to be used.
  * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
@@ -290,6 +290,7 @@ dsError_t dsSetDisplayframerate(int handle, char *framerate);
 
 /**
  * @brief Call back function to called while the framerate change event is detected.
+ * @param [in] tSecond time elapsed after the change.
  *
  */
 typedef void (*dsRegisterFrameratePreChangeCB_t)(unsigned int tSecond);
@@ -314,6 +315,7 @@ dsError_t dsRegisterFrameratePreChangeCB(dsRegisterFrameratePreChangeCB_t CBFunc
 
 /**
  * @brief Call back function to be called after the framerate change is done.
+ * @param [in] tSecond time elapsed after the change.
  *
  */
 typedef void (*dsRegisterFrameratePostChangeCB_t)(unsigned int tSecond);

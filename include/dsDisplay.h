@@ -77,7 +77,7 @@ typedef enum _dsDisplayEvent_t {
  *
  * @param[in]  handle     Handle of the display device.
  * @param[in]  event      Display event.
- * @param[out] eventData  Data associated with the event. 
+ * @param[in] eventData  Data associated with the event.
  *                        This is currently a place holder.
  *
  * @note HAL implementation is responsible for allocation of memory needed for event data. 

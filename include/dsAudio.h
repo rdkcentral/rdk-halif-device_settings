@@ -40,10 +40,13 @@ extern "C" {
 #include "dsTypes.h"
 
 /**
- * @brief Callback function used to notify applications of Audio port change
+ * @brief Callback function is used to notify the Audio port connection status change to the upper layer modules.
  *
  * HAL Implementation should call this method to deliver updated Audio port change
  * to the application
+ * @param[in] portType : Type of the audio port where connection status is changed.
+ * @param[in] uiPortNo : Port number in which the conntion status changed.
+ * @param[in] isPortCon : Current connection status of the port.
  */
 
 typedef void (*dsAudioOutPortConnectCB_t)(dsAudioPortType_t portType, unsigned int uiPortNo, bool isPortCon);
@@ -53,6 +56,7 @@ typedef void (*dsAudioOutPortConnectCB_t)(dsAudioPortType_t portType, unsigned i
  *
  * HAL Implementation should call this method to deliver updated Audio Format info
  * to the application
+ * @param[in] audioFormat : New audio format.
  */
 
 typedef void (*dsAudioFormatUpdateCB_t)(dsAudioFormat_t audioFormat);
