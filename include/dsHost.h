@@ -77,7 +77,7 @@ extern "C" {
  * This function must initialize all the system specific drivers to be initialized  prior
  * to any driver specific calls.
  *
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -95,7 +95,7 @@ dsError_t dsHostInit();
  *
  * @param[in] newPower    The power mode of the host (::dsPOWER_STANDBY or ::dsPOWER_ON)
  *
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -121,7 +121,7 @@ dsError_t dsSetHostPowerMode(int newPower);
  *                              - ::dsPOWER_STANDBY
  *                              - ::dsPOWER_ON
  *
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -140,7 +140,7 @@ dsError_t dsGetHostPowerMode(int *currPower);
  * This function resets the data structures used within the Host module and releases any
  * handles specific to the host module.
  *
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -158,7 +158,7 @@ dsError_t dsHostTerm();
  *
  * @param[out] pMode      Data will be copied to this. This shall be preallocated before the call.
  *
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE If sucessfully dsGetPreferredSleepMode api has been called.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
@@ -175,7 +175,7 @@ dsError_t dsGetPreferredSleepMode(dsSleepMode_t *pMode);
  *
  * @param[in] mode        Sleep mode that is expected to be persisted.
  *
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE If sucessfully dsSetPreferredSleepMode api has been called.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
@@ -192,7 +192,7 @@ dsError_t dsSetPreferredSleepMode(dsSleepMode_t mode);
  *
  * @param[in] cpuTemperature The address of a location to hold the CPU Temperature
  *
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE If sucessfully dsGetCPUTemperature api has been called.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
@@ -228,7 +228,7 @@ dsError_t dsGetVersion(uint32_t *versionNumber);
  *
  * @param[in] versionNumber  4 Bytes of version number of DS HAL
  *
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Successfully set the version for dsHAL.
  * @retval dsERR_GENERAL Failed to set the version.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
@@ -245,7 +245,7 @@ dsError_t dsSetVersion(uint32_t versionNumber);
  *
  * @param[in] socID       The address of a location to hold SOC ID
  *
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE If sucessfully dsSetPreferredSleepMode api has been called.
  * @retval dsERR_UNKNOWN General failure.
  * @pre dsHostInit() should be called before calling this API.
@@ -260,7 +260,7 @@ dsError_t dsGetSocIDFromSDK(char *socID);
  * @param[out] edid       host EDID.
  * @param[out] length     length of host EDID
  *
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE If sucessfully dsGetHostEDID api has been called.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.

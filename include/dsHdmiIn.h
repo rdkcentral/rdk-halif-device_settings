@@ -97,7 +97,7 @@ extern "C" {
  * This function must initialize the HDMI Input module and any associated data
  * structures.
  *
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -113,7 +113,7 @@ dsError_t dsHdmiInInit (void);
  * This function must terminate the HDMI Input module and any associated data
  * structures.
  *
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -131,7 +131,7 @@ dsError_t dsHdmiInTerm (void);
  *
  * @param[in] pNumberOfInputs   number of HDMI Input ports.
  * 
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -151,7 +151,7 @@ dsError_t dsHdmiInGetNumberOfInputs (uint8_t *pNumberOfInputs);
  * @param[in] pStatus           HDMI Input enabled, HDMI Input port connected,
  *                              Active HDMI Input port, and HW Pass-Through enabled.
  *
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -170,7 +170,7 @@ dsError_t dsHdmiInGetStatus (dsHdmiInStatus_t *pStatus);
  *
  * @param[in] ePort             HDMI Input port to be presented,
  * 
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -191,7 +191,7 @@ dsError_t dsHdmiInSelectPort (dsHdmiInPort_t ePort);
  * @param[in] width             width of the video
  * @param[in] height            height of the video
  *
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -210,7 +210,7 @@ dsError_t dsHdmiInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t heigh
  *
  * @param[in] requestedZoomMode HDMI Input zoom mode,
  * 
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -227,7 +227,7 @@ dsError_t dsHdmiInSelectZoomMode (dsVideoZoom_t requestedZoomMode);
  *
  * This function stops the HDMI Input audio from being output via HDMI Out.
  *
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -244,7 +244,7 @@ dsError_t dsHdmiInPauseAudio (void);
  *
  * This function presents the HDMI Input audio via HDMI Out.
  *
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -264,7 +264,7 @@ dsError_t dsHdmiInResumeAudio (void);
  * @param[out] resolution       Current HDMI Input video mode resolution
  *
  * @return Current HDMI Input video mode (resolution)
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -333,7 +333,7 @@ typedef void (*dsHdmiInAllmChangeCB_t)(dsHdmiInPort_t port, bool allm_mode);
  *
  * @param[in] CBFunc            HDMI Input hot plug callback function.
  * 
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -352,7 +352,7 @@ dsError_t dsHdmiInRegisterConnectCB (dsHdmiInConnectCB_t CBFunc);
  *
  * @param[in] CBFunc            HDMI Input Signal change callback function.
  * 
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -371,7 +371,7 @@ dsError_t dsHdmiInRegisterSignalChangeCB (dsHdmiInSignalChangeCB_t CBFunc);
  *
  * @param[in] CBFunc            HDMI Input Status change callback function.
  * 
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -390,7 +390,7 @@ dsError_t dsHdmiInRegisterStatusChangeCB (dsHdmiInStatusChangeCB_t CBFunc);
  *
  * @param[in] CBFunc            HDMI Input video mode change callback function.
  * 
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -409,7 +409,7 @@ dsError_t dsHdmiInRegisterVideoModeUpdateCB(dsHdmiInVideoModeUpdateCB_t CBFunc);
  *
  * @param[in] CBFunc            HDMI Input ALLM Mode change callback function.
  * 
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -444,7 +444,7 @@ bool dsIsHdmiARCPort (int iPort);
  * @param[out] edid              EDID data for which info is required
  * @param[out] length            Length of the EDID data
  *
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -464,7 +464,7 @@ dsError_t dsGetEDIDBytesInfo (int iHdmiPort, unsigned char **edid, int *length);
  * @param[in] iHdmiPort         HDMI Input port
  * @param[out] data              HDMI SPD info data to get
  *
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -484,7 +484,7 @@ dsError_t dsGetHDMISPDInfo (int iHdmiPort, unsigned char **data);
  * @param[in] iHdmiPort         HDMI Input port
  * @param[in] iEdidVersion      Input EDID version number to set
  *
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -505,7 +505,7 @@ dsError_t dsSetEdidVersion (int iHdmiPort, int iEdidVersion);
  * @param[in] iHdmiPort         HDMI Input port
  * @param[out] iEdidVersion      Input EDID version number to get
  *
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -526,7 +526,7 @@ dsError_t dsGetEdidVersion (int iHdmiPort, int *iEdidVersion);
  * @param[in] iHdmiPort         HDMI Input port
  * @param[out] allmStatus        mstatus details to get
  *
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -545,7 +545,7 @@ dsError_t dsGetAllmStatus (int iHdmiPort, bool *allmStatus);
  *
  * @param[out] features          List of all supported game features
  *
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.

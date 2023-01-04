@@ -97,7 +97,7 @@ extern "C" {
  * This function must initialize the COMPOSITE Input module and any associated data
  * structures.
  *
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -113,7 +113,7 @@ dsError_t dsCompositeInInit (void);
  * This function must terminate the COMPOSITE Input module and any associated data
  * structures.
  *
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -133,7 +133,7 @@ dsError_t dsCompositeInTerm (void);
  *
  * @param[in] pNumberOfInputs   number of COMPOSITE Input ports.
  *
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -153,7 +153,7 @@ dsError_t dsCompositeInGetNumberOfInputs (uint8_t *pNumberOfInputs);
  * @param[in] pStatus   COMPOSITE Input enabled, COMPOSITE Input port connected,
  *                       Active COMPOSITE Input port, and HW Pass-Through enabled.
  * 
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -172,7 +172,7 @@ dsError_t dsCompositeInGetStatus (dsCompositeInStatus_t *pStatus);
  *
  * @param[in] Port      COMPOSITE Input port to be presented,
  * 
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -193,7 +193,7 @@ dsError_t dsCompositeInSelectPort (dsCompositeInPort_t Port);
  * @param[in] width      width of the video
  * @param[in] height     height of the video
  *
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -228,7 +228,7 @@ typedef void (*dsCompositeInConnectCB_t)(dsCompositeInPort_t Port, bool isPortCo
  *
  * @param[in] CBFunc COMPOSITE Input hot plug callback function.
  * 
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -264,7 +264,7 @@ typedef void (*dsCompositeInSignalChangeCB_t)(dsCompositeInPort_t port, dsCompIn
  *
  * @param[in] CBFunc Composite Input Signal change callback function.
  * 
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -299,7 +299,7 @@ typedef void (*dsCompositeInStatusChangeCB_t)(dsCompositeInStatus_t inputStatus)
  *
  * @param[in] CBFunc Composite Input Status change callback function.
  * 
- * @return Device Settings error code
+ * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.

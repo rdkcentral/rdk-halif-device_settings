@@ -57,7 +57,7 @@ extern "C" {
 /**
  * @brief This function initialize all the video devices in the system.
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -73,7 +73,7 @@ dsError_t  dsVideoDeviceInit();
  * @param[in]  index      Index of video device (0, 1, ...).
  * @param[out] handle    The address of a location to hold the video device handle on
  *                         return.
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -91,7 +91,7 @@ dsError_t  dsGetVideoDevice(int index, int *handle);
  *
  * @param[in] handle  Handle of the video output port.
  * @param[in] dfc     Type of zoom mode to be used.
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -110,7 +110,7 @@ dsError_t  dsSetDFC(int handle, dsVideoZoom_t dfc);
  *
  * @param[in] handle  Handle of the video output port.
  * @param[in] dfc     Type of zoom mode to be used.
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -127,7 +127,7 @@ dsError_t  dsGetDFC(int handle, dsVideoZoom_t *dfc);
  * @brief This function deinitialize all the video devices in the system.
  * It reset any data structures used within this module and release any handles specific to the video devices.
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -147,7 +147,7 @@ dsError_t  dsVideoDeviceTerm();
  *
  * @param [in] handle   Handle for the video device (video decoder)
  * @param [out] capabilities Combined values of all supported HDR standards.
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -167,7 +167,7 @@ dsError_t dsGetHDRCapabilities(int handle, int *capabilities);
  * @param [in]   handle              Handle for the video device (video decoder)
  * @param [out]  supported_formats   Combined values of all the supported video codec formats.
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -186,7 +186,7 @@ dsError_t dsGetSupportedVideoCodingFormats(int handle, unsigned int * supported_
  * @param [in]   codec   OR-ed value of supported video codec formats.
  * @param [out]  info    Video codec information like profile, level etc.
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -204,7 +204,7 @@ dsError_t dsGetVideoCodecInfo(int handle, dsVideoCodingFormat_t codec, dsVideoCo
  * @param [in]   handle  Handle for the video device (video decoder)
  * @param [in]   disable Boolean value to force diableHDR or not.
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -221,7 +221,7 @@ dsError_t dsForceDisableHDRSupport(int handle, bool disable);
  * @param [in]   handle  Handle for the video device (video decoder)
  * @param [in]   frfmode integer with corresponding FRF value.
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -240,7 +240,7 @@ dsError_t dsSetFRFMode(int handle, int frfmode);
  * @param [in]   handle  Handle for the video device (video decoder)
  * @param [out]  frfmode integer with corresponding FRF value of the device.
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -258,7 +258,7 @@ dsError_t dsGetFRFMode(int handle, int *frfmode);
  * @param [in]   handle  Handle for the video device (video decoder)
  * @param [out]  framerate integer with corresponding FRF value of the device.
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -277,7 +277,7 @@ dsError_t dsGetCurrentDisplayframerate(int handle, char *framerate);
  * @param [in]  handle  Handle for the video device (video decoder)
  * @param [in]  framerate Provides the display framerate value to be set.
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -301,7 +301,7 @@ typedef void (*dsRegisterFrameratePreChangeCB_t)(unsigned int tSecond);
  *
  * @param [in]   CBFunc  Function to be registered for the event.
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
@@ -325,7 +325,7 @@ typedef void (*dsRegisterFrameratePostChangeCB_t)(unsigned int tSecond);
  *
  * @param [in]   CBFunc  Function to be registered for the event.
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
