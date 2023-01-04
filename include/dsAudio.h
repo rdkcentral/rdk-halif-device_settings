@@ -1399,7 +1399,6 @@ dsError_t dsSetAudioDelayOffset(int handle, const uint32_t audioDelayOffsetMs);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
  * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  Init or  preceding Init has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
