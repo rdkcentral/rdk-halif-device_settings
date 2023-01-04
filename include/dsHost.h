@@ -159,7 +159,7 @@ dsError_t dsHostTerm();
  * @param[out] pMode      Data will be copied to this. This shall be preallocated before the call.
  *
  * @return Device Settings error code
- * @retval dsERR_NONE If sucessfully dsGetPreferredSleepMode api has been called using IARM support.
+ * @retval dsERR_NONE If sucessfully dsGetPreferredSleepMode api has been called.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  Init or  preceding Init has failed
@@ -176,7 +176,7 @@ dsError_t dsGetPreferredSleepMode(dsSleepMode_t *pMode);
  * @param[in] mode        Sleep mode that is expected to be persisted.
  *
  * @return Device Settings error code
- * @retval dsERR_NONE If sucessfully dsSetPreferredSleepMode api has been called using IARM support.
+ * @retval dsERR_NONE If sucessfully dsSetPreferredSleepMode api has been called.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  Init or  preceding Init has failed
@@ -193,7 +193,7 @@ dsError_t dsSetPreferredSleepMode(dsSleepMode_t mode);
  * @param[in] cpuTemperature The address of a location to hold the CPU Temperature
  *
  * @return Device Settings error code
- * @retval dsERR_NONE If sucessfully dsGetCPUTemperature api has been called using IARM support.
+ * @retval dsERR_NONE If sucessfully dsGetCPUTemperature api has been called.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  Init or  preceding Init has failed
@@ -246,7 +246,7 @@ dsError_t dsSetVersion(uint32_t versionNumber);
  * @param[in] socID       The address of a location to hold SOC ID
  *
  * @return Device Settings error code
- * @retval dsERR_NONE If sucessfully dsSetPreferredSleepMode api has been called using IARM support.
+ * @retval dsERR_NONE If sucessfully dsSetPreferredSleepMode api has been called.
  * @retval dsERR_UNKNOWN General failure.
  * @pre dsHostInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -261,7 +261,7 @@ dsError_t dsGetSocIDFromSDK(char *socID);
  * @param[out] length     length of host EDID
  *
  * @return Device Settings error code
- * @retval dsERR_NONE If sucessfully dsGetHostEDID api has been called using IARM support.
+ * @retval dsERR_NONE If sucessfully dsGetHostEDID api has been called.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  Init or  preceding Init has failed
