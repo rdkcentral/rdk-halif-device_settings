@@ -96,7 +96,8 @@ typedef void (*dsDisplayEventCallback_t)(int handle, dsDisplayEvent_t event, voi
  *
  * @return Device Settings error code
  * @retval dsERR_NONE If successfully dsDisplayInit api has been called.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
+ * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
  * @warning  This API is Not thread safe.
  * @see dsDisplayTerm()
  */
@@ -116,9 +117,10 @@ dsError_t dsDisplayInit();
  * 
  * @return Device Settings error code
  * @retval dsERR_NONE If successfully dsGetDisplay api has been called.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
+ * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  Init or  preceding Init has failed
  * @pre  dsDisplayInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -137,9 +139,10 @@ dsError_t dsDisplayInit();
  *
  * @return Device Settings error code
  * @retval dsERR_NONE If successfully dsGetEDID api has been called.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
+ * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  Init or  preceding Init has failed
  * @pre  dsDisplayInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -160,9 +163,10 @@ dsError_t dsGetEDID(int handle, dsDisplayEDID_t *edid);
  *
  * @return Device Settings error code
  * @retval dsERR_NONE If successfully dsGetEDIDBytes api has been called.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
+ * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  Init or  preceding Init has failed
  * @pre  dsDisplayInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -179,9 +183,10 @@ dsError_t dsGetEDIDBytes(int handle, unsigned char **edid, int *length);
  *
  * @return Device Settings error code
  * @retval dsERR_NONE If successfully dsGetDisplayAspectRatio api has been called.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
+ * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  Init or  preceding Init has failed
  * @pre  dsDisplayInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -194,9 +199,10 @@ dsError_t dsGetDisplayAspectRatio(int handle, dsVideoAspectRatio_t *aspectRatio)
  *
  * @return Device Settings error code
  * @retval dsERR_NONE If successfully dsDisplayTerm api has been called.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
+ * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  Init or  preceding Init has failed
  * @pre  dsDisplayInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsDisplayInit()
@@ -219,9 +225,10 @@ dsError_t dsDisplayTerm();
  *
  * @return Device Settings error code
  * @retval dsERR_NONE If successfully dsRegisterDisplayEventCallback api has been called.
- * @retval dsERR_GENERAL General failure. 
+ * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
+ * be initialized with this value. So any of the undefined error scenario in HAL will report this error code. 
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  Init or  preceding Init has failed
  * @warning  This API is Not thread safe.
  */
 
