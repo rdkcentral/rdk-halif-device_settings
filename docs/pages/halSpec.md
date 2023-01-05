@@ -12,7 +12,7 @@
 
 Device Settings HAL provides a set of APIs to initialize following modules and driver and communicate with peripheral devices like Front Panel display, Video Ports, Audio Ports etc. HAL APIs corresponds to each functionality and status of the devices and modules. the APIs are provided to initialize,select specific device using its handle and set or get a specific property of the peripheral of the device.
 
-The diagram below describes a high-level software architecture of the Device settings module stack. We have DS Manager acting as the middleman between the HAL and application interface or thunder layer. All the initialization and deinitialization will be done by DS Manager. HAL layer provides the APIs to DS Manager to help to communicate with the SOC specific libraries. HAL acts as a single abstraction layer for multiple SOC libraries for multiple platforms.  
+The diagram below describes a high-level software architecture of the Device settings module stack. We have DS Manager acting as the middleman between the HAL and application interface or thunder layer. All the initialization and deinitialization will be done by DS Manager. HAL layer provides the APIs to DS Manager to communicate with the SOC specific libraries. HAL acts as a single abstraction layer for multiple SOC libraries for multiple platforms.
 
 ![Device Settings Architecture Diagram](images/devicesettings_architecture_4.png)
 
