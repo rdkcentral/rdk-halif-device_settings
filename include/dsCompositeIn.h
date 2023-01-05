@@ -127,7 +127,7 @@ dsError_t dsCompositeInInit (void);
 dsError_t dsCompositeInTerm (void);
 
 /**
- * @brief Get the number of COMPOSITE Input ports on the set-top.
+ * @brief Get the number of COMPOSITE Input ports on the specific platform.
  *
  * This function is used to get the number of COMPOSITE Input ports on the specific platform for eg: set-top.
  *
