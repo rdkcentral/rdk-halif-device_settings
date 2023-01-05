@@ -698,7 +698,7 @@ dsError_t dsGetColorDepth(int handle, unsigned int* color_depth);
  * @brief Get current color space setting.
  *
  * @param[in]  handle -  Handle of the display device.
- * @param[out] color_space - pointer to color space value.
+ * @param[out] color_space - pointer to color space value as defined in dsDisplayColorSpace_t.
  *
  * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
@@ -737,7 +737,7 @@ dsError_t dsGetQuantizationRange(int handle, dsDisplayQuantizationRange_t* quant
  * @param[in]  handle -  Handle of the display device.
  * @param[out] video_eotf - pointer to EOFF value
  * @param[out] matrix_coefficients - pointer to matrix coefficients value
- * @param[out] color_space - pointer to color space value.
+ * @param[out] color_space - pointer to color space value as defined in dsDisplayColorSpace_t.
  * @param[out] color_depth - pointer to color depths value as defined in dsDisplayColorDepth_t.
  * @param[out] quantization_range - pointer to quantization range value.
  *
