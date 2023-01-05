@@ -18,7 +18,7 @@ The diagram below describes a high-level software architecture of the Device set
 
 # Component Runtime Execution Requirements
 
-The Hardware layer API's are provided by each SOC vendors specific to the device. the operations should be completed in reasonable time and max time allowed is 5 sec otherwise the DS Manager IARM calls will fail with error timeout. Any operations that may take more than 5 sec should be done in a parallel thread.
+The Hardware layer API's are provided by each SOC vendors specific to the device. the operations should be completed within few ms. RDK middleware is responsible to perform retry operation as per the respective devicesettings specification requirements. Failure to meet these requirements will likely result in undefined and unexpected behavior.
 
 Failure to meet these requirements will likely result in undefined and
 unexpected behavior.

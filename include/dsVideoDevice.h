@@ -57,9 +57,10 @@ extern "C" {
 /**
  * @brief This function initialize all the video devices in the system.
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @warning  This API is Not thread safe.
  * @see dsVideoDeviceTerm()
  */
@@ -72,9 +73,10 @@ dsError_t  dsVideoDeviceInit();
  * @param[in]  index      Index of video device (0, 1, ...).
  * @param[out] handle    The address of a location to hold the video device handle on
  *                         return.
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoDeviceInit() or  preceding dsVideoDeviceInit has failed
  * @pre dsVideoDeviceInit() should be called before calling this API.
@@ -89,9 +91,10 @@ dsError_t  dsGetVideoDevice(int index, int *handle);
  *
  * @param[in] handle  Handle of the video output port.
  * @param[in] dfc     Type of zoom mode to be used.
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoDeviceInit() or  preceding dsVideoDeviceInit has failed
  * @pre dsVideoDeviceInit() should be called before calling this API.
@@ -106,10 +109,11 @@ dsError_t  dsSetDFC(int handle, dsVideoZoom_t dfc);
  * This function Gets the screen zoom mode (None,Full ,Pan & Scan, LetterBox, PillarBox, etc.) for the specified video device.
  *
  * @param[in] handle  Handle of the video output port.
- * @param[in] dfc     Type of zoom mode to be used.
- * @return dsError_t Error code.
+ * @param[out] dfc     Type of zoom mode to be used.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoDeviceInit() or  preceding dsVideoDeviceInit has failed
  * @pre dsVideoDeviceInit() should be called before calling this API.
@@ -123,9 +127,10 @@ dsError_t  dsGetDFC(int handle, dsVideoZoom_t *dfc);
  * @brief This function deinitialize all the video devices in the system.
  * It reset any data structures used within this module and release any handles specific to the video devices.
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoDeviceInit() or  preceding dsVideoDeviceInit has failed
  * @pre dsVideoDeviceInit() should be called before calling this API.
@@ -142,9 +147,11 @@ dsError_t  dsVideoDeviceTerm();
  *
  * @param[in] handle   Handle for the video device (video decoder)
  * @param [out] capabilities OR-ed values of all supported HDR standards as defined in dsHDRStandard_t
+ *
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoDeviceInit() or  preceding dsVideoDeviceInit has failed
  * @pre dsVideoDeviceInit() should be called before calling this API.
@@ -161,9 +168,10 @@ dsError_t dsGetHDRCapabilities(int handle, int *capabilities);
  * @param[in]   handle              Handle for the video device (video decoder)
  * @param [out]  supported_formats   OR-ed values of all the supported video codec formats as defined in dsVideoCodingFormat_t
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoDeviceInit() or  preceding dsVideoDeviceInit has failed
  * @pre dsVideoDeviceInit() should be called before calling this API.
@@ -179,9 +187,10 @@ dsError_t dsGetSupportedVideoCodingFormats(int handle, unsigned int * supported_
  * @param[in]   codec   OR-ed value of supported video codec formats.
  * @param [out]  info    Video codec information like profile, level etc.
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoDeviceInit() or  preceding dsVideoDeviceInit has failed
  * @pre dsVideoDeviceInit() should be called before calling this API.
@@ -196,9 +205,10 @@ dsError_t dsGetVideoCodecInfo(int handle, dsVideoCodingFormat_t codec, dsVideoCo
  * @param[in]   handle  Handle for the video device (video decoder)
  * @param[in]   disable Boolean value to force diableHDR or not.
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoDeviceInit() or  preceding dsVideoDeviceInit has failed
  * @pre dsVideoDeviceInit() should be called before calling this API.
@@ -212,9 +222,10 @@ dsError_t dsForceDisableHDRSupport(int handle, bool disable);
  * @param[in]   handle  Handle for the video device (video decoder)
  * @param[in]   frfmode integer with corresponding Framerate value.
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoDeviceInit() or  preceding dsVideoDeviceInit has failed
  * @pre dsVideoDeviceInit() should be called before calling this API.
@@ -230,9 +241,10 @@ dsError_t dsSetFRFMode(int handle, int frfmode);
  * @param[in]   handle  Handle for the video device (video decoder)
  * @param [out]  frfmode integer with corresponding Framerate value of the device.
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoDeviceInit() or  preceding dsVideoDeviceInit has failed
  * @pre dsVideoDeviceInit() should be called before calling this API.
@@ -247,9 +259,10 @@ dsError_t dsGetFRFMode(int handle, int *frfmode);
  * @param[in]   handle  Handle for the video device (video decoder)
  * @param [out]  framerate Byte with corresponding freamrate value of the device.
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoDeviceInit() or  preceding dsVideoDeviceInit has failed
  * @pre dsVideoDeviceInit() should be called before calling this API.
@@ -265,9 +278,10 @@ dsError_t dsGetCurrentDisplayframerate(int handle, char *framerate);
  * @param[in]  handle  Handle for the video device (video decoder)
  * @param[in]  framerate Provides the display framerate value to be set.
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoDeviceInit() or  preceding dsVideoDeviceInit has failed
  * @pre dsVideoDeviceInit() should be called before calling this API.
@@ -278,7 +292,8 @@ dsError_t dsSetDisplayframerate(int handle, char *framerate);
 
 /**
  * @brief Call back function to called while the framerate change event is detected.
- * @param tSecond Time in seconds before the frame rate change occurs.
+ * @param [in] tSecond time elapsed after the change.
+ *
  */
 typedef void (*dsRegisterFrameratePreChangeCB_t)(unsigned int tSecond);
 
@@ -288,9 +303,10 @@ typedef void (*dsRegisterFrameratePreChangeCB_t)(unsigned int tSecond);
  *
  * @param[in]   CBFunc  Function to be registered for the event.
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoDeviceInit() or  preceding dsVideoDeviceInit has failed
  * @pre dsVideoDeviceInit() should be called before calling this API.
@@ -301,7 +317,7 @@ dsError_t dsRegisterFrameratePreChangeCB(dsRegisterFrameratePreChangeCB_t CBFunc
 
 /**
  * @brief Call back function to be called after the framerate change is done.
- * @param tSecond Time in seconds before the frame rate change occurs.
+ * @param [in] tSecond time elapsed after the change.
  *
  */
 typedef void (*dsRegisterFrameratePostChangeCB_t)(unsigned int tSecond);
@@ -312,9 +328,10 @@ typedef void (*dsRegisterFrameratePostChangeCB_t)(unsigned int tSecond);
  *
  * @param[in]   CBFunc  Function to be registered for the event.
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoDeviceInit() or  preceding dsVideoDeviceInit has failed
  * @pre dsVideoDeviceInit() should be called before calling this API.

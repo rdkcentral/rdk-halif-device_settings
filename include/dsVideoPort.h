@@ -47,8 +47,7 @@ extern "C" {
  *
  * HAL Implementation should call this method to deliver updated Video Format info
  * to the application
- * 
- * @param videoFormat New video format.
+ * @param[in] videoFormat Current video format.
  *
  */
 typedef void (*dsVideoFormatUpdateCB_t)(dsHDRStandard_t videoFormat);
@@ -67,9 +66,10 @@ typedef void (*dsVideoFormatUpdateCB_t)(dsHDRStandard_t videoFormat);
  * 
  * This function must initialize all the video specific output ports.
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @warning  This API is Not thread safe.
  * @see dsVideoPortTerm()
  */
@@ -86,11 +86,12 @@ dsError_t  dsVideoPortInit();
  * @param[in]  index      The index of the video device (0, 1, ...).
  * @param[out] handle    The address of a location to hold the video device handle on return.
  * 
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  Init or  preceding Init has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -106,9 +107,10 @@ dsError_t  dsGetVideoPort(dsVideoPortType_t type, int index, int *handle);
  * @param[out] enabled    The address of a location to hold the video port enable state
  *                          on return (@a true when port is enabled, @a false otherwise).
  * 
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -127,9 +129,10 @@ dsError_t  dsIsVideoPortEnabled(int handle, bool *enabled);
  * @param[out] connected    The address of a location to hold the connection state on
  *                            return (@a true when connected, @a false otherwise).
  * 
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -144,9 +147,10 @@ dsError_t  dsIsDisplayConnected(int handle, bool *connected);
  * @param[in]  handle Handle of the video port.
  * @param[out] surround It is set to True if the display supports surround audio.
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -161,9 +165,10 @@ dsError_t  dsIsDisplaySurround(int handle, bool *surround);
  * @param[in]  handle Handle of the video port.
  * @param[out] surround mode as defined in dsSURROUNDMode_t.
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -179,9 +184,10 @@ dsError_t  dsGetSurroundMode(int handle, int *surround);
  * @param[out] active        The address of a location to hold the connection state on
  *                            return (@a true when connected, @a false otherwise).
  * 
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -201,9 +207,10 @@ dsError_t  dsIsVideoPortActive(int handle, bool *active);
  * @param[in] contentProtect    Flag to control DTCP content protection
  *                               (@a true for enabled, @a false for disabled).
  * 
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -226,11 +233,12 @@ dsError_t  dsEnableDTCP(int handle, bool contentProtect);
  * @param[in] hdcpKey HDCP key.
  * @param[in] keySize HDCP key size.
  * 
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM If invalid HCDP key is used.
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetHDCPStatus(), dsIsHDCPEnabled()
@@ -250,9 +258,10 @@ dsError_t  dsEnableHDCP(int handle, bool contentProtect, char *hdcpKey, size_t k
  *                                    protection state on return (@a true when enabled,
  *                                    @a false otherwise).
  * 
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -270,9 +279,10 @@ dsError_t  dsIsDTCPEnabled (int handle, bool* pContentProtected);
  *                                    protection state on return (@a true when enabled,
  *                                    @a false otherwise).
  * 
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -291,9 +301,10 @@ dsError_t  dsIsHDCPEnabled (int handle, bool* pContentProtected);
  * @param[in] enabled     Flag to control the video port state 
  *                         (@a true to enable, @a false to disable)
  * 
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -313,9 +324,10 @@ dsError_t  dsEnableVideoPort(int handle, bool enabled);
  *                            resolution settings.
  * @param[in] persist        If ture, the settings will be persisted in local file if false, the value persisting will be ignored.
  * 
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -334,9 +346,10 @@ dsError_t  dsSetResolution(int handle, dsVideoPortResolution_t *resolution, bool
  * @param [out] resolution    The address of a structure containing the video output port
  *                            resolution settings.
  * 
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -351,9 +364,10 @@ dsError_t  dsGetResolution(int handle, dsVideoPortResolution_t *resolution);
  * 
  * @param[in] handle Handle of the video port.
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -368,9 +382,10 @@ dsError_t dsSetActiveSource(int handle);
  * This function must terminate all the video output ports. It must reset any data
  * structures used within video port module and release any video port specific handles.
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -387,9 +402,10 @@ dsError_t dsVideoPortTerm();
  *
  * @param[in] resolution Initialize the Video Resolution
  *                            
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -419,9 +435,10 @@ typedef void (*dsHDCPStatusCallback_t)(int handle, dsHdcpStatus_t status);
  * @param[in] handle Handle of the display device.
  * @param[in] cb     The callback function.
  * 
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -436,9 +453,10 @@ typedef void (*dsHDCPStatusCallback_t)(int handle, dsHdcpStatus_t status);
  * @param[in] handle Handle of the display device
  * @param[out] status HDCP status of the device.
  * 
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -454,9 +472,10 @@ dsError_t dsGetHDCPStatus (int handle, dsHdcpStatus_t *status);
  * @param[in] handle Handle of the display device.
  * @param [out] protocolVersion HDCP protocol version
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -472,9 +491,10 @@ dsError_t dsGetHDCPProtocol (int handle,dsHdcpProtocolVersion_t *protocolVersion
  * @param[in] handle Handle of the display device.
  * @param [out] protocolVersion HDCP protocol version
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -490,9 +510,10 @@ dsError_t dsGetHDCPReceiverProtocol (int handle,dsHdcpProtocolVersion_t *protoco
  * @param[in] handle Handle of the display device.
  * @param [out] protocolVersion HDCP protocol version
  * 
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -510,9 +531,10 @@ dsError_t dsGetHDCPCurrentProtocol (int handle,dsHdcpProtocolVersion_t *protocol
  * @param[in] handle   Handle for the video device (video decoder)
  * @param [out] capabilities OR-ed value of supported HDR standards.
  * 
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -529,9 +551,10 @@ dsError_t dsGetTVHDRCapabilities(int handle, int *capabilities);
  * @param[in] handle   Handle for the video device (video decoder)
  * @param [out] resolutions OR-ed value supported by TV.
  * 
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -548,9 +571,10 @@ dsError_t dsSupportedTvResolutions(int handle, int *resolutions);
  * @param[in] handle   Handle for the video device (video decoder)
  * @param [out] disable bool value to set the parameter.
  * 
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -568,9 +592,10 @@ dsError_t dsSetForceDisable4KSupport(int handle, bool disable);
  * @param[in] handle   Handle for the video device (video decoder)
  * @param [out] disable bool value to get the parameter.
  * 
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -603,9 +628,10 @@ dsError_t dsGetForceDisable4KSupport(int handle, bool *disable);
  * @param[in] parameter_str - a name of parameter
  * @param[in] value_str - a value of parameter
  * 
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -620,9 +646,10 @@ dsError_t dsSetScartParameter(int handle, const char* parameter_str, const char*
  * @param[in]  handle -  Handle of the display device.
  * @param[out] video_eotf - pointer to EOFF value
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -637,9 +664,10 @@ dsError_t dsGetVideoEOTF(int handle, dsHDRStandard_t *video_eotf);
  * @param[in]  handle -  Handle of the display device.
  * @param[out] matrix_coefficients - pointer to matrix coefficients value
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -654,9 +682,10 @@ dsError_t dsGetMatrixCoefficients(int handle, dsDisplayMatrixCoefficients_t *mat
  * @param[in]  handle -  Handle of the display device.
  * @param[out] color_depth - pointer to color depths value as defined in dsDisplayColorDepth_t.
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -671,9 +700,10 @@ dsError_t dsGetColorDepth(int handle, unsigned int* color_depth);
  * @param[in]  handle -  Handle of the display device.
  * @param[out] color_space - pointer to color space value.
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -688,9 +718,10 @@ dsError_t dsGetColorSpace(int handle, dsDisplayColorSpace_t* color_space);
  * @param[in]  handle -  Handle of the display device.
  * @param[out] quantization_range - pointer to quantization range value.
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -710,9 +741,10 @@ dsError_t dsGetQuantizationRange(int handle, dsDisplayQuantizationRange_t* quant
  * @param[out] color_depth - pointer to color depths value as defined in dsDisplayColorDepth_t.
  * @param[out] quantization_range - pointer to quantization range value.
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -729,9 +761,10 @@ dsError_t dsGetCurrentOutputSettings(int handle, dsHDRStandard_t* video_eotf, ds
  * @param[in] handle         Handle of the video port.
  * @param [out] hdr          Status of the output, ture if output is HDR, false if not.
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -745,9 +778,10 @@ dsError_t dsIsOutputHDR(int handle, bool *hdr);
  *
  * This function resets the video output to SDR
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -768,9 +802,10 @@ dsError_t dsResetOutputToSDR();
  *  dsHDCP_VERSION_2X,                < HDCP Protocol version 2.x
  *  dsHDCP_VERSION_MAX                < Maximum index for HDCP protocol.
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -793,9 +828,10 @@ dsError_t dsSetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentPr
  *  dsHDCP_VERSION_2X,                < HDCP Protocol version 2.x
  *  dsHDCP_VERSION_MAX                < Maximum index for HDCP protocol.
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -813,9 +849,10 @@ dsError_t dsGetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentPr
  * @param[in] handle                   Handle of the video port.
  * @param [out] status                 Status of IgnoreEDID variable, true if EDID data is Ignored false otherwise.
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -832,9 +869,10 @@ dsError_t dsGetIgnoreEDIDStatus(int handle, bool* status);
  * @param[in] handle                   Handle of the video port.
  * @param[in] color                    color to be set
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -851,9 +889,10 @@ dsError_t dsSetBackgroundColor(int handle, dsVideoBackgroundColor_t color);
  * @param[in] handle                   Handle of the video port.
  * @param[in] mode                   dsHDRStandard_t type
  *
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -870,9 +909,10 @@ dsError_t dsSetForceHDRMode(int handle, dsHDRStandard_t mode);
  * @param[in] handle   Handle for the video port.
  * @param [out] colorDepthCapability OR-ed value of supported color depth  standards as defined in dsDisplayColorDepth_t.
  * 
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -890,9 +930,10 @@ dsError_t dsColorDepthCapabilities(int handle, unsigned int *colorDepthCapabilit
  * @param [out] colorDepth color depth value as defined in dsDisplayColorDepth_t.
  * @param[in] persist  If ture, the settings will be persisted in local file if false, the value persisting will be ignored.
  * 
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
@@ -911,9 +952,10 @@ dsError_t dsGetPreferredColorDepth(int handle, dsDisplayColorDepth_t *colorDepth
  * @param[in] colorDepth color depth value as defined in dsDisplayColorDepth_t.
  * @param[in] persist  to persist value
  * 
- * @return dsError_t Error code.
+ * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL General failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.

@@ -1257,4 +1257,5 @@ typedef enum _dsAudioPortState {
 /** @} */
 /** @} */
 /** @} */
+/** @} */
 

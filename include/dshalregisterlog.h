@@ -40,7 +40,6 @@ extern "C"
  *
  * @param[in] cb        callback function
  *
- * @return void
  * @warning  This API is Not thread safe.
  */
 
