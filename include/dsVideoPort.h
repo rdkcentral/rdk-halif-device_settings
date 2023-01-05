@@ -47,6 +47,8 @@ extern "C" {
  *
  * HAL Implementation should call this method to deliver updated Video Format info
  * to the application
+ * 
+ * @param videoFormat New video format.
  *
  */
 typedef void (*dsVideoFormatUpdateCB_t)(dsHDRStandard_t videoFormat);
@@ -88,7 +90,7 @@ dsError_t  dsVideoPortInit();
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -108,7 +110,7 @@ dsError_t  dsGetVideoPort(dsVideoPortType_t type, int index, int *handle);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsEnableVideoPort()
@@ -129,7 +131,7 @@ dsError_t  dsIsVideoPortEnabled(int handle, bool *enabled);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -146,7 +148,7 @@ dsError_t  dsIsDisplayConnected(int handle, bool *connected);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -157,13 +159,13 @@ dsError_t  dsIsDisplaySurround(int handle, bool *surround);
  * @brief This function is used to get supported surround mode.
  *
  * @param[in]  handle Handle of the video port.
- * @param[out] surround mode.
+ * @param[out] surround mode as defined in dsSURROUNDMode_t.
  *
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -181,7 +183,7 @@ dsError_t  dsGetSurroundMode(int handle, int *surround);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -195,15 +197,15 @@ dsError_t  dsIsVideoPortActive(int handle, bool *active);
  * video port. Must return ::dsERR_OPERATION_NOT_SUPPORTED if DTCP content protection
  * is not available.
  *
- * @param [in] handle            Handle of the video  port.
- * @param [in] contentProtect    Flag to control DTCP content protection
+ * @param[in] handle            Handle of the video  port.
+ * @param[in] contentProtect    Flag to control DTCP content protection
  *                               (@a true for enabled, @a false for disabled).
  * 
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsIsDTCPEnabled()
@@ -227,7 +229,7 @@ dsError_t  dsEnableDTCP(int handle, bool contentProtect);
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @retval dsERR_INVALID_PARAM If invalid HCDP key is used.
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -243,7 +245,7 @@ dsError_t  dsEnableHDCP(int handle, bool contentProtect, char *hdcpKey, size_t k
  * content protection. It must return ::dsERR_OPERATION_NOT_SUPPORTED if content protection
  * is not supported.
  *
- * @param [in]  handle                Handle of the video port.
+ * @param[in]  handle                Handle of the video port.
  * @param [out] pContentProtected    The address of a location to hold the DTCP content
  *                                    protection state on return (@a true when enabled,
  *                                    @a false otherwise).
@@ -252,7 +254,7 @@ dsError_t  dsEnableHDCP(int handle, bool contentProtect, char *hdcpKey, size_t k
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsEnableDTCP()
@@ -272,7 +274,7 @@ dsError_t  dsIsDTCPEnabled (int handle, bool* pContentProtected);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsEnableHDCP()
@@ -285,15 +287,15 @@ dsError_t  dsIsHDCPEnabled (int handle, bool* pContentProtected);
  *
  * This function enables or disables the specified video port.
  *
- * @param [in] handle      Handle of the video port.
- * @param [in] enabled     Flag to control the video port state 
+ * @param[in] handle      Handle of the video port.
+ * @param[in] enabled     Flag to control the video port state 
  *                         (@a true to enable, @a false to disable)
  * 
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsIsVideoPortEnabled()
@@ -306,16 +308,16 @@ dsError_t  dsEnableVideoPort(int handle, bool enabled);
  *
  * This function sets the resolution for the video corresponding to the specified port handle.
  *
- * @param [in] handle         Handle of the video port.
- * @param [in] resolution    The address of a structure containing the video port
+ * @param[in] handle         Handle of the video port.
+ * @param[in] resolution    The address of a structure containing the video port
  *                            resolution settings.
- * @param [in] persist        In false state allows disabling persist of resolution value.
+ * @param[in] persist        If ture, the settings will be persisted in local file if false, the value persisting will be ignored.
  * 
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetResolution()
@@ -328,7 +330,7 @@ dsError_t  dsSetResolution(int handle, dsVideoPortResolution_t *resolution, bool
  *
  * This function Gets the resolution for the video corresponding to the specified port and index.
  *
- * @param [in] handle         Handle of the video output port.
+ * @param[in] handle         Handle of the video output port.
  * @param [out] resolution    The address of a structure containing the video output port
  *                            resolution settings.
  * 
@@ -336,7 +338,7 @@ dsError_t  dsSetResolution(int handle, dsVideoPortResolution_t *resolution, bool
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetResolution()
@@ -347,13 +349,13 @@ dsError_t  dsGetResolution(int handle, dsVideoPortResolution_t *resolution);
 /**
  * @brief Set the port to the active source.
  * 
- * @param [in] handle Handle of the video port.
+ * @param[in] handle Handle of the video port.
  *
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -370,7 +372,7 @@ dsError_t dsSetActiveSource(int handle);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsVideoPortInit()
@@ -383,13 +385,13 @@ dsError_t dsVideoPortTerm();
  *
  * This function Initialize the Video Resolution
  *
- * @param [in] resolution Initialize the Video Resolution
+ * @param[in] resolution Initialize the Video Resolution
  *                            
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -421,7 +423,7 @@ typedef void (*dsHDCPStatusCallback_t)(int handle, dsHdcpStatus_t status);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -438,7 +440,7 @@ typedef void (*dsHDCPStatusCallback_t)(int handle, dsHdcpStatus_t status);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsEnableHDCP()
@@ -449,14 +451,14 @@ dsError_t dsGetHDCPStatus (int handle, dsHdcpStatus_t *status);
 /**
  * @brief Get STB HDCP protocol version
  *
- * @param [in] handle Handle of the display device.
+ * @param[in] handle Handle of the display device.
  * @param [out] protocolVersion HDCP protocol version
  *
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsEnableHDCP()
@@ -467,14 +469,14 @@ dsError_t dsGetHDCPProtocol (int handle,dsHdcpProtocolVersion_t *protocolVersion
 /**
  * @brief Get Receiver/TV HDCP protocol version
  *
- * @param [in] handle Handle of the display device.
+ * @param[in] handle Handle of the display device.
  * @param [out] protocolVersion HDCP protocol version
  *
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsEnableHDCP()
@@ -485,14 +487,14 @@ dsError_t dsGetHDCPReceiverProtocol (int handle,dsHdcpProtocolVersion_t *protoco
 /**
  * @brief Get current used HDCP protocol version
  *
- * @param [in] handle Handle of the display device.
+ * @param[in] handle Handle of the display device.
  * @param [out] protocolVersion HDCP protocol version
  * 
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsEnableHDCP()
@@ -505,14 +507,14 @@ dsError_t dsGetHDCPCurrentProtocol (int handle,dsHdcpProtocolVersion_t *protocol
  *
  * This function is used to get the HDR capabilities supported by the TV.
  *
- * @param [in] handle   Handle for the video device (video decoder)
+ * @param[in] handle   Handle for the video device (video decoder)
  * @param [out] capabilities OR-ed value of supported HDR standards.
  * 
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -524,14 +526,14 @@ dsError_t dsGetTVHDRCapabilities(int handle, int *capabilities);
  *
  * This function is used to get the TV supported resolutions.
  *
- * @param [in] handle   Handle for the video device (video decoder)
+ * @param[in] handle   Handle for the video device (video decoder)
  * @param [out] resolutions OR-ed value supported by TV.
  * 
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -543,14 +545,14 @@ dsError_t dsSupportedTvResolutions(int handle, int *resolutions);
  *
  * This function is used to set Forcefully disable 4K support.
  *
- * @param [in] handle   Handle for the video device (video decoder)
+ * @param[in] handle   Handle for the video device (video decoder)
  * @param [out] disable bool value to set the parameter.
  * 
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetForceDisable4KSupport()
@@ -563,14 +565,14 @@ dsError_t dsSetForceDisable4KSupport(int handle, bool disable);
  *
  * This function is used to get status if the device is Forcefully disabled 4K support.
  *
- * @param [in] handle   Handle for the video device (video decoder)
+ * @param[in] handle   Handle for the video device (video decoder)
  * @param [out] disable bool value to get the parameter.
  * 
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetForceDisable4KSupport()
@@ -605,7 +607,7 @@ dsError_t dsGetForceDisable4KSupport(int handle, bool *disable);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -622,7 +624,7 @@ dsError_t dsSetScartParameter(int handle, const char* parameter_str, const char*
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -639,7 +641,7 @@ dsError_t dsGetVideoEOTF(int handle, dsHDRStandard_t *video_eotf);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -650,13 +652,13 @@ dsError_t dsGetMatrixCoefficients(int handle, dsDisplayMatrixCoefficients_t *mat
  * @brief Get current color depth value.
  *
  * @param[in]  handle -  Handle of the display device.
- * @param[out] color_depth - pointer to color depths value.
+ * @param[out] color_depth - pointer to color depths value as defined in dsDisplayColorDepth_t.
  *
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -673,7 +675,7 @@ dsError_t dsGetColorDepth(int handle, unsigned int* color_depth);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -690,7 +692,7 @@ dsError_t dsGetColorSpace(int handle, dsDisplayColorSpace_t* color_space);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -705,14 +707,14 @@ dsError_t dsGetQuantizationRange(int handle, dsDisplayQuantizationRange_t* quant
  * @param[out] video_eotf - pointer to EOFF value
  * @param[out] matrix_coefficients - pointer to matrix coefficients value
  * @param[out] color_space - pointer to color space value.
- * @param[out] color_depth - pointer to color depths value.
+ * @param[out] color_depth - pointer to color depths value as defined in dsDisplayColorDepth_t.
  * @param[out] quantization_range - pointer to quantization range value.
  *
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -724,14 +726,14 @@ dsError_t dsGetCurrentOutputSettings(int handle, dsHDRStandard_t* video_eotf, ds
  *
  * This function checks if the video output is HDR or not.
  *
- * @param [in] handle         Handle of the video port.
- * @param [out] hdr           The bool pointer
+ * @param[in] handle         Handle of the video port.
+ * @param [out] hdr          Status of the output, ture if output is HDR, false if not.
  *
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -747,7 +749,7 @@ dsError_t dsIsOutputHDR(int handle, bool *hdr);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -759,8 +761,8 @@ dsError_t dsResetOutputToSDR();
  *
  * This function sets the Preferred HDMI Protocol
  *
- * @param [in] handle                   Handle of the video port.
- * @param [in] hdcpCurrentProtocol     Address of the structure containing
+ * @param[in] handle                   Handle of the video port.
+ * @param[in] hdcpCurrentProtocol     Address of the structure containing
  *                                      HDCP Protocol version enums
  *  dsHDCP_VERSION_1X = 0,            < HDCP Protocol version 1.x
  *  dsHDCP_VERSION_2X,                < HDCP Protocol version 2.x
@@ -770,7 +772,7 @@ dsError_t dsResetOutputToSDR();
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetHdmiPreference()
@@ -784,7 +786,7 @@ dsError_t dsSetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentPr
  * This function gets the Preferred HDMI Protocol and updates the
  * *hdcpCurrentProtocol accordingly
  *
- * @param [in] handle                   Handle of the video port.
+ * @param[in] handle                   Handle of the video port.
  * @param [out] hdcpCurrentProtocol     Address of the structure containing
  *                                      HDCP Protocol version enums
  *  dsHDCP_VERSION_1X = 0,            < HDCP Protocol version 1.x
@@ -795,7 +797,7 @@ dsError_t dsSetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentPr
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetHdmiPreference()
@@ -808,14 +810,14 @@ dsError_t dsGetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentPr
  *
  * This API get the status variable to understand whether to ignore the EDID data or not for Sky Devices.
  *
- * @param [in] handle                   Handle of the video port.
- * @param [out] status                  Status of IgnoreEDID variable.
+ * @param[in] handle                   Handle of the video port.
+ * @param [out] status                 Status of IgnoreEDID variable, true if EDID data is Ignored false otherwise.
  *
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -827,14 +829,14 @@ dsError_t dsGetIgnoreEDIDStatus(int handle, bool* status);
  *
  * This function sets the background color for video port.
  *
- * @param [in] handle                   Handle of the video port.
- * @param [in] color                    color to be set
+ * @param[in] handle                   Handle of the video port.
+ * @param[in] color                    color to be set
  *
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -846,14 +848,14 @@ dsError_t dsSetBackgroundColor(int handle, dsVideoBackgroundColor_t color);
  *
  * This function set/reset force HDR mode for  video port.
  *
- * @param [in] handle                   Handle of the video port.
- * @param [in] mode                   dsHDRStandard_t type
+ * @param[in] handle                   Handle of the video port.
+ * @param[in] mode                   dsHDRStandard_t type
  *
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -865,14 +867,14 @@ dsError_t dsSetForceHDRMode(int handle, dsHDRStandard_t mode);
  *
  * This function is used to get the supported color depth capabilities.
  *
- * @param [in] handle   Handle for the video port.
- * @param [out] colorDepthCapability OR-ed value of supported color depth  standards.
+ * @param[in] handle   Handle for the video port.
+ * @param [out] colorDepthCapability OR-ed value of supported color depth  standards as defined in dsDisplayColorDepth_t.
  * 
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -884,15 +886,15 @@ dsError_t dsColorDepthCapabilities(int handle, unsigned int *colorDepthCapabilit
  *
  * This function is used to get the preffered color depth mode.
  *
- * @param [in] handle   Handle for the video port.
- * @param [out] colorDepth color depth value.
- * @param [in] persist persist the value or not.
+ * @param[in] handle   Handle for the video port.
+ * @param [out] colorDepth color depth value as defined in dsDisplayColorDepth_t.
+ * @param[in] persist  If ture, the settings will be persisted in local file if false, the value persisting will be ignored.
  * 
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetPreferredColorDepth()
@@ -905,15 +907,15 @@ dsError_t dsGetPreferredColorDepth(int handle, dsDisplayColorDepth_t *colorDepth
  *
  * This function is used to set the preffered color depth mode.
  *
- * @param [in] handle   Handle for the video port.
- * @param [in] colorDepth color depth value.
- * @param [in] persist  to persist value
+ * @param[in] handle   Handle for the video port.
+ * @param[in] colorDepth color depth value as defined in dsDisplayColorDepth_t.
+ * @param[in] persist  to persist value
  * 
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetPreferredColorDepth()

@@ -345,10 +345,10 @@ typedef int dsAudioCompressionValue_t;
  * @brief Structure that captures MS12 Audio Profile list 
  */
 
-#define MAX_PROFILE_LIST_BUFFER_LEN 1024
+#define DS_AUDIO_MAX_PROFILE_LIST_BUFFER_LEN 1024
 
 typedef struct _dsMS12AudioProfileList_t {
-    char audioProfileList[MAX_PROFILE_LIST_BUFFER_LEN];     // buffer containing the list of comma separated audio profile names (e.g: "Music,Movie,Voice,Night")
+    char audioProfileList[DS_AUDIO_MAX_PROFILE_LIST_BUFFER_LEN];     // buffer containing the list of comma separated audio profile names (e.g: "Music,Movie,Voice,Night")
     int audioProfileCount;                     		   // Total number of profiles
 } dsMS12AudioProfileList_t;
 

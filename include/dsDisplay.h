@@ -118,7 +118,7 @@ dsError_t dsDisplayInit();
  * @retval dsERR_NONE If successfully dsGetDisplay api has been called.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsDisplayInit() or  preceding dsDisplayInit has failed
  * @pre  dsDisplayInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -139,7 +139,7 @@ dsError_t dsDisplayInit();
  * @retval dsERR_NONE If successfully dsGetEDID api has been called.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsDisplayInit() or  preceding dsDisplayInit has failed
  * @pre  dsDisplayInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -162,7 +162,7 @@ dsError_t dsGetEDID(int handle, dsDisplayEDID_t *edid);
  * @retval dsERR_NONE If successfully dsGetEDIDBytes api has been called.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsDisplayInit() or  preceding dsDisplayInit has failed
  * @pre  dsDisplayInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -181,7 +181,7 @@ dsError_t dsGetEDIDBytes(int handle, unsigned char **edid, int *length);
  * @retval dsERR_NONE If successfully dsGetDisplayAspectRatio api has been called.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsDisplayInit() or  preceding dsDisplayInit has failed
  * @pre  dsDisplayInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -195,8 +195,7 @@ dsError_t dsGetDisplayAspectRatio(int handle, dsVideoAspectRatio_t *aspectRatio)
  * @return Device Settings error code
  * @retval dsERR_NONE If successfully dsDisplayTerm api has been called.
  * @retval dsERR_GENERAL General failure.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsDisplayInit() or  preceding dsDisplayInit has failed
  * @pre  dsDisplayInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsDisplayInit()
@@ -221,7 +220,7 @@ dsError_t dsDisplayTerm();
  * @retval dsERR_NONE If successfully dsRegisterDisplayEventCallback api has been called.
  * @retval dsERR_GENERAL General failure. 
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsDisplayInit() or  preceding dsDisplayInit has failed
  * @warning  This API is Not thread safe.
  */
 

@@ -76,7 +76,7 @@ dsError_t  dsVideoDeviceInit();
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoDeviceInit() or  preceding dsVideoDeviceInit has failed
  * @pre dsVideoDeviceInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -93,7 +93,7 @@ dsError_t  dsGetVideoDevice(int index, int *handle);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoDeviceInit() or  preceding dsVideoDeviceInit has failed
  * @pre dsVideoDeviceInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetDFC()
@@ -111,7 +111,7 @@ dsError_t  dsSetDFC(int handle, dsVideoZoom_t dfc);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoDeviceInit() or  preceding dsVideoDeviceInit has failed
  * @pre dsVideoDeviceInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetDFC()
@@ -127,7 +127,7 @@ dsError_t  dsGetDFC(int handle, dsVideoZoom_t *dfc);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoDeviceInit() or  preceding dsVideoDeviceInit has failed
  * @pre dsVideoDeviceInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsVideoDeviceInit()
@@ -140,13 +140,13 @@ dsError_t  dsVideoDeviceTerm();
  * 
  * This function is used to check which HDR capabilities the SoC supports
  *
- * @param [in] handle   Handle for the video device (video decoder)
- * @param [out] capabilities Combined values of all supported HDR standards.
+ * @param[in] handle   Handle for the video device (video decoder)
+ * @param [out] capabilities OR-ed values of all supported HDR standards as defined in dsHDRStandard_t
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoDeviceInit() or  preceding dsVideoDeviceInit has failed
  * @pre dsVideoDeviceInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -158,14 +158,14 @@ dsError_t dsGetHDRCapabilities(int handle, int *capabilities);
  *
  * This function is used to check which video formats the SoC supports
  *
- * @param [in]   handle              Handle for the video device (video decoder)
- * @param [out]  supported_formats   Combined values of all the supported video codec formats.
+ * @param[in]   handle              Handle for the video device (video decoder)
+ * @param [out]  supported_formats   OR-ed values of all the supported video codec formats as defined in dsVideoCodingFormat_t
  *
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoDeviceInit() or  preceding dsVideoDeviceInit has failed
  * @pre dsVideoDeviceInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -175,15 +175,15 @@ dsError_t dsGetSupportedVideoCodingFormats(int handle, unsigned int * supported_
 /**
  * @brief This API is used to get the video codec information.
  *
- * @param [in]   handle  Handle for the video device (video decoder)
- * @param [in]   codec   OR-ed value of supported video codec formats.
+ * @param[in]   handle  Handle for the video device (video decoder)
+ * @param[in]   codec   OR-ed value of supported video codec formats.
  * @param [out]  info    Video codec information like profile, level etc.
  *
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoDeviceInit() or  preceding dsVideoDeviceInit has failed
  * @pre dsVideoDeviceInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -193,14 +193,14 @@ dsError_t dsGetVideoCodecInfo(int handle, dsVideoCodingFormat_t codec, dsVideoCo
 /**
  * @brief This API is used to forcefully disable the HDR support of the device
  *
- * @param [in]   handle  Handle for the video device (video decoder)
- * @param [in]   disable Boolean value to force diableHDR or not.
+ * @param[in]   handle  Handle for the video device (video decoder)
+ * @param[in]   disable Boolean value to force diableHDR or not.
  *
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoDeviceInit() or  preceding dsVideoDeviceInit has failed
  * @pre dsVideoDeviceInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -209,14 +209,14 @@ dsError_t dsForceDisableHDRSupport(int handle, bool disable);
 /**
  * @brief This API is used to set the FRF mode of the device
  *
- * @param [in]   handle  Handle for the video device (video decoder)
- * @param [in]   frfmode integer with corresponding FRF value.
+ * @param[in]   handle  Handle for the video device (video decoder)
+ * @param[in]   frfmode integer with corresponding Framerate value.
  *
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoDeviceInit() or  preceding dsVideoDeviceInit has failed
  * @pre dsVideoDeviceInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetFRFMode()
@@ -227,14 +227,14 @@ dsError_t dsSetFRFMode(int handle, int frfmode);
 /**
  * @brief This API is used to get the FRF mode of the device
  *
- * @param [in]   handle  Handle for the video device (video decoder)
- * @param [out]  frfmode integer with corresponding FRF value of the device.
+ * @param[in]   handle  Handle for the video device (video decoder)
+ * @param [out]  frfmode integer with corresponding Framerate value of the device.
  *
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoDeviceInit() or  preceding dsVideoDeviceInit has failed
  * @pre dsVideoDeviceInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetFRFMode()
@@ -242,16 +242,16 @@ dsError_t dsSetFRFMode(int handle, int frfmode);
 dsError_t dsGetFRFMode(int handle, int *frfmode);
 
 /**
- * @brief This API is used to get the FRF mode of the device
+ * @brief This API is used to get the current Framerate of the device
  *
- * @param [in]   handle  Handle for the video device (video decoder)
- * @param [out]  framerate integer with corresponding FRF value of the device.
+ * @param[in]   handle  Handle for the video device (video decoder)
+ * @param [out]  framerate Byte with corresponding freamrate value of the device.
  *
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoDeviceInit() or  preceding dsVideoDeviceInit has failed
  * @pre dsVideoDeviceInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetDisplayframerate()
@@ -262,14 +262,14 @@ dsError_t dsGetCurrentDisplayframerate(int handle, char *framerate);
 /**
  * @brief This API is used to set the display framerate for the device.
  *
- * @param [in]  handle  Handle for the video device (video decoder)
- * @param [in]  framerate Provides the display framerate value to be set.
+ * @param[in]  handle  Handle for the video device (video decoder)
+ * @param[in]  framerate Provides the display framerate value to be set.
  *
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoDeviceInit() or  preceding dsVideoDeviceInit has failed
  * @pre dsVideoDeviceInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetCurrentDisplayframerate()
@@ -278,7 +278,7 @@ dsError_t dsSetDisplayframerate(int handle, char *framerate);
 
 /**
  * @brief Call back function to called while the framerate change event is detected.
- *
+ * @param tSecond Time in seconds before the frame rate change occurs.
  */
 typedef void (*dsRegisterFrameratePreChangeCB_t)(unsigned int tSecond);
 
@@ -286,13 +286,13 @@ typedef void (*dsRegisterFrameratePreChangeCB_t)(unsigned int tSecond);
 /**
  * @brief This API is used to register the callback funciton for Display framerate pre change event.
  *
- * @param [in]   CBFunc  Function to be registered for the event.
+ * @param[in]   CBFunc  Function to be registered for the event.
  *
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoDeviceInit() or  preceding dsVideoDeviceInit has failed
  * @pre dsVideoDeviceInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -301,6 +301,7 @@ dsError_t dsRegisterFrameratePreChangeCB(dsRegisterFrameratePreChangeCB_t CBFunc
 
 /**
  * @brief Call back function to be called after the framerate change is done.
+ * @param tSecond Time in seconds before the frame rate change occurs.
  *
  */
 typedef void (*dsRegisterFrameratePostChangeCB_t)(unsigned int tSecond);
@@ -309,13 +310,13 @@ typedef void (*dsRegisterFrameratePostChangeCB_t)(unsigned int tSecond);
 /**
  * @brief This API is used to register the callback funciton for Display framerate post change event.
  *
- * @param [in]   CBFunc  Function to be registered for the event.
+ * @param[in]   CBFunc  Function to be registered for the event.
  *
  * @return dsError_t Error code.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoDeviceInit() or  preceding dsVideoDeviceInit has failed
  * @pre dsVideoDeviceInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */

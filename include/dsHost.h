@@ -79,7 +79,8 @@ extern "C" {
  *
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
+ * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
  * @warning  This API is Not thread safe.
  * @see dsHostTerm()
  */
@@ -96,9 +97,10 @@ dsError_t dsHostInit();
  *
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
+ * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHostInit() or  preceding dsHostInit has failed
  *
  * @note dsPOWER_OFF is not currently being used.
  * @pre dsHostInit() should be called before calling this API.
@@ -121,9 +123,10 @@ dsError_t dsSetHostPowerMode(int newPower);
  *
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
+ * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHostInit() or  preceding dsHostInit has failed
  * @pre dsHostInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetHostPowerMode()
@@ -139,9 +142,10 @@ dsError_t dsGetHostPowerMode(int *currPower);
  *
  * @return Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure.
+ * @retval dsERR_GENERAL Indicates error due to general failure. Usually all of the return code will
+ * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHostInit() or  preceding dsHostInit has failed
  * @pre dsHostInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsHostInit()
@@ -158,7 +162,7 @@ dsError_t dsHostTerm();
  * @retval dsERR_NONE If sucessfully dsGetPreferredSleepMode api has been called using IARM support.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHostInit() or  preceding dsHostInit has failed
  * @pre dsHostInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetPreferredSleepMode()
@@ -175,7 +179,7 @@ dsError_t dsGetPreferredSleepMode(dsSleepMode_t *pMode);
  * @retval dsERR_NONE If sucessfully dsSetPreferredSleepMode api has been called using IARM support.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHostInit() or  preceding dsHostInit has failed
  * @pre dsHostInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetPreferredSleepMode()
@@ -186,13 +190,13 @@ dsError_t dsSetPreferredSleepMode(dsSleepMode_t mode);
 /**
  * @brief This function gets the CPU temperature in centrigade.
  *
- * @param[in] cpuTemperature The address of a location to hold the CPU Temperature
+ * @param[out] cpuTemperature CPU temperature value is obtained in centigrade 
  *
  * @return Device Settings error code
  * @retval dsERR_NONE If sucessfully dsGetCPUTemperature api has been called using IARM support.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHostInit() or  preceding dsHostInit has failed
  * @pre dsHostInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -205,13 +209,14 @@ dsError_t dsGetCPUTemperature(float *cpuTemperature);
  * In 4 byte VersionNumber, Two Most significant Bytes are Major number
  * and Two Least Significant Bytes are minor number.
  *
- * @param[out] versionNumber 4 Bytes of version number of DS HAL
+ * @param[out] versionNumber 4 Bytes of version number of DS HAL. In 4 byte VersionNumber, Two Most significant Bytes are Major number 
+ * and Two Least Significant Bytes are minor number.
  *
- * @return Returns 4 byte Version Number
+ * @return Device Settings error code
  * @retval dsERR_NONE Successfully got the version number from dsHAL.
  * @retval dsERR_GENERAL Failed to get the version number.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHostInit() or  preceding dsHostInit has failed
  * @pre dsHostInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetVersion()
@@ -222,13 +227,14 @@ dsError_t dsGetVersion(uint32_t *versionNumber);
 /**
  * @brief Allows the application to set the runtime version of the dsHAL
  *
- * @param[in] versionNumber  4 Bytes of version number of DS HAL
+ * @param[in] versionNumber  4 Bytes of version number of DS HAL.In 4 byte VersionNumber, Two Most significant Bytes are Major number 
+ * and Two Least Significant Bytes are minor number.
  *
  * @return Device Settings error code
  * @retval dsERR_NONE Successfully set the version for dsHAL.
  * @retval dsERR_GENERAL Failed to set the version.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHostInit() or  preceding dsHostInit has failed
  * @pre dsHostInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetVersion()
@@ -239,10 +245,10 @@ dsError_t dsSetVersion(uint32_t versionNumber);
 /**
  * @brief This function returns SOC ID
  *
- * @param[in] socID       The address of a location to hold SOC ID
+ * @param[out] socID        8 byte Chip ID programmed to the CHIP Ont Time Programmable area.
  *
  * @return Device Settings error code
- * @retval dsERR_NONE If sucessfully dsSetPreferredSleepMode api has been called using IARM support.
+ * @retval dsERR_NONE If sucessfully executed.
  * @retval dsERR_UNKNOWN General failure.
  * @pre dsHostInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -260,7 +266,7 @@ dsError_t dsGetSocIDFromSDK(char *socID);
  * @retval dsERR_NONE If sucessfully dsGetHostEDID api has been called using IARM support.
  * @retval dsERR_GENERAL General failure.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
- * @retval dsERR_INVALID_STATE Indicates error due to invlaid state of the object/library
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHostInit() or  preceding dsHostInit has failed
  * @pre dsHostInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
