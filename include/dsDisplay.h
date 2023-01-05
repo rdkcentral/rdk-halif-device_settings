@@ -174,7 +174,7 @@ dsError_t dsGetEDID(int handle, dsDisplayEDID_t *edid);
 dsError_t dsGetEDIDBytes(int handle, unsigned char **edid, int *length);
 
 /**
- * @brief This function gets the aspect ratio for the dsiaply device.
+ * @brief This function gets the aspect ratio for the display device.
  * This function returns the aspect ratio of the display corresponding to the specified display device handle.
  *
  * @param[in]  handle         Handle of the display device.

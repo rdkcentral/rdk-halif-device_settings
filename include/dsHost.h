@@ -189,7 +189,7 @@ dsError_t dsGetPreferredSleepMode(dsSleepMode_t *pMode);
 dsError_t dsSetPreferredSleepMode(dsSleepMode_t mode);
 
 /**
- * @brief This function gets the CPU temperature in centrigade.
+ * @brief This function gets the CPU temperature in centigrade.
  *
  * @param[out] cpuTemperature CPU temperature value is obtained in centigrade 
  *

@@ -67,7 +67,7 @@ static const dsVideoZoom_t kDefaultDFC 	   = dsVIDEO_ZOOM_FULL;
 static const int kNumVideoDevices = 1;
 
 /**
- * @brief A static constatnt array of the device configuration
+ * @brief A static constant array of the device configuration
  *
  * The variable is accessible only within the current translation unit and the
  * values cannot be modified at runtime.

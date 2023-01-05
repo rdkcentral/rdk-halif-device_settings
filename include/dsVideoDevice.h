@@ -257,7 +257,7 @@ dsError_t dsGetFRFMode(int handle, int *frfmode);
  * @brief This API is used to get the current Framerate of the device
  *
  * @param[in]   handle  Handle for the video device (video decoder)
- * @param [out]  framerate Byte with corresponding freamrate value of the device.
+ * @param [out]  framerate Byte with corresponding frame rate value of the device.
  *
  * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
@@ -299,7 +299,7 @@ typedef void (*dsRegisterFrameratePreChangeCB_t)(unsigned int tSecond);
 
 
 /**
- * @brief This API is used to register the callback funciton for the Display framerate pre change event.
+ * @brief This API is used to register the callback function for the Display framerate pre change event.
  *
  * @param[in]   CBFunc  Function callback to register for the event.
  *

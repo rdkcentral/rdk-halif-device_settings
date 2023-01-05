@@ -529,7 +529,7 @@ dsError_t dsSetEdidVersion (int iHdmiPort, int iEdidVersion);
 dsError_t dsGetEdidVersion (int iHdmiPort, int *iEdidVersion);
 
 /**
- * @brief Routien to get all the mstatus
+ * @brief Routine to get all the mstatus
  *
  * This function is used to get the all mstatus details of the specific port
  *

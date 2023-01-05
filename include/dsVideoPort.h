@@ -712,7 +712,7 @@ dsError_t dsGetColorSpace(int handle, dsDisplayColorSpace_t* color_space);
  
 
 /**
- * @brief Get quatization range.
+ * @brief Get quantization range.
  *
  * @param[in]  handle -  Handle of the display device.
  * @param[out] quantization_range - pointer to quantization range value.
@@ -927,7 +927,7 @@ dsError_t dsColorDepthCapabilities(int handle, unsigned int *colorDepthCapabilit
  *
  * @param[in] handle   Handle for the video port.
  * @param [out] colorDepth color depth value as defined in dsDisplayColorDepth_t.
- * @param[in] persist  If ture, the settings will be persisted in local file if false, the value persisting will be ignored.
+ * @param[in] persist  If true, the settings will be persisted in local file if false, the value persisting will be ignored.
  * 
  * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.

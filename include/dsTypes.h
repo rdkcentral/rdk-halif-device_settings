@@ -64,7 +64,7 @@
  * The RDK Device Settings (DS) component is a cross-platform library for controlling
  * STB platform hardware configuration. The areas controlled by the DS component are:
  *  - Audio output ports (volume, mute, etc.),
- *  - Video ouptut ports (resolutions, aspect ratio, etc.),
+ *  - Video output ports (resolutions, aspect ratio, etc.),
  *  - Video device (zoom settings)
  *  - Display (aspect ratio, EDID data, etc.),
  *  - Front-panel indicators,
@@ -158,7 +158,7 @@
 #define dsAudioPORT_NUM_MAX 4          /**< Maximum number of audio output ports.         */
 
 /**
- * @brief This enumeration defines the type of output audio port that are avaiable.
+ * @brief This enumeration defines the type of output audio port that are available.
  */
 
 typedef enum _dsAudioPortType_t{
@@ -468,7 +468,7 @@ typedef enum _dsVideoPortType_t {
 } dsVideoPortType_t;
 
 /**
- * Video ouptut port type validation check.
+ * Video output port type validation check.
  */
 
 #define dsVideoPortType_isValid(t)  (((t) >= dsVIDEOPORT_TYPE_RF ) && ((t) < dsVIDEOPORT_TYPE_MAX))
@@ -486,7 +486,7 @@ typedef enum _dsVideoResolution_t{
     dsVIDEO_PIXELRES_3840x2160,   /**< 3840x2160 Resolution.                       */
     dsVIDEO_PIXELRES_4096x2160,   /**< 3840x2160 Resolution.                       */
 
-    dsVIDEO_PIXELRES_MAX         /**< Maximum index for Video ouptut resolutions. */
+    dsVIDEO_PIXELRES_MAX         /**< Maximum index for Video output resolutions. */
 }dsVideoResolution_t;
 
 /**
