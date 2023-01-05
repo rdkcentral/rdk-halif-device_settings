@@ -138,7 +138,7 @@ dsError_t  dsGetAudioEncoding(int handle, dsAudioEncoding_t *encoding);
  * @param[out] audioFormat Pointer to hold the audio format.
  *
  * @return dsError_t - Device Settings error code
- * @retval dsERR_OPERATION_NOT_SUPPORTED Indicates dsGetAudioFormat call is not implemented.
+ * @retval dsERR_OPERATION_NOT_SUPPORTED Indicates dsGetAudioFormat call is not supported.
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
