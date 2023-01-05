@@ -306,7 +306,6 @@ typedef void (*dsHdmiInSignalChangeCB_t)(dsHdmiInPort_t port, dsHdmiInSignalStat
  * to the application (e.g. port, isPresented(true/false) etc. for HDMI In ports).
  * @param[in] inputStatus Present hdmi input status
  *
- * @param inputStatus New status of the HDMI input port.
  */
 
 typedef void (*dsHdmiInStatusChangeCB_t)(dsHdmiInStatus_t inputStatus);
