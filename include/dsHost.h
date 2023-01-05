@@ -80,7 +80,7 @@ extern "C" {
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
+ * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @warning  This API is Not thread safe.
  * @see dsHostTerm()
  */
@@ -98,7 +98,7 @@ dsError_t dsHostInit();
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
+ * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  Init or  preceding Init has failed
  *
@@ -115,7 +115,7 @@ dsError_t dsSetHostPowerMode(int newPower);
  *
  * This function gets the current power mode of the host. 
  *
- * @param[out] currPower  The address of a location to hold the host's current power
+ * @param[out] currPower  current power state of the system.
  *                        mode on return. It returns one of:
  *                              - ::dsPOWER_OFF
  *                              - ::dsPOWER_STANDBY
@@ -124,7 +124,7 @@ dsError_t dsSetHostPowerMode(int newPower);
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
+ * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  Init or  preceding Init has failed
  * @pre dsHostInit() should be called before calling this API.
@@ -142,9 +142,9 @@ dsError_t dsGetHostPowerMode(int *currPower);
  *
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
- * be initialized with this value. So any of the undefined error scenario in HAL will report this error code.
+ * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
+ * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHostInit() or  preceding dsHostInit has failed
  * @pre dsHostInit() should be called before calling this API.
@@ -157,7 +157,7 @@ dsError_t dsHostTerm();
 /**
  * @brief This function returns the preferred sleep mode which is persisted.
  *
- * @param[out] pMode      Data will be copied to this. This shall be preallocated before the call.
+ * @param[out] pMode      Current preferred sleep mode settings of the device.
  *
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE If sucessfully dsGetPreferredSleepMode api has been called.
@@ -172,9 +172,9 @@ dsError_t dsHostTerm();
 dsError_t dsGetPreferredSleepMode(dsSleepMode_t *pMode);
 
 /**
- * @brief This function sets the preferred sleep mode which needs to be persisted.
+ * @brief This function sets the preferred sleep mode. This value will persisted across reboots.
  *
- * @param[in] mode        Sleep mode that is expected to be persisted.
+ * @param[in] mode        Sleep mode to set.
  *
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE If sucessfully dsSetPreferredSleepMode api has been called.
@@ -246,7 +246,7 @@ dsError_t dsSetVersion(uint32_t versionNumber);
 /**
  * @brief This function returns SOC ID
  *
- * @param[out] socID        8 byte Chip ID programmed to the CHIP Ont Time Programmable area.
+ * @param[out] socID        8 byte Chip ID programmed to the CHIP One Time Programmable area.
  *
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE If sucessfully dsSetPreferredSleepMode api has been called.

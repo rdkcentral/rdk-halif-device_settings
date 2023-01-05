@@ -72,7 +72,7 @@ typedef enum _dsDisplayEvent_t {
 /**
  * @brief Callback function used to notify applications of display events.
  * 
- * HAL Implementation should call this method to delivery display events
+ * HAL Implementation should call this method to sent the display events
  * to the application (e.g. connected, disconnected).
  *
  * @param[in]  handle     Handle of the display device.
@@ -97,7 +97,7 @@ typedef void (*dsDisplayEventCallback_t)(int handle, dsDisplayEvent_t event, voi
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE If successfully dsDisplayInit api has been called.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
+ * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @warning  This API is Not thread safe.
  * @see dsDisplayTerm()
  */
@@ -118,7 +118,7 @@ dsError_t dsDisplayInit();
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE If successfully dsGetDisplay api has been called.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
+ * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsDisplayInit() or  preceding dsDisplayInit has failed
  * @pre  dsDisplayInit() should be called before calling this API.
@@ -140,7 +140,7 @@ dsError_t dsDisplayInit();
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE If successfully dsGetEDID api has been called.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
+ * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsDisplayInit() or  preceding dsDisplayInit has failed
  * @pre  dsDisplayInit() should be called before calling this API.
@@ -150,7 +150,7 @@ dsError_t dsDisplayInit();
 dsError_t dsGetEDID(int handle, dsDisplayEDID_t *edid);
 
 /**
- * @brief This function is used to get the EDID buffer and length of the connected display.
+ * @brief This function is used to get the EDID buffer and its size of the connected display.
  *
  * @param[in] handle    Handle for the video display. This must be HDMI output
  *                      handle.
@@ -164,7 +164,7 @@ dsError_t dsGetEDID(int handle, dsDisplayEDID_t *edid);
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE If successfully dsGetEDIDBytes api has been called.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
+ * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsDisplayInit() or  preceding dsDisplayInit has failed
  * @pre  dsDisplayInit() should be called before calling this API.
@@ -184,7 +184,7 @@ dsError_t dsGetEDIDBytes(int handle, unsigned char **edid, int *length);
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE If successfully dsGetDisplayAspectRatio api has been called.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code.
+ * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsDisplayInit() or  preceding dsDisplayInit has failed
  * @pre  dsDisplayInit() should be called before calling this API.
@@ -211,7 +211,7 @@ dsError_t dsDisplayTerm();
 /**
  * @brief Register a callback function to listen for display events.
  *
- * This function registers a callback function for display events corresponding to
+ * This function registers a callback function to get display events from HAL, corresponding to
  * the specified display device handle.
  * 
  * @note Application should install at most one callback function per handle.
@@ -224,7 +224,7 @@ dsError_t dsDisplayTerm();
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE If successfully dsRegisterDisplayEventCallback api has been called.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So any of the undefined error scenario in the HAL code, will report this error code. 
+ * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code. 
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsDisplayInit() or  preceding dsDisplayInit has failed
  * @warning  This API is Not thread safe.
