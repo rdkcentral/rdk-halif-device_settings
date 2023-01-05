@@ -71,7 +71,7 @@ dsError_t dsFPInit (void);
  * @retval dsERR_NONE Indicates dsSetFPBlink API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsFPInit() or  preceding dsFPInit has failed
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -93,7 +93,7 @@ dsError_t dsSetFPBlink (dsFPDIndicator_t eIndicator, unsigned int uBlinkDuration
  * @retval dsERR_NONE Indicates dsSetFPBrightness API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsFPInit() or  preceding dsFPInit has failed
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -113,7 +113,7 @@ dsError_t dsSetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t eBri
  * @retval dsERR_NONE Indicates dsGetFPState API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsFPInit() or  preceding dsFPInit has failed
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -133,7 +133,7 @@ dsError_t dsGetFPState(dsFPDIndicator_t eIndicator, dsFPDState_t* state);
  * @retval dsERR_NONE Indicates dsSetFPState API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsFPInit() or  preceding dsFPInit has failed
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -155,7 +155,7 @@ dsError_t dsSetFPState(dsFPDIndicator_t eIndicator, dsFPDState_t state);
  * @retval dsERR_NONE Indicates dsGetFPBrightness API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsFPInit() or  preceding dsFPInit has failed
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -178,7 +178,7 @@ dsError_t dsGetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t *pBr
  * @retval dsERR_NONE Indicates dsGetFPColor API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsFPInit() or  preceding dsFPInit has failed
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -201,7 +201,7 @@ dsError_t dsGetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t *pColor);
  * @retval dsERR_NONE Indicates dsSetFPColor API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsFPInit() or  preceding dsFPInit has failed
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -227,7 +227,7 @@ dsError_t dsSetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t eColor);
  * @retval dsERR_NONE Indicates dsSetFPTime API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsFPInit() or  preceding dsFPInit has failed
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -248,7 +248,7 @@ dsError_t dsSetFPTime (dsFPDTimeFormat_t eTimeFormat, const unsigned int uHour, 
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates dsSetFPText API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsFPInit() or  preceding dsFPInit has failed
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -270,7 +270,7 @@ dsError_t dsSetFPText(const char* pText);
  * @retval dsERR_NONE Indicates dsSetFPTextBrightness API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsFPInit() or  preceding dsFPInit has failed
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -293,7 +293,7 @@ dsError_t dsSetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_
  * @retval dsERR_NONE Indicates dsGetFPTextBrightness API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsFPInit() or  preceding dsFPInit has failed
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -314,7 +314,7 @@ dsError_t dsGetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_
  * @retval dsERR_NONE Indicates dsFPEnableCLockDisplay API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsFPInit() or  preceding dsFPInit has failed
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -336,7 +336,7 @@ dsError_t dsFPEnableCLockDisplay (int enable);
  * @retval dsERR_NONE Indicates dsSetFPScroll API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsFPInit() or  preceding dsFPInit has failed
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -354,7 +354,7 @@ dsError_t dsSetFPScroll(unsigned int uScrollHoldOnDur, unsigned int uHorzScrollI
  * @retval dsERR_NONE Indicates dsFPTerm API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsFPInit() or  preceding dsFPInit has failed
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -376,7 +376,7 @@ dsError_t dsFPTerm(void);
  * @retval dsERR_NONE Indicates dsSetFPBrightness API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsFPInit() or  preceding dsFPInit has failed
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -399,7 +399,7 @@ dsError_t dsSetFPDBrightness(dsFPDIndicator_t eIndicator, dsFPDBrightness_t eBri
  * @retval dsERR_NONE Indicates dsSetFPColor API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsFPInit() or  preceding dsFPInit has failed
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -417,7 +417,7 @@ dsError_t dsSetFPDColor (dsFPDIndicator_t eIndicator, dsFPDColor_t eColor,bool t
  * @retval dsERR_NONE Indicates dsSetFPTime API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsFPInit() or  preceding dsFPInit has failed
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -435,7 +435,7 @@ dsError_t dsSetFPTimeFormat (dsFPDTimeFormat_t eTimeFormat);
  * @retval dsERR_NONE Indicates dsGetFPBrightness API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsFPInit() or  preceding dsFPInit has failed
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -453,7 +453,7 @@ dsError_t dsGetFPTimeFormat (dsFPDTimeFormat_t *pTimeFormat);
  * @retval dsERR_NONE Indicates dsSetFPDMode API was successfully called.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsFPInit() or  preceding dsFPInit has failed
  * @pre dsFPInit() should be called before calling this API.
  * @warning  This API is Not thread safe.

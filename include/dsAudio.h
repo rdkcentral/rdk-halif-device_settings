@@ -45,7 +45,7 @@ extern "C" {
  * HAL Implementation should call this method to deliver updated Audio port connection event
  * to the application
  * @param[in] portType : Type of the audio port where connection status is changed.
- * @param[in] uiPortNo : Port number in which the conntion status changed.
+ * @param[in] uiPortNo : Port number in which the connection status changed.
  * @param[in] isPortCon : Current connection status of the port.
  */
 
@@ -99,7 +99,7 @@ dsError_t  dsAudioPortInit();
  * @retval dsERR_NONE Indicates the call was successful. 
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -120,7 +120,7 @@ dsError_t  dsGetAudioPort(dsAudioPortType_t type, int index, int *handle);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -142,7 +142,7 @@ dsError_t  dsGetAudioEncoding(int handle, dsAudioEncoding_t *encoding);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -163,7 +163,7 @@ dsError_t  dsGetAudioFormat(int handle, dsAudioFormat_t *audioFormat);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -185,7 +185,7 @@ dsError_t  dsGetAudioCompression(int handle, int *compression);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -207,7 +207,7 @@ dsError_t  dsGetDialogEnhancement(int handle, int *level);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -230,7 +230,7 @@ dsError_t  dsGetDolbyVolumeMode(int handle, bool *mode);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -251,7 +251,7 @@ dsError_t  dsGetIntelligentEqualizerMode(int handle, int *mode);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -272,7 +272,7 @@ dsError_t  dsGetVolumeLeveller(int handle, dsVolumeLeveller_t* volLeveller);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -293,7 +293,7 @@ dsError_t  dsGetBassEnhancer(int handle, int *boost);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -314,7 +314,7 @@ dsError_t  dsIsSurroundDecoderEnabled(int handle, bool *enabled);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -335,7 +335,7 @@ dsError_t  dsGetDRCMode(int handle, int *mode);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -356,7 +356,7 @@ dsError_t  dsGetSurroundVirtualizer(int handle, dsSurroundVirtualizer_t *virtual
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -377,7 +377,7 @@ dsError_t  dsGetMISteering(int handle, bool *enabled);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -398,7 +398,7 @@ dsError_t  dsGetGraphicEqualizerMode(int handle, int *mode);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -419,7 +419,7 @@ dsError_t  dsGetMS12AudioProfileList(int handle, dsMS12AudioProfileList_t* profi
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -440,7 +440,7 @@ dsError_t  dsGetMS12AudioProfile(int handle, char *profile);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -462,7 +462,7 @@ dsError_t dsGetSupportedARCTypes(int handle, int *types);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -482,7 +482,7 @@ dsError_t dsAudioSetSAD(int handle, dsAudioSADList_t sad_list);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -503,7 +503,7 @@ dsError_t dsAudioEnableARC(int handle, dsAudioARCStatus_t arcStatus);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -523,7 +523,7 @@ dsError_t  dsGetStereoMode(int handle, dsAudioStereoMode_t *stereoMode);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -538,13 +538,13 @@ dsError_t  dsGetStereoAuto(int handle, int *autoMode);
  * This function returns the current audio gain for the specified audio port.
  *
  * @param[in] handle Handle for the output audio port.
- * @param[out] gain Pointer to hold the gain value value from -2080 to 480 of the specified audio port. 
+ * @param[out] gain Pointer to hold the gain value from -2080 to 480 of the specified audio port. 
  *
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -565,7 +565,7 @@ dsError_t  dsGetAudioGain(int handle, float *gain);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -586,7 +586,7 @@ dsError_t  dsGetAudioDB(int handle, float *db);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -607,7 +607,7 @@ dsError_t  dsGetAudioLevel(int handle, float *level);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -627,7 +627,7 @@ dsError_t  dsGetAudioMaxDB(int handle, float *maxDb);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -647,7 +647,7 @@ dsError_t  dsGetAudioMinDB(int handle, float *minDb);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -667,7 +667,7 @@ dsError_t  dsGetAudioOptimalLevel(int handle, float *optimalLevel);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -688,7 +688,7 @@ dsError_t dsGetAudioDelay(int handle, uint32_t *audioDelayMs);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -709,7 +709,7 @@ dsError_t dsGetAudioDelayOffset(int handle, uint32_t *audioDelayOffsetMs);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -729,7 +729,7 @@ dsError_t dsSetAudioAtmosOutputMode(int handle, bool enable);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -749,7 +749,7 @@ dsError_t dsGetSinkDeviceAtmosCapability(int handle, dsATMOSCapability_t *capabi
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -769,7 +769,7 @@ dsError_t  dsIsAudioLoopThru(int handle, bool *loopThru);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -789,7 +789,7 @@ dsError_t  dsIsAudioMute(int handle, bool *muted);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -809,7 +809,7 @@ dsError_t  dsIsAudioPortEnabled(int handle, bool *enabled);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -830,7 +830,7 @@ dsError_t  dsEnableAudioPort(int handle, bool enabled);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -850,7 +850,7 @@ dsError_t  dsEnableMS12Config(int handle, dsMS12FEATURE_t feature,const bool ena
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -871,7 +871,7 @@ dsError_t  dsEnableLEConfig(int handle, const bool enable);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -892,7 +892,7 @@ dsError_t dsGetLEConfig(int handle, bool *enable);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -913,7 +913,7 @@ dsError_t  dsSetAudioEncoding(int handle, dsAudioEncoding_t encoding);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -934,7 +934,7 @@ dsError_t  dsSetAudioCompression(int handle, int compression);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -955,7 +955,7 @@ dsError_t  dsSetDialogEnhancement(int handle, int level);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -977,7 +977,7 @@ dsError_t  dsSetDolbyVolumeMode(int handle, bool mode);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -998,7 +998,7 @@ dsError_t  dsSetIntelligentEqualizerMode(int handle, int mode);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1019,7 +1019,7 @@ dsError_t  dsSetVolumeLeveller(int handle, dsVolumeLeveller_t volLeveller);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1040,7 +1040,7 @@ dsError_t  dsSetBassEnhancer(int handle, int boost);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1061,7 +1061,7 @@ dsError_t  dsEnableSurroundDecoder(int handle, bool enabled);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1082,7 +1082,7 @@ dsError_t  dsSetDRCMode(int handle, int mode);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1103,7 +1103,7 @@ dsError_t  dsSetSurroundVirtualizer(int handle, dsSurroundVirtualizer_t virtuali
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1124,7 +1124,7 @@ dsError_t  dsSetMISteering(int handle, bool enabled);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1145,7 +1145,7 @@ dsError_t  dsSetGraphicEqualizerMode(int handle, int mode);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1166,7 +1166,7 @@ dsError_t  dsSetMS12AudioProfile(int handle, const char* profile);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1185,7 +1185,7 @@ dsError_t  dsSetStereoMode(int handle, dsAudioStereoMode_t mode);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1206,7 +1206,7 @@ dsError_t  dsSetStereoAuto(int handle, int autoMode);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1225,7 +1225,7 @@ dsError_t  dsSetAudioGain(int handle, float gain);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1244,7 +1244,7 @@ dsError_t  dsSetAudioDB(int handle, float db);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1265,7 +1265,7 @@ dsError_t  dsSetAudioLevel(int handle, float level);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1285,7 +1285,7 @@ dsError_t  dsSetAudioDucking(int handle, dsAudioDuckingAction_t action, dsAudioD
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1305,7 +1305,7 @@ dsError_t  dsEnableLoopThru(int handle, bool loopThru);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1318,13 +1318,13 @@ dsError_t  dsSetAudioMute(int handle, bool mute);
  * @brief This function is used to check whether the audio port supports Dolby MS11 Multistream Decode
  *
  * @param[in]  handle        Handle for the output audio port.
- * @param[out] HasMS11Decode MS11 Multistream Decode setting is ture if enabled and false if disabled for the specified audio port.
+ * @param[out] HasMS11Decode MS11 Multistream Decode setting is true if enabled and false if disabled for the specified audio port.
  *
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1336,7 +1336,7 @@ dsError_t  dsIsAudioMSDecode(int handle, bool *HasMS11Decode);
  * @brief This function is used to check whether the audio port supports Dolby MS12 Multistream Decode
  *
  * @param[in] handle        Handle for the output audio port.
- * @param[out] HasMS12Decode MS12 Multistream Decode setting is true if enabled and flase if disabled for the specified audio port.
+ * @param[out] HasMS12Decode MS12 Multistream Decode setting is true if enabled and false if disabled for the specified audio port.
  *
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
@@ -1362,7 +1362,7 @@ dsError_t  dsIsAudioMS12Decode(int handle, bool *HasMS12Decode);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1383,7 +1383,7 @@ dsError_t dsSetAudioDelay(int handle, const uint32_t audioDelayMs);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1421,7 +1421,7 @@ dsError_t  dsAudioPortTerm();
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1440,7 +1440,7 @@ dsError_t dsAudioOutIsConnected(int handle, bool* pisCon);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1459,7 +1459,7 @@ dsError_t dsAudioOutRegisterConnectCB(dsAudioOutPortConnectCB_t CBFunc);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1479,7 +1479,7 @@ dsError_t dsAudioFormatUpdateRegisterCB (dsAudioFormatUpdateCB_t cbFun);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1499,7 +1499,7 @@ dsError_t dsGetAudioCapabilities(int handle, int *capabilities);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1518,7 +1518,7 @@ dsError_t dsGetMS12Capabilities(int handle, int *capabilities);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1537,7 +1537,7 @@ dsError_t dsResetDialogEnhancement(int handle);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1556,7 +1556,7 @@ dsError_t dsResetBassEnhancer(int handle);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1600,7 +1600,7 @@ dsError_t dsResetVolumeLeveller(int handle);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1622,7 +1622,7 @@ dsError_t  dsSetMS12AudioProfileSetttingsOverride(int handle,const char* profile
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1643,7 +1643,7 @@ dsError_t dsSetAssociatedAudioMixing(int handle, bool mixing);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1653,9 +1653,9 @@ dsError_t dsSetAssociatedAudioMixing(int handle, bool mixing);
 dsError_t  dsGetAssociatedAudioMixing(int handle, bool *mixing);
 
 /**
- * @brief To set the mixerbalance betweeen main and associated audio
+ * @brief To set the mixerbalance between main and associated audio
  *
- * This function will set the mixerbalance betweeen main and associated audio
+ * This function will set the mixerbalance between main and associated audio
  *
  * @param[in] handle        Handle for the output Audio port (Not Used as setting is not port specific)
  * @param[in] mixerbalance  int value -32(mute associated) to +32(mute main)
@@ -1664,7 +1664,7 @@ dsError_t  dsGetAssociatedAudioMixing(int handle, bool *mixing);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1674,9 +1674,9 @@ dsError_t  dsGetAssociatedAudioMixing(int handle, bool *mixing);
 dsError_t  dsSetFaderControl(int handle, int mixerbalance);
 
 /**
- * @brief To get the mixerbalance betweeen main and associated audio
+ * @brief To get the mixerbalance between main and associated audio
  *
- * This function will get the mixerbalance betweeen main and associated audio
+ * This function will get the mixerbalance between main and associated audio
  *
  * @param[in]  handle         Handle for the output Audio port (Not Used as setting is not port specific)
  * @param[out] mixerbalance int value -32(mute associated) to +32(mute main)
@@ -1685,7 +1685,7 @@ dsError_t  dsSetFaderControl(int handle, int mixerbalance);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1706,7 +1706,7 @@ dsError_t  dsGetFaderControl(int handle, int* mixerbalance);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1727,7 +1727,7 @@ dsError_t  dsSetPrimaryLanguage(int handle, const char* pLang);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1748,7 +1748,7 @@ dsError_t  dsGetPrimaryLanguage(int handle, char* pLang);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1769,7 +1769,7 @@ dsError_t  dsSetSecondaryLanguage(int handle, const char* sLang);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -1789,7 +1789,7 @@ dsError_t  dsGetSecondaryLanguage(int handle, char* sLang);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsAudioPortInit() or  preceding dsAudioPortInit has failed
  * @pre  dsAudioPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.

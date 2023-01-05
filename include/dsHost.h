@@ -99,7 +99,7 @@ dsError_t dsHostInit();
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  Init or  preceding Init has failed
  *
  * @note dsPOWER_OFF is not currently being used.
@@ -125,7 +125,7 @@ dsError_t dsSetHostPowerMode(int newPower);
  * @retval dsERR_NONE Indicates the call was successful.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  Init or  preceding Init has failed
  * @pre dsHostInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -145,7 +145,7 @@ dsError_t dsGetHostPowerMode(int *currPower);
  * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHostInit() or  preceding dsHostInit has failed
  * @pre dsHostInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -162,7 +162,7 @@ dsError_t dsHostTerm();
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE If sucessfully dsGetPreferredSleepMode api has been called.
  * @retval dsERR_GENERAL General failure.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHostInit() or  preceding dsHostInit has failed
  * @pre dsHostInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -179,7 +179,7 @@ dsError_t dsGetPreferredSleepMode(dsSleepMode_t *pMode);
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE If sucessfully dsSetPreferredSleepMode api has been called.
  * @retval dsERR_GENERAL General failure.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHostInit() or  preceding dsHostInit has failed
  * @pre dsHostInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -196,7 +196,7 @@ dsError_t dsSetPreferredSleepMode(dsSleepMode_t mode);
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE If sucessfully dsGetCPUTemperature api has been called.
  * @retval dsERR_GENERAL General failure.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHostInit() or  preceding dsHostInit has failed
  * @pre dsHostInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -216,7 +216,7 @@ dsError_t dsGetCPUTemperature(float *cpuTemperature);
  * @return Device Settings error code
  * @retval dsERR_NONE Successfully got the version number from dsHAL.
  * @retval dsERR_GENERAL Failed to get the version number.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHostInit() or  preceding dsHostInit has failed
  * @pre dsHostInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -234,7 +234,7 @@ dsError_t dsGetVersion(uint32_t *versionNumber);
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Successfully set the version for dsHAL.
  * @retval dsERR_GENERAL Failed to set the version.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHostInit() or  preceding dsHostInit has failed
  * @pre dsHostInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -266,7 +266,7 @@ dsError_t dsGetSocIDFromSDK(char *socID);
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE If sucessfully dsGetHostEDID api has been called.
  * @retval dsERR_GENERAL General failure.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHostInit() or  preceding dsHostInit has failed
  * @pre dsHostInit() should be called before calling this API.
  * @warning  This API is Not thread safe.

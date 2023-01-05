@@ -119,7 +119,7 @@ dsError_t dsDisplayInit();
  * @retval dsERR_NONE If successfully dsGetDisplay api has been called.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsDisplayInit() or  preceding dsDisplayInit has failed
  * @pre  dsDisplayInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -141,7 +141,7 @@ dsError_t dsDisplayInit();
  * @retval dsERR_NONE If successfully dsGetEDID api has been called.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsDisplayInit() or  preceding dsDisplayInit has failed
  * @pre  dsDisplayInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -165,7 +165,7 @@ dsError_t dsGetEDID(int handle, dsDisplayEDID_t *edid);
  * @retval dsERR_NONE If successfully dsGetEDIDBytes api has been called.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsDisplayInit() or  preceding dsDisplayInit has failed
  * @pre  dsDisplayInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -185,7 +185,7 @@ dsError_t dsGetEDIDBytes(int handle, unsigned char **edid, int *length);
  * @retval dsERR_NONE If successfully dsGetDisplayAspectRatio api has been called.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsDisplayInit() or  preceding dsDisplayInit has failed
  * @pre  dsDisplayInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
@@ -225,7 +225,7 @@ dsError_t dsDisplayTerm();
  * @retval dsERR_NONE If successfully dsRegisterDisplayEventCallback api has been called.
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code. 
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid prameter value.
+ * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsDisplayInit() or  preceding dsDisplayInit has failed
  * @warning  This API is Not thread safe.
  */
