@@ -794,10 +794,10 @@ typedef struct _dsVideoPortPortConfig_t {
 
 typedef uint32_t dsFPDColor_t;
 
-#define dsFPDColor_Make(R8,G8,B8)  (((R8)<<16) | ((G8)<< 8) | ((B8) ))
-#define dsFPDColor_R(RGB32)    (((RGB32) >> 16) & 0xFF)
-#define dsFPDColor_G(RGB32)    (((RGB32) >>  8) & 0xFF)
-#define dsFPDColor_B(RGB32)    (((RGB32)      ) & 0xFF)
+#define dsFPDColor_Make(R8,G8,B8)  (((R8)<<16) | ((G8)<< 8) | ((B8) )) /**< combine Red Green Blue value to a single Hex value*/
+#define dsFPDColor_R(RGB32)    (((RGB32) >> 16) & 0xFF) /**< Extract Red value form RGB value*/
+#define dsFPDColor_G(RGB32)    (((RGB32) >>  8) & 0xFF) /**< Extract Green value form RGB value*/
+#define dsFPDColor_B(RGB32)    (((RGB32)      ) & 0xFF) /**< Extract Blue value form RGB value*/
 
 /* Define a set of common colors, for backward compatibility */
 
@@ -920,7 +920,7 @@ typedef enum __dsFPDMode_t{
 
 #define dsEEDID_MAX_MON_NAME_LENGTH        14    /**< Maximum Length of Connected Display Monitor Name . */
 
-#define MAX_EDID_BYTES_LEN  (1024)
+#define MAX_EDID_BYTES_LEN  (1024)        /**< Maximum Byte length of EDID data */
 
 /**
  * @ingroup DSHAL_DISPLAY_TYPES
@@ -968,19 +968,19 @@ typedef enum _dsPowerState_t{
  */
 typedef enum _dsDisplayMatrixCoefficients_t
 {
-    dsDISPLAY_MATRIXCOEFFICIENT_UNKNOWN = 0,  /* Unknown Matrix Coefficient. */
-    dsDISPLAY_MATRIXCOEFFICIENT_BT_709,       /* ITU BT 709 Matrix Coefficient. */
-    dsDISPLAY_MATRIXCOEFFICIENT_BT_470_2_BG,  /* ITU BT 470_2_BG Matrix Coefficient. */
-    dsDISPLAY_MATRIXCOEFFICIENT_SMPTE_170M ,  /* SMPTE 170M Matrix Coefficient. */
-    dsDISPLAY_MATRIXCOEFFICIENT_XvYCC_709,    /* XvYCC_709 Matrix Coefficient. */
-    dsDISPLAY_MATRIXCOEFFICIENT_eXvYCC_601,   /* XvYCC_601 Matrix Coefficient. */
-    dsDISPLAY_MATRIXCOEFFICIENT_BT_2020_NCL,  /* ITU BT 2020 non constant luminance Matrix Coefficient. */
-    dsDISPLAY_MATRIXCOEFFICIENT_BT_2020_CL,    /* ITU BT 2020 constant luminance Matrix Coefficient. */
-    dsDISPLAY_MATRIXCOEFFICIENT_eDVI_FR_RGB,   /* eDVI Full Range RGB Matrix Coefficient. */
-    dsDISPLAY_MATRIXCOEFFICIENT_eHDMI_RGB,           /* eHDMI RGB Matrix Coefficient. */
-    dsDISPLAY_MATRIXCOEFFICIENT_eFCC,                /* eFCC Matrix Coefficient. */
-    dsDISPLAY_MATRIXCOEFFICIENT_eSMPTE_240M,         /* eSMPTE 240M Matrix Coefficient. */
-    dsDISPLAY_MATRIXCOEFFICIENT_eHDMI_FR_YCbCr       /* eHDMI Full Range YcbCr Matrix Coefficient. */
+    dsDISPLAY_MATRIXCOEFFICIENT_UNKNOWN = 0,  /**< Unknown Matrix Coefficient. */
+    dsDISPLAY_MATRIXCOEFFICIENT_BT_709,       /**< ITU BT 709 Matrix Coefficient. */
+    dsDISPLAY_MATRIXCOEFFICIENT_BT_470_2_BG,  /**< ITU BT 470_2_BG Matrix Coefficient. */
+    dsDISPLAY_MATRIXCOEFFICIENT_SMPTE_170M ,  /**< SMPTE 170M Matrix Coefficient. */
+    dsDISPLAY_MATRIXCOEFFICIENT_XvYCC_709,    /**< XvYCC_709 Matrix Coefficient. */
+    dsDISPLAY_MATRIXCOEFFICIENT_eXvYCC_601,   /**< XvYCC_601 Matrix Coefficient. */
+    dsDISPLAY_MATRIXCOEFFICIENT_BT_2020_NCL,  /**< ITU BT 2020 non constant luminance Matrix Coefficient. */
+    dsDISPLAY_MATRIXCOEFFICIENT_BT_2020_CL,    /**< ITU BT 2020 constant luminance Matrix Coefficient. */
+    dsDISPLAY_MATRIXCOEFFICIENT_eDVI_FR_RGB,   /**< eDVI Full Range RGB Matrix Coefficient. */
+    dsDISPLAY_MATRIXCOEFFICIENT_eHDMI_RGB,           /**< eHDMI RGB Matrix Coefficient. */
+    dsDISPLAY_MATRIXCOEFFICIENT_eFCC,                /**< eFCC Matrix Coefficient. */
+    dsDISPLAY_MATRIXCOEFFICIENT_eSMPTE_240M,         /**< eSMPTE 240M Matrix Coefficient. */
+    dsDISPLAY_MATRIXCOEFFICIENT_eHDMI_FR_YCbCr       /**< eHDMI Full Range YcbCr Matrix Coefficient. */
 } dsDisplayMatrixCoefficients_t;
 /**
  * @brief This enumeration defines the type of display colorimetry
@@ -988,16 +988,16 @@ typedef enum _dsDisplayMatrixCoefficients_t
 
 typedef enum _dsDisplayColorimetryInfo_t
 {
-    dsDISPLAY_COLORIMETRY_INFO_UNKNOWN = 0,         /* Unknown Colorimetry */
-    dsDISPLAY_COLORIMETRY_INFO_XVYCC601 = 0x01,     /* Standard Definition Colorimetry based on IEC 61966-2-4 */
-    dsDISPLAY_COLORIMETRY_INFO_XVYCC709 = 0x02,     /* High Definition Colorimetry based on IEC 61966-2-4 */
-    dsDISPLAY_COLORIMETRY_INFO_SYCC601 = 0x04,      /* Colorimetry based on IEC 61966-2-1/Amendment 1 */
-    dsDISPLAY_COLORIMETRY_INFO_ADOBEYCC601 = 0x08,  /* Colorimetry based on IEC 61966-2-5 [32], Annex A */
-    dsDISPLAY_COLORIMETRY_INFO_ADOBERGB = 0x10,     /* Colorimetry based on IEC 61966-2-5 */
-    dsDISPLAY_COLORIMETRY_INFO_BT2020CL = 0x20,     /* Colorimetry based on ITU-R BT.2020 [39] Y’cC’BCC’RC */
-    dsDISPLAY_COLORIMETRY_INFO_BT2020NCL = 0x40,    /* Colorimetry based on ITU-R BT.2020 [39] Y’C’BC’R */
-    dsDISPLAY_COLORIMETRY_INFO_BT2020RGB = 0x80,    /* Colorimetry based on ITU-R BT.2020 [39] R’G’B’ */
-    dsDISPLAY_COLORIMETRY_INFO_DCI_P3 = 0x100       /* Colorimetry based on DCI-P3 */
+    dsDISPLAY_COLORIMETRY_INFO_UNKNOWN = 0,         /**< Unknown Colorimetry */
+    dsDISPLAY_COLORIMETRY_INFO_XVYCC601 = 0x01,     /**< Standard Definition Colorimetry based on IEC 61966-2-4 */
+    dsDISPLAY_COLORIMETRY_INFO_XVYCC709 = 0x02,     /**< High Definition Colorimetry based on IEC 61966-2-4 */
+    dsDISPLAY_COLORIMETRY_INFO_SYCC601 = 0x04,      /**< Colorimetry based on IEC 61966-2-1/Amendment 1 */
+    dsDISPLAY_COLORIMETRY_INFO_ADOBEYCC601 = 0x08,  /**< Colorimetry based on IEC 61966-2-5 [32], Annex A */
+    dsDISPLAY_COLORIMETRY_INFO_ADOBERGB = 0x10,     /**< Colorimetry based on IEC 61966-2-5 */
+    dsDISPLAY_COLORIMETRY_INFO_BT2020CL = 0x20,     /**< Colorimetry based on ITU-R BT.2020 [39] Y’cC’BCC’RC */
+    dsDISPLAY_COLORIMETRY_INFO_BT2020NCL = 0x40,    /**< Colorimetry based on ITU-R BT.2020 [39] Y’C’BC’R */
+    dsDISPLAY_COLORIMETRY_INFO_BT2020RGB = 0x80,    /**< Colorimetry based on ITU-R BT.2020 [39] R’G’B’ */
+    dsDISPLAY_COLORIMETRY_INFO_DCI_P3 = 0x100       /**< Colorimetry based on DCI-P3 */
 } dsDisplayColorimetryInfo_t;
 /**
  * @brief This enumeration defines the type of display color spaces supported
@@ -1005,12 +1005,12 @@ typedef enum _dsDisplayColorimetryInfo_t
 
 typedef enum _dsDisplayColorSpace_t
 {
-    dsDISPLAY_COLORSPACE_UNKNOWN = 0,     /* Unknown color space */
-    dsDISPLAY_COLORSPACE_RGB = 1,         /* RGB color space */
-    dsDISPLAY_COLORSPACE_YCbCr422 = 2,    /* YCbCr4.2.2 color space */
-    dsDISPLAY_COLORSPACE_YCbCr444 = 3,    /* YCbCr4.4.4 color space */
-    dsDISPLAY_COLORSPACE_YCbCr420 = 4,    /* YCbCr4.2.0 color space */
-    dsDISPLAY_COLORSPACE_AUTO = 5         /* Automatic color space */
+    dsDISPLAY_COLORSPACE_UNKNOWN = 0,     /**< Unknown color space */
+    dsDISPLAY_COLORSPACE_RGB = 1,         /**< RGB color space */
+    dsDISPLAY_COLORSPACE_YCbCr422 = 2,    /**< YCbCr4.2.2 color space */
+    dsDISPLAY_COLORSPACE_YCbCr444 = 3,    /**< YCbCr4.4.4 color space */
+    dsDISPLAY_COLORSPACE_YCbCr420 = 4,    /**< YCbCr4.2.0 color space */
+    dsDISPLAY_COLORSPACE_AUTO = 5         /**< Automatic color space */
 } dsDisplayColorSpace_t;
 /**
  * @brief This enumeration defines the type of display quantization ranges
@@ -1018,9 +1018,9 @@ typedef enum _dsDisplayColorSpace_t
 
 typedef enum _dsDisplayQuantizationRange_t
 {
-    dsDISPLAY_QUANTIZATIONRANGE_UNKNOWN = 0,
-    dsDISPLAY_QUANTIZATIONRANGE_LIMITED = 1,
-    dsDISPLAY_QUANTIZATIONRANGE_FULL = 2
+    dsDISPLAY_QUANTIZATIONRANGE_UNKNOWN = 0, /**< Unknown quantization range*/
+    dsDISPLAY_QUANTIZATIONRANGE_LIMITED = 1, /**< Limited quantization range*/
+    dsDISPLAY_QUANTIZATIONRANGE_FULL = 2     /**< Full quantization range*/
 } dsDisplayQuantizationRange_t;
 /**
  * @brief This enumeration defines the type of display Color depth.
@@ -1028,11 +1028,11 @@ typedef enum _dsDisplayQuantizationRange_t
 
 typedef enum _dsDisplayColorDepth_t
 {
-    dsDISPLAY_COLORDEPTH_UNKNOWN = 0x0,     /* Unknown color depth */
-    dsDISPLAY_COLORDEPTH_8BIT = 0x01,       /* 8 bit color depth */
-    dsDISPLAY_COLORDEPTH_10BIT = 0x02,      /* 10 bit color depth */
-    dsDISPLAY_COLORDEPTH_12BIT = 0x04,      /* 12 bit color depth */
-    dsDISPLAY_COLORDEPTH_AUTO = 0x08        /* Automatic color depth */
+    dsDISPLAY_COLORDEPTH_UNKNOWN = 0x0,     /**< Unknown color depth */
+    dsDISPLAY_COLORDEPTH_8BIT = 0x01,       /**< 8 bit color depth */
+    dsDISPLAY_COLORDEPTH_10BIT = 0x02,      /**< 10 bit color depth */
+    dsDISPLAY_COLORDEPTH_12BIT = 0x04,      /**< 12 bit color depth */
+    dsDISPLAY_COLORDEPTH_AUTO = 0x08        /**< Automatic color depth */
 } dsDisplayColorDepth_t;
 
 /**
@@ -1056,11 +1056,11 @@ typedef enum _dsDisplayColorDepth_t
 
 typedef enum _dsHdmiInPort_t
 {
-    dsHDMI_IN_PORT_NONE = -1,
-    dsHDMI_IN_PORT_0,
-    dsHDMI_IN_PORT_1,
-    dsHDMI_IN_PORT_2,
-    dsHDMI_IN_PORT_MAX
+    dsHDMI_IN_PORT_NONE = -1,  /**< HDMI input port index for NONE */
+    dsHDMI_IN_PORT_0,          /**< HDMI input port index for PORT 0 */
+    dsHDMI_IN_PORT_1,          /**< HDMI input port index for PORT 1 */
+    dsHDMI_IN_PORT_2,          /**< HDMI input port index for PORT 2 */
+    dsHDMI_IN_PORT_MAX         /**< HDMI input port Max index */
 } dsHdmiInPort_t;
 
 /** @addtogroup DSHAL_HDMI_IN_STATUS Device Settings HAL HDMI IN Signal Status Definitions
@@ -1073,12 +1073,12 @@ typedef enum _dsHdmiInPort_t
  */
 typedef enum _dsHdmiInSignalStatus_t
 {
-    dsHDMI_IN_SIGNAL_STATUS_NONE = -1,
-    dsHDMI_IN_SIGNAL_STATUS_NOSIGNAL,
-    dsHDMI_IN_SIGNAL_STATUS_UNSTABLE,
-    dsHDMI_IN_SIGNAL_STATUS_NOTSUPPORTED,
-    dsHDMI_IN_SIGNAL_STATUS_STABLE,
-    dsHDMI_IN_SIGNAL_STATUS_MAX
+    dsHDMI_IN_SIGNAL_STATUS_NONE = -1,    /**< HDMI input signal status NONE */
+    dsHDMI_IN_SIGNAL_STATUS_NOSIGNAL,     /**< HDMI input No signal signal status */
+    dsHDMI_IN_SIGNAL_STATUS_UNSTABLE,     /**< HDMI input Unstable signal status */
+    dsHDMI_IN_SIGNAL_STATUS_NOTSUPPORTED, /**< HDMI input Not supported signal status */
+    dsHDMI_IN_SIGNAL_STATUS_STABLE,       /**< HDMI input Stable signal status */
+    dsHDMI_IN_SIGNAL_STATUS_MAX           /**< HDMI input Max index of signal status */
 } dsHdmiInSignalStatus_t;
 
 /**
@@ -1114,12 +1114,12 @@ typedef struct _dsHdmiInCap_t
 
 typedef enum _dsCompInSignalStatus_t
 {
-    dsCOMP_IN_SIGNAL_STATUS_NONE = -1,
-    dsCOMP_IN_SIGNAL_STATUS_NOSIGNAL,
-    dsCOMP_IN_SIGNAL_STATUS_UNSTABLE,
-    dsCOMP_IN_SIGNAL_STATUS_NOTSUPPORTED,
-    dsCOMP_IN_SIGNAL_STATUS_STABLE,
-    dsCOMP_IN_SIGNAL_STATUS_MAX
+    dsCOMP_IN_SIGNAL_STATUS_NONE = -1,    /**< Composite input signal status NONE */
+    dsCOMP_IN_SIGNAL_STATUS_NOSIGNAL,     /**< Composite input No Signal status */
+    dsCOMP_IN_SIGNAL_STATUS_UNSTABLE,     /**< Composite input Unstable signal status */
+    dsCOMP_IN_SIGNAL_STATUS_NOTSUPPORTED, /**< Composite input Not supported signal status */
+    dsCOMP_IN_SIGNAL_STATUS_STABLE,       /**< Composite input Stable signal status */
+    dsCOMP_IN_SIGNAL_STATUS_MAX           /**< Composite input Maximum index of signal status */
 } dsCompInSignalStatus_t;
 
  /** @addtogroup DSHAL_COMPOSITE_IN_TYPES Device Settings HAL COMPOSITE IN Type Definitions

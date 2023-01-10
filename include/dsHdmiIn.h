@@ -133,10 +133,10 @@ dsError_t dsHdmiInTerm (void);
  * 
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @pre dsHdmiInInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -154,10 +154,10 @@ dsError_t dsHdmiInGetNumberOfInputs (uint8_t *pNumberOfInputs);
  *
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @pre dsHdmiInInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -173,10 +173,10 @@ dsError_t dsHdmiInGetStatus (dsHdmiInStatus_t *pStatus);
  * 
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @pre dsHdmiInInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -194,10 +194,10 @@ dsError_t dsHdmiInSelectPort (dsHdmiInPort_t ePort);
  *
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @pre dsHdmiInInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -213,10 +213,10 @@ dsError_t dsHdmiInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t heigh
  * 
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @pre dsHdmiInInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -230,10 +230,10 @@ dsError_t dsHdmiInSelectZoomMode (dsVideoZoom_t requestedZoomMode);
  *
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @pre dsHdmiInInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -247,10 +247,10 @@ dsError_t dsHdmiInPauseAudio (void);
  *
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @pre dsHdmiInInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -267,10 +267,10 @@ dsError_t dsHdmiInResumeAudio (void);
  * @return Current HDMI Input video mode (resolution)
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @pre dsHdmiInInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -345,10 +345,10 @@ typedef void (*dsHdmiInAllmChangeCB_t)(dsHdmiInPort_t port, bool allm_mode);
  * 
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @pre dsHdmiInInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -364,10 +364,10 @@ dsError_t dsHdmiInRegisterConnectCB (dsHdmiInConnectCB_t CBFunc);
  * 
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @pre dsHdmiInInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -383,10 +383,10 @@ dsError_t dsHdmiInRegisterSignalChangeCB (dsHdmiInSignalChangeCB_t CBFunc);
  * 
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @pre dsHdmiInInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -402,10 +402,10 @@ dsError_t dsHdmiInRegisterStatusChangeCB (dsHdmiInStatusChangeCB_t CBFunc);
  * 
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @pre dsHdmiInInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -421,10 +421,10 @@ dsError_t dsHdmiInRegisterVideoModeUpdateCB(dsHdmiInVideoModeUpdateCB_t CBFunc);
  * 
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @pre dsHdmiInInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -438,7 +438,7 @@ dsError_t dsHdmiInRegisterAllmChangeCB (dsHdmiInAllmChangeCB_t CBFunc);
  *
  * @param[in] iPort             HDMI Arc port
  *
- * @return Boolean returns true if teh port supports AC and false if not supported or an invalid port is passed.
+ * @return Boolean returns true if the port supports AC and false if not supported or an invalid port is passed.
  * @pre dsHdmiInInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -456,10 +456,10 @@ bool dsIsHdmiARCPort (int iPort);
  *
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @pre dsHdmiInInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -476,10 +476,10 @@ dsError_t dsGetEDIDBytesInfo (int iHdmiPort, unsigned char **edid, int *length);
  *
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @pre dsHdmiInInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -496,10 +496,10 @@ dsError_t dsGetHDMISPDInfo (int iHdmiPort, unsigned char **data);
  *
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @pre dsHdmiInInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetEdidVersion()
@@ -517,10 +517,10 @@ dsError_t dsSetEdidVersion (int iHdmiPort, int iEdidVersion);
  *
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @pre dsHdmiInInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsSetEdidVersion()
@@ -538,10 +538,10 @@ dsError_t dsGetEdidVersion (int iHdmiPort, int *iEdidVersion);
  *
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @pre dsHdmiInInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
@@ -557,10 +557,10 @@ dsError_t dsGetAllmStatus (int iHdmiPort, bool *allmStatus);
  *
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
+ * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
+ * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @pre dsHdmiInInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
