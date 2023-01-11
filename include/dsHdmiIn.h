@@ -115,6 +115,7 @@ dsError_t dsHdmiInInit (void);
  *
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
+ * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
  * @pre dsHdmiInInit() should be called before calling this API.

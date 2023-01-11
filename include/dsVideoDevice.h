@@ -257,7 +257,7 @@ dsError_t dsGetFRFMode(int handle, int *frfmode);
  * @brief This API is used to get the current Framerate of the device
  *
  * @param[in]   handle  Handle for the video device (video decoder)
- * @param [out]  framerate Byte with corresponding frame rate value of the device.
+ * @param [out]  framerate Byte with corresponding frame rate value of the device. Frame rate will be represented in fps (frame per second).
  *
  * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.
@@ -276,7 +276,7 @@ dsError_t dsGetCurrentDisplayframerate(int handle, char *framerate);
  * @brief This API is used to set the display framerate for the device.
  *
  * @param[in]  handle  Handle for the video device (video decoder)
- * @param[in]  framerate Provides the display framerate value to be set.
+ * @param[in]  framerate Provides the display framerate value to be set frame will be represented in fps (frame per second).
  *
  * @return dsError_t - error code
  * @retval dsERR_NONE Indicates the call was successful.

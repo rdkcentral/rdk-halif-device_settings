@@ -93,7 +93,7 @@ dsError_t  dsAudioPortInit();
  * ::dsERR_OPERATION_NOT_SUPPORTED if an unavailable audio port is requested.
  *
  * @param[in] type       Indicates the type of audio port (HDMI, SPDIF and so on).
- * @param[in] index      Index of audio port depending on the ports available for the specific platform. (0, 1, ...).
+ * @param[in] index      Index of audio port depending on the ports available for the specific platform. (0, 1, ...). Maximum value of number of ports is platform specific.
  * @param[out] handle    Indicates pointer to hold the handle of the specified audio port.
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful. 
@@ -1013,7 +1013,7 @@ dsError_t  dsSetVolumeLeveller(int handle, dsVolumeLeveller_t volLeveller);
  * This function will set the Bass used in a given audio port
  *
  * @param[in] handle    Handle for the output Audio port
- * @param[in] boost     Bass Enhancer boost value from 0 10 100
+ * @param[in] boost     Bass Enhancer boost value from 0 to 100
  *
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.
@@ -1415,7 +1415,7 @@ dsError_t  dsAudioPortTerm();
  * This function is used to check if the audio output port is connected
  *
  * @param[in] handle        Handle for the output Audio port
- * @param[out] pisCon        Boolean flag for port if ture port is connected and falsae if not connected 
+ * @param[out] pisCon        Boolean flag for port if ture port is connected and false if not connected 
  *
  * @return dsError_t - Device Settings error code
  * @retval dsERR_NONE Indicates the call was successful.

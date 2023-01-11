@@ -118,7 +118,7 @@ dsError_t dsCompositeInInit (void);
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  dsCompositeInInit () or  preceding dsCompositeInInit has failed
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * This usually indicates the underlying unknown SOC error.
+ * This usually indicates the underlying unknown platform error.
  * @pre  dsCompositeInInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsCompositeInInit()
@@ -139,7 +139,7 @@ dsError_t dsCompositeInTerm (void);
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  dsCompositeInInit () or  preceding dsCompositeInInit has failed
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * This usually indicates the underlying unknown SOC error.
+ * This usually indicates the underlying unknown platform error.
  * @warning  This API is Not thread safe.
  */
 
@@ -150,7 +150,7 @@ dsError_t dsCompositeInGetNumberOfInputs (uint8_t *pNumberOfInputs);
  *
  * This function is used to get the current COMPOSITE Input Status.
  *
- * @param[in] pStatus   COMPOSITE Input enabled, COMPOSITE Input port connected,
+ * @param [out] pStatus   COMPOSITE Input enabled, COMPOSITE Input port connected,
  *                       Active COMPOSITE Input port, and HW Pass-Through enabled.
  * 
  * @return dsError_t - Device Settings error code
@@ -159,7 +159,7 @@ dsError_t dsCompositeInGetNumberOfInputs (uint8_t *pNumberOfInputs);
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  dsCompositeInInit () or  preceding dsCompositeInInit has failed
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * This usually indicates the underlying unknown SOC error.
+ * This usually indicates the underlying unknown platform error.
  * @warning  This API is Not thread safe.
  */
 
@@ -178,7 +178,7 @@ dsError_t dsCompositeInGetStatus (dsCompositeInStatus_t *pStatus);
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  dsCompositeInInit () or  preceding dsCompositeInInit has failed
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * This usually indicates the underlying unknown SOC error.
+ * This usually indicates the underlying unknown platform error.
  * @warning  This API is Not thread safe.
  */
 
@@ -199,7 +199,7 @@ dsError_t dsCompositeInSelectPort (dsCompositeInPort_t Port);
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  dsCompositeInInit () or  preceding dsCompositeInInit has failed
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * This usually indicates the underlying unknown SOC error.
+ * This usually indicates the underlying unknown platform error.
  * @warning  This API is Not thread safe.
  */
 
@@ -234,7 +234,7 @@ typedef void (*dsCompositeInConnectCB_t)(dsCompositeInPort_t Port, bool isPortCo
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  dsCompositeInInit () or  preceding dsCompositeInInit has failed
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * This usually indicates the underlying unknown SOC error.
+ * This usually indicates the underlying unknown platform error.
  * @warning  This API is Not thread safe.
  * @see dsCompositeInConnectCB_t()
  */
@@ -270,7 +270,7 @@ typedef void (*dsCompositeInSignalChangeCB_t)(dsCompositeInPort_t port, dsCompIn
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  dsCompositeInInit () or  preceding dsCompositeInInit has failed
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * This usually indicates the underlying unknown SOC error.
+ * This usually indicates the underlying unknown platform error.
  * @warning  This API is Not thread safe.
  * @see dsCompositeInSignalChangeCB_t()
  */
@@ -305,7 +305,7 @@ typedef void (*dsCompositeInStatusChangeCB_t)(dsCompositeInStatus_t inputStatus)
  * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  dsCompositeInInit () or  preceding dsCompositeInInit has failed
  * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
  * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * This usually indicates the underlying unknown SOC error.
+ * This usually indicates the underlying unknown platform error.
  * @warning  This API is Not thread safe.
  * @see dsCompositeInStatusChangeCB_t()
  */
