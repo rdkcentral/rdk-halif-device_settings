@@ -32,17 +32,27 @@
 #include <stdio.h>
 #include "dshalregisterlog.h"
 
-int ds_hal_log(int priority,const char *format, ...);
+/**
+ * @brief This function logs the sent message based on the priority.
+ * 
+ * @param[in]  priority - Priority of the message to be logged.
+ * @param[out] format   - Message format.
+ * 
+ * @return int          - Status. Success if non-negative, failure if negative.
+ * 
+ */
 
-#define INFO_LEVEL   0
-#define WARN_LEVEL   1
-#define ERROR_LEVEL  2
-#define DEBUG_LEVEL  3
+int ds_hal_log(int priority,const char *format, ...);  
 
-#define INT_INFO(FORMAT, ...)           ds_hal_log(INFO_LEVEL ,FORMAT, ##__VA_ARGS__ )
-#define INT_WARN(FORMAT, ...)           ds_hal_log(WARN_LEVEL ,FORMAT,  ##__VA_ARGS__ )
-#define INT_ERROR(FORMAT, ...)          ds_hal_log(ERROR_LEVEL ,FORMAT,  ##__VA_ARGS__ )
-#define INT_DEBUG(FORMAT, ...)          ds_hal_log(DEBUG_LEVEL ,FORMAT,  ##__VA_ARGS__ )
+#define INFO_LEVEL   0  ///< Messages giving a general overview of the program execution.
+#define WARN_LEVEL   1  ///< Messages giving warning about the program execution.
+#define ERROR_LEVEL  2  ///< Messages giving an overview of program errors.
+#define DEBUG_LEVEL  3  ///< Messages giving an overview of the program execution for debugging.
+
+#define INT_INFO(FORMAT, ...)           ds_hal_log(INFO_LEVEL ,FORMAT, ##__VA_ARGS__ )      ///< To handle logging of info level logs.
+#define INT_WARN(FORMAT, ...)           ds_hal_log(WARN_LEVEL ,FORMAT,  ##__VA_ARGS__ )     ///< To handle logging of warn level logs.
+#define INT_ERROR(FORMAT, ...)          ds_hal_log(ERROR_LEVEL ,FORMAT,  ##__VA_ARGS__ )    ///< To handle logging of error level logs.
+#define INT_DEBUG(FORMAT, ...)          ds_hal_log(DEBUG_LEVEL ,FORMAT,  ##__VA_ARGS__ )    ///< To handle logging of debug level logs.
 
 #endif
 

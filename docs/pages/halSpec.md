@@ -1,101 +1,224 @@
-# Device Settings HAL Documentation
+@mainpage
 
-# History
+# DEVICE SETTINGS HAL Documentation
 
-|Version|Date|Author|
-|-------|-----|-----|
-|1.0.0| 22/12/22 (Reverse Date)|Akhil Baby Sarada|
+## Version History
 
-1.0.0 Initial version of the Device settings HAL layer documentation.
+| Date | Comment | Version |
+| ---- | ------- | ------- |
+| 13/03/23 | Updated after final review | 1.0.2 |
+| 13/03/23 | Edit  | 1.0.1 |
+| 20/04/23 | First Release | 1.0.0 |
 
-# Description
+## Table of Contents
 
-Device Settings HAL provides a set of APIs to initialize following modules and driver and communicate with peripheral devices like Front Panel display, Video Ports, Audio Ports etc. HAL APIs corresponds to each functionality and status of the devices and modules. the APIs are provided to initialize,select specific device using its handle and set or get a specific property of the peripheral of the device.
+- [Acronyms, Terms and Abbreviations](#acronyms-terms-and-abbreviations)
+- [References](#references)
+- [Description](#description)
+- [Component Runtime Execution Requirements](#component-runtime-execution-requirements)
+  - [Initialization and Startup](#initialization-and-startup)
+  - [Threading Model](#threading-model)
+  - [Process Model](#process-model)
+  - [Memory Model](#memory-model)
+  - [Power Management Requirements](#power-management-requirements)
+  - [Asynchronous Notification Model](#asynchronous-notification-model)
+  - [Blocking calls](#blocking-calls)
+  - [Internal Error Handling](#internal-error-handling)
+  - [Persistence Model](#persistence-model)
+- [Non-functional requirements](#non-functional-requirements)
+  - [Logging and debugging requirements](#logging-and-debugging-requirements)
+  - [Memory and performance requirements](#memory-and-performance-requirements)
+  - [Quality Control](#quality-control)
+  - [Licensing](#licensing)
+  - [Build Requirements](#build-requirements)
+  - [Variability Management](#variability-management)
+  - [Platform or Product Customization](#platform-or-product-customization)
+- [Interface API Documentation](#interface-api-documentation)
+  - [Theory of operation and key concepts](#theory-of-operation-and-key-concepts)
+  - [Diagrams](#diagrams)
 
-The diagram below describes a high-level software architecture of the Device settings module stack. We have DS manager acting as the middleman between the HAL and application interface or thunder layer. All the initialization and deinitialization will be done by DS manager. HAL layer provides the APIs to DS manager to communicate with the SOC specific libraries. HAL acts as a single abstraction layer for multiple SOC libraries for multiple platforms.
+## Acronyms, Terms and Abbreviations
 
-![Device Settings Architecture Diagram](images/devicesettings_architecture_4.png)
+- `HAL`    - Hardware Abstraction Layer
+- `API`    - Caller Programming Interface
+- `Caller` - Any user of the interface via the `API`s
+- `ARC`    - Audio Return Channel.
+- `eARC`   - Enhance Audio Return Channel
+- `HDMI`   - High-Definition Multimedia Interface.
+- `LE`     - Loudness Equivalence.
+- `DRC`    - Dynamic Range Control.
+- `RF`     - Radio Frequency.
+- `EDID`   - Extended Display Identification Data.
+- `SPD`    - Surge Protector Device.
+- `ALLM`   - Auto Low Latency Mode
+- `HDCP`   - High-bandwidth Digital Copy Protection.
+- `DTCP`   - Digital Transmission Copy Protection.
+- `CPU`    - Central Processing Unit
+- `FPS`    - Frames Per Second
+- `SDR`    - Standard Dynamic Range
+- `EOTF`   - Electro-Optical Transfer Function 
+- `HDR`    - High Dynamic Range
+- `SCART`  - SCART stands for Syndicat des Constructeursd’AppareilsRadiorécepteurs et Téléviseurs or Radio and Television Receiver Manufacturers.
 
-# Component Runtime Execution Requirements
 
-The Hardware layer API's are provided by each SOC vendors specific to the device. the operations should be DS managercompleted within few ms. RDK middleware is responsible to perform retry operation as per the respective devicesettings specification requirements. Failure to meet these requirements will likely result in undefined and unexpected behavior.
+## References
 
-Failure to meet these requirements will likely result in undefined and
-unexpected behavior.
 
-## Initialization and Startup
+## Description
 
-Initialization for each device peripheral HAL interface is expected to be done from DS manager using Device::Manager::Initialize call.
+The diagram below describes a high-level software architecture of the module stack.
 
-## Threading Model
+```mermaid
+%%{ init : { "theme" : "forest", "flowchart" : { "curve" : "linear" }}}%%
+flowchart TD
+y[Caller]-->x[DEVICE SETTINGS HAL];
+x[DEVICE SETTINGS HAL]-->z[SOC Drivers];
+style y fill:#99CCFF,stroke:#333,stroke-width:0.3px,align:left
+style z fill:#fcc,stroke:#333,stroke-width:0.3px,align:left
+style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
+ ```
 
-Device settings HAL is not thread safe, any module which is invoking the Device Settings HAL API should ensure calls are made in a thread safe manner.
+This interface provides a set of `API`s to facilitate communication through the `Caller` and `HAL`.
 
-All thread should be correctly terminated when module terminate is called.
+The interface initialize, configure and deinitialize the device peripherals.
 
-## Process Model
+Configuration Options.
 
-DS manager process takes care of Initializing Device Settings HAL component. At any point of time a single instance of DS manager process exists to respond to any device settings related functionality to the application. The interface implementation should not manipulate any process-wide state, such as the current directory, locale, etc. Doing so could have unintended consequences for other threads within the process group.
+- AudioPort provides the following configuration options to change Volume control, mute, MS12 settings, Audio Delay, Audio Mixing, Fader Control, and Primary Language
+- ComporisteIn provides the following configuration option to change Scale video
+- Display provides the following configuration options to change Aspect ratio, and EDID data
+- FPD provides the following configuration options to change Indicator brightness, Indicator color, Indicator Time, and Indicator Text
+- HdmiIn provides the following configuration options to change Scale Video, Zoom mode, EDID data, and Audio control
+- Host provides the following configuration options to change Power mode, and Sleep mode
+- VideoPort provides the following configuration options to change Zoom settings, and 4k support
+- VideoDevice provides the following configuration options to change Resolutions, Aspect ratio, Active Source, and Color
 
-## Memory Model
+## Component Runtime Execution Requirements
 
-DS manager service is responsible to pass message buffer and free it. 
 
-## Power Management Requirements
+### Initialization and Startup
 
-power manager is responsible for communicating with DS manager to shutdown/startup the modules and peripherals as per the requirement. 
+`Caller` should initialize by calling `ds<Component>Init()` before calling any other `API`s. 
+The main components provided by the device settings module are AudioPort, ComporsiteIn, Display, FP, HdmiIn, Host, VideoDevice, and VideoPort.
 
-## Asynchronous Notification Model
+### Threading Model
 
-Asynchronous callbacks are supported for specific functionalities like HDMI hot plug event or Audio port change etc. 
-Asynchronous call should be handled by callbacks
+This interface is not required to be thread safe. Any caller invoking the `API`s should ensure calls are made in a thread safe manner.
 
-## Internal Error Handling
+### Process Model
 
-All the Device Settings HAL API's should return error synchronously as a return argument. HAL is responsible to handle system errors (e.g. out of memory) internally.
+This interface is required to support a single instantiation with a single process.
 
-## Persistence Model
-There is no requirement for HAL to persist any setting information. Application/Client is responsible to persist any settings related to Device Settings feature and apply during the device boot up process.
+### Memory Model
 
-# Nonfunctional requirements
+### Power Management Requirements
 
-## Logging and debugging requirements
-Device Settings HAL component should log all the error and critical informative messages which helps to debug/triage the issues and understand the functional flow of the system.
+Although this interface is not required to be involved in any of the power management operations, the state transitions MUST not affect its operation. e.g. on resumption from a low power state, the interface should operate as if no transition has occurred.
 
-## Memory and performance requirements
+### Asynchronous Notification Model
 
-## Quality Control
-Device Settings HAL implementation should pass Coverity, Black duck scan, Valgrind checks without any issue.
+For asynchronous transmit and receive operations, the `dsRegister` function `API`s callback registrations are used.
+- AudioPort provides the following asynchronous registration API dsAudioOutRegisterConnectCB, and dsAudioFormatUpdateRegisterCB
+- CompositeIn provides the following asynchronous registration API dsCompositeInRegisterConnectCB, dsCompositeInRegisterSignalChangeCB, and dsCompositeInRegisterStatusChangeCB, 
+- Display provides the following asynchronous registration API dsRegisterDisplayEventCallback
+- HdmiIn provides the following asynchronous registration APIs dsHdmiInRegisterAllmChangeCB, dsHdmiInRegisterVideoModeUpdateCB, dsHdmiInRegisterStatusChangeCB, dsHdmiInRegisterSignalChangeCB, and dsHdmiInRegisterConnectCB
+- VideoDevice provides the following asynchronous registration API dsRegisterFrameratePostChangeCB, and dsRegisterFrameratePreChangeCB
+- VideoPort provides the following asynchronous registration API dsRegisterHdcpStatusCallback
 
-There should not be any memory leaks/corruption introduced by HAL and underneath 3rd party software implementation.
 
-HAL implementation should pass RDK Device settings HAL unit testcases available at: https://github.com/comcast-sky/rdk-components-hal-devicesettings
 
-## Licensing
+### Blocking calls
 
-Device Settings HAL implementation is expected to release under the Apache License.
+There are no blocking calls. Synchronous calls should complete within a reasonable time period. Any call that can fail due to the lack of response from the connected device should have a timeout period and the function should return the relevant error code.
 
-## Build Requirements
+### Internal Error Handling
 
-Device Settings HAL source code should be built under Linux Yocto environment and should be delivered as a shared library.
+All the `API`s must return error synchronously as a return argument. `HAL` is responsible for handling system errors (e.g. out of memory) internally.
 
-## Variability Management
-Any new API introduced should be implemented by all the 3rd party module and RDK generic code should be compatible with specific version of device settings HAL software
+### Persistence Model
 
-## Platform or Product Customization
+There is a requirement for the `HAL` interface to persist setting information.
+
+Host `HAL` must persist the following function's setting information if persist is true. dsSetPreferredSleepMode.
+VideoPort `HAL` must persist the following function's setting information if persist is true. dsSetResolution, dsGetPreferredColorDepth, and dsSetPreferredColorDepth
+
+
+
+## Non-functional requirements
+
+### Logging and debugging requirements
+
+This interface is required to support DEBUG, INFO and ERROR messages. DEBUG should be disabled by default and enabled when required.
+
+### Memory and performance requirements
+
+This interface is required to not cause excessive memory and CPU utilization.
+
+### Quality Control
+
+- This interface is required to perform static analysis, our preferred tool is Coverity.
+- Have a zero-warning policy with regards to compiling. All warnings are required to be treated as error.
+- Copyright validation is required to be performed, e.g.: Black duck, and FossID.
+- Use of memory analysis tools like Valgrind are encouraged, to identify leaks/corruptions.
+- `HAL` Tests will endeavour to create worst case scenarios to assist investigations.
+- Improvements by any party to the testing suite are required to be fed back.
+
+### Licensing
+
+The `HAL` implementation is expected to released under the Apache License 2.0. 
+
+### Build Requirements
+
+The source code must build into a shared library and must be named as `libdshal.so`. The build mechanism must be independent of Yocto.
+ 
+### Variability Management
+
+Any changes in the `API`s should be reviewed and approved by the component architects.
+
+### Platform or Product Customization
 
 None
 
-# Interface API Documentation
+## Interface API Documentation
 
-Covered as per Doxygen documentations.
+`API`s documentation will be provided by Doxygen which will be generated from the header files.
 
-## Theory of operation and key concepts
-device Settings HAL API is initialized by DS manager module. RDK-V middleware expected to have complete control over the life cycle over the Device settings HAL module.
+### Theory of operation and key concepts
 
-Initialize the modules using function: Init() before making any other Module API calls. This call does the module initialization. If Init() calls fails, HAL should return the respective error code, so that the client can retry the operation.
+The caller is expected to have complete control over the life cycle of the `HAL`.
 
-Once initialization is success. Device settings module should able to set or get the peripheral properties and functionalities.
+1. Initialize the `HAL` using function: `ds<Component>Init()` before making any other `API`s calls.  If `Init()` call fails, the `HAL` must return the respective error code, so that the caller can retry the operation.
 
-Finally close the Device Settings using the HAL API: Term()
+2. Once initailization is done caller can get the handle for the component using `dsGet<Component>()`.
 
+3. Using the handle of the component, different Configurations can be set for that component.
+
+4. De-intialise the `HAL` using the function: `ds<Component>Term()`
+
+NOTE: The module would operate deterministically if the above call sequence is followed.
+
+### Diagrams
+
+#### Operational Call Sequence
+
+```mermaid
+%%{ init : { "theme" : "default", "flowchart" : { "curve" : "stepBefore" }}}%%
+   sequenceDiagram
+    participant HAL as DEVICE SETTINGS HAL
+    Caller->>HAL:ds<Component>Init()
+    Note over HAL: SOC initializes the underlying subsystems.
+    HAL-->>Caller:return
+    Caller->>HAL:dsSet<Component>()
+    Note over HAL: peripheral configurations are set using specific calls
+    HAL-->>Caller:return
+    Caller->>HAL:dsGet<Component>()
+    Note over HAL: peripheral configurations are returned using specific calls
+    HAL-->>Caller:return
+    Caller->>HAL:dsRegister<Function>()
+    HAL-->>Caller:return
+    Note over HAL: Once a callback is registered, events notification happen through the callback.
+    Caller->>HAL:<Function>CB_t()
+    HAL-->>Caller:return
+    Caller ->>HAL:ds<Component>Term()
+    HAL-->>Caller:return
+ ```

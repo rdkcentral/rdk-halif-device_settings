@@ -19,12 +19,23 @@
  
 
 
-/**
-* @defgroup devicesettings Device Settings
-* @{
-* @defgroup hal Device Settings HAL
-* @{
-**/
+/** 
+ * @defgroup devicesettings Device Settings
+ * Describe the details about Device Settings HAL API specifications.
+ *
+ * <b> Following abbreviations present in HAL API </b>
+ *
+ * @par Abbreviations
+ * - cb:      Callback function (suffix).
+ * - DS:      Device Settings.
+ * - HAL:     Hardware Abstraction Layer.
+ * - _t:      Type (suffix).
+ * - DTCP:    Digital Transmission Content Protection
+ * - HDCP:    High-bandwidth Digital Copy Protection.
+ * - HDMI:    High-Definition Multimedia Interface
+ * 
+ * @ingroup DSSETTINGS_HAL
+ */
 
 
 #ifndef _DS_VIDEOOUTPUTPORTSETTINGS_H_
@@ -43,37 +54,39 @@ namespace {
 /*
  * Enumerate the supported configurations here.
  */
-static const dsVideoPortType_t kSupportedPortTypes[] = { dsVIDEOPORT_TYPE_HDMI };
+static const dsVideoPortType_t kSupportedPortTypes[] = { 
+        dsVIDEOPORT_TYPE_HDMI ///< HDMI video output. 
+    };
 
 /* 
  * Enumerate all configurations for each port type. 
  */
 static const dsVideoPortTypeConfig_t kConfigs[]= {
-		{
-		/*.typeId = */					dsVIDEOPORT_TYPE_HDMI,
-		/*.name = */ 					"HDMI",
-		/*.dtcpSupported = */			false,
-		/*.hdcpSupported = */			true,
-		/*.restrictedResollution = */	-1,
-		/*.numSupportedResolutions = */ dsUTL_DIM(kResolutions), // 0 means "Info available at runtime"
-		/*.supportedResolutons = */     kResolutions,
-		},
+    {
+    /*.typeId = */                  dsVIDEOPORT_TYPE_HDMI,    ///< See dsVideoPortType_t
+    /*.name = */                    "HDMI",                   ///< Port name
+    /*.dtcpSupported = */           false,                    ///< Is DTCP supported
+    /*.hdcpSupported = */           true,                     ///< Is HDCP supported
+    /*.numSupportedResolutions = */ dsUTL_DIM(kResolutions),  ///< Number of supported resolutions.
+    /*.supportedResolutons = */     kResolutions,             ///< See dsTVResolution_t
+    },
 };
 
 /*
  *  Enumerate all enabled Video Output Ports here.
  */
 static const dsVideoPortPortConfig_t kPorts[] = {
-		{
-		/*.typeId = */ 					{dsVIDEOPORT_TYPE_HDMI, 0},
-		/*.connectedAOP */              {dsAUDIOPORT_TYPE_HDMI, 0},
-		/*.defaultResolution = */		"720p"
-		},
+    {
+    /*.typeId = */                  {dsVIDEOPORT_TYPE_HDMI, 0}, ///< See dsVideoPortType_t
+    /*.connectedAOP */              {dsAUDIOPORT_TYPE_HDMI, 0}, ///< See dsVideoPortType_t
+    /*.defaultResolution = */       "720p"                      ///< Resolution name.
+    },
 };
 
 }
 
-#ifdef __cplusplus
+#ifdef __cplusplus  /*.restrictedResollution = */   -1,   ///< Any restricted resolution; -1 if no.
+
 }
 #endif
 

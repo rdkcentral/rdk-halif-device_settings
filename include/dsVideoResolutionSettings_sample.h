@@ -38,86 +38,131 @@ namespace {
 #endif
 
 
-#define  _INTERLACED true
-#define _PROGRESSIVE false
+#define  _INTERLACED true   ///< Video format is interlaced.
+#define _PROGRESSIVE false  ///< Video format is progressive.
 
-#define dsVideoPortRESOLUTION_NUMMAX 32
+#define dsVideoPortRESOLUTION_NUMMAX 32 ///< Max port number.
 
 /* List all supported resolutions here */
 
 static dsVideoPortResolution_t kResolutions[] = {
-		{   /*480i*/
-			/*.name = */					"480i",
-			/*.pixelResolution = */			dsVIDEO_PIXELRES_720x480,
-			/*.aspectRatio = */				dsVIDEO_ASPECT_RATIO_4x3,
-			/*.stereoscopicMode = */		dsVIDEO_SSMODE_2D,
-			/*.frameRate = */				dsVIDEO_FRAMERATE_29dot97,
-			/*.interlaced = */				_INTERLACED,
-		},
-		{   /*480p*/
-			/*.name = */					"480p",
-			/*.pixelResolution = */			dsVIDEO_PIXELRES_720x480,
-			/*.aspectRatio = */				dsVIDEO_ASPECT_RATIO_4x3,
-			/*.stereoscopicMode = */		dsVIDEO_SSMODE_2D,
-			/*.frameRate = */				dsVIDEO_FRAMERATE_59dot94,
-			/*.interlaced = */				_PROGRESSIVE,
-		},
-		{   /*720i*/
-			/*.name = */					"576p50",
-			/*.pixelResolution = */			dsVIDEO_PIXELRES_720x576,
-			/*.aspectRatio = */				dsVIDEO_ASPECT_RATIO_4x3,
-			/*.stereoscopicMode = */		dsVIDEO_SSMODE_2D,
-			/*.frameRate = */				dsVIDEO_FRAMERATE_50,
-			/*.interlaced = */				_PROGRESSIVE,
-		},
-		{   /*720p - Default - AutoSelect */
-			/*.name = */					"720p",
-			/*.pixelResolution = */			dsVIDEO_PIXELRES_1280x720,
-			/*.aspectRatio = */				dsVIDEO_ASPECT_RATIO_16x9,
-			/*.stereoscopicMode = */		dsVIDEO_SSMODE_2D,
-			/*.frameRate = */				dsVIDEO_FRAMERATE_59dot94,
-			/*.interlaced = */				_PROGRESSIVE,
-		},
-		{   /*720p - Default - AutoSelect */
-			/*.name = */					"720p50",
-			/*.pixelResolution = */			dsVIDEO_PIXELRES_1280x720,
-			/*.aspectRatio = */				dsVIDEO_ASPECT_RATIO_16x9,
-			/*.stereoscopicMode = */		dsVIDEO_SSMODE_2D,
-			/*.frameRate = */				dsVIDEO_FRAMERATE_50,
-			/*.interlaced = */				_PROGRESSIVE,
-		},
-		{   /*1080p24*/
-			/*.name = */					"1080p24",
-			/*.pixelResolution = */			dsVIDEO_PIXELRES_1920x1080,
-			/*.aspectRatio = */				dsVIDEO_ASPECT_RATIO_16x9,
-			/*.stereoscopicMode = */		dsVIDEO_SSMODE_2D,
-			/*.frameRate = */				dsVIDEO_FRAMERATE_50,
-			/*.interlaced = */				_PROGRESSIVE,
-		},
-		{   /*1080p60*/
-			/*.name = */					"1080p60",
-			/*.pixelResolution = */			dsVIDEO_PIXELRES_1920x1080,
-			/*.aspectRatio = */				dsVIDEO_ASPECT_RATIO_16x9,
-			/*.stereoscopicMode = */		dsVIDEO_SSMODE_2D,
-			/*.frameRate = */				dsVIDEO_FRAMERATE_59dot94,
-			/*.interlaced = */				_PROGRESSIVE,
-		},
-		{   /*1080i*/
-			/*.name = */					"1080i50",
-			/*.pixelResolution = */			dsVIDEO_PIXELRES_1920x1080,
-			/*.aspectRatio = */				dsVIDEO_ASPECT_RATIO_16x9,
-			/*.stereoscopicMode = */		dsVIDEO_SSMODE_2D,
-			/*.frameRate = */				dsVIDEO_FRAMERATE_50,
-			/*.interlaced = */				_INTERLACED,
-		},
-		{   /*1080p30*/
-			/*.name = */					"1080i",
-			/*.pixelResolution = */			dsVIDEO_PIXELRES_1920x1080,
-			/*.aspectRatio = */				dsVIDEO_ASPECT_RATIO_16x9,
-			/*.stereoscopicMode = */		dsVIDEO_SSMODE_2D,
-			/*.frameRate = */				dsVIDEO_FRAMERATE_59dot94,
-			/*.interlaced = */				_INTERLACED,
-		},
+{   /*480i*/
+    /*.name = */                "480i",
+    /*.pixelResolution = */     dsVIDEO_PIXELRES_720x480,   
+                                    ///< See dsVideoResolution_t
+    /*.aspectRatio = */         dsVIDEO_ASPECT_RATIO_4x3,   
+                                    ///< See dsVideoAspectRatio_t
+    /*.stereoscopicMode = */    dsVIDEO_SSMODE_2D,          
+                                    ///< See dsVideoStereoScopicMode_t
+    /*.frameRate = */           dsVIDEO_FRAMERATE_29dot97,  
+                                    ///< See dsVideoFrameRate_t
+    /*.interlaced = */          _INTERLACED,                
+                                    ///< Video format. True for interlaced, false for progressive.
+},
+{   /*480p*/
+    /*.name = */                "480p",
+    /*.pixelResolution = */     dsVIDEO_PIXELRES_720x480,   
+                                    ///< See dsVideoResolution_t
+    /*.aspectRatio = */         dsVIDEO_ASPECT_RATIO_4x3,   
+                                    ///< See dsVideoAspectRatio_t
+    /*.stereoscopicMode = */    dsVIDEO_SSMODE_2D,          
+                                    ///< See dsVideoStereoScopicMode_t
+    /*.frameRate = */           dsVIDEO_FRAMERATE_59dot94,  
+                                    ///< See dsVideoFrameRate_t
+    /*.interlaced = */          _PROGRESSIVE,               
+                                    ///< Video format. True for interlaced, false for progressive.
+},
+{   /*720i*/
+    /*.name = */                "576p50",
+    /*.pixelResolution = */     dsVIDEO_PIXELRES_720x576,   
+                                    ///< See dsVideoResolution_t. 
+    /*.aspectRatio = */         dsVIDEO_ASPECT_RATIO_4x3,   
+                                    ///< See dsVideoAspectRatio_t
+    /*.stereoscopicMode = */    dsVIDEO_SSMODE_2D,          
+                                    ///< See dsVideoStereoScopicMode_t
+    /*.frameRate = */           dsVIDEO_FRAMERATE_50,       
+                                    ///< See dsVideoFrameRate_t
+    /*.interlaced = */          _PROGRESSIVE,               
+                                    ///< Video format. True for interlaced, false for progressive.
+},
+{   /*720p - Default - AutoSelect */
+    /*.name = */                "720p",
+    /*.pixelResolution = */     dsVIDEO_PIXELRES_1280x720,  
+                                    ///< See dsVideoResolution_t 
+    /*.aspectRatio = */         dsVIDEO_ASPECT_RATIO_16x9,  
+                                    ///< See dsVideoAspectRatio_t
+    /*.stereoscopicMode = */    dsVIDEO_SSMODE_2D,          
+                                    ///< See dsVideoStereoScopicMode_t
+    /*.frameRate = */           dsVIDEO_FRAMERATE_59dot94,  
+                                    ///< See dsVideoFrameRate_t
+    /*.interlaced = */          _PROGRESSIVE,               
+                                    ///< Video format. True for interlaced, false for progressive.
+},
+{   /*720p - Default - AutoSelect */
+    /*.name = */                "720p50",
+    /*.pixelResolution = */     dsVIDEO_PIXELRES_1280x720,  
+                                    ///< See dsVideoResolution_t 
+    /*.aspectRatio = */         dsVIDEO_ASPECT_RATIO_16x9,  
+                                    ///< See dsVideoAspectRatio_t
+    /*.stereoscopicMode = */    dsVIDEO_SSMODE_2D,          
+                                    ///< See dsVideoStereoScopicMode_t
+    /*.frameRate = */           dsVIDEO_FRAMERATE_50,       
+                                    ///< See dsVideoFrameRate_t
+    /*.interlaced = */          _PROGRESSIVE,               
+                                    ///< Video format. True for interlaced, false for progressive.
+},
+{   /*1080p24*/
+    /*.name = */                "1080p24",
+    /*.pixelResolution = */     dsVIDEO_PIXELRES_1920x1080, 
+                                    ///< See dsVideoResolution_t  
+    /*.aspectRatio = */         dsVIDEO_ASPECT_RATIO_16x9,  
+                                    ///< See dsVideoAspectRatio_t
+    /*.stereoscopicMode = */    dsVIDEO_SSMODE_2D,          
+                                    ///< See dsVideoStereoScopicMode_t
+    /*.frameRate = */           dsVIDEO_FRAMERATE_50,       
+                                    ///< See dsVideoFrameRate_t
+    /*.interlaced = */          _PROGRESSIVE,               
+                                    ///< Video format. True for interlaced, false for progressive.
+},
+{   /*1080p60*/
+    /*.name = */                "1080p60",
+    /*.pixelResolution = */     dsVIDEO_PIXELRES_1920x1080, 
+                                    ///< See dsVideoResolution_t  
+    /*.aspectRatio = */         dsVIDEO_ASPECT_RATIO_16x9,  
+                                    ///< See dsVideoAspectRatio_t
+    /*.stereoscopicMode = */    dsVIDEO_SSMODE_2D,          
+                                    ///< See dsVideoStereoScopicMode_t
+    /*.frameRate = */           dsVIDEO_FRAMERATE_59dot94,  
+                                    ///< See dsVideoFrameRate_t
+    /*.interlaced = */          _PROGRESSIVE,               
+                                    ///< Video format. True for interlaced, false for progressive.
+},
+{   /*1080i*/
+    /*.name = */                "1080i50",
+    /*.pixelResolution = */     dsVIDEO_PIXELRES_1920x1080, 
+                                    ///< See dsVideoResolution_t  
+    /*.aspectRatio = */         dsVIDEO_ASPECT_RATIO_16x9,  
+                                    ///< See dsVideoAspectRatio_t
+    /*.stereoscopicMode = */    dsVIDEO_SSMODE_2D,          
+                                    ///< See dsVideoStereoScopicMode_t
+    /*.frameRate = */           dsVIDEO_FRAMERATE_50,       
+                                    ///< See dsVideoFrameRate_t
+    /*.interlaced = */          _INTERLACED,                
+                                    ///< Video format. True for interlaced, false for progressive.
+},
+{   /*1080p30*/
+    /*.name = */                "1080i",
+    /*.pixelResolution = */     dsVIDEO_PIXELRES_1920x1080, 
+                                    ///< See dsVideoResolution_t  
+    /*.aspectRatio = */         dsVIDEO_ASPECT_RATIO_16x9,  
+                                    ///< See dsVideoAspectRatio_t
+    /*.stereoscopicMode = */    dsVIDEO_SSMODE_2D,          
+                                    ///< See dsVideoStereoScopicMode_t
+    /*.frameRate = */           dsVIDEO_FRAMERATE_59dot94,  
+                                    ///< See dsVideoFrameRate_t
+    /*.interlaced = */          _INTERLACED,                
+                                    ///< Video format. True for interlaced, false for progressive.
+},
 };
 
 static const int kDefaultResIndex = 3; //Pick one resolution from kResolutions[] as default

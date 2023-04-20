@@ -34,16 +34,9 @@
  * -# None
  *
  * @par Abbreviations
- * - BE:      Big-Endian.
  * - cb:      Callback function (suffix).
  * - DS:      Device Settings.
- * - FPD:     Front-Panel Display.
  * - HAL:     Hardware Abstraction Layer.
- * - LE:      Little-Endian.
- * - LS:      Least Significant.
- * - MBZ:     Must be zero.
- * - MS:      Most Significant.
- * - RDK:     Reference Design Kit.
  * - _t:      Type (suffix).
  *
  * @par Implementation Notes
@@ -69,6 +62,7 @@ extern "C" {
 *  @ingroup DSHAL_API
 *
 *  Defined hereunder are the error codes that are used in the Device Settings library.
+*
 *  @{
 */
 
@@ -80,18 +74,12 @@ extern "C" {
  */
 
 typedef enum {
-    /// No error (success)
-    dsERR_NONE = 0,                   
-    /// General failure to take action
-    dsERR_GENERAL = 0x1000,           
-    /// Invalid input parameter
-    dsERR_INVALID_PARAM,              
-    /// Failure due to invalid state
-    dsERR_INVALID_STATE,              
-    /// Operation not supported
-    dsERR_OPERATION_NOT_SUPPORTED,   
-    /// Unknown error
-    dsERR_UNKNOWN                    
+    dsERR_NONE = 0,                 ///< Input output operation is successful          
+    dsERR_GENERAL = 1,              ///< Operation general error
+    dsERR_INVALID_PARAM,            ///< Invalid parameter is passed to the module
+    dsERR_INVALID_STATE,            ///< Module is not initialised
+    dsERR_OPERATION_NOT_SUPPORTED,  ///< Operation not supported
+    dsERR_UNKNOWN                   ///< Unknown error
 } dsError_t;
 
 /* End of DSHAL_ERROR doxygen group */

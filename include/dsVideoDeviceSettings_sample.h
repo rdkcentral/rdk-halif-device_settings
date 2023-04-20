@@ -19,12 +19,22 @@
  
 
 
-/**
-* @defgroup devicesettings Device Settings
-* @{
-* @defgroup hal Device Settings HAL
-* @{
-**/
+/** 
+ * @defgroup devicesettings Device Settings
+ * Describe the details about Device Settings HAL API specifications.
+ *
+ * <b> Following abbreviations present in HAL API </b>
+ *
+ * @par Abbreviations
+ * - cb:      Callback function (suffix).
+ * - DS:      Device Settings.
+ * - HAL:     Hardware Abstraction Layer.
+ * - _t:      Type (suffix).
+ * - HDMI:    High-Definition Multimedia Interface
+ * - DFC:     Decoder format conversion
+ * 
+ * @ingroup DSSETTINGS_HAL
+ */
 
 
 #ifndef _DS_VIDEODEVICESETTINGS_H_
@@ -47,7 +57,13 @@ namespace  {
  *
  * @note The size of the array is fixed and cannot be changed.
  */
-static const dsVideoZoom_t kSupportedDFCs[] = { dsVIDEO_ZOOM_NONE, dsVIDEO_ZOOM_FULL, dsVIDEO_ZOOM_PLATFORM};
+static const dsVideoZoom_t kSupportedDFCs[] = { 
+    dsVIDEO_ZOOM_NONE,      
+        ///< Decoder format conversion is inactive,
+    dsVIDEO_ZOOM_FULL,      
+        ///< Full screen (16:9 video is zoomed to fit 4:3 frame)
+    dsVIDEO_ZOOM_PLATFORM}; 
+        ///< Control over the decoder format conversions is managed by the platform.
 /**
  * @brief Default ZOOM Settings value
  *
@@ -55,7 +71,8 @@ static const dsVideoZoom_t kSupportedDFCs[] = { dsVIDEO_ZOOM_NONE, dsVIDEO_ZOOM_
  * values cannot be modified at runtime.
  *
  */
-static const dsVideoZoom_t kDefaultDFC 	   = dsVIDEO_ZOOM_FULL;
+static const dsVideoZoom_t kDefaultDFC  = dsVIDEO_ZOOM_FULL; 
+        //16:9 Zoom (4:3 video is zoomed to fill 16:9 frame).
 
 /**
  * @brief Number of Video Devices supported
@@ -76,11 +93,14 @@ static const int kNumVideoDevices = 1;
  */
 
 static const dsVideoConfig_t kConfigs[]= {
-		{
-		/*.numSupportedDFCs = */ 		dsUTL_DIM(kSupportedDFCs), // 0 means "Info available at runtime"
-		/*.supportedDFCs = */			kSupportedDFCs,
-		/*.defaultDFC = */			    dsVIDEO_ZOOM_FULL,
-		},
+    {
+    /*.numSupportedDFCs = */    dsUTL_DIM(kSupportedDFCs),  
+                                ///< Number of supported DFCs. 0 means "Info available at runtime"
+    /*.supportedDFCs = */       kSupportedDFCs,             
+                                ///< Supported DFCs.
+    /*.defaultDFC = */          dsVIDEO_ZOOM_FULL,          
+                                ///< 16:9 Zoom (4:3 video is zoomed to fill 16:9 frame).
+    },
 };
 
 typedef int _SafetyCheck[(dsUTL_DIM(kConfigs) == kNumVideoDevices) ? 1 : -1];

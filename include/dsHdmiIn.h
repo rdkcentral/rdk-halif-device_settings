@@ -51,17 +51,15 @@
  * -# None
  *
  * @par Abbreviations
- * - BE:      Big-Endian.
  * - cb:      Callback function (suffix).
  * - DS:      Device Settings.
- * - FPD:     Front-Panel Display.
  * - HAL:     Hardware Abstraction Layer.
- * - LE:      Little-Endian.
- * - LS:      Least Significant.
- * - MBZ:     Must be zero.
- * - MS:      Most Significant.
- * - RDK:     Reference Design Kit.
  * - _t:      Type (suffix).
+ * - EDID:    Extended Display Identification Data.
+ * - SPD:     Surge Protector Device.
+ * - ARC:     Audio Return Channel.
+ * - ALLM:    Auto Low Latency Mode
+ * - HDMI:    High-Definition Multimedia Interface
  *
  * @par Implementation Notes
  * -# None
@@ -92,16 +90,16 @@ extern "C" {
  */
 
 /**
- * @brief Initialize the underlying HDMI Input sub-system.
- * 
- * This function must initialize the HDMI Input module and any associated data
- * structures.
+ * @brief Initializes the HDMI Input Hal.
  *
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
+ *
+ * @return dsError_t            - Status
+ * @retval dsERR_NONE           - Success
+ * @retval dsERR_INVALID_STATE  - Function is already initialized.
+ * @retval dsERR_GENERAL        - Underlying undefined platform error
+ * 
  * @warning  This API is Not thread safe.
+ * 
  * @see dsHdmiInTerm()
  */
 
@@ -113,72 +111,74 @@ dsError_t dsHdmiInInit (void);
  * This function must terminate the HDMI Input module and any associated data
  * structures.
  *
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @pre dsHdmiInInit() should be called before calling this API.
+ * @return dsError_t            - Status
+ * @retval dsERR_NONE           - Success
+ * @retval dsERR_INVALID_STATE  - Module is not initialised
+ * @retval dsERR_GENERAL        - Underlying undefined platform error
+ * 
+ * 
+ * @pre dsHdmiInInit() must be called before calling this API.
+ * 
  * @warning  This API is Not thread safe.
+ * 
  * @see dsHdmiInInit()
  */
 
 dsError_t dsHdmiInTerm (void);
 
 /**
- * @brief Get the number of HDMI Input ports on the set-top.
- * 
- * This function is used to get the number of HDMI Input ports on the set-top.
+ * @brief This function is used to get the number of HDMI Input ports on the set-top.
  *
- * @param[out] pNumberOfInputs   number of HDMI Input ports.
+ * @param[out] pNumberOfInputs  - number of HDMI Input ports. 
+ *                                  Max number of inputs is platform specific.
  * 
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @pre dsHdmiInInit() should be called before calling this API.
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
+ * @pre dsHdmiInInit() must be called before calling this API.
+ * 
  * @warning  This API is Not thread safe.
  */
 
 dsError_t dsHdmiInGetNumberOfInputs (uint8_t *pNumberOfInputs);
 
 /**
- * @brief Get the HDMI Inpuut Status.
+ * @brief This function is used to get the current HDMI Input Status.
+ *
+ * @param[out] pStatus  - current status of the HdmiInput port. See dsHdmiInStatus_t
+ *
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
- * This function is used to get the current HDMI Input Status.
- *
- * @param[out] pStatus          returns the current status of HdmiInput port: Possible statuses are
- *                              HDMI Input enabled, HDMI Input port connected,
- *                              Active HDMI Input port, and HW Pass-Through enabled.
- *
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @pre dsHdmiInInit() should be called before calling this API.
+ * @pre dsHdmiInInit() must be called before calling this API.
+ * 
  * @warning  This API is Not thread safe.
  */
 
 dsError_t dsHdmiInGetStatus (dsHdmiInStatus_t *pStatus);
 
 /**
- * @brief Select the HDMI Input port to be displayed on the screen.
- * 
- * This function is used to select the HDMI Input port for presentation.
+ * @brief This function is used to select the HDMI Input port for presentation.
  *
- * @param[in] ePort             HDMI Input port to be presented,
+ * @param[in] ePort     - HDMI Input port to be presented. See dsHdmiInPort_t
  * 
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @pre dsHdmiInInit() should be called before calling this API.
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported.
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
+ * @pre dsHdmiInInit() must be called before calling this API.
+ * 
  * @warning  This API is Not thread safe.
  */
 
@@ -188,381 +188,388 @@ dsError_t dsHdmiInSelectPort (dsHdmiInPort_t ePort);
  * @brief Scale the HDMI In video
  * This function is used to scale the HDMI In video.
  *
- * @param[in] x                 x coordinate for the video
- * @param[in] y                 y coordinate for the video
- * @param[in] width             width of the video
- * @param[in] height            height of the video
+ * @param[in] x         - x coordinate for the video
+ * @param[in] y         - y coordinate for the video
+ * @param[in] width     - width of the video. Width in pixels.
+ * @param[in] height    - height of the video. Height in pixels.
  *
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @pre dsHdmiInInit() should be called before calling this API.
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
+ * 
+ * @pre dsHdmiInInit() must be called before calling this API.
  * @warning  This API is Not thread safe.
  */
 
 dsError_t dsHdmiInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t height);
 
 /**
- * @brief Select the HDMI Input zoom mode
- * 
- * This function is used to select the HDMI Input zoom mode.
+ * @brief This function is used to select the HDMI Input zoom mode.
  *
- * @param[in] requestedZoomMode HDMI Input zoom mode,
+ * @param[in] requestedZoomMode     - HDMI Input zoom mode. See dsVideoZoom_t
  * 
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @pre dsHdmiInInit() should be called before calling this API.
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
+ * @pre dsHdmiInInit() must be called before calling this API.
+ * 
  * @warning  This API is Not thread safe.
  */
 
 dsError_t dsHdmiInSelectZoomMode (dsVideoZoom_t requestedZoomMode);
 
 /**
- * @brief This function pauses the HDMI Input audio from HDMI out.
+ * @brief This function stops sending the HDMI Input audio to the HDMI Out.
  *
- * This function stops sending the HDMI Input audio to the HDMI Out.
- *
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @pre dsHdmiInInit() should be called before calling this API.
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
+ * @pre dsHdmiInInit() must be called before calling this API.
+ * 
  * @warning  This API is Not thread safe.
  */
 
 dsError_t dsHdmiInPauseAudio (void);
 
 /**
- * @brief Start the output of HDMI Input audio.
+ * @brief This function presents the HDMI Input audio via HDMI Out.
  *
- * This function presents the HDMI Input audio via HDMI Out.
- *
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @pre dsHdmiInInit() should be called before calling this API.
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
+ * @pre dsHdmiInInit() must be called before calling this API.
+ * 
  * @warning  This API is Not thread safe.
  */
 
 dsError_t dsHdmiInResumeAudio (void);
 
 /**
- * @brief Get the current HDMI Input video mode.
+ * @brief This function gets the current HDMI Input video mode.
  *
- * This function gets the current HDMI Input video mode.
+ * @param[out] resolution       - current HDMI Input video mode resolution. 
+ *                                      See dsVideoPortResolution_t
  *
- * @param[out] resolution       Current HDMI Input video mode resolution
- *
- * @return Current HDMI Input video mode (resolution)
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @pre dsHdmiInInit() should be called before calling this API.
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
+ * @pre dsHdmiInInit() must be called before calling this API.
+ * 
  * @warning  This API is Not thread safe.
  */
 
 dsError_t dsHdmiInGetCurrentVideoMode (dsVideoPortResolution_t *resolution);
 
 /**
- * @brief Callback function used to notify the HDMI In hot plug event to the respective clients.
+ * @brief HAL must call this function when the HDMI in port connection status changes.
  *
- * HAL Implementation should call this method to deliver HDMI In hot plug status
- * to the application (e.g. Connect/Disconnect for Port 0/1).
- * @param[in] Port Port id where connection status is changed.
- * @param[in] isPortConnected Port connection status.
+ * @param[in] Port              - Port id where connection status is changed. See dsHdmiInPort_t
+ * @param[in] isPortConnected   - Port connection status. True if connected, false if not.
  *
  */
 typedef void (*dsHdmiInConnectCB_t)(dsHdmiInPort_t Port, bool isPortConnected);
 
 /**
- * @brief Callback function used to notify the HDMI In signal change event to the respective clients.
- *
- * HAL Implementation should call this method to deliver HDMI In signal change status
- * to the application (e.g. NoSignal/UnstableSignal/NotSupportedSignal/StableSignal for HDMI In ports).
- * @param[in] port Port id where signal status is changed
- * @param[in] sigStatus Current signal status of the port.
+ * @brief HAL must call this function when the HDMI In signal status changes.
+ * 
+ * @param[in] port      - Port id where signal status is changed. See dsHdmiInPort_t
+ * @param[in] sigStatus - Current signal status of the port. See dsHdmiInSignalStatus_t
  *
  */
 typedef void (*dsHdmiInSignalChangeCB_t)(dsHdmiInPort_t port, dsHdmiInSignalStatus_t sigStatus);
 
 /**
- * @brief Callback function used to notify the HDMI Input status change event to the respective clients.
+ * @brief HAL must call this function when the HDMI Input status changes.
  *
- * HAL Implementation should call this method to deliver HDMI Input status
- * to the application (e.g. port, isPresented(true/false) etc. for HDMI In ports).
- * @param[in] inputStatus Present hdmi input status
+ * HAL Implementation must call this method to deliver HDMI Input status
+ * to the Caller whenever the HDMI Input status changes.
+ * 
+ * @param[in] inputStatus   - Present hdmi input status. See dsHdmiInStatus_t
  *
  */
 
 typedef void (*dsHdmiInStatusChangeCB_t)(dsHdmiInStatus_t inputStatus);
 
 /**
- * @brief Callback function used to notify the HDMI In video mode change event to the respective clients.
+ * @brief HAL must call this function when the HDMI In video mode changes.
  *
- * HAL Implementation should call this method to deliver updated HDMI In video mode info
- * to the application
+ * HAL Implementation must call this method to deliver updated HDMI In video mode info
+ * to the Caller
  *
- * @param[in] port Port in which video mode updated.
- * @param[in] videoResolution current video resolution of the port.
+ * @param[in] port              - Port in which video mode updated. See dsHdmiInPort_t
+ * @param[in] videoResolution   - current video resolution of the port. See dsVideoPortResolution_t
  *
  */
 
 typedef void (*dsHdmiInVideoModeUpdateCB_t)(dsHdmiInPort_t port, dsVideoPortResolution_t videoResolution);
 
 /**
- * @brief Callback function used to notify the HDMI Input ALLM Mode change event to the respective clients.
+ * @brief HAL must call this function when the HDMI Input ALLM mode changes.
  *
- * HAL Implementation should call this method to deliver HDMI Input ALLM Mode
- * to the application (e.g. port, allm_mode(true/false) etc. for HDMI In ports).
- *
- * @param[in] port Hdmi port number in which ALLM Mode changed.
- * @param[in] allm_mode Current ALLM mode of the port.
+ * @param[in] port      - Hdmi port number in which ALLM Mode changed. See dsHdmiInPort_t
+ * @param[in] allm_mode - Current ALLM mode of the port. True if the port is in ALLM mode, false if not.
  *
  */
 
 typedef void (*dsHdmiInAllmChangeCB_t)(dsHdmiInPort_t port, bool allm_mode);
 
 /**
- * @brief Register for the HDMI Input hot plug event.
- * 
- * This function is used to register a callback for the HDMI Input hot plug event notification from the HAL side.
+ * @brief This function is used to register a callback for the 
+ *              HDMI Input hot plug event notification from the HAL side.
  *
- * @param[in] CBFunc            HDMI Input hot plug callback function.
+ * @param[in] CBFunc    - HDMI Input hot plug callback function. See dsHdmiInConnectCB_t
  * 
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @pre dsHdmiInInit() should be called before calling this API.
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
+ * @pre dsHdmiInInit() must be called before calling this API.
+ * 
  * @warning  This API is Not thread safe.
  */
 
 dsError_t dsHdmiInRegisterConnectCB (dsHdmiInConnectCB_t CBFunc);
 
 /**
- * @brief Register for the HDMI Input Signal Change event.
+ * @brief This function is used to register a callback for the HDMI Input Signal Change event.
  *
- * This function is used to register a callback for the HDMI Input Signal Change event.
- *
- * @param[in] CBFunc            HDMI Input Signal change callback function.
+ * @param[in] CBFunc    - HDMI Input Signal change callback function. See dsHdmiInSignalChangeCB_t
  * 
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @pre dsHdmiInInit() should be called before calling this API.
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
+ * @pre dsHdmiInInit() must be called before calling this API.
+ * 
  * @warning  This API is Not thread safe.
  */
 
 dsError_t dsHdmiInRegisterSignalChangeCB (dsHdmiInSignalChangeCB_t CBFunc);
 
 /**
- * @brief Register for the HDMI Input Status Change event.
+ * @brief This function is used to register a callback for the HDMI Input Status Change event.
+ *               See dsHdmiInStatus_t.
  *
- * This function is used to register a callback for the HDMI Input Status Change event.
- *
- * @param[in] CBFunc            HDMI Input Status change callback function.
+ * @param[in] CBFunc    - HDMI Input Status change callback function. See dsHdmiInStatusChangeCB_t
  * 
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @pre dsHdmiInInit() should be called before calling this API.
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
+ * @pre dsHdmiInInit() must be called before calling this API.
+ * 
  * @warning  This API is Not thread safe.
  */
 
 dsError_t dsHdmiInRegisterStatusChangeCB (dsHdmiInStatusChangeCB_t CBFunc);
 
 /**
- * @brief Register for the HDMI Input Video Mode change event
+ * @brief This function is used to register a callback for the HDMI Input video mode Change event. 
+ *                  The mode change is triggered whenever the video resolution changes.
  *
- * This function is used to register a callback for the HDMI Input video mode Change event.
- *
- * @param[in] CBFunc            HDMI Input video mode change callback function.
+ * @param[in] CBFunc    - HDMI Input video mode change callback function. 
+ *                              See dsHdmiInVideoModeUpdateCB_t
  * 
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @pre dsHdmiInInit() should be called before calling this API.
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
+ * @pre dsHdmiInInit() must be called before calling this API.
+ * 
  * @warning  This API is Not thread safe.
  */
 
 dsError_t dsHdmiInRegisterVideoModeUpdateCB(dsHdmiInVideoModeUpdateCB_t CBFunc);
 
 /**
- * @brief Register for the HDMI Input ALLM Mode Change event.
+ * @brief This function is used to register a callback for the HDMI Input ALLM Mode Change event.
  *
- * This function is used to register a callback for the HDMI Input ALLM Mode Change event.
- *
- * @param[in] CBFunc            HDMI Input ALLM Mode change callback function.
+ * @param[in] CBFunc    - HDMI Input ALLM Mode change callback function. 
+ *                              See dsHdmiInAllmChangeCB_t
  * 
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @pre dsHdmiInInit() should be called before calling this API.
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
+ * @pre dsHdmiInInit() must be called before calling this API.
+ * 
  * @warning  This API is Not thread safe.
  */
 
 dsError_t dsHdmiInRegisterAllmChangeCB (dsHdmiInAllmChangeCB_t CBFunc);
 
 /**
- * @brief routine to check the availability of the HDMI Arc port in the respective platform.
+ * @brief This function is used to check the availability of the 
+ *              HDMI Arc port in the respective platform.
  *
- * This function is used to check the availability of the HDMI Arc port in the respective platform.
+ * @param[in] iPort - HDMI Arc port. Max value is device specific. Min value of 0.
  *
- * @param[in] iPort             HDMI Arc port
- *
- * @return Boolean returns true if the port supports AC and false if not supported or an invalid port is passed.
- * @pre dsHdmiInInit() should be called before calling this API.
+ * @return Boolean  - ARC support
+ * @retval True     - Port supports ARC
+ * @retval False    - Port does not support ARC
+ * 
+ * @pre dsHdmiInInit() must be called before calling this API.
+ * 
  * @warning  This API is Not thread safe.
  */
 
 bool dsIsHdmiARCPort (int iPort);
 
 /**
- * @brief routine to get the EDID bytes info
+ * @brief This function is used to get the EDID bytes info event form the connected display.
  *
- * This function is used to get the EDID bytes info event form the connected display.
+ * @param[in] iHdmiPort     - HDMI Input port. Max value is device specific. Min value of 0.
+ * @param[out] edid         - EDID data for which info is required
+ * @param[out] length       - length of the EDID data. Min value of 0.
  *
- * @param[in] iHdmiPort         HDMI Input port
- * @param[out] edid              EDID data for which info is required
- * @param[out] length            Length of the EDID data
- *
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @pre dsHdmiInInit() should be called before calling this API.
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
+ * @pre dsHdmiInInit() must be called before calling this API.
+ * 
  * @warning  This API is Not thread safe.
  */
 
 dsError_t dsGetEDIDBytesInfo (int iHdmiPort, unsigned char **edid, int *length);
 
 /**
- * @brief routine to get the HDMI SPD info 
+ * @brief his function is used to get the HDMI SPD info.
  *
- * This function is used to get the HDMI SPD info.
+ * @param[in] iHdmiPort     - HDMI Input port. Max value is device specific. Min value of 0.
+ * @param[out] data         - HDMI SPD info data to get
  *
- * @param[in] iHdmiPort         HDMI Input port
- * @param[out] data              HDMI SPD info data to get
- *
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @pre dsHdmiInInit() should be called before calling this API.
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
+ * @pre dsHdmiInInit() must be called before calling this API.
+ * 
  * @warning  This API is Not thread safe.
  */
 
 dsError_t dsGetHDMISPDInfo (int iHdmiPort, unsigned char **data);
 
 /**
- * @brief routine to set the EDID version
+ * @brief This function is used to set the EDID version info
  *
- * This function is used to set the EDID version info
+ * @param[in] iHdmiPort     - HDMI input port. Max value is device specific. Min value of 0.
+ * @param[in] iEdidVersion  - Input EDID version number to set
  *
- * @param[in] iHdmiPort         HDMI Input port
- * @param[in] iEdidVersion      Input EDID version number to set
- *
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @pre dsHdmiInInit() should be called before calling this API.
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
+ * @pre dsHdmiInInit() must be called before calling this API.
+ * 
  * @warning  This API is Not thread safe.
+ * 
  * @see dsGetEdidVersion()
  */
 
 dsError_t dsSetEdidVersion (int iHdmiPort, int iEdidVersion);
 
 /**
- * @brief Routine to get the EDID version
+ * @brief This function is used to get the EDID version info
  *
- * This function is used to get the EDID version info
+ * @param[in] iHdmiPort     - HDMI input port. Max value is device specific. Min value of 0.
+ * @param[out] iEdidVersion - input EDID version number to get.
  *
- * @param[in] iHdmiPort         HDMI Input port
- * @param[out] iEdidVersion      Input EDID version number to get
- *
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @pre dsHdmiInInit() should be called before calling this API.
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
+ * @pre dsHdmiInInit() must be called before calling this API.
+ * 
  * @warning  This API is Not thread safe.
+ * 
  * @see dsSetEdidVersion()
  */
 
 dsError_t dsGetEdidVersion (int iHdmiPort, int *iEdidVersion);
 
 /**
- * @brief Routine to get all the mstatus
+ * @brief This function is used to get the allm status details of the specific port
  *
- * This function is used to get the all mstatus details of the specific port
+ * @param[in] iHdmiPort     - HDMI input port. Max value is device specific. Min value of 0.
+ * @param[out] allmStatus   - allmstatus. True if enabled, false if not.
  *
- * @param[in] iHdmiPort         HDMI Input port
- * @param[out] allmStatus        mstatus details to get
- *
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @pre dsHdmiInInit() should be called before calling this API.
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
+ * @pre dsHdmiInInit() must be called before calling this API.
+ * 
  * @warning  This API is Not thread safe.
  */
 
 dsError_t dsGetAllmStatus (int iHdmiPort, bool *allmStatus);
 
 /**
- * @brief Routine to get all supported game features list
+ * @brief This function is used to get all the supported game features list information.
  *
- * This function is used to get all the supported game features list information.
+ * @param[out] features         - List of all supported game features. 
+ *                                      See dsSupportedGameFeatureList_t
  *
- * @param[out] features          List of all supported game features
- *
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHdmiInInit() or  preceding dsHdmiInInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @pre dsHdmiInInit() should be called before calling this API.
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
+ * @pre dsHdmiInInit() must be called before calling this API.
+ * 
  * @warning  This API is Not thread safe.
  */
 

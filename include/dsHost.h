@@ -24,20 +24,15 @@
  * <b> Following abbreviations present in HAL API </b>
  *
  * @par Abbreviations
- * - BE:      Big-Endian.
  * - cb:      Callback function (suffix).
  * - DS:      Device Settings.
- * - FPD:     Front-Panel Display.
  * - HAL:     Hardware Abstraction Layer.
- * - LE:      Little-Endian.
- * - LS:      Least Significant.
- * - MBZ:     Must be zero.
- * - MS:      Most Significant.
- * - RDK:     Reference Design Kit.
  * - _t:      Type (suffix).
  * - HDCP:    High-bandwidth Digital Copy Protection.
  * - DTCP:    Digital Transmission Copy Protection.
  * - EDID:    Extended Display Information Data.
+ * - CPU:     Central Processing Unit
+ * - SoC:     System on chip
  * 
  * @ingroup DSSETTINGS_HAL
  */
@@ -66,21 +61,19 @@ extern "C" {
  *  @ingroup devicesettingshalapi
  *
  *  Described herein are the DeviceSettings HAL types and functions that are part of
- *  the Host subsystem. The Host subsystem manages system-specific hardware operations.
+ *  the Host subsystem. The Host subsystem manages system-specific HAL operations.
  *
  *  @{
  */
 
 /**
- * @brief Initialize the Host sub-system.
+ * @brief Initialize the Host HAL.
  *
- * This function must initialize all the system specific drivers to be initialized  prior
- * to any driver specific calls.
- *
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
+ * @return dsError_t            - Status
+ * @retval dsERR_NONE           - Success
+ * @retval dsERR_INVALID_STATE  - Function is already initialized.
+ * @retval dsERR_GENERAL        - Underlying undefined platform error
+ * 
  * @warning  This API is Not thread safe.
  * @see dsHostTerm()
  */
@@ -93,17 +86,17 @@ dsError_t dsHostInit();
  * This function sets the power mode of the host to active or standby and turns on/off
  * all the ouput ports.
  *
- * @param[in] newPower    The power mode of the host (::dsPOWER_STANDBY or ::dsPOWER_ON)
+ * @param[in] newPower  - The power mode of the host. See dsPowerState_t.
  *
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  Init or  preceding Init has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
  *
  * @note dsPOWER_OFF is not currently being used.
- * @pre dsHostInit() should be called before calling this API.
+ * @pre dsHostInit() must be called before calling this API.
  * @warning  This API is Not thread safe.
  * @see dsGetHostPowerMode()
  */
@@ -115,19 +108,16 @@ dsError_t dsSetHostPowerMode(int newPower);
  *
  * This function gets the current power mode of the host. 
  *
- * @param[out] currPower  current power state of the system.
- *                        mode on return. It returns one of:
- *                              - ::dsPOWER_OFF
- *                              - ::dsPOWER_STANDBY
- *                              - ::dsPOWER_ON
+ * @param[out] currPower    - current power state of the system mode on return. 
+ *                                  See dsPowerState_t for possible returns.
  *
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  Init or  preceding Init has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @pre dsHostInit() should be called before calling this API.
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
  * @warning  This API is Not thread safe.
  * @see dsSetHostPowerMode()
  */
@@ -140,14 +130,12 @@ dsError_t dsGetHostPowerMode(int *currPower);
  * This function resets the data structures used within the Host module and releases any
  * handles specific to the host module.
  *
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE Indicates the call was successful.
- * be initialized with this value. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHostInit() or  preceding dsHostInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @pre dsHostInit() should be called before calling this API.
+ * @return dsError_t            - Status
+ * @retval dsERR_NONE           - Success 
+ * @retval dsERR_INVALID_PARAM  - Invalid parameter value.
+ * @retval dsERR_INVALID_STATE  - Module is not initialised
+ * @retval dsERR_GENERAL        - General failure.
+ * 
  * @warning  This API is Not thread safe.
  * @see dsHostInit()
  */
@@ -157,15 +145,16 @@ dsError_t dsHostTerm();
 /**
  * @brief This function returns the preferred sleep mode which is persisted.
  *
- * @param[out] pMode      Current preferred sleep mode settings of the device.
+ * @param[out] pMode    - Current preferred sleep mode settings of the device. 
+ *                              See dsSleepMode_t for possible values.
  *
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE If sucessfully dsGetPreferredSleepMode api has been called.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHostInit() or  preceding dsHostInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @pre dsHostInit() should be called before calling this API.
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
  * @warning  This API is Not thread safe.
  * @see dsSetPreferredSleepMode()
  */
@@ -175,15 +164,15 @@ dsError_t dsGetPreferredSleepMode(dsSleepMode_t *pMode);
 /**
  * @brief This function sets the preferred sleep mode. This value will persisted across reboots.
  *
- * @param[in] mode        Sleep mode to set.
+ * @param[in] mode  - Sleep mode to set. See dsSleepMode_t for possible values.
  *
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE If sucessfully dsSetPreferredSleepMode api has been called.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHostInit() or  preceding dsHostInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @pre dsHostInit() should be called before calling this API.
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
  * @warning  This API is Not thread safe.
  * @see dsGetPreferredSleepMode()
  */
@@ -193,15 +182,14 @@ dsError_t dsSetPreferredSleepMode(dsSleepMode_t mode);
 /**
  * @brief This function gets the CPU temperature in centigrade.
  *
- * @param[out] cpuTemperature CPU temperature value is obtained in centigrade 
+ * @param[out] cpuTemperature   - CPU temperature value is obtained in centigrade 
  *
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE If sucessfully dsGetCPUTemperature api has been called.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHostInit() or  preceding dsHostInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @pre dsHostInit() should be called before calling this API.
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * @warning  This API is Not thread safe.
  */
 
@@ -210,39 +198,40 @@ dsError_t dsGetCPUTemperature(float *cpuTemperature);
 /**
  * @brief Get DS HAL API Version.
  *
- * In 4 byte VersionNumber, Two Most significant Bytes are Major number
- * and Two Least Significant Bytes are minor number.
+ * @param[out] versionNumber    - 4 Bytes of version number of DS HAL. 
+ *                                  Two Most significant Bytes are Major number,
+ *                                  Two Least Significant Bytes are minor number.
  *
- * @param[out] versionNumber 4 Bytes of version number of DS HAL. In 4 byte VersionNumber, Two Most significant Bytes are Major number 
- * and Two Least Significant Bytes are minor number.
- *
- * @return Device Settings error code
- * @retval dsERR_NONE Successfully got the version number from dsHAL.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHostInit() or  preceding dsHostInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @pre dsHostInit() should be called before calling this API.
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
  * @warning  This API is Not thread safe.
+ * 
  * @see dsSetVersion()
  */
 
 dsError_t dsGetVersion(uint32_t *versionNumber);
 
 /**
- * @brief Allows the application to set the runtime version of the dsHAL
+ * @brief Allows the Caller to set the runtime version of the dsHAL
  *
- * @param[in] versionNumber  4 Bytes of version number of DS HAL.In 4 byte VersionNumber, Two Most significant Bytes are Major number 
- * and Two Least Significant Bytes are minor number.
+ * @param[in] versionNumber     - 4 Bytes of version number of DS HAL.
+ *                                  Two Most significant Bytes are Major number,
+ *                                  Two Least Significant Bytes are minor number.
  *
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE Successfully set the version for dsHAL.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHostInit() or  preceding dsHostInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @pre dsHostInit() should be called before calling this API.
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
  * @warning  This API is Not thread safe.
+ * 
  * @see dsGetVersion()
  */
 
@@ -251,14 +240,15 @@ dsError_t dsSetVersion(uint32_t versionNumber);
 /**
  * @brief This function returns SOC ID
  *
- * @param[out] socID        8 byte Chip ID programmed to the CHIP One Time Programmable area.
+ * @param[out] socID    - 8 byte Chip ID programmed to the CHIP One Time Programmable area.
  *
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE If sucessfully dsSetPreferredSleepMode api has been called.
- * @retval dsERR_UNKNOWN General failure.
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @pre dsHostInit() should be called before calling this API.
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
  * @warning  This API is Not thread safe.
  */
 
@@ -267,16 +257,16 @@ dsError_t dsGetSocIDFromSDK(char *socID);
 /**
  * @brief This function is used to get the host EDID and length
  *
- * @param[out] edid       host EDID.
- * @param[out] length     length of host EDID
+ * @param[out] edid     - host EDID.
+ * @param[out] length   - length of host EDID. Min value of 0. 
  *
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE If sucessfully dsGetHostEDID api has been called.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsHostInit() or  preceding dsHostInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @pre dsHostInit() should be called before calling this API.
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
  * @warning  This API is Not thread safe.
  */
 

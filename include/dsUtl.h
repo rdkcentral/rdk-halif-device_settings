@@ -34,17 +34,7 @@
  * -# None
  *
  * @par Abbreviations
- * - BE:      Big-Endian.
- * - cb:      Callback function (suffix).
- * - DS:      Device Settings.
- * - FPD:     Front-Panel Display.
  * - HAL:     Hardware Abstraction Layer.
- * - LE:      Little-Endian.
- * - LS:      Least Significant.
- * - MBZ:     Must be zero.
- * - MS:      Most Significant.
- * - RDK:     Reference Design Kit.
- * - _t:      Type (suffix).
  *
  * @par Implementation Notes
  * -# None
@@ -73,7 +63,7 @@
  */
 
 #define dsUTL_ASSERT(x) do {\
-	if (!(x)) printf("ASSERTFAILURE at %s-%d\r\n", __FUNCTION__, __LINE__);\
+    if (!(x)) printf("ASSERTFAILURE at %s-%d\r\n", __FUNCTION__, __LINE__);\
 }\
 while(0)
 

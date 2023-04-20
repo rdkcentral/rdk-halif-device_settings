@@ -18,27 +18,44 @@
 */
 
 
-/**
-* @defgroup devicesettings Device Settings
-* @{
-* @defgroup hal Device Settings HAL
-* @{
-**/
+/** 
+ * @defgroup devicesettings Device Settings
+ * Describe the details about Device Settings HAL API specifications.
+ *
+ * <b> Following abbreviations present in HAL API </b>
+ *
+ * @par Abbreviations
+ * - cb:      Callback function (suffix).
+ * - DS:      Device Settings.
+ * - HAL:     Hardware Abstraction Layer.
+ * - _t:      Type (suffix).
+ * 
+ * @ingroup DSSETTINGS_HAL
+ */
 
 #ifndef _DS_HAL_REGISTER_H_
 #define _DS_HAL_REGISTER_H_
 
-typedef void (*DSHal_LogCb)(int priority,const char *);
+/**
+ * @brief HAL will call this function to do the logging to respective log 
+ *                  files based on the priority
+ *
+ * @param[in] priority      Priority of the log that is being made. Possible values:
+ *                                   INFO_LEVEL, WARN_LEVEL, ERROR_LEVEL, DEBUG_LEVEL
+ * @param[in] log           Log to be written the log file.
+ *
+ * @warning  This API is Not thread safe.
+ */
+
+typedef void (*DSHal_LogCb)(int priority,const char * log);
 #ifdef __cplusplus
 extern "C"
 {
 #endif
 /**
- * @brief To regiser log api call back.
+ * @brief This function is used to register the call back to logging functionality.
  *
- * This function will register the call back to loging functionality.
- *
- * @param[in] cb        callback function
+ * @param[in] cb    callback function. See DSHal_LogCb
  *
  * @warning  This API is Not thread safe.
  */
