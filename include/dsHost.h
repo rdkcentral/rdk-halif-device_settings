@@ -38,11 +38,32 @@
  */
 
 /**
-* @defgroup devicesettings Device Settings
-* @{
-* @defgroup hal Device Settings HAL
-* @{
-**/
+ * @addtogroup HPK HPK
+ * @{
+ * @par The Hardware Porting Kit
+ * HPK is the next evolution of the well-defined Hardware Abstraction Layer
+ * (HAL), but augmented with more comprehensive documentation and test suites
+ * that OEM or SOC vendors can use to self-certify their ports before taking
+ * them to RDKM for validation or to an operator for final integration and
+ * deployment. The Hardware Porting Kit effectively enables an OEM and/or SOC
+ * vendor to self-certify their own Video Accelerator devices, with minimal RDKM
+ * assistance.
+ *
+ */
+
+/** @addtogroup DS_Manager_HAL DS Manager Hal
+ * @par Application API Specification
+ * Described herein are the DeviceSettings HAL types and functions that are part of
+ * the Host subsystem. The Host subsystem manages system-specific HAL operations.
+ *  @{
+ */
+
+/** @defgroup DSHAL_HOST_API Device Settings HAL Host Public API
+ *
+ *
+ *  @{
+ */
+
 
 #ifndef _DS_HOST_H_
 #define _DS_HOST_H_
@@ -56,15 +77,6 @@ extern "C" {
 
 #define EDID_DATA_SIZE 256
 #define EDID_MAX_DATA_SIZE 512
-  
-/** @addtogroup DSHAL_HOST_API Device Settings HAL Host Public API
- *  @ingroup devicesettingshalapi
- *
- *  Described herein are the DeviceSettings HAL types and functions that are part of
- *  the Host subsystem. The Host subsystem manages system-specific HAL operations.
- *
- *  @{
- */
 
 /**
  * @brief Initialize the Host HAL.
@@ -76,6 +88,10 @@ extern "C" {
  * 
  * @warning  This API is Not thread safe.
  * @see dsHostTerm()
+ * 
+ * @todo: Change the PM_INVALID_STATE 
+ *          to PM_ALREADY_INITIALIZED. Will do it in the next phase.
+ * 
  */
 
 dsError_t dsHostInit();
@@ -272,13 +288,10 @@ dsError_t dsGetSocIDFromSDK(char *socID);
 
 dsError_t dsGetHostEDID(unsigned char *edid, int *length);
 
-/**
- * @}
- */
+/** @} */ // End of DSHAL_HOST_API doxygen group 
+/** @} */ // End of DS HAL
+/** @} */ // End of HPK
 #ifdef __cplusplus
 }
 #endif
 #endif /* _DS_HOST_H_ */
-
-/** @} */
-/** @} */

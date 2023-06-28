@@ -16,6 +16,37 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
 */
+
+/**
+ * @addtogroup HPK HPK
+ * @{
+ * @par The Hardware Porting Kit
+ * HPK is the next evolution of the well-defined Hardware Abstraction Layer
+ * (HAL), but augmented with more comprehensive documentation and test suites
+ * that OEM or SOC vendors can use to self-certify their ports before taking
+ * them to RDKM for validation or to an operator for final integration and
+ * deployment. The Hardware Porting Kit effectively enables an OEM and/or SOC
+ * vendor to self-certify their own Video Accelerator devices, with minimal RDKM
+ * assistance.
+ *
+ */
+
+/** @addtogroup DS_Manager_HAL DS Manager Hal
+ * @par Application API Specification
+ * Described herein are the DeviceSettings HAL types and functions that are part of
+ * the Host subsystem. The Host subsystem manages system-specific HAL operations.
+ *  @{
+ */
+
+/** @defgroup DSHAL_AUDIO_API Device Settings HAL Audio Public API
+ *
+ *  Described herein are the DeviceSettings HAL types and functions that are part of the
+ *  Audio subsystem. The Audio subsystem manages audio HAL operations.
+ *
+ *  @{
+ */
+
+
  
 /**
  * @file dsAudio.h
@@ -55,13 +86,6 @@
  *
  */
 
-/**
-* @defgroup devicesettings Device Settings
-* @{
-* @defgroup hal Device Settings HAL
-* @{
-**/
-
 #ifndef _DS_AUDIOOUTPORT_H_
 #define _DS_AUDIOOUTPORT_H_
 
@@ -99,15 +123,6 @@ typedef void (*dsAudioOutPortConnectCB_t)(dsAudioPortType_t portType, unsigned i
 
 typedef void (*dsAudioFormatUpdateCB_t)(dsAudioFormat_t audioFormat);
 
-/** @addtogroup DSHAL_AUDIO_API Device Settings HAL Audio Public API
- *  @ingroup devicesettingshalapi
- *
- *  Described herein are the DeviceSettings HAL types and functions that are part of the
- *  Audio subsystem. The Audio subsystem manages audio HAL operations.
- *
- *  @{
- */
-
 /**
  * @brief Initializes the Audio Port Hal.
  *
@@ -117,6 +132,10 @@ typedef void (*dsAudioFormatUpdateCB_t)(dsAudioFormat_t audioFormat);
  * @retval dsERR_GENERAL        - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the PM_INVALID_STATE 
+ *          to PM_ALREADY_INITIALIZED. Will do it in the next phase.
+ * 
  */
 
 dsError_t  dsAudioPortInit();
@@ -1993,9 +2012,9 @@ dsError_t  dsGetSecondaryLanguage(int handle, char* sLang);
 
 dsError_t dsGetHDMIARCPortId(int *portId);
 
-/**
- * @}
- */
+/** @} */ // End of DSHAL_AUDIO_API doxygen group 
+/** @} */ // End of DS HAL
+/** @} */ // End of HPK
 
 #ifdef __cplusplus
 }
@@ -2003,5 +2022,4 @@ dsError_t dsGetHDMIARCPortId(int *portId);
 #endif /* _DS_AUDIOOUTPORT_H_ */
 
 
-/** @} */
-/** @} */
+

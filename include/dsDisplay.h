@@ -48,11 +48,34 @@
  */
 
 /**
-* @defgroup devicesettings Device Settings
-* @{
-* @defgroup hal Device Settings HAL
-* @{
-**/
+ * @addtogroup HPK HPK
+ * @{
+ * @par The Hardware Porting Kit
+ * HPK is the next evolution of the well-defined Hardware Abstraction Layer
+ * (HAL), but augmented with more comprehensive documentation and test suites
+ * that OEM or SOC vendors can use to self-certify their ports before taking
+ * them to RDKM for validation or to an operator for final integration and
+ * deployment. The Hardware Porting Kit effectively enables an OEM and/or SOC
+ * vendor to self-certify their own Video Accelerator devices, with minimal RDKM
+ * assistance.
+ *
+ */
+
+/** @addtogroup DS_Manager_HAL DS Manager Hal
+ * @par Application API Specification
+ *  A set of events sourced from display device (e.g. TV)
+ *  Described herein are DeviceSettings HAL types and functions that are part of the
+ *  Display subsystem. The Display subsystem manages operations relating to connected
+ *  Vendors please add appropriate events needed for your implementation.
+ *  display devices, e.g. TVs.
+ *  @{
+ */
+
+/** @defgroup DSHAL_DISPLAY_API Device Settings HAL Video Port Public API
+ *
+ *
+ *  @{
+ */
 
 #ifndef _DS_VIDEODISPLAY_H_
 #define _DS_VIDEODISPLAY_H_
@@ -78,16 +101,6 @@ typedef enum _dsDisplayEvent_t {
     dsDISPLAY_HDCPPROTOCOL_CHANGE,  ///< HDCP Protocol Version Change event
     dsDISPLAY_EVENT_MAX             ///< Display max event
 } dsDisplayEvent_t;
-
-/** @addtogroup DSHAL_DISPLAY_API Device Settings HAL Display Public API
- *  @ingroup devicesettingshalapi
- *  A set of events sourced from display device (e.g. TV)
- *  Described herein are DeviceSettings HAL types and functions that are part of the
- *  Display subsystem. The Display subsystem manages operations relating to connected
- *  Vendors please add appropriate events needed for your implementation.
- *  display devices, e.g. TVs.
- *  @{
- */
 
 /**
  * @brief HAL must call this function when the display changes.
@@ -117,6 +130,10 @@ typedef void (*dsDisplayEventCallback_t)(int handle, dsDisplayEvent_t event,
  * @warning  This API is Not thread safe.
  * 
  * @see dsDisplayTerm()
+ * 
+ * @todo: Change the PM_INVALID_STATE 
+ *          to PM_ALREADY_INITIALIZED. Will do it in the next phase.
+ * 
  */
 
 dsError_t dsDisplayInit();
@@ -255,13 +272,11 @@ dsError_t dsDisplayTerm();
 
 dsError_t dsRegisterDisplayEventCallback(intptr_t handle, dsDisplayEventCallback_t cb);
 
-/**
- * @}
- */
+/** @} */ // End of DSHAL_DISPLAY_API doxygen group 
+/** @} */ // End of DS HAL
+/** @} */ // End of HPK
+
 #ifdef __cplusplus
 }
 #endif
-#endif
 
-/** @} */
-/** @} */

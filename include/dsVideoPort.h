@@ -44,14 +44,32 @@
  * @file dsVideoPort.h
  */
 
-
-
 /**
-* @defgroup devicesettings Device Settings
-* @{
-* @defgroup hal Device Settings HAL
-* @{
-**/
+ * @addtogroup HPK HPK
+ * @{
+ * @par The Hardware Porting Kit
+ * HPK is the next evolution of the well-defined Hardware Abstraction Layer
+ * (HAL), but augmented with more comprehensive documentation and test suites
+ * that OEM or SOC vendors can use to self-certify their ports before taking
+ * them to RDKM for validation or to an operator for final integration and
+ * deployment. The Hardware Porting Kit effectively enables an OEM and/or SOC
+ * vendor to self-certify their own Video Accelerator devices, with minimal RDKM
+ * assistance.
+ *
+ */
+
+/** @addtogroup DS_Manager_HAL DS Manager Hal
+ * @par Application API Specification
+ * Described herein are the DeviceSettings HAL types and functions that are part of the
+ *  Video Port subsystem. The Video Port subsystem manages video output port HAL operations.
+ *  @{
+ */
+
+/** @defgroup DSHAL_VIDEOPORT_API Device Settings HAL Video Port Public API
+ *
+ *
+ *  @{
+ */
 
 
 #ifndef _DS_VIDEOPORT_H
@@ -66,15 +84,6 @@ extern "C" {
 
 typedef void (*dsVideoFormatUpdateCB_t)(dsHDRStandard_t videoFormat);
 
-/** 
- * @addtogroup Device Settings HAL Video Port Public API. See DSHAL_VIDEOPORT_API
- * @ingroup devicesettingshalapi
- *
- *  Described herein are the DeviceSettings HAL types and functions that are part of the
- *  Video Port subsystem. The Video Port subsystem manages video output port HAL operations.
- * @{
- */
-
 /**
  * @brief Initialize underlying Video Port sub-system.
  * 
@@ -88,6 +97,10 @@ typedef void (*dsVideoFormatUpdateCB_t)(dsHDRStandard_t videoFormat);
  * @warning  This API is Not thread safe.
  * 
  * @see dsVideoPortTerm()
+ * 
+ * @todo: Change the PM_INVALID_STATE 
+ *          to PM_ALREADY_INITIALIZED. Will do it in the next phase.
+ * 
  */
 dsError_t  dsVideoPortInit();
 
@@ -1013,15 +1026,11 @@ dsError_t dsGetPreferredColorDepth(int handle, dsDisplayColorDepth_t *colorDepth
 dsError_t dsSetPreferredColorDepth(int handle,dsDisplayColorDepth_t colorDepth, bool persist );
 
 
-/**
- * @}
- */
+/** @} */ // End of DSHAL_VIDEOPORT_API doxygen group 
+/** @} */ // End of DS HAL
+/** @} */ // End of HPK
 
 #ifdef __cplusplus
 }
 #endif
 #endif /* _DS_VIDEOPORT_H */
-
-
-/** @} */
-/** @} */

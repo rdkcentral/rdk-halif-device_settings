@@ -67,11 +67,31 @@
  */
 
 /**
-* @defgroup devicesettings Device Settings
-* @{
-* @defgroup hal Device Settings HAL
-* @{
-**/
+ * @addtogroup HPK HPK
+ * @{
+ * @par The Hardware Porting Kit
+ * HPK is the next evolution of the well-defined Hardware Abstraction Layer
+ * (HAL), but augmented with more comprehensive documentation and test suites
+ * that OEM or SOC vendors can use to self-certify their ports before taking
+ * them to RDKM for validation or to an operator for final integration and
+ * deployment. The Hardware Porting Kit effectively enables an OEM and/or SOC
+ * vendor to self-certify their own Video Accelerator devices, with minimal RDKM
+ * assistance.
+ *
+ */
+
+/** @addtogroup DS_Manager_HAL DS Manager Hal
+ * @par Application API Specification
+ * Described herein are the DeviceSettings HAL types and functions that are part of
+ * the HdmiIn subsystem. The HdmiIn subsystem manages system-specific HAL operations.
+ *  @{
+ */
+
+/** @defgroup DSHAL_HdmiIn_API Device Settings HAL HdmiIn Public API
+ *
+ *
+ *  @{
+ */
 
 #ifndef _DS_dsHdmiInH_
 #define _DS_dsHdmiInH_
@@ -83,11 +103,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-/** @addtogroup DSHAL_HdmiIn_API Device Settings HAL HDMI Input Public APIs
- *  @ingroup devicesettingshalapi
- *  @{
- */
 
 /**
  * @brief Initializes the HDMI Input Hal.
@@ -101,6 +116,10 @@ extern "C" {
  * @warning  This API is Not thread safe.
  * 
  * @see dsHdmiInTerm()
+ * 
+ * @todo: Change the PM_INVALID_STATE 
+ *          to PM_ALREADY_INITIALIZED. Will do it in the next phase.
+ * 
  */
 
 dsError_t dsHdmiInInit (void);
@@ -575,15 +594,11 @@ dsError_t dsGetAllmStatus (int iHdmiPort, bool *allmStatus);
 
 dsError_t dsGetSupportedGameFeaturesList (dsSupportedGameFeatureList_t* features);
 
-/* End of DSHAL_HdmiIn_API doxygen group */
-/**
- * @}
- */
+/** @} */ // End of DSHAL_HdmiIn_API doxygen group 
+/** @} */ // End of DS HAL
+/** @} */ // End of HPK
 
 #ifdef __cplusplus
 }
 #endif
 #endif /* _DS_dsHdmiInH_ */
-
-/** @} */
-/** @} */

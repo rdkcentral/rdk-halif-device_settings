@@ -45,18 +45,22 @@
  */
 
 /**
-* @defgroup devicesettings Device Settings
-* @{
-* @defgroup hal Device Settings HAL
-* @{
-**/
+ * @addtogroup HPK HPK
+ * @{
+ * @par The Hardware Porting Kit
+ * HPK is the next evolution of the well-defined Hardware Abstraction Layer
+ * (HAL), but augmented with more comprehensive documentation and test suites
+ * that OEM or SOC vendors can use to self-certify their ports before taking
+ * them to RDKM for validation or to an operator for final integration and
+ * deployment. The Hardware Porting Kit effectively enables an OEM and/or SOC
+ * vendor to self-certify their own Video Accelerator devices, with minimal RDKM
+ * assistance.
+ *
+ */
 
-#ifndef _DS_ERROR_H_ 
-#define _DS_ERROR_H_
-
-#ifdef __cplusplus
-extern "C" {
-#endif
+/** @addtogroup DS_Manager_HAL DS Manager Hal
+ *  @{
+ */
 
 /** @addtogroup DSHAL_ERROR Device Settings HAL Error Codes
 *  @ingroup DSHAL_API
@@ -65,6 +69,14 @@ extern "C" {
 *
 *  @{
 */
+
+#ifndef _DS_ERROR_H_ 
+#define _DS_ERROR_H_
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /** 
  * @brief Device Settings API Error return codes.
@@ -75,7 +87,7 @@ extern "C" {
 
 typedef enum {
     dsERR_NONE = 0,                 ///< Input output operation is successful          
-    dsERR_GENERAL = 1,              ///< Operation general error
+    dsERR_GENERAL = 1,              ///< Operation general error. @todo Change to more specific error in later phase.
     dsERR_INVALID_PARAM,            ///< Invalid parameter is passed to the module
     dsERR_INVALID_STATE,            ///< Module is not initialised
     dsERR_OPERATION_NOT_SUPPORTED,  ///< Operation not supported

@@ -39,14 +39,32 @@
  * @file dsVideoDevice.h
  */
 
-
-
 /**
-* @defgroup devicesettings Device Settings
-* @{
-* @defgroup hal Device Settings HAL
-* @{
-**/
+ * @addtogroup HPK HPK
+ * @{
+ * @par The Hardware Porting Kit
+ * HPK is the next evolution of the well-defined Hardware Abstraction Layer
+ * (HAL), but augmented with more comprehensive documentation and test suites
+ * that OEM or SOC vendors can use to self-certify their ports before taking
+ * them to RDKM for validation or to an operator for final integration and
+ * deployment. The Hardware Porting Kit effectively enables an OEM and/or SOC
+ * vendor to self-certify their own Video Accelerator devices, with minimal RDKM
+ * assistance.
+ *
+ */
+
+/** @addtogroup DS_Manager_HAL DS Manager Hal
+ * @par Application API Specification
+ * Described herein are the DeviceSettings HAL types and functions that are part of
+ * the Video Device subsystem. The Video Device subsystem manages system-specific HAL operations.
+ *  @{
+ */
+
+/** @defgroup DSHAL_VIDEODEVICE_API Device Settings HAL Video Device Public API
+ *
+ *
+ *  @{
+ */
 
 
 #ifndef _DS_VIDEODEVICE_H_
@@ -82,6 +100,10 @@ extern "C" {
  *
  * @warning  This function is Not thread safe.
  * @see dsVideoDeviceTerm()
+ * 
+ * @todo: Change the PM_INVALID_STATE 
+ *          to PM_ALREADY_INITIALIZED. Will do it in the next phase.
+ * 
  */
 dsError_t  dsVideoDeviceInit();
 
@@ -400,15 +422,11 @@ typedef void (*dsRegisterFrameratePostChangeCB_t)(unsigned int tSecond);
 dsError_t dsRegisterFrameratePostChangeCB(dsRegisterFrameratePostChangeCB_t CBFunc);
 
 
-/* End of DSHAL_VIDEODEVICE_API doxygen group */
-/**
- * @}
- */
+/** @} */ // End of DSHAL_VIDEODEVICE_API doxygen group 
+/** @} */ // End of DS HAL
+/** @} */ // End of HPK
+
 #ifdef __cplusplus
 }
 #endif
 #endif /* _DS_VIDEODEVICE_H_ */
-
-
-/** @} */
-/** @} */

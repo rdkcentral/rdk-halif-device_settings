@@ -189,11 +189,11 @@ The caller is expected to have complete control over the life cycle of the `HAL`
 
 1. Initialize the `HAL` using function: `ds<Component>Init()` before making any other `API`s calls.  If `Init()` call fails, the `HAL` must return the respective error code, so that the caller can retry the operation.
 
-2. Once initailization is done caller can get the handle for the component using `dsGet<Component>()`.
+2. Once initialized is done caller can get the handle for the component using `dsGet<Component>()`.
 
 3. Using the handle of the component, different Configurations can be set for that component.
 
-4. De-intialise the `HAL` using the function: `ds<Component>Term()`
+4. De-initialized the `HAL` using the function: `ds<Component>Term()`
 
 NOTE: The module would operate deterministically if the above call sequence is followed.
 
