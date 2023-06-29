@@ -89,8 +89,8 @@ extern "C" {
  * @warning  This API is Not thread safe.
  * @see dsHostTerm()
  * 
- * @todo: Change the PM_INVALID_STATE 
- *          to PM_ALREADY_INITIALIZED. Will do it in the next phase.
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_ALREADY_INITIALIZED. Will do it in the next phase.
  * 
  */
 
@@ -112,9 +112,15 @@ dsError_t dsHostInit();
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  *
  * @note dsPOWER_OFF is not currently being used.
+ * 
  * @pre dsHostInit() must be called before calling this API.
+ * 
  * @warning  This API is Not thread safe.
+ * 
  * @see dsGetHostPowerMode()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsSetHostPowerMode(int newPower);
@@ -135,7 +141,11 @@ dsError_t dsSetHostPowerMode(int newPower);
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
+ * 
  * @see dsSetHostPowerMode()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsGetHostPowerMode(int *currPower);
@@ -153,7 +163,11 @@ dsError_t dsGetHostPowerMode(int *currPower);
  * @retval dsERR_GENERAL        - General failure.
  * 
  * @warning  This API is Not thread safe.
+ * 
  * @see dsHostInit()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsHostTerm();
@@ -172,7 +186,11 @@ dsError_t dsHostTerm();
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
+ * 
  * @see dsSetPreferredSleepMode()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsGetPreferredSleepMode(dsSleepMode_t *pMode);
@@ -190,7 +208,11 @@ dsError_t dsGetPreferredSleepMode(dsSleepMode_t *pMode);
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
+ * 
  * @see dsGetPreferredSleepMode()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsSetPreferredSleepMode(dsSleepMode_t mode);
@@ -206,7 +228,11 @@ dsError_t dsSetPreferredSleepMode(dsSleepMode_t mode);
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsGetCPUTemperature(float *cpuTemperature);
@@ -228,6 +254,9 @@ dsError_t dsGetCPUTemperature(float *cpuTemperature);
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetVersion()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsGetVersion(uint32_t *versionNumber);
@@ -249,6 +278,9 @@ dsError_t dsGetVersion(uint32_t *versionNumber);
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetVersion()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsSetVersion(uint32_t versionNumber);
@@ -266,6 +298,9 @@ dsError_t dsSetVersion(uint32_t versionNumber);
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsGetSocIDFromSDK(char *socID);
@@ -284,6 +319,9 @@ dsError_t dsGetSocIDFromSDK(char *socID);
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsGetHostEDID(unsigned char *edid, int *length);

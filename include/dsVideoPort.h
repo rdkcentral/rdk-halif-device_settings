@@ -98,8 +98,8 @@ typedef void (*dsVideoFormatUpdateCB_t)(dsHDRStandard_t videoFormat);
  * 
  * @see dsVideoPortTerm()
  * 
- * @todo: Change the PM_INVALID_STATE 
- *          to PM_ALREADY_INITIALIZED. Will do it in the next phase.
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_ALREADY_INITIALIZED. Will do it in the next phase.
  * 
  */
 dsError_t  dsVideoPortInit();
@@ -124,6 +124,9 @@ dsError_t  dsVideoPortInit();
  * 
  * @warning  This API is Not thread safe.
  * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
+ * 
  */
 dsError_t  dsGetVideoPort(dsVideoPortType_t type, int index, int *handle);
 
@@ -146,6 +149,9 @@ dsError_t  dsGetVideoPort(dsVideoPortType_t type, int index, int *handle);
  * @warning  This API is Not thread safe.
  * 
  * @see dsEnableVideoPort()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t  dsIsVideoPortEnabled(int handle, bool *enabled);
 
@@ -166,6 +172,9 @@ dsError_t  dsIsVideoPortEnabled(int handle, bool *enabled);
  * @pre dsVideoPortInit() must be called before calling this API.
  *
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t  dsIsDisplayConnected(int handle, bool *connected);
 
@@ -186,6 +195,9 @@ dsError_t  dsIsDisplayConnected(int handle, bool *connected);
  * @pre dsVideoPortInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t  dsIsDisplaySurround(int handle, bool *surround);
 
@@ -206,6 +218,9 @@ dsError_t  dsIsDisplaySurround(int handle, bool *surround);
  * @pre dsVideoPortInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t  dsGetSurroundMode(int handle, int *surround);
 
@@ -226,6 +241,9 @@ dsError_t  dsGetSurroundMode(int handle, int *surround);
  * @pre dsVideoPortInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t  dsIsVideoPortActive(int handle, bool *active);
 
@@ -248,6 +266,9 @@ dsError_t  dsIsVideoPortActive(int handle, bool *active);
  * @warning  This API is Not thread safe.
  * 
  * @see dsIsDTCPEnabled()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t  dsEnableDTCP(int handle, bool contentProtect);
 
@@ -272,6 +293,9 @@ dsError_t  dsEnableDTCP(int handle, bool contentProtect);
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetHDCPStatus(), dsIsHDCPEnabled()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t  dsEnableHDCP(int handle, bool contentProtect, char *hdcpKey, size_t keySize);
 
@@ -294,6 +318,9 @@ dsError_t  dsEnableHDCP(int handle, bool contentProtect, char *hdcpKey, size_t k
  * @warning  This API is Not thread safe.
  * 
  * @see dsEnableDTCP()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t  dsIsDTCPEnabled (int handle, bool* pContentProtected);
 
@@ -316,6 +343,9 @@ dsError_t  dsIsDTCPEnabled (int handle, bool* pContentProtected);
  * @warning  This API is Not thread safe.
  * 
  * @see dsEnableHDCP()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t  dsIsHDCPEnabled (int handle, bool* pContentProtected);
 
@@ -338,6 +368,9 @@ dsError_t  dsIsHDCPEnabled (int handle, bool* pContentProtected);
  * @warning  This API is Not thread safe.
  * 
  * @see dsIsVideoPortEnabled()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t  dsEnableVideoPort(int handle, bool enabled);
 
@@ -361,6 +394,9 @@ dsError_t  dsEnableVideoPort(int handle, bool enabled);
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetResolution()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t  dsSetResolution(int handle, dsVideoPortResolution_t *resolution, bool persist);
 
@@ -383,6 +419,9 @@ dsError_t  dsSetResolution(int handle, dsVideoPortResolution_t *resolution, bool
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetResolution()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t  dsGetResolution(int handle, dsVideoPortResolution_t *resolution);
 
@@ -402,6 +441,9 @@ dsError_t  dsGetResolution(int handle, dsVideoPortResolution_t *resolution);
  * @pre dsVideoPortInit() must be called before calling this API.
 
  * @warning  This API is Not thread safe.
+
+ @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsSetActiveSource(int handle);
 
@@ -421,6 +463,9 @@ dsError_t dsSetActiveSource(int handle);
  * @warning  This API is Not thread safe.
  * 
  * @see dsVideoPortInit()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsVideoPortTerm();
 
@@ -436,10 +481,13 @@ dsError_t dsVideoPortTerm();
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
-
+ *
  * @pre dsVideoPortInit() must be called before calling this API.
-
+ *
  * @warning  This API is Not thread safe.
+ *
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t  dsInitResolution(dsVideoPortResolution_t *resolution);
 
@@ -475,10 +523,13 @@ typedef void (*dsHDCPStatusCallback_t)(int handle, dsHdcpStatus_t status);
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
-
+ * 
  * @pre dsVideoPortInit() must be called before calling this API.
-
+ *
  * @warning  This API is Not thread safe.
+ *
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
  dsError_t dsRegisterHdcpStatusCallback (int handle, dsHDCPStatusCallback_t cb);
 
@@ -495,12 +546,15 @@ typedef void (*dsHDCPStatusCallback_t)(int handle, dsHdcpStatus_t status);
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
-
+ * 
  * @pre dsVideoPortInit() must be called before calling this API.
- 
+ *
  * @warning  This API is Not thread safe.
  * 
  * @see dsEnableHDCP()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsGetHDCPStatus (int handle, dsHdcpStatus_t *status);
 
@@ -517,12 +571,15 @@ dsError_t dsGetHDCPStatus (int handle, dsHdcpStatus_t *status);
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
-
+ *
  * @pre dsVideoPortInit() must be called before calling this API.
-
+ *
  * @warning  This API is Not thread safe.
  * 
  * @see dsEnableHDCP()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsGetHDCPProtocol (int handle,dsHdcpProtocolVersion_t *protocolVersion);
 
@@ -539,12 +596,15 @@ dsError_t dsGetHDCPProtocol (int handle,dsHdcpProtocolVersion_t *protocolVersion
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
-
+ *
  * @pre dsVideoPortInit() must be called before calling this API.
-
+ *
  * @warning  This API is Not thread safe.
  * 
  * @see dsEnableHDCP()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsGetHDCPReceiverProtocol (int handle,dsHdcpProtocolVersion_t *protocolVersion);
 
@@ -561,12 +621,15 @@ dsError_t dsGetHDCPReceiverProtocol (int handle,dsHdcpProtocolVersion_t *protoco
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
-
+ *
  * @pre dsVideoPortInit() must be called before calling this API.
-
+ *
  * @warning  This API is Not thread safe.
  * 
  * @see dsEnableHDCP()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsGetHDCPCurrentProtocol (int handle,dsHdcpProtocolVersion_t *protocolVersion);
 
@@ -583,10 +646,13 @@ dsError_t dsGetHDCPCurrentProtocol (int handle,dsHdcpProtocolVersion_t *protocol
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
-
+ *
  * @pre dsVideoPortInit() must be called before calling this API.
-
+ *
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsGetTVHDRCapabilities(int handle, int *capabilities);
 
@@ -603,10 +669,13 @@ dsError_t dsGetTVHDRCapabilities(int handle, int *capabilities);
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
-
+ *
  * @pre dsVideoPortInit() must be called before calling this API.
-
+ *
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsSupportedTvResolutions(int handle, int *resolutions);
 
@@ -623,12 +692,15 @@ dsError_t dsSupportedTvResolutions(int handle, int *resolutions);
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
-
+ *
  * @pre dsVideoPortInit() must be called before calling this API.
-
+ *
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetForceDisable4KSupport()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsSetForceDisable4KSupport(int handle, bool disable);
 
@@ -645,12 +717,15 @@ dsError_t dsSetForceDisable4KSupport(int handle, bool disable);
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
-
+ *
  * @pre dsVideoPortInit() must be called before calling this API.
-
+ *
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetForceDisable4KSupport()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsGetForceDisable4KSupport(int handle, bool *disable);
 
@@ -677,10 +752,13 @@ dsError_t dsGetForceDisable4KSupport(int handle, bool *disable);
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
-
+ *
  * @pre dsVideoPortInit() must be called before calling this API.
-
+ *
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsSetScartParameter(int handle, const char* parameter_str, const char* value_str);
 
@@ -697,10 +775,13 @@ dsError_t dsSetScartParameter(int handle, const char* parameter_str, const char*
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
-
+ *
  * @pre dsVideoPortInit() must be called before calling this API.
-
+ *
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsGetVideoEOTF(int handle, dsHDRStandard_t *video_eotf);
 
@@ -717,10 +798,13 @@ dsError_t dsGetVideoEOTF(int handle, dsHDRStandard_t *video_eotf);
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
-
+ *
  * @pre dsVideoPortInit() must be called before calling this API.
-
+ *
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsGetMatrixCoefficients(int handle, dsDisplayMatrixCoefficients_t *matrix_coefficients);
 
@@ -737,9 +821,13 @@ dsError_t dsGetMatrixCoefficients(int handle, dsDisplayMatrixCoefficients_t *mat
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
-
+ *
  * @pre dsVideoPortInit() must be called before calling this API.
+ * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsGetColorDepth(int handle, unsigned int* color_depth);
 
@@ -756,10 +844,13 @@ dsError_t dsGetColorDepth(int handle, unsigned int* color_depth);
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
-
+ *
  * @pre dsVideoPortInit() must be called before calling this API.
-
+ *
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsGetColorSpace(int handle, dsDisplayColorSpace_t* color_space);
  
@@ -776,10 +867,13 @@ dsError_t dsGetColorSpace(int handle, dsDisplayColorSpace_t* color_space);
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
-
+ *
  * @pre dsVideoPortInit() must be called before calling this API.
-
+ *
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsGetQuantizationRange(int handle, dsDisplayQuantizationRange_t* quantization_range);
 
@@ -802,10 +896,13 @@ dsError_t dsGetQuantizationRange(int handle, dsDisplayQuantizationRange_t* quant
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
-
+ *
  * @pre dsVideoPortInit() must be called before calling this API.
-
+ *
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsGetCurrentOutputSettings(int handle, dsHDRStandard_t* video_eotf, 
             dsDisplayMatrixCoefficients_t* matrix_coefficients, 
@@ -825,10 +922,13 @@ dsError_t dsGetCurrentOutputSettings(int handle, dsHDRStandard_t* video_eotf,
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
-
+ *
  * @pre dsVideoPortInit() must be called before calling this API.
-
+ *
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsIsOutputHDR(int handle, bool *hdr);
 
@@ -842,10 +942,13 @@ dsError_t dsIsOutputHDR(int handle, bool *hdr);
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
-
+ *
  * @pre dsVideoPortInit() must be called before calling this API.
-
+ *
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsResetOutputToSDR();
 
@@ -862,12 +965,15 @@ dsError_t dsResetOutputToSDR();
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
-
+ *
  * @pre dsVideoPortInit() must be called before calling this API. 
  *
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetHdmiPreference()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsSetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentProtocol);
 
@@ -886,12 +992,15 @@ dsError_t dsSetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentPr
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
-
+ *
  * @pre dsVideoPortInit() must be called before calling this API.
  *
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetHdmiPreference()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsGetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentProtocol);
 
@@ -909,10 +1018,13 @@ dsError_t dsGetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentPr
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
-
+ *
  * @pre dsVideoPortInit() must be called before calling this API.
- 
+ *
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsGetIgnoreEDIDStatus(int handle, bool* status);
 
@@ -929,10 +1041,13 @@ dsError_t dsGetIgnoreEDIDStatus(int handle, bool* status);
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
-
+ *
  * @pre dsVideoPortInit() must be called before calling this API.
-
+ *
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsSetBackgroundColor(int handle, dsVideoBackgroundColor_t color);
 
@@ -949,10 +1064,13 @@ dsError_t dsSetBackgroundColor(int handle, dsVideoBackgroundColor_t color);
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
-
+ *
  * @pre dsVideoPortInit() must be called before calling this API.
-
+ *
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsSetForceHDRMode(int handle, dsHDRStandard_t mode);
 
@@ -970,12 +1088,15 @@ dsError_t dsSetForceHDRMode(int handle, dsHDRStandard_t mode);
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
-
+ *
  * @pre dsVideoPortInit() must be called before calling this API.
-
+ *
  * @warning  This API is Not thread safe.
-
+ *
  * @todo    Updating colorDepthCapability type to dsDisplayColorDepth_t.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsColorDepthCapabilities(int handle, unsigned int *colorDepthCapability );
 
@@ -993,12 +1114,15 @@ dsError_t dsColorDepthCapabilities(int handle, unsigned int *colorDepthCapabilit
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
-
+ *
  * @pre dsVideoPortInit() must be called before calling this API.
-
+ *
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetPreferredColorDepth()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsGetPreferredColorDepth(int handle, dsDisplayColorDepth_t *colorDepth, bool persist );
 
@@ -1016,12 +1140,15 @@ dsError_t dsGetPreferredColorDepth(int handle, dsDisplayColorDepth_t *colorDepth
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
-
+ *
  * @pre dsVideoPortInit() must be called before calling this API.
-
+ *
  * @warning  This API is Not thread safe.
-
+ *
  * @see dsGetPreferredColorDepth()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsSetPreferredColorDepth(int handle,dsDisplayColorDepth_t colorDepth, bool persist );
 

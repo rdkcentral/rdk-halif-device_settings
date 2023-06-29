@@ -111,8 +111,8 @@ extern "C" {
  * 
  * @see dsCompositeInTerm()
  * 
- * @todo: Change the PM_INVALID_STATE 
- *          to PM_ALREADY_INITIALIZED. Will do it in the next phase.
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_ALREADY_INITIALIZED. Will do it in the next phase.
  * 
  */
 
@@ -133,6 +133,9 @@ dsError_t dsCompositeInInit (void);
  * @warning  This API is Not thread safe.
  * 
  * @see dsCompositeInInit()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsCompositeInTerm (void);
@@ -153,6 +156,9 @@ dsError_t dsCompositeInTerm (void);
  * @pre  dsCompositeInInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsCompositeInGetNumberOfInputs (uint8_t *pNumberOfInputs);
@@ -172,6 +178,9 @@ dsError_t dsCompositeInGetNumberOfInputs (uint8_t *pNumberOfInputs);
  * @pre  dsCompositeInInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsCompositeInGetStatus (dsCompositeInStatus_t *pStatus);
@@ -191,6 +200,9 @@ dsError_t dsCompositeInGetStatus (dsCompositeInStatus_t *pStatus);
  * @pre  dsCompositeInInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsCompositeInSelectPort (dsCompositeInPort_t Port);
@@ -213,6 +225,9 @@ dsError_t dsCompositeInSelectPort (dsCompositeInPort_t Port);
  * @pre  dsCompositeInInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsCompositeInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t height);
@@ -249,6 +264,9 @@ typedef void (*dsCompositeInConnectCB_t)(dsCompositeInPort_t Port, bool isPortCo
  * @warning  This API is Not thread safe.
  * 
  * @see dsCompositeInConnectCB_t()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsCompositeInRegisterConnectCB (dsCompositeInConnectCB_t CBFunc);
@@ -284,6 +302,9 @@ typedef void (*dsCompositeInSignalChangeCB_t)(dsCompositeInPort_t port, dsCompIn
  * @warning  This API is Not thread safe.
  * 
  * @see dsCompositeInSignalChangeCB_t()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsCompositeInRegisterSignalChangeCB (dsCompositeInSignalChangeCB_t CBFunc);
@@ -320,6 +341,9 @@ typedef void (*dsCompositeInStatusChangeCB_t)(dsCompositeInStatus_t inputStatus)
  * @warning  This API is Not thread safe.
  * 
  * @see dsCompositeInStatusChangeCB_t()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsCompositeInRegisterStatusChangeCB (dsCompositeInStatusChangeCB_t CBFunc);

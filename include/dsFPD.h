@@ -98,8 +98,8 @@ extern "C" {
  * @warning  This API is Not thread safe.
  * @see dsFPTerm()
  * 
- * @todo: Change the PM_INVALID_STATE 
- *          to PM_ALREADY_INITIALIZED. Will do it in the next phase.
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_ALREADY_INITIALIZED. Will do it in the next phase.
  * 
  */
 
@@ -128,6 +128,9 @@ dsError_t dsFPInit (void);
  * @pre dsFPInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsSetFPBlink (dsFPDIndicator_t eIndicator, unsigned int uBlinkDuration, unsigned int uBlinkIterations);
@@ -155,6 +158,9 @@ dsError_t dsSetFPBlink (dsFPDIndicator_t eIndicator, unsigned int uBlinkDuration
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetFPBrightness()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsSetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t eBrightness);
@@ -178,6 +184,9 @@ dsError_t dsSetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t eBri
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetFPState()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsGetFPState(dsFPDIndicator_t eIndicator, dsFPDState_t* state);
@@ -202,6 +211,9 @@ dsError_t dsGetFPState(dsFPDIndicator_t eIndicator, dsFPDState_t* state);
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetFPState()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsSetFPState(dsFPDIndicator_t eIndicator, dsFPDState_t state);
@@ -228,6 +240,9 @@ dsError_t dsSetFPState(dsFPDIndicator_t eIndicator, dsFPDState_t state);
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetFPBrightness()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsGetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t *pBrightness);
@@ -254,6 +269,9 @@ dsError_t dsGetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t *pBr
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetFPColor()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsGetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t *pColor);
@@ -280,6 +298,9 @@ dsError_t dsGetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t *pColor);
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetFPColor()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsSetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t eColor);
@@ -308,6 +329,9 @@ dsError_t dsSetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t eColor);
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetFPTimeFormat()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsSetFPTime (dsFPDTimeFormat_t eTimeFormat, const unsigned int uHour, const unsigned int uMinutes);
@@ -333,6 +357,9 @@ dsError_t dsSetFPTime (dsFPDTimeFormat_t eTimeFormat, const unsigned int uHour, 
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetFPTextBrightness() 
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsSetFPText(const char* pText);
@@ -359,6 +386,9 @@ dsError_t dsSetFPText(const char* pText);
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetFPTextBrightness(), dsSetFPText()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsSetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_t eBrightness);
@@ -384,6 +414,9 @@ dsError_t dsSetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetFPTextBrightness()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsGetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_t *eBrightness);
@@ -406,6 +439,9 @@ dsError_t dsGetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_
  * @pre dsFPInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsFPEnableCLockDisplay (int enable);
@@ -429,6 +465,9 @@ dsError_t dsFPEnableCLockDisplay (int enable);
  * @pre dsFPInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsSetFPScroll(unsigned int uScrollHoldOnDur, unsigned int uHorzScrollIterations, unsigned int uVertScrollIterations);
@@ -450,6 +489,9 @@ dsError_t dsSetFPScroll(unsigned int uScrollHoldOnDur, unsigned int uHorzScrollI
  * @warning  This API is Not thread safe.
  * 
  * @see dsFPInit()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsFPTerm(void);
@@ -476,6 +518,9 @@ dsError_t dsFPTerm(void);
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetFPTextBrightness()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsSetFPDBrightness(dsFPDIndicator_t eIndicator, dsFPDBrightness_t eBrightness,bool toPersist);
@@ -503,6 +548,9 @@ dsError_t dsSetFPDBrightness(dsFPDIndicator_t eIndicator, dsFPDBrightness_t eBri
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetFPColor()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsSetFPDColor (dsFPDIndicator_t eIndicator, dsFPDColor_t eColor,bool toPersist);
@@ -526,6 +574,9 @@ dsError_t dsSetFPDColor (dsFPDIndicator_t eIndicator, dsFPDColor_t eColor,bool t
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetFPTimeFormat()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsSetFPTimeFormat (dsFPDTimeFormat_t eTimeFormat);
@@ -548,6 +599,9 @@ dsError_t dsSetFPTimeFormat (dsFPDTimeFormat_t eTimeFormat);
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetFPTimeFormat()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsGetFPTimeFormat (dsFPDTimeFormat_t *pTimeFormat);
@@ -565,7 +619,11 @@ dsError_t dsGetFPTimeFormat (dsFPDTimeFormat_t *pTimeFormat);
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsFPInit() must be called before calling this API.
+ * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsSetFPDMode (dsFPDMode_t eMode);

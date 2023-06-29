@@ -133,8 +133,8 @@ typedef void (*dsAudioFormatUpdateCB_t)(dsAudioFormat_t audioFormat);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the PM_INVALID_STATE 
- *          to PM_ALREADY_INITIALIZED. Will do it in the next phase.
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_ALREADY_INITIALIZED. Will do it in the next phase.
  * 
  */
 
@@ -159,6 +159,9 @@ dsError_t  dsAudioPortInit();
  * @pre  dsAudioPortInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsGetAudioPort(dsAudioPortType_t type, int index, int *handle);
@@ -181,6 +184,9 @@ dsError_t  dsGetAudioPort(dsAudioPortType_t type, int index, int *handle);
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetAudioEncoding()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsGetAudioEncoding(int handle, dsAudioEncoding_t *encoding);
@@ -201,6 +207,9 @@ dsError_t  dsGetAudioEncoding(int handle, dsAudioEncoding_t *encoding);
  * @pre  dsAudioPortInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsGetAudioFormat(int handle, dsAudioFormat_t *audioFormat);
@@ -223,6 +232,9 @@ dsError_t  dsGetAudioFormat(int handle, dsAudioFormat_t *audioFormat);
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetAudioCompression()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsGetAudioCompression(int handle, int *compression);
@@ -245,6 +257,9 @@ dsError_t  dsGetAudioCompression(int handle, int *compression);
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetDialogEnhancement()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsGetDialogEnhancement(int handle, int *level);
@@ -268,6 +283,9 @@ dsError_t  dsGetDialogEnhancement(int handle, int *level);
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetDolbyVolumeMode()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsGetDolbyVolumeMode(int handle, bool *mode);
@@ -292,6 +310,9 @@ dsError_t  dsGetDolbyVolumeMode(int handle, bool *mode);
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetIntelligentEqualizerMode()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsGetIntelligentEqualizerMode(int handle, int *mode);
@@ -316,6 +337,9 @@ dsError_t  dsGetIntelligentEqualizerMode(int handle, int *mode);
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetVolumeLeveller()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsGetVolumeLeveller(int handle, dsVolumeLeveller_t* volLeveller);
@@ -338,6 +362,9 @@ dsError_t  dsGetVolumeLeveller(int handle, dsVolumeLeveller_t* volLeveller);
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetBassEnhancer()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsGetBassEnhancer(int handle, int *boost);
@@ -362,6 +389,9 @@ dsError_t  dsGetBassEnhancer(int handle, int *boost);
  * @warning  This API is Not thread safe.
  * 
  * @see dsEnableSurroundDecoder()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsIsSurroundDecoderEnabled(int handle, bool *enabled);
@@ -385,6 +415,9 @@ dsError_t  dsIsSurroundDecoderEnabled(int handle, bool *enabled);
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetDRCMode()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsGetDRCMode(int handle, int *mode);
@@ -409,6 +442,9 @@ dsError_t  dsGetDRCMode(int handle, int *mode);
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetSurroundVirtualizer()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsGetSurroundVirtualizer(int handle, dsSurroundVirtualizer_t *virtualizer);
@@ -433,6 +469,9 @@ dsError_t  dsGetSurroundVirtualizer(int handle, dsSurroundVirtualizer_t *virtual
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetMISteering()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsGetMISteering(int handle, bool *enabled);
@@ -456,6 +495,9 @@ dsError_t  dsGetMISteering(int handle, bool *enabled);
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetGraphicEqualizerMode()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsGetGraphicEqualizerMode(int handle, int *mode);
@@ -480,6 +522,9 @@ dsError_t  dsGetGraphicEqualizerMode(int handle, int *mode);
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetMS12AudioProfile()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsGetMS12AudioProfileList(int handle, dsMS12AudioProfileList_t* profiles);
@@ -503,6 +548,9 @@ dsError_t  dsGetMS12AudioProfileList(int handle, dsMS12AudioProfileList_t* profi
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetMS12AudioProfile()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsGetMS12AudioProfile(int handle, char *profile);
@@ -524,6 +572,9 @@ dsError_t  dsGetMS12AudioProfile(int handle, char *profile);
  * @pre  dsAudioPortInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsGetSupportedARCTypes(int handle, int *types);
@@ -550,6 +601,9 @@ dsError_t dsGetSupportedARCTypes(int handle, int *types);
  * @pre  dsAudioPortInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsAudioSetSAD(int handle, dsAudioSADList_t sad_list);
@@ -570,6 +624,9 @@ dsError_t dsAudioSetSAD(int handle, dsAudioSADList_t sad_list);
  * @pre  dsAudioPortInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsAudioEnableARC(int handle, dsAudioARCStatus_t arcStatus);
@@ -593,6 +650,9 @@ dsError_t dsAudioEnableARC(int handle, dsAudioARCStatus_t arcStatus);
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetStereoMode()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsGetStereoMode(int handle, dsAudioStereoMode_t *stereoMode);
@@ -617,6 +677,9 @@ dsError_t  dsGetStereoMode(int handle, dsAudioStereoMode_t *stereoMode);
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetStereoAuto()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsGetStereoAuto(int handle, int *autoMode);
@@ -639,6 +702,9 @@ dsError_t  dsGetStereoAuto(int handle, int *autoMode);
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetAudioGain()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsGetAudioGain(int handle, float *gain);
@@ -663,6 +729,9 @@ dsError_t  dsGetAudioGain(int handle, float *gain);
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetAudioDB()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsGetAudioDB(int handle, float *db);
@@ -686,6 +755,9 @@ dsError_t  dsGetAudioDB(int handle, float *db);
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetAudioLevel()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsGetAudioLevel(int handle, float *level);
@@ -707,6 +779,9 @@ dsError_t  dsGetAudioLevel(int handle, float *level);
  * @pre  dsAudioPortInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsGetAudioMaxDB(int handle, float *maxDb);
@@ -728,6 +803,9 @@ dsError_t  dsGetAudioMaxDB(int handle, float *maxDb);
  * @pre  dsAudioPortInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsGetAudioMinDB(int handle, float *minDb);
@@ -750,6 +828,9 @@ dsError_t  dsGetAudioMinDB(int handle, float *minDb);
  * @pre  dsAudioPortInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsGetAudioOptimalLevel(int handle, float *optimalLevel);
@@ -772,6 +853,9 @@ dsError_t  dsGetAudioOptimalLevel(int handle, float *optimalLevel);
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetAudioDelay()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsGetAudioDelay(int handle, uint32_t *audioDelayMs);
@@ -794,6 +878,9 @@ dsError_t dsGetAudioDelay(int handle, uint32_t *audioDelayMs);
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetAudioDelayOffset()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsGetAudioDelayOffset(int handle, uint32_t *audioDelayOffsetMs);
@@ -815,6 +902,9 @@ dsError_t dsGetAudioDelayOffset(int handle, uint32_t *audioDelayOffsetMs);
  * @pre  dsAudioPortInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsSetAudioAtmosOutputMode(int handle, bool enable);
@@ -836,6 +926,9 @@ dsError_t dsSetAudioAtmosOutputMode(int handle, bool enable);
  * @pre  dsAudioPortInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsGetSinkDeviceAtmosCapability(int handle, dsATMOSCapability_t *capability);
@@ -857,6 +950,9 @@ dsError_t dsGetSinkDeviceAtmosCapability(int handle, dsATMOSCapability_t *capabi
  * @pre  dsAudioPortInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsIsAudioLoopThru(int handle, bool *loopThru);
@@ -880,6 +976,9 @@ dsError_t  dsIsAudioLoopThru(int handle, bool *loopThru);
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetAudioMute()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsIsAudioMute(int handle, bool *muted);
@@ -899,8 +998,13 @@ dsError_t  dsIsAudioMute(int handle, bool *muted);
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre  dsAudioPortInit() must be called before calling this API.
+ * 
  * @warning  This API is Not thread safe.
+ * 
  * @see dsEnableAudioPort()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsIsAudioPortEnabled(int handle, bool *enabled);
@@ -924,6 +1028,9 @@ dsError_t  dsIsAudioPortEnabled(int handle, bool *enabled);
  * @warning  This API is Not thread safe.
  * 
  * @see dsIsAudioPortEnabled()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsEnableAudioPort(int handle, bool enabled);
@@ -947,6 +1054,9 @@ dsError_t  dsEnableAudioPort(int handle, bool enabled);
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetMS12AudioProfileList(), dsGetMS12AudioProfile()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsEnableMS12Config(int handle, dsMS12FEATURE_t feature,const bool enable);
@@ -970,6 +1080,9 @@ dsError_t  dsEnableMS12Config(int handle, dsMS12FEATURE_t feature,const bool ena
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetLEConfig()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsEnableLEConfig(int handle, const bool enable);
@@ -993,6 +1106,9 @@ dsError_t  dsEnableLEConfig(int handle, const bool enable);
  * @warning  This API is Not thread safe.
  * 
  * @see dsEnableLEConfig()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsGetLEConfig(int handle, bool *enable);
@@ -1015,6 +1131,9 @@ dsError_t dsGetLEConfig(int handle, bool *enable);
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetAudioEncoding()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsSetAudioEncoding(int handle, dsAudioEncoding_t encoding);
@@ -1037,6 +1156,9 @@ dsError_t  dsSetAudioEncoding(int handle, dsAudioEncoding_t encoding);
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetAudioCompression()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsSetAudioCompression(int handle, int compression);
@@ -1060,6 +1182,9 @@ dsError_t  dsSetAudioCompression(int handle, int compression);
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetDialogEnhancement()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsSetDialogEnhancement(int handle, int level);
@@ -1083,6 +1208,9 @@ dsError_t  dsSetDialogEnhancement(int handle, int level);
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetDolbyVolumeMode()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsSetDolbyVolumeMode(int handle, bool mode);
@@ -1106,6 +1234,9 @@ dsError_t  dsSetDolbyVolumeMode(int handle, bool mode);
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetIntelligentEqualizerMode()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsSetIntelligentEqualizerMode(int handle, int mode);
@@ -1129,6 +1260,9 @@ dsError_t  dsSetIntelligentEqualizerMode(int handle, int mode);
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetVolumeLeveller()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsSetVolumeLeveller(int handle, dsVolumeLeveller_t volLeveller);
@@ -1151,6 +1285,9 @@ dsError_t  dsSetVolumeLeveller(int handle, dsVolumeLeveller_t volLeveller);
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetBassEnhancer()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsSetBassEnhancer(int handle, int boost);
@@ -1174,6 +1311,9 @@ dsError_t  dsSetBassEnhancer(int handle, int boost);
  * @warning  This API is Not thread safe.
  * 
  * @see dsIsSurroundDecoderEnabled()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsEnableSurroundDecoder(int handle, bool enabled);
@@ -1198,6 +1338,9 @@ dsError_t  dsEnableSurroundDecoder(int handle, bool enabled);
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetDRCMode()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsSetDRCMode(int handle, int mode);
@@ -1222,6 +1365,9 @@ dsError_t  dsSetDRCMode(int handle, int mode);
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetSurroundVirtualizer()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsSetSurroundVirtualizer(int handle, dsSurroundVirtualizer_t virtualizer);
@@ -1246,6 +1392,9 @@ dsError_t  dsSetSurroundVirtualizer(int handle, dsSurroundVirtualizer_t virtuali
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetMISteering()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsSetMISteering(int handle, bool enabled);
@@ -1269,6 +1418,9 @@ dsError_t  dsSetMISteering(int handle, bool enabled);
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetGraphicEqualizerMode()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsSetGraphicEqualizerMode(int handle, int mode);
@@ -1293,6 +1445,9 @@ dsError_t  dsSetGraphicEqualizerMode(int handle, int mode);
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetMS12AudioProfile(), dsGetMS12AudioProfileList()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsSetMS12AudioProfile(int handle, const char* profile);
@@ -1316,6 +1471,9 @@ dsError_t  dsSetMS12AudioProfile(int handle, const char* profile);
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetStereoMode()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsSetStereoMode(int handle, dsAudioStereoMode_t mode);
@@ -1339,6 +1497,9 @@ dsError_t  dsSetStereoMode(int handle, dsAudioStereoMode_t mode);
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetStereoAuto()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsSetStereoAuto(int handle, int autoMode);
@@ -1361,6 +1522,9 @@ dsError_t  dsSetStereoAuto(int handle, int autoMode);
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetAudioGain()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsSetAudioGain(int handle, float gain);
@@ -1383,6 +1547,9 @@ dsError_t  dsSetAudioGain(int handle, float gain);
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetAudioDB()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsSetAudioDB(int handle, float db);
@@ -1406,6 +1573,9 @@ dsError_t  dsSetAudioDB(int handle, float db);
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetAudioLevel()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsSetAudioLevel(int handle, float level);
@@ -1434,6 +1604,9 @@ dsError_t  dsSetAudioLevel(int handle, float level);
  * @pre  dsAudioPortInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsSetAudioDucking(int handle, dsAudioDuckingAction_t action, dsAudioDuckingType_t type, const unsigned char level);
@@ -1453,6 +1626,9 @@ dsError_t  dsSetAudioDucking(int handle, dsAudioDuckingAction_t action, dsAudioD
  * @pre  dsAudioPortInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsEnableLoopThru(int handle, bool loopThru);
@@ -1476,6 +1652,9 @@ dsError_t  dsEnableLoopThru(int handle, bool loopThru);
  * @warning  This API is Not thread safe.
  * 
  * @see dsIsAudioMute()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsSetAudioMute(int handle, bool mute);
@@ -1498,6 +1677,9 @@ dsError_t  dsSetAudioMute(int handle, bool mute);
  * @pre  dsAudioPortInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsIsAudioMSDecode(int handle, bool *HasMS11Decode);
@@ -1520,6 +1702,9 @@ dsError_t  dsIsAudioMSDecode(int handle, bool *HasMS11Decode);
  * @pre  dsAudioPortInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsIsAudioMS12Decode(int handle, bool *HasMS12Decode);
@@ -1542,6 +1727,9 @@ dsError_t  dsIsAudioMS12Decode(int handle, bool *HasMS12Decode);
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetAudioDelay()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsSetAudioDelay(int handle, const uint32_t audioDelayMs);
@@ -1564,6 +1752,9 @@ dsError_t dsSetAudioDelay(int handle, const uint32_t audioDelayMs);
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetAudioDelayOffset()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsSetAudioDelayOffset(int handle, const uint32_t audioDelayOffsetMs);
@@ -1583,6 +1774,9 @@ dsError_t dsSetAudioDelayOffset(int handle, const uint32_t audioDelayOffsetMs);
  * @pre  dsAudioPortInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsAudioPortTerm();
@@ -1604,6 +1798,9 @@ dsError_t  dsAudioPortTerm();
  * @pre  dsAudioPortInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsAudioOutIsConnected(int handle, bool* pisCon);
@@ -1624,6 +1821,9 @@ dsError_t dsAudioOutIsConnected(int handle, bool* pisCon);
  * @pre  dsAudioPortInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsAudioOutRegisterConnectCB(dsAudioOutPortConnectCB_t CBFunc);
@@ -1643,6 +1843,9 @@ dsError_t dsAudioOutRegisterConnectCB(dsAudioOutPortConnectCB_t CBFunc);
  * @pre  dsAudioPortInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsAudioFormatUpdateRegisterCB (dsAudioFormatUpdateCB_t cbFun);
@@ -1664,6 +1867,9 @@ dsError_t dsAudioFormatUpdateRegisterCB (dsAudioFormatUpdateCB_t cbFun);
  * @pre  dsAudioPortInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsGetAudioCapabilities(int handle, int *capabilities);
@@ -1684,6 +1890,9 @@ dsError_t dsGetAudioCapabilities(int handle, int *capabilities);
  * @pre  dsAudioPortInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsGetMS12Capabilities(int handle, int *capabilities);
@@ -1702,7 +1911,11 @@ dsError_t dsGetMS12Capabilities(int handle, int *capabilities);
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre  dsAudioPortInit() must be called before calling this API.
+ * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsResetDialogEnhancement(int handle);
@@ -1723,6 +1936,9 @@ dsError_t dsResetDialogEnhancement(int handle);
  * @pre  dsAudioPortInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsResetBassEnhancer(int handle);
@@ -1743,6 +1959,9 @@ dsError_t dsResetBassEnhancer(int handle);
  * @pre  dsAudioPortInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsResetSurroundVirtualizer(int handle);
@@ -1763,6 +1982,9 @@ dsError_t dsResetSurroundVirtualizer(int handle);
  * @pre  dsAudioPortInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsResetVolumeLeveller(int handle);
@@ -1789,6 +2011,9 @@ dsError_t dsResetVolumeLeveller(int handle);
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetMS12AudioProfileList(), dsGetMS12AudioProfile()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsSetMS12AudioProfileSetttingsOverride(int handle,const char* profileState,const char* profileName,
@@ -1801,9 +2026,12 @@ dsError_t  dsSetMS12AudioProfileSetttingsOverride(int handle,const char* profile
  * @param[in] handle    - The handle returned from the dsGetAudioPort() function.
  * @param[in] mixing    - mixing enable/disable, true if enabled, false if disabled.
  * 
- * @return dsError_t            - Status
- * @retval dsERR_NONE           - Success 
- * @retval dsERR_GENERAL        - Underlying undefined platform error
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre  dsAudioPortInit() must be called before calling this API.
  * 
@@ -1812,6 +2040,9 @@ dsError_t  dsSetMS12AudioProfileSetttingsOverride(int handle,const char* profile
  * @see dsGetAssociatedAudioMixing()
  * 
  * TODO: Remove unused variable handle.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsSetAssociatedAudioMixing(int handle, bool mixing);
@@ -1838,6 +2069,9 @@ dsError_t dsSetAssociatedAudioMixing(int handle, bool mixing);
  * @see dsSetAssociatedAudioMixing()
  * 
  * TODO: Remove unused variable handle.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsGetAssociatedAudioMixing(int handle, bool *mixing);
@@ -1863,6 +2097,12 @@ dsError_t  dsGetAssociatedAudioMixing(int handle, bool *mixing);
  * @see dsGetFaderControl()
  * 
  * TODO: Remove unused variable handle.
+ * 
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
+ * 
+ * 
  */
 
 dsError_t  dsSetFaderControl(int handle, int mixerbalance);
@@ -1888,6 +2128,9 @@ dsError_t  dsSetFaderControl(int handle, int mixerbalance);
  * @see dsSetFaderControl()
  * 
  * TODO: Remove unused variable handle.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsGetFaderControl(int handle, int* mixerbalance);
@@ -1912,6 +2155,9 @@ dsError_t  dsGetFaderControl(int handle, int* mixerbalance);
  * @see dsGetPrimaryLanguage()
  * 
  * TODO: Remove unused variable handle.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsSetPrimaryLanguage(int handle, const char* pLang);
@@ -1936,6 +2182,9 @@ dsError_t  dsSetPrimaryLanguage(int handle, const char* pLang);
  * @see dsSetPrimaryLanguage()
  * 
  * TODO: Remove unused variable handle.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsGetPrimaryLanguage(int handle, char* pLang);
@@ -1960,6 +2209,9 @@ dsError_t  dsGetPrimaryLanguage(int handle, char* pLang);
  * @see dsGetSecondaryLanguage()
  * 
  * TODO: Remove unused variable handle.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsSetSecondaryLanguage(int handle, const char* sLang);
@@ -1984,6 +2236,9 @@ dsError_t  dsSetSecondaryLanguage(int handle, const char* sLang);
  * @see dsSetSecondaryLanguage()
  * 
  * TODO: Remove unused variable handle.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t  dsGetSecondaryLanguage(int handle, char* sLang);
@@ -2008,6 +2263,9 @@ dsError_t  dsGetSecondaryLanguage(int handle, char* sLang);
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetSupportedARCTypes()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsGetHDMIARCPortId(int *portId);

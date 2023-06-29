@@ -101,8 +101,8 @@ extern "C" {
  * @warning  This function is Not thread safe.
  * @see dsVideoDeviceTerm()
  * 
- * @todo: Change the PM_INVALID_STATE 
- *          to PM_ALREADY_INITIALIZED. Will do it in the next phase.
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_ALREADY_INITIALIZED. Will do it in the next phase.
  * 
  */
 dsError_t  dsVideoDeviceInit();
@@ -122,7 +122,11 @@ dsError_t  dsVideoDeviceInit();
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsVideoDeviceInit() must be called before calling this function.
+ * 
  * @warning  This function is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  * 
  */
 dsError_t  dsGetVideoDevice(int index, int *handle);
@@ -146,6 +150,9 @@ dsError_t  dsGetVideoDevice(int index, int *handle);
  * @warning  This function is Not thread safe.
  * \
  * @see dsGetDFC()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t  dsSetDFC(int handle, dsVideoZoom_t dfc);
 
@@ -168,6 +175,9 @@ dsError_t  dsSetDFC(int handle, dsVideoZoom_t dfc);
  * @warning  This function is Not thread safe.
  * 
  * @see dsSetDFC()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t  dsGetDFC(int handle, dsVideoZoom_t *dfc);
 
@@ -187,6 +197,9 @@ dsError_t  dsGetDFC(int handle, dsVideoZoom_t *dfc);
  * @warning  This function is Not thread safe.
  * 
  * @see dsVideoDeviceInit()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t  dsVideoDeviceTerm();
  
@@ -207,6 +220,9 @@ dsError_t  dsVideoDeviceTerm();
  * @pre dsVideoDeviceInit() must be called before calling this function.
  * 
  * @warning  This function is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsGetHDRCapabilities(int handle, int *capabilities);
 
@@ -228,6 +244,9 @@ dsError_t dsGetHDRCapabilities(int handle, int *capabilities);
  * @pre dsVideoDeviceInit() must be called before calling this function.
  * 
  * @warning  This function is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsGetSupportedVideoCodingFormats(int handle, unsigned int * supported_formats);
 
@@ -249,6 +268,9 @@ dsError_t dsGetSupportedVideoCodingFormats(int handle, unsigned int * supported_
  * @pre dsVideoDeviceInit() must be called before calling this function.
  * 
  * @warning  This function is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsGetVideoCodecInfo(int handle, dsVideoCodingFormat_t codec, dsVideoCodecInfo_t * info); 
 
@@ -270,6 +292,9 @@ dsError_t dsGetVideoCodecInfo(int handle, dsVideoCodingFormat_t codec, dsVideoCo
  * @pre dsVideoDeviceInit() must be called before calling this function.
  * 
  * @warning  This function is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsForceDisableHDRSupport(int handle, bool disable);
 
@@ -292,6 +317,9 @@ dsError_t dsForceDisableHDRSupport(int handle, bool disable);
  * @warning  This function is Not thread safe.
  * 
  * @see dsGetFRFMode()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsSetFRFMode(int handle, int frfmode);
 
@@ -315,6 +343,9 @@ dsError_t dsSetFRFMode(int handle, int frfmode);
  * @warning  This function is Not thread safe.
  * 
  * @see dsSetFRFMode()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsGetFRFMode(int handle, int *frfmode);
 
@@ -337,6 +368,9 @@ dsError_t dsGetFRFMode(int handle, int *frfmode);
  * @warning  This function is Not thread safe.
  * 
  * @see dsSetDisplayframerate()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsGetCurrentDisplayframerate(int handle, char *framerate);
  
@@ -360,6 +394,9 @@ dsError_t dsGetCurrentDisplayframerate(int handle, char *framerate);
  * @warning  This function is Not thread safe.
  * 
  * @see dsGetCurrentDisplayframerate()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsSetDisplayframerate(int handle, char *framerate);
 
@@ -387,6 +424,9 @@ typedef void (*dsRegisterFrameratePreChangeCB_t)(unsigned int tSecond);
  * @pre dsVideoDeviceInit() must be called before calling this function.
  * 
  * @warning  This function is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsRegisterFrameratePreChangeCB(dsRegisterFrameratePreChangeCB_t CBFunc);
 
@@ -418,6 +458,9 @@ typedef void (*dsRegisterFrameratePostChangeCB_t)(unsigned int tSecond);
  * @pre dsVideoDeviceInit() must be called before calling this function.
  * 
  * @warning  This function is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsError_t dsRegisterFrameratePostChangeCB(dsRegisterFrameratePostChangeCB_t CBFunc);
 

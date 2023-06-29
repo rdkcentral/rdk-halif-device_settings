@@ -117,8 +117,8 @@ extern "C" {
  * 
  * @see dsHdmiInTerm()
  * 
- * @todo: Change the PM_INVALID_STATE 
- *          to PM_ALREADY_INITIALIZED. Will do it in the next phase.
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_ALREADY_INITIALIZED. Will do it in the next phase.
  * 
  */
 
@@ -141,6 +141,9 @@ dsError_t dsHdmiInInit (void);
  * @warning  This API is Not thread safe.
  * 
  * @see dsHdmiInInit()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsHdmiInTerm (void);
@@ -161,6 +164,9 @@ dsError_t dsHdmiInTerm (void);
  * @pre dsHdmiInInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsHdmiInGetNumberOfInputs (uint8_t *pNumberOfInputs);
@@ -180,6 +186,9 @@ dsError_t dsHdmiInGetNumberOfInputs (uint8_t *pNumberOfInputs);
  * @pre dsHdmiInInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsHdmiInGetStatus (dsHdmiInStatus_t *pStatus);
@@ -199,6 +208,9 @@ dsError_t dsHdmiInGetStatus (dsHdmiInStatus_t *pStatus);
  * @pre dsHdmiInInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsHdmiInSelectPort (dsHdmiInPort_t ePort);
@@ -221,7 +233,11 @@ dsError_t dsHdmiInSelectPort (dsHdmiInPort_t ePort);
  * 
  * 
  * @pre dsHdmiInInit() must be called before calling this API.
+ * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsHdmiInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t height);
@@ -241,6 +257,9 @@ dsError_t dsHdmiInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t heigh
  * @pre dsHdmiInInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsHdmiInSelectZoomMode (dsVideoZoom_t requestedZoomMode);
@@ -258,6 +277,9 @@ dsError_t dsHdmiInSelectZoomMode (dsVideoZoom_t requestedZoomMode);
  * @pre dsHdmiInInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsHdmiInPauseAudio (void);
@@ -275,6 +297,9 @@ dsError_t dsHdmiInPauseAudio (void);
  * @pre dsHdmiInInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsHdmiInResumeAudio (void);
@@ -295,6 +320,9 @@ dsError_t dsHdmiInResumeAudio (void);
  * @pre dsHdmiInInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsHdmiInGetCurrentVideoMode (dsVideoPortResolution_t *resolution);
@@ -368,6 +396,9 @@ typedef void (*dsHdmiInAllmChangeCB_t)(dsHdmiInPort_t port, bool allm_mode);
  * @pre dsHdmiInInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsHdmiInRegisterConnectCB (dsHdmiInConnectCB_t CBFunc);
@@ -387,6 +418,9 @@ dsError_t dsHdmiInRegisterConnectCB (dsHdmiInConnectCB_t CBFunc);
  * @pre dsHdmiInInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsHdmiInRegisterSignalChangeCB (dsHdmiInSignalChangeCB_t CBFunc);
@@ -407,6 +441,9 @@ dsError_t dsHdmiInRegisterSignalChangeCB (dsHdmiInSignalChangeCB_t CBFunc);
  * @pre dsHdmiInInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsHdmiInRegisterStatusChangeCB (dsHdmiInStatusChangeCB_t CBFunc);
@@ -428,6 +465,9 @@ dsError_t dsHdmiInRegisterStatusChangeCB (dsHdmiInStatusChangeCB_t CBFunc);
  * @pre dsHdmiInInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsHdmiInRegisterVideoModeUpdateCB(dsHdmiInVideoModeUpdateCB_t CBFunc);
@@ -448,6 +488,9 @@ dsError_t dsHdmiInRegisterVideoModeUpdateCB(dsHdmiInVideoModeUpdateCB_t CBFunc);
  * @pre dsHdmiInInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsHdmiInRegisterAllmChangeCB (dsHdmiInAllmChangeCB_t CBFunc);
@@ -465,6 +508,9 @@ dsError_t dsHdmiInRegisterAllmChangeCB (dsHdmiInAllmChangeCB_t CBFunc);
  * @pre dsHdmiInInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 bool dsIsHdmiARCPort (int iPort);
@@ -486,6 +532,9 @@ bool dsIsHdmiARCPort (int iPort);
  * @pre dsHdmiInInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsGetEDIDBytesInfo (int iHdmiPort, unsigned char **edid, int *length);
@@ -506,6 +555,9 @@ dsError_t dsGetEDIDBytesInfo (int iHdmiPort, unsigned char **edid, int *length);
  * @pre dsHdmiInInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsGetHDMISPDInfo (int iHdmiPort, unsigned char **data);
@@ -528,6 +580,9 @@ dsError_t dsGetHDMISPDInfo (int iHdmiPort, unsigned char **data);
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetEdidVersion()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsSetEdidVersion (int iHdmiPort, int iEdidVersion);
@@ -550,6 +605,9 @@ dsError_t dsSetEdidVersion (int iHdmiPort, int iEdidVersion);
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetEdidVersion()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsGetEdidVersion (int iHdmiPort, int *iEdidVersion);
@@ -570,6 +628,9 @@ dsError_t dsGetEdidVersion (int iHdmiPort, int *iEdidVersion);
  * @pre dsHdmiInInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsGetAllmStatus (int iHdmiPort, bool *allmStatus);
@@ -590,6 +651,9 @@ dsError_t dsGetAllmStatus (int iHdmiPort, bool *allmStatus);
  * @pre dsHdmiInInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsGetSupportedGameFeaturesList (dsSupportedGameFeatureList_t* features);

@@ -131,8 +131,8 @@ typedef void (*dsDisplayEventCallback_t)(int handle, dsDisplayEvent_t event,
  * 
  * @see dsDisplayTerm()
  * 
- * @todo: Change the PM_INVALID_STATE 
- *          to PM_ALREADY_INITIALIZED. Will do it in the next phase.
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_ALREADY_INITIALIZED. Will do it in the next phase.
  * 
  */
 
@@ -158,6 +158,9 @@ dsError_t dsDisplayInit();
  * @pre  dsDisplayInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
  dsError_t dsGetDisplay(dsVideoPortType_t vType, int index, intptr_t *handle);
@@ -179,6 +182,9 @@ dsError_t dsDisplayInit();
  * @pre  dsDisplayInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsGetEDID(intptr_t handle, dsDisplayEDID_t *edid);
@@ -200,6 +206,9 @@ dsError_t dsGetEDID(intptr_t handle, dsDisplayEDID_t *edid);
  * @pre  dsDisplayInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsGetEDIDBytes(intptr_t handle, unsigned char **edid, int *length);
@@ -223,6 +232,9 @@ dsError_t dsGetEDIDBytes(intptr_t handle, unsigned char **edid, int *length);
  * @pre  dsDisplayInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsGetDisplayAspectRatio(intptr_t handle, dsVideoAspectRatio_t *aspectRatio);
@@ -243,6 +255,9 @@ dsError_t dsGetDisplayAspectRatio(intptr_t handle, dsVideoAspectRatio_t *aspectR
  * @warning  This API is Not thread safe.
  * 
  * @see dsDisplayInit()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsDisplayTerm();
@@ -268,6 +283,9 @@ dsError_t dsDisplayTerm();
  * @warning  This API is Not thread safe.
  * 
  * @see dsRegisterDisplayEventCallback()
+ * 
+ * @todo: Change the dsERR_INVALID_STATE 
+ *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsError_t dsRegisterDisplayEventCallback(intptr_t handle, dsDisplayEventCallback_t cb);
