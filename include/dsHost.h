@@ -80,7 +80,7 @@ extern "C" {
 /**
  * @brief Initialize the Host HAL.
  *
- * @return dsStatus_t            - Status
+ * @return dsStatus_t           - Status
  * @retval dsERR_NONE           - Success
  * @retval dsERR_INVALID_STATE  - Function is already initialized.
  * @retval dsERR_GENERAL        - Underlying undefined platform error
@@ -103,7 +103,7 @@ dsStatus_t dsHostInit();
  *
  * @param[in] newPower  - The power mode of the host. See dsPowerState_t.
  *
- * @return dsStatus_t                        - Status
+ * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -132,7 +132,7 @@ dsStatus_t dsSetHostPowerMode(int newPower);
  * @param[out] currPower    - current power state of the system mode on return. 
  *                                  See dsPowerState_t for possible returns.
  *
- * @return dsStatus_t                        - Status
+ * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -155,7 +155,7 @@ dsStatus_t dsGetHostPowerMode(int *currPower);
  * This function resets the data structures used within the Host module and releases any
  * handles specific to the host module.
  *
- * @return dsStatus_t            - Status
+ * @return dsStatus_t           - Status
  * @retval dsERR_NONE           - Success 
  * @retval dsERR_INVALID_PARAM  - Invalid parameter value.
  * @retval dsERR_INVALID_STATE  - Module is not initialised
@@ -177,7 +177,7 @@ dsStatus_t dsHostTerm();
  * @param[out] pMode    - Current preferred sleep mode settings of the device. 
  *                              See dsSleepMode_t for possible values.
  *
- * @return dsStatus_t                        - Status
+ * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -199,7 +199,7 @@ dsStatus_t dsGetPreferredSleepMode(dsSleepMode_t *pMode);
  *
  * @param[in] mode  - Sleep mode to set. See dsSleepMode_t for possible values.
  *
- * @return dsStatus_t                        - Status
+ * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -221,7 +221,7 @@ dsStatus_t dsSetPreferredSleepMode(dsSleepMode_t mode);
  *
  * @param[out] cpuTemperature   - CPU temperature value is obtained in centigrade 
  *
- * @return dsStatus_t                        - Status
+ * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -243,7 +243,7 @@ dsStatus_t dsGetCPUTemperature(float *cpuTemperature);
  *                                  Two Most significant Bytes are Major number,
  *                                  Two Least Significant Bytes are minor number.
  *
- * @return dsStatus_t                        - Status
+ * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -267,7 +267,7 @@ dsStatus_t dsGetVersion(uint32_t *versionNumber);
  *                                  Two Most significant Bytes are Major number,
  *                                  Two Least Significant Bytes are minor number.
  *
- * @return dsStatus_t                        - Status
+ * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -289,7 +289,7 @@ dsStatus_t dsSetVersion(uint32_t versionNumber);
  *
  * @param[out] socID    - 8 byte Chip ID programmed to the CHIP One Time Programmable area.
  *
- * @return dsStatus_t                        - Status
+ * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -310,7 +310,7 @@ dsStatus_t dsGetSocIDFromSDK(char *socID);
  * @param[out] edid     - host EDID.
  * @param[out] length   - length of host EDID. Min value of 0. 
  *
- * @return dsStatus_t                        - Status
+ * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid

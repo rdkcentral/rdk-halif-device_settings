@@ -47,7 +47,7 @@
  * @param[in]  priority - Priority of the message to be logged.
  * @param[out] format   - Message format.
  * 
- * @return int          - Status. Success if non-negative, failure if negative.
+ * @return int         - Status. Success if non-negative, failure if negative.
  * 
  */
 

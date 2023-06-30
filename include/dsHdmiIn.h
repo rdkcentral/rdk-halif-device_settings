@@ -107,7 +107,7 @@ extern "C" {
  * @brief Initializes the HDMI Input Hal.
  *
  *
- * @return dsStatus_t            - Status
+ * @return dsStatus_t           - Status
  * @retval dsERR_NONE           - Success
  * @retval dsERR_INVALID_STATE  - Function is already initialized.
  * @retval dsERR_GENERAL        - Underlying undefined platform error
@@ -129,7 +129,7 @@ dsStatus_t dsHdmiInInit (void);
  * This function must terminate the HDMI Input module and any associated data
  * structures.
  *
- * @return dsStatus_t            - Status
+ * @return dsStatus_t           - Status
  * @retval dsERR_NONE           - Success
  * @retval dsERR_INVALID_STATE  - Module is not initialised
  * @retval dsERR_GENERAL        - Underlying undefined platform error
@@ -153,7 +153,7 @@ dsStatus_t dsHdmiInTerm (void);
  * @param[out] pNumberOfInputs  - number of HDMI Input ports. 
  *                                  Max number of inputs is platform specific.
  * 
- * @return dsStatus_t                        - Status
+ * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -175,7 +175,7 @@ dsStatus_t dsHdmiInGetNumberOfInputs (uint8_t *pNumberOfInputs);
  *
  * @param[out] pStatus  - current status of the HdmiInput port. See dsHdmiInStatus_t
  *
- * @return dsStatus_t                        - Status
+ * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -197,7 +197,7 @@ dsStatus_t dsHdmiInGetStatus (dsHdmiInStatus_t *pStatus);
  *
  * @param[in] ePort     - HDMI Input port to be presented. See dsHdmiInPort_t
  * 
- * @return dsStatus_t                        - Status
+ * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -223,7 +223,7 @@ dsStatus_t dsHdmiInSelectPort (dsHdmiInPort_t ePort);
  * @param[in] width     - width of the video. Width in pixels.
  * @param[in] height    - height of the video. Height in pixels.
  *
- * @return dsStatus_t                        - Status
+ * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -246,7 +246,7 @@ dsStatus_t dsHdmiInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t heig
  *
  * @param[in] requestedZoomMode     - HDMI Input zoom mode. See dsVideoZoom_t
  * 
- * @return dsStatus_t                        - Status
+ * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -266,7 +266,7 @@ dsStatus_t dsHdmiInSelectZoomMode (dsVideoZoom_t requestedZoomMode);
 /**
  * @brief This function stops sending the HDMI Input audio to the HDMI Out.
  *
- * @return dsStatus_t                        - Status
+ * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -286,7 +286,7 @@ dsStatus_t dsHdmiInPauseAudio (void);
 /**
  * @brief This function presents the HDMI Input audio via HDMI Out.
  *
- * @return dsStatus_t                        - Status
+ * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -309,7 +309,7 @@ dsStatus_t dsHdmiInResumeAudio (void);
  * @param[out] resolution       - current HDMI Input video mode resolution. 
  *                                      See dsVideoPortResolution_t
  *
- * @return dsStatus_t                        - Status
+ * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -385,7 +385,7 @@ typedef void (*dsHdmiInAllmChangeCB_t)(dsHdmiInPort_t port, bool allm_mode);
  *
  * @param[in] CBFunc    - HDMI Input hot plug callback function. See dsHdmiInConnectCB_t
  * 
- * @return dsStatus_t                        - Status
+ * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -407,7 +407,7 @@ dsStatus_t dsHdmiInRegisterConnectCB (dsHdmiInConnectCB_t CBFunc);
  *
  * @param[in] CBFunc    - HDMI Input Signal change callback function. See dsHdmiInSignalChangeCB_t
  * 
- * @return dsStatus_t                        - Status
+ * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -430,7 +430,7 @@ dsStatus_t dsHdmiInRegisterSignalChangeCB (dsHdmiInSignalChangeCB_t CBFunc);
  *
  * @param[in] CBFunc    - HDMI Input Status change callback function. See dsHdmiInStatusChangeCB_t
  * 
- * @return dsStatus_t                        - Status
+ * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -454,7 +454,7 @@ dsStatus_t dsHdmiInRegisterStatusChangeCB (dsHdmiInStatusChangeCB_t CBFunc);
  * @param[in] CBFunc    - HDMI Input video mode change callback function. 
  *                              See dsHdmiInVideoModeUpdateCB_t
  * 
- * @return dsStatus_t                        - Status
+ * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -477,7 +477,7 @@ dsStatus_t dsHdmiInRegisterVideoModeUpdateCB(dsHdmiInVideoModeUpdateCB_t CBFunc)
  * @param[in] CBFunc    - HDMI Input ALLM Mode change callback function. 
  *                              See dsHdmiInAllmChangeCB_t
  * 
- * @return dsStatus_t                        - Status
+ * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -521,7 +521,7 @@ bool dsIsHdmiARCPort (int iPort);
  * @param[out] edid         - EDID data for which info is required
  * @param[out] length       - length of the EDID data. Min value of 0.
  *
- * @return dsStatus_t                        - Status
+ * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -544,7 +544,7 @@ dsStatus_t dsGetEDIDBytesInfo (int iHdmiPort, unsigned char **edid, int *length)
  * @param[in] iHdmiPort     - HDMI Input port. Max value is device specific. Min value of 0.
  * @param[out] data         - HDMI SPD info data to get
  *
- * @return dsStatus_t                        - Status
+ * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -567,7 +567,7 @@ dsStatus_t dsGetHDMISPDInfo (int iHdmiPort, unsigned char **data);
  * @param[in] iHdmiPort     - HDMI input port. Max value is device specific. Min value of 0.
  * @param[in] iEdidVersion  - Input EDID version number to set
  *
- * @return dsStatus_t                        - Status
+ * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -592,7 +592,7 @@ dsStatus_t dsSetEdidVersion (int iHdmiPort, int iEdidVersion);
  * @param[in] iHdmiPort     - HDMI input port. Max value is device specific. Min value of 0.
  * @param[out] iEdidVersion - input EDID version number to get.
  *
- * @return dsStatus_t                        - Status
+ * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -617,7 +617,7 @@ dsStatus_t dsGetEdidVersion (int iHdmiPort, int *iEdidVersion);
  * @param[in] iHdmiPort     - HDMI input port. Max value is device specific. Min value of 0.
  * @param[out] allmStatus   - allmstatus. True if enabled, false if not.
  *
- * @return dsStatus_t                        - Status
+ * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -640,7 +640,7 @@ dsStatus_t dsGetAllmStatus (int iHdmiPort, bool *allmStatus);
  * @param[out] features         - List of all supported game features. 
  *                                      See dsSupportedGameFeatureList_t
  *
- * @return dsStatus_t                        - Status
+ * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid

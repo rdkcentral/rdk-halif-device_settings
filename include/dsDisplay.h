@@ -121,7 +121,7 @@ typedef void (*dsDisplayEventCallback_t)(int handle, dsDisplayEvent_t event,
  * @brief Initializes the Display Hal.
  *
  *
- * @return dsStatus_t            - Status
+ * @return dsStatus_t           - Status
  * @retval dsERR_NONE           - Success
  * @retval dsERR_INVALID_STATE  - Function is already initialized.
  * @retval dsERR_GENERAL        - Underlying undefined platform error
@@ -147,7 +147,7 @@ dsStatus_t dsDisplayInit();
  * @param[out] handle           - The handle used by the Caller to 
  *                                      uniquely identify the HAL instance.
  * 
- * @return dsStatus_t                        - Status
+ * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -171,7 +171,7 @@ dsStatus_t dsDisplayInit();
  * @param[in]  handle                       - The handle returned from the dsGetDisplay() function.
  * @param[out] edid                         - EDID for the specified display. See dsDisplayEDID_t.
  *
- * @return dsStatus_t                        - Status
+ * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -195,7 +195,7 @@ dsStatus_t dsGetEDID(intptr_t handle, dsDisplayEDID_t *edid);
  * @param[out] edid                         - EDID raw buffer of the current display.
  * @param[out] length                       - length of the EDID buffer data. Min value of 0.
  *
- * @return dsStatus_t                        - Status
+ * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -221,7 +221,7 @@ dsStatus_t dsGetEDIDBytes(intptr_t handle, unsigned char **edid, int *length);
  * @param[out] aspectRatio  - Current aspect ratio for the specified display. 
  *                                  See dsVideoAspectRatio_t.
  *
- * @return dsStatus_t                        - Status
+ * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -243,7 +243,7 @@ dsStatus_t dsGetDisplayAspectRatio(intptr_t handle, dsVideoAspectRatio_t *aspect
  * This function deallocates the data structures used within the display 
  * module and releases any display specific handles.
  *
- * @return dsStatus_t                        - Status
+ * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
@@ -272,7 +272,7 @@ dsStatus_t dsDisplayTerm();
  * @param[in] handle        - The handle returned from the dsGetDisplay() function.
  * @param[in] cb            - The callback function. See dsDisplayEventCallback_t.
  *
- * @return dsStatus_t                        - Status
+ * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
