@@ -37,7 +37,6 @@
  * - cb:      Callback function (suffix).
  * - DS:      Device Settings.
  * - HAL:     Hardware Abstraction Layer.
- * - _t:      Type (suffix).
  *
  * @par Implementation Notes
  * -# None
@@ -90,9 +89,11 @@ typedef enum {
     dsERR_GENERAL = 1,              ///< Operation general error. @todo Change to more specific error in later phase.
     dsERR_INVALID_PARAM,            ///< Invalid parameter is passed to the module
     dsERR_INVALID_STATE,            ///< Module is not initialised
+        ///< @todo to change to dsERR_ALREADY_INITIALIZED and dsERR_NOT_INITIALIZED 
+        ///< in respective places in following phase
     dsERR_OPERATION_NOT_SUPPORTED,  ///< Operation not supported
     dsERR_UNKNOWN                   ///< Unknown error
-} dsError_t;
+} dsStatus_t;
 
 /* End of DSHAL_ERROR doxygen group */
 /**

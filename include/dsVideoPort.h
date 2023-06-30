@@ -27,7 +27,6 @@
  * - cb:      Callback function (suffix).
  * - DS:      Device Settings.
  * - HAL:     Hardware Abstraction Layer.
- * - _t:      Type (suffix).
  * - DTCP:    Digital Transmission Content Protection
  * - HDCP:    High-bandwidth Digital Copy Protection.
  * - EOTF:    Electro-Optical Transfer Function 
@@ -89,7 +88,7 @@ typedef void (*dsVideoFormatUpdateCB_t)(dsHDRStandard_t videoFormat);
  * 
  * This function is required to be called before the other APIs in this module.@n
  *
- * @return dsError_t            - Status
+ * @return dsStatus_t            - Status
  * @retval dsERR_NONE           - Success
  * @retval dsERR_INVALID_STATE  - Function is already initialized.
  * @retval dsERR_GENERAL        - Underlying undefined platform error
@@ -102,7 +101,7 @@ typedef void (*dsVideoFormatUpdateCB_t)(dsHDRStandard_t videoFormat);
  *          to dsERR_ALREADY_INITIALIZED. Will do it in the next phase.
  * 
  */
-dsError_t  dsVideoPortInit();
+dsStatus_t  dsVideoPortInit();
 
 
 /**
@@ -113,7 +112,7 @@ dsError_t  dsVideoPortInit();
  * @param[out] handle   - The handle used by the caller to uniquely identify the HAL instance
 
  * 
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -128,7 +127,7 @@ dsError_t  dsVideoPortInit();
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  * 
  */
-dsError_t  dsGetVideoPort(dsVideoPortType_t type, int index, int *handle);
+dsStatus_t  dsGetVideoPort(dsVideoPortType_t type, int index, int *handle);
 
 
 /**
@@ -137,7 +136,7 @@ dsError_t  dsGetVideoPort(dsVideoPortType_t type, int index, int *handle);
  * @param[in]  handle   - The handle returned from the dsGetVideoPort() function
  * @param[out] enabled  - Video Port Enable Status. True to enabled, false to disabled.
  * 
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -153,7 +152,7 @@ dsError_t  dsGetVideoPort(dsVideoPortType_t type, int index, int *handle);
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t  dsIsVideoPortEnabled(int handle, bool *enabled);
+dsStatus_t  dsIsVideoPortEnabled(int handle, bool *enabled);
 
 
 /**
@@ -162,7 +161,7 @@ dsError_t  dsIsVideoPortEnabled(int handle, bool *enabled);
  * @param[in]  handle       - The handle returned from the dsGetVideoPort() function
  * @param[out] connected    - Connection status. True to connected, false to disconnected.
  * 
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -176,7 +175,7 @@ dsError_t  dsIsVideoPortEnabled(int handle, bool *enabled);
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t  dsIsDisplayConnected(int handle, bool *connected);
+dsStatus_t  dsIsDisplayConnected(int handle, bool *connected);
 
 
 /**
@@ -185,7 +184,7 @@ dsError_t  dsIsDisplayConnected(int handle, bool *connected);
  * @param[in]  handle   - The handle returned from the dsGetVideoPort() function
  * @param[out] surround - Supported status of the display surround. True for supported, false for not supported.
  * 
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -199,7 +198,7 @@ dsError_t  dsIsDisplayConnected(int handle, bool *connected);
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t  dsIsDisplaySurround(int handle, bool *surround);
+dsStatus_t  dsIsDisplaySurround(int handle, bool *surround);
 
 
 /**
@@ -208,7 +207,7 @@ dsError_t  dsIsDisplaySurround(int handle, bool *surround);
  * @param[in]  handle   - The handle returned from the dsGetVideoPort() function
  * @param[out] surround - Current Surround mode. See dsSURROUNDMode_t for possible values.
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -222,7 +221,7 @@ dsError_t  dsIsDisplaySurround(int handle, bool *surround);
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t  dsGetSurroundMode(int handle, int *surround);
+dsStatus_t  dsGetSurroundMode(int handle, int *surround);
 
 
 /**
@@ -231,7 +230,7 @@ dsError_t  dsGetSurroundMode(int handle, int *surround);
  * @param[in]  handle   - The handle returned from the dsGetVideoPort() function
  * @param[out] active   - Active status of the video port. True for active, false inactive.
  * 
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -245,7 +244,7 @@ dsError_t  dsGetSurroundMode(int handle, int *surround);
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t  dsIsVideoPortActive(int handle, bool *active);
+dsStatus_t  dsIsVideoPortActive(int handle, bool *active);
 
 
 /**
@@ -254,7 +253,7 @@ dsError_t  dsIsVideoPortActive(int handle, bool *active);
  * @param[in]  handle           - The handle returned from the dsGetVideoPort() function
  * @param[in]  contentProtect   - Flag to control DTCP content protection. True for enabled, false for disabled.
  * 
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -270,7 +269,7 @@ dsError_t  dsIsVideoPortActive(int handle, bool *active);
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t  dsEnableDTCP(int handle, bool contentProtect);
+dsStatus_t  dsEnableDTCP(int handle, bool contentProtect);
 
 
 /**
@@ -281,7 +280,7 @@ dsError_t  dsEnableDTCP(int handle, bool contentProtect);
  * @param[in]  hdcpKey          - HDCP key.
  * @param[in]  keySize          - HDCP key size. Min of 0.
  * 
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -297,7 +296,7 @@ dsError_t  dsEnableDTCP(int handle, bool contentProtect);
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t  dsEnableHDCP(int handle, bool contentProtect, char *hdcpKey, size_t keySize);
+dsStatus_t  dsEnableHDCP(int handle, bool contentProtect, char *hdcpKey, size_t keySize);
 
 
 /**
@@ -306,7 +305,7 @@ dsError_t  dsEnableHDCP(int handle, bool contentProtect, char *hdcpKey, size_t k
  * @param[in]  handle               - The handle returned from the dsGetVideoPort() function
  * @param[out] pContentProtected    - Current DTCP content protection state. True for enabled, false for disabled.
  * 
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -322,7 +321,7 @@ dsError_t  dsEnableHDCP(int handle, bool contentProtect, char *hdcpKey, size_t k
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t  dsIsDTCPEnabled (int handle, bool* pContentProtected);
+dsStatus_t  dsIsDTCPEnabled (int handle, bool* pContentProtected);
 
 
  /**
@@ -331,7 +330,7 @@ dsError_t  dsIsDTCPEnabled (int handle, bool* pContentProtected);
  * @param[in]  handle               - The handle returned from the dsGetVideoPort() function
  * @param[out] pContentProtected    - Current DTCP content protection status. True for enabled, false for disabled.
  * 
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -347,7 +346,7 @@ dsError_t  dsIsDTCPEnabled (int handle, bool* pContentProtected);
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t  dsIsHDCPEnabled (int handle, bool* pContentProtected);
+dsStatus_t  dsIsHDCPEnabled (int handle, bool* pContentProtected);
 
 
  /**
@@ -356,7 +355,7 @@ dsError_t  dsIsHDCPEnabled (int handle, bool* pContentProtected);
  * @param[in]  handle    - The handle returned from the dsGetVideoPort() function
  * @param[in]  enabled   - Enable value for specified port. True for enabled, false for disabled.
  * 
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -372,7 +371,7 @@ dsError_t  dsIsHDCPEnabled (int handle, bool* pContentProtected);
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t  dsEnableVideoPort(int handle, bool enabled);
+dsStatus_t  dsEnableVideoPort(int handle, bool enabled);
 
 
 /**
@@ -382,7 +381,7 @@ dsError_t  dsEnableVideoPort(int handle, bool enabled);
  * @param[in]  resolution   - New video port resolution settings. See dsVideoPortResolution_t.
  * @param[in]  persist      - Status to be persisted. True to persist, false to not persist.
  * 
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -398,7 +397,7 @@ dsError_t  dsEnableVideoPort(int handle, bool enabled);
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t  dsSetResolution(int handle, dsVideoPortResolution_t *resolution, bool persist);
+dsStatus_t  dsSetResolution(int handle, dsVideoPortResolution_t *resolution, bool persist);
 
 
 /**
@@ -407,7 +406,7 @@ dsError_t  dsSetResolution(int handle, dsVideoPortResolution_t *resolution, bool
  * @param[in]  handle       - The handle returned from the dsGetVideoPort() function
  * @param[out] resolution   - Current resolution settings of the port. See dsVideoPortResolution_t.
  * 
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -423,7 +422,7 @@ dsError_t  dsSetResolution(int handle, dsVideoPortResolution_t *resolution, bool
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t  dsGetResolution(int handle, dsVideoPortResolution_t *resolution);
+dsStatus_t  dsGetResolution(int handle, dsVideoPortResolution_t *resolution);
 
 
 /**
@@ -431,7 +430,7 @@ dsError_t  dsGetResolution(int handle, dsVideoPortResolution_t *resolution);
  * 
  * @param[in]  handle   - The handle returned from the dsGetVideoPort() function
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -445,7 +444,7 @@ dsError_t  dsGetResolution(int handle, dsVideoPortResolution_t *resolution);
  @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsSetActiveSource(int handle);
+dsStatus_t dsSetActiveSource(int handle);
 
 
  /**
@@ -453,7 +452,7 @@ dsError_t dsSetActiveSource(int handle);
  *
  * This function must terminate all the video output ports.
  *
- * @return dsError_t            - Status
+ * @return dsStatus_t            - Status
  * @retval dsERR_NONE           - Success 
  * @retval dsERR_INVALID_STATE  - Module is not initialised
  * @retval dsERR_GENERAL        - General failure.
@@ -467,7 +466,7 @@ dsError_t dsSetActiveSource(int handle);
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsVideoPortTerm();
+dsStatus_t dsVideoPortTerm();
 
 
 /**
@@ -475,7 +474,7 @@ dsError_t dsVideoPortTerm();
  *
  * @param[in] resolution    - Video Resolution Structure to be initialized. See dsVideoPortResolution_t.
  *                            
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -489,7 +488,7 @@ dsError_t dsVideoPortTerm();
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t  dsInitResolution(dsVideoPortResolution_t *resolution);
+dsStatus_t  dsInitResolution(dsVideoPortResolution_t *resolution);
 
 
 /**
@@ -517,7 +516,7 @@ typedef void (*dsHDCPStatusCallback_t)(int handle, dsHdcpStatus_t status);
  * @param[in]  handle   - The handle returned from the dsGetVideoPort() function
  * @param[in]  cb       - The callback function. See dsHDCPStatusCallback_t.
  * 
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -531,7 +530,7 @@ typedef void (*dsHDCPStatusCallback_t)(int handle, dsHdcpStatus_t status);
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
- dsError_t dsRegisterHdcpStatusCallback (int handle, dsHDCPStatusCallback_t cb);
+ dsStatus_t dsRegisterHdcpStatusCallback (int handle, dsHDCPStatusCallback_t cb);
 
 
  /**
@@ -540,7 +539,7 @@ typedef void (*dsHDCPStatusCallback_t)(int handle, dsHdcpStatus_t status);
  * @param[in]  handle   - The handle returned from the dsGetVideoPort() function
  * @param[out] status   - HDCP status of the device. See dsHdcpStatus_t.
  * 
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -556,7 +555,7 @@ typedef void (*dsHDCPStatusCallback_t)(int handle, dsHdcpStatus_t status);
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsGetHDCPStatus (int handle, dsHdcpStatus_t *status);
+dsStatus_t dsGetHDCPStatus (int handle, dsHdcpStatus_t *status);
 
 
 /**
@@ -565,7 +564,7 @@ dsError_t dsGetHDCPStatus (int handle, dsHdcpStatus_t *status);
  * @param[in]  handle           - The handle returned from the dsGetVideoPort() function
  * @param[out] protocolVersion  - HDCP protocol version. See dsHdcpProtocolVersion_t.
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -581,7 +580,7 @@ dsError_t dsGetHDCPStatus (int handle, dsHdcpStatus_t *status);
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsGetHDCPProtocol (int handle,dsHdcpProtocolVersion_t *protocolVersion);
+dsStatus_t dsGetHDCPProtocol (int handle,dsHdcpProtocolVersion_t *protocolVersion);
 
 
 /**
@@ -590,7 +589,7 @@ dsError_t dsGetHDCPProtocol (int handle,dsHdcpProtocolVersion_t *protocolVersion
  * @param[in]  handle           - The handle returned from the dsGetVideoPort() function
  * @param[out] protocolVersion  - HDCP protocol version. See dsHdcpProtocolVersion_t.
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -606,7 +605,7 @@ dsError_t dsGetHDCPProtocol (int handle,dsHdcpProtocolVersion_t *protocolVersion
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsGetHDCPReceiverProtocol (int handle,dsHdcpProtocolVersion_t *protocolVersion);
+dsStatus_t dsGetHDCPReceiverProtocol (int handle,dsHdcpProtocolVersion_t *protocolVersion);
 
 
 /**
@@ -615,7 +614,7 @@ dsError_t dsGetHDCPReceiverProtocol (int handle,dsHdcpProtocolVersion_t *protoco
  * @param[in]  handle           - The handle returned from the dsGetVideoPort() function
  * @param[out] protocolVersion  - HDCP protocol version. See dsHdcpProtocolVersion_t.
  * 
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -631,7 +630,7 @@ dsError_t dsGetHDCPReceiverProtocol (int handle,dsHdcpProtocolVersion_t *protoco
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsGetHDCPCurrentProtocol (int handle,dsHdcpProtocolVersion_t *protocolVersion);
+dsStatus_t dsGetHDCPCurrentProtocol (int handle,dsHdcpProtocolVersion_t *protocolVersion);
 
 
 /**
@@ -640,7 +639,7 @@ dsError_t dsGetHDCPCurrentProtocol (int handle,dsHdcpProtocolVersion_t *protocol
  * @param[in]  handle       - The handle returned from the dsGetVideoPort() function
  * @param[out] capabilities - Supported HDR standards. See _dsHDRStandard_t.
  * 
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -654,7 +653,7 @@ dsError_t dsGetHDCPCurrentProtocol (int handle,dsHdcpProtocolVersion_t *protocol
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsGetTVHDRCapabilities(int handle, int *capabilities);
+dsStatus_t dsGetTVHDRCapabilities(int handle, int *capabilities);
 
 
 /**
@@ -663,7 +662,7 @@ dsError_t dsGetTVHDRCapabilities(int handle, int *capabilities);
  * @param[in]  handle       - The handle returned from the dsGetVideoPort() function
  * @param[out] resolutions  - Resolutions supported by the TV. Device specific.
  * 
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -677,7 +676,7 @@ dsError_t dsGetTVHDRCapabilities(int handle, int *capabilities);
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsSupportedTvResolutions(int handle, int *resolutions);
+dsStatus_t dsSupportedTvResolutions(int handle, int *resolutions);
 
 
 /**
@@ -686,7 +685,7 @@ dsError_t dsSupportedTvResolutions(int handle, int *resolutions);
  * @param[in]  handle   - The handle returned from the dsGetVideoPort() function
  * @param[out] disable  - Disable 4k support. True to force disable, false to stop force disable.
  * 
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -702,7 +701,7 @@ dsError_t dsSupportedTvResolutions(int handle, int *resolutions);
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsSetForceDisable4KSupport(int handle, bool disable);
+dsStatus_t dsSetForceDisable4KSupport(int handle, bool disable);
 
 
 /**
@@ -711,7 +710,7 @@ dsError_t dsSetForceDisable4KSupport(int handle, bool disable);
  * @param[in]  handle   - The handle returned from the dsGetVideoPort() function
  * @param[out] disable  - Disable Status. True if force disabled is, false if off.
  * 
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -727,7 +726,7 @@ dsError_t dsSetForceDisable4KSupport(int handle, bool disable);
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsGetForceDisable4KSupport(int handle, bool *disable);
+dsStatus_t dsGetForceDisable4KSupport(int handle, bool *disable);
 
 
  /**
@@ -746,7 +745,7 @@ dsError_t dsGetForceDisable4KSupport(int handle, bool *disable);
  * "cgms",        "disabled", "copyNever" "copyOnce" "copyFreely" "copyNoMore"
  * "port"         "on", "off"
  * 
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -760,7 +759,7 @@ dsError_t dsGetForceDisable4KSupport(int handle, bool *disable);
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsSetScartParameter(int handle, const char* parameter_str, const char* value_str);
+dsStatus_t dsSetScartParameter(int handle, const char* parameter_str, const char* value_str);
 
 
 /**
@@ -769,7 +768,7 @@ dsError_t dsSetScartParameter(int handle, const char* parameter_str, const char*
  * @param[in]  handle       - The handle returned from the dsGetVideoPort() function
  * @param[out] video_eotf   - Requested EOTF value. See dsHDRStandard_t
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -783,7 +782,7 @@ dsError_t dsSetScartParameter(int handle, const char* parameter_str, const char*
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsGetVideoEOTF(int handle, dsHDRStandard_t *video_eotf);
+dsStatus_t dsGetVideoEOTF(int handle, dsHDRStandard_t *video_eotf);
 
 
 /**
@@ -792,7 +791,7 @@ dsError_t dsGetVideoEOTF(int handle, dsHDRStandard_t *video_eotf);
  * @param[in]  handle               - The handle returned from the dsGetVideoPort() function
  * @param[out] matrix_coefficients  - Matrix coefficients value. See dsDisplayMatrixCoefficients_t
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -806,7 +805,7 @@ dsError_t dsGetVideoEOTF(int handle, dsHDRStandard_t *video_eotf);
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsGetMatrixCoefficients(int handle, dsDisplayMatrixCoefficients_t *matrix_coefficients);
+dsStatus_t dsGetMatrixCoefficients(int handle, dsDisplayMatrixCoefficients_t *matrix_coefficients);
 
 
 /**
@@ -815,7 +814,7 @@ dsError_t dsGetMatrixCoefficients(int handle, dsDisplayMatrixCoefficients_t *mat
  * @param[in]  handle       - The handle returned from the dsGetVideoPort() function
  * @param[out] color_depth  - Color depth value. See dsDisplayColorDepth_t.
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -829,7 +828,7 @@ dsError_t dsGetMatrixCoefficients(int handle, dsDisplayMatrixCoefficients_t *mat
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsGetColorDepth(int handle, unsigned int* color_depth);
+dsStatus_t dsGetColorDepth(int handle, unsigned int* color_depth);
 
 
 /**
@@ -838,7 +837,7 @@ dsError_t dsGetColorDepth(int handle, unsigned int* color_depth);
  * @param[in]  handle       - The handle returned from the dsGetVideoPort() function
  * @param[out] color_space  - Color space value as defined in dsDisplayColorSpace_t. See dsDisplayColorSpace_t
  * 
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -852,7 +851,7 @@ dsError_t dsGetColorDepth(int handle, unsigned int* color_depth);
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsGetColorSpace(int handle, dsDisplayColorSpace_t* color_space);
+dsStatus_t dsGetColorSpace(int handle, dsDisplayColorSpace_t* color_space);
  
 
 /**
@@ -861,7 +860,7 @@ dsError_t dsGetColorSpace(int handle, dsDisplayColorSpace_t* color_space);
  * @param[in]  handle               - The handle returned from the dsGetVideoPort() function
  * @param[out] quantization_range   - Quantization range value. See dsDisplayQuantizationRange_t.
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -875,7 +874,7 @@ dsError_t dsGetColorSpace(int handle, dsDisplayColorSpace_t* color_space);
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsGetQuantizationRange(int handle, dsDisplayQuantizationRange_t* quantization_range);
+dsStatus_t dsGetQuantizationRange(int handle, dsDisplayQuantizationRange_t* quantization_range);
 
 
 /**
@@ -890,7 +889,7 @@ dsError_t dsGetQuantizationRange(int handle, dsDisplayQuantizationRange_t* quant
  * @param[out] color_depth          - Color depths value as defined in dsDisplayColorDepth_t.
  * @param[out] quantization_range   - Quantization range value. See dsDisplayQuantizationRange_t.
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -904,7 +903,7 @@ dsError_t dsGetQuantizationRange(int handle, dsDisplayQuantizationRange_t* quant
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsGetCurrentOutputSettings(int handle, dsHDRStandard_t* video_eotf, 
+dsStatus_t dsGetCurrentOutputSettings(int handle, dsHDRStandard_t* video_eotf, 
             dsDisplayMatrixCoefficients_t* matrix_coefficients, 
             dsDisplayColorSpace_t* color_space, unsigned int* color_depth, 
             dsDisplayQuantizationRange_t* quantization_range);
@@ -916,7 +915,7 @@ dsError_t dsGetCurrentOutputSettings(int handle, dsHDRStandard_t* video_eotf,
  * @param[in]  handle   - The handle returned from the dsGetVideoPort() function
  * @param[out] hdr      - HDR support status. True for supported, false for not supported.
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -930,13 +929,13 @@ dsError_t dsGetCurrentOutputSettings(int handle, dsHDRStandard_t* video_eotf,
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsIsOutputHDR(int handle, bool *hdr);
+dsStatus_t dsIsOutputHDR(int handle, bool *hdr);
 
 
 /**
  * @brief This function is used to reset the video output to SDR
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -950,7 +949,7 @@ dsError_t dsIsOutputHDR(int handle, bool *hdr);
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsResetOutputToSDR();
+dsStatus_t dsResetOutputToSDR();
 
 
 /**
@@ -959,7 +958,7 @@ dsError_t dsResetOutputToSDR();
  * @param[in]  handle               - The handle returned from the dsGetVideoPort() function
  * @param[in]  hdcpCurrentProtocol  - New HDCP protocol to set. See dsHdcpProtocolVersion_t.
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -975,7 +974,7 @@ dsError_t dsResetOutputToSDR();
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsSetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentProtocol);
+dsStatus_t dsSetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentProtocol);
 
 
 /**
@@ -986,7 +985,7 @@ dsError_t dsSetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentPr
  * @param[out] hdcpCurrentProtocol  - Current Preferred HDMI Protocol applied. 
  *                                          See dsHdcpProtocolVersion_t.
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1002,7 +1001,7 @@ dsError_t dsSetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentPr
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsGetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentProtocol);
+dsStatus_t dsGetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentProtocol);
 
 
 /**
@@ -1012,7 +1011,7 @@ dsError_t dsGetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentPr
  * @param[out]  status  - Status of Ignore EDID variable. 
  *                              True to ignore EDID, false to not ignore.
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1026,7 +1025,7 @@ dsError_t dsGetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentPr
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsGetIgnoreEDIDStatus(int handle, bool* status);
+dsStatus_t dsGetIgnoreEDIDStatus(int handle, bool* status);
 
 
 /**
@@ -1035,7 +1034,7 @@ dsError_t dsGetIgnoreEDIDStatus(int handle, bool* status);
  * @param[in]  handle   - The handle returned from the dsGetVideoPort() function
  * @param[in]  color    - Color to be set. See dsVideoBackgroundColor_t.
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1049,7 +1048,7 @@ dsError_t dsGetIgnoreEDIDStatus(int handle, bool* status);
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsSetBackgroundColor(int handle, dsVideoBackgroundColor_t color);
+dsStatus_t dsSetBackgroundColor(int handle, dsVideoBackgroundColor_t color);
 
 
 /**
@@ -1058,7 +1057,7 @@ dsError_t dsSetBackgroundColor(int handle, dsVideoBackgroundColor_t color);
  * @param[in]  handle   - The handle returned from the dsGetVideoPort() function
  * @param[in]  mode     - Force set HDR mode. See dsHDRStandard_t
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1072,7 +1071,7 @@ dsError_t dsSetBackgroundColor(int handle, dsVideoBackgroundColor_t color);
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsSetForceHDRMode(int handle, dsHDRStandard_t mode);
+dsStatus_t dsSetForceHDRMode(int handle, dsHDRStandard_t mode);
 
 
 /**
@@ -1082,7 +1081,7 @@ dsError_t dsSetForceHDRMode(int handle, dsHDRStandard_t mode);
  * @param[out]  colorDepthCapability    - Supported color depth. 
  *                                          See dsDisplayColorDepth_t for valid returns.
  * 
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1098,7 +1097,7 @@ dsError_t dsSetForceHDRMode(int handle, dsHDRStandard_t mode);
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsColorDepthCapabilities(int handle, unsigned int *colorDepthCapability );
+dsStatus_t dsColorDepthCapabilities(int handle, unsigned int *colorDepthCapability );
 
 
 /**
@@ -1108,7 +1107,7 @@ dsError_t dsColorDepthCapabilities(int handle, unsigned int *colorDepthCapabilit
  * @param[out]  colorDepth  - Color depth value. See dsDisplayColorDepth_t.
  * @param[in]   persist     - Value to be persisted. True to persist, false to not persist.
  * 
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1124,7 +1123,7 @@ dsError_t dsColorDepthCapabilities(int handle, unsigned int *colorDepthCapabilit
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsGetPreferredColorDepth(int handle, dsDisplayColorDepth_t *colorDepth, bool persist );
+dsStatus_t dsGetPreferredColorDepth(int handle, dsDisplayColorDepth_t *colorDepth, bool persist );
 
 
 /**
@@ -1134,7 +1133,7 @@ dsError_t dsGetPreferredColorDepth(int handle, dsDisplayColorDepth_t *colorDepth
  * @param[in]  colorDepth   - Color depth value as defined in dsDisplayColorDepth_t.
  * @param[in]  persist      - Value to be persisted. True to persist, false to not persist.
  * 
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1150,7 +1149,7 @@ dsError_t dsGetPreferredColorDepth(int handle, dsDisplayColorDepth_t *colorDepth
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsSetPreferredColorDepth(int handle,dsDisplayColorDepth_t colorDepth, bool persist );
+dsStatus_t dsSetPreferredColorDepth(int handle,dsDisplayColorDepth_t colorDepth, bool persist );
 
 
 /** @} */ // End of DSHAL_VIDEOPORT_API doxygen group 

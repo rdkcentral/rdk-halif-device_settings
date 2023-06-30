@@ -37,7 +37,7 @@
  * - FPD:     Front-Panel Display.
  * - HAL:     Hardware Abstraction Layer.
  * - SAD:     Short Audio Descriptors
- * - _t:      Type (suffix).
+
  * - EDID:    Extended Display Information Data.
  * - HEVC:    High Efficiency Video Coding
  * - DTCP:    Digital Transmission Content Protection
@@ -112,7 +112,7 @@
  * If an API is not supported on a platform, the implementation must return
  * ::dsERR_OPERATION_NOT_SUPPORTED. Otherwise, the API must return ::dsERR_NONE upon
  * success, or return the most suitable error code. Vendors implementing HAL APIs are
- * allowed to add to the dsError_t enumerations, but should only do so with discretion.
+ * allowed to add to the dsStatus_t enumerations, but should only do so with discretion.
  *
  * @defgroup DSHAL_HOST HAL Host Types
  * @ingroup DSHAL_API

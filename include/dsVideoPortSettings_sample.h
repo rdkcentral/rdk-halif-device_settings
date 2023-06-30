@@ -44,7 +44,7 @@
  * - cb:      Callback function (suffix).
  * - DS:      Device Settings.
  * - HAL:     Hardware Abstraction Layer.
- * - _t:      Type (suffix).
+
  * - DTCP:    Digital Transmission Content Protection
  * - HDCP:    High-bandwidth Digital Copy Protection.
  * - HDMI:    High-Definition Multimedia Interface

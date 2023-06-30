@@ -54,7 +54,6 @@
  * - cb:      Callback function (suffix).
  * - DS:      Device Settings.
  * - HAL:     Hardware Abstraction Layer.
- * - _t:      Type (suffix).
  *
  * @par Implementation Notes
  * -# None
@@ -102,7 +101,7 @@ extern "C" {
  * @brief Initializes the Composite input Hal.
  *
  *
- * @return dsError_t            - Status
+ * @return dsStatus_t            - Status
  * @retval dsERR_NONE           - Success 
  * @retval dsERR_INVALID_STATE  - Function is already initialized.
  * @retval dsERR_GENERAL        - Underlying undefined platform error
@@ -116,13 +115,13 @@ extern "C" {
  * 
  */
 
-dsError_t dsCompositeInInit (void);
+dsStatus_t dsCompositeInInit (void);
 
 /**
  * @brief This function will terminate the underlying COMPOSITE Input sub-system.
  * Subsequent calls will return dsERR_NONE.
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
@@ -138,7 +137,7 @@ dsError_t dsCompositeInInit (void);
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
-dsError_t dsCompositeInTerm (void);
+dsStatus_t dsCompositeInTerm (void);
 
 /**
  * @brief This function is used to get the number of COMPOSITE Input ports on the 
@@ -146,7 +145,7 @@ dsError_t dsCompositeInTerm (void);
  *
  * @param[in] pNumberOfInputs   - number of COMPOSITE Input ports.
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -161,14 +160,14 @@ dsError_t dsCompositeInTerm (void);
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
-dsError_t dsCompositeInGetNumberOfInputs (uint8_t *pNumberOfInputs);
+dsStatus_t dsCompositeInGetNumberOfInputs (uint8_t *pNumberOfInputs);
 
 /**
  * @brief This function is used to get the current COMPOSITE Input Status.
  *
  * @param [out] pStatus     - current status of the composite input. See dsCompositeInStatus_t.
  * 
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -183,14 +182,14 @@ dsError_t dsCompositeInGetNumberOfInputs (uint8_t *pNumberOfInputs);
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
-dsError_t dsCompositeInGetStatus (dsCompositeInStatus_t *pStatus);
+dsStatus_t dsCompositeInGetStatus (dsCompositeInStatus_t *pStatus);
 
 /**
  * @brief This function is used to select the COMPOSITE Input port for presentation.
  *
  * @param[in] Port  - COMPOSITE Input port to be used. See dsCompositeInPort_t.
  * 
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -205,7 +204,7 @@ dsError_t dsCompositeInGetStatus (dsCompositeInStatus_t *pStatus);
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
-dsError_t dsCompositeInSelectPort (dsCompositeInPort_t Port);
+dsStatus_t dsCompositeInSelectPort (dsCompositeInPort_t Port);
 
 /**
  * @brief This function is used to scale the COMPOSITE In video.
@@ -215,7 +214,7 @@ dsError_t dsCompositeInSelectPort (dsCompositeInPort_t Port);
  * @param[in] width     - width of the video in pixels.
  * @param[in] height    - height of the video in pixels.
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -230,7 +229,7 @@ dsError_t dsCompositeInSelectPort (dsCompositeInPort_t Port);
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
-dsError_t dsCompositeInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t height);
+dsStatus_t dsCompositeInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t height);
 
 /**
  * @brief HAL must call this function when composite hotplug status changes.
@@ -252,7 +251,7 @@ typedef void (*dsCompositeInConnectCB_t)(dsCompositeInPort_t Port, bool isPortCo
  * @param[in] CBFunc    - COMPOSITE Input hot plug callback function. 
  *                              See dsCompositeInConnectCB_t.
  * 
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -269,7 +268,7 @@ typedef void (*dsCompositeInConnectCB_t)(dsCompositeInPort_t Port, bool isPortCo
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
-dsError_t dsCompositeInRegisterConnectCB (dsCompositeInConnectCB_t CBFunc);
+dsStatus_t dsCompositeInRegisterConnectCB (dsCompositeInConnectCB_t CBFunc);
 
 /**
  * @brief HAL must call this function when the composite port connection status changes.
@@ -290,7 +289,7 @@ typedef void (*dsCompositeInSignalChangeCB_t)(dsCompositeInPort_t port, dsCompIn
  * @param[in] CBFunc    - Composite Input Signal change callback function. 
  *                              See dsCompositeInSignalChangeCB_t
  * 
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -307,7 +306,7 @@ typedef void (*dsCompositeInSignalChangeCB_t)(dsCompositeInPort_t port, dsCompIn
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
-dsError_t dsCompositeInRegisterSignalChangeCB (dsCompositeInSignalChangeCB_t CBFunc);
+dsStatus_t dsCompositeInRegisterSignalChangeCB (dsCompositeInSignalChangeCB_t CBFunc);
 
 /**
  * @brief This function must be called when the Composite Input status changes.
@@ -329,7 +328,7 @@ typedef void (*dsCompositeInStatusChangeCB_t)(dsCompositeInStatus_t inputStatus)
  * @param[in] CBFunc    - Composite Input Status change callback function. 
  *                              See dsCompositeInStatusChangeCB_t.
  * 
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -346,7 +345,7 @@ typedef void (*dsCompositeInStatusChangeCB_t)(dsCompositeInStatus_t inputStatus)
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
-dsError_t dsCompositeInRegisterStatusChangeCB (dsCompositeInStatusChangeCB_t CBFunc);
+dsStatus_t dsCompositeInRegisterStatusChangeCB (dsCompositeInStatusChangeCB_t CBFunc);
 
 /** @} */ // End of DSHAL_CompositeIn_API doxygen group 
 /** @} */ // End of DS HAL

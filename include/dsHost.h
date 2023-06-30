@@ -27,7 +27,6 @@
  * - cb:      Callback function (suffix).
  * - DS:      Device Settings.
  * - HAL:     Hardware Abstraction Layer.
- * - _t:      Type (suffix).
  * - HDCP:    High-bandwidth Digital Copy Protection.
  * - DTCP:    Digital Transmission Copy Protection.
  * - EDID:    Extended Display Information Data.
@@ -81,7 +80,7 @@ extern "C" {
 /**
  * @brief Initialize the Host HAL.
  *
- * @return dsError_t            - Status
+ * @return dsStatus_t            - Status
  * @retval dsERR_NONE           - Success
  * @retval dsERR_INVALID_STATE  - Function is already initialized.
  * @retval dsERR_GENERAL        - Underlying undefined platform error
@@ -94,7 +93,7 @@ extern "C" {
  * 
  */
 
-dsError_t dsHostInit();
+dsStatus_t dsHostInit();
 
 /**
  * @brief Set the power mode.
@@ -104,7 +103,7 @@ dsError_t dsHostInit();
  *
  * @param[in] newPower  - The power mode of the host. See dsPowerState_t.
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -123,7 +122,7 @@ dsError_t dsHostInit();
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
-dsError_t dsSetHostPowerMode(int newPower);
+dsStatus_t dsSetHostPowerMode(int newPower);
 
 /**
  * @brief Get the current power mode.
@@ -133,7 +132,7 @@ dsError_t dsSetHostPowerMode(int newPower);
  * @param[out] currPower    - current power state of the system mode on return. 
  *                                  See dsPowerState_t for possible returns.
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -148,7 +147,7 @@ dsError_t dsSetHostPowerMode(int newPower);
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
-dsError_t dsGetHostPowerMode(int *currPower);
+dsStatus_t dsGetHostPowerMode(int *currPower);
 
 /**
  * @brief Terminate the Host sub-system.
@@ -156,7 +155,7 @@ dsError_t dsGetHostPowerMode(int *currPower);
  * This function resets the data structures used within the Host module and releases any
  * handles specific to the host module.
  *
- * @return dsError_t            - Status
+ * @return dsStatus_t            - Status
  * @retval dsERR_NONE           - Success 
  * @retval dsERR_INVALID_PARAM  - Invalid parameter value.
  * @retval dsERR_INVALID_STATE  - Module is not initialised
@@ -170,7 +169,7 @@ dsError_t dsGetHostPowerMode(int *currPower);
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
-dsError_t dsHostTerm();
+dsStatus_t dsHostTerm();
 
 /**
  * @brief This function returns the preferred sleep mode which is persisted.
@@ -178,7 +177,7 @@ dsError_t dsHostTerm();
  * @param[out] pMode    - Current preferred sleep mode settings of the device. 
  *                              See dsSleepMode_t for possible values.
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -193,14 +192,14 @@ dsError_t dsHostTerm();
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
-dsError_t dsGetPreferredSleepMode(dsSleepMode_t *pMode);
+dsStatus_t dsGetPreferredSleepMode(dsSleepMode_t *pMode);
 
 /**
  * @brief This function sets the preferred sleep mode. This value will persisted across reboots.
  *
  * @param[in] mode  - Sleep mode to set. See dsSleepMode_t for possible values.
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -215,14 +214,14 @@ dsError_t dsGetPreferredSleepMode(dsSleepMode_t *pMode);
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
-dsError_t dsSetPreferredSleepMode(dsSleepMode_t mode);
+dsStatus_t dsSetPreferredSleepMode(dsSleepMode_t mode);
 
 /**
  * @brief This function gets the CPU temperature in centigrade.
  *
  * @param[out] cpuTemperature   - CPU temperature value is obtained in centigrade 
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -235,7 +234,7 @@ dsError_t dsSetPreferredSleepMode(dsSleepMode_t mode);
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
-dsError_t dsGetCPUTemperature(float *cpuTemperature);
+dsStatus_t dsGetCPUTemperature(float *cpuTemperature);
 
 /**
  * @brief Get DS HAL API Version.
@@ -244,7 +243,7 @@ dsError_t dsGetCPUTemperature(float *cpuTemperature);
  *                                  Two Most significant Bytes are Major number,
  *                                  Two Least Significant Bytes are minor number.
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -259,7 +258,7 @@ dsError_t dsGetCPUTemperature(float *cpuTemperature);
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
-dsError_t dsGetVersion(uint32_t *versionNumber);
+dsStatus_t dsGetVersion(uint32_t *versionNumber);
 
 /**
  * @brief Allows the Caller to set the runtime version of the dsHAL
@@ -268,7 +267,7 @@ dsError_t dsGetVersion(uint32_t *versionNumber);
  *                                  Two Most significant Bytes are Major number,
  *                                  Two Least Significant Bytes are minor number.
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -283,14 +282,14 @@ dsError_t dsGetVersion(uint32_t *versionNumber);
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
-dsError_t dsSetVersion(uint32_t versionNumber);
+dsStatus_t dsSetVersion(uint32_t versionNumber);
 
 /**
  * @brief This function returns SOC ID
  *
  * @param[out] socID    - 8 byte Chip ID programmed to the CHIP One Time Programmable area.
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -303,7 +302,7 @@ dsError_t dsSetVersion(uint32_t versionNumber);
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
-dsError_t dsGetSocIDFromSDK(char *socID);
+dsStatus_t dsGetSocIDFromSDK(char *socID);
 
 /**
  * @brief This function is used to get the host EDID and length
@@ -311,7 +310,7 @@ dsError_t dsGetSocIDFromSDK(char *socID);
  * @param[out] edid     - host EDID.
  * @param[out] length   - length of host EDID. Min value of 0. 
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -324,7 +323,7 @@ dsError_t dsGetSocIDFromSDK(char *socID);
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
-dsError_t dsGetHostEDID(unsigned char *edid, int *length);
+dsStatus_t dsGetHostEDID(unsigned char *edid, int *length);
 
 /** @} */ // End of DSHAL_HOST_API doxygen group 
 /** @} */ // End of DS HAL

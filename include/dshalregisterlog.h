@@ -45,7 +45,7 @@
  * - cb:      Callback function (suffix).
  * - DS:      Device Settings.
  * - HAL:     Hardware Abstraction Layer.
- * - _t:      Type (suffix).
+
  * 
  * @ingroup DSSETTINGS_HAL
  */

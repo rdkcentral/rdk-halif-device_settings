@@ -46,7 +46,7 @@
  * - cb:      Callback function (suffix).
  * - DS:      Device Settings.
  * - HAL:     Hardware Abstraction Layer.
- * - _t:      Type (suffix).
+
  * - HDMI:    High-Definition Multimedia Interface
  * - DFC:     Decoder format conversion
  * 

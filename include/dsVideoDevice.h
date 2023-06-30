@@ -27,7 +27,6 @@
  * - cb:      Callback function (suffix).
  * - DS:      Device Settings.
  * - HAL:     Hardware Abstraction Layer.
- * - _t:      Type (suffix).
  * - FPS:     Frames Per Second.
  * - FRF:     TODO
  * - HDR:     High Dynamic Range
@@ -93,7 +92,7 @@ extern "C" {
 /**
  * @brief This function initialize all the video devices in the system.
  *
- * @return dsError_t            - Status
+ * @return dsStatus_t            - Status
  * @retval dsERR_NONE           - Success
  * @retval dsERR_INVALID_STATE  - Function is already initialized.
  * @retval dsERR_GENERAL        - Underlying undefined platform error
@@ -105,7 +104,7 @@ extern "C" {
  *          to dsERR_ALREADY_INITIALIZED. Will do it in the next phase.
  * 
  */
-dsError_t  dsVideoDeviceInit();
+dsStatus_t  dsVideoDeviceInit();
 
 
 /**
@@ -114,7 +113,7 @@ dsError_t  dsVideoDeviceInit();
  * @param[in]  index    - Index of video device. Max number is device specific. Min of 0.
  * @param[out] handle   - The handle used by Caller to uniquely identify the HAL instance
  * 
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -129,7 +128,7 @@ dsError_t  dsVideoDeviceInit();
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  * 
  */
-dsError_t  dsGetVideoDevice(int index, int *handle);
+dsStatus_t  dsGetVideoDevice(int index, int *handle);
 
 
 /**
@@ -138,7 +137,7 @@ dsError_t  dsGetVideoDevice(int index, int *handle);
  * @param[in] handle    - The handle returned from the dsGetVideoDevice() function
  * @param[in] dfc       - Type of zoom mode to be used. See dsVideoZoom_t
  * 
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -154,7 +153,7 @@ dsError_t  dsGetVideoDevice(int index, int *handle);
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t  dsSetDFC(int handle, dsVideoZoom_t dfc);
+dsStatus_t  dsSetDFC(int handle, dsVideoZoom_t dfc);
 
 
 /**
@@ -163,7 +162,7 @@ dsError_t  dsSetDFC(int handle, dsVideoZoom_t dfc);
  * @param[in] handle    - The handle returned from the dsGetVideoDevice() function
  * @param[out] dfc      - Type of zoom mode to be used. See dsVideoZoom_t
  * 
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -179,7 +178,7 @@ dsError_t  dsSetDFC(int handle, dsVideoZoom_t dfc);
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t  dsGetDFC(int handle, dsVideoZoom_t *dfc);
+dsStatus_t  dsGetDFC(int handle, dsVideoZoom_t *dfc);
 
 
 /**
@@ -187,7 +186,7 @@ dsError_t  dsGetDFC(int handle, dsVideoZoom_t *dfc);
  * This function reset any data structures used within this module and 
  *              release any handles specific to the video devices.
  *
- * @return dsError_t            - Status
+ * @return dsStatus_t            - Status
  * @retval dsERR_NONE           - Success 
  * @retval dsERR_INVALID_STATE  - Module is not initialised
  * @retval dsERR_GENERAL        - General failure.
@@ -201,7 +200,7 @@ dsError_t  dsGetDFC(int handle, dsVideoZoom_t *dfc);
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t  dsVideoDeviceTerm();
+dsStatus_t  dsVideoDeviceTerm();
  
 
 /**
@@ -210,7 +209,7 @@ dsError_t  dsVideoDeviceTerm();
  * @param[in]  handle       - The handle returned from the dsGetVideoDevice() function
  * @param[out] capabilities - OR-ed values of all supported HDR standards. See dsHDRStandard_t,
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -224,7 +223,7 @@ dsError_t  dsVideoDeviceTerm();
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsGetHDRCapabilities(int handle, int *capabilities);
+dsStatus_t dsGetHDRCapabilities(int handle, int *capabilities);
 
 
 /**
@@ -234,7 +233,7 @@ dsError_t dsGetHDRCapabilities(int handle, int *capabilities);
  * @param[out]  supported_formats   - OR-ed values of all the supported video codec formats. 
  *                                          See dsVideoCodingFormat_t
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -248,7 +247,7 @@ dsError_t dsGetHDRCapabilities(int handle, int *capabilities);
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsGetSupportedVideoCodingFormats(int handle, unsigned int * supported_formats);
+dsStatus_t dsGetSupportedVideoCodingFormats(int handle, unsigned int * supported_formats);
 
 
 /**
@@ -258,7 +257,7 @@ dsError_t dsGetSupportedVideoCodingFormats(int handle, unsigned int * supported_
  * @param[in]  codec    - OR-ed value of supported video codec formats. See dsVideoCodingFormat_t.
  * @param[out] info     - Structure containing Video codec information. See dsVideoCodecInfo_t
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -272,7 +271,7 @@ dsError_t dsGetSupportedVideoCodingFormats(int handle, unsigned int * supported_
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsGetVideoCodecInfo(int handle, dsVideoCodingFormat_t codec, dsVideoCodecInfo_t * info); 
+dsStatus_t dsGetVideoCodecInfo(int handle, dsVideoCodingFormat_t codec, dsVideoCodecInfo_t * info); 
 
 
 /**
@@ -282,7 +281,7 @@ dsError_t dsGetVideoCodecInfo(int handle, dsVideoCodingFormat_t codec, dsVideoCo
  * @param[in] disable   - Boolean value to force disable HDR or not. 
  *                              True to force disable, false to remove force disable.
  * 
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -296,7 +295,7 @@ dsError_t dsGetVideoCodecInfo(int handle, dsVideoCodingFormat_t codec, dsVideoCo
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsForceDisableHDRSupport(int handle, bool disable);
+dsStatus_t dsForceDisableHDRSupport(int handle, bool disable);
 
 /**
  * @brief This function is used to set the FRF mode of the device
@@ -305,7 +304,7 @@ dsError_t dsForceDisableHDRSupport(int handle, bool disable);
  * @param[in] frfmode   - integer with corresponding Framerate value. 
  *                              Max framerate device specific. Min framerate is 0.
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -321,7 +320,7 @@ dsError_t dsForceDisableHDRSupport(int handle, bool disable);
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsSetFRFMode(int handle, int frfmode);
+dsStatus_t dsSetFRFMode(int handle, int frfmode);
 
 
 /**
@@ -331,7 +330,7 @@ dsError_t dsSetFRFMode(int handle, int frfmode);
  * @param[out] frfmode  - integer with corresponding Framerate value of the device. 
  *                              Max framerate device specific. Min framerate is 0.
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -347,7 +346,7 @@ dsError_t dsSetFRFMode(int handle, int frfmode);
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsGetFRFMode(int handle, int *frfmode);
+dsStatus_t dsGetFRFMode(int handle, int *frfmode);
 
 /**
  * @brief This function is used to get the current Framerate of the device
@@ -356,7 +355,7 @@ dsError_t dsGetFRFMode(int handle, int *frfmode);
  * @param[out] framerate    - Current frame rate will be represented in FPS. 
  *                                  Max Framerate is device specific. Min Framerate is 0.
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -372,7 +371,7 @@ dsError_t dsGetFRFMode(int handle, int *frfmode);
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsGetCurrentDisplayframerate(int handle, char *framerate);
+dsStatus_t dsGetCurrentDisplayframerate(int handle, char *framerate);
  
 
 /**
@@ -382,7 +381,7 @@ dsError_t dsGetCurrentDisplayframerate(int handle, char *framerate);
  * @param[in] framerate - Framerate value to be set frame will be represented in FPS. 
  *                                  Max Framerate is device specific. Min Framerate is 0.
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -398,7 +397,7 @@ dsError_t dsGetCurrentDisplayframerate(int handle, char *framerate);
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsSetDisplayframerate(int handle, char *framerate);
+dsStatus_t dsSetDisplayframerate(int handle, char *framerate);
 
 /**
  * @brief Call back function to receive the framerate change event form the HAL side.
@@ -414,7 +413,7 @@ typedef void (*dsRegisterFrameratePreChangeCB_t)(unsigned int tSecond);
  * @param[in] CBFunc    - Function callback to register for the event. 
  *                              See dsRegisterFrameratePreChangeCB_t.
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -428,7 +427,7 @@ typedef void (*dsRegisterFrameratePreChangeCB_t)(unsigned int tSecond);
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsRegisterFrameratePreChangeCB(dsRegisterFrameratePreChangeCB_t CBFunc);
+dsStatus_t dsRegisterFrameratePreChangeCB(dsRegisterFrameratePreChangeCB_t CBFunc);
 
 
 /**
@@ -448,7 +447,7 @@ typedef void (*dsRegisterFrameratePostChangeCB_t)(unsigned int tSecond);
  * @param[in] CBFunc    - Function to register for the event. 
  *                                  See dsRegisterFrameratePostChangeCB_t.
  *
- * @return dsError_t                        - Status
+ * @return dsStatus_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_STATE              - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -462,7 +461,7 @@ typedef void (*dsRegisterFrameratePostChangeCB_t)(unsigned int tSecond);
  * @todo: Change the dsERR_INVALID_STATE 
  *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
-dsError_t dsRegisterFrameratePostChangeCB(dsRegisterFrameratePostChangeCB_t CBFunc);
+dsStatus_t dsRegisterFrameratePostChangeCB(dsRegisterFrameratePostChangeCB_t CBFunc);
 
 
 /** @} */ // End of DSHAL_VIDEODEVICE_API doxygen group 
