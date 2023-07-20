@@ -150,40 +150,24 @@ static const dsAudioStereoMode_t    kSupportedSPDIFStereoModes[]
 
 static const dsAudioTypeConfig_t    kConfigs[]= {
     {
-    /*.typeId = */                  dsAUDIOPORT_TYPE_HDMI,                  
-                                        ///< See dsAudioPortType_t. 
-    /*.name = */                    "HDMI",                                 
-                                        ///< Port name.
-    /*.numSupportedCompressions = */dsUTL_DIM(kSupportedHDMICompressions),  
-                                        ///< Number of supported audio compressions for HDMI port.
-    /*.compressions = */            kSupportedHDMICompressions,             
-                                        ///< List of supported compressions for HDMI port.
-    /*.numSupportedEncodings = */   dsUTL_DIM(kSupportedHDMIEncodings),     
-                                        ///< Number of supported encodings for HDMI port.
-    /*.encodings = */               kSupportedHDMIEncodings,                
-                                        ///< List of supported encodings for HDMI port.
-    /*.numSupportedStereoModes = */ dsUTL_DIM(kSupportedHDMIStereoModes),   
-                                        ///< Number of supported stereo modes for HDMI port.
-    /*.stereoModes = */             kSupportedHDMIStereoModes,              
-                                        ///< List of supported stereo modes for HDMI port.
+    /*.typeId = */                  dsAUDIOPORT_TYPE_HDMI,                  ///< See dsAudioPortType_t. 
+    /*.name = */                    "HDMI",                                 ///< Port name.
+    /*.numSupportedCompressions = */dsUTL_DIM(kSupportedHDMICompressions),  ///< Number of supported audio compressions for HDMI port.
+    /*.compressions = */            kSupportedHDMICompressions,             ///< List of supported compressions for HDMI port.
+    /*.numSupportedEncodings = */   dsUTL_DIM(kSupportedHDMIEncodings),     ///< Number of supported encodings for HDMI port.
+    /*.encodings = */               kSupportedHDMIEncodings,                ///< List of supported encodings for HDMI port.
+    /*.numSupportedStereoModes = */ dsUTL_DIM(kSupportedHDMIStereoModes),   ///< Number of supported stereo modes for HDMI port.
+    /*.stereoModes = */             kSupportedHDMIStereoModes,              ///< List of supported stereo modes for HDMI port.
     },
     {
-    /*.typeId = */                  dsAUDIOPORT_TYPE_SPDIF,                 
-                                        ///< See dsAudioPortType_t
-    /*.name = */                    "SPDIF", //SPDIF                        
-                                        ///< Port name
-    /*.numSupportedCompressions = */dsUTL_DIM(kSupportedSPDIFCompressions), 
-                                        ///< Number of supported audio compressions for SPDIF port.
-    /*.compressions = */            kSupportedSPDIFCompressions,            
-                                        ///< List of supported compressions for SPDIF port.
-    /*.numSupportedEncodings = */   dsUTL_DIM(kSupportedSPDIFEncodings),    
-                                        ///< Number of supported encodings for SPDIF port.
-    /*.encodings = */               kSupportedSPDIFEncodings,               
-                                        ///< List of supported encodings for SPDIF port.
-    /*.numSupportedStereoModes = */ dsUTL_DIM(kSupportedSPDIFStereoModes),  
-                                        ///< Number of supported stereo modes for SPDIF port.
-    /*.stereoModes = */             kSupportedSPDIFStereoModes,             
-                                        ///< List of supported stereo modes for SPDIF port.
+    /*.typeId = */                  dsAUDIOPORT_TYPE_SPDIF,                 ///< See dsAudioPortType_t
+    /*.name = */                    "SPDIF", //SPDIF                        ///< Port name
+    /*.numSupportedCompressions = */dsUTL_DIM(kSupportedSPDIFCompressions), ///< Number of supported audio compressions for SPDIF port.
+    /*.compressions = */            kSupportedSPDIFCompressions,            ///< List of supported compressions for SPDIF port.
+    /*.numSupportedEncodings = */   dsUTL_DIM(kSupportedSPDIFEncodings),    ///< Number of supported encodings for SPDIF port.
+    /*.encodings = */               kSupportedSPDIFEncodings,               ///< List of supported encodings for SPDIF port.
+    /*.numSupportedStereoModes = */ dsUTL_DIM(kSupportedSPDIFStereoModes),  ///< Number of supported stereo modes for SPDIF port.
+    /*.stereoModes = */             kSupportedSPDIFStereoModes,             ///< List of supported stereo modes for SPDIF port.
     }
 };  ///< Configs for each of the supported audio types.
 

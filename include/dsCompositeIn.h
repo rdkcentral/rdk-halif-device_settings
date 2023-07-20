@@ -165,7 +165,7 @@ dsStatus_t dsCompositeInGetNumberOfInputs (uint8_t *pNumberOfInputs);
 /**
  * @brief This function is used to get the current COMPOSITE Input Status.
  *
- * @param [out] pStatus     - current status of the composite input. See dsCompositeInStatus_t.
+ * @param [out] pStatus - current status of the composite input. See dsCompositeInStatus_t.
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success

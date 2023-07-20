@@ -352,8 +352,8 @@ dsStatus_t  dsIsHDCPEnabled (int handle, bool* pContentProtected);
  /**
  * @brief This function enables or disables the specified video port.
  *
- * @param[in]  handle    - The handle returned from the dsGetVideoPort() function
- * @param[in]  enabled   - Enable value for specified port. True for enabled, false for disabled.
+ * @param[in]  handle   - The handle returned from the dsGetVideoPort() function
+ * @param[in]  enabled  - Enable value for specified port. True for enabled, false for disabled.
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
@@ -379,7 +379,7 @@ dsStatus_t  dsEnableVideoPort(int handle, bool enabled);
  *
  * @param[in]  handle       - The handle returned from the dsGetVideoPort() function
  * @param[in]  resolution   - New video port resolution settings. See dsVideoPortResolution_t.
- * @param[in]  persist     - Status to be persisted. True to persist, false to not persist.
+ * @param[in]  persist      - Status to be persisted. True to persist, false to not persist.
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success

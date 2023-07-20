@@ -181,8 +181,7 @@
 #define _DS_TYPES_H_
 
 #include <sys/types.h>
-#include <stdint.h>
-                
+#include <stdint.h>    
 #include <stdbool.h>
 
 /** @addtogroup DSHAL_AUDIO HAL Audio Types
@@ -248,38 +247,22 @@ typedef enum _dsAudioCompression_t{
  */
 
 typedef enum _dsAudioFormat_t {
-    dsAUDIO_FORMAT_NONE,                
-            ///< No audio format.
-    dsAUDIO_FORMAT_PCM,                 
-            ///< Pluse-code Modulation audio format.
-    dsAUDIO_FORMAT_DOLBY_AC3,           
-            ///< Audio Compression 3 audio format.
-    dsAUDIO_FORMAT_DOLBY_EAC3,          
-            ///< Enhance Audio Compression 3 audio format.
-    dsAUDIO_FORMAT_DOLBY_AC4,           
-            ///< Audio Compression 4 audio format.
-    dsAUDIO_FORMAT_DOLBY_MAT,           
-            ///< Metadata-enhanced Audio Transmission audio format.
-    dsAUDIO_FORMAT_DOLBY_TRUEHD,        
-            ///< Dolby TrueHD audio format.
-    dsAUDIO_FORMAT_DOLBY_EAC3_ATMOS,    
-            ///< Audio Compression 3 Dolby Atmos audio format.
-    dsAUDIO_FORMAT_DOLBY_TRUEHD_ATMOS,  
-            ///< Dolby TrueHD Dolby Atmos audio format.
-    dsAUDIO_FORMAT_DOLBY_MAT_ATMOS,     
-            ///< Metadata-enhanced Audio Transmission Dolby Atmos audio format.
-    dsAUDIO_FORMAT_DOLBY_AC4_ATMOS,     
-            ///< Audio Compression 4 Dolby Atmos audio format.
-    dsAUDIO_FORMAT_AAC,                 
-            ///< Advanced Audio Coding.
-    dsAUDIO_FORMAT_VORBIS,              
-            ///< Vorbus sound audio format.
-    dsAUDIO_FORMAT_WMA,                 
-            ///< Windows Media audio format.
-    dsAUDIO_FORMAT_UNKNOWN,             
-            ///< Unknown audio format.
-    dsAUDIO_FORMAT_MAX                  
-            ///< Out of range 
+    dsAUDIO_FORMAT_NONE,                ///< No audio format.
+    dsAUDIO_FORMAT_PCM,                 ///< Pluse-code Modulation audio format.
+    dsAUDIO_FORMAT_DOLBY_AC3,           ///< Audio Compression 3 audio format.
+    dsAUDIO_FORMAT_DOLBY_EAC3,          ///< Enhance Audio Compression 3 audio format.
+    dsAUDIO_FORMAT_DOLBY_AC4,           ///< Audio Compression 4 audio format.
+    dsAUDIO_FORMAT_DOLBY_MAT,           ///< Metadata-enhanced Audio Transmission audio format.
+    dsAUDIO_FORMAT_DOLBY_TRUEHD,        ///< Dolby TrueHD audio format.
+    dsAUDIO_FORMAT_DOLBY_EAC3_ATMOS,    ///< Audio Compression 3 Dolby Atmos audio format.
+    dsAUDIO_FORMAT_DOLBY_TRUEHD_ATMOS,  ///< Dolby TrueHD Dolby Atmos audio format.
+    dsAUDIO_FORMAT_DOLBY_MAT_ATMOS,     ///< Metadata-enhanced Audio Transmission Dolby Atmos audio format.
+    dsAUDIO_FORMAT_DOLBY_AC4_ATMOS,     ///< Audio Compression 4 Dolby Atmos audio format.
+    dsAUDIO_FORMAT_AAC,                 ///< Advanced Audio Coding.
+    dsAUDIO_FORMAT_VORBIS,              ///< Vorbus sound audio format.
+    dsAUDIO_FORMAT_WMA,                 ///< Windows Media audio format.
+    dsAUDIO_FORMAT_UNKNOWN,             ///< Unknown audio format.
+    dsAUDIO_FORMAT_MAX                  ///< Out of range 
 }dsAudioFormat_t;
 
 
@@ -391,11 +374,9 @@ typedef int dsAudioCompressionValue_t;
  */
 #define MAX_PROFILE_LIST_BUFFER_LEN 1024
 typedef struct _dsMS12AudioProfileList_t {
-    char audioProfileList[MAX_PROFILE_LIST_BUFFER_LEN]; 
-            ///< buffer containing the list of comma 
-            ///< separated audio profile names (e.g: "Music,Movie,Voice,Night")
-    int audioProfileCount;                              
-            ///< Total number of profiles
+    char audioProfileList[MAX_PROFILE_LIST_BUFFER_LEN]; ///< buffer containing the list of comma separated audio profile names 
+                                                        ///< (e.g: "Music,Movie,Voice,Night")
+    int audioProfileCount;                              ///< Total number of profiles
 } dsMS12AudioProfileList_t;
 
 /**
@@ -448,14 +429,10 @@ typedef enum StereoMode{
  */
 
 typedef enum _dsATMOSCapability_t{
-    dsAUDIO_ATMOS_NOTSUPPORTED= 0,  
-            ///< ATMOS audio not supported.
-    dsAUDIO_ATMOS_DDPLUSSTREAM,     
-            ///< can handle dd plus stream which is only way to pass ATMOS metadata.
-    dsAUDIO_ATMOS_ATMOSMETADATA,    
-            ///< capable of parsing ATMOS metadata.
-    dsAUDIO_ATMOS_MAX,              
-            ///< Out of range 
+    dsAUDIO_ATMOS_NOTSUPPORTED= 0,  ///< ATMOS audio not supported.
+    dsAUDIO_ATMOS_DDPLUSSTREAM,     ///< can handle dd plus stream which is only way to pass ATMOS metadata.
+    dsAUDIO_ATMOS_ATMOSMETADATA,    ///< capable of parsing ATMOS metadata.
+    dsAUDIO_ATMOS_MAX,              ///< Out of range 
 } dsATMOSCapability_t;
 
 /**
@@ -484,20 +461,13 @@ typedef enum _dsHdcpProtocolVersion_t {
 */
 
 typedef enum _dsHdcpStatus_t {
-    dsHDCP_STATUS_UNPOWERED = 0,            
-            ///< Connected Sink Device does not support HDCP
-    dsHDCP_STATUS_UNAUTHENTICATED,          
-            ///< HDCP Authentication Process is not initiated
-    dsHDCP_STATUS_AUTHENTICATED,            
-            ///< HDCP Authentication Process is initiated and Passed
-    dsHDCP_STATUS_AUTHENTICATIONFAILURE,    
-            ///< HDCP Authentication Failure or Link Integroty Failure
-    dsHDCP_STATUS_INPROGRESS,               
-            ///< HDCP Authentication in Progress
-    dsHDCP_STATUS_PORTDISABLED,             
-            ///< HDMI output port disabled
-    dsHDCP_STATUS_MAX                       
-            ///< Out of range 
+    dsHDCP_STATUS_UNPOWERED = 0,            ///< Connected Sink Device does not support HDCP
+    dsHDCP_STATUS_UNAUTHENTICATED,          ///< HDCP Authentication Process is not initiated
+    dsHDCP_STATUS_AUTHENTICATED,            ///< HDCP Authentication Process is initiated and Passed
+    dsHDCP_STATUS_AUTHENTICATIONFAILURE,    ///< HDCP Authentication Failure or Link Integroty Failure
+    dsHDCP_STATUS_INPROGRESS,               ///< HDCP Authentication in Progress
+    dsHDCP_STATUS_PORTDISABLED,             ///< HDMI output port disabled
+    dsHDCP_STATUS_MAX                       ///< Out of range 
 } dsHdcpStatus_t;
 
 /**
@@ -544,10 +514,8 @@ typedef enum _dsVideoResolution_t{
     dsVIDEO_PIXELRES_720x576,     ///< 720x576 Resolution.                       
     dsVIDEO_PIXELRES_1280x720,    ///< 1280x720 Resolution.                      
     dsVIDEO_PIXELRES_1920x1080,   ///< 1920x1080 Resolution.                     
-
     dsVIDEO_PIXELRES_3840x2160,   ///< 3840x2160 Resolution.                     
     dsVIDEO_PIXELRES_4096x2160,   ///< 3840x2160 Resolution.                     
-
     dsVIDEO_PIXELRES_MAX          ///< Out of range 
 }dsVideoResolution_t;
 
@@ -614,10 +582,10 @@ typedef enum _dsVideoScanMode_t{
  */
 
 typedef enum _dsVideoBackgroundColor_t{
-    dsVIDEO_BGCOLOR_BLUE,     ///< Background color BLUE.
-    dsVIDEO_BGCOLOR_BLACK,    ///< Background color BLACK.
-    dsVIDEO_BGCOLOR_NONE,     ///< Background color NONE.
-    dsVIDEO_BGCOLOR_MAX       ///< Out of range 
+    dsVIDEO_BGCOLOR_BLUE,   ///< Background color BLUE.
+    dsVIDEO_BGCOLOR_BLACK,  ///< Background color BLACK.
+    dsVIDEO_BGCOLOR_NONE,   ///< Background color NONE.
+    dsVIDEO_BGCOLOR_MAX     ///< Out of range 
 }dsVideoBackgroundColor_t;
 
 /**
@@ -647,11 +615,11 @@ typedef enum _dsVideoAspectRatio_t{
  */
 
 typedef enum _dsVideoStereoScopicMode_t {
-    dsVIDEO_SSMODE_UNKNOWN = 0,          ///< Unknown mode.                              
-    dsVIDEO_SSMODE_2D,                   ///< 2D mode.                                   
-    dsVIDEO_SSMODE_3D_SIDE_BY_SIDE,      ///< 3D side by side (L/R) stereo mode.         
-    dsVIDEO_SSMODE_3D_TOP_AND_BOTTOM,    ///< 3D top & bottom stereo mode.               
-    dsVIDEO_SSMODE_MAX                   ///< Out of range 
+    dsVIDEO_SSMODE_UNKNOWN = 0,         ///< Unknown mode.                              
+    dsVIDEO_SSMODE_2D,                  ///< 2D mode.                                   
+    dsVIDEO_SSMODE_3D_SIDE_BY_SIDE,     ///< 3D side by side (L/R) stereo mode.         
+    dsVIDEO_SSMODE_3D_TOP_AND_BOTTOM,   ///< 3D top & bottom stereo mode.               
+    dsVIDEO_SSMODE_MAX                  ///< Out of range 
 }dsVideoStereoScopicMode_t;
 
 /**
@@ -665,38 +633,21 @@ typedef enum _dsVideoStereoScopicMode_t {
  */
 
 typedef enum _dsVideoZoom_t {
-    dsVIDEO_ZOOM_UNKNOWN = -1,      
-        ///< Unknown mode.                                                                                 
-    dsVIDEO_ZOOM_NONE = 0,          
-        ///< Decoder format conversion is inactive.                                                        
-    dsVIDEO_ZOOM_FULL,              
-        ///< Full screen (16:9 video is streched to fit 4:3 frame).                                        
-    dsVIDEO_ZOOM_LB_16_9,           
-        ///< 16:9 Letterbox (16:9 video is placed in a 4:3 frame with a full letterbox effect).            
-    dsVIDEO_ZOOM_LB_14_9,           
-        ///< 14:9 Letterbox (16:9 video is transferred into a 4:3 frame with 14:9 
-        ///< letterbox effect).       
-    dsVIDEO_ZOOM_CCO,               
-        ///< Center Cut-out (16:9 video is cut to fill 4:3 frame with its center part).                    
-    dsVIDEO_ZOOM_PAN_SCAN,          
-        ///< Pan & Scan (16:9 is cut and panned to fille 4:3 frame, following MPEG pan 
-        ///< & scan vectors).    
-    dsVIDEO_ZOOM_LB_2_21_1_ON_4_3,  
-        ///< 2.21:1 Letterbox on 4:3 (video is transferred into 4:3 frame with a 2.21:1 
-        ///< letterbox effect). 
-    dsVIDEO_ZOOM_LB_2_21_1_ON_16_9, 
-        ///< 2.21:1 Letterbox on 16:9 (video is transferred into 16:9 frame with a 2.21:1 
-        ///< letterbox effect).
-    dsVIDEO_ZOOM_PLATFORM,          
-        ///< Control over the decoder format conversions is managed by the platform.                       
-    dsVIDEO_ZOOM_16_9_ZOOM,         
-        ///< 16:9 Zoom (4:3 video is zoomed to fill 16:9 frame).                                           
-    dsVIDEO_ZOOM_PILLARBOX_4_3,     
-        ///< Pillarbox 4:3 (4:3 video is placed in a 16:9 frame with a pillarbox effect)                   
-    dsVIDEO_ZOOM_WIDE_4_3,          
-        ///< Wide 4:3 (4:3 video is stretched to fill 16:9 frame).                                         
-    dsVIDEO_ZOOM_MAX                
-        ///< Out of range                                                         
+    dsVIDEO_ZOOM_UNKNOWN = -1,      ///< Unknown mode.                                                                                 
+    dsVIDEO_ZOOM_NONE = 0,          ///< Decoder format conversion is inactive.                                                        
+    dsVIDEO_ZOOM_FULL,              ///< Full screen (16:9 video is streched to fit 4:3 frame).                                        
+    dsVIDEO_ZOOM_LB_16_9,           ///< 16:9 Letterbox (16:9 video is placed in a 4:3 frame with a full letterbox effect).            
+    dsVIDEO_ZOOM_LB_14_9,           ///< 14:9 Letterbox (16:9 video is transferred into a 4:3 frame with 14:9
+                                    ///< letterbox effect).       
+    dsVIDEO_ZOOM_CCO,               ///< Center Cut-out (16:9 video is cut to fill 4:3 frame with its center part).                    
+    dsVIDEO_ZOOM_PAN_SCAN,          ///< Pan & Scan (16:9 is cut and panned to fille 4:3 frame, following MPEG pan & scan vectors).    
+    dsVIDEO_ZOOM_LB_2_21_1_ON_4_3,  ///< 2.21:1 Letterbox on 4:3 (video is transferred into 4:3 frame with a 2.21:1 letterbox effect). 
+    dsVIDEO_ZOOM_LB_2_21_1_ON_16_9, ///< 2.21:1 Letterbox on 16:9 (video is transferred into 16:9 frame with a 2.21:1 letterbox effect).
+    dsVIDEO_ZOOM_PLATFORM,          ///< Control over the decoder format conversions is managed by the platform.                       
+    dsVIDEO_ZOOM_16_9_ZOOM,         ///< 16:9 Zoom (4:3 video is zoomed to fill 16:9 frame).                                           
+    dsVIDEO_ZOOM_PILLARBOX_4_3,     ///< Pillarbox 4:3 (4:3 video is placed in a 16:9 frame with a pillarbox effect)                   
+    dsVIDEO_ZOOM_WIDE_4_3,          ///< Wide 4:3 (4:3 video is stretched to fill 16:9 frame).                                         
+    dsVIDEO_ZOOM_MAX                ///< Out of range                                                         
 }dsVideoZoom_t;
 
 /**
@@ -720,9 +671,9 @@ typedef enum _dsVideoZoom_t {
  */
 
 typedef struct _dsVideoConfig_t {
-    size_t numSupportedDFCs;               ///< Number of zoom modes supported.
-    const dsVideoZoom_t *supportedDFCs;    ///< List of zoom modes supported. 
-    dsVideoZoom_t defaultDFC;              ///< The default zoom mode.        
+    size_t numSupportedDFCs;            ///< Number of zoom modes supported.
+    const dsVideoZoom_t *supportedDFCs; ///< List of zoom modes supported. 
+    dsVideoZoom_t defaultDFC;           ///< The default zoom mode.        
 } dsVideoConfig_t;
 
 /* End of DSHAL_VIDEODEVICE_TYPES doxygen group.
@@ -736,22 +687,14 @@ typedef struct _dsVideoConfig_t {
  */
 
 typedef struct _dsAudioTypeConfig_t {
-    int32_t  typeId;                             
-        ///< The audio output type.     
-    const char *name;                            
-        ///< Name of the audio output device. 
-    size_t numSupportedCompressions;             
-        ///< Number of supported audio compression methods.   
-    const dsAudioCompression_t *compressions;    
-        ///< List of audio compression methods supported.     
-    size_t numSupportedEncodings;                
-        ///< Number of supported audio encodings.             
-    const dsAudioEncoding_t *encodings;          
-        ///< List of audio encodings supported.               
-    size_t numSupportedStereoModes;              
-        ///< Number of supported stereo modes.                
-    const dsAudioStereoMode_t *stereoModes;      
-        ///< List of stereo modes supported.                  
+    int32_t  typeId;                            ///< The audio output type.     
+    const char *name;                           ///< Name of the audio output device. 
+    size_t numSupportedCompressions;            ///< Number of supported audio compression methods.   
+    const dsAudioCompression_t *compressions;   ///< List of audio compression methods supported.     
+    size_t numSupportedEncodings;               ///< Number of supported audio encodings.             
+    const dsAudioEncoding_t *encodings;         ///< List of audio encodings supported.               
+    size_t numSupportedStereoModes;             ///< Number of supported stereo modes.                
+    const dsAudioStereoMode_t *stereoModes;     ///< List of stereo modes supported.                  
 } dsAudioTypeConfig_t;
 
 /**
@@ -760,18 +703,12 @@ typedef struct _dsAudioTypeConfig_t {
  */
 
 typedef struct _dsVideoPortResolution_t {
-    char name[32];                                  
-        ///< Name the resolution. 
-    dsVideoResolution_t  pixelResolution;           
-        ///< The resolution associated with the name.               
-    dsVideoAspectRatio_t  aspectRatio;              
-        ///< The associated aspect ratio.                           
-    dsVideoStereoScopicMode_t  stereoScopicMode;    
-        ///< The associated stereoscopic mode.                      
-    dsVideoFrameRate_t  frameRate;                  
-        ///< The associated frame rate.                             
-    bool interlaced;                                
-        ///< The associated scan mode(@a true if interlaced, @a false if progressive).
+    char name[32];                                  ///< Name the resolution. 
+    dsVideoResolution_t  pixelResolution;           ///< The resolution associated with the name.               
+    dsVideoAspectRatio_t  aspectRatio;              ///< The associated aspect ratio.                           
+    dsVideoStereoScopicMode_t  stereoScopicMode;    ///< The associated stereoscopic mode.                      
+    dsVideoFrameRate_t  frameRate;                  ///< The associated frame rate.                             
+    bool interlaced;                                ///< The associated scan mode(@a true if interlaced, @a false if progressive).
 }dsVideoPortResolution_t;
 
 /**
@@ -780,8 +717,8 @@ typedef struct _dsVideoPortResolution_t {
  */
 
 typedef struct _dsAudioPortId_t {
-    dsAudioPortType_t type;    ///< Audio port type.
-    int32_t index;             ///< Port ID/number.
+    dsAudioPortType_t type; ///< Audio port type.
+    int32_t index;          ///< Port ID/number.
 } dsAudioPortId_t;
 
 /**
@@ -790,8 +727,8 @@ typedef struct _dsAudioPortId_t {
  */
 
 typedef struct _dsVideoPortPortId_t {
-    dsVideoPortType_t type;    ///< Video port type.
-    int32_t index;             ///< Port ID/number.
+    dsVideoPortType_t type; ///< Video port type.
+    int32_t index;          ///< Port ID/number.
 } dsVideoPortPortId_t;
 
 /**
@@ -800,13 +737,13 @@ typedef struct _dsVideoPortPortId_t {
  */
 
 typedef struct _dsVideoPortTypeConfig_t {
-    dsVideoPortType_t typeId;                         ///< The video output type.             
-    const char *name;                                 ///< Name of the video output port.     
-    bool dtcpSupported;                               ///< Is DTCP supported?                 
-    bool hdcpSupported;                               ///< Is HDCP supported?                 
-    int32_t restrictedResollution;                    ///< Any restricted resolution; -1 if no.
-    size_t numSupportedResolutions;                   ///< Number of supported resolutions.   
-    dsVideoPortResolution_t *supportedResolutions;    ///< List of supported resolutions.     
+    dsVideoPortType_t typeId;                       ///< The video output type.             
+    const char *name;                               ///< Name of the video output port.     
+    bool dtcpSupported;                             ///< Is DTCP supported?                 
+    bool hdcpSupported;                             ///< Is HDCP supported?                 
+    int32_t restrictedResollution;                  ///< Any restricted resolution; -1 if no.
+    size_t numSupportedResolutions;                 ///< Number of supported resolutions.   
+    dsVideoPortResolution_t *supportedResolutions;  ///< List of supported resolutions.     
 } dsVideoPortTypeConfig_t;
 
 /**
@@ -860,8 +797,8 @@ typedef enum _dsMS12FEATURE_t {
  */
 
 typedef struct _dsAudioPortConfig_t {
-    dsAudioPortId_t id;                          ///< Port ID.             
-    const dsVideoPortPortId_t *connectedVOPs;    ///< Connected video port.
+    dsAudioPortId_t id;                         ///< Port ID.             
+    const dsVideoPortPortId_t *connectedVOPs;   ///< Connected video port.
 } dsAudioPortConfig_t;
 
 #define MAX_LANGUAGE_LEN 10
@@ -872,9 +809,9 @@ typedef struct _dsAudioPortConfig_t {
  */
 
 typedef struct _dsVideoPortPortConfig_t {
-    dsVideoPortPortId_t id;           ///< Port ID.             
-    dsAudioPortId_t connectedAOP;     ///< Connected audio port.
-    const char *defaultResolution;    ///< Default resolution's name.
+    dsVideoPortPortId_t id;         ///< Port ID.             
+    dsAudioPortId_t connectedAOP;   ///< Connected audio port.
+    const char *defaultResolution;  ///< Default resolution's name.
 } dsVideoPortPortConfig_t;
 
 /** @addtogroup DSHAL_FPD_TYPES HAL Front Panel Display (FPD) Type Definitions
@@ -899,25 +836,21 @@ typedef uint32_t dsFPDColor_t;
  * @brief Defines the color values in RGB format.
 */
 
-#define dsFPDColor_Make(R8,G8,B8)  (((R8)<<16) | ((G8)<< 8) | ((B8) ))  
-        ///< combine Red Green Blue value to a single Hex value
-#define dsFPDColor_R(RGB32)    (((RGB32) >> 16) & 0xFF)                 
-        ///< Extract Red value form RGB value
-#define dsFPDColor_G(RGB32)    (((RGB32) >>  8) & 0xFF)                 
-        ///< Extract Green value form RGB value
-#define dsFPDColor_B(RGB32)    (((RGB32)      ) & 0xFF)                 
-        ///< Extract Blue value form RGB value
+#define dsFPDColor_Make(R8,G8,B8)  (((R8)<<16) | ((G8)<< 8) | ((B8) )) ///< combine Red Green Blue value to a single Hex value
+#define dsFPDColor_R(RGB32)    (((RGB32) >> 16) & 0xFF)                ///< Extract Red value form RGB value
+#define dsFPDColor_G(RGB32)    (((RGB32) >>  8) & 0xFF)                ///< Extract Green value form RGB value
+#define dsFPDColor_B(RGB32)    (((RGB32)      ) & 0xFF)                ///< Extract Blue value form RGB value
 
 /**
  * @brief Define a set of common colors, for backward compatibility 
  */
 
-#define dsFPD_COLOR_BLUE   dsFPDColor_Make(0, 0, 0xFF)          ///<  Blue color LED.                 
-#define dsFPD_COLOR_GREEN  dsFPDColor_Make(0, 0xFF, 0)          ///<  Green color LED.                
-#define dsFPD_COLOR_RED    dsFPDColor_Make(0xFF, 0, 0x0)        ///<  Red color LED.                  
-#define dsFPD_COLOR_YELLOW dsFPDColor_Make(0xFF, 0xFF, 0xE0)    ///<  Yellow color LED.               
-#define dsFPD_COLOR_ORANGE dsFPDColor_Make(0xFF, 0x8C, 0x00)    ///<  Orange color LED.               
-#define dsFPD_COLOR_WHITE  dsFPDColor_Make(0xFF, 0xFF, 0xFF)    ///<  White color LED.               
+#define dsFPD_COLOR_BLUE   dsFPDColor_Make(0, 0, 0xFF)          ///< Blue color LED.                 
+#define dsFPD_COLOR_GREEN  dsFPDColor_Make(0, 0xFF, 0)          ///< Green color LED.                
+#define dsFPD_COLOR_RED    dsFPDColor_Make(0xFF, 0, 0x0)        ///< Red color LED.                  
+#define dsFPD_COLOR_YELLOW dsFPDColor_Make(0xFF, 0xFF, 0xE0)    ///< Yellow color LED.               
+#define dsFPD_COLOR_ORANGE dsFPDColor_Make(0xFF, 0x8C, 0x00)    ///< Orange color LED.               
+#define dsFPD_COLOR_WHITE  dsFPDColor_Make(0xFF, 0xFF, 0xFF)    ///< White color LED.               
 #define dsFPD_COLOR_MAX    6                                    ///< Out of range 
 
 /**
@@ -940,12 +873,12 @@ typedef int32_t dsFPDIndicator_t;
  * Implementation may not have to use these enumerators.
  */
 
-#define    dsFPD_INDICATOR_MESSAGE  0    ///< Message/Mail LED.         
-#define    dsFPD_INDICATOR_POWER    1    ///< Power LED.                
-#define    dsFPD_INDICATOR_RECORD   2    ///< Record LED.               
-#define    dsFPD_INDICATOR_REMOTE   3    ///< Remote LED.               
-#define    dsFPD_INDICATOR_RFBYPASS 4    ///< RF Bypass LED.            
-#define    dsFPD_INDICATOR_MAX      5    ///< Out of range            
+#define    dsFPD_INDICATOR_MESSAGE  0   ///< Message/Mail LED.         
+#define    dsFPD_INDICATOR_POWER    1   ///< Power LED.                
+#define    dsFPD_INDICATOR_RECORD   2   ///< Record LED.               
+#define    dsFPD_INDICATOR_REMOTE   3   ///< Remote LED.               
+#define    dsFPD_INDICATOR_RFBYPASS 4   ///< RF Bypass LED.            
+#define    dsFPD_INDICATOR_MAX      5   ///< Out of range            
 
 /**
  * @brief Front panel LED indicator type validation check.
@@ -986,10 +919,10 @@ typedef enum __dsFPDState_t
 
 typedef enum __dsFPDTimeFormat_t
 {
-    dsFPD_TIME_12_HOUR,     ///< 12 hour time format.
-    dsFPD_TIME_24_HOUR,     ///< 24 hour time format.
-    dsFPD_TIME_STRING,      ///< Text string.        
-    dsFPD_TIME_MAX          ///< Out of range 
+    dsFPD_TIME_12_HOUR, ///< 12 hour time format.
+    dsFPD_TIME_24_HOUR, ///< 24 hour time format.
+    dsFPD_TIME_STRING,  ///< Text string.        
+    dsFPD_TIME_MAX      ///< Out of range 
 }dsFPDTimeFormat_t;
 
 /**
@@ -1030,18 +963,18 @@ typedef enum __dsFPDMode_t{
  * @brief Maximum Value  video modes are described in CEA specifictaion
  */
 
-#define dsEEDID_MAX_VIDEO_CODE        64    ///< Maximum Value EEDID Video COde .
+#define dsEEDID_MAX_VIDEO_CODE  64  ///< Maximum Value EEDID Video COde .
 /**
  * @brief Maximum length for for Connected Display Monitor names.
 */
 
-#define dsEEDID_MAX_MON_NAME_LENGTH        14    ///< Maximum Length of Connected Display Monitor Name .
+#define dsEEDID_MAX_MON_NAME_LENGTH 14  ///< Maximum Length of Connected Display Monitor Name .
 
 /**
  * @brief Maximum length for EDID data.
 */
 
-#define MAX_EDID_BYTES_LEN  (1024)        ///< Maximum Byte length of EDID data 
+#define MAX_EDID_BYTES_LEN  (1024)  ///< Maximum Byte length of EDID data 
 
 /**
  * @ingroup DSHAL_DISPLAY_TYPES
@@ -1050,33 +983,19 @@ typedef enum __dsFPDMode_t{
  */
 
 typedef struct _dsDisplayEDID_t {
-    int32_t productCode;                
-        ///< Product code of the display device.      
-    int32_t serialNumber;               
-        ///< Serial number of the display device.     
-    int32_t manufactureYear;            
-        ///< Year of manufacture of the display device.
-    int32_t manufactureWeek;            
-        ///< Week of manufacture of the display device.
-    bool hdmiDeviceType;                
-        ///< Device type (@ true if HDMI, @a false if DVI).
-    bool  isRepeater;                   
-        ///<  Receiver is a repeater  (@ true if Repeater, 
-        ///< @a false if connected Receiver is not a repeater).
-    uint8_t physicalAddressA;           
-        ///<  Physical Address for HDMI node A
-    uint8_t physicalAddressB;           
-        ///<  Physical Address for HDMI node B
-    uint8_t physicalAddressC;           
-        ///<  Physical Address for HDMI node C
-    uint8_t physicalAddressD;           
-        ///<  Physical Address for HDMI node D
-    int32_t numOfSupportedResolution;   
-        ///<  Number of Supported Resolution
-    dsVideoPortResolution_t suppResolutionList [dsEEDID_MAX_VIDEO_CODE * dsVIDEO_SSMODE_MAX]; 
-        ///<  EDID Supported Resoultion List
-    char monitorName[dsEEDID_MAX_MON_NAME_LENGTH];   
-        ///<  Connected Display Monitor Name
+    int32_t productCode;               ///< Product code of the display device.      
+    int32_t serialNumber;              ///< Serial number of the display device.     
+    int32_t manufactureYear;           ///< Year of manufacture of the display device.
+    int32_t manufactureWeek;           ///< Week of manufacture of the display device.
+    bool hdmiDeviceType;               ///< Device type (@ true if HDMI, @a false if DVI).
+    bool  isRepeater;                  ///<  Receiver is a repeater  (@ true if Repeater, @a false if connected Receiver is not a repeater).
+    uint8_t physicalAddressA;          ///<  Physical Address for HDMI node A
+    uint8_t physicalAddressB;          ///<  Physical Address for HDMI node B
+    uint8_t physicalAddressC;          ///<  Physical Address for HDMI node C
+    uint8_t physicalAddressD;          ///<  Physical Address for HDMI node D
+    int32_t numOfSupportedResolution;  ///<  Number of Supported Resolution
+    dsVideoPortResolution_t suppResolutionList [dsEEDID_MAX_VIDEO_CODE * dsVIDEO_SSMODE_MAX];   ///<  EDID Supported Resoultion List
+    char monitorName[dsEEDID_MAX_MON_NAME_LENGTH];  ///<  Connected Display Monitor Name
 } dsDisplayEDID_t;
 
 /**
@@ -1084,9 +1003,9 @@ typedef struct _dsDisplayEDID_t {
  */
 
 typedef enum _dsSleepMode_t{
-    dsHOST_SLEEP_MODE_LIGHT,       ///< Light sleep mode.                              
-    dsHOST_SLEEP_MODE_DEEP,        ///< Deep sleep mode.                               
-    dsHOST_SLEEP_MODE_MAX,         ///< Out of range                 
+    dsHOST_SLEEP_MODE_LIGHT,    ///< Light sleep mode.                              
+    dsHOST_SLEEP_MODE_DEEP,     ///< Deep sleep mode.                               
+    dsHOST_SLEEP_MODE_MAX,      ///< Out of range                 
 } dsSleepMode_t;
 
 /**
@@ -1104,34 +1023,20 @@ typedef enum _dsPowerState_t{
  */
 typedef enum _dsDisplayMatrixCoefficients_t
 {
-    dsDISPLAY_MATRIXCOEFFICIENT_UNKNOWN = 0,    
-        ///< Unknown Matrix Coefficient.
-    dsDISPLAY_MATRIXCOEFFICIENT_BT_709,         
-        ///< ITU BT 709 Matrix Coefficient.
-    dsDISPLAY_MATRIXCOEFFICIENT_BT_470_2_BG,    
-        ///< ITU BT 470_2_BG Matrix Coefficient.
-    dsDISPLAY_MATRIXCOEFFICIENT_SMPTE_170M ,    
-        ///< SMPTE 170M Matrix Coefficient.
-    dsDISPLAY_MATRIXCOEFFICIENT_XvYCC_709,      
-        ///< XvYCC_709 Matrix Coefficient.
-    dsDISPLAY_MATRIXCOEFFICIENT_eXvYCC_601,     
-        ///< XvYCC_601 Matrix Coefficient.
-    dsDISPLAY_MATRIXCOEFFICIENT_BT_2020_NCL,    
-        ///< ITU BT 2020 non constant luminance Matrix Coefficient.
-    dsDISPLAY_MATRIXCOEFFICIENT_BT_2020_CL,     
-        ///< ITU BT 2020 constant luminance Matrix Coefficient.
-    dsDISPLAY_MATRIXCOEFFICIENT_eDVI_FR_RGB,    
-        ///< eDVI Full Range RGB Matrix Coefficient.
-    dsDISPLAY_MATRIXCOEFFICIENT_eHDMI_RGB,      
-        ///< eHDMI RGB Matrix Coefficient.
-    dsDISPLAY_MATRIXCOEFFICIENT_eFCC,           
-        ///< eFCC Matrix Coefficient.
-    dsDISPLAY_MATRIXCOEFFICIENT_eSMPTE_240M,    
-        ///< eSMPTE 240M Matrix Coefficient.
-    dsDISPLAY_MATRIXCOEFFICIENT_eHDMI_FR_YCbCr  
-        ///< eHDMI Full Range YcbCr Matrix Coefficient.
-    dsDISPLAY_MATRIXCOEFFICIENT_MAX             
-        ///< Out of range 
+    dsDISPLAY_MATRIXCOEFFICIENT_UNKNOWN = 0,   ///< Unknown Matrix Coefficient.
+    dsDISPLAY_MATRIXCOEFFICIENT_BT_709,        ///< ITU BT 709 Matrix Coefficient.
+    dsDISPLAY_MATRIXCOEFFICIENT_BT_470_2_BG,   ///< ITU BT 470_2_BG Matrix Coefficient.
+    dsDISPLAY_MATRIXCOEFFICIENT_SMPTE_170M ,   ///< SMPTE 170M Matrix Coefficient.
+    dsDISPLAY_MATRIXCOEFFICIENT_XvYCC_709,     ///< XvYCC_709 Matrix Coefficient.
+    dsDISPLAY_MATRIXCOEFFICIENT_eXvYCC_601,    ///< XvYCC_601 Matrix Coefficient.
+    dsDISPLAY_MATRIXCOEFFICIENT_BT_2020_NCL,   ///< ITU BT 2020 non constant luminance Matrix Coefficient.
+    dsDISPLAY_MATRIXCOEFFICIENT_BT_2020_CL,    ///< ITU BT 2020 constant luminance Matrix Coefficient.
+    dsDISPLAY_MATRIXCOEFFICIENT_eDVI_FR_RGB,   ///< eDVI Full Range RGB Matrix Coefficient.
+    dsDISPLAY_MATRIXCOEFFICIENT_eHDMI_RGB,     ///< eHDMI RGB Matrix Coefficient.
+    dsDISPLAY_MATRIXCOEFFICIENT_eFCC,          ///< eFCC Matrix Coefficient.
+    dsDISPLAY_MATRIXCOEFFICIENT_eSMPTE_240M,   ///< eSMPTE 240M Matrix Coefficient.
+    dsDISPLAY_MATRIXCOEFFICIENT_eHDMI_FR_YCbCr ///< eHDMI Full Range YcbCr Matrix Coefficient.
+    dsDISPLAY_MATRIXCOEFFICIENT_MAX            ///< Out of range 
 } dsDisplayMatrixCoefficients_t;
 /**
  * @brief This enumeration defines the type of display colorimetry
@@ -1139,28 +1044,17 @@ typedef enum _dsDisplayMatrixCoefficients_t
 
 typedef enum _dsDisplayColorimetryInfo_t
 {
-    dsDISPLAY_COLORIMETRY_INFO_UNKNOWN = 0,         
-        ///< Unknown Colorimetry
-    dsDISPLAY_COLORIMETRY_INFO_XVYCC601 = 0x01,     
-        ///< Standard Definition Colorimetry based on IEC 61966-2-4
-    dsDISPLAY_COLORIMETRY_INFO_XVYCC709 = 0x02,     
-        ///< High Definition Colorimetry based on IEC 61966-2-4
-    dsDISPLAY_COLORIMETRY_INFO_SYCC601 = 0x04,      
-        ///< Colorimetry based on IEC 61966-2-1/Amendment 1
-    dsDISPLAY_COLORIMETRY_INFO_ADOBEYCC601 = 0x08,  
-        ///< Colorimetry based on IEC 61966-2-5 [32], Annex A
-    dsDISPLAY_COLORIMETRY_INFO_ADOBERGB = 0x10,     
-        ///< Colorimetry based on IEC 61966-2-5
-    dsDISPLAY_COLORIMETRY_INFO_BT2020CL = 0x20,     
-        ///< Colorimetry based on ITU-R BT.2020 [39] Y’cC’BCC’RC
-    dsDISPLAY_COLORIMETRY_INFO_BT2020NCL = 0x40,    
-        ///< Colorimetry based on ITU-R BT.2020 [39] Y’C’BC’R
-    dsDISPLAY_COLORIMETRY_INFO_BT2020RGB = 0x80,    
-        ///< Colorimetry based on ITU-R BT.2020 [39] R’G’B’
-    dsDISPLAY_COLORIMETRY_INFO_DCI_P3 = 0x100,      
-        ///< Colorimetry based on DCI-P3 */
-    dsDisplay_COLORIMETRY_INFO_MAX                  
-        ///< Out of range 
+    dsDISPLAY_COLORIMETRY_INFO_UNKNOWN = 0,        ///< Unknown Colorimetry
+    dsDISPLAY_COLORIMETRY_INFO_XVYCC601 = 0x01,    ///< Standard Definition Colorimetry based on IEC 61966-2-4
+    dsDISPLAY_COLORIMETRY_INFO_XVYCC709 = 0x02,    ///< High Definition Colorimetry based on IEC 61966-2-4
+    dsDISPLAY_COLORIMETRY_INFO_SYCC601 = 0x04,     ///< Colorimetry based on IEC 61966-2-1/Amendment 1
+    dsDISPLAY_COLORIMETRY_INFO_ADOBEYCC601 = 0x08, ///< Colorimetry based on IEC 61966-2-5 [32], Annex A
+    dsDISPLAY_COLORIMETRY_INFO_ADOBERGB = 0x10,    ///< Colorimetry based on IEC 61966-2-5
+    dsDISPLAY_COLORIMETRY_INFO_BT2020CL = 0x20,    ///< Colorimetry based on ITU-R BT.2020 [39] Y’cC’BCC’RC
+    dsDISPLAY_COLORIMETRY_INFO_BT2020NCL = 0x40,   ///< Colorimetry based on ITU-R BT.2020 [39] Y’C’BC’R
+    dsDISPLAY_COLORIMETRY_INFO_BT2020RGB = 0x80,   ///< Colorimetry based on ITU-R BT.2020 [39] R’G’B’
+    dsDISPLAY_COLORIMETRY_INFO_DCI_P3 = 0x100,     ///< Colorimetry based on DCI-P3 */
+    dsDisplay_COLORIMETRY_INFO_MAX                 ///< Out of range 
 } dsDisplayColorimetryInfo_t;
 /**
  * @brief This enumeration defines the type of display color spaces supported
@@ -1168,13 +1062,13 @@ typedef enum _dsDisplayColorimetryInfo_t
 
 typedef enum _dsDisplayColorSpace_t
 {
-    dsDISPLAY_COLORSPACE_UNKNOWN = 0,       ///< Unknown color space
-    dsDISPLAY_COLORSPACE_RGB = 1,           ///< RGB color space
-    dsDISPLAY_COLORSPACE_YCbCr422 = 2,      ///< YCbCr4.2.2 color space
-    dsDISPLAY_COLORSPACE_YCbCr444 = 3,      ///< YCbCr4.4.4 color space
-    dsDISPLAY_COLORSPACE_YCbCr420 = 4,      ///< YCbCr4.2.0 color space
-    dsDISPLAY_COLORSPACE_AUTO = 5,          ///< Automatic color space
-    dsDISPLAY_COLORSPACE_MAX                ///< Out of range 
+    dsDISPLAY_COLORSPACE_UNKNOWN = 0,   ///< Unknown color space
+    dsDISPLAY_COLORSPACE_RGB = 1,       ///< RGB color space
+    dsDISPLAY_COLORSPACE_YCbCr422 = 2,  ///< YCbCr4.2.2 color space
+    dsDISPLAY_COLORSPACE_YCbCr444 = 3,  ///< YCbCr4.4.4 color space
+    dsDISPLAY_COLORSPACE_YCbCr420 = 4,  ///< YCbCr4.2.0 color space
+    dsDISPLAY_COLORSPACE_AUTO = 5,      ///< Automatic color space
+    dsDISPLAY_COLORSPACE_MAX            ///< Out of range 
 } dsDisplayColorSpace_t;
 /**
  * @brief This enumeration defines the type of display quantization ranges
@@ -1252,13 +1146,10 @@ typedef enum _dsHdmiInSignalStatus_t
  */
 typedef struct _dsHdmiInStatus_t
 {
-    bool             isPresented;                          
-        ///< Boolean flag indicating Hdmi Input is enabled for presentation by client
-    bool             isPortConnected[dsHDMI_IN_PORT_MAX];  
-        ///< Boolean flag indicating Hdmi source connected to this Hdmi Input port 
-    dsHdmiInPort_t   activePort;                           
-        ///< Hdmi Input Port selected as the currently active port (to the set-top)
-        ///<   - note that only one HDMI Input port can be active at a time 
+    bool             isPresented;                           ///< Boolean flag indicating Hdmi Input is enabled for presentation by client
+    bool             isPortConnected[dsHDMI_IN_PORT_MAX];   ///< Boolean flag indicating Hdmi source connected to this Hdmi Input port 
+    dsHdmiInPort_t   activePort;                            ///< Hdmi Input Port selected as the currently active port (to the set-top)
+                                                            ///<   - note that only one HDMI Input port can be active at a time 
 } dsHdmiInStatus_t;
 /**
  * @brief Structure type for HDMI input ARC Capability.
@@ -1311,13 +1202,10 @@ typedef enum _dsCompositeInPort_t
  */
 typedef struct _dsCompositeInStatus_t
 {
-    bool             isPresented;                               
-        ///< Boolean flag indicating Composite Input is enabled for presentation by client
-    bool             isPortConnected[dsCOMPOSITE_IN_PORT_MAX];  
-        ///< Boolean flag indicating Composite source connected to this Composite Input port
-    dsCompositeInPort_t   activePort;                           
-        ///< Composite Input Port selected as the currently active port (to the set-top)
-        ///<     - note that only one COMPOSITE Input port can be active at a time
+    bool    isPresented;                               ///< Boolean flag indicating Composite Input is enabled for presentation by client
+    bool    isPortConnected[dsCOMPOSITE_IN_PORT_MAX];  ///< Boolean flag indicating Composite source connected to this Composite Input port
+    dsCompositeInPort_t   activePort;                  ///< Composite Input Port selected as the currently active port (to the set-top)
+                                                       ///<     - note that only one COMPOSITE Input port can be active at a time
 } dsCompositeInStatus_t;
 
 /* End of DSHAL_COMPOSITE_IN doxygen group */
@@ -1344,14 +1232,10 @@ typedef enum
 
 typedef enum
 {
-    dsVIDEO_CODEC_HEVC_PROFILE_MAIN = (0x01 << 0),              
-        ///< 8-bit HEVC video profile.
-    dsVIDEO_CODEC_HEVC_PROFILE_MAIN10 = (0x01 << 1),            
-        ///< 10-bit HEVC video profile.
-    dsVIDEO_CODEC_HEVC_PROFILE_MAINSTILLPICTURE = (0x01 << 2),  
-        ///< HECV Main Still Picture profile.
-    dsVIDEO_CODEC_HEVC_MAX                                      
-        ///< Out of range 
+    dsVIDEO_CODEC_HEVC_PROFILE_MAIN = (0x01 << 0),              ///< 8-bit HEVC video profile.
+    dsVIDEO_CODEC_HEVC_PROFILE_MAIN10 = (0x01 << 1),            ///< 10-bit HEVC video profile.
+    dsVIDEO_CODEC_HEVC_PROFILE_MAINSTILLPICTURE = (0x01 << 2),  ///< HECV Main Still Picture profile.
+    dsVIDEO_CODEC_HEVC_MAX                                      ///< Out of range 
 } dsVideoCodecHevcProfiles_t;
 /**
  * @brief Structure type for HEVC profiles.
@@ -1366,10 +1250,8 @@ typedef struct
  */
 typedef struct
 {
-    unsigned int num_entries;                   
-        ///< Number of entries
-    dsVideoCodecProfileSupport_t entries[10];   
-        ///< Contains a list of the supported Codex profiles.
+    unsigned int num_entries;                  ///< Number of entries
+    dsVideoCodecProfileSupport_t entries[10];  ///< Contains a list of the supported Codex profiles.
 } dsVideoCodecInfo_t;
 /**
  * @brief Structure type for spd info frame.
@@ -1401,10 +1283,8 @@ typedef enum tv_hdmi_edid_version_e {
 #define MAX_FEATURE_LIST_BUFFER_LEN 1024
 
 typedef struct _dsSupportedGameFeatureList_t {
-    char gameFeatureList[MAX_FEATURE_LIST_BUFFER_LEN];  
-        ///< buffer containing the list of comma separated supported game features (e.g: "allm")
-    int gameFeatureCount;                               
-        ///< Total number of supported game features
+    char gameFeatureList[MAX_FEATURE_LIST_BUFFER_LEN]; ///< buffer containing the list of comma separated supported game features (e.g: "allm")
+    int gameFeatureCount;                              ///< Total number of supported game features
 } dsSupportedGameFeatureList_t;
 
 /**
@@ -1432,14 +1312,14 @@ typedef enum _dsAudioPortState {
  * @brief HAL Major version number.
 */
 
-#define dsHAL_APIVER_MAJOR(x)       ((x) >> 16) & (0x7FFF) 
+#define dsHAL_APIVER_MAJOR(x)   ((x) >> 16) & (0x7FFF) 
     ///< Return the two Most Significant Byte value
 
 /**
  * @brief HAL Minor version number.
 */
 
-#define dsHAL_APIVER_MINOR(x)     (x & 0xFFFF) ///< Return the two Least Significant Byte value
+#define dsHAL_APIVER_MINOR(x)   (x & 0xFFFF) ///< Return the two Least Significant Byte value
 
 /* End of DSHAL_VERSION_TYPES  doxygen group */
 /**
@@ -1447,6 +1327,7 @@ typedef enum _dsAudioPortState {
  */
 #endif
 
+/** @} */
 /** @} */
 /** @} */
 /** @} */

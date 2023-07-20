@@ -104,9 +104,9 @@ typedef enum _dsDisplayEvent_t {
 /**
  * @brief HAL must call this function when the display changes.
  *
- * @param[in]  handle       - The handle returned from the dsGetDisplay() function
- * @param[in]  event        - Display event. See dsDisplayEvent_t.
- * @param[in] eventData     - Data associated with the event.
+ * @param[in]  handle   - The handle returned from the dsGetDisplay() function
+ * @param[in]  event    - Display event. See dsDisplayEvent_t.
+ * @param[in] eventData - Data associated with the event.
  *
  * @note HAL implementation is responsible for allocation of memory needed for event data. 
  * The memory can be free'd after callback returns.
@@ -141,10 +141,10 @@ dsStatus_t dsDisplayInit();
  * @brief This function will get the handle for the display device connected to the 
  * specified video port.
  *
- * @param[in]  vType            - Type of video port. See dsVideoPortType_t.
- * @param[in]  index            - The index of the video port. 
- *                                      Max index is platform specific. Min value is 0.
- * @param[out] handle           - The handle used by the Caller to 
+ * @param[in]  vType    - Type of video port. See dsVideoPortType_t.
+ * @param[in]  index    - The index of the video port. 
+ *                              Max index is platform specific. Min value is 0.
+ * @param[out] handle   - The handle used by the Caller to 
  *                                      uniquely identify the HAL instance.
  * 
  * @return dsStatus_t                       - Status
@@ -168,8 +168,8 @@ dsStatus_t dsDisplayInit();
  * @brief This function gets the EDID information from the HDMI/DVI display corresponding to
  * the specified display device handle.
  * 
- * @param[in]  handle                       - The handle returned from the dsGetDisplay() function.
- * @param[out] edid                         - EDID for the specified display. See dsDisplayEDID_t.
+ * @param[in]  handle   - The handle returned from the dsGetDisplay() function.
+ * @param[out] edid     - EDID for the specified display. See dsDisplayEDID_t.
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
@@ -191,9 +191,9 @@ dsStatus_t dsGetEDID(intptr_t handle, dsDisplayEDID_t *edid);
 /**
  * @brief This function is used to get the EDID buffer and its size of the connected display.
  *
- * @param[in] handle                        - The handle returned from the dsGetDisplay() function.
- * @param[out] edid                         - EDID raw buffer of the current display.
- * @param[out] length                       - length of the EDID buffer data. Min value of 0.
+ * @param[in] handle    - The handle returned from the dsGetDisplay() function.
+ * @param[out] edid     - EDID raw buffer of the current display.
+ * @param[out] length   - length of the EDID buffer data. Min value of 0.
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
@@ -269,8 +269,8 @@ dsStatus_t dsDisplayTerm();
  * Multiple listeners are supported at Caller layer and thus not
  * required in HAL implementation.
  *
- * @param[in] handle        - The handle returned from the dsGetDisplay() function.
- * @param[in] cb            - The callback function. See dsDisplayEventCallback_t.
+ * @param[in] handle    - The handle returned from the dsGetDisplay() function.
+ * @param[in] cb        - The callback function. See dsDisplayEventCallback_t.
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success

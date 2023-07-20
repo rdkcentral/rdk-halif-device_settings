@@ -148,7 +148,7 @@ VideoPort `HAL` must persist the following function's setting information if per
 
 ### Logging and debugging requirements
 
-This interface is required to support DEBUG, INFO and ERROR messages. DEBUG should be disabled by default and enabled when required.
+This interface is required to support DEBUG, INFO and ERROR messages. INFO and DEBUG should be disabled by default and enabled when required.
 
 ### Memory and performance requirements
 
@@ -189,7 +189,7 @@ The caller is expected to have complete control over the life cycle of the `HAL`
 
 1. Initialize the `HAL` using function: `ds<Component>Init()` before making any other `API`s calls.  If `Init()` call fails, the `HAL` must return the respective error code, so that the caller can retry the operation.
 
-2. Once initialized is done caller can get the handle for the component using `dsGet<Component>()`.
+2. Once initialized is done caller can get the handle for the component using `dsGet<Component>()` if the module uses a handle.
 
 3. Using the handle of the component, different Configurations can be set for that component.
 
@@ -204,6 +204,7 @@ NOTE: The module would operate deterministically if the above call sequence is f
 ```mermaid
 %%{ init : { "theme" : "default", "flowchart" : { "curve" : "stepBefore" }}}%%
    sequenceDiagram
+    participant Caller as Caller
     participant HAL as DEVICE SETTINGS HAL
     Caller->>HAL:ds<Component>Init()
     Note over HAL: SOC initializes the underlying subsystems.

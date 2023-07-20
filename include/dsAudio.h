@@ -77,7 +77,7 @@
  * - dB:      Decibel.
  * - MS12:    MultiStream 12.
  * - AC4:     Audio Compression 4.
- * - ms:      milliseconds
+ * - ms:      milliseconds.
  * 
  *
  * @par Implementation Notes
@@ -102,12 +102,12 @@ extern "C" {
  * HAL Implementation must call this method to deliver updated Audio port connection event
  * to the caller
  * 
- * @param[in] portType      - Type of the audio port where connection status is changed.
- *                                   See dsAudioPortType_t
- * @param[in] uiPortNo      - Port number in which the connection status changed. 
- *                                  The max value is platform specific. Min value of 0.
- * @param[in] isPortCon     - Current connection status of the port. 
- *                                  True if the port is connected, false if it is not.
+ * @param[in] portType  - Type of the audio port where connection status is changed.
+ *                          See dsAudioPortType_t
+ * @param[in] uiPortNo  - Port number in which the connection status changed. 
+ *                          The max value is platform specific. Min value of 0.
+ * @param[in] isPortCon - Current connection status of the port. 
+ *                          True if the port is connected, false if it is not.
  */
 
 typedef void (*dsAudioOutPortConnectCB_t)(dsAudioPortType_t portType, unsigned int uiPortNo, bool isPortCon);
@@ -241,8 +241,8 @@ dsStatus_t  dsGetAudioCompression(int handle, int *compression);
 /**
  * @brief This function is used to get the Dialog Enhancement level of the specified audio port.
  *
- * @param[in] handle - The handle returned from the dsGetAudioPort() function
- * @param[out] level - Dialog Enhancement level of the specified audio port. Range from 0 to 16
+ * @param[in] handle    - The handle returned from the dsGetAudioPort() function
+ * @param[out] level    - Dialog Enhancement level of the specified audio port. Range from 0 to 16
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
@@ -531,8 +531,8 @@ dsStatus_t  dsGetMS12AudioProfileList(int handle, dsMS12AudioProfileList_t* prof
 /**
  * @brief This function is used to get current audio profile selection of the specified audio port.
  *
- * @param[in] handle      - The handle returned from the dsGetAudioPort() function
- * @param[out] profile    - The current audio profile of the specified audio port. 
+ * @param[in] handle    - The handle returned from the dsGetAudioPort() function
+ * @param[out] profile  - The current audio profile of the specified audio port. 
  *                                  See dsGetMS12AudioProfileList()'s return for valid profiles.
  * 
  * @return dsStatus_t                       - Status

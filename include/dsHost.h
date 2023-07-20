@@ -263,9 +263,9 @@ dsStatus_t dsGetVersion(uint32_t *versionNumber);
 /**
  * @brief Allows the Caller to set the runtime version of the dsHAL
  *
- * @param[in] versionNumber     - 4 Bytes of version number of DS HAL.
- *                                  Two Most significant Bytes are Major number,
- *                                  Two Least Significant Bytes are minor number.
+ * @param[in] versionNumber - 4 Bytes of version number of DS HAL.
+ *                              Two Most significant Bytes are Major number,
+ *                              Two Least Significant Bytes are minor number.
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success

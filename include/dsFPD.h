@@ -558,7 +558,7 @@ dsStatus_t dsSetFPDColor (dsFPDIndicator_t eIndicator, dsFPDColor_t eColor,bool 
  * @brief This function sets the 7-segment display LEDs to show the 
  *                      specified time in specified format.
  *
- * @param[in] eTimeFormat       - Indicates the time format (12 hour or 24 hour). 
+ * @param[in] eTimeFormat   - Indicates the time format (12 hour or 24 hour). 
  *                                          See dsFPDTimeFormat_t.
  *
  * @return dsStatus_t                       - Status
@@ -608,7 +608,7 @@ dsStatus_t dsGetFPTimeFormat (dsFPDTimeFormat_t *pTimeFormat);
 /**
  * @brief This function sets the display mode of the FPD text display
  *
- * @param[in] eMode     - Indicates the mode. See dsFPDMode_t
+ * @param[in] eMode - Indicates the mode. See dsFPDMode_t
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
