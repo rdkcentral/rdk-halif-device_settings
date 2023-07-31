@@ -4,9 +4,8 @@
 
 ## Version History
 
-| Date | Comment | Version |
+| Date(DD/MM/YY) | Comment | Version |
 | ---- | ------- | ------- |
-| 13/03/23 | Updated after final review | 1.0.2 |
 | 13/03/23 | Edit  | 1.0.1 |
 | 20/04/23 | First Release | 1.0.0 |
 
@@ -42,25 +41,7 @@
 - `HAL`    - Hardware Abstraction Layer
 - `API`    - Caller Programming Interface
 - `Caller` - Any user of the interface via the `API`s
-- `ARC`    - Audio Return Channel.
-- `eARC`   - Enhanced Audio Return Channel
-- `HDMI`   - High-Definition Multimedia Interface.
-- `LE`     - Loudness Equivalence.
-- `DRC`    - Dynamic Range Control.
-- `RF`     - Radio Frequency.
-- `EDID`   - Extended Display Identification Data.
-- `SPD`    - Source Product Description.
-- `ALLM`   - Auto Low Latency Mode
-- `HDCP`   - High-bandwidth Digital Copy Protection.
-- `DTCP`   - Digital Transmission Copy Protection.
 - `CPU`    - Central Processing Unit
-- `FPS`    - Frames Per Second
-- `SDR`    - Standard Dynamic Range
-- `EOTF`   - Electro-Optical Transfer Function 
-- `FPD`    - Front Panel Display
-- `HDR`    - High Dynamic Range
-- `SCART`  - Syndicat des Constructeursd’AppareilsRadiorécepteurs et Téléviseurs or Radio and Television Receiver Manufacturers.
-
 
 ## References
 
@@ -72,8 +53,8 @@ The diagram below describes a high-level software architecture of the module sta
 ```mermaid
 %%{ init : { "theme" : "forest", "flowchart" : { "curve" : "linear" }}}%%
 flowchart TD
-y[Caller]<-->x[DEVICE SETTINGS HAL];
-x[DEVICE SETTINGS HAL]<-->z[SOC Drivers];
+y[Caller]<-->x[DEVICE SETTINGS AUDIO HAL];
+x[DEVICE SETTINGS AUDIO HAL]<-->z[SOC Drivers];
 style y fill:#99CCFF,stroke:#333,stroke-width:0.3px,align:left
 style z fill:#fcc,stroke:#333,stroke-width:0.3px,align:left
 style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
@@ -83,30 +64,12 @@ This interface provides a set of `API`s to facilitate communication through the 
 
 The interface initialize, configure and deinitialize the device peripherals.
 
-@todo List sub-components
-@todo add header to all the names in the configuration options.
-@todo remove 'the following' from configuration options
-@todo re-write hdmiin configuration options
-@todo Change configuration options to Options to query and configure
-
-Configuration Options.
-
-- AudioPort provides the following configuration options to change Volume control, mute, MS12 settings, Audio Delay, Audio Mixing, Fader Control, and Primary Language
-- CompositeIn provides the following configuration option to change Scale video
-- Display provides the following configuration options to change Aspect ratio, and EDID data
-- FPD provides the following configuration options to change Indicator brightness, Indicator color, Indicator Time, and Indicator Text
-- HdmiIn provides the following configuration options to start and stop video, and change Scale Video, Zoom mode, and EDID data
-- Host provides the following configuration options to change Power mode, and Sleep mode
-- VideoPort provides the following configuration options to change Resolution, HDR, HDCP, Zoom settings, and 4k support
-- VideoDevice provides the following configuration options to change Resolutions, Aspect ratio, Active Source, and Color
-
 ## Component Runtime Execution Requirements
 
 
 ### Initialization and Startup
 
-`Caller` should initialize by calling `ds<Component>Init()` before calling any other `API`s. 
-The main components provided by the device settings module are AudioPort, ComporsiteIn, Display, FP, HdmiIn, Host, VideoDevice, and VideoPort.
+`Caller` should initialize by calling `dsAudioPortInit()` before calling any other `APIs`.
 
 ### Threading Model
 
@@ -124,15 +87,7 @@ Although this interface is not required to be involved in any of the power manag
 
 ### Asynchronous Notification Model
 
-For asynchronous transmit and receive operations, the `dsRegister` function `API`s callback registrations are used.
-- AudioPort provides the following asynchronous registration API dsAudioOutRegisterConnectCB, and dsAudioFormatUpdateRegisterCB
-- CompositeIn provides the following asynchronous registration API dsCompositeInRegisterConnectCB, dsCompositeInRegisterSignalChangeCB, and dsCompositeInRegisterStatusChangeCB, 
-- Display provides the following asynchronous registration API dsRegisterDisplayEventCallback
-- HdmiIn provides the following asynchronous registration APIs dsHdmiInRegisterAllmChangeCB, dsHdmiInRegisterVideoModeUpdateCB, dsHdmiInRegisterStatusChangeCB, dsHdmiInRegisterSignalChangeCB, and dsHdmiInRegisterConnectCB
-- VideoDevice provides the following asynchronous registration API dsRegisterFrameratePostChangeCB, and dsRegisterFrameratePreChangeCB
-- VideoPort provides the following asynchronous registration API dsRegisterHdcpStatusCallback
-
-
+No Asynchronous notification.
 
 ### Blocking calls
 
@@ -144,12 +99,7 @@ All the `API`s must return error synchronously as a return argument. `HAL` is re
 
 ### Persistence Model
 
-There is a requirement for the `HAL` interface to persist setting information.
-
-Host `HAL` must persist the following function's setting information if persist is true. dsSetPreferredSleepMode.
-VideoPort `HAL` must persist the following function's setting information if persist is true. dsSetResolution, dsGetPreferredColorDepth, and dsSetPreferredColorDepth
-
-
+There is no requirement for the interface to persist any setting information. `Caller` is responsible to persist any settings related to the `HAL`.
 
 ## Non-functional requirements
 
@@ -194,15 +144,13 @@ None
 
 The caller is expected to have complete control over the life cycle of the `HAL`.
 
-1. Initialize the `HAL` using function: `ds<Component>Init()` before making any other `API`s calls.  If `Init()` call fails, the `HAL` must return the respective error code, so that the caller can retry the operation.
+1. Initialize the `HAL` using function: `dsAudioPortInit()` before making any other `API`s calls.  If `dsAudioPortInit()` call fails, the `HAL` must return the respective error code, so that the caller can retry the operation.
 
-2. Once initialized is done caller can get the handle for the component using `dsGet<Component>()` if the module uses a handle.
+2. Once initialized, the `caller` can call `dsAudioSetSAD()`, `dsSetAudioAtmosOutputMode()`,  `dsSetAudioEncoding()`, `dsSetAudioCompression()`, `dsSetDialogEnhancement()`, `dsSetDolbyVolumeMode()`, `dsSetIntelligentEqualizerMode()`, `dsSetVolumeLeveller()`, `dsSetBassEnhancer()`, `dsSetDRCMode()`, `dsSetSurroundVirtualizer()`, `dsSetMISteering()`, `dsSetGraphicEqualizerMode()`, `dsSetMS12AudioProfile()`, `dsSetStereoMode()`, `dsSetStereoAuto()`, `dsSetAudioGain()`, `dsSetAudioDB()`, `dsSetAudioLevel()`, `dsSetAudioDucking()`, `dsSetAudioMute()`, `dsSetAudioDelay()`, `dsSetAudioDelayOffset()`, `dsSetMS12AudioProfileSetttingsOverride()`, `dsSetAssociatedAudioMixing()`, `dsSetFaderControl()`, `dsSetPrimaryLanguage()`, and `dsSetSecondaryLanguage()` to set functions.
 
-3. Using the handle of the component, different Configurations can be set for that component.
+3. The `caller` can call `dsGetHostPowerMode()`, `dsGetPreferredSleepMode()` and `dsGetVersion()` to query functions.
 
-4. De-initialized the `HAL` using the function: `ds<Component>Term()`
-
-NOTE: The module would operate deterministically if the above call sequence is followed.
+4. De-initialized the `HAL` using the function: `dsHostTerm()`
 
 ### Diagrams
 
@@ -212,21 +160,41 @@ NOTE: The module would operate deterministically if the above call sequence is f
 %%{ init : { "theme" : "default", "flowchart" : { "curve" : "stepBefore" }}}%%
    sequenceDiagram
     participant Caller as Caller
-    participant HAL as DEVICE SETTINGS HAL
-    Caller->>HAL:ds<Component>Init()
+    participant HAL as DEVICE SETTINGS HOST HAL
+    participant Driver as HAL Device Control
+    Caller->>HAL:dsHostInit()
     Note over HAL: SOC initializes the underlying subsystems.
     HAL-->>Caller:return
-    Caller->>HAL:dsSet<Component>()
-    Note over HAL: peripheral configurations are set using specific calls
+    Caller->>HAL:dsSetHostPowerMode()
+    Note over HAL: Sets the power mode of the host.
+    HAL->>Driver:Setting the power mode
+    Driver-->>HAL:return
     HAL-->>Caller:return
-    Caller->>HAL:dsGet<Component>()
-    Note over HAL: peripheral configurations are returned using specific calls
+    Caller->>HAL:dsGetHostPowerMode()
+    Note over HAL: Returns the power mode of the host.
+    HAL->>Driver:Getting the power mode
+    Driver-->>HAL:return
     HAL-->>Caller:return
-    Caller->>HAL:dsRegister<Function>()
+    Caller->>HAL:dsSetPreferredSleepMode()
+    Note over HAL: Sets the preferred sleep mode.
+    HAL->>Driver:Setting the preferred sleep mode.
+    Driver-->>HAL:return
     HAL-->>Caller:return
-    Note over HAL: Once a callback is registered, events notification happen through the callback.
-    Caller->>HAL:<Function>CB_t()
+    Caller->>HAL:dsGetPreferredSleepMode()
+    Note over HAL: Returns the current preferred sleep mode.
+    HAL->>Driver:Getting the preferred sleep mode.
+    Driver-->>HAL:return
     HAL-->>Caller:return
-    Caller ->>HAL:ds<Component>Term()
+    Caller->>HAL:dsSetVersion()
+    Note over HAL: Sets the version
+    HAL->>Driver:Setting the version number.
+    Driver-->>HAL:return
+    HAL-->>Caller:return
+    Caller->>HAL:dsGetVersion()
+    Note over HAL: Returns the version.
+    HAL->>Driver:Getting the version number
+    Driver-->>HAL:return
+    HAL-->>Caller:return
+    Caller ->>HAL:dsHostTerm()
     HAL-->>Caller:return
  ```
