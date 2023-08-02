@@ -88,17 +88,15 @@ typedef void (*dsVideoFormatUpdateCB_t)(dsHDRStandard_t videoFormat);
  * 
  * This function is required to be called before the other APIs in this module.@n
  *
- * @return dsStatus_t           - Status
- * @retval dsERR_NONE           - Success
- * @retval dsERR_INVALID_STATE  - Function is already initialized.
- * @retval dsERR_GENERAL        - Underlying undefined platform error
+ * @return dsStatus_t                   - Status
+ * @retval dsERR_NONE                   - Success
+ * @retval dsERR_ALREADY_INITIALIZED    - Function is already initialized.
+ * @retval dsERR_GENERAL                - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
  * 
  * @see dsVideoPortTerm()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_ALREADY_INITIALIZED. Will do it in the next phase.
  * 
  */
 dsStatus_t  dsVideoPortInit();
@@ -114,7 +112,7 @@ dsStatus_t  dsVideoPortInit();
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -122,9 +120,7 @@ dsStatus_t  dsVideoPortInit();
  * @pre dsVideoPortInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
- * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
+* 
  * 
  */
 dsStatus_t  dsGetVideoPort(dsVideoPortType_t type, int index, int *handle);
@@ -138,7 +134,7 @@ dsStatus_t  dsGetVideoPort(dsVideoPortType_t type, int index, int *handle);
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -149,8 +145,6 @@ dsStatus_t  dsGetVideoPort(dsVideoPortType_t type, int index, int *handle);
  * 
  * @see dsEnableVideoPort()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t  dsIsVideoPortEnabled(int handle, bool *enabled);
 
@@ -163,7 +157,7 @@ dsStatus_t  dsIsVideoPortEnabled(int handle, bool *enabled);
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -172,8 +166,6 @@ dsStatus_t  dsIsVideoPortEnabled(int handle, bool *enabled);
  *
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t  dsIsDisplayConnected(int handle, bool *connected);
 
@@ -186,7 +178,7 @@ dsStatus_t  dsIsDisplayConnected(int handle, bool *connected);
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -195,8 +187,6 @@ dsStatus_t  dsIsDisplayConnected(int handle, bool *connected);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t  dsIsDisplaySurround(int handle, bool *surround);
 
@@ -209,7 +199,7 @@ dsStatus_t  dsIsDisplaySurround(int handle, bool *surround);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -218,8 +208,6 @@ dsStatus_t  dsIsDisplaySurround(int handle, bool *surround);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t  dsGetSurroundMode(int handle, int *surround);
 
@@ -232,7 +220,7 @@ dsStatus_t  dsGetSurroundMode(int handle, int *surround);
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -241,8 +229,6 @@ dsStatus_t  dsGetSurroundMode(int handle, int *surround);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t  dsIsVideoPortActive(int handle, bool *active);
 
@@ -255,7 +241,7 @@ dsStatus_t  dsIsVideoPortActive(int handle, bool *active);
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -266,8 +252,6 @@ dsStatus_t  dsIsVideoPortActive(int handle, bool *active);
  * 
  * @see dsIsDTCPEnabled()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t  dsEnableDTCP(int handle, bool contentProtect);
 
@@ -282,7 +266,7 @@ dsStatus_t  dsEnableDTCP(int handle, bool contentProtect);
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -293,8 +277,6 @@ dsStatus_t  dsEnableDTCP(int handle, bool contentProtect);
  * 
  * @see dsGetHDCPStatus(), dsIsHDCPEnabled()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t  dsEnableHDCP(int handle, bool contentProtect, char *hdcpKey, size_t keySize);
 
@@ -307,7 +289,7 @@ dsStatus_t  dsEnableHDCP(int handle, bool contentProtect, char *hdcpKey, size_t 
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -318,8 +300,6 @@ dsStatus_t  dsEnableHDCP(int handle, bool contentProtect, char *hdcpKey, size_t 
  * 
  * @see dsEnableDTCP()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t  dsIsDTCPEnabled (int handle, bool* pContentProtected);
 
@@ -332,7 +312,7 @@ dsStatus_t  dsIsDTCPEnabled (int handle, bool* pContentProtected);
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -343,8 +323,6 @@ dsStatus_t  dsIsDTCPEnabled (int handle, bool* pContentProtected);
  * 
  * @see dsEnableHDCP()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t  dsIsHDCPEnabled (int handle, bool* pContentProtected);
 
@@ -357,7 +335,7 @@ dsStatus_t  dsIsHDCPEnabled (int handle, bool* pContentProtected);
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -368,8 +346,6 @@ dsStatus_t  dsIsHDCPEnabled (int handle, bool* pContentProtected);
  * 
  * @see dsIsVideoPortEnabled()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t  dsEnableVideoPort(int handle, bool enabled);
 
@@ -383,7 +359,7 @@ dsStatus_t  dsEnableVideoPort(int handle, bool enabled);
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -394,8 +370,6 @@ dsStatus_t  dsEnableVideoPort(int handle, bool enabled);
  * 
  * @see dsGetResolution()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t  dsSetResolution(int handle, dsVideoPortResolution_t *resolution, bool persist);
 
@@ -408,7 +382,7 @@ dsStatus_t  dsSetResolution(int handle, dsVideoPortResolution_t *resolution, boo
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -419,8 +393,6 @@ dsStatus_t  dsSetResolution(int handle, dsVideoPortResolution_t *resolution, boo
  * 
  * @see dsSetResolution()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t  dsGetResolution(int handle, dsVideoPortResolution_t *resolution);
 
@@ -432,17 +404,14 @@ dsStatus_t  dsGetResolution(int handle, dsVideoPortResolution_t *resolution);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
-
+ * 
  * @pre dsVideoPortInit() must be called before calling this API.
-
+ * 
  * @warning  This API is Not thread safe.
-
- @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t dsSetActiveSource(int handle);
 
@@ -454,7 +423,7 @@ dsStatus_t dsSetActiveSource(int handle);
  *
  * @return dsStatus_t           - Status
  * @retval dsERR_NONE           - Success 
- * @retval dsERR_INVALID_STATE  - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED- Module is not initialised
  * @retval dsERR_GENERAL        - General failure.
  * 
  * @pre dsVideoPortInit() must be called before calling this API.
@@ -463,8 +432,6 @@ dsStatus_t dsSetActiveSource(int handle);
  * 
  * @see dsVideoPortInit()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t dsVideoPortTerm();
 
@@ -476,7 +443,7 @@ dsStatus_t dsVideoPortTerm();
  *                            
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -485,8 +452,7 @@ dsStatus_t dsVideoPortTerm();
  *
  * @warning  This API is Not thread safe.
  *
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
+
  */
 dsStatus_t  dsInitResolution(dsVideoPortResolution_t *resolution);
 
@@ -518,7 +484,7 @@ typedef void (*dsHDCPStatusCallback_t)(int handle, dsHdcpStatus_t status);
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -527,8 +493,7 @@ typedef void (*dsHDCPStatusCallback_t)(int handle, dsHdcpStatus_t status);
  *
  * @warning  This API is Not thread safe.
  *
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
+
  */
  dsStatus_t dsRegisterHdcpStatusCallback (int handle, dsHDCPStatusCallback_t cb);
 
@@ -541,7 +506,7 @@ typedef void (*dsHDCPStatusCallback_t)(int handle, dsHdcpStatus_t status);
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -552,8 +517,6 @@ typedef void (*dsHDCPStatusCallback_t)(int handle, dsHdcpStatus_t status);
  * 
  * @see dsEnableHDCP()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t dsGetHDCPStatus (int handle, dsHdcpStatus_t *status);
 
@@ -566,7 +529,7 @@ dsStatus_t dsGetHDCPStatus (int handle, dsHdcpStatus_t *status);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -577,8 +540,6 @@ dsStatus_t dsGetHDCPStatus (int handle, dsHdcpStatus_t *status);
  * 
  * @see dsEnableHDCP()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t dsGetHDCPProtocol (int handle,dsHdcpProtocolVersion_t *protocolVersion);
 
@@ -591,7 +552,7 @@ dsStatus_t dsGetHDCPProtocol (int handle,dsHdcpProtocolVersion_t *protocolVersio
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -602,8 +563,6 @@ dsStatus_t dsGetHDCPProtocol (int handle,dsHdcpProtocolVersion_t *protocolVersio
  * 
  * @see dsEnableHDCP()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t dsGetHDCPReceiverProtocol (int handle,dsHdcpProtocolVersion_t *protocolVersion);
 
@@ -616,7 +575,7 @@ dsStatus_t dsGetHDCPReceiverProtocol (int handle,dsHdcpProtocolVersion_t *protoc
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -627,8 +586,6 @@ dsStatus_t dsGetHDCPReceiverProtocol (int handle,dsHdcpProtocolVersion_t *protoc
  * 
  * @see dsEnableHDCP()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t dsGetHDCPCurrentProtocol (int handle,dsHdcpProtocolVersion_t *protocolVersion);
 
@@ -641,7 +598,7 @@ dsStatus_t dsGetHDCPCurrentProtocol (int handle,dsHdcpProtocolVersion_t *protoco
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -650,8 +607,6 @@ dsStatus_t dsGetHDCPCurrentProtocol (int handle,dsHdcpProtocolVersion_t *protoco
  *
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t dsGetTVHDRCapabilities(int handle, int *capabilities);
 
@@ -664,7 +619,7 @@ dsStatus_t dsGetTVHDRCapabilities(int handle, int *capabilities);
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -673,8 +628,6 @@ dsStatus_t dsGetTVHDRCapabilities(int handle, int *capabilities);
  *
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t dsSupportedTvResolutions(int handle, int *resolutions);
 
@@ -687,7 +640,7 @@ dsStatus_t dsSupportedTvResolutions(int handle, int *resolutions);
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -698,8 +651,6 @@ dsStatus_t dsSupportedTvResolutions(int handle, int *resolutions);
  * 
  * @see dsGetForceDisable4KSupport()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t dsSetForceDisable4KSupport(int handle, bool disable);
 
@@ -712,7 +663,7 @@ dsStatus_t dsSetForceDisable4KSupport(int handle, bool disable);
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -723,8 +674,6 @@ dsStatus_t dsSetForceDisable4KSupport(int handle, bool disable);
  * 
  * @see dsSetForceDisable4KSupport()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t dsGetForceDisable4KSupport(int handle, bool *disable);
 
@@ -747,7 +696,7 @@ dsStatus_t dsGetForceDisable4KSupport(int handle, bool *disable);
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -756,8 +705,6 @@ dsStatus_t dsGetForceDisable4KSupport(int handle, bool *disable);
  *
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t dsSetScartParameter(int handle, const char* parameter_str, const char* value_str);
 
@@ -770,7 +717,7 @@ dsStatus_t dsSetScartParameter(int handle, const char* parameter_str, const char
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -779,8 +726,6 @@ dsStatus_t dsSetScartParameter(int handle, const char* parameter_str, const char
  *
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t dsGetVideoEOTF(int handle, dsHDRStandard_t *video_eotf);
 
@@ -793,7 +738,7 @@ dsStatus_t dsGetVideoEOTF(int handle, dsHDRStandard_t *video_eotf);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -802,8 +747,6 @@ dsStatus_t dsGetVideoEOTF(int handle, dsHDRStandard_t *video_eotf);
  *
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t dsGetMatrixCoefficients(int handle, dsDisplayMatrixCoefficients_t *matrix_coefficients);
 
@@ -816,7 +759,7 @@ dsStatus_t dsGetMatrixCoefficients(int handle, dsDisplayMatrixCoefficients_t *ma
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -825,8 +768,6 @@ dsStatus_t dsGetMatrixCoefficients(int handle, dsDisplayMatrixCoefficients_t *ma
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t dsGetColorDepth(int handle, unsigned int* color_depth);
 
@@ -839,7 +780,7 @@ dsStatus_t dsGetColorDepth(int handle, unsigned int* color_depth);
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -848,8 +789,6 @@ dsStatus_t dsGetColorDepth(int handle, unsigned int* color_depth);
  *
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t dsGetColorSpace(int handle, dsDisplayColorSpace_t* color_space);
  
@@ -862,7 +801,7 @@ dsStatus_t dsGetColorSpace(int handle, dsDisplayColorSpace_t* color_space);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -871,8 +810,6 @@ dsStatus_t dsGetColorSpace(int handle, dsDisplayColorSpace_t* color_space);
  *
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t dsGetQuantizationRange(int handle, dsDisplayQuantizationRange_t* quantization_range);
 
@@ -891,7 +828,7 @@ dsStatus_t dsGetQuantizationRange(int handle, dsDisplayQuantizationRange_t* quan
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -900,8 +837,6 @@ dsStatus_t dsGetQuantizationRange(int handle, dsDisplayQuantizationRange_t* quan
  *
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t dsGetCurrentOutputSettings(int handle, dsHDRStandard_t* video_eotf, 
             dsDisplayMatrixCoefficients_t* matrix_coefficients, 
@@ -917,7 +852,7 @@ dsStatus_t dsGetCurrentOutputSettings(int handle, dsHDRStandard_t* video_eotf,
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -926,8 +861,6 @@ dsStatus_t dsGetCurrentOutputSettings(int handle, dsHDRStandard_t* video_eotf,
  *
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t dsIsOutputHDR(int handle, bool *hdr);
 
@@ -937,7 +870,7 @@ dsStatus_t dsIsOutputHDR(int handle, bool *hdr);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -946,8 +879,6 @@ dsStatus_t dsIsOutputHDR(int handle, bool *hdr);
  *
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t dsResetOutputToSDR();
 
@@ -960,7 +891,7 @@ dsStatus_t dsResetOutputToSDR();
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -971,8 +902,6 @@ dsStatus_t dsResetOutputToSDR();
  * 
  * @see dsGetHdmiPreference()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t dsSetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentProtocol);
 
@@ -987,7 +916,7 @@ dsStatus_t dsSetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentP
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -998,8 +927,6 @@ dsStatus_t dsSetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentP
  * 
  * @see dsSetHdmiPreference()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t dsGetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentProtocol);
 
@@ -1013,7 +940,7 @@ dsStatus_t dsGetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentP
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1022,8 +949,6 @@ dsStatus_t dsGetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentP
  *
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t dsGetIgnoreEDIDStatus(int handle, bool* status);
 
@@ -1036,7 +961,7 @@ dsStatus_t dsGetIgnoreEDIDStatus(int handle, bool* status);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1045,8 +970,6 @@ dsStatus_t dsGetIgnoreEDIDStatus(int handle, bool* status);
  *
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t dsSetBackgroundColor(int handle, dsVideoBackgroundColor_t color);
 
@@ -1059,7 +982,7 @@ dsStatus_t dsSetBackgroundColor(int handle, dsVideoBackgroundColor_t color);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1068,8 +991,6 @@ dsStatus_t dsSetBackgroundColor(int handle, dsVideoBackgroundColor_t color);
  *
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t dsSetForceHDRMode(int handle, dsHDRStandard_t mode);
 
@@ -1083,7 +1004,7 @@ dsStatus_t dsSetForceHDRMode(int handle, dsHDRStandard_t mode);
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1094,8 +1015,6 @@ dsStatus_t dsSetForceHDRMode(int handle, dsHDRStandard_t mode);
  *
  * @todo    Updating colorDepthCapability type to dsDisplayColorDepth_t.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t dsColorDepthCapabilities(int handle, unsigned int *colorDepthCapability );
 
@@ -1109,7 +1028,7 @@ dsStatus_t dsColorDepthCapabilities(int handle, unsigned int *colorDepthCapabili
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1120,8 +1039,6 @@ dsStatus_t dsColorDepthCapabilities(int handle, unsigned int *colorDepthCapabili
  * 
  * @see dsSetPreferredColorDepth()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t dsGetPreferredColorDepth(int handle, dsDisplayColorDepth_t *colorDepth, bool persist );
 
@@ -1135,7 +1052,7 @@ dsStatus_t dsGetPreferredColorDepth(int handle, dsDisplayColorDepth_t *colorDept
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1146,8 +1063,6 @@ dsStatus_t dsGetPreferredColorDepth(int handle, dsDisplayColorDepth_t *colorDept
  *
  * @see dsGetPreferredColorDepth()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 dsStatus_t dsSetPreferredColorDepth(int handle,dsDisplayColorDepth_t colorDepth, bool persist );
 

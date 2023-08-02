@@ -101,17 +101,15 @@ extern "C" {
  * @brief Initializes the Composite input Hal.
  *
  *
- * @return dsStatus_t           - Status
- * @retval dsERR_NONE           - Success 
- * @retval dsERR_INVALID_STATE  - Function is already initialized.
- * @retval dsERR_GENERAL        - Underlying undefined platform error
+ * @return dsStatus_t                   - Status
+ * @retval dsERR_NONE                   - Success 
+ * @retval dsERR_ALREADY_INITIALIZED    - Function is already initialized.
+ * @retval dsERR_GENERAL                - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
  * 
  * @see dsCompositeInTerm()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_ALREADY_INITIALIZED. Will do it in the next phase.
  * 
  */
 
@@ -123,7 +121,7 @@ dsStatus_t dsCompositeInInit (void);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
@@ -133,8 +131,6 @@ dsStatus_t dsCompositeInInit (void);
  * 
  * @see dsCompositeInInit()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsCompositeInTerm (void);
@@ -147,7 +143,7 @@ dsStatus_t dsCompositeInTerm (void);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -156,8 +152,6 @@ dsStatus_t dsCompositeInTerm (void);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsCompositeInGetNumberOfInputs (uint8_t *pNumberOfInputs);
@@ -169,7 +163,7 @@ dsStatus_t dsCompositeInGetNumberOfInputs (uint8_t *pNumberOfInputs);
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -178,8 +172,6 @@ dsStatus_t dsCompositeInGetNumberOfInputs (uint8_t *pNumberOfInputs);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsCompositeInGetStatus (dsCompositeInStatus_t *pStatus);
@@ -191,7 +183,7 @@ dsStatus_t dsCompositeInGetStatus (dsCompositeInStatus_t *pStatus);
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -200,8 +192,6 @@ dsStatus_t dsCompositeInGetStatus (dsCompositeInStatus_t *pStatus);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsCompositeInSelectPort (dsCompositeInPort_t Port);
@@ -216,7 +206,7 @@ dsStatus_t dsCompositeInSelectPort (dsCompositeInPort_t Port);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -225,8 +215,6 @@ dsStatus_t dsCompositeInSelectPort (dsCompositeInPort_t Port);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsCompositeInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t height);
@@ -253,7 +241,7 @@ typedef void (*dsCompositeInConnectCB_t)(dsCompositeInPort_t Port, bool isPortCo
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -264,8 +252,6 @@ typedef void (*dsCompositeInConnectCB_t)(dsCompositeInPort_t Port, bool isPortCo
  * 
  * @see dsCompositeInConnectCB_t()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsCompositeInRegisterConnectCB (dsCompositeInConnectCB_t CBFunc);
@@ -291,7 +277,7 @@ typedef void (*dsCompositeInSignalChangeCB_t)(dsCompositeInPort_t port, dsCompIn
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -302,8 +288,6 @@ typedef void (*dsCompositeInSignalChangeCB_t)(dsCompositeInPort_t port, dsCompIn
  * 
  * @see dsCompositeInSignalChangeCB_t()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsCompositeInRegisterSignalChangeCB (dsCompositeInSignalChangeCB_t CBFunc);
@@ -330,7 +314,7 @@ typedef void (*dsCompositeInStatusChangeCB_t)(dsCompositeInStatus_t inputStatus)
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -341,8 +325,6 @@ typedef void (*dsCompositeInStatusChangeCB_t)(dsCompositeInStatus_t inputStatus)
  * 
  * @see dsCompositeInStatusChangeCB_t()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsCompositeInRegisterStatusChangeCB (dsCompositeInStatusChangeCB_t CBFunc);

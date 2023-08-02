@@ -27,8 +27,6 @@
  * - cb:      Callback function (suffix).
  * - DS:      Device Settings.
  * - HAL:     Hardware Abstraction Layer.
- * - HDCP:    High-bandwidth Digital Copy Protection.
- * - DTCP:    Digital Transmission Copy Protection.
  * - EDID:    Extended Display Information Data.
  * - CPU:     Central Processing Unit
  * - SoC:     System on chip
@@ -80,16 +78,14 @@ extern "C" {
 /**
  * @brief Initialize the Host HAL.
  *
- * @return dsStatus_t           - Status
- * @retval dsERR_NONE           - Success
- * @retval dsERR_INVALID_STATE  - Function is already initialized.
- * @retval dsERR_GENERAL        - Underlying undefined platform error
+ * @return dsStatus_t                   - Status
+ * @retval dsERR_NONE                   - Success
+ * @retval dsERR_ALREADY_INITIALIZED    - Function is already initialized.
+ * @retval dsERR_GENERAL                - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
  * @see dsHostTerm()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_ALREADY_INITIALIZED. Will do it in the next phase.
  * 
  */
 
@@ -103,11 +99,11 @@ dsStatus_t dsHostInit();
  *
  * @param[in] newPower  - The power mode of the host. See dsPowerState_t.
  *
- * @return dsStatus_t                       - Status
- * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
- * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * @return dsStatus_t               - Status
+ * @retval dsERR_NONE               - Success
+ * @retval dsERR_NOT_INITIALIZED    - Module is not initialised
+ * @retval dsERR_INVALID_PARAM      - Parameter passed to this function is invalid
+ * @retval dsERR_GENERAL            - Underlying undefined platform error
  *
  * @note dsPOWER_OFF is not currently being used.
  * 
@@ -116,9 +112,7 @@ dsStatus_t dsHostInit();
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetHostPowerMode()
- * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
+* 
  * 
  * @todo Update newPower to dsPowerState_t.
  * 
@@ -134,18 +128,16 @@ dsStatus_t dsSetHostPowerMode(int newPower);
  * @param[out] currPower    - current power state of the system mode on return. 
  *                                  See dsPowerState_t for possible returns.
  *
- * @return dsStatus_t                       - Status
- * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
- * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * @return dsStatus_t               - Status
+ * @retval dsERR_NONE               - Success
+ * @retval dsERR_NOT_INITIALIZED    - Module is not initialised
+ * @retval dsERR_INVALID_PARAM      - Parameter passed to this function is invalid
+ * @retval dsERR_GENERAL            - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetHostPowerMode()
- * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
+* 
  * 
  * @todo Update currPower to dsPowerState_t.
  */
@@ -158,18 +150,16 @@ dsStatus_t dsGetHostPowerMode(int *currPower);
  * This function resets the data structures used within the Host module and releases any
  * handles specific to the host module.
  *
- * @return dsStatus_t           - Status
- * @retval dsERR_NONE           - Success 
- * @retval dsERR_INVALID_PARAM  - Invalid parameter value.
- * @retval dsERR_INVALID_STATE  - Module is not initialised
- * @retval dsERR_GENERAL        - General failure.
+ * @return dsStatus_t               - Status
+ * @retval dsERR_NONE               - Success 
+ * @retval dsERR_INVALID_PARAM      - Invalid parameter value.
+ * @retval dsERR_NOT_INITIALIZED    - Module is not initialised
+ * @retval dsERR_GENERAL            - General failure.
  * 
  * @warning  This API is Not thread safe.
  * 
  * @see dsHostInit()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsHostTerm();
@@ -182,16 +172,15 @@ dsStatus_t dsHostTerm();
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetPreferredSleepMode()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsGetPreferredSleepMode(dsSleepMode_t *pMode);
@@ -203,16 +192,15 @@ dsStatus_t dsGetPreferredSleepMode(dsSleepMode_t *pMode);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetPreferredSleepMode()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsSetPreferredSleepMode(dsSleepMode_t mode);
@@ -224,14 +212,13 @@ dsStatus_t dsSetPreferredSleepMode(dsSleepMode_t mode);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsGetCPUTemperature(float *cpuTemperature);
@@ -245,16 +232,15 @@ dsStatus_t dsGetCPUTemperature(float *cpuTemperature);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
  * 
  * @see dsSetVersion()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsGetVersion(uint32_t *versionNumber);
@@ -268,16 +254,15 @@ dsStatus_t dsGetVersion(uint32_t *versionNumber);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetVersion()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsSetVersion(uint32_t versionNumber);
@@ -289,14 +274,13 @@ dsStatus_t dsSetVersion(uint32_t versionNumber);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsGetSocIDFromSDK(char *socID);
@@ -309,14 +293,13 @@ dsStatus_t dsGetSocIDFromSDK(char *socID);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsGetHostEDID(unsigned char *edid, int *length);

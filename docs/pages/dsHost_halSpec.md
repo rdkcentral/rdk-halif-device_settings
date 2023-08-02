@@ -1,5 +1,3 @@
-@mainpage
-
 # DEVICE SETTINGS HAL Documentation
 
 ## Version History
@@ -42,6 +40,11 @@
 - `API`    - Caller Programming Interface
 - `Caller` - Any user of the interface via the `API`s
 - `CPU`    - Central Processing Unit
+- `DS`:      Device Settings.
+- `HAL`:     Hardware Abstraction Layer.
+- `EDID`:    Extended Display Information Data.
+- `CPU`:     Central Processing Unit
+- `SoC`:     System on chip
 
 ## References
 
@@ -60,9 +63,9 @@ style z fill:#fcc,stroke:#333,stroke-width:0.3px,align:left
 style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
  ```
 
-This interface provides a set of `API`s to facilitate communication through the `Caller` and `HAL`.
+This interface provides a set of `APIs` to facilitate communication through the `caller` and `HAL`.
 
-The interface initialize, configure and deinitialize the device peripherals.
+The Device settings manager `HAL` for dsHost provides a set of `APIs` to query the current CPU temperature, preferred sleep mode, Host Power Mode, current version number, and the SoC ID. It also provides a set of `APIs` to set the preferred sleep mode,  the Host Power Mode, the Host EDID number, and the current version number.
 
 ## Component Runtime Execution Requirements
 
@@ -148,7 +151,7 @@ The caller is expected to have complete control over the life cycle of the `HAL`
 
 2. Once initialized, the `caller` can call `dsSetHostPowerMode()`, `dsSetPreferredSleepMode()` and `dsSetVersion()` to set functions.
 
-3. The `caller` can call `dsGetHostPowerMode()`, `dsGetPreferredSleepMode()` and `dsGetVersion()` to query functions.
+3. The `caller` can call `dsGetHostPowerMode()`, `dsGetPreferredSleepMode()`, `dsGetVersion()`, `dsGetCPUTemperature()`, `dsGetHostEDID()` and `dsGetSocIDFromSDK()` to query functions.
 
 4. De-initialized the `HAL` using the function: `dsHostTerm()`
 
@@ -156,12 +159,14 @@ The caller is expected to have complete control over the life cycle of the `HAL`
 
 #### Operational Call Sequence
 
+@todo discuss further on the dsSetVersion function call.
+
 ```mermaid
 %%{ init : { "theme" : "default", "flowchart" : { "curve" : "stepBefore" }}}%%
    sequenceDiagram
     participant Caller as Caller
     participant HAL as DEVICE SETTINGS HOST HAL
-    participant Driver as HAL Device Control
+    participant Driver as SoC
     Caller->>HAL:dsHostInit()
     Note over HAL: SOC initializes the underlying subsystems.
     HAL-->>Caller:return
@@ -193,6 +198,19 @@ The caller is expected to have complete control over the life cycle of the `HAL`
     Caller->>HAL:dsGetVersion()
     Note over HAL: Returns the version.
     HAL->>Driver:Getting the version number
+    Driver-->>HAL:return
+    Caller->>HAL:dsGetCPUTemperature()
+    Note over HAL: Returns the current CPU temp.
+    HAL->>Driver:Getting the current CPU temp
+    Driver-->>HAL:return
+    Caller->>HAL:dsGetSocIDFromSDK()
+    Note over HAL: Returns the SoC ID.
+    HAL->>Driver:Getting the SoC ID.
+    Driver-->>HAL:return
+    HAL-->>Caller:return
+    Caller->>HAL:dsGetHostEDID()
+    Note over HAL: Returns the Host EDID.
+    HAL->>Driver:Getting the Host EDID.
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller ->>HAL:dsHostTerm()

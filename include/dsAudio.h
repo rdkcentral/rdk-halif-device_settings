@@ -125,15 +125,13 @@ typedef void (*dsAudioFormatUpdateCB_t)(dsAudioFormat_t audioFormat);
 /**
  * @brief Initializes the Audio Port Hal.
  *
- * @return dsStatus_t           - Status
- * @retval dsERR_NONE           - Success
- * @retval dsERR_INVALID_STATE  - Function is already initialized.
- * @retval dsERR_GENERAL        - Underlying undefined platform error
+ * @return dsStatus_t                   - Status
+ * @retval dsERR_NONE                   - Success
+ * @retval dsERR_ALREADY_INITIALIZED    - Function is already initialized.
+ * @retval dsERR_GENERAL                - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_ALREADY_INITIALIZED. Will do it in the next phase.
  * 
  */
 
@@ -150,7 +148,7 @@ dsStatus_t  dsAudioPortInit();
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -159,8 +157,6 @@ dsStatus_t  dsAudioPortInit();
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsGetAudioPort(dsAudioPortType_t type, int index, int *handle);
@@ -173,7 +169,7 @@ dsStatus_t  dsGetAudioPort(dsAudioPortType_t type, int index, int *handle);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -184,8 +180,6 @@ dsStatus_t  dsGetAudioPort(dsAudioPortType_t type, int index, int *handle);
  * 
  * @see dsSetAudioEncoding()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsGetAudioEncoding(int handle, dsAudioEncoding_t *encoding);
@@ -198,7 +192,7 @@ dsStatus_t  dsGetAudioEncoding(int handle, dsAudioEncoding_t *encoding);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -207,8 +201,6 @@ dsStatus_t  dsGetAudioEncoding(int handle, dsAudioEncoding_t *encoding);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsGetAudioFormat(int handle, dsAudioFormat_t *audioFormat);
@@ -221,7 +213,7 @@ dsStatus_t  dsGetAudioFormat(int handle, dsAudioFormat_t *audioFormat);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -232,8 +224,6 @@ dsStatus_t  dsGetAudioFormat(int handle, dsAudioFormat_t *audioFormat);
  * 
  * @see dsSetAudioCompression()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsGetAudioCompression(int handle, int *compression);
@@ -246,7 +236,7 @@ dsStatus_t  dsGetAudioCompression(int handle, int *compression);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -257,8 +247,6 @@ dsStatus_t  dsGetAudioCompression(int handle, int *compression);
  * 
  * @see dsSetDialogEnhancement()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsGetDialogEnhancement(int handle, int *level);
@@ -272,7 +260,7 @@ dsStatus_t  dsGetDialogEnhancement(int handle, int *level);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -283,8 +271,6 @@ dsStatus_t  dsGetDialogEnhancement(int handle, int *level);
  * 
  * @see dsSetDolbyVolumeMode()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsGetDolbyVolumeMode(int handle, bool *mode);
@@ -299,7 +285,7 @@ dsStatus_t  dsGetDolbyVolumeMode(int handle, bool *mode);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -310,8 +296,6 @@ dsStatus_t  dsGetDolbyVolumeMode(int handle, bool *mode);
  * 
  * @see dsSetIntelligentEqualizerMode()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsGetIntelligentEqualizerMode(int handle, int *mode);
@@ -326,7 +310,7 @@ dsStatus_t  dsGetIntelligentEqualizerMode(int handle, int *mode);
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -337,8 +321,6 @@ dsStatus_t  dsGetIntelligentEqualizerMode(int handle, int *mode);
  * 
  * @see dsSetVolumeLeveller()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsGetVolumeLeveller(int handle, dsVolumeLeveller_t* volLeveller);
@@ -351,7 +333,7 @@ dsStatus_t  dsGetVolumeLeveller(int handle, dsVolumeLeveller_t* volLeveller);
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -362,8 +344,6 @@ dsStatus_t  dsGetVolumeLeveller(int handle, dsVolumeLeveller_t* volLeveller);
  * 
  * @see dsSetBassEnhancer()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsGetBassEnhancer(int handle, int *boost);
@@ -378,7 +358,7 @@ dsStatus_t  dsGetBassEnhancer(int handle, int *boost);
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -389,8 +369,6 @@ dsStatus_t  dsGetBassEnhancer(int handle, int *boost);
  * 
  * @see dsEnableSurroundDecoder()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsIsSurroundDecoderEnabled(int handle, bool *enabled);
@@ -404,7 +382,7 @@ dsStatus_t  dsIsSurroundDecoderEnabled(int handle, bool *enabled);
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -415,8 +393,6 @@ dsStatus_t  dsIsSurroundDecoderEnabled(int handle, bool *enabled);
  * 
  * @see dsSetDRCMode()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsGetDRCMode(int handle, int *mode);
@@ -431,7 +407,7 @@ dsStatus_t  dsGetDRCMode(int handle, int *mode);
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -442,8 +418,6 @@ dsStatus_t  dsGetDRCMode(int handle, int *mode);
  * 
  * @see dsSetSurroundVirtualizer()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsGetSurroundVirtualizer(int handle, dsSurroundVirtualizer_t *virtualizer);
@@ -458,7 +432,7 @@ dsStatus_t  dsGetSurroundVirtualizer(int handle, dsSurroundVirtualizer_t *virtua
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -469,8 +443,6 @@ dsStatus_t  dsGetSurroundVirtualizer(int handle, dsSurroundVirtualizer_t *virtua
  * 
  * @see dsSetMISteering()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsGetMISteering(int handle, bool *enabled);
@@ -484,7 +456,7 @@ dsStatus_t  dsGetMISteering(int handle, bool *enabled);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -495,8 +467,6 @@ dsStatus_t  dsGetMISteering(int handle, bool *enabled);
  * 
  * @see dsSetGraphicEqualizerMode()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsGetGraphicEqualizerMode(int handle, int *mode);
@@ -511,7 +481,7 @@ dsStatus_t  dsGetGraphicEqualizerMode(int handle, int *mode);
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -522,8 +492,6 @@ dsStatus_t  dsGetGraphicEqualizerMode(int handle, int *mode);
  * 
  * @see dsSetMS12AudioProfile()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsGetMS12AudioProfileList(int handle, dsMS12AudioProfileList_t* profiles);
@@ -537,7 +505,7 @@ dsStatus_t  dsGetMS12AudioProfileList(int handle, dsMS12AudioProfileList_t* prof
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -548,8 +516,6 @@ dsStatus_t  dsGetMS12AudioProfileList(int handle, dsMS12AudioProfileList_t* prof
  * 
  * @see dsSetMS12AudioProfile()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsGetMS12AudioProfile(int handle, char *profile);
@@ -563,7 +529,7 @@ dsStatus_t  dsGetMS12AudioProfile(int handle, char *profile);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -572,8 +538,6 @@ dsStatus_t  dsGetMS12AudioProfile(int handle, char *profile);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsGetSupportedARCTypes(int handle, int *types);
@@ -592,7 +556,7 @@ dsStatus_t dsGetSupportedARCTypes(int handle, int *types);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -601,8 +565,6 @@ dsStatus_t dsGetSupportedARCTypes(int handle, int *types);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsAudioSetSAD(int handle, dsAudioSADList_t sad_list);
@@ -615,7 +577,7 @@ dsStatus_t dsAudioSetSAD(int handle, dsAudioSADList_t sad_list);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -624,8 +586,6 @@ dsStatus_t dsAudioSetSAD(int handle, dsAudioSADList_t sad_list);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsAudioEnableARC(int handle, dsAudioARCStatus_t arcStatus);
@@ -639,7 +599,7 @@ dsStatus_t dsAudioEnableARC(int handle, dsAudioARCStatus_t arcStatus);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -650,8 +610,6 @@ dsStatus_t dsAudioEnableARC(int handle, dsAudioARCStatus_t arcStatus);
  * 
  * @see dsSetStereoMode()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsGetStereoMode(int handle, dsAudioStereoMode_t *stereoMode);
@@ -666,7 +624,7 @@ dsStatus_t  dsGetStereoMode(int handle, dsAudioStereoMode_t *stereoMode);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -677,8 +635,6 @@ dsStatus_t  dsGetStereoMode(int handle, dsAudioStereoMode_t *stereoMode);
  * 
  * @see dsSetStereoAuto()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsGetStereoAuto(int handle, int *autoMode);
@@ -691,7 +647,7 @@ dsStatus_t  dsGetStereoAuto(int handle, int *autoMode);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -702,8 +658,6 @@ dsStatus_t  dsGetStereoAuto(int handle, int *autoMode);
  * 
  * @see dsSetAudioGain()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsGetAudioGain(int handle, float *gain);
@@ -718,7 +672,7 @@ dsStatus_t  dsGetAudioGain(int handle, float *gain);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -729,8 +683,6 @@ dsStatus_t  dsGetAudioGain(int handle, float *gain);
  * 
  * @see dsSetAudioDB()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsGetAudioDB(int handle, float *db);
@@ -744,7 +696,7 @@ dsStatus_t  dsGetAudioDB(int handle, float *db);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -755,8 +707,6 @@ dsStatus_t  dsGetAudioDB(int handle, float *db);
  * 
  * @see dsSetAudioLevel()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsGetAudioLevel(int handle, float *level);
@@ -770,7 +720,7 @@ dsStatus_t  dsGetAudioLevel(int handle, float *level);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -779,8 +729,6 @@ dsStatus_t  dsGetAudioLevel(int handle, float *level);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsGetAudioMaxDB(int handle, float *maxDb);
@@ -794,7 +742,7 @@ dsStatus_t  dsGetAudioMaxDB(int handle, float *maxDb);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -803,8 +751,6 @@ dsStatus_t  dsGetAudioMaxDB(int handle, float *maxDb);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsGetAudioMinDB(int handle, float *minDb);
@@ -819,7 +765,7 @@ dsStatus_t  dsGetAudioMinDB(int handle, float *minDb);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -828,8 +774,6 @@ dsStatus_t  dsGetAudioMinDB(int handle, float *minDb);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsGetAudioOptimalLevel(int handle, float *optimalLevel);
@@ -842,7 +786,7 @@ dsStatus_t  dsGetAudioOptimalLevel(int handle, float *optimalLevel);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -853,8 +797,6 @@ dsStatus_t  dsGetAudioOptimalLevel(int handle, float *optimalLevel);
  * 
  * @see dsSetAudioDelay()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsGetAudioDelay(int handle, uint32_t *audioDelayMs);
@@ -867,7 +809,7 @@ dsStatus_t dsGetAudioDelay(int handle, uint32_t *audioDelayMs);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -878,8 +820,6 @@ dsStatus_t dsGetAudioDelay(int handle, uint32_t *audioDelayMs);
  * 
  * @see dsSetAudioDelayOffset()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsGetAudioDelayOffset(int handle, uint32_t *audioDelayOffsetMs);
@@ -893,7 +833,7 @@ dsStatus_t dsGetAudioDelayOffset(int handle, uint32_t *audioDelayOffsetMs);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -902,8 +842,6 @@ dsStatus_t dsGetAudioDelayOffset(int handle, uint32_t *audioDelayOffsetMs);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsSetAudioAtmosOutputMode(int handle, bool enable);
@@ -917,7 +855,7 @@ dsStatus_t dsSetAudioAtmosOutputMode(int handle, bool enable);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -926,8 +864,6 @@ dsStatus_t dsSetAudioAtmosOutputMode(int handle, bool enable);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsGetSinkDeviceAtmosCapability(int handle, dsATMOSCapability_t *capability);
@@ -941,7 +877,7 @@ dsStatus_t dsGetSinkDeviceAtmosCapability(int handle, dsATMOSCapability_t *capab
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -950,8 +886,6 @@ dsStatus_t dsGetSinkDeviceAtmosCapability(int handle, dsATMOSCapability_t *capab
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsIsAudioLoopThru(int handle, bool *loopThru);
@@ -965,7 +899,7 @@ dsStatus_t  dsIsAudioLoopThru(int handle, bool *loopThru);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -976,8 +910,6 @@ dsStatus_t  dsIsAudioLoopThru(int handle, bool *loopThru);
  * 
  * @see dsSetAudioMute()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsIsAudioMute(int handle, bool *muted);
@@ -991,7 +923,7 @@ dsStatus_t  dsIsAudioMute(int handle, bool *muted);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1002,8 +934,6 @@ dsStatus_t  dsIsAudioMute(int handle, bool *muted);
  * 
  * @see dsEnableAudioPort()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsIsAudioPortEnabled(int handle, bool *enabled);
@@ -1017,7 +947,7 @@ dsStatus_t  dsIsAudioPortEnabled(int handle, bool *enabled);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1028,8 +958,6 @@ dsStatus_t  dsIsAudioPortEnabled(int handle, bool *enabled);
  * 
  * @see dsIsAudioPortEnabled()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsEnableAudioPort(int handle, bool enabled);
@@ -1054,8 +982,6 @@ dsStatus_t  dsEnableAudioPort(int handle, bool enabled);
  * 
  * @see dsGetMS12AudioProfileList(), dsGetMS12AudioProfile()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsEnableMS12Config(int handle, dsMS12FEATURE_t feature,const bool enable);
@@ -1069,7 +995,7 @@ dsStatus_t  dsEnableMS12Config(int handle, dsMS12FEATURE_t feature,const bool en
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1080,8 +1006,6 @@ dsStatus_t  dsEnableMS12Config(int handle, dsMS12FEATURE_t feature,const bool en
  * 
  * @see dsGetLEConfig()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsEnableLEConfig(int handle, const bool enable);
@@ -1095,7 +1019,7 @@ dsStatus_t  dsEnableLEConfig(int handle, const bool enable);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1106,8 +1030,6 @@ dsStatus_t  dsEnableLEConfig(int handle, const bool enable);
  * 
  * @see dsEnableLEConfig()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsGetLEConfig(int handle, bool *enable);
@@ -1120,7 +1042,7 @@ dsStatus_t dsGetLEConfig(int handle, bool *enable);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1131,8 +1053,6 @@ dsStatus_t dsGetLEConfig(int handle, bool *enable);
  * 
  * @see dsGetAudioEncoding()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsSetAudioEncoding(int handle, dsAudioEncoding_t encoding);
@@ -1145,7 +1065,7 @@ dsStatus_t  dsSetAudioEncoding(int handle, dsAudioEncoding_t encoding);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1156,8 +1076,6 @@ dsStatus_t  dsSetAudioEncoding(int handle, dsAudioEncoding_t encoding);
  * 
  * @see dsGetAudioCompression()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsSetAudioCompression(int handle, int compression);
@@ -1171,7 +1089,7 @@ dsStatus_t  dsSetAudioCompression(int handle, int compression);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1182,8 +1100,6 @@ dsStatus_t  dsSetAudioCompression(int handle, int compression);
  * 
  * @see dsGetDialogEnhancement()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsSetDialogEnhancement(int handle, int level);
@@ -1197,7 +1113,7 @@ dsStatus_t  dsSetDialogEnhancement(int handle, int level);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1208,8 +1124,6 @@ dsStatus_t  dsSetDialogEnhancement(int handle, int level);
  * 
  * @see dsGetDolbyVolumeMode()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsSetDolbyVolumeMode(int handle, bool mode);
@@ -1223,7 +1137,7 @@ dsStatus_t  dsSetDolbyVolumeMode(int handle, bool mode);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1234,8 +1148,6 @@ dsStatus_t  dsSetDolbyVolumeMode(int handle, bool mode);
  * 
  * @see dsGetIntelligentEqualizerMode()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsSetIntelligentEqualizerMode(int handle, int mode);
@@ -1249,7 +1161,7 @@ dsStatus_t  dsSetIntelligentEqualizerMode(int handle, int mode);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1260,8 +1172,6 @@ dsStatus_t  dsSetIntelligentEqualizerMode(int handle, int mode);
  * 
  * @see dsGetVolumeLeveller()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsSetVolumeLeveller(int handle, dsVolumeLeveller_t volLeveller);
@@ -1274,7 +1184,7 @@ dsStatus_t  dsSetVolumeLeveller(int handle, dsVolumeLeveller_t volLeveller);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1285,8 +1195,6 @@ dsStatus_t  dsSetVolumeLeveller(int handle, dsVolumeLeveller_t volLeveller);
  * 
  * @see dsGetBassEnhancer()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsSetBassEnhancer(int handle, int boost);
@@ -1300,7 +1208,7 @@ dsStatus_t  dsSetBassEnhancer(int handle, int boost);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1311,8 +1219,6 @@ dsStatus_t  dsSetBassEnhancer(int handle, int boost);
  * 
  * @see dsIsSurroundDecoderEnabled()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsEnableSurroundDecoder(int handle, bool enabled);
@@ -1327,7 +1233,7 @@ dsStatus_t  dsEnableSurroundDecoder(int handle, bool enabled);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1338,8 +1244,6 @@ dsStatus_t  dsEnableSurroundDecoder(int handle, bool enabled);
  * 
  * @see dsGetDRCMode()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsSetDRCMode(int handle, int mode);
@@ -1354,7 +1258,7 @@ dsStatus_t  dsSetDRCMode(int handle, int mode);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1365,8 +1269,6 @@ dsStatus_t  dsSetDRCMode(int handle, int mode);
  * 
  * @see dsGetSurroundVirtualizer()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsSetSurroundVirtualizer(int handle, dsSurroundVirtualizer_t virtualizer);
@@ -1381,7 +1283,7 @@ dsStatus_t  dsSetSurroundVirtualizer(int handle, dsSurroundVirtualizer_t virtual
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1392,8 +1294,6 @@ dsStatus_t  dsSetSurroundVirtualizer(int handle, dsSurroundVirtualizer_t virtual
  * 
  * @see dsGetMISteering()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsSetMISteering(int handle, bool enabled);
@@ -1407,7 +1307,7 @@ dsStatus_t  dsSetMISteering(int handle, bool enabled);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1418,8 +1318,6 @@ dsStatus_t  dsSetMISteering(int handle, bool enabled);
  * 
  * @see dsGetGraphicEqualizerMode()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsSetGraphicEqualizerMode(int handle, int mode);
@@ -1434,7 +1332,7 @@ dsStatus_t  dsSetGraphicEqualizerMode(int handle, int mode);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1445,8 +1343,6 @@ dsStatus_t  dsSetGraphicEqualizerMode(int handle, int mode);
  * 
  * @see dsGetMS12AudioProfile(), dsGetMS12AudioProfileList()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsSetMS12AudioProfile(int handle, const char* profile);
@@ -1460,7 +1356,7 @@ dsStatus_t  dsSetMS12AudioProfile(int handle, const char* profile);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1471,8 +1367,6 @@ dsStatus_t  dsSetMS12AudioProfile(int handle, const char* profile);
  * 
  * @see dsGetStereoMode()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsSetStereoMode(int handle, dsAudioStereoMode_t mode);
@@ -1486,7 +1380,7 @@ dsStatus_t  dsSetStereoMode(int handle, dsAudioStereoMode_t mode);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1497,8 +1391,6 @@ dsStatus_t  dsSetStereoMode(int handle, dsAudioStereoMode_t mode);
  * 
  * @see dsGetStereoAuto()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsSetStereoAuto(int handle, int autoMode);
@@ -1511,7 +1403,7 @@ dsStatus_t  dsSetStereoAuto(int handle, int autoMode);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1522,8 +1414,6 @@ dsStatus_t  dsSetStereoAuto(int handle, int autoMode);
  * 
  * @see dsGetAudioGain()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsSetAudioGain(int handle, float gain);
@@ -1536,7 +1426,7 @@ dsStatus_t  dsSetAudioGain(int handle, float gain);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1547,8 +1437,6 @@ dsStatus_t  dsSetAudioGain(int handle, float gain);
  * 
  * @see dsGetAudioDB()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsSetAudioDB(int handle, float db);
@@ -1562,7 +1450,7 @@ dsStatus_t  dsSetAudioDB(int handle, float db);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1573,8 +1461,6 @@ dsStatus_t  dsSetAudioDB(int handle, float db);
  * 
  * @see dsGetAudioLevel()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsSetAudioLevel(int handle, float level);
@@ -1595,7 +1481,7 @@ dsStatus_t  dsSetAudioLevel(int handle, float level);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1604,8 +1490,6 @@ dsStatus_t  dsSetAudioLevel(int handle, float level);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsSetAudioDucking(int handle, dsAudioDuckingAction_t action, dsAudioDuckingType_t type, const unsigned char level);
@@ -1626,8 +1510,6 @@ dsStatus_t  dsSetAudioDucking(int handle, dsAudioDuckingAction_t action, dsAudio
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsEnableLoopThru(int handle, bool loopThru);
@@ -1641,7 +1523,7 @@ dsStatus_t  dsEnableLoopThru(int handle, bool loopThru);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1652,8 +1534,6 @@ dsStatus_t  dsEnableLoopThru(int handle, bool loopThru);
  * 
  * @see dsIsAudioMute()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsSetAudioMute(int handle, bool mute);
@@ -1668,7 +1548,7 @@ dsStatus_t  dsSetAudioMute(int handle, bool mute);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1677,8 +1557,6 @@ dsStatus_t  dsSetAudioMute(int handle, bool mute);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsIsAudioMSDecode(int handle, bool *HasMS11Decode);
@@ -1693,7 +1571,7 @@ dsStatus_t  dsIsAudioMSDecode(int handle, bool *HasMS11Decode);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1702,8 +1580,6 @@ dsStatus_t  dsIsAudioMSDecode(int handle, bool *HasMS11Decode);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsIsAudioMS12Decode(int handle, bool *HasMS12Decode);
@@ -1716,7 +1592,7 @@ dsStatus_t  dsIsAudioMS12Decode(int handle, bool *HasMS12Decode);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1727,8 +1603,6 @@ dsStatus_t  dsIsAudioMS12Decode(int handle, bool *HasMS12Decode);
  * 
  * @see dsGetAudioDelay()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsSetAudioDelay(int handle, const uint32_t audioDelayMs);
@@ -1741,7 +1615,7 @@ dsStatus_t dsSetAudioDelay(int handle, const uint32_t audioDelayMs);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1752,8 +1626,6 @@ dsStatus_t dsSetAudioDelay(int handle, const uint32_t audioDelayMs);
  * 
  * @see dsGetAudioDelayOffset()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsSetAudioDelayOffset(int handle, const uint32_t audioDelayOffsetMs);
@@ -1774,8 +1646,6 @@ dsStatus_t dsSetAudioDelayOffset(int handle, const uint32_t audioDelayOffsetMs);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsAudioPortTerm();
@@ -1789,7 +1659,7 @@ dsStatus_t  dsAudioPortTerm();
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1798,8 +1668,6 @@ dsStatus_t  dsAudioPortTerm();
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsAudioOutIsConnected(int handle, bool* pisCon);
@@ -1812,7 +1680,7 @@ dsStatus_t dsAudioOutIsConnected(int handle, bool* pisCon);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1821,8 +1689,6 @@ dsStatus_t dsAudioOutIsConnected(int handle, bool* pisCon);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsAudioOutRegisterConnectCB(dsAudioOutPortConnectCB_t CBFunc);
@@ -1834,7 +1700,7 @@ dsStatus_t dsAudioOutRegisterConnectCB(dsAudioOutPortConnectCB_t CBFunc);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1843,8 +1709,6 @@ dsStatus_t dsAudioOutRegisterConnectCB(dsAudioOutPortConnectCB_t CBFunc);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsAudioFormatUpdateRegisterCB (dsAudioFormatUpdateCB_t cbFun);
@@ -1858,7 +1722,7 @@ dsStatus_t dsAudioFormatUpdateRegisterCB (dsAudioFormatUpdateCB_t cbFun);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1867,8 +1731,6 @@ dsStatus_t dsAudioFormatUpdateRegisterCB (dsAudioFormatUpdateCB_t cbFun);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsGetAudioCapabilities(int handle, int *capabilities);
@@ -1881,7 +1743,7 @@ dsStatus_t dsGetAudioCapabilities(int handle, int *capabilities);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1890,8 +1752,6 @@ dsStatus_t dsGetAudioCapabilities(int handle, int *capabilities);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsGetMS12Capabilities(int handle, int *capabilities);
@@ -1904,7 +1764,7 @@ dsStatus_t dsGetMS12Capabilities(int handle, int *capabilities);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1913,8 +1773,6 @@ dsStatus_t dsGetMS12Capabilities(int handle, int *capabilities);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsResetDialogEnhancement(int handle);
@@ -1927,7 +1785,7 @@ dsStatus_t dsResetDialogEnhancement(int handle);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1936,8 +1794,6 @@ dsStatus_t dsResetDialogEnhancement(int handle);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsResetBassEnhancer(int handle);
@@ -1950,7 +1806,7 @@ dsStatus_t dsResetBassEnhancer(int handle);
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1959,8 +1815,6 @@ dsStatus_t dsResetBassEnhancer(int handle);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsResetSurroundVirtualizer(int handle);
@@ -1973,7 +1827,7 @@ dsStatus_t dsResetSurroundVirtualizer(int handle);
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1982,8 +1836,6 @@ dsStatus_t dsResetSurroundVirtualizer(int handle);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsResetVolumeLeveller(int handle);
@@ -2000,7 +1852,7 @@ dsStatus_t dsResetVolumeLeveller(int handle);
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -2011,8 +1863,6 @@ dsStatus_t dsResetVolumeLeveller(int handle);
  * 
  * @see dsGetMS12AudioProfileList(), dsGetMS12AudioProfile()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsSetMS12AudioProfileSetttingsOverride(int handle,const char* profileState,const char* profileName,
@@ -2027,7 +1877,7 @@ dsStatus_t  dsSetMS12AudioProfileSetttingsOverride(int handle,const char* profil
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -2040,8 +1890,6 @@ dsStatus_t  dsSetMS12AudioProfileSetttingsOverride(int handle,const char* profil
  * 
  * TODO: Remove unused variable handle.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsSetAssociatedAudioMixing(int handle, bool mixing);
@@ -2056,7 +1904,7 @@ dsStatus_t dsSetAssociatedAudioMixing(int handle, bool mixing);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -2069,8 +1917,6 @@ dsStatus_t dsSetAssociatedAudioMixing(int handle, bool mixing);
  * 
  * TODO: Remove unused variable handle.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsGetAssociatedAudioMixing(int handle, bool *mixing);
@@ -2084,7 +1930,7 @@ dsStatus_t  dsGetAssociatedAudioMixing(int handle, bool *mixing);
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -2097,9 +1943,7 @@ dsStatus_t  dsGetAssociatedAudioMixing(int handle, bool *mixing);
  * 
  * TODO: Remove unused variable handle.
  * 
- * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
+* 
  * 
  * 
  */
@@ -2115,7 +1959,7 @@ dsStatus_t  dsSetFaderControl(int handle, int mixerbalance);
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -2128,8 +1972,6 @@ dsStatus_t  dsSetFaderControl(int handle, int mixerbalance);
  * 
  * TODO: Remove unused variable handle.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsGetFaderControl(int handle, int* mixerbalance);
@@ -2142,7 +1984,7 @@ dsStatus_t  dsGetFaderControl(int handle, int* mixerbalance);
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -2155,8 +1997,6 @@ dsStatus_t  dsGetFaderControl(int handle, int* mixerbalance);
  * 
  * TODO: Remove unused variable handle.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsSetPrimaryLanguage(int handle, const char* pLang);
@@ -2169,7 +2009,7 @@ dsStatus_t  dsSetPrimaryLanguage(int handle, const char* pLang);
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -2182,8 +2022,6 @@ dsStatus_t  dsSetPrimaryLanguage(int handle, const char* pLang);
  * 
  * TODO: Remove unused variable handle.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsGetPrimaryLanguage(int handle, char* pLang);
@@ -2196,7 +2034,7 @@ dsStatus_t  dsGetPrimaryLanguage(int handle, char* pLang);
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -2209,8 +2047,6 @@ dsStatus_t  dsGetPrimaryLanguage(int handle, char* pLang);
  * 
  * TODO: Remove unused variable handle.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsSetSecondaryLanguage(int handle, const char* sLang);
@@ -2223,7 +2059,7 @@ dsStatus_t  dsSetSecondaryLanguage(int handle, const char* sLang);
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -2236,8 +2072,6 @@ dsStatus_t  dsSetSecondaryLanguage(int handle, const char* sLang);
  * 
  * TODO: Remove unused variable handle.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t  dsGetSecondaryLanguage(int handle, char* sLang);
@@ -2252,7 +2086,7 @@ dsStatus_t  dsGetSecondaryLanguage(int handle, char* sLang);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -2263,8 +2097,6 @@ dsStatus_t  dsGetSecondaryLanguage(int handle, char* sLang);
  * 
  * @see dsGetSupportedARCTypes()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsGetHDMIARCPortId(int *portId);

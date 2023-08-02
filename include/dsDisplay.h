@@ -121,17 +121,15 @@ typedef void (*dsDisplayEventCallback_t)(int handle, dsDisplayEvent_t event,
  * @brief Initializes the Display Hal.
  *
  *
- * @return dsStatus_t           - Status
- * @retval dsERR_NONE           - Success
- * @retval dsERR_INVALID_STATE  - Function is already initialized.
- * @retval dsERR_GENERAL        - Underlying undefined platform error
+ * @return dsStatus_t                   - Status
+ * @retval dsERR_NONE                   - Success
+ * @retval dsERR_ALREADY_INITIALIZED    - Function is already initialized.
+ * @retval dsERR_GENERAL                - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
  * 
  * @see dsDisplayTerm()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_ALREADY_INITIALIZED. Will do it in the next phase.
  * 
  */
 
@@ -149,7 +147,7 @@ dsStatus_t dsDisplayInit();
  * 
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported.
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -158,8 +156,6 @@ dsStatus_t dsDisplayInit();
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
  dsStatus_t dsGetDisplay(dsVideoPortType_t vType, int index, intptr_t *handle);
@@ -173,7 +169,7 @@ dsStatus_t dsDisplayInit();
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported.
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -182,8 +178,6 @@ dsStatus_t dsDisplayInit();
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsGetEDID(intptr_t handle, dsDisplayEDID_t *edid);
@@ -197,7 +191,7 @@ dsStatus_t dsGetEDID(intptr_t handle, dsDisplayEDID_t *edid);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -206,8 +200,6 @@ dsStatus_t dsGetEDID(intptr_t handle, dsDisplayEDID_t *edid);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsGetEDIDBytes(intptr_t handle, unsigned char **edid, int *length);
@@ -223,7 +215,7 @@ dsStatus_t dsGetEDIDBytes(intptr_t handle, unsigned char **edid, int *length);
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -232,8 +224,6 @@ dsStatus_t dsGetEDIDBytes(intptr_t handle, unsigned char **edid, int *length);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsGetDisplayAspectRatio(intptr_t handle, dsVideoAspectRatio_t *aspectRatio);
@@ -245,7 +235,7 @@ dsStatus_t dsGetDisplayAspectRatio(intptr_t handle, dsVideoAspectRatio_t *aspect
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
@@ -255,8 +245,6 @@ dsStatus_t dsGetDisplayAspectRatio(intptr_t handle, dsVideoAspectRatio_t *aspect
  * 
  * @see dsDisplayInit()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsDisplayTerm();
@@ -274,7 +262,7 @@ dsStatus_t dsDisplayTerm();
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_INVALID_STATE              - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -283,8 +271,6 @@ dsStatus_t dsDisplayTerm();
  * 
  * @see dsRegisterDisplayEventCallback()
  * 
- * @todo: Change the dsERR_INVALID_STATE 
- *          to dsERR_NOT_INITIALIZED. Will do it in the next phase.
  */
 
 dsStatus_t dsRegisterDisplayEventCallback(intptr_t handle, dsDisplayEventCallback_t cb);

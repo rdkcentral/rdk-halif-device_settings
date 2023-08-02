@@ -57,11 +57,11 @@
  *
  */
 
-/** @addtogroup DS_Manager_HAL DS Manager Hal
+/** @defgroup DS_Manager_HAL DS Manager Hal
  *  @{
  */
 
-/** @addtogroup DSHAL_ERROR Device Settings HAL Error Codes
+/** @defgroup DSHAL_ERROR_H Error Codes Header file
 *  @ingroup DSHAL_API
 *
 *  Defined hereunder are the error codes that are used in the Device Settings library.
@@ -82,17 +82,19 @@ extern "C" {
  * 
  * A non-zero value indicates an error.
  * 
+ * @todo CHANGE NOW: add dsERR_ALREADY_INITIALIZED and dsERR_NOT_INITIALIZED to enums, and update returns in the headers.
+ * @todo change prefix dsERR to DS_STATUS in later phase
  */
 
 typedef enum {
     dsERR_NONE = 0,                 ///< Input output operation is successful          
     dsERR_GENERAL = 1,              ///< Operation general error. @todo Change to more specific error in later phase.
     dsERR_INVALID_PARAM,            ///< Invalid parameter is passed to the module
-    dsERR_INVALID_STATE,            ///< Module is not initialised
-        ///< @todo to change to dsERR_ALREADY_INITIALIZED and dsERR_NOT_INITIALIZED 
-        ///< in respective places in following phase
+    dsERR_INVALID_STATE,
+    dsERR_ALREADY_INITIALIZED,      ///< Module is already initialised
+    dsERR_NOT_INITIALIZED,          ///< Module is not initialised
     dsERR_OPERATION_NOT_SUPPORTED,  ///< Operation not supported
-    dsERR_UNKNOWN                   ///< Unknown error
+    dsErr_MAX
 } dsStatus_t;
 
 /* End of DSHAL_ERROR doxygen group */

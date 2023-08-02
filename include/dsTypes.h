@@ -108,7 +108,7 @@
  * @note Each module in the must have an initialization function and
  * a termination function. Clients of the HAL API are required to call the initialization
  * function first before using any other APIs from the module. If the initialization
- * function is not yet called, all HAL API invocations must return ::dsERR_INVALID_STATE.
+ * function is not yet called, all HAL API invocations must return ::dsERR_NOT_INITIALIZED.
  * If an API is not supported on a platform, the implementation must return
  * ::dsERR_OPERATION_NOT_SUPPORTED. Otherwise, the API must return ::dsERR_NONE upon
  * success, or return the most suitable error code. Vendors implementing HAL APIs are
