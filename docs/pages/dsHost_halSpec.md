@@ -65,7 +65,7 @@ style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
 
 This interface provides a set of `APIs` to facilitate communication through the `caller` and `HAL`.
 
-The Device settings manager `HAL` for dsHost provides a set of `APIs` to query the current CPU temperature, preferred sleep mode, Host Power Mode, current version number, and the SoC ID. It also provides a set of `APIs` to set the preferred sleep mode,  the Host Power Mode, the Host EDID number, and the current version number.
+The Device settings manager `HAL` for dsHost provides a set of `APIs` to query the current CPU temperature, current version number, the Host EDID number, and the SoC ID. It also provides a an `API` to set the current version number.
 
 ## Component Runtime Execution Requirements
 
@@ -149,9 +149,9 @@ The caller is expected to have complete control over the life cycle of the `HAL`
 
 1. Initialize the `HAL` using function: `dsHostInit()` before making any other `API`s calls.  If `dsHostInit()` call fails, the `HAL` must return the respective error code, so that the caller can retry the operation.
 
-2. Once initialized, the `caller` can call `dsSetHostPowerMode()`, `dsSetPreferredSleepMode()` and `dsSetVersion()` to set functions.
+2. Once initialized, the `caller` can call `dsSetVersion()` to set functions.
 
-3. The `caller` can call `dsGetHostPowerMode()`, `dsGetPreferredSleepMode()`, `dsGetVersion()`, `dsGetCPUTemperature()`, `dsGetHostEDID()` and `dsGetSocIDFromSDK()` to query functions.
+3. The `caller` can call `dsGetVersion()`, `dsGetCPUTemperature()`, `dsGetHostEDID()` and `dsGetSocIDFromSDK()` to query functions.
 
 4. De-initialized the `HAL` using the function: `dsHostTerm()`
 
@@ -169,26 +169,6 @@ The caller is expected to have complete control over the life cycle of the `HAL`
     participant Driver as SoC
     Caller->>HAL:dsHostInit()
     Note over HAL: SOC initializes the underlying subsystems.
-    HAL-->>Caller:return
-    Caller->>HAL:dsSetHostPowerMode()
-    Note over HAL: Sets the power mode of the host.
-    HAL->>Driver:Setting the power mode
-    Driver-->>HAL:return
-    HAL-->>Caller:return
-    Caller->>HAL:dsGetHostPowerMode()
-    Note over HAL: Returns the power mode of the host.
-    HAL->>Driver:Getting the power mode
-    Driver-->>HAL:return
-    HAL-->>Caller:return
-    Caller->>HAL:dsSetPreferredSleepMode()
-    Note over HAL: Sets the preferred sleep mode.
-    HAL->>Driver:Setting the preferred sleep mode.
-    Driver-->>HAL:return
-    HAL-->>Caller:return
-    Caller->>HAL:dsGetPreferredSleepMode()
-    Note over HAL: Returns the current preferred sleep mode.
-    HAL->>Driver:Getting the preferred sleep mode.
-    Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsSetVersion()
     Note over HAL: Sets the version

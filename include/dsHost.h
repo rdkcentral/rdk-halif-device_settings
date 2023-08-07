@@ -92,59 +92,6 @@ extern "C" {
 dsStatus_t dsHostInit();
 
 /**
- * @brief Set the power mode.
- *
- * This function sets the power mode of the host to active or standby and turns on/off
- * all the ouput ports.
- *
- * @param[in] newPower  - The power mode of the host. See dsPowerState_t.
- *
- * @return dsStatus_t               - Status
- * @retval dsERR_NONE               - Success
- * @retval dsERR_NOT_INITIALIZED    - Module is not initialised
- * @retval dsERR_INVALID_PARAM      - Parameter passed to this function is invalid
- * @retval dsERR_GENERAL            - Underlying undefined platform error
- *
- * @note dsPOWER_OFF is not currently being used.
- * 
- * @pre dsHostInit() must be called before calling this API.
- * 
- * @warning  This API is Not thread safe.
- * 
- * @see dsGetHostPowerMode()
-* 
- * 
- * @todo Update newPower to dsPowerState_t.
- * 
- */
-
-dsStatus_t dsSetHostPowerMode(int newPower);
-
-/**
- * @brief Get the current power mode.
- *
- * This function gets the current power mode of the host. 
- *
- * @param[out] currPower    - current power state of the system mode on return. 
- *                                  See dsPowerState_t for possible returns.
- *
- * @return dsStatus_t               - Status
- * @retval dsERR_NONE               - Success
- * @retval dsERR_NOT_INITIALIZED    - Module is not initialised
- * @retval dsERR_INVALID_PARAM      - Parameter passed to this function is invalid
- * @retval dsERR_GENERAL            - Underlying undefined platform error
- * 
- * @warning  This API is Not thread safe.
- * 
- * @see dsSetHostPowerMode()
-* 
- * 
- * @todo Update currPower to dsPowerState_t.
- */
-
-dsStatus_t dsGetHostPowerMode(int *currPower);
-
-/**
  * @brief Terminate the Host sub-system.
  *
  * This function resets the data structures used within the Host module and releases any
@@ -166,9 +113,12 @@ dsStatus_t dsHostTerm();
 
 /**
  * @brief This function returns the preferred sleep mode which is persisted.
+ * 
+ * This function is not apart of the HAL interface.
  *
  * @param[out] pMode    - Current preferred sleep mode settings of the device. 
  *                              See dsSleepMode_t for possible values.
+ * 
  *
  * @return dsStatus_t                       - Status
  * @retval dsERR_NONE                       - Success
@@ -186,7 +136,9 @@ dsStatus_t dsHostTerm();
 dsStatus_t dsGetPreferredSleepMode(dsSleepMode_t *pMode);
 
 /**
- * @brief This function sets the preferred sleep mode. This value will persisted across reboots.
+ * @brief This function sets the preferred sleep mode. 
+ * 
+ * This function is not apart of the HAL interface.
  *
  * @param[in] mode  - Sleep mode to set. See dsSleepMode_t for possible values.
  *
@@ -207,6 +159,7 @@ dsStatus_t dsSetPreferredSleepMode(dsSleepMode_t mode);
 
 /**
  * @brief This function gets the CPU temperature in centigrade.
+ * 
  *
  * @param[out] cpuTemperature   - CPU temperature value is obtained in centigrade 
  *
