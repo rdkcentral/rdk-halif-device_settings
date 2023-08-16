@@ -10,7 +10,6 @@
 ## Table of Contents
 
 - [Acronyms, Terms and Abbreviations](#acronyms-terms-and-abbreviations)
-- [References](#references)
 - [Description](#description)
 - [Component Runtime Execution Requirements](#component-runtime-execution-requirements)
   - [Initialization and Startup](#initialization-and-startup)
@@ -46,9 +45,6 @@
 - `CPU`:     Central Processing Unit
 - `SoC`:     System on chip
 
-## References
-
-
 ## Description
 
 The diagram below describes a high-level software architecture of the module stack.
@@ -63,16 +59,15 @@ style z fill:#fcc,stroke:#333,stroke-width:0.3px,align:left
 style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
  ```
 
-This interface provides a set of `APIs` to facilitate communication through the `caller` and `HAL`.
+DeviceSettings Host `HAL` provides a set of `APIs` to initialize, set, and query information about the `HAL` and `SoC`.
 
-The Device settings manager `HAL` for dsHost provides a set of `APIs` to query the current CPU temperature, current version number, the Host EDID number, and the SoC ID. It also provides a an `API` to set the current version number.
+- The main purpose is to facilitate communication between the `Caller`, `HAL` and the `SoC`, such that information about the current `HAL` version number, the Host EDID number, the current CPU temperature, and the SoC ID can be queried by the `Caller`.
 
 ## Component Runtime Execution Requirements
 
-
 ### Initialization and Startup
 
-`Caller` should initialize by calling `dsHostInit()` before calling any other `APIs`.
+`Caller` must be initialized by calling `dsHostInit()` before calling any other `APIs`.
 
 ### Threading Model
 
@@ -84,13 +79,15 @@ This interface is required to support a single instantiation with a single proce
 
 ### Memory Model
 
+This interface is not required to allocate and return memory pointers. Any pointers created by the interface must be cleaned up upon termination.
+
 ### Power Management Requirements
 
 Although this interface is not required to be involved in any of the power management operations, the state transitions MUST not affect its operation. e.g. on resumption from a low power state, the interface should operate as if no transition has occurred.
 
 ### Asynchronous Notification Model
 
-No Asynchronous notification.
+This interface is not required to support asynchronous notification.
 
 ### Blocking calls
 
@@ -149,9 +146,9 @@ The caller is expected to have complete control over the life cycle of the `HAL`
 
 1. Initialize the `HAL` using function: `dsHostInit()` before making any other `API`s calls.  If `dsHostInit()` call fails, the `HAL` must return the respective error code, so that the caller can retry the operation.
 
-2. Once initialized, the `caller` can call `dsSetVersion()` to set functions.
+2. Once initialized, the `caller` can call `dsSetVersion()` to set the version.
 
-3. The `caller` can call `dsGetVersion()`, `dsGetCPUTemperature()`, `dsGetHostEDID()` and `dsGetSocIDFromSDK()` to query functions.
+3. The `caller` can call `dsGetVersion()`, `dsGetCPUTemperature()`, `dsGetHostEDID()` and `dsGetSocIDFromSDK()` to query the needed information.
 
 4. De-initialized the `HAL` using the function: `dsHostTerm()`
 
