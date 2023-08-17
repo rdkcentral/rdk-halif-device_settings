@@ -65,13 +65,17 @@ DeviceSettings Host `HAL` provides a set of `APIs` to initialize, set, and query
 
 ## Component Runtime Execution Requirements
 
+The component should manage system resources appropriately to avoid memory leaks and excessive resource utilization. Efficient memory management and resource cleanup are essential for stable and reliable execution. Additionally, the component should meet specified performance requirements, including response time, throughput, and resource usage based on the underlying platform's capabilities. The component should also be designed to scale effectively with increased load, being able to handle higher levels of usage without significant degradation in performance or stability.
+
+Failure to meet these requirements will likely result in undefined and unexpected behavior.
+
 ### Initialization and Startup
 
-`Caller` must be initialized by calling `dsHostInit()` before calling any other `APIs`.
+`Caller` must be initialized by calling `dsHostInit()` before calling any other `APIs`. The `Caller` is expected to have complete control over the life cycle of the `DeviceSettings Host` module.
 
 ### Threading Model
 
-This interface is not required to be thread safe. Any caller invoking the `API`s should ensure calls are made in a thread safe manner.
+This interface is not required to be thread safe. Any `caller` invoking the `API`s should ensure calls are made in a thread safe manner. `HAL` is allowed to create internal threads for its operations without excessively consuming system resources. Any threads created by the `HAL` should be handled gracefully and respective error codes should be returned if any corresponding `API` fails.
 
 ### Process Model
 
@@ -103,13 +107,15 @@ There is no requirement for the interface to persist any setting information. `C
 
 ## Non-functional requirements
 
+The following non-functional requirements will be supported by the module.
+
 ### Logging and debugging requirements
 
 This interface is required to support DEBUG, INFO and ERROR messages. INFO and DEBUG should be disabled by default and enabled when required.
 
 ### Memory and performance requirements
 
-This interface is required to not cause excessive memory and CPU utilization.
+This interface will ensure optimal use of memory and CPU according to the specific capabilities of the system.
 
 ### Quality Control
 
@@ -130,7 +136,10 @@ The source code must build into a shared library and must be named as `libdshal.
  
 ### Variability Management
 
-Any changes in the `API`s should be reviewed and approved by the component architects.
+- Any changes in the `APIs` should be reviewed and approved by the component architects.
+- `DeviceSettings Host` `HAL` modification should support backward compatibility for the generic operations like image upgrade and downgrade
+- `DeviceSettings Host` should return the dsERR_OPERATION_NOT_SUPPORTED error code, If any of the interface - `APIs` are not supported by the underlying hardware
+- Providers of the `DeviceSettings Host` `HAL` should keep a well-defined version history for tracking alterations across diverse library versions, along with their corresponding verification results.
 
 ### Platform or Product Customization
 
@@ -142,9 +151,9 @@ None
 
 ### Theory of operation and key concepts
 
-The caller is expected to have complete control over the life cycle of the `HAL`.
+The `caller` is expected to have complete control over the life cycle of the `HAL`.
 
-1. Initialize the `HAL` using function: `dsHostInit()` before making any other `API`s calls.  If `dsHostInit()` call fails, the `HAL` must return the respective error code, so that the caller can retry the operation.
+1. Initialize the `HAL` using function: `dsHostInit()` before making any other `API`s calls.  If `dsHostInit()` call fails, the `HAL` must return the respective error code, so that the `caller` can retry the operation.
 
 2. Once initialized, the `caller` can call `dsSetVersion()` to set the version.
 
