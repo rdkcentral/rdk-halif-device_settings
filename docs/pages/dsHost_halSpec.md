@@ -165,8 +165,6 @@ The `caller` is expected to have complete control over the life cycle of the `HA
 
 #### Operational Call Sequence
 
-@todo discuss further on the dsSetVersion function call.
-
 ```mermaid
 %%{ init : { "theme" : "default", "flowchart" : { "curve" : "stepBefore" }}}%%
    sequenceDiagram
@@ -177,14 +175,10 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     Note over HAL: SOC initializes the underlying subsystems.
     HAL-->>Caller:return
     Caller->>HAL:dsSetVersion()
-    Note over HAL: Sets the version
-    HAL->>Driver:Setting the version number.
-    Driver-->>HAL:return
+    Note over HAL: Sets the HAL version number
     HAL-->>Caller:return
     Caller->>HAL:dsGetVersion()
-    Note over HAL: Returns the version.
-    HAL->>Driver:Getting the version number
-    Driver-->>HAL:return
+    Note over HAL: Gets the HAL version number
     Caller->>HAL:dsGetCPUTemperature()
     Note over HAL: Returns the current CPU temp.
     HAL->>Driver:Getting the current CPU temp
