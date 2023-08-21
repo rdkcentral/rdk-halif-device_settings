@@ -77,8 +77,10 @@ extern "C" {
 
 /**
  * @brief Initialize the Host HAL.
+ * 
+ * This function has to initialize any needed resources within the module.
  *
- * @return dsStatus_t                   - Status
+ * @return dsError_t                   - Status
  * @retval dsERR_NONE                   - Success
  * @retval dsERR_ALREADY_INITIALIZED    - Function is already initialized.
  * @retval dsERR_GENERAL                - Underlying undefined platform error
@@ -89,17 +91,15 @@ extern "C" {
  * 
  */
 
-dsStatus_t dsHostInit();
+dsError_t dsHostInit();
 
 /**
  * @brief Terminate the Host sub-system.
  *
- * This function resets the data structures used within the Host module and releases any
- * handles specific to the host module.
+ * This function has to release all the resources allocated during the init function.
  *
- * @return dsStatus_t               - Status
+ * @return dsError_t               - Status
  * @retval dsERR_NONE               - Success 
- * @retval dsERR_INVALID_PARAM      - Invalid parameter value.
  * @retval dsERR_NOT_INITIALIZED    - Module is not initialised
  * @retval dsERR_GENERAL            - General failure.
  * 
@@ -109,7 +109,7 @@ dsStatus_t dsHostInit();
  * 
  */
 
-dsStatus_t dsHostTerm();
+dsError_t dsHostTerm();
 
 /**
  * @brief This function returns the preferred sleep mode which is persisted.
@@ -120,7 +120,7 @@ dsStatus_t dsHostTerm();
  *                              See dsSleepMode_t for possible values.
  * 
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -133,7 +133,7 @@ dsStatus_t dsHostTerm();
  * 
  */
 
-dsStatus_t dsGetPreferredSleepMode(dsSleepMode_t *pMode);
+dsError_t dsGetPreferredSleepMode(dsSleepMode_t *pMode);
 
 /**
  * @brief This function sets the preferred sleep mode. 
@@ -142,7 +142,7 @@ dsStatus_t dsGetPreferredSleepMode(dsSleepMode_t *pMode);
  *
  * @param[in] mode  - Sleep mode to set. See dsSleepMode_t for possible values.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -155,7 +155,7 @@ dsStatus_t dsGetPreferredSleepMode(dsSleepMode_t *pMode);
  * 
  */
 
-dsStatus_t dsSetPreferredSleepMode(dsSleepMode_t mode);
+dsError_t dsSetPreferredSleepMode(dsSleepMode_t mode);
 
 /**
  * @brief This function gets the CPU temperature in centigrade.
@@ -163,7 +163,7 @@ dsStatus_t dsSetPreferredSleepMode(dsSleepMode_t mode);
  *
  * @param[out] cpuTemperature   - CPU temperature value is obtained in centigrade 
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -174,7 +174,7 @@ dsStatus_t dsSetPreferredSleepMode(dsSleepMode_t mode);
  * 
  */
 
-dsStatus_t dsGetCPUTemperature(float *cpuTemperature);
+dsError_t dsGetCPUTemperature(float *cpuTemperature);
 
 /**
  * @brief Get DS HAL API Version.
@@ -183,7 +183,7 @@ dsStatus_t dsGetCPUTemperature(float *cpuTemperature);
  *                                  Two Most significant Bytes are Major number,
  *                                  Two Least Significant Bytes are minor number.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -196,7 +196,9 @@ dsStatus_t dsGetCPUTemperature(float *cpuTemperature);
  * 
  */
 
-dsStatus_t dsGetVersion(uint32_t *versionNumber);
+
+@todo Version to be discussed with  amit.
+dsError_t dsGetVersion(uint32_t *versionNumber);
 
 /**
  * @brief Allows the Caller to set the runtime version of the dsHAL
@@ -205,7 +207,7 @@ dsStatus_t dsGetVersion(uint32_t *versionNumber);
  *                              Two Most significant Bytes are Major number,
  *                              Two Least Significant Bytes are minor number.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -218,14 +220,14 @@ dsStatus_t dsGetVersion(uint32_t *versionNumber);
  * 
  */
 
-dsStatus_t dsSetVersion(uint32_t versionNumber);
+dsError_t dsSetVersion(uint32_t versionNumber);
 
 /**
  * @brief This function returns SOC ID
  *
  * @param[out] socID    - 8 byte Chip ID programmed to the CHIP One Time Programmable area.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -236,7 +238,7 @@ dsStatus_t dsSetVersion(uint32_t versionNumber);
  * 
  */
 
-dsStatus_t dsGetSocIDFromSDK(char *socID);
+dsError_t dsGetSocIDFromSDK(char *socID);
 
 /**
  * @brief This function is used to get the host EDID and length
@@ -244,7 +246,7 @@ dsStatus_t dsGetSocIDFromSDK(char *socID);
  * @param[out] edid     - host EDID.
  * @param[out] length   - length of host EDID. Min value of 0. 
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -255,7 +257,7 @@ dsStatus_t dsGetSocIDFromSDK(char *socID);
  * 
  */
 
-dsStatus_t dsGetHostEDID(unsigned char *edid, int *length);
+dsError_t dsGetHostEDID(unsigned char *edid, int *length);
 
 /** @} */ // End of DSHAL_HOST_API doxygen group 
 /** @} */ // End of DS HAL

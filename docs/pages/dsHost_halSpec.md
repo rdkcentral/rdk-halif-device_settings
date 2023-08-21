@@ -61,7 +61,7 @@ style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
 
 DeviceSettings Host `HAL` provides a set of `APIs` to initialize, set, and query information about the `HAL` and `SoC`.
 
-- The main purpose is to facilitate communication between the `Caller`, `HAL` and the `SoC`, such that information about the current `HAL` version number, the Host EDID number, the current CPU temperature, and the SoC ID can be queried by the `Caller`.
+- The main purpose is to facilitate communication between the `Caller`, and `HAL` interface, such that information about the current `HAL` version number, the Host EDID number, the current CPU temperature, and the SoC ID can be queried by the `Caller`.
 
 ## Component Runtime Execution Requirements
 
@@ -83,7 +83,7 @@ This interface is required to support a single instantiation with a single proce
 
 ### Memory Model
 
-This interface is not required to allocate and return memory pointers. Any pointers created by the interface must be cleaned up upon termination.
+This interface is not required to allocate any memory. Any pointers created by the interface must be cleaned up upon termination.
 
 ### Power Management Requirements
 
@@ -95,7 +95,7 @@ This interface is not required to support asynchronous notification.
 
 ### Blocking calls
 
-There are no blocking calls. Synchronous calls should complete within a reasonable time period. Any call that can fail due to the lack of response from the connected device should have a timeout period and the function should return the relevant error code.
+There are no blocking calls. Synchronous calls should complete within a reasonable time period.
 
 ### Internal Error Handling
 
@@ -132,7 +132,9 @@ The `HAL` implementation is expected to released under the Apache License 2.0.
 
 ### Build Requirements
 
-The source code must build into a shared library and must be named as `libdshal.so`. The build mechanism must be independent of Yocto.
+The source code must build into a shared library for Device Settings and must be named as `libdshal.so`. The build mechanism must be independent of Yocto.
+
+@todo Reword this such that we mention host is apart of Device settings.
  
 ### Variability Management
 
@@ -160,6 +162,8 @@ The `caller` is expected to have complete control over the life cycle of the `HA
 3. The `caller` can call `dsGetVersion()`, `dsGetCPUTemperature()`, `dsGetHostEDID()` and `dsGetSocIDFromSDK()` to query the needed information.
 
 4. De-initialized the `HAL` using the function: `dsHostTerm()`
+
+@todo double check where the host EDID is read from.
 
 ### Diagrams
 

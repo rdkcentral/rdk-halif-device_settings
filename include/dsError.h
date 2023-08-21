@@ -95,7 +95,7 @@ typedef enum {
     dsERR_NOT_INITIALIZED,          ///< Module is not initialised
     dsERR_OPERATION_NOT_SUPPORTED,  ///< Operation not supported
     dsErr_MAX
-} dsStatus_t;
+} dsError_t;
 
 /* End of DSHAL_ERROR doxygen group */
 /**

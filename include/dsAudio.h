@@ -125,7 +125,7 @@ typedef void (*dsAudioFormatUpdateCB_t)(dsAudioFormat_t audioFormat);
 /**
  * @brief Initializes the Audio Port Hal.
  *
- * @return dsStatus_t                   - Status
+ * @return dsError_t                   - Status
  * @retval dsERR_NONE                   - Success
  * @retval dsERR_ALREADY_INITIALIZED    - Function is already initialized.
  * @retval dsERR_GENERAL                - Underlying undefined platform error
@@ -135,7 +135,7 @@ typedef void (*dsAudioFormatUpdateCB_t)(dsAudioFormat_t audioFormat);
  * 
  */
 
-dsStatus_t  dsAudioPortInit();
+dsError_t  dsAudioPortInit();
 
 /**
  * @brief This function is used to get the audio port handle.
@@ -146,7 +146,7 @@ dsStatus_t  dsAudioPortInit();
  * @param[in] index     - Index of audio port. Max value is platform specific. Min value is 0.
  * @param[out] handle   - The handle used by the caller to uniquely identify the HAL instance
  * 
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -159,7 +159,7 @@ dsStatus_t  dsAudioPortInit();
  * 
  */
 
-dsStatus_t  dsGetAudioPort(dsAudioPortType_t type, int index, int *handle);
+dsError_t  dsGetAudioPort(dsAudioPortType_t type, int index, int *handle);
 
 /**
  * @brief This function is used to get the encoding type of of the specified audio port.
@@ -167,7 +167,7 @@ dsStatus_t  dsGetAudioPort(dsAudioPortType_t type, int index, int *handle);
  * @param[in] handle    - The handle returned from the dsGetAudioPort() function
  * @param[out] encoding - Encoding setting of the audio port. See dsAudioEncoding_t
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -182,7 +182,7 @@ dsStatus_t  dsGetAudioPort(dsAudioPortType_t type, int index, int *handle);
  * 
  */
 
-dsStatus_t  dsGetAudioEncoding(int handle, dsAudioEncoding_t *encoding);
+dsError_t  dsGetAudioEncoding(int handle, dsAudioEncoding_t *encoding);
 
 /**
  * @brief This function is used to get the current audio format of the specified audio port.
@@ -190,7 +190,7 @@ dsStatus_t  dsGetAudioEncoding(int handle, dsAudioEncoding_t *encoding);
  * @param[in] handle        - The handle returned from the dsGetAudioPort() function
  * @param[out] audioFormat  - Audio format of the specified audio port. See dsAudioFormat_t
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -203,7 +203,7 @@ dsStatus_t  dsGetAudioEncoding(int handle, dsAudioEncoding_t *encoding);
  * 
  */
 
-dsStatus_t  dsGetAudioFormat(int handle, dsAudioFormat_t *audioFormat);
+dsError_t  dsGetAudioFormat(int handle, dsAudioFormat_t *audioFormat);
 
 /**
  * @brief This function is used to get the audio compression of of the specified audio port.
@@ -211,7 +211,7 @@ dsStatus_t  dsGetAudioFormat(int handle, dsAudioFormat_t *audioFormat);
  * @param[in] handle        - The handle returned from the dsGetAudioPort() function
  * @param[out] compression  - Compression value of the specified audio port. Range from 0 to 10
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -226,7 +226,7 @@ dsStatus_t  dsGetAudioFormat(int handle, dsAudioFormat_t *audioFormat);
  * 
  */
 
-dsStatus_t  dsGetAudioCompression(int handle, int *compression);
+dsError_t  dsGetAudioCompression(int handle, int *compression);
 
 /**
  * @brief This function is used to get the Dialog Enhancement level of the specified audio port.
@@ -234,7 +234,7 @@ dsStatus_t  dsGetAudioCompression(int handle, int *compression);
  * @param[in] handle    - The handle returned from the dsGetAudioPort() function
  * @param[out] level    - Dialog Enhancement level of the specified audio port. Range from 0 to 16
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -249,7 +249,7 @@ dsStatus_t  dsGetAudioCompression(int handle, int *compression);
  * 
  */
 
-dsStatus_t  dsGetDialogEnhancement(int handle, int *level);
+dsError_t  dsGetDialogEnhancement(int handle, int *level);
 
 /**
  * @brief This function is used to get the dolby audio mode status of the specified audio port.
@@ -258,7 +258,7 @@ dsStatus_t  dsGetDialogEnhancement(int handle, int *level);
  * @param[out] mode     - Dolby volume mode of the specified audio port. 
  *                              True if enabled, and false if disabled.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -273,7 +273,7 @@ dsStatus_t  dsGetDialogEnhancement(int handle, int *level);
  * 
  */
 
-dsStatus_t  dsGetDolbyVolumeMode(int handle, bool *mode);
+dsError_t  dsGetDolbyVolumeMode(int handle, bool *mode);
 
 /**
  * @brief This function is used to get the Intelligent Equalizer Mode of the specified audio port.
@@ -283,7 +283,7 @@ dsStatus_t  dsGetDolbyVolumeMode(int handle, bool *mode);
  *                                  0 = Off, 1 = Open, 2 = Rich, 3 = focused,
  *                                  4 = balanced, 5 = warm, 6 = detailed
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -298,7 +298,7 @@ dsStatus_t  dsGetDolbyVolumeMode(int handle, bool *mode);
  * 
  */
 
-dsStatus_t  dsGetIntelligentEqualizerMode(int handle, int *mode);
+dsError_t  dsGetIntelligentEqualizerMode(int handle, int *mode);
 
 /**
  * @brief This function is used to get the Dolby volume leveller 
@@ -308,7 +308,7 @@ dsStatus_t  dsGetIntelligentEqualizerMode(int handle, int *mode);
  * @param[out] volLeveller  - Volume Leveller setting of the specified audio port. 
  *                                  See dsVolumeLeveller_t
  * 
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -323,7 +323,7 @@ dsStatus_t  dsGetIntelligentEqualizerMode(int handle, int *mode);
  * 
  */
 
-dsStatus_t  dsGetVolumeLeveller(int handle, dsVolumeLeveller_t* volLeveller);
+dsError_t  dsGetVolumeLeveller(int handle, dsVolumeLeveller_t* volLeveller);
 
 /**
  * @brief This function is used to get the audio Bass of the specified audio port.
@@ -331,7 +331,7 @@ dsStatus_t  dsGetVolumeLeveller(int handle, dsVolumeLeveller_t* volLeveller);
  * @param[in] handle    - The handle returned from the dsGetAudioPort() function
  * @param[out] boost    - Bass Enhancer boost value of the specified audio port from 0 to 100
  * 
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -346,7 +346,7 @@ dsStatus_t  dsGetVolumeLeveller(int handle, dsVolumeLeveller_t* volLeveller);
  * 
  */
 
-dsStatus_t  dsGetBassEnhancer(int handle, int *boost);
+dsError_t  dsGetBassEnhancer(int handle, int *boost);
 
 /**
  * @brief This function is used to get the enable/disable status of 
@@ -356,7 +356,7 @@ dsStatus_t  dsGetBassEnhancer(int handle, int *boost);
  * @param[out] enabled  - Surround Decoder of the specified audio port, 
  *                              true if enabled, false if disabled
  * 
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -371,7 +371,7 @@ dsStatus_t  dsGetBassEnhancer(int handle, int *boost);
  * 
  */
 
-dsStatus_t  dsIsSurroundDecoderEnabled(int handle, bool *enabled);
+dsError_t  dsIsSurroundDecoderEnabled(int handle, bool *enabled);
 
 /**
  * @brief This function is used to get the DRC Mode of the specified audio port.
@@ -380,7 +380,7 @@ dsStatus_t  dsIsSurroundDecoderEnabled(int handle, bool *enabled);
  * @param[out] mode     - mode of the DRC type of the specified audio port.
  *                          0 for DRC line mode and 1 for DRC RF mode
  * 
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -395,7 +395,7 @@ dsStatus_t  dsIsSurroundDecoderEnabled(int handle, bool *enabled);
  * 
  */
 
-dsStatus_t  dsGetDRCMode(int handle, int *mode);
+dsError_t  dsGetDRCMode(int handle, int *mode);
 
 /**
  * @brief This function is used to get the audio Surround Virtualizer level 
@@ -405,7 +405,7 @@ dsStatus_t  dsGetDRCMode(int handle, int *mode);
  * @param[out] virtualizer  - Surround virtualizer setting of the specified audio port. 
  *                                  See dsSurroundVirtualizer_t
  * 
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -420,7 +420,7 @@ dsStatus_t  dsGetDRCMode(int handle, int *mode);
  * 
  */
 
-dsStatus_t  dsGetSurroundVirtualizer(int handle, dsSurroundVirtualizer_t *virtualizer);
+dsError_t  dsGetSurroundVirtualizer(int handle, dsSurroundVirtualizer_t *virtualizer);
 
 /**
  * @brief This function is used to get the audio Media intelligent Steering status of 
@@ -430,7 +430,7 @@ dsStatus_t  dsGetSurroundVirtualizer(int handle, dsSurroundVirtualizer_t *virtua
  * @param[out] enabled  - MI Steering of the specified audio port, 
  *                              true if enabled, false is enabled
  * 
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -445,7 +445,7 @@ dsStatus_t  dsGetSurroundVirtualizer(int handle, dsSurroundVirtualizer_t *virtua
  * 
  */
 
-dsStatus_t  dsGetMISteering(int handle, bool *enabled);
+dsError_t  dsGetMISteering(int handle, bool *enabled);
 
 /**
  * @brief This function is used to get the Graphic Equalizer Mode of the specified audio port.
@@ -454,7 +454,7 @@ dsStatus_t  dsGetMISteering(int handle, bool *enabled);
  * @param[out] mode     - Graphic Equalizer Mode of the specified audio port. 
  *                              0 for EQ OFF, 1 for EQ Open, 2 for EQ Rich and 3 for EQ Focused
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -469,7 +469,7 @@ dsStatus_t  dsGetMISteering(int handle, bool *enabled);
  * 
  */
 
-dsStatus_t  dsGetGraphicEqualizerMode(int handle, int *mode);
+dsError_t  dsGetGraphicEqualizerMode(int handle, int *mode);
 
 /**
  * @brief This function is used to get the supported MS12 
@@ -479,7 +479,7 @@ dsStatus_t  dsGetGraphicEqualizerMode(int handle, int *mode);
  * @param[out] profiles - List of supported audio profiles of the specified audio port. 
  *                                  See dsMS12AudioProfileList_t
  * 
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -494,7 +494,7 @@ dsStatus_t  dsGetGraphicEqualizerMode(int handle, int *mode);
  * 
  */
 
-dsStatus_t  dsGetMS12AudioProfileList(int handle, dsMS12AudioProfileList_t* profiles);
+dsError_t  dsGetMS12AudioProfileList(int handle, dsMS12AudioProfileList_t* profiles);
 
 /**
  * @brief This function is used to get current audio profile selection of the specified audio port.
@@ -503,7 +503,7 @@ dsStatus_t  dsGetMS12AudioProfileList(int handle, dsMS12AudioProfileList_t* prof
  * @param[out] profile  - The current audio profile of the specified audio port. 
  *                                  See dsGetMS12AudioProfileList()'s return for valid profiles.
  * 
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -518,7 +518,7 @@ dsStatus_t  dsGetMS12AudioProfileList(int handle, dsMS12AudioProfileList_t* prof
  * 
  */
 
-dsStatus_t  dsGetMS12AudioProfile(int handle, char *profile);
+dsError_t  dsGetMS12AudioProfile(int handle, char *profile);
 
 /**
  * @brief This function is used to get the supported ARC types of the connected ARC/eARC device
@@ -527,7 +527,7 @@ dsStatus_t  dsGetMS12AudioProfile(int handle, char *profile);
  * @param[out] types    - Value of supported ARC types of the specified audio port. 
  *                              See dsAudioARCTypes_t
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -540,7 +540,7 @@ dsStatus_t  dsGetMS12AudioProfile(int handle, char *profile);
  * 
  */
 
-dsStatus_t dsGetSupportedARCTypes(int handle, int *types);
+dsError_t dsGetSupportedARCTypes(int handle, int *types);
 
 /**
  * @brief This function is used to set Short Audio Descriptor retrieved 
@@ -554,7 +554,7 @@ dsStatus_t dsGetSupportedARCTypes(int handle, int *types);
  * @param[in] sad_list  - All SADs retrieved from CEC for the connected ARC device. 
  *                              See dsAudioSADList_t
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -567,7 +567,7 @@ dsStatus_t dsGetSupportedARCTypes(int handle, int *types);
  * 
  */
 
-dsStatus_t dsAudioSetSAD(int handle, dsAudioSADList_t sad_list);
+dsError_t dsAudioSetSAD(int handle, dsAudioSADList_t sad_list);
 
 /**
  * @brief This function is used to enable/disable ARC/EARC and route audio to connected device
@@ -575,7 +575,7 @@ dsStatus_t dsAudioSetSAD(int handle, dsAudioSADList_t sad_list);
  * @param[in] handle    - The handle returned from the dsGetAudioPort() function
  * @param[in] arcStatus - To enable/disable ARC/eARC feature. See dsAudioARCStatus_t
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -588,7 +588,7 @@ dsStatus_t dsAudioSetSAD(int handle, dsAudioSADList_t sad_list);
  * 
  */
 
-dsStatus_t dsAudioEnableARC(int handle, dsAudioARCStatus_t arcStatus);
+dsError_t dsAudioEnableARC(int handle, dsAudioARCStatus_t arcStatus);
 
 /**
  * @brief This function is used to get the stereo mode of the specified audio port.
@@ -597,7 +597,7 @@ dsStatus_t dsAudioEnableARC(int handle, dsAudioARCStatus_t arcStatus);
  * @param[out] stereoMode   - Stereo mode setting of the specified audio port. 
  *                                  See dsAudioStereoMode_t
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -612,7 +612,7 @@ dsStatus_t dsAudioEnableARC(int handle, dsAudioARCStatus_t arcStatus);
  * 
  */
 
-dsStatus_t  dsGetStereoMode(int handle, dsAudioStereoMode_t *stereoMode);
+dsError_t  dsGetStereoMode(int handle, dsAudioStereoMode_t *stereoMode);
 
 /**
  * @brief This function is used to get the current auto mode setting of the specified
@@ -622,7 +622,7 @@ dsStatus_t  dsGetStereoMode(int handle, dsAudioStereoMode_t *stereoMode);
  * @param[out] autoMode - Auto mode setting of the specified audio port.
  *                              0 for Disabled, 1 for Enabled
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -637,7 +637,7 @@ dsStatus_t  dsGetStereoMode(int handle, dsAudioStereoMode_t *stereoMode);
  * 
  */
 
-dsStatus_t  dsGetStereoAuto(int handle, int *autoMode);
+dsError_t  dsGetStereoAuto(int handle, int *autoMode);
 
 /**
  * @brief This function is used to get the audio gain of the specified audio port.
@@ -645,7 +645,7 @@ dsStatus_t  dsGetStereoAuto(int handle, int *autoMode);
  * @param[in] handle    - The handle returned from the dsGetAudioPort() function
  * @param[out] gain     - Gain value from -2080 to 480 of the specified audio port. 
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -660,7 +660,7 @@ dsStatus_t  dsGetStereoAuto(int handle, int *autoMode);
  * 
  */
 
-dsStatus_t  dsGetAudioGain(int handle, float *gain);
+dsError_t  dsGetAudioGain(int handle, float *gain);
 
 /**
  * @brief This function is used to get the current audio dB level of the specified audio port.
@@ -670,7 +670,7 @@ dsStatus_t  dsGetAudioGain(int handle, float *gain);
  *                           Platform specific, must be between the bounds of min and max dB.
  *                           See dsGetAudioMinDB() and dsGetAudioMaxDB() for bounds.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -685,7 +685,7 @@ dsStatus_t  dsGetAudioGain(int handle, float *gain);
  * 
  */
 
-dsStatus_t  dsGetAudioDB(int handle, float *db);
+dsError_t  dsGetAudioDB(int handle, float *db);
 
 /**
  * @brief This function is used to get the current audio volume level of the specified audio port.
@@ -694,7 +694,7 @@ dsStatus_t  dsGetAudioDB(int handle, float *db);
  * @param[out] level    - Audio level value from 0 to 100 of the specified audio port.
  *                      
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -709,7 +709,7 @@ dsStatus_t  dsGetAudioDB(int handle, float *db);
  * 
  */
 
-dsStatus_t  dsGetAudioLevel(int handle, float *level);
+dsError_t  dsGetAudioLevel(int handle, float *level);
 
 /**
  * @brief This function is used to get the maximum audio dB level of the specified audio port.
@@ -718,7 +718,7 @@ dsStatus_t  dsGetAudioLevel(int handle, float *level);
  * @param[out] maxDb    - Max audio dB value supported by the specified audio port as float value.
  *                              Platform Specific.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -731,7 +731,7 @@ dsStatus_t  dsGetAudioLevel(int handle, float *level);
  * 
  */
 
-dsStatus_t  dsGetAudioMaxDB(int handle, float *maxDb);
+dsError_t  dsGetAudioMaxDB(int handle, float *maxDb);
 
 /**
  * @brief This function is used to get the minimum audio dB level of the specified audio port.
@@ -740,7 +740,7 @@ dsStatus_t  dsGetAudioMaxDB(int handle, float *maxDb);
  * @param[out] minDb    - Minimum audio dB value supported by the specified audio port in float. 
  *                              Platform specific.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -753,7 +753,7 @@ dsStatus_t  dsGetAudioMaxDB(int handle, float *maxDb);
  * 
  */
 
-dsStatus_t  dsGetAudioMinDB(int handle, float *minDb);
+dsError_t  dsGetAudioMinDB(int handle, float *minDb);
 
 /**
  * @brief This function is used to get the optimal audio level of the specified audio port.
@@ -763,7 +763,7 @@ dsStatus_t  dsGetAudioMinDB(int handle, float *minDb);
  *                              Platform specific, must be between the bounds of min and max dB.
  *                              See dsGetAudioMinDB() and dsGetAudioMaxDB() for bounds.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -776,7 +776,7 @@ dsStatus_t  dsGetAudioMinDB(int handle, float *minDb);
  * 
  */
 
-dsStatus_t  dsGetAudioOptimalLevel(int handle, float *optimalLevel);
+dsError_t  dsGetAudioOptimalLevel(int handle, float *optimalLevel);
 
 /**
  * @brief This function is used to get the audio delay in ms
@@ -784,7 +784,7 @@ dsStatus_t  dsGetAudioOptimalLevel(int handle, float *optimalLevel);
  * @param[in] handle        - The handle returned from the dsGetAudioPort() function
  * @param[out] audioDelayMs - Audio delay in ms of the specified audio port.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -799,7 +799,7 @@ dsStatus_t  dsGetAudioOptimalLevel(int handle, float *optimalLevel);
  * 
  */
 
-dsStatus_t dsGetAudioDelay(int handle, uint32_t *audioDelayMs);
+dsError_t dsGetAudioDelay(int handle, uint32_t *audioDelayMs);
 
 /**
  * @brief This function is used to get the audio delay offset in ms
@@ -807,7 +807,7 @@ dsStatus_t dsGetAudioDelay(int handle, uint32_t *audioDelayMs);
  * @param[in] handle                - The handle returned from the dsGetAudioPort() function
  * @param[out] audioDelayOffsetMs   - Audio delay offset in ms of the specified audio port.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -822,7 +822,7 @@ dsStatus_t dsGetAudioDelay(int handle, uint32_t *audioDelayMs);
  * 
  */
 
-dsStatus_t dsGetAudioDelayOffset(int handle, uint32_t *audioDelayOffsetMs);
+dsError_t dsGetAudioDelayOffset(int handle, uint32_t *audioDelayOffsetMs);
 
 /**
  * @brief This function is used to set the audio ATMOS outout mode
@@ -831,7 +831,7 @@ dsStatus_t dsGetAudioDelayOffset(int handle, uint32_t *audioDelayOffsetMs);
  * @param[in] enable    - Set audio ATMOS output mode of the specified audio port, 
  *                              true if enabled, false if disabled.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -844,7 +844,7 @@ dsStatus_t dsGetAudioDelayOffset(int handle, uint32_t *audioDelayOffsetMs);
  * 
  */
 
-dsStatus_t dsSetAudioAtmosOutputMode(int handle, bool enable);
+dsError_t dsSetAudioAtmosOutputMode(int handle, bool enable);
   
 /**
  * @brief This function is used to get the sink device ATMOS capability
@@ -853,7 +853,7 @@ dsStatus_t dsSetAudioAtmosOutputMode(int handle, bool enable);
  * @param[out] capability   - Sink device ATMOS capability of the specified audio port, 
  *                                  see dsATMOSCapability_t.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -866,7 +866,7 @@ dsStatus_t dsSetAudioAtmosOutputMode(int handle, bool enable);
  * 
  */
 
-dsStatus_t dsGetSinkDeviceAtmosCapability(int handle, dsATMOSCapability_t *capability);
+dsError_t dsGetSinkDeviceAtmosCapability(int handle, dsATMOSCapability_t *capability);
 
 /**
  * @brief This function is used to get the loop-through mode of the specified audio port.
@@ -875,7 +875,7 @@ dsStatus_t dsGetSinkDeviceAtmosCapability(int handle, dsATMOSCapability_t *capab
  * @param[out] loopThru     - Loop-through setting of the specified audio. 
  *                                  True if enabled, false if disabled.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -888,7 +888,7 @@ dsStatus_t dsGetSinkDeviceAtmosCapability(int handle, dsATMOSCapability_t *capab
  * 
  */
 
-dsStatus_t  dsIsAudioLoopThru(int handle, bool *loopThru);
+dsError_t  dsIsAudioLoopThru(int handle, bool *loopThru);
 
 /**
  * @brief This function is used to get the audio mute status of the specified audio port.
@@ -897,7 +897,7 @@ dsStatus_t  dsIsAudioLoopThru(int handle, bool *loopThru);
  * @param[out] muted        - Mute setting of the specified audio port. 
  *                                  True if enabled, false if disabled.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -912,7 +912,7 @@ dsStatus_t  dsIsAudioLoopThru(int handle, bool *loopThru);
  * 
  */
 
-dsStatus_t  dsIsAudioMute(int handle, bool *muted);
+dsError_t  dsIsAudioMute(int handle, bool *muted);
 
 /**
  * @brief This function indicates whether the specified Audio port is enabled or not.
@@ -921,7 +921,7 @@ dsStatus_t  dsIsAudioMute(int handle, bool *muted);
  * @param[out] enabled      - Audio port enable state of the specified audio port. 
  *                                  True if enabled, false if disabled.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -936,7 +936,7 @@ dsStatus_t  dsIsAudioMute(int handle, bool *muted);
  * 
  */
 
-dsStatus_t  dsIsAudioPortEnabled(int handle, bool *enabled);
+dsError_t  dsIsAudioPortEnabled(int handle, bool *enabled);
 
 /**
  * @brief This function is used to enable or disable the specified Audio port.
@@ -945,7 +945,7 @@ dsStatus_t  dsIsAudioPortEnabled(int handle, bool *enabled);
  * @param[in] enabled       - Set the enabled status of the specified audio port. 
  *                                  True if enabled, false if disabled.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -960,7 +960,7 @@ dsStatus_t  dsIsAudioPortEnabled(int handle, bool *enabled);
  * 
  */
 
-dsStatus_t  dsEnableAudioPort(int handle, bool enabled);
+dsError_t  dsEnableAudioPort(int handle, bool enabled);
 
 /**
  * @brief This function is used to enable or disable MS12, Digital Audio Player V2, 
@@ -971,7 +971,7 @@ dsStatus_t  dsEnableAudioPort(int handle, bool enabled);
  * @param[in] enable        - MS12 feature to enable or disable.  
  *                              True if enabled, false id disabled.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success 
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -984,7 +984,7 @@ dsStatus_t  dsEnableAudioPort(int handle, bool enabled);
  * 
  */
 
-dsStatus_t  dsEnableMS12Config(int handle, dsMS12FEATURE_t feature,const bool enable);
+dsError_t  dsEnableMS12Config(int handle, dsMS12FEATURE_t feature,const bool enable);
 
 /**
  * @brief This function is used to enable or disable LE feature.
@@ -993,7 +993,7 @@ dsStatus_t  dsEnableMS12Config(int handle, dsMS12FEATURE_t feature,const bool en
  * @param[in] enable        - Set the LE features status of the specified audio port. 
  *                                  True if enabled, false if disabled.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1008,7 +1008,7 @@ dsStatus_t  dsEnableMS12Config(int handle, dsMS12FEATURE_t feature,const bool en
  * 
  */
 
-dsStatus_t  dsEnableLEConfig(int handle, const bool enable);
+dsError_t  dsEnableLEConfig(int handle, const bool enable);
 
 /**
  * @brief This function is used to get LE configuration
@@ -1017,7 +1017,7 @@ dsStatus_t  dsEnableLEConfig(int handle, const bool enable);
  * @param[out] enable       -  LE status of the specified audio port. 
  *                                  True if enabled, false if disabled.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1032,7 +1032,7 @@ dsStatus_t  dsEnableLEConfig(int handle, const bool enable);
  * 
  */
 
-dsStatus_t dsGetLEConfig(int handle, bool *enable);
+dsError_t dsGetLEConfig(int handle, bool *enable);
 
 /**
  * @brief This function is used to set the encoding type of the specified audio port.
@@ -1040,7 +1040,7 @@ dsStatus_t dsGetLEConfig(int handle, bool *enable);
  * @param[in] handle        - The handle returned from the dsGetAudioPort() function.
  * @param[in] encoding      - Encoding type to be used by the audio port. See dsAudioEncoding_t.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1055,7 +1055,7 @@ dsStatus_t dsGetLEConfig(int handle, bool *enable);
  * 
  */
 
-dsStatus_t  dsSetAudioEncoding(int handle, dsAudioEncoding_t encoding);
+dsError_t  dsSetAudioEncoding(int handle, dsAudioEncoding_t encoding);
 
 /**
  * @brief This function is used to set the audio compression of the specified audio port.
@@ -1063,7 +1063,7 @@ dsStatus_t  dsSetAudioEncoding(int handle, dsAudioEncoding_t encoding);
  * @param[in] handle        - The handle returned from the dsGetAudioPort() function.
  * @param[in] compression   - Indicates the compression leveler value. From 0 to 10.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1078,7 +1078,7 @@ dsStatus_t  dsSetAudioEncoding(int handle, dsAudioEncoding_t encoding);
  * 
  */
 
-dsStatus_t  dsSetAudioCompression(int handle, int compression);
+dsError_t  dsSetAudioCompression(int handle, int compression);
 
 /**
  * @brief This function is used to set the Dialog Enhancement level of the specified audio port.
@@ -1087,7 +1087,7 @@ dsStatus_t  dsSetAudioCompression(int handle, int compression);
  * @param[in] level         -  Dialog Enhancement level of the specified audio port. 
  *                                  Level ranges from 0 1o 16.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1102,7 +1102,7 @@ dsStatus_t  dsSetAudioCompression(int handle, int compression);
  * 
  */
 
-dsStatus_t  dsSetDialogEnhancement(int handle, int level);
+dsError_t  dsSetDialogEnhancement(int handle, int level);
 
 /**
  * @brief This function is used to set the dolby audio mode status of the specified audio port.
@@ -1111,7 +1111,7 @@ dsStatus_t  dsSetDialogEnhancement(int handle, int level);
  * @param[in] mode          - Dolby volume mode of the specified audio port. 
  *                                  True if enabled, false if disabled.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1126,7 +1126,7 @@ dsStatus_t  dsSetDialogEnhancement(int handle, int level);
  * 
  */
 
-dsStatus_t  dsSetDolbyVolumeMode(int handle, bool mode);
+dsError_t  dsSetDolbyVolumeMode(int handle, bool mode);
 
 /**
  * @brief This function is used to set the Intelligent Equalizer Mode of the specified audio port.
@@ -1135,7 +1135,7 @@ dsStatus_t  dsSetDolbyVolumeMode(int handle, bool mode);
  * @param[in] mode          - Intelligent Equalizer mode of the specified audio port. 
  *                                  True if enabled, false if disabled.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1150,7 +1150,7 @@ dsStatus_t  dsSetDolbyVolumeMode(int handle, bool mode);
  * 
  */
 
-dsStatus_t  dsSetIntelligentEqualizerMode(int handle, int mode);
+dsError_t  dsSetIntelligentEqualizerMode(int handle, int mode);
 
 /**
  * @brief This function is used to set the Dolby volume leveller of the specified audio port.
@@ -1159,7 +1159,7 @@ dsStatus_t  dsSetIntelligentEqualizerMode(int handle, int mode);
  * @param[in] volLeveller   - Volume Leveller setting of the specified audio port. 
  *                                  See dsVolumeLeveller_t.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1174,7 +1174,7 @@ dsStatus_t  dsSetIntelligentEqualizerMode(int handle, int mode);
  * 
  */
 
-dsStatus_t  dsSetVolumeLeveller(int handle, dsVolumeLeveller_t volLeveller);
+dsError_t  dsSetVolumeLeveller(int handle, dsVolumeLeveller_t volLeveller);
 
 /**
  * @brief This function is used to set the audio Bass of the specified audio port.
@@ -1182,7 +1182,7 @@ dsStatus_t  dsSetVolumeLeveller(int handle, dsVolumeLeveller_t volLeveller);
  * @param[in] handle    The handle returned from the dsGetAudioPort() function.
  * @param[in] boost     Bass Enhancer boost value of the specified audio port from 0 to 100.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1197,7 +1197,7 @@ dsStatus_t  dsSetVolumeLeveller(int handle, dsVolumeLeveller_t volLeveller);
  * 
  */
 
-dsStatus_t  dsSetBassEnhancer(int handle, int boost);
+dsError_t  dsSetBassEnhancer(int handle, int boost);
 
 /**
  * @brief This function is used to set the audio Surround Decoder of the specified audio port.
@@ -1206,7 +1206,7 @@ dsStatus_t  dsSetBassEnhancer(int handle, int boost);
  * @param[in] enabled   - Surround Decoder status of the specified audio port. 
  *                                  True if enabled, false id disabled.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1221,7 +1221,7 @@ dsStatus_t  dsSetBassEnhancer(int handle, int boost);
  * 
  */
 
-dsStatus_t  dsEnableSurroundDecoder(int handle, bool enabled);
+dsError_t  dsEnableSurroundDecoder(int handle, bool enabled);
 
 /**
  * @brief This function is used to set the Dynamic Range Control Mode of the specified audio port.
@@ -1231,7 +1231,7 @@ dsStatus_t  dsEnableSurroundDecoder(int handle, bool enabled);
  *                              0 for Dynamic Range Control Line Mode, 
  *                              1 for Dynamic Range Control RF mode.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1246,7 +1246,7 @@ dsStatus_t  dsEnableSurroundDecoder(int handle, bool enabled);
  * 
  */
 
-dsStatus_t  dsSetDRCMode(int handle, int mode);
+dsError_t  dsSetDRCMode(int handle, int mode);
 
 /**
  * @brief This function is used to set the audio Surround Virtualizer 
@@ -1256,7 +1256,7 @@ dsStatus_t  dsSetDRCMode(int handle, int mode);
  * @param[in] virtualizer   - Surround virtualizer setting of the specified audio port. 
  *                                  See dsSurroundVirtualizer_t.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1271,7 +1271,7 @@ dsStatus_t  dsSetDRCMode(int handle, int mode);
  * 
  */
 
-dsStatus_t  dsSetSurroundVirtualizer(int handle, dsSurroundVirtualizer_t virtualizer);
+dsError_t  dsSetSurroundVirtualizer(int handle, dsSurroundVirtualizer_t virtualizer);
 
 /**
  * @brief This function is used to set the audio Media intelligent Steering 
@@ -1281,7 +1281,7 @@ dsStatus_t  dsSetSurroundVirtualizer(int handle, dsSurroundVirtualizer_t virtual
  * @param[in] enabled   - enable/disable MI Steering of the specified audio port. 
  *                              True if enabled, false id disabled.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1296,7 +1296,7 @@ dsStatus_t  dsSetSurroundVirtualizer(int handle, dsSurroundVirtualizer_t virtual
  * 
  */
 
-dsStatus_t  dsSetMISteering(int handle, bool enabled);
+dsError_t  dsSetMISteering(int handle, bool enabled);
 
 /**
  * @brief This function is used to get the Graphic Equalizer Mode of the specified audio port.
@@ -1305,7 +1305,7 @@ dsStatus_t  dsSetMISteering(int handle, bool enabled);
  * @param[in] mode      - Graphic Equalizer mode of the specified audio port. 
  *                          0 for EQ OFF, 1 for EQ Open, 2 for EQ Rich and 3 for EQ Focused.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1320,7 +1320,7 @@ dsStatus_t  dsSetMISteering(int handle, bool enabled);
  * 
  */
 
-dsStatus_t  dsSetGraphicEqualizerMode(int handle, int mode);
+dsError_t  dsSetGraphicEqualizerMode(int handle, int mode);
 
 /**
  * @brief This function is used to set the MS12 audio profile of the specified audio port
@@ -1330,7 +1330,7 @@ dsStatus_t  dsSetGraphicEqualizerMode(int handle, int mode);
  *                              All supported profile names can be accessed using 
  *                              dsGetMS12AudioProfileList() function call.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1345,7 +1345,7 @@ dsStatus_t  dsSetGraphicEqualizerMode(int handle, int mode);
  * 
  */
 
-dsStatus_t  dsSetMS12AudioProfile(int handle, const char* profile);
+dsError_t  dsSetMS12AudioProfile(int handle, const char* profile);
 
 /**
  * @brief This function is used to set the stereo mode of the specified audio port.
@@ -1354,7 +1354,7 @@ dsStatus_t  dsSetMS12AudioProfile(int handle, const char* profile);
  * @param[in] mode      - Indicates the stereo mode of the specified audio port. 
  *                              See dsAudioStereoMode_t
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1369,7 +1369,7 @@ dsStatus_t  dsSetMS12AudioProfile(int handle, const char* profile);
  * 
  */
 
-dsStatus_t  dsSetStereoMode(int handle, dsAudioStereoMode_t mode);
+dsError_t  dsSetStereoMode(int handle, dsAudioStereoMode_t mode);
 
 /**
  * @brief This function sets the auto mode of the specified audio port.
@@ -1378,7 +1378,7 @@ dsStatus_t  dsSetStereoMode(int handle, dsAudioStereoMode_t mode);
  * @param[in] autoMode  - Indicates the auto mode of the specified audio port. 
  *                              0 is disabled, 1 is enabled.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1393,7 +1393,7 @@ dsStatus_t  dsSetStereoMode(int handle, dsAudioStereoMode_t mode);
  * 
  */
 
-dsStatus_t  dsSetStereoAuto(int handle, int autoMode);
+dsError_t  dsSetStereoAuto(int handle, int autoMode);
 
 /**
  * @brief This function is used to set the audio gain of the specified audio port. 
@@ -1401,7 +1401,7 @@ dsStatus_t  dsSetStereoAuto(int handle, int autoMode);
  * @param[in] handle    - The handle returned from the dsGetAudioPort() function.
  * @param[in] gain      - The gain to be used by the audio port value from -2080 to 480.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1416,7 +1416,7 @@ dsStatus_t  dsSetStereoAuto(int handle, int autoMode);
  * 
  */
 
-dsStatus_t  dsSetAudioGain(int handle, float gain);
+dsError_t  dsSetAudioGain(int handle, float gain);
 
 /**
  * @brief This function sets the dB (decibel) level of the specified audio port.
@@ -1424,7 +1424,7 @@ dsStatus_t  dsSetAudioGain(int handle, float gain);
  * @param[in] handle    - The handle returned from the dsGetAudioPort() function.
  * @param[in] db        - The dB level from 0 to 10 to be used by the audio port.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1439,7 +1439,7 @@ dsStatus_t  dsSetAudioGain(int handle, float gain);
  * 
  */
 
-dsStatus_t  dsSetAudioDB(int handle, float db);
+dsError_t  dsSetAudioDB(int handle, float db);
 
 /**
  * @brief This function sets the audio volume level of the specified audio port.
@@ -1448,7 +1448,7 @@ dsStatus_t  dsSetAudioDB(int handle, float db);
  * @param[in] level     - The volume level value of the specified audio port. 
  *                              Supported range 0 to 100.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1463,7 +1463,7 @@ dsStatus_t  dsSetAudioDB(int handle, float db);
  * 
  */
 
-dsStatus_t  dsSetAudioLevel(int handle, float level);
+dsError_t  dsSetAudioLevel(int handle, float level);
 
 /**
  * @brief This function sets the audio ducking level of the 
@@ -1479,7 +1479,7 @@ dsStatus_t  dsSetAudioLevel(int handle, float level);
  *                              this will mute the audio. 
  *                              See dsSetStereoMode and dsAudioStereoMode_t 
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1492,7 +1492,7 @@ dsStatus_t  dsSetAudioLevel(int handle, float level);
  * 
  */
 
-dsStatus_t  dsSetAudioDucking(int handle, dsAudioDuckingAction_t action, dsAudioDuckingType_t type, const unsigned char level);
+dsError_t  dsSetAudioDucking(int handle, dsAudioDuckingAction_t action, dsAudioDuckingType_t type, const unsigned char level);
 
 /**
  * @brief This function is used to set loop-through mode of the specified audio port.
@@ -1501,7 +1501,7 @@ dsStatus_t  dsSetAudioDucking(int handle, dsAudioDuckingAction_t action, dsAudio
  * @param[in] loopThru  - Enabled/disable loop-through of the specified audio port. 
  *                              True if enabled, false if enabled.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success 
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -1512,7 +1512,7 @@ dsStatus_t  dsSetAudioDucking(int handle, dsAudioDuckingAction_t action, dsAudio
  * 
  */
 
-dsStatus_t  dsEnableLoopThru(int handle, bool loopThru);
+dsError_t  dsEnableLoopThru(int handle, bool loopThru);
 
 /**
  * @brief This function is used to mute or un-mute of the specified audio port.
@@ -1521,7 +1521,7 @@ dsStatus_t  dsEnableLoopThru(int handle, bool loopThru);
  * @param[in] mute      - Enabled/disable mute/un-mute of the specified audio port. 
  *                              True if enabled, false if disabled.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1536,7 +1536,7 @@ dsStatus_t  dsEnableLoopThru(int handle, bool loopThru);
  * 
  */
 
-dsStatus_t  dsSetAudioMute(int handle, bool mute);
+dsError_t  dsSetAudioMute(int handle, bool mute);
 
 /**
  * @brief This function is used to check whether of the specified audio port supports 
@@ -1546,7 +1546,7 @@ dsStatus_t  dsSetAudioMute(int handle, bool mute);
  * @param[out] HasMS11Decode    - MS11 Multistream Decode setting is true if enabled and 
  *                                      false if disabled for the specified audio port.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1559,7 +1559,7 @@ dsStatus_t  dsSetAudioMute(int handle, bool mute);
  * 
  */
 
-dsStatus_t  dsIsAudioMSDecode(int handle, bool *HasMS11Decode);
+dsError_t  dsIsAudioMSDecode(int handle, bool *HasMS11Decode);
 
 /**
  * @brief This function is used to check whether of the specified audio port 
@@ -1569,7 +1569,7 @@ dsStatus_t  dsIsAudioMSDecode(int handle, bool *HasMS11Decode);
  * @param[out] HasMS12Decode    - MS12 Multistream Decode setting is true if enabled and false 
  *                                      if disabled for the specified audio port.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1582,7 +1582,7 @@ dsStatus_t  dsIsAudioMSDecode(int handle, bool *HasMS11Decode);
  * 
  */
 
-dsStatus_t  dsIsAudioMS12Decode(int handle, bool *HasMS12Decode);
+dsError_t  dsIsAudioMS12Decode(int handle, bool *HasMS12Decode);
 
 /**
  * @brief This function is used to set the audio delay in ms of the specified audio port.
@@ -1590,7 +1590,7 @@ dsStatus_t  dsIsAudioMS12Decode(int handle, bool *HasMS12Decode);
  * @param[in] handle            - The handle returned from the dsGetAudioPort() function.
  * @param[in] audioDelayMs      - Delay to apply in ms of the specified audio port.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1605,7 +1605,7 @@ dsStatus_t  dsIsAudioMS12Decode(int handle, bool *HasMS12Decode);
  * 
  */
 
-dsStatus_t dsSetAudioDelay(int handle, const uint32_t audioDelayMs);
+dsError_t dsSetAudioDelay(int handle, const uint32_t audioDelayMs);
 
 /**
  * @brief This function is used to set the audio delay offset in ms of the specified audio port.
@@ -1613,7 +1613,7 @@ dsStatus_t dsSetAudioDelay(int handle, const uint32_t audioDelayMs);
  * @param[in] handle                - The handle returned from the dsGetAudioPort() function.
  * @param[in] audioDelayOffsetMs    - Offset delay to apply in ms of the specified audio port.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1628,7 +1628,7 @@ dsStatus_t dsSetAudioDelay(int handle, const uint32_t audioDelayMs);
  * 
  */
 
-dsStatus_t dsSetAudioDelayOffset(int handle, const uint32_t audioDelayOffsetMs);
+dsError_t dsSetAudioDelayOffset(int handle, const uint32_t audioDelayOffsetMs);
 
 /**
  * @brief This function is used to terminate the Audio Port sub-system.
@@ -1638,7 +1638,7 @@ dsStatus_t dsSetAudioDelayOffset(int handle, const uint32_t audioDelayOffsetMs);
  * audio port specific handles.
  * Subsequent calls will return dsERR_NONE.
  *
- * @return dsStatus_t           - Status
+ * @return dsError_t           - Status
  * @retval dsERR_NONE           - Success 
  * @retval dsERR_GENERAL        - Underlying undefined platform error
  * 
@@ -1648,7 +1648,7 @@ dsStatus_t dsSetAudioDelayOffset(int handle, const uint32_t audioDelayOffsetMs);
  * 
  */
 
-dsStatus_t  dsAudioPortTerm();
+dsError_t  dsAudioPortTerm();
 
 /**
  * @brief This function is used to check if the of the specified audio port is connected
@@ -1657,7 +1657,7 @@ dsStatus_t  dsAudioPortTerm();
  * @param[out] pisCon   - Value of current status the audio output port. 
  *                              True if connected, false if not.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1670,7 +1670,7 @@ dsStatus_t  dsAudioPortTerm();
  * 
  */
 
-dsStatus_t dsAudioOutIsConnected(int handle, bool* pisCon);
+dsError_t dsAudioOutIsConnected(int handle, bool* pisCon);
 
 /**
  * @brief This function is used to register for the Audio Output Connect Event.
@@ -1678,7 +1678,7 @@ dsStatus_t dsAudioOutIsConnected(int handle, bool* pisCon);
  * @param[in] CBFunc    - Audio output port connect callback function. 
  *                                      See dsAudioOutPortConnectCB_t
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1691,14 +1691,14 @@ dsStatus_t dsAudioOutIsConnected(int handle, bool* pisCon);
  * 
  */
 
-dsStatus_t dsAudioOutRegisterConnectCB(dsAudioOutPortConnectCB_t CBFunc);
+dsError_t dsAudioOutRegisterConnectCB(dsAudioOutPortConnectCB_t CBFunc);
 
 /**
  * @brief This function is used to register for the Audio Format Update Event.
  *
  * @param[in] cbFun     - Audio format update callback function. See dsAudioOutPortConnectCB_t.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1711,7 +1711,7 @@ dsStatus_t dsAudioOutRegisterConnectCB(dsAudioOutPortConnectCB_t CBFunc);
  * 
  */
 
-dsStatus_t dsAudioFormatUpdateRegisterCB (dsAudioFormatUpdateCB_t cbFun);
+dsError_t dsAudioFormatUpdateRegisterCB (dsAudioFormatUpdateCB_t cbFun);
 
 /**
  * @brief This function is used to find the Audio Format capabilities of the specified audio port.
@@ -1720,7 +1720,7 @@ dsStatus_t dsAudioFormatUpdateRegisterCB (dsAudioFormatUpdateCB_t cbFun);
  * @param[out] capabilities     - OR-ed value of supported Audio standards. 
  *                                      See _dsAudioCapabilities_t.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1733,7 +1733,7 @@ dsStatus_t dsAudioFormatUpdateRegisterCB (dsAudioFormatUpdateCB_t cbFun);
  * 
  */
 
-dsStatus_t dsGetAudioCapabilities(int handle, int *capabilities);
+dsError_t dsGetAudioCapabilities(int handle, int *capabilities);
 
 /**
  * @brief This function is used to find the MS12 capabilities of the specified audio port.
@@ -1741,7 +1741,7 @@ dsStatus_t dsGetAudioCapabilities(int handle, int *capabilities);
  * @param[in]  handle           - The handle returned from the dsGetAudioPort() function.
  * @param[out] capabilities     - OR-ed value of supported MS12 standards. See sMS12Capabilities_t.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1754,7 +1754,7 @@ dsStatus_t dsGetAudioCapabilities(int handle, int *capabilities);
  * 
  */
 
-dsStatus_t dsGetMS12Capabilities(int handle, int *capabilities);
+dsError_t dsGetMS12Capabilities(int handle, int *capabilities);
 
 /**
  * @brief This function is used to reset the Dialog Enhancement of the specified 
@@ -1762,7 +1762,7 @@ dsStatus_t dsGetMS12Capabilities(int handle, int *capabilities);
  *
  * @param[in] handle    - The handle returned from the dsGetAudioPort() function
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1775,7 +1775,7 @@ dsStatus_t dsGetMS12Capabilities(int handle, int *capabilities);
  * 
  */
 
-dsStatus_t dsResetDialogEnhancement(int handle);
+dsError_t dsResetDialogEnhancement(int handle);
 
 /**
  * @brief This function is used to reset the audio Bass Enhancer of the specified 
@@ -1783,7 +1783,7 @@ dsStatus_t dsResetDialogEnhancement(int handle);
  *
  * @param[in] handle    - The handle returned from the dsGetAudioPort() function
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1796,7 +1796,7 @@ dsStatus_t dsResetDialogEnhancement(int handle);
  * 
  */
 
-dsStatus_t dsResetBassEnhancer(int handle);
+dsError_t dsResetBassEnhancer(int handle);
 
 /**
  * @brief This function is used to reset the audio Surround Virtualizer level of the 
@@ -1804,7 +1804,7 @@ dsStatus_t dsResetBassEnhancer(int handle);
  *
  * @param[in] handle    - The handle returned from the dsGetAudioPort() function
  * 
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1817,7 +1817,7 @@ dsStatus_t dsResetBassEnhancer(int handle);
  * 
  */
 
-dsStatus_t dsResetSurroundVirtualizer(int handle);
+dsError_t dsResetSurroundVirtualizer(int handle);
 
 /**
  * @brief This function is used to reset the Dolby volume leveller of the 
@@ -1825,7 +1825,7 @@ dsStatus_t dsResetSurroundVirtualizer(int handle);
  *
  * @param[in] handle    - The handle returned from the dsGetAudioPort() function
  * 
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1838,7 +1838,7 @@ dsStatus_t dsResetSurroundVirtualizer(int handle);
  * 
  */
 
-dsStatus_t dsResetVolumeLeveller(int handle);
+dsError_t dsResetVolumeLeveller(int handle);
 
 /**
  * @brief This function is used to set/override a specific audio setting in.
@@ -1850,7 +1850,7 @@ dsStatus_t dsResetVolumeLeveller(int handle);
  * @param[in] profileSettingsName   - MS12 property name.
  * @param[in] profileSettingValue   - MS12 property value.
  * 
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1865,7 +1865,7 @@ dsStatus_t dsResetVolumeLeveller(int handle);
  * 
  */
 
-dsStatus_t  dsSetMS12AudioProfileSetttingsOverride(int handle,const char* profileState,const char* profileName,
+dsError_t  dsSetMS12AudioProfileSetttingsOverride(int handle,const char* profileState,const char* profileName,
                                                    const char* profileSettingsName,const char* profileSettingValue);
 
 /**
@@ -1875,7 +1875,7 @@ dsStatus_t  dsSetMS12AudioProfileSetttingsOverride(int handle,const char* profil
  * @param[in] handle    - The handle returned from the dsGetAudioPort() function.
  * @param[in] mixing    - mixing enable/disable, true if enabled, false if disabled.
  * 
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1892,7 +1892,7 @@ dsStatus_t  dsSetMS12AudioProfileSetttingsOverride(int handle,const char* profil
  * 
  */
 
-dsStatus_t dsSetAssociatedAudioMixing(int handle, bool mixing);
+dsError_t dsSetAssociatedAudioMixing(int handle, bool mixing);
 
 /**
  * @brief This function is used to get the Associated Audio Mixing 
@@ -1902,7 +1902,7 @@ dsStatus_t dsSetAssociatedAudioMixing(int handle, bool mixing);
  * @param[out] mixing   - associated Audio Mixing status of the specified audio port. 
  *                              True if enabled and false if disabled.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1919,7 +1919,7 @@ dsStatus_t dsSetAssociatedAudioMixing(int handle, bool mixing);
  * 
  */
 
-dsStatus_t  dsGetAssociatedAudioMixing(int handle, bool *mixing);
+dsError_t  dsGetAssociatedAudioMixing(int handle, bool *mixing);
 
 /**
  * @brief This function is used to set the mixer balance between main and 
@@ -1928,7 +1928,7 @@ dsStatus_t  dsGetAssociatedAudioMixing(int handle, bool *mixing);
  * @param[in] handle        - The handle returned from the dsGetAudioPort() function.
  * @param[in] mixerbalance  - int value -32(mute associated) to +32(mute main).
  * 
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1948,7 +1948,7 @@ dsStatus_t  dsGetAssociatedAudioMixing(int handle, bool *mixing);
  * 
  */
 
-dsStatus_t  dsSetFaderControl(int handle, int mixerbalance);
+dsError_t  dsSetFaderControl(int handle, int mixerbalance);
 
 /**
  * @brief This function is used to get the mixer balance between main 
@@ -1957,7 +1957,7 @@ dsStatus_t  dsSetFaderControl(int handle, int mixerbalance);
  * @param[in]  handle           - The handle returned from the dsGetAudioPort() function.
  * @param[out] mixerbalance     - int value -32(mute associated) to +32(mute main).
  * 
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1974,7 +1974,7 @@ dsStatus_t  dsSetFaderControl(int handle, int mixerbalance);
  * 
  */
 
-dsStatus_t  dsGetFaderControl(int handle, int* mixerbalance);
+dsError_t  dsGetFaderControl(int handle, int* mixerbalance);
 
 /**
  * @brief This function is used to set AC4 Primary language
@@ -1982,7 +1982,7 @@ dsStatus_t  dsGetFaderControl(int handle, int* mixerbalance);
  * @param[in] handle    - The handle returned from the dsGetAudioPort() function.
  * @param[in] pLang     - char* 3 letter lang code must be used as per ISO 639.
  * 
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -1999,7 +1999,7 @@ dsStatus_t  dsGetFaderControl(int handle, int* mixerbalance);
  * 
  */
 
-dsStatus_t  dsSetPrimaryLanguage(int handle, const char* pLang);
+dsError_t  dsSetPrimaryLanguage(int handle, const char* pLang);
 
 /**
  * @brief This function is used to get AC4 Primary language
@@ -2007,7 +2007,7 @@ dsStatus_t  dsSetPrimaryLanguage(int handle, const char* pLang);
  * @param[in] handle    - The handle returned from the dsGetAudioPort() function.
  * @param[out] pLang    - char* 3 letter lang code must be used as per ISO 639.
  * 
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -2024,7 +2024,7 @@ dsStatus_t  dsSetPrimaryLanguage(int handle, const char* pLang);
  * 
  */
 
-dsStatus_t  dsGetPrimaryLanguage(int handle, char* pLang);
+dsError_t  dsGetPrimaryLanguage(int handle, char* pLang);
 
 /**
  * @brief This function is used to set AC4 Secondary language
@@ -2032,7 +2032,7 @@ dsStatus_t  dsGetPrimaryLanguage(int handle, char* pLang);
  * @param[in] handle    - The handle returned from the dsGetAudioPort() function.
  * @param[in] sLang     - char* 3 letter lang code must be used as per ISO 639.
  * 
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -2049,7 +2049,7 @@ dsStatus_t  dsGetPrimaryLanguage(int handle, char* pLang);
  * 
  */
 
-dsStatus_t  dsSetSecondaryLanguage(int handle, const char* sLang);
+dsError_t  dsSetSecondaryLanguage(int handle, const char* sLang);
 
 /**
  * @brief This function is used to get AC4 Secondary language
@@ -2057,7 +2057,7 @@ dsStatus_t  dsSetSecondaryLanguage(int handle, const char* sLang);
  * @param[in] handle    - The handle returned from the dsGetAudioPort() function.
  * @param[out] sLang    - char* 3 letter lang code must be used as per ISO 639.
  * 
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -2074,7 +2074,7 @@ dsStatus_t  dsSetSecondaryLanguage(int handle, const char* sLang);
  * 
  */
 
-dsStatus_t  dsGetSecondaryLanguage(int handle, char* sLang);
+dsError_t  dsGetSecondaryLanguage(int handle, char* sLang);
 
 /**
  * @brief This function is used to get the audio HDMI ARC port ID for each platform
@@ -2084,7 +2084,7 @@ dsStatus_t  dsGetSecondaryLanguage(int handle, char* sLang);
  *
  * @param[in] portId    - Audio HDMI ARC port ID. Min value 0.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -2099,7 +2099,7 @@ dsStatus_t  dsGetSecondaryLanguage(int handle, char* sLang);
  * 
  */
 
-dsStatus_t dsGetHDMIARCPortId(int *portId);
+dsError_t dsGetHDMIARCPortId(int *portId);
 
 /** @} */ // End of DSHAL_AUDIO_API doxygen group 
 /** @} */ // End of DS HAL

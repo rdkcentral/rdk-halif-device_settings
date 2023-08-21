@@ -90,7 +90,7 @@ extern "C" {
  * @brief Initializes the Front Panel Display(FPD) Hal.
  *
  *
- * @return dsStatus_t                   - Status
+ * @return dsError_t                   - Status
  * @retval dsERR_NONE                   - Success
  * @retval dsERR_ALREADY_INITIALIZED    - Function is already initialized.
  * @retval dsERR_GENERAL                - Underlying undefined platform error
@@ -100,7 +100,7 @@ extern "C" {
  * 
  */
 
-dsStatus_t dsFPInit (void);
+dsError_t dsFPInit (void);
 
 /**
  * @brief This function is used to set LED blinking mode.
@@ -115,7 +115,7 @@ dsStatus_t dsFPInit (void);
  *                                  The number of times per minute data will 
  *                                  blink across all of the LEDs.
  * 
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -128,7 +128,7 @@ dsStatus_t dsFPInit (void);
  * 
  */
 
-dsStatus_t dsSetFPBlink (dsFPDIndicator_t eIndicator, unsigned int uBlinkDuration, unsigned int uBlinkIterations);
+dsError_t dsSetFPBlink (dsFPDIndicator_t eIndicator, unsigned int uBlinkDuration, unsigned int uBlinkIterations);
 
 /**
  * @brief This function is used to set LED brightness level.
@@ -141,7 +141,7 @@ dsStatus_t dsSetFPBlink (dsFPDIndicator_t eIndicator, unsigned int uBlinkDuratio
  * @param[in] eBrightness   - The brightness value for the specified indicator. 
  *                                  From 0 to 100. See dsFPDBrightness_t.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -156,7 +156,7 @@ dsStatus_t dsSetFPBlink (dsFPDIndicator_t eIndicator, unsigned int uBlinkDuratio
  * 
  */
 
-dsStatus_t dsSetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t eBrightness);
+dsError_t dsSetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t eBrightness);
 
 /**
  * @brief This function will Get the ON or OFF state of Specified LED.
@@ -165,7 +165,7 @@ dsStatus_t dsSetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t eBr
  * @param[in]  eIndicator   - FPD Indicator index. See dsFPDIndicator_t
  * @param[out] state        - current state of the specified indicator. See dsFPDState_t
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -180,7 +180,7 @@ dsStatus_t dsSetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t eBr
  * 
  */
 
-dsStatus_t dsGetFPState(dsFPDIndicator_t eIndicator, dsFPDState_t* state);
+dsError_t dsGetFPState(dsFPDIndicator_t eIndicator, dsFPDState_t* state);
 
 /**
  * @brief This function will enable or disable the specified discrete LED on the front
@@ -190,7 +190,7 @@ dsStatus_t dsGetFPState(dsFPDIndicator_t eIndicator, dsFPDState_t* state);
  * @param[in] state         - Indicates ON or OFF state for the indicator.(ON = 1 and OFF = 0).
  *                                       See dsFPDState_t
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -205,7 +205,7 @@ dsStatus_t dsGetFPState(dsFPDIndicator_t eIndicator, dsFPDState_t* state);
  * 
  */
 
-dsStatus_t dsSetFPState(dsFPDIndicator_t eIndicator, dsFPDState_t state);
+dsError_t dsSetFPState(dsFPDIndicator_t eIndicator, dsFPDState_t state);
 
 /**
  * @brief This function is used to get the brightness level for Front Panel Display LEDs.
@@ -217,7 +217,7 @@ dsStatus_t dsSetFPState(dsFPDIndicator_t eIndicator, dsFPDState_t state);
  * @param[out] pBrightness  - current brightness value for the specified indicator. 
  *                                  From 0 to 100. See dsFPDBrightness_t
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -232,7 +232,7 @@ dsStatus_t dsSetFPState(dsFPDIndicator_t eIndicator, dsFPDState_t state);
  * 
  */
 
-dsStatus_t dsGetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t *pBrightness);
+dsError_t dsGetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t *pBrightness);
 
 /**
  * @brief This function is used to get LED color.
@@ -244,7 +244,7 @@ dsStatus_t dsGetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t *pB
  * @param[in] eIndicator    - FPD Indicator index. See dsFPDIndicator_t
  * @param[out] pColor       - current color value of the specified indicator. See dsFPDColor_t
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -259,7 +259,7 @@ dsStatus_t dsGetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t *pB
  * 
  */
 
-dsStatus_t dsGetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t *pColor);
+dsError_t dsGetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t *pColor);
 
 /**
  * @brief This function is used to set LED color.
@@ -271,7 +271,7 @@ dsStatus_t dsGetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t *pColor);
  * @param[in] eIndicator    - FPD Indicator index. See dsFPDIndicator_t
  * @param[in] eColor        - The color index for the specified indicator. See dsFPDColor_t
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -286,7 +286,7 @@ dsStatus_t dsGetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t *pColor);
  * 
  */
 
-dsStatus_t dsSetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t eColor);
+dsError_t dsSetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t eColor);
 
 /**
  * @brief This function is used to set time on 7-Segment Display.
@@ -301,7 +301,7 @@ dsStatus_t dsSetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t eColor);
  * @param[in] uHour         - Hour information.
  * @param[in] uMinutes      - Minutes information.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -315,7 +315,7 @@ dsStatus_t dsSetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t eColor);
  * 
  */
 
-dsStatus_t dsSetFPTime (dsFPDTimeFormat_t eTimeFormat, const unsigned int uHour, const unsigned int uMinutes);
+dsError_t dsSetFPTime (dsFPDTimeFormat_t eTimeFormat, const unsigned int uHour, const unsigned int uMinutes);
 
 /**
  * @brief This function is used to set text on 7-Segment Display.
@@ -326,7 +326,7 @@ dsStatus_t dsSetFPTime (dsFPDTimeFormat_t eTimeFormat, const unsigned int uHour,
  *
  * @param[in] pText - Text to be displayed
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -341,7 +341,7 @@ dsStatus_t dsSetFPTime (dsFPDTimeFormat_t eTimeFormat, const unsigned int uHour,
  * 
  */
 
-dsStatus_t dsSetFPText(const char* pText);
+dsError_t dsSetFPText(const char* pText);
 
 /**
  * @brief This function is used to set brightness level of 7-Segment Display.
@@ -353,7 +353,7 @@ dsStatus_t dsSetFPText(const char* pText);
  * @param[in] eBrightness   - The brightness value for the specified indicator. From 0 to 100. 
  *                                  See dsFPDBrightness_t.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -368,7 +368,7 @@ dsStatus_t dsSetFPText(const char* pText);
  * 
  */
 
-dsStatus_t dsSetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_t eBrightness);
+dsError_t dsSetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_t eBrightness);
 
 /**
  * @brief This function is used to get the brightness of  7-Segment Display LEDs
@@ -379,7 +379,7 @@ dsStatus_t dsSetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness
  * @param[in] eIndicator    - FPD Indicator index (CLock LED.). See dsFPDTextDisplay_t
  * @param[out] eBrightness  - brightness value. From 0 to 100. See dsFPDBrightness_t.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -394,7 +394,7 @@ dsStatus_t dsSetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness
  * 
  */
 
-dsStatus_t dsGetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_t *eBrightness);
+dsError_t dsGetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_t *eBrightness);
 
 /**
  * @brief This function will disable and enable display of clock
@@ -404,7 +404,7 @@ dsStatus_t dsGetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness
  * @param[in] enable    - Indicates the clock to be enabled or disabled. 
  *                          1 if enabled, 0 if disabled.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -417,7 +417,7 @@ dsStatus_t dsGetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness
  * 
  */
 
-dsStatus_t dsFPEnableCLockDisplay (int enable);
+dsError_t dsFPEnableCLockDisplay (int enable);
 
 /**
  * @brief This function will set the scroll text on 7-Segment Display.
@@ -428,7 +428,7 @@ dsStatus_t dsFPEnableCLockDisplay (int enable);
  * @param[in] uHorzScrollIterations - Number of iterations for which to scroll horizontally.
  * @param[in] uVertScrollIterations - Number of iterations for which to scroll vertically.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -441,7 +441,7 @@ dsStatus_t dsFPEnableCLockDisplay (int enable);
  * 
  */
 
-dsStatus_t dsSetFPScroll(unsigned int uScrollHoldOnDur, unsigned int uHorzScrollIterations, unsigned int uVertScrollIterations);
+dsError_t dsSetFPScroll(unsigned int uScrollHoldOnDur, unsigned int uHorzScrollIterations, unsigned int uVertScrollIterations);
 
 /**
  * @brief This function will terminate the the Front Panel Display sub-system.
@@ -449,7 +449,7 @@ dsStatus_t dsSetFPScroll(unsigned int uScrollHoldOnDur, unsigned int uHorzScroll
  * This function resets any data structures used within the platform front-panel module,
  * and releases the front-panel specific device handles.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
@@ -463,7 +463,7 @@ dsStatus_t dsSetFPScroll(unsigned int uScrollHoldOnDur, unsigned int uHorzScroll
  * 
  */
 
-dsStatus_t dsFPTerm(void);
+dsError_t dsFPTerm(void);
 
 /**
  * @brief This function will set the brightness of the specified discrete LED on the front
@@ -475,7 +475,7 @@ dsStatus_t dsFPTerm(void);
  *                                  From 0 to 100. See dsFPDBrightness_t.
  * @param[in] toPersist     - If set to TRUE, the brightness value must be persisted.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -490,7 +490,7 @@ dsStatus_t dsFPTerm(void);
  * 
  */
 
-dsStatus_t dsSetFPDBrightness(dsFPDIndicator_t eIndicator, dsFPDBrightness_t eBrightness,bool toPersist);
+dsError_t dsSetFPDBrightness(dsFPDIndicator_t eIndicator, dsFPDBrightness_t eBrightness,bool toPersist);
 
 /**
  * @brief This function sets the color of the specified LED on the front panel in
@@ -503,7 +503,7 @@ dsStatus_t dsSetFPDBrightness(dsFPDIndicator_t eIndicator, dsFPDBrightness_t eBr
  * @param[in] toPersist     - Indicates whether to persist the specified LED color or not. 
  *                                      True if to persist, false if not.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -518,7 +518,7 @@ dsStatus_t dsSetFPDBrightness(dsFPDIndicator_t eIndicator, dsFPDBrightness_t eBr
  * 
  */
 
-dsStatus_t dsSetFPDColor (dsFPDIndicator_t eIndicator, dsFPDColor_t eColor,bool toPersist);
+dsError_t dsSetFPDColor (dsFPDIndicator_t eIndicator, dsFPDColor_t eColor,bool toPersist);
 
 /**
  * @brief This function sets the 7-segment display LEDs to show the 
@@ -527,7 +527,7 @@ dsStatus_t dsSetFPDColor (dsFPDIndicator_t eIndicator, dsFPDColor_t eColor,bool 
  * @param[in] eTimeFormat   - Indicates the time format (12 hour or 24 hour). 
  *                                          See dsFPDTimeFormat_t.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -542,7 +542,7 @@ dsStatus_t dsSetFPDColor (dsFPDIndicator_t eIndicator, dsFPDColor_t eColor,bool 
  * 
  */
 
-dsStatus_t dsSetFPTimeFormat (dsFPDTimeFormat_t eTimeFormat);
+dsError_t dsSetFPTimeFormat (dsFPDTimeFormat_t eTimeFormat);
 
  /**
  * @brief This function get the Current time format set on 7-segment display LEDs panel.
@@ -550,7 +550,7 @@ dsStatus_t dsSetFPTimeFormat (dsFPDTimeFormat_t eTimeFormat);
  * @param[out] pTimeFormat      - Current time format value (12 hour or 24 hour). 
  *                                          See dsFPDTimeFormat_t.
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -565,14 +565,14 @@ dsStatus_t dsSetFPTimeFormat (dsFPDTimeFormat_t eTimeFormat);
  * 
  */
 
-dsStatus_t dsGetFPTimeFormat (dsFPDTimeFormat_t *pTimeFormat);
+dsError_t dsGetFPTimeFormat (dsFPDTimeFormat_t *pTimeFormat);
 
 /**
  * @brief This function sets the display mode of the FPD text display
  *
  * @param[in] eMode - Indicates the mode. See dsFPDMode_t
  *
- * @return dsStatus_t                       - Status
+ * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -585,7 +585,7 @@ dsStatus_t dsGetFPTimeFormat (dsFPDTimeFormat_t *pTimeFormat);
  * 
  */
 
-dsStatus_t dsSetFPDMode (dsFPDMode_t eMode);
+dsError_t dsSetFPDMode (dsFPDMode_t eMode);
 
 /** @} */ // End of DSHAL_FPD_API doxygen group 
 /** @} */ // End of DS HAL
