@@ -75,13 +75,13 @@ extern "C" {
 #define EDID_MAX_DATA_SIZE 512
 
 /**
- * @brief Initialize the Host HAL.
+ * @brief Initialize the Host HAL sub-system.
  * 
  * This function initializes any needed resources within the module.
  *
- * @return dsError_t                   - Status
+ * @return dsError_t                    - Status
  * @retval dsERR_NONE                   - Success
- * @retval dsERR_ALREADY_INITIALIZED    - Function is already initialized.
+ * @retval dsERR_ALREADY_INITIALIZED    - Function is already initialized
  * @retval dsERR_GENERAL                - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
@@ -99,10 +99,10 @@ dsError_t dsHostInit();
  *
  * This function has to release all the resources allocated during the init function.
  *
- * @return dsError_t               - Status
+ * @return dsError_t                - Status
  * @retval dsERR_NONE               - Success 
  * @retval dsERR_NOT_INITIALIZED    - Module is not initialised
- * @retval dsERR_GENERAL            - General failure.
+ * @retval dsERR_GENERAL            - General failure
  * 
  * @warning  This API is Not thread safe.
  * 
