@@ -16,7 +16,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
 */
- 
+
+/**
+ * @addtogroup HPK HPK
+ * @{
+ * @par The Hardware Porting Kit
+ * HPK is the next evolution of the well-defined Hardware Abstraction Layer
+ * (HAL), but augmented with more comprehensive documentation and test suites
+ * that OEM or SOC vendors can use to self-certify their ports before taking
+ * them to RDKM for validation or to an operator for final integration and
+ * deployment. The Hardware Porting Kit effectively enables an OEM and/or SOC
+ * vendor to self-certify their own Video Accelerator devices, with minimal RDKM
+ * assistance.
+ *
+ */
+
 /**
  * @defgroup devicesettings Device Settings
  *
@@ -32,20 +46,6 @@
  * - ms  : miliseconds
  *
  * @ingroup DSSETTINGS_HAL
- */
-
-/**
- * @addtogroup HPK HPK
- * @{
- * @par The Hardware Porting Kit
- * HPK is the next evolution of the well-defined Hardware Abstraction Layer
- * (HAL), but augmented with more comprehensive documentation and test suites
- * that OEM or SOC vendors can use to self-certify their ports before taking
- * them to RDKM for validation or to an operator for final integration and
- * deployment. The Hardware Porting Kit effectively enables an OEM and/or SOC
- * vendor to self-certify their own Video Accelerator devices, with minimal RDKM
- * assistance.
- *
  */
 
 /** @addtogroup DS_Manager_HAL DS Manager Hal
