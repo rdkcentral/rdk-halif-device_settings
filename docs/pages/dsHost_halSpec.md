@@ -132,7 +132,7 @@ The `HAL` implementation is expected to released under the Apache License 2.0.
 
 ### Build Requirements
 
-The source code must build into a shared library for Device Settings as Host module is apart of Device Settings and must be named as `libdshal.so`. The build mechanism shall be independent of Yocto.
+The source code must build into a shared library for Device Settings as Host module is a part of Device Settings and must be named as `libdshal.so`. The build mechanism shall be independent of Yocto.
  
 ### Variability Management
 
