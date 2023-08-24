@@ -147,7 +147,7 @@ None
 
 ## Interface API Documentation
 
-`API`s documentation will be provided by Doxygen which will be generated from the header file.
+`API` documentation will be provided by Doxygen which will be generated from the header file.
 
 ### Theory of operation and key concepts
 
