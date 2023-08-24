@@ -1,0 +1,231 @@
+# DEVICE SETTINGS FRONT PANEL DISPLAY HAL Documentation
+
+## Version History
+
+| Date(DD/MM/YY) | Comment | Version |
+| ---- | ------- | ------- |
+| 13/03/23 | Edit  | 1.0.1 |
+| 20/04/23 | First Release | 1.0.0 |
+
+
+
+## Table of Contents
+
+- [Acronyms, Terms and Abbreviations](#acronyms-terms-and-abbreviations)
+- [Description](#description)
+- [Component Runtime Execution Requirements](#component-runtime-execution-requirements)
+  - [Initialization and Startup](#initialization-and-startup)
+  - [Threading Model](#threading-model)
+  - [Process Model](#process-model)
+  - [Memory Model](#memory-model)
+  - [Power Management Requirements](#power-management-requirements)
+  - [Asynchronous Notification Model](#asynchronous-notification-model)
+  - [Blocking calls](#blocking-calls)
+  - [Internal Error Handling](#internal-error-handling)
+  - [Persistence Model](#persistence-model)
+- [Non-functional requirements](#non-functional-requirements)
+  - [Logging and debugging requirements](#logging-and-debugging-requirements)
+  - [Memory and performance requirements](#memory-and-performance-requirements)
+  - [Quality Control](#quality-control)
+  - [Licensing](#licensing)
+  - [Build Requirements](#build-requirements)
+  - [Variability Management](#variability-management)
+  - [Platform or Product Customization](#platform-or-product-customization)
+- [Interface API Documentation](#interface-api-documentation)
+  - [Theory of operation and key concepts](#theory-of-operation-and-key-concepts)
+  - [Diagrams](#diagrams)
+
+## Acronyms, Terms and Abbreviations
+
+- `HAL`    - Hardware Abstraction Layer
+- `API`    - Application Programming Interface
+- `Caller` - Any user of the interface via the `API`s
+- `FPD`    - Front Panel Display
+- `LED`    - Light-Emitting Diode
+
+
+
+
+
+## Description
+
+The diagram below describes a high-level software architecture of the module stack.
+
+```mermaid
+%%{ init : { "theme" : "forest", "flowchart" : { "curve" : "linear" }}}%%
+flowchart TD
+y[Caller]<-->x[DEVICE SETTINGS FRONT PANEL DISPLAY HAL];
+x[DEVICE SETTINGS FRONT PANEL DISPLAY HAL]<-->z[Front Panel SoC Driver];
+style y fill:#99CCFF,stroke:#333,stroke-width:0.3px,align:left
+style z fill:#fcc,stroke:#333,stroke-width:0.3px,align:left
+style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
+ ```
+
+
+This interface provides a set of `API`s to facilitate communication to Front Panel `LED` Display SoC Drivers.
+
+
+The Brightness, color and text of Front Panel `LED`s can be set or retrieved. It also provides `API` to enable or disable the specified discrete `LED` on the Front Panel Display.
+
+## Component Runtime Execution Requirements
+ 
+The component should manage system resources appropriately to avoid memory leaks and excessive resource utilization. Efficient memory management and resource cleanup are essential for stable and reliable execution. Additionally, the component should meet specified performance requirements, including response time, throughput, and resource usage based on the underlying platform's capabilities. The component should also be designed to scale effectively with increased load, being able to handle higher levels of usage without significant degradation in performance or stability.
+
+Failure to meet these requirements will likely result in undefined and unexpected behaviour.
+
+### Initialization and Startup
+
+
+`Caller` should initialize by calling `dsFPInit()` before calling any other `API`s. `Caller` has complete control over the `FPD`.
+
+### Threading Model
+
+This interface is not required to be thread safe. Any `caller` invoking the `API`s should ensure calls are made in a thread safe manner.
+
+### Process Model
+
+This interface is required to support a single instantiation with a single process.
+
+### Memory Model
+
+This interface is not required to allocate any memory.
+
+### Power Management Requirements
+
+The Front Panel Display HAL is not involved in the power management operation directly. 
+But the `Caller` will initiate the change in `LED` as part of power management handling.
+
+ The `Caller` is responsible for driving LED Status in accordance with Power Mode change.
+
+### Asynchronous Notification Model
+
+This interface is not required to have any Asynchronous notification.
+
+
+### Blocking calls
+
+This interface does not have any blocking calls. Synchronous calls should complete within a reasonable time period. Any call that can fail due to the lack of response from the connected device should have a timeout period and the function should return the relevant error code.
+
+### Internal Error Handling
+
+All the `API`s must return error synchronously as a return argument. 
+
+### Persistence Model
+
+The Brightness and Color of Front Panel `LED`s would be persisted if the `Caller` sets the persistence parameter to True while invoking corresponding `dsSetFPDBrightness` and `dsSetFPDColor` `API`s 
+
+
+## Non-functional requirements
+
+### Logging and debugging requirements
+
+This interface is required to support DEBUG, INFO and ERROR messages. INFO and DEBUG should be disabled by default and enabled when required
+
+### Memory and performance requirements
+
+This interface is required to not cause excessive memory and CPU utilization
+
+### Quality Control
+
+- This interface is required to perform static analysis, our preferred tool is Coverity
+- Have a zero-warning policy with regards to compiling. All warnings are required to be treated as error
+- Copyright validation is required to be performed, e.g.: Black duck, and FossID
+- Use of memory analysis tools like Valgrind are encouraged, to identify leaks/corruptions
+- `HAL` Tests will endeavour to create worst case scenarios to assist investigations
+- Improvements by any party to the testing suite are required to be fed back
+
+### Licensing
+
+The `HAL` implementation is expected to released under the Apache License 2.0
+
+### Build Requirements
+
+The source code must build into shared library `libdshal.so`.This shared library is for all `DS HAL` modules and Front Panel is a part of it. The build mechanism must be independent of Yocto
+ 
+### Variability Management
+
+Any changes in the `API`s should be reviewed and approved by the component architects
+
+### Platform or Product Customization
+
+None
+
+## Interface API Documentation
+
+`API`s documentation will be provided by Doxygen which will be generated from the header files
+
+### Theory of operation and key concepts
+
+The caller is expected to have complete control over the life cycle of the `HAL`
+
+1. Initialize the `FP HAL` using function: `dsFPInit()` before making any other `API` calls.  If `dsFPInit()` call fails, the `HAL` must return the respective error code, so that the caller can retry the operation
+
+2. Once the Front Panel sub-system is initialized, `caller` can invoke `API's` to control the Front Panel `LED`s. The `FP` Brightness, Text, Color, Blink Interval, `FP LED` State(ON/OFF), Text Scroll can be set or retrieved 
+
+3. De-initialize the `FP HAL` using the function: `dsFPTerm()`
+
+
+
+NOTE: The module would operate deterministically if the above call sequence is followed
+
+### Diagrams
+
+#### Operational Call Sequence
+
+
+```mermaid
+%%{ init : { "theme" : "default", "flowchart" : { "curve" : "stepBefore" }}}%%
+   sequenceDiagram
+    participant Caller as Caller
+    participant HAL as DEVICE SETTINGS FRONT PANEL DISPLAY HAL
+    participant Driver as SoC
+    Caller->>HAL:dsFPInit()
+    Note over HAL: SoC initializes the Front Panel Display subsystem
+    HAL-->>Caller:return
+    Caller->>HAL: ds_FP_SetMethods
+    Note over HAL: APIs to set the FPD Parameters
+    HAL->>Driver:Setting the FPD Parameters
+    Driver-->>HAL:return
+    HAL-->>Caller:return
+    Caller->>HAL: ds_FP_GetMethods
+    Note over HAL: APIs to get the FPD Parameters
+    HAL->>Driver:Getting the FPD Parameters
+    Driver-->>HAL:return
+    HAL-->>Caller:return
+    Caller->>HAL:dsEnableClockDisplay()
+    Note over HAL: API to enable or disable Clock Display on FP LED
+    HAL->>Driver: Enable or Disable the clock display on the Front Panel LED
+    Driver-->>HAL:return
+    HAL-->>Caller:return
+    Caller ->>HAL:dsFPTerm()
+    HAL-->>Caller:return
+
+ ```
+
+
+LEGEND
+
+ds_FP_SetMethods:
+dsSetFPBlink(),
+dsSetFPBrightness(),
+dsSetFPState(),
+dsSetFPColor(),
+dsSetFPTime(),
+dsSetFPText(),
+dsSetFPTextBrightness(),
+dsSetFPScroll(),
+dsSetFPDBrightness(),
+dsSetFPScroll(),
+dsSetFPDBrightness(),
+dsSetFPDColor(),
+dsSetFPTimeFormat(),
+dsSetFPDMode()
+
+
+
+ds_FP_GetMethods:
+dsGetFPState(),
+dsGetFPBrightness(),
+dsGetFPColor(),
+dsGetFPTextBrightness(),
+dsGetFPTimeFormat()
