@@ -95,7 +95,7 @@ This interface is not required to support asynchronous notification.
 
 ### Blocking calls
 
-This interface is not required to have any blocking calls.
+This interface is not required to have any blocking calls. Synchronous calls should complete within a reasonable time period.
 
 ### Internal Error Handling
 
