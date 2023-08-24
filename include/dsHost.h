@@ -87,6 +87,8 @@ extern "C" {
  * @warning  This API is Not thread safe.
  * @see dsHostTerm()
  * 
+ * @todo dsErr_General to be removed (from all functions) in later phase.
+ * 
  * 
  */
 
