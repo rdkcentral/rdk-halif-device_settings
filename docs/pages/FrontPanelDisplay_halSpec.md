@@ -4,7 +4,7 @@
 
 | Date(DD/MM/YY) | Comment | Version |
 | ---- | ------- | ------- |
-| 13/03/23 | Edit  | 1.0.1 |
+| 17/08/23 | Edit  | 1.0.1 |
 | 20/04/23 | First Release | 1.0.0 |
 
 
@@ -42,6 +42,7 @@
 - `Caller` - Any user of the interface via the `API`s
 - `FPD`    - Front Panel Display
 - `LED`    - Light-Emitting Diode
+- `CPU`    - Central Processing Unit
 
 
 
@@ -49,7 +50,7 @@
 
 ## Description
 
-The diagram below describes a high-level software architecture of the module stack.
+The diagram below describes a high-level software architecture of the `DS` Front Panel Display stack.
 
 ```mermaid
 %%{ init : { "theme" : "forest", "flowchart" : { "curve" : "linear" }}}%%
@@ -76,7 +77,7 @@ Failure to meet these requirements will likely result in undefined and unexpecte
 ### Initialization and Startup
 
 
-`Caller` should initialize by calling `dsFPInit()` before calling any other `API`s. `Caller` has complete control over the `FPD`.
+`Caller` must initialize by calling `dsFPInit()` before calling any other `API`s. `Caller` has complete control over the `FPD`.
 
 ### Threading Model
 
@@ -104,7 +105,7 @@ This interface is not required to have any Asynchronous notification.
 
 ### Blocking calls
 
-This interface does not have any blocking calls. Synchronous calls should complete within a reasonable time period. Any call that can fail due to the lack of response from the connected device should have a timeout period and the function should return the relevant error code.
+This interface is not required to have any blocking calls. Synchronous calls should complete within a reasonable time period. Any call that can fail due to the lack of response from the connected device should have a timeout period and the function should return the relevant error code.
 
 ### Internal Error Handling
 
@@ -112,39 +113,39 @@ All the `API`s must return error synchronously as a return argument.
 
 ### Persistence Model
 
-The Brightness and Color of Front Panel `LED`s would be persisted if the `Caller` sets the persistence parameter to True while invoking corresponding `dsSetFPDBrightness` and `dsSetFPDColor` `API`s 
+The Brightness and Color of Front Panel `LED`s would be persisted if the `Caller` sets the persistence parameter to True while invoking corresponding `dsSetFPDBrightness` and `dsSetFPDColor` `API`s.
 
 
 ## Non-functional requirements
 
 ### Logging and debugging requirements
 
-This interface is required to support DEBUG, INFO and ERROR messages. INFO and DEBUG should be disabled by default and enabled when required
+This interface is required to support DEBUG, INFO and ERROR messages. INFO and DEBUG should be disabled by default and enabled when required.
 
 ### Memory and performance requirements
 
-This interface is required to not cause excessive memory and CPU utilization
+This interface is required to not cause excessive memory and `CPU` utilization.
 
 ### Quality Control
 
-- This interface is required to perform static analysis, our preferred tool is Coverity
-- Have a zero-warning policy with regards to compiling. All warnings are required to be treated as error
-- Copyright validation is required to be performed, e.g.: Black duck, and FossID
-- Use of memory analysis tools like Valgrind are encouraged, to identify leaks/corruptions
-- `HAL` Tests will endeavour to create worst case scenarios to assist investigations
-- Improvements by any party to the testing suite are required to be fed back
+- This interface is required to perform static analysis, our preferred tool is Coverity.
+- Have a zero-warning policy with regards to compiling. All warnings are required to be treated as errors.
+- Copyright validation is required to be performed, e.g.: Black duck, and FossID.
+- Use of memory analysis tools like Valgrind are encouraged to identify leaks/corruptions.
+- `HAL` Tests will endeavour to create worst case scenarios to assist investigations.
+- Improvements by any party to the testing suite are required to be fed back.
 
 ### Licensing
 
-The `HAL` implementation is expected to released under the Apache License 2.0
+The `HAL` implementation is expected to released under the Apache License 2.0.
 
 ### Build Requirements
 
-The source code must build into shared library `libdshal.so`.This shared library is for all `DS HAL` modules and Front Panel is a part of it. The build mechanism must be independent of Yocto
+The source code must build into a shared library for Device Settings as Front Panel Display is a part of Device Settings and must be named as `libdshal.so`. The build mechanism shall be independent of Yocto.
  
 ### Variability Management
 
-Any changes in the `API`s should be reviewed and approved by the component architects
+Any changes in the `API`s should be reviewed and approved by the component architects.`DeviceSettings Front Panel Display` should return the dsERR_OPERATION_NOT_SUPPORTED error code if any of the interface APIs are not supported by the underlying hardware.
 
 ### Platform or Product Customization
 
@@ -152,17 +153,17 @@ None
 
 ## Interface API Documentation
 
-`API`s documentation will be provided by Doxygen which will be generated from the header files
+`API` documentation will be provided by Doxygen which will be generated from the header file.
 
 ### Theory of operation and key concepts
 
 The caller is expected to have complete control over the life cycle of the `HAL`
 
-1. Initialize the `FP HAL` using function: `dsFPInit()` before making any other `API` calls.  If `dsFPInit()` call fails, the `HAL` must return the respective error code, so that the caller can retry the operation
+1. Initialize the `FP HAL` using function: `dsFPInit()` before making any other `API` calls.  If `dsFPInit()` call fails, the `HAL` must return the respective error code, so that the caller can retry the operation.
 
-2. Once the Front Panel sub-system is initialized, `caller` can invoke `API's` to control the Front Panel `LED`s. The `FP` Brightness, Text, Color, Blink Interval, `FP LED` State(ON/OFF), Text Scroll can be set or retrieved 
+2. Once the Front Panel sub-system is initialized, `Caller` can invoke `API's to control the Front Panel `LED`s. The `FP` Brightness, Text, Color, Blink Interval, `FP LED` State(ON/OFF), Text Scroll can be set or retrieved.
 
-3. De-initialize the `FP HAL` using the function: `dsFPTerm()`
+3. De-initialize the `FP HAL` using the function: `dsFPTerm()`.
 
 
 
