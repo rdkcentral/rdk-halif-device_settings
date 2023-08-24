@@ -1,10 +1,10 @@
-# DEVICE SETTINGS HAL Documentation
+# DEVICE SETTINGS Host HAL Documentation
 
 ## Version History
 
 | Date(DD/MM/YY) | Comment | Version |
 | ---- | ------- | ------- |
-| 13/03/23 | Edit  | 1.0.1 |
+| 23/08/23 | Edit  | 1.0.1 |
 | 20/04/23 | First Release | 1.0.0 |
 
 ## Table of Contents
@@ -39,15 +39,15 @@
 - `API`    - Caller Programming Interface
 - `Caller` - Any user of the interface via the `API`s
 - `CPU`    - Central Processing Unit
-- `DS`:      Device Settings.
-- `HAL`:     Hardware Abstraction Layer.
-- `EDID`:    Extended Display Information Data.
-- `CPU`:     Central Processing Unit
-- `SoC`:     System on chip
+- `DS`     - Device Settings
+- `HAL`    - Hardware Abstraction Layer
+- `EDID`   - Extended Display Information Data
+- `CPU`    - Central Processing Unit
+- `SoC`    - System on chip
 
 ## Description
 
-The diagram below describes a high-level software architecture of the module stack.
+The diagram below describes a high-level software architecture of the host stack.
 
 ```mermaid
 %%{ init : { "theme" : "forest", "flowchart" : { "curve" : "linear" }}}%%
@@ -59,19 +59,19 @@ style z fill:#fcc,stroke:#333,stroke-width:0.3px,align:left
 style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
  ```
 
-DeviceSettings Host `HAL` provides a set of `APIs` to initialize, set, and query information about the `HAL` and `SoC`.
+DeviceSettings Host `HAL` provides a set of `APIs` to initialize, query information about the `SoC`.
 
-- The main purpose is to facilitate communication between the `Caller`, and `HAL` interface, such that information about the current `HAL` version number, the Host EDID number, the current CPU temperature, and the SoC ID can be queried by the `Caller`.
+The main purpose is to facilitate communication between the `Caller`, and `HAL` interface, such that information about the Host EDID number, the current CPU temperature, and the SoC ID can be queried by the `Caller`.
 
 ## Component Runtime Execution Requirements
 
-The component should manage system resources appropriately to avoid memory leaks and excessive resource utilization. Efficient memory management and resource cleanup are essential for stable and reliable execution. Additionally, the component should meet specified performance requirements, including response time, throughput, and resource usage based on the underlying platform's capabilities. The component should also be designed to scale effectively with increased load, being able to handle higher levels of usage without significant degradation in performance or stability.
+The component must adeptly manage resources to prevent issues like memory leaks and excessive utilization. It must also meet performance goals for response time, throughput, and resource use as per the platform's capabilities.
 
 Failure to meet these requirements will likely result in undefined and unexpected behavior.
 
 ### Initialization and Startup
 
-`Caller` must be initialized by calling `dsHostInit()` before calling any other `APIs`. The `Caller` is expected to have complete control over the life cycle of the `DeviceSettings Host` module.
+`Caller` initialize `dsHost` by calling `dsHostInit()` before calling any other `APIs`. The `Caller` is expected to have complete control over the life cycle of the `DeviceSettings Host` module.
 
 ### Threading Model
 
@@ -95,7 +95,7 @@ This interface is not required to support asynchronous notification.
 
 ### Blocking calls
 
-There are no blocking calls. Synchronous calls should complete within a reasonable time period.
+This interface is not required to have any blocking calls.
 
 ### Internal Error Handling
 
@@ -115,14 +115,14 @@ This interface is required to support DEBUG, INFO and ERROR messages. INFO and D
 
 ### Memory and performance requirements
 
-This interface will ensure optimal use of memory and CPU according to the specific capabilities of the system.
+This interface will ensure optimal use of memory and `CPU` according to the specific capabilities of the system.
 
 ### Quality Control
 
 - This interface is required to perform static analysis, our preferred tool is Coverity.
-- Have a zero-warning policy with regards to compiling. All warnings are required to be treated as error.
+- Have a zero-warning policy with regards to compiling. All warnings are required to be treated as errors.
 - Copyright validation is required to be performed, e.g.: Black duck, and FossID.
-- Use of memory analysis tools like Valgrind are encouraged, to identify leaks/corruptions.
+- Use of memory analysis tools like Valgrind are encouraged to identify leaks/corruptions.
 - `HAL` Tests will endeavour to create worst case scenarios to assist investigations.
 - Improvements by any party to the testing suite are required to be fed back.
 
@@ -132,13 +132,13 @@ The `HAL` implementation is expected to released under the Apache License 2.0.
 
 ### Build Requirements
 
-The source code must build into a shared library for Device Settings as Host is apart of Device Settings and must be named as `libdshal.so`. The build mechanism must be independent of Yocto.
+The source code must build into a shared library for Device Settings as Host module is apart of Device Settings and must be named as `libdshal.so`. The build mechanism shall be independent of Yocto.
  
 ### Variability Management
 
 - Any changes in the `APIs` should be reviewed and approved by the component architects.
-- `DeviceSettings Host` `HAL` modification should support backward compatibility for the generic operations like image upgrade and downgrade
-- `DeviceSettings Host` should return the dsERR_OPERATION_NOT_SUPPORTED error code, If any of the interface - `APIs` are not supported by the underlying hardware
+- `DeviceSettings Host` `HAL` modification should support backward compatibility for the generic operations like image upgrade and downgrade.
+- `DeviceSettings Host` should return the dsERR_OPERATION_NOT_SUPPORTED error code, if any of the interface - `APIs` are not supported by the underlying hardware.
 - Providers of the `DeviceSettings Host` `HAL` should keep a well-defined version history for tracking alterations across diverse library versions, along with their corresponding verification results.
 
 ### Platform or Product Customization
@@ -147,7 +147,7 @@ None
 
 ## Interface API Documentation
 
-`API`s documentation will be provided by Doxygen which will be generated from the header files.
+`API`s documentation will be provided by Doxygen which will be generated from the header file.
 
 ### Theory of operation and key concepts
 
@@ -176,6 +176,7 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     Note over HAL: Returns the current CPU temp.
     HAL->>Driver:Getting the current CPU temp
     Driver-->>HAL:return
+    HAL-->>Caller:return
     Caller->>HAL:dsGetSocIDFromSDK()
     Note over HAL: Returns the SoC ID.
     HAL->>Driver:Getting the SoC ID.

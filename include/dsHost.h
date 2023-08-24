@@ -17,23 +17,6 @@
  * limitations under the License.
 */
 
-/** 
- * @defgroup devicesettings Device Settings
- * Describe the details about Device Settings HAL API specifications.
- *
- * <b> Following abbreviations present in HAL API </b>
- *
- * @par Abbreviations
- * - cb:      Callback function (suffix).
- * - DS:      Device Settings.
- * - HAL:     Hardware Abstraction Layer.
- * - EDID:    Extended Display Information Data.
- * - CPU:     Central Processing Unit
- * - SoC:     System on chip
- * 
- * @ingroup DSSETTINGS_HAL
- */
-
 /**
  * @addtogroup HPK HPK
  * @{
@@ -48,7 +31,7 @@
  *
  */
 
-/** @addtogroup DS_Manager_HAL DS Manager Hal
+/** @defgroup DeviceSettings_Module DeviceSettings Module
  * @par Application API Specification
  * Described herein are the DeviceSettings HAL types and functions that are part of
  * the Host subsystem. The Host subsystem manages system-specific HAL operations.
@@ -59,6 +42,22 @@
  *
  *
  *  @{
+ */
+
+/** 
+ * Describe the details about Device Settings HAL API specifications.
+ *
+ * <b> Following abbreviations present in HAL API </b>
+ *
+ * @par Abbreviations
+ * - cb:      Callback function (suffix).
+ * - DS:      Device Settings.
+ * - HAL:     Hardware Abstraction Layer.
+ * - EDID:    Extended Display Information Data.
+ * - CPU:     Central Processing Unit
+ * - SoC:     System on chip
+ * 
+ * @ingroup DSSETTINGS_HAL
  */
 
 
@@ -78,7 +77,7 @@ extern "C" {
 /**
  * @brief Initialize the Host HAL.
  * 
- * This function has to initialize any needed resources within the module.
+ * This function initializes any needed resources within the module.
  *
  * @return dsError_t                   - Status
  * @retval dsERR_NONE                   - Success
@@ -153,7 +152,7 @@ dsError_t dsGetSocIDFromSDK(char *socID);
  * The host EDID will be used on devices supporting HDMI input feature.
  *
  * @param[out] edid     - host EDID.
- * @param[out] length   - length of host EDID. Min value of 0. 
+ * @param[out] length   - length of host EDID. Min value of 0.  Max value of 2048
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
@@ -169,7 +168,7 @@ dsError_t dsGetSocIDFromSDK(char *socID);
 dsError_t dsGetHostEDID(unsigned char *edid, int *length);
 
 /** @} */ // End of DSHAL_HOST_API doxygen group 
-/** @} */ // End of DS HAL
+/** @} */ // End of DeviceSettings Module
 /** @} */ // End of HPK
 #ifdef __cplusplus
 }
