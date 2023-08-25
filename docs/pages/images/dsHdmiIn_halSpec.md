@@ -4,10 +4,7 @@
 
 | Date(DD/MM/YY) | Comment | Version |
 | ---- | ------- | ------- |
-| TBD | Edit  | 1.0.1 |
-| 30/11/22  | First Release | 1.0.0 |
-
-1.0.0 Initial version of the Device settings HAL layer documentation.
+| 25/08/23  | First Release | 1.0.0 |
 
 ## Table of Contents
 
@@ -51,6 +48,8 @@
 
 The diagram below describes a high-level software architecture of the HdmiIn stack.
 
+@todo change device settings to camel case and on Host
+
 ```mermaid
 %%{ init : { "theme" : "forest", "flowchart" : { "curve" : "linear" }}}%%
 flowchart TD
@@ -61,7 +60,9 @@ style z fill:#fcc,stroke:#333,stroke-width:0.3px,align:left
 style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
  ```
 
-DeviceSettings `HdmiIn` `HAL` provides a set of `APIs` to initialize, query, and set information about the HDMI ports, such as the number of HDMI ports, the current status of a selected HDMI port, pausing and playing audio, setting the video scale, and selecting which HDMI input is being used.
+@todo change HDMI port to HDMI input ports across entire document. And fix spelling and sentence errors.
+
+Device Settings `HdmiIn` `HAL` provides a set of `APIs` to initialize, query and set information about the HDMI ports, such as getting the number of HDMI ports, getting the current status of a selected HDMI port, pausing and playing audio, setting the video scale and selecting which HDMI input to be selected as active. And registering callbacks fo asyncronous notifications.
 
 ## Component Runtime Execution Requirements
 
@@ -71,7 +72,7 @@ Failure to meet these requirements will likely result in undefined and unexpecte
 
 ### Initialization and Startup
 
-`Caller` initialize `dsHdmiIn` by calling `dsHdmiInInit()` before calling any other `APIs`. The `Caller` is expected to have complete control over the life cycle of the `DeviceSettings HdmiIn` module.
+`Caller` shall initialize `Device Settings HdmiIn` module by calling `dsHdmiInInit()` before calling any other `APIs`. The `Caller` is expected to have complete control over the life cycle of this module.
 
 ### Threading Model
 
@@ -91,7 +92,10 @@ Although this interface is not required to be involved in any of the power manag
 
 ### Asynchronous Notification Model
 
- - The `HdmiIn` module should support asynchronous notifications for image write operations.
+@todo be more specific when referring to the asyncronus notifications on what they do
+@todo change The `HAL` to This interface
+The `HdmiIn` module should support asynchronous notifications operations:
+
  - The `HdmiIn` `API` `dsHdmiInRegisterConnectCB()` should facilitate asynchronous status notifications using the callback `dsHdmiInConnectCB_t`.
  - The `HdmiIn` `API` `dsHdmiInRegisterSignalChangeCB()` should facilitate asynchronous status notifications using the callback `dsHdmiInSignalChangeCB_t`.
  - The `HdmiIn` `API` `dsHdmiInRegisterStatusChangeCB()` should facilitate asynchronous status notifications using the callback `dsHdmiInStatusChangeCB_t`.
@@ -123,7 +127,7 @@ This interface is required to support DEBUG, INFO and ERROR messages. INFO and D
 
 ### Memory and performance requirements
 
-This interface will ensure optimal use of memory and `CPU` according to the specific capabilities of the system.
+This interface will ensure optimal use of memory and `CPU` according to the specific capabilities of the platform.
 
 ### Quality Control
 
@@ -140,14 +144,15 @@ The `HAL` implementation is expected to released under the Apache License 2.0.
 
 ### Build Requirements
 
-The source code must build into a shared library for Device Settings as `HdmiIn` module is a part of Device Settings and must be named as `libdshal.so`. The build mechanism shall be independent of Yocto.
+@todo change shall/should back to must
+
+The source code shall build into a shared library for Device Settings as `HdmiIn` module is a part of Device Settings and shall be named as `libdshal.so`. The build mechanism shall be independent of Yocto.
  
 ### Variability Management
 
 - Any changes in the `APIs` should be reviewed and approved by the component architects.
-- `DeviceSettings HdmiIn` `HAL` modification should support backward compatibility for the generic operations like image upgrade and downgrade.
-- `DeviceSettings HdmiIn` should return the dsERR_OPERATION_NOT_SUPPORTED error code, if any of the interface - `APIs` are not supported by the underlying hardware.
-- Providers of the `DeviceSettings HdmiIn` `HAL` should keep a well-defined version history for tracking alterations across diverse library versions, along with their corresponding verification results.
+- Any modification should support backward compatibility for the generic operations like image upgrade and downgrade.
+- This interface should return the dsERR_OPERATION_NOT_SUPPORTED error code, if any of the interface - `APIs` are not supported by the underlying hardware.
 
 ### Platform or Product Customization
 
