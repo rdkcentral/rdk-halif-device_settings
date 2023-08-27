@@ -74,10 +74,11 @@ extern "C" {
 #endif
 
 /**
- * @brief  Initializes the Front Panel Display(FPD) HAL.
+ * @brief  Initializes the Front Panel Display(FPD) sub-module of Device Settings HAL.
  *
- * This function allocates required resources for Front Panel and is required to be called before the other APIs in this module.@n
- * Subsequent calls to this API will return dsERR_NONE.
+ * This function allocates required resources for Front Panel and is required to be called before the other APIs in this module.
+ * 
+ * @todo Proper prefix for all enums and APIs to be added in next phase ie DS_FPD_*
  *
  * @return dsError_t                  -  Status
  * @retval dsERR_NONE                 -  Success
@@ -94,15 +95,13 @@ dsError_t dsFPInit (void);
 /**
  * @brief  Sets blink pattern of specified FP LED.
  * 
- * This function is used to set the individual discrete LEDs to blink for a specified
- * number of iterations and blink interval.
+ * This function is used to set the individual discrete LED to blink for a specified number of iterations with blink interval.
  *
- * @param[in] eIndicator        -  FPD Indicator index. @see dsFPDIndicator_t
+ * @param[in] eIndicator        -  FPD indicator index. @see dsFPDIndicator_t
  * @param[in] uBlinkDuration    -  Blink interval. The time in ms the text display will remain ON 
  *                                   during one blink iteration.
- * @param[in] uBlinkIterations  -  Number of iterations given LED to blink. 
- *                                   The number of iterations per minute data will 
- *                                   blink across all of the LEDs.
+ * @param[in] uBlinkIterations  -  The number of iterations per minute data will 
+ *                                   blink.
  * 
  * @return dsError_t                      -  Status
  * @retval dsERR_NONE                     -  Success
@@ -110,6 +109,8 @@ dsError_t dsFPInit (void);
  * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ * 
+ * @todo Remove dsERR_GENERAL and add specific error codes in next phase
  * 
  * @pre dsFPInit() must be called before calling this API.
  * 
@@ -124,7 +125,7 @@ dsError_t dsSetFPBlink (dsFPDIndicator_t eIndicator, unsigned int uBlinkDuration
  * This function will set the brightness of the specified discrete LED on the Front
  * Panel Display to the specified brightness level. 
  *
- * @param[in] eIndicator  - FPD Indicator index. @see dsFPDIndicator_t.
+ * @param[in] eIndicator  - FPD indicator index. @see dsFPDIndicator_t.
  * @param[in] eBrightness - The brightness value(0 to 100) for the specified indicator.
  *                              @see dsFPDBrightness_t.
  *
@@ -150,7 +151,7 @@ dsError_t dsSetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t eBri
  * This function returns the brightness level of the specified discrete LED on the Front
  * Panel.
  *
- * @param[in]  eIndicator  - FPD Indicator index. @see dsFPDIndicator_t
+ * @param[in]  eIndicator  - FPD indicator index. @see dsFPDIndicator_t
  * @param[out] pBrightness - pointer to current brightness value(0 to 100) of the specified indicator. 
  *                             @see dsFPDBrightness_t
  *
@@ -171,9 +172,9 @@ dsError_t dsSetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t eBri
 dsError_t dsGetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t *pBrightness);
 
 /**
- * @brief  This function will set the Front Panel Indicator state of Specified discrete LED.
+ * @brief  This function will set the Front Panel indicator state of specified discrete LED.
  *
- * @param[in] eIndicator - FPD Indicator index. @see dsFPDIndicator_t
+ * @param[in] eIndicator - FPD indicator index. @see dsFPDIndicator_t
  * @param[in] state      - Indicates the state of the indicator. @see dsFPDState_t
  *
  * @return dsError_t                      -  Status
@@ -196,7 +197,7 @@ dsError_t dsSetFPState(dsFPDIndicator_t eIndicator, dsFPDState_t state);
  * @brief This function will Get the Front Panel Indicator state of Specified discrete LED.
  * 
  *
- * @param[in]  eIndicator - FPD Indicator index. @see dsFPDIndicator_t
+ * @param[in]  eIndicator - FPD indicator index. @see dsFPDIndicator_t
  * @param[out] state      - pointer to current state of the specified indicator. @see dsFPDState_t
  *
  * @return dsError_t                      -  Status
@@ -222,7 +223,7 @@ dsError_t dsGetFPState(dsFPDIndicator_t eIndicator, dsFPDState_t* state);
  * indicator supports it (i.e. is multi-colored). It must return
  * dsERR_OPERATION_NOT_SUPPORTED if the indicator is single-colored.
  *
- * @param[in] eIndicator    - FPD Indicator Index. @see dsFPDIndicator_t
+ * @param[in] eIndicator    - FPD indicator index. @see dsFPDIndicator_t
  * @param[in] eColor        - The color index for the specified indicator. @see dsFPDColor_t
  *
  * @return dsError_t                      -  Status
@@ -248,7 +249,7 @@ dsError_t dsSetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t eColor);
  * indicator supports it (i.e. is multi-colored). It must return
  * dsERR_OPERATION_NOT_SUPPORTED if the indicator is single-colored.
  *
- * @param[in] eIndicator - FPD Indicator Index. @see dsFPDIndicator_t
+ * @param[in] eIndicator - FPD indicator index. @see dsFPDIndicator_t
  * @param[out] pColor    - pointer to current color value of the specified indicator. @see dsFPDColor_t
  *
  * @return dsError_t                      -  Status
@@ -326,7 +327,7 @@ dsError_t dsSetFPText(const char* pText);
  * This function will set the brightness of the specified 7-Segment Display LEDs on the Front
  * Panel Display to the specified brightness level.   
  *
- * @param[in] eIndicator    - FPD Indicator index (Clock LED). @see dsFPDTextDisplay_t
+ * @param[in] eIndicator    - FPD Text indicator index. @see dsFPDTextDisplay_t
  * @param[in] eBrightness   - The brightness value for the specified indicator. From 0 to 100. 
  *                              @see dsFPDBrightness_t.
  *
@@ -352,7 +353,7 @@ dsError_t dsSetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_
  * This function will Get the brightness of the specified 7-Segment Display LEDs on the Front
  * Panel Text Display.   
  *
- * @param[in] eIndicator    - FPD Indicator index (CLock LED.). @see dsFPDTextDisplay_t
+ * @param[in] eIndicator    - FPD Text indicator index. @see dsFPDTextDisplay_t
  * @param[out] eBrightness  - Brightness value. From 0 to 100. @see dsFPDBrightness_t.
  *
  * @return dsError_t                      -  Status
@@ -419,7 +420,7 @@ dsError_t dsSetFPScroll(unsigned int uScrollHoldOnDur, unsigned int uHorzScrollI
 /**
  * @brief  Terminates the the Front Panel Display sub-system.
  * 
- * This function resets any data structures used within the platform front-panel module,
+ * This function resets any data structures used within Front Panel module,
  * and releases all the resources allocated during the init function.
  *
  * @return dsError_t                      -  Status
@@ -507,6 +508,8 @@ dsError_t dsSetFPDColor (dsFPDIndicator_t eIndicator, dsFPDColor_t eColor,bool t
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
  * @pre dsFPInit() must be called before calling this API.
+ * 
+ * @note The time display should also change according to the new format set.
  * 
  * @warning  This API is Not thread safe.
  * 
