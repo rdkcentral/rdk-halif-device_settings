@@ -85,6 +85,8 @@ extern "C" {
  * @retval dsERR_ALREADY_INITIALIZED  -  Function is already initialized
  * @retval dsERR_GENERAL              -  Underlying undefined platform error
  * 
+ * @todo Remove dsERR_GENERAL and add specific error codes in next phase
+ *
  * @warning  This API is Not thread safe.
  * 
  * @see dsFPTerm()
@@ -110,7 +112,6 @@ dsError_t dsFPInit (void);
  * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
- * @todo Remove dsERR_GENERAL and add specific error codes in next phase
  * 
  * @pre dsFPInit() must be called before calling this API.
  * 
