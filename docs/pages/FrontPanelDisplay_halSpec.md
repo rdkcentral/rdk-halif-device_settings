@@ -37,6 +37,7 @@
 
 ## Acronyms, Terms and Abbreviations
 
+- `DS`     - Device Settings
 - `HAL`    - Hardware Abstraction Layer
 - `API`    - Application Programming Interface
 - `Caller` - Any user of the interface via the `API`s
@@ -66,11 +67,11 @@ style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
 This interface provides a set of `API`s to facilitate communication to Front Panel `LED` Display SoC Drivers.
 
 
-The Brightness, color and text of Front Panel `LED`s can be set or retrieved. It also provides `API` to enable or disable the specified discrete `LED` on the Front Panel Display.
+The brightness, color and text of Front Panel `LED`s can be set or retrieved. It also provides `API` to enable or disable the specified discrete `LED` on the Front Panel Display.
 
 ## Component Runtime Execution Requirements
  
-The component should manage system resources appropriately to avoid memory leaks and excessive resource utilization. Efficient memory management and resource cleanup are essential for stable and reliable execution. Additionally, the component should meet specified performance requirements, including response time, throughput, and resource usage based on the underlying platform's capabilities. The component should also be designed to scale effectively with increased load, being able to handle higher levels of usage without significant degradation in performance or stability.
+The component must adeptly manage resources to prevent issues like memory leaks and excessive utilization. It must also meet performance goals for response time, throughput, and resource use as per the platform's capabilities.
 
 Failure to meet these requirements will likely result in undefined and unexpected behaviour.
 
@@ -93,27 +94,27 @@ This interface is not required to allocate any memory.
 
 ### Power Management Requirements
 
-The Front Panel Display HAL is not involved in the power management operation directly. 
+The `FPD HAL` is not involved in the power management operation directly. 
 But the `Caller` will initiate the change in `LED` as part of power management handling.
 
  The `Caller` is responsible for driving LED Status in accordance with Power Mode change.
 
 ### Asynchronous Notification Model
 
-This interface is not required to have any Asynchronous notification.
+This interface is not required to have any asynchronous notification.
 
 
 ### Blocking calls
 
-This interface is not required to have any blocking calls. Synchronous calls should complete within a reasonable time period. Any call that can fail due to the lack of response from the connected device should have a timeout period and the function should return the relevant error code.
+This interface is not required to have any blocking calls. Synchronous calls must complete within a reasonable time period. Any call that can fail due to the lack of response from the connected device must have a timeout period and the function must return the relevant error code.
 
 ### Internal Error Handling
 
-All the `API`s must return error synchronously as a return argument. 
+All the `API`s must return error synchronously as a return argument. HAL is responsible for handling system errors (e.g. out of memory) internally.
 
 ### Persistence Model
 
-The Brightness and Color of Front Panel `LED`s would be persisted if the `Caller` sets the persistence parameter to True while invoking corresponding `dsSetFPDBrightness` and `dsSetFPDColor` `API`s.
+The brightness and color of Front Panel `LED`s would be persisted if the `Caller` sets the persistence parameter to True while invoking corresponding `dsSetFPDBrightness()` and `dsSetFPDColor()` `API`s.
 
 
 ## Non-functional requirements
@@ -141,11 +142,11 @@ The `HAL` implementation is expected to released under the Apache License 2.0.
 
 ### Build Requirements
 
-The source code must build into a shared library for Device Settings as Front Panel Display is a part of Device Settings and must be named as `libdshal.so`. The build mechanism shall be independent of Yocto.
+The source code must build into a shared library for Device Settings as Front Panel Display is a part of Device Settings and must be named as `libdshal.so`. The build mechanism must be independent of Yocto.
  
 ### Variability Management
 
-Any changes in the `API`s should be reviewed and approved by the component architects.`DeviceSettings Front Panel Display` should return the dsERR_OPERATION_NOT_SUPPORTED error code if any of the interface APIs are not supported by the underlying hardware.
+Any changes in the `API`s must be reviewed and approved by the component architects. `DS FPD` must return the dsERR_OPERATION_NOT_SUPPORTED error code if any of the interface `API`s are not supported by the underlying hardware.
 
 ### Platform or Product Customization
 
@@ -157,11 +158,11 @@ None
 
 ### Theory of operation and key concepts
 
-The caller is expected to have complete control over the life cycle of the `HAL`
+The `caller` is expected to have complete control over the life cycle of the `HAL`.
 
-1. Initialize the `FP HAL` using function: `dsFPInit()` before making any other `API` calls.  If `dsFPInit()` call fails, the `HAL` must return the respective error code, so that the caller can retry the operation.
+1. Initialize the `FPD HAL` using function: `dsFPInit()` before making any other `API` calls.  If `dsFPInit()` call fails, the `HAL` must return the respective error code, so that the caller can retry the operation.
 
-2. Once the Front Panel sub-system is initialized, `Caller` can invoke `API's to control the Front Panel `LED`s. The `FP` Brightness, Text, Color, Blink Interval, `FP LED` State(ON/OFF), Text Scroll can be set or retrieved.
+2. Once the `FPD` sub-system is initialized, `Caller` can invoke `API`s to control the Front Panel `LED`s. The `FP` Brightness, Text, Color, Blink Interval, `FP LED` State(ON/OFF), Text Scroll can be set or retrieved.
 
 3. De-initialize the `FP HAL` using the function: `dsFPTerm()`.
 
@@ -181,7 +182,9 @@ NOTE: The module would operate deterministically if the above call sequence is f
     participant HAL as DEVICE SETTINGS FRONT PANEL DISPLAY HAL
     participant Driver as SoC
     Caller->>HAL:dsFPInit()
-    Note over HAL: SoC initializes the Front Panel Display subsystem
+    Note over HAL: SoC initializes the FPD subsystem
+    HAL->>Driver: Allocates required resources for FPD
+    Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL: ds_FP_SetMethods
     Note over HAL: APIs to set the FPD Parameters
@@ -199,16 +202,18 @@ NOTE: The module would operate deterministically if the above call sequence is f
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller ->>HAL:dsFPTerm()
+    HAL ->> Driver: Releases all the resources during FPD init
+    Driver-->>HAL:return
     HAL-->>Caller:return
 
  ```
 
 
-LEGEND
+LEGEND:
 
 ds_FP_SetMethods:
-dsSetFPBlink(),
-dsSetFPBrightness(),
+dsSetFPBlink(), 
+dsSetFPBrightness(), 
 dsSetFPState(),
 dsSetFPColor(),
 dsSetFPTime(),
@@ -221,8 +226,6 @@ dsSetFPDBrightness(),
 dsSetFPDColor(),
 dsSetFPTimeFormat(),
 dsSetFPDMode()
-
-
 
 ds_FP_GetMethods:
 dsGetFPState(),
