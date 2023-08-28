@@ -265,45 +265,6 @@ dsError_t dsHdmiInSelectZoomMode (dsVideoZoom_t requestedZoomMode);
  * 
  */
 
-dsError_t dsHdmiInPauseAudio (void);
-
-/**
- * @brief This function presents the HDMI Input audio via HDMI Out.
- *
- * @return dsError_t                       - Status
- * @retval dsERR_NONE                       - Success
- * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
- * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
- * @retval dsERR_GENERAL                    - Underlying undefined platform error
- * 
- * @pre dsHdmiInInit() must be called before calling this API.
- * 
- * @warning  This API is Not thread safe.
- * 
- */
-
-dsError_t dsHdmiInResumeAudio (void);
-
-/**
- * @brief This function gets the current HDMI Input video mode.
- *
- * @param[out] resolution       - current HDMI Input video mode resolution. 
- *                                      See dsVideoPortResolution_t
- *
- * @return dsError_t                       - Status
- * @retval dsERR_NONE                       - Success
- * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
- * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
- * @retval dsERR_GENERAL                    - Underlying undefined platform error
- * 
- * @pre dsHdmiInInit() must be called before calling this API.
- * 
- * @warning  This API is Not thread safe.
- * 
- */
-
 dsError_t dsHdmiInGetCurrentVideoMode (dsVideoPortResolution_t *resolution);
 
 /**

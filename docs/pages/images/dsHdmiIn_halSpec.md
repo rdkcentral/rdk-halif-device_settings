@@ -62,7 +62,7 @@ style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
 
 @todo change HDMI port to HDMI input ports across entire document. And fix spelling and sentence errors.
 
-Device Settings `HdmiIn` `HAL` provides a set of `APIs` to initialize, query and set information about the HDMI ports, such as getting the number of HDMI ports, getting the current status of a selected HDMI port, pausing and playing audio, setting the video scale and selecting which HDMI input to be selected as active. And registering callbacks fo asyncronous notifications.
+Device Settings `HdmiIn` `HAL` provides a set of `APIs` to initialize, query and set information about the HDMI ports, such as getting the number of HDMI ports, getting the current status of a selected HDMI port, setting the video scale and selecting which HDMI input to be selected as active. And registering callbacks fo asyncronous notifications.
 
 ## Component Runtime Execution Requirements
 
@@ -168,9 +168,9 @@ The `caller` is expected to have complete control over the life cycle of the `HA
 
 1. Initialize the `HAL` using function: `dsHdmiInInit()` before making any other `API`s calls.  If `dsHdmiInInit()` call fails, the `HAL` must return the respective error code, so that the `caller` can retry the operation.
 
-2. The `caller` can call `dsHdmiInSelectPort()`, `dsHdmiInScaleVideo()`, `dsHdmiInPauseAudio()` and `dsHdmiInResumeAudio()` to set the needed information.
+2. The `caller` can call `dsHdmiInSelectPort()`, `dsHdmiInScaleVideo()`, `dsSetEdidVersion()` and `dsHdmiInSelectZoomMode()` to set the needed information.
 
-3. The `caller` can call `dsHdmiInGetNumberOfInputs()`, `dsHdmiInGetStatus()`, `dsGetEDIDBytesInfo()` and `dsHdmiInGetCurrentVideoMode()` to query the needed information.
+3. The `caller` can call `dsHdmiInGetNumberOfInputs()`, `dsHdmiInGetStatus()`, `dsGetEDIDBytesInfo()`, `dsIsHdmiARCPort()`, `dsGetHDMISPDInfo()`,  `dsGetEdidVersion()`, `dsGetAllmStatus()`, `dsGetSupportedGameFeaturesList()` and `dsHdmiInGetCurrentVideoMode()` to query the needed information.
 
 4. De-initialized the `HAL` using the function: `dsHdmiInTerm()`
 
@@ -202,16 +202,6 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     HAL->>Driver:Setting the video scale.
     Driver-->>HAL:return
     HAL-->>Caller:return
-    Caller->>HAL:dsHdmiInPauseAudio()
-    Note over HAL: Pauses the audio.
-    HAL->>Driver:Pausing the audio.
-    Driver-->>HAL:return
-    HAL-->>Caller:return
-    Caller->>HAL:dsHdmiInResumeAudio()
-    Note over HAL: Resumes the audio.
-    HAL->>Driver:Pausing the audio.
-    Driver-->>HAL:return
-    HAL-->>Caller:return
     Caller->>HAL:dsGetEDIDBytesInfo()
     Note over HAL: Gets the EDID Bytes info.
     HAL->>Driver:Returns the EDID Bytes info.
@@ -225,6 +215,48 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     Caller->>HAL:dsHdmiInGetCurrentVideoMode()
     Note over HAL: Gets the current video mode.
     HAL->>Driver:Returns the current video mode.
+    Driver-->>HAL:return
+    HAL-->>Caller:return
+
+    Caller->>HAL:dsSetEdidVersion()
+    Note over HAL: Sets the EDID version.
+    HAL->>Driver:Sets the EDID version.
+    Driver-->>HAL:return
+    HAL-->>Caller:return
+
+    Caller->>HAL:dsGetEdidVersion()
+    Note over HAL: Gets the current EDID Version.
+    HAL->>Driver:Returns the current EDID Version.
+    Driver-->>HAL:return
+    HAL-->>Caller:return
+    
+    Caller->>HAL:dsGetAllmStatus()
+    Note over HAL: Gets the ALLM status
+    HAL->>Driver:Returns the ALLM status
+    Driver-->>HAL:return
+    HAL-->>Caller:return
+
+    Caller->>HAL:dsGetSupportedGameFeaturesList()
+    Note over HAL: Gets the supported game features
+    HAL->>Driver:Returns the supported game features
+    Driver-->>HAL:return
+    HAL-->>Caller:return
+
+    Caller->>HAL:dsIsHdmiARCPort()
+    Note over HAL: Gets whether the specified HDMI port supports ARC
+    HAL->>Driver:Returns whether the specified HDMI port supports ARC
+    Driver-->>HAL:return
+    HAL-->>Caller:return
+
+    Caller->>HAL:dsGetHDMISPDInfo()
+    Note over HAL: Gets the HDMI SPD info
+    HAL->>Driver:Returns the HDMI SPD info
+    Driver-->>HAL:return
+    HAL-->>Caller:return
+
+    Caller->>HAL:dsHdmiInSelectZoomMode()
+    Note over HAL: Sets the zoom mode
+    HAL->>Driver:Setting the zoom mode
     Driver-->>HAL:return
     HAL-->>Caller:return
 
