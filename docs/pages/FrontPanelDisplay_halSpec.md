@@ -202,7 +202,7 @@ NOTE: The module would operate deterministically if the above call sequence is f
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller ->>HAL:dsFPTerm()
-    HAL ->> Driver: Releases all the resources during FPD init
+    HAL ->> Driver: Releases all the resources allocated during FPD init
     Driver-->>HAL:return
     HAL-->>Caller:return
 
