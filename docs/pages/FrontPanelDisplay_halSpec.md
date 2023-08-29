@@ -82,7 +82,7 @@ Failure to meet these requirements will likely result in undefined and unexpecte
 
 ### Threading Model
 
-This interface is not required to be thread safe. Any `caller` invoking the `API`s should ensure calls are made in a thread safe manner.
+This interface is not required to be thread safe. Any `caller` invoking the `API`s must ensure calls are made in a thread safe manner.
 
 ### Process Model
 
@@ -97,7 +97,7 @@ This interface is not required to allocate any memory.
 The `FPD HAL` is not involved in the power management operation directly. 
 But the `Caller` will initiate the change in `LED` as part of power management handling.
 
- The `Caller` is responsible for driving LED Status in accordance with Power Mode change.
+The `Caller` is responsible for driving LED Status in accordance with Power Mode change.
 
 ### Asynchronous Notification Model
 
