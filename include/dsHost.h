@@ -56,8 +56,6 @@
  * - EDID:    Extended Display Information Data.
  * - CPU:     Central Processing Unit
  * - SoC:     System on chip
- * 
- * @ingroup DSSETTINGS_HAL
  */
 
 
@@ -169,10 +167,11 @@ dsError_t dsGetSocIDFromSDK(char *socID);
 
 dsError_t dsGetHostEDID(unsigned char *edid, int *length);
 
-/** @} */ // End of DSHAL_HOST_API doxygen group 
-/** @} */ // End of DeviceSettings Module
-/** @} */ // End of HPK
 #ifdef __cplusplus
 }
 #endif
 #endif /* _DS_HOST_H_ */
+
+/** @} */ // End of DSHAL_HOST_API doxygen group 
+/** @} */ // End of DeviceSettings Module
+/** @} */ // End of HPK
