@@ -113,8 +113,7 @@ All the `API`s must return error synchronously as a return argument. HAL is resp
 
 ### Persistence Model
 
-The brightness and color of Front Panel `LED`s would be persisted if the `Caller` sets the persistence parameter to True while invoking corresponding `dsSetFPDBrightness()` and `dsSetFPDColor()` `API`s.
-
+There is no requirement for the interface to persist any setting information. `Caller` is responsible to persist any settings related to the `HAL`.
 
 ## Non-functional requirements
 
