@@ -98,6 +98,7 @@ dsError_t dsFPInit (void);
  * @brief  Sets blink pattern of specified FP LED.
  * 
  * This function is used to set the individual discrete LED to blink for a specified number of iterations with blink interval.
+ * This function must return dsERR_OPERATION_NOT_SUPPORTED if FP State is "OFF".
  *
  * @param[in] eIndicator        -  FPD indicator index. @see dsFPDIndicator_t
  * @param[in] uBlinkDuration    -  Blink interval. The time in ms the text display will remain ON 
@@ -113,7 +114,7 @@ dsError_t dsFPInit (void);
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
  * 
- * @pre dsFPInit() must be called before calling this API.
+ * @pre dsFPInit() must be called and FP State must be "ON" before calling this API.
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -124,11 +125,12 @@ dsError_t dsSetFPBlink (dsFPDIndicator_t eIndicator, unsigned int uBlinkDuration
  * @brief  Sets the brightness level of specified Front Panel LED.
  * 
  * This function will set the brightness of the specified discrete LED on the Front
- * Panel Display to the specified brightness level. 
+ * Panel Display to the specified brightness level. This function must return dsERR_OPERATION_NOT_SUPPORTED
+ * if the FP State is "OFF".
  *
  * @param[in] eIndicator  - FPD indicator index. @see dsFPDIndicator_t.
  * @param[in] eBrightness - The brightness value(0 to 100) for the specified indicator.
- *                              @see dsFPDBrightness_t.
+ *                            @see dsFPDBrightness_t.
  *
  * @return dsError_t                      -  Status
  * @retval dsERR_NONE                     -  Success
@@ -137,7 +139,7 @@ dsError_t dsSetFPBlink (dsFPDIndicator_t eIndicator, unsigned int uBlinkDuration
  * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
- * @pre dsFPInit() must be called before calling this API.
+ * @pre dsFPInit() must be called and FP State must be "ON" before calling this API.
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -150,7 +152,7 @@ dsError_t dsSetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t eBri
  * @brief  Gets the brightness level of specified Front Panel LED.
  * 
  * This function returns the brightness level of the specified discrete LED on the Front
- * Panel.
+ * Panel. This function must return dsERR_OPERATION_NOT_SUPPORTED if FP State is "OFF".
  *
  * @param[in]  eIndicator  - FPD indicator index. @see dsFPDIndicator_t
  * @param[out] pBrightness - pointer to current brightness value(0 to 100) of the specified indicator. 
@@ -163,7 +165,7 @@ dsError_t dsSetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t eBri
  * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
- * @pre dsFPInit() must be called before calling this API.
+ * @pre dsFPInit() must be called and FP State must be "ON" before calling this API.
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -197,7 +199,6 @@ dsError_t dsSetFPState(dsFPDIndicator_t eIndicator, dsFPDState_t state);
 /**
  * @brief This function will Get the Front Panel Indicator state of Specified discrete LED.
  * 
- *
  * @param[in]  eIndicator - FPD indicator index. @see dsFPDIndicator_t
  * @param[out] state      - pointer to current state of the specified indicator. @see dsFPDState_t
  *
@@ -222,7 +223,7 @@ dsError_t dsGetFPState(dsFPDIndicator_t eIndicator, dsFPDState_t* state);
  * 
  * This function sets the color of the specified Front Panel Indicator LED, if the 
  * indicator supports it (i.e. is multi-colored). It must return
- * dsERR_OPERATION_NOT_SUPPORTED if the indicator is single-colored.
+ * dsERR_OPERATION_NOT_SUPPORTED if the indicator is single-colored or if the FP State is "OFF".
  *
  * @param[in] eIndicator    - FPD indicator index. @see dsFPDIndicator_t
  * @param[in] eColor        - The color index for the specified indicator. @see dsFPDColor_t
@@ -234,7 +235,7 @@ dsError_t dsGetFPState(dsFPDIndicator_t eIndicator, dsFPDState_t* state);
  * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
- * @pre dsFPInit() must be called before calling this API.
+ * @pre dsFPInit() must be called and FP State must be "ON" before calling this API.
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -248,7 +249,7 @@ dsError_t dsSetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t eColor);
  * 
  * This function Gets the color of the specified Front Panel Indicator LED. if the
  * indicator supports it (i.e. is multi-colored). It must return
- * dsERR_OPERATION_NOT_SUPPORTED if the indicator is single-colored.
+ * dsERR_OPERATION_NOT_SUPPORTED if the indicator is single-colored or if the FP State is "OFF"
  *
  * @param[in] eIndicator - FPD indicator index. @see dsFPDIndicator_t
  * @param[out] pColor    - pointer to current color value of the specified indicator. @see dsFPDColor_t
@@ -260,7 +261,7 @@ dsError_t dsSetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t eColor);
  * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
- * @pre dsFPInit() must be called before calling this API.
+ * @pre dsFPInit() must be called and FP State must be "ON" before calling this API. 
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -274,13 +275,13 @@ dsError_t dsGetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t *pColor);
  * 
  * This function sets the 7-segment display LEDs to show the time in specified format.
  * The format (12/24-hour) has to be specified. If there are no 7-Segment display LEDs present on the
- * device then dsERR_OPERATION_NOT_SUPPORTED must be returned.
- * The function must return dsERR_INVALID_PARAM if the format and hours values do not agree,
+ * device or of the FP State is "OFF" then dsERR_OPERATION_NOT_SUPPORTED must be returned.
+ * It must return dsERR_INVALID_PARAM if the format and hours values do not agree,
  * or if the hours/minutes are invalid.
  *
- * @param[in] eTimeFormat   - Time format (12 or 24 hrs). @see dsFPDTimeFormat_t.
- * @param[in] uHour         - Hour information.
- * @param[in] uMinutes      - Minutes information.
+ * @param[in] eTimeFormat   - Time format (12 or 24 hrs). @see dsFPDTimeFormat_t
+ * @param[in] uHour         - Hour information
+ * @param[in] uMinutes      - Minutes information
  *
  * @return dsError_t                      -  Status
  * @retval dsERR_NONE                     -  Success
@@ -289,7 +290,7 @@ dsError_t dsGetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t *pColor);
  * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported.
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
- * @pre dsFPInit() must be called before calling this API.
+ * @pre dsFPInit() must be called and FP State must be "ON" before calling this API.
  * @warning  This API is Not thread safe.
  * 
  * @see dsGetFPTimeFormat()
@@ -301,8 +302,9 @@ dsError_t dsSetFPTime (dsFPDTimeFormat_t eTimeFormat, const unsigned int uHour, 
  * @brief  Displays the specified text on 7-Segment Display.
  * 
  * This function is used to set the 7-segment display LEDs to show the given text.  
- * If there are no 7-Segment display LEDs present on the device then dsERR_OPERATION_NOT_SUPPORTED 
- * must be returned. Maximum length of Text is 10 characters.
+ * If there are no 7-Segment display LEDs present on the device or if the FP State is "OFF" 
+ * then dsERR_OPERATION_NOT_SUPPORTED must be returned.
+ * Maximum length of Text is 10 characters.
  *
  * @param[in] pText - Text to be displayed
  *
@@ -313,7 +315,7 @@ dsError_t dsSetFPTime (dsFPDTimeFormat_t eTimeFormat, const unsigned int uHour, 
  * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
- * @pre dsFPInit() must be called before calling this API.
+ * @pre dsFPInit() must be called and FP State must be "ON" before calling this API.
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -326,7 +328,8 @@ dsError_t dsSetFPText(const char* pText);
  * @brief  Sets the brightness level of 7-Segment Display.
  * 
  * This function will set the brightness of the specified 7-Segment Display LEDs on the Front
- * Panel Display to the specified brightness level.   
+ * Panel Display to the specified brightness level. If there are no 7-Segment display LEDs present
+ * on the device or if the FP State is "OFF" then dsERR_OPERATION_NOT_SUPPORTED must be returned.
  *
  * @param[in] eIndicator    - FPD Text indicator index. @see dsFPDTextDisplay_t
  * @param[in] eBrightness   - The brightness value for the specified indicator. From 0 to 100. 
@@ -339,7 +342,7 @@ dsError_t dsSetFPText(const char* pText);
  * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
- * @pre dsFPInit() must be called before calling this API.
+ * @pre dsFPInit() must be called and FP State must be "ON" before calling this API.
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -352,7 +355,8 @@ dsError_t dsSetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_
  * @brief  Gets the brightness of 7-Segment Display LEDs.
  * 
  * This function will Get the brightness of the specified 7-Segment Display LEDs on the Front
- * Panel Text Display.   
+ * Panel Text Display. If there are no 7-Segment display LEDs present or if the FP State is "OFF"
+ * then dsERR_OPERATION_NOT_SUPPORTED must be returned.
  *
  * @param[in] eIndicator    - FPD Text indicator index. @see dsFPDTextDisplay_t
  * @param[out] eBrightness  - Brightness value. From 0 to 100. @see dsFPDBrightness_t.
@@ -364,7 +368,7 @@ dsError_t dsSetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_
  * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
- * @pre dsFPInit() must be called before calling this API.
+ * @pre dsFPInit() must be called and FP State must be "ON" before calling this API.
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -376,7 +380,8 @@ dsError_t dsGetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_
 /**
  * @brief  Enable/Disable the clock display of Front Panel
  * 
- * This function will enable or disable displaying of clock.   
+ * This function will enable or disable displaying of clock. It will return dsERR_OPERATION_NOT_SUPPORTED
+ * if Clock display is not available
  *
  * @param[in] enable    - Indicates the clock to be enabled or disabled. 
  *                          1 if enabled, 0 if disabled.
@@ -388,7 +393,7 @@ dsError_t dsGetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_
  * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
- * @pre dsFPInit() must be called before calling this API.
+ * @pre dsFPInit() must be called and FP State must be "ON" before calling this API.
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -399,6 +404,8 @@ dsError_t dsFPEnableCLockDisplay (int enable);
  * @brief  Enables Text Scrolling on 7-Segment Display.
  * 
  * This function scrolls the text in the 7-segment Display LEDs for the given number of iterations.
+ * If there are no 7-Segment display LEDs present or if the FP State is "OFF" then
+ * dsERR_OPERATION_NOT_SUPPORTED must be returned. Horizontal and Vertical scroll cannot work at the same time.
  *
  * @param[in] uScrollHoldOnDur      - Duration in ms before between scrolling to the next position
  * @param[in] uHorzScrollIterations - Number of iterations for which to scroll horizontally.
@@ -411,7 +418,7 @@ dsError_t dsFPEnableCLockDisplay (int enable);
  * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
- * @pre dsFPInit() must be called before calling this API.
+ * @pre dsFPInit() must be called and FP State must be "ON" before calling this API.
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -440,66 +447,12 @@ dsError_t dsSetFPScroll(unsigned int uScrollHoldOnDur, unsigned int uHorzScrollI
 dsError_t dsFPTerm(void);
 
 /**
- * @brief  Sets the brightness level of specified Front Panel LED 
- * 
- * This function will set the brightness of the specified discrete LED on the front
- * panel display to the specified brightness level in multi-app mode.
- * The brightness level must be persisted if the input parameter toPersist passed is TRUE.
- *
- * @param[in] eIndicator    - FPD Indicator index. @see dsFPDIndicator_t
- * @param[in] eBrightness   - The brightness value for the specified indicator. 
- *                              From 0 to 100. @see dsFPDBrightness_t.
- * @param[in] toPersist     - If set to TRUE, the brightness value must be persisted.
- *
- * @return dsError_t                      -  Status
- * @retval dsERR_NONE                     -  Success
- * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
- * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
- * @retval dsERR_GENERAL                  -  Underlying undefined platform error
- * 
- * @pre dsFPInit() must be called before calling this API.
- * 
- * @warning  This API is Not thread safe.
- * 
- * @see dsGetFPTextBrightness()
- * 
- */
-dsError_t dsSetFPDBrightness(dsFPDIndicator_t eIndicator, dsFPDBrightness_t eBrightness,bool toPersist);
-
-/**
- * @brief  This function sets the color of the specified LED on the front panel in
- *         multi-app mode. The color of the LED must be persisted if the
- *         input parameter toPersist is set to TRUE.
- *
- * @param[in] eIndicator    - FPD Indicator index. @see dsFPDIndicator_t
- * @param[in] eColor        - Indicates the RGB color to be set for the specified LED. 
- *                              @see dsFPDColor_t
- * @param[in] toPersist     - Indicates whether to persist the specified LED color or not. 
- *                              True if to persist, false if not.
- *
- * @return dsError_t                      -  Status
- * @retval dsERR_NONE                     -  Success
- * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
- * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
- * @retval dsERR_GENERAL                  -  Underlying undefined platform error
- * 
- * @pre dsFPInit() must be called before calling this API.
- * 
- * @warning  This API is Not thread safe.
- * 
- * @see dsGetFPColor()
- * 
- */
-dsError_t dsSetFPDColor (dsFPDIndicator_t eIndicator, dsFPDColor_t eColor,bool toPersist);
-
-/**
  * @brief  This function sets the 7-segment display LEDs to show the 
- *         specified time in specified format.
+ * specified time in specified format. It must return dsERR_OPERATION_NOT_SUPPORTED 
+ * if the underlying hardware does not have support for Text or Clock.
  *
  * @param[in] eTimeFormat   -  Indicates the time format (12 hour or 24 hour). 
- *                             @see dsFPDTimeFormat_t.
+ *                               @see dsFPDTimeFormat_t.
  *
  * @return dsError_t                      -  Status
  * @retval dsERR_NONE                     -  Success
@@ -508,7 +461,7 @@ dsError_t dsSetFPDColor (dsFPDIndicator_t eIndicator, dsFPDColor_t eColor,bool t
  * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
- * @pre dsFPInit() must be called before calling this API.
+ * @pre dsFPInit() must be called and FP State must be "ON" before calling this API.
  * 
  * @note The time display should also change according to the new format set.
  * 
@@ -521,6 +474,8 @@ dsError_t dsSetFPTimeFormat (dsFPDTimeFormat_t eTimeFormat);
 
  /**
  * @brief  This function gets the Current time format set on 7-segment display LEDs panel.
+ * It must return dsERR_OPERATION_NOT_SUPPORTED if the underlying hardware does not 
+ * have support for Clock.
  *
  * @param[out] pTimeFormat      - Current time format value (12 hour or 24 hour). 
  *                                  @see dsFPDTimeFormat_t.
@@ -545,7 +500,7 @@ dsError_t dsGetFPTimeFormat (dsFPDTimeFormat_t *pTimeFormat);
  * @brief  Sets the display mode of the FPD text.
  * 
  * This function sets the display mode (clock or text or both) for FPD.
- * This function must return dsERR_OPERATION_NOT_SUPPORTED if the underlying hardware does not 
+ * It must return dsERR_OPERATION_NOT_SUPPORTED if the underlying hardware does not 
  * have support for Text or Clock.
  *
  * @param[in] eMode - Indicates the mode. @see dsFPDMode_t
@@ -557,7 +512,7 @@ dsError_t dsGetFPTimeFormat (dsFPDTimeFormat_t *pTimeFormat);
  * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
- * @pre dsFPInit() must be called before calling this API.
+ * @pre dsFPInit() must be called and FP State must be "ON" before calling this API.
  * 
  * @warning  This API is Not thread safe.
  * 
