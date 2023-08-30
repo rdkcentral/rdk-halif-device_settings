@@ -302,7 +302,7 @@ dsError_t dsSetFPTime (dsFPDTimeFormat_t eTimeFormat, const unsigned int uHour, 
  * 
  * This function is used to set the 7-segment display LEDs to show the given text.  
  * If there are no 7-Segment display LEDs present on the device then dsERR_OPERATION_NOT_SUPPORTED 
- * must be returned.
+ * must be returned. Maximum length of Text is 10 characters.
  *
  * @param[in] pText - Text to be displayed
  *
@@ -544,7 +544,9 @@ dsError_t dsGetFPTimeFormat (dsFPDTimeFormat_t *pTimeFormat);
 /**
  * @brief  Sets the display mode of the FPD text.
  * 
- * This function sets the display mode of the FPD text display.
+ * This function sets the display mode (clock or text or both) for FPD.
+ * This function must return dsERR_OPERATION_NOT_SUPPORTED if the underlying hardware does not 
+ * have support for Text or Clock.
  *
  * @param[in] eMode - Indicates the mode. @see dsFPDMode_t
  *
