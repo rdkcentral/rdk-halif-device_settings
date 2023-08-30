@@ -95,6 +95,8 @@
 /**
  * @defgroup DSHAL_API HAL Data Types
  * @ingroup DSSETTINGS_HAL
+ * 
+ * @{
  *
  * Main configuration options provided by the device settings modules are:
  *  - Audio output ports (volume, mute, MS12 settings, Audio Delay, Audio Mixing,
@@ -172,8 +174,6 @@
 
 /**
 * @defgroup devicesettings Device Settings
-* @{
-* @defgroup HAL
 * @{
 **/
 
@@ -441,40 +441,70 @@ typedef enum _dsATMOSCapability_t{
 
 #define dsAudioStereoMode_isValid(t)  (((t) >= dsAUDIO_STEREO_UNKNOWN ) && ((t) < dsAUDIO_STEREO_MAX))
 
+/**
+ * @ingroup DSHAL_AUDIO_TYPES
+ * @brief Structure that defines audio output device configuration.
+ */
+
+typedef struct _dsAudioTypeConfig_t {
+    int32_t  typeId;                            ///< The audio output type.     
+    const char *name;                           ///< Name of the audio output device. 
+    size_t numSupportedCompressions;            ///< Number of supported audio compression methods.   
+    const dsAudioCompression_t *compressions;   ///< List of audio compression methods supported.     
+    size_t numSupportedEncodings;               ///< Number of supported audio encodings.             
+    const dsAudioEncoding_t *encodings;         ///< List of audio encodings supported.               
+    size_t numSupportedStereoModes;             ///< Number of supported stereo modes.                
+    const dsAudioStereoMode_t *stereoModes;     ///< List of stereo modes supported.                  
+} dsAudioTypeConfig_t;
+
+/**
+ * @ingroup DSHAL_AUDIO_TYPES
+ * @brief Structure that defines the audio port type and associated ID.
+ */
+
+typedef struct _dsAudioPortId_t {
+    dsAudioPortType_t type; ///< Audio port type.
+    int32_t index;          ///< Port ID/number.
+} dsAudioPortId_t;
+
+/**
+ * @brief Enumeration defines surround mode.
+ * Each bit of uint32_t represent supported surround mode. 
+ */
+
+typedef enum _dsSURROUNDMode_t {
+    dsSURROUNDMODE_NONE = 0x0,      ///< No surround mode.
+    dsSURROUNDMODE_DD = 0x1,        ///< Surround mode Dolby Digital.
+    dsSURROUNDMODE_DDPLUS = 0x2,    ///< Surround mode Dolby Digital Plus
+    dsSURROUNDMODE_MAX,             ///< Out of range 
+} dsSURROUNDMode_t;
+
+/**
+ * @brief Enumeration defines MS12 feature.
+ */
+
+typedef enum _dsMS12FEATURE_t {
+    dsMS12FEATURE_DAPV2 = 0x0,  ///< Dolby Audio Processing Version 2
+    dsMS12FEATURE_DE = 0x1,     ///< ? Amit to provide update
+    dsMS12FEATURE_MAX = 0x2,    ///< Out of range 
+} dsMS12FEATURE_t;
+
+/**
+ * @ingroup DSHAL_AUDIO_TYPES
+ * @brief Structure that defines audio port configuration.
+ */
+
+typedef struct _dsAudioPortConfig_t {
+    dsAudioPortId_t id;                         ///< Port ID.             
+    const dsVideoPortPortId_t *connectedVOPs;   ///< Connected video port.
+} dsAudioPortConfig_t;
+
+#define MAX_LANGUAGE_LEN 10
+
 /* End of DSHAL_AUDIO_TYPES doxygen group */
 /**
  * @}
  */
-
-/**
- * @brief This enumeration defines HDCP protocol version types 
- */
-
-typedef enum _dsHdcpProtocolVersion_t {
-    dsHDCP_VERSION_1X = 0,  ///< HDCP Protocol version 1.x 
-    dsHDCP_VERSION_2X,      ///< HDCP Protocol version 2.x 
-    dsHDCP_VERSION_MAX      ///< Out of range 
-} dsHdcpProtocolVersion_t;
-
-/** 
- * @brief This enumeration defines all HDCP Authentication Status 
-*/
-
-typedef enum _dsHdcpStatus_t {
-    dsHDCP_STATUS_UNPOWERED = 0,            ///< Connected Sink Device does not support HDCP
-    dsHDCP_STATUS_UNAUTHENTICATED,          ///< HDCP Authentication Process is not initiated
-    dsHDCP_STATUS_AUTHENTICATED,            ///< HDCP Authentication Process is initiated and Passed
-    dsHDCP_STATUS_AUTHENTICATIONFAILURE,    ///< HDCP Authentication Failure or Link Integroty Failure
-    dsHDCP_STATUS_INPROGRESS,               ///< HDCP Authentication in Progress
-    dsHDCP_STATUS_PORTDISABLED,             ///< HDMI output port disabled
-    dsHDCP_STATUS_MAX                       ///< Out of range 
-} dsHdcpStatus_t;
-
-/**
- * @brief HDCP status validation check.
-*/
-
-#define dsHdcpStatus_isValid(t)  (((t) >= dsHDCP_STATUS_UNPOWERED ) && ((t) < dsHDCP_STATUS_MAX))
 
 /** @addtogroup DSHAL_VIDEOPORT_TYPES HAL VideoPort Type Definitions
  *  @ingroup DSHAL_VIDEOPORT
@@ -656,47 +686,6 @@ typedef enum _dsVideoZoom_t {
 
 #define dsVideoPortDFC_isValid(t)  (((t) >= dsVIDEO_ZOOM_NONE ) && ((t) < dsVIDEO_ZOOM_MAX))
 
-/* End of DSHAL_VIDEOPORT_TYPES doxygen group.
-/**
- * @}
- */
-
-/** @addtogroup DSHAL_VIDEODEVICE_TYPES HAL VideoDevice Type Definitions
- *  @ingroup DSHAL_VIDEODEVICE
- *  @{
- */
-
-/**
- * @brief Structure that defines video device configuration for the output.
- */
-
-typedef struct _dsVideoConfig_t {
-    size_t numSupportedDFCs;            ///< Number of zoom modes supported.
-    const dsVideoZoom_t *supportedDFCs; ///< List of zoom modes supported. 
-    dsVideoZoom_t defaultDFC;           ///< The default zoom mode.        
-} dsVideoConfig_t;
-
-/* End of DSHAL_VIDEODEVICE_TYPES doxygen group.
-/**
- * @}
- */
-
-/**
- * @ingroup DSHAL_AUDIO_TYPES
- * @brief Structure that defines audio output device configuration.
- */
-
-typedef struct _dsAudioTypeConfig_t {
-    int32_t  typeId;                            ///< The audio output type.     
-    const char *name;                           ///< Name of the audio output device. 
-    size_t numSupportedCompressions;            ///< Number of supported audio compression methods.   
-    const dsAudioCompression_t *compressions;   ///< List of audio compression methods supported.     
-    size_t numSupportedEncodings;               ///< Number of supported audio encodings.             
-    const dsAudioEncoding_t *encodings;         ///< List of audio encodings supported.               
-    size_t numSupportedStereoModes;             ///< Number of supported stereo modes.                
-    const dsAudioStereoMode_t *stereoModes;     ///< List of stereo modes supported.                  
-} dsAudioTypeConfig_t;
-
 /**
  * @ingroup DSHAL_VIDEOPORT_TYPES
  * @brief Structure that defines video port resolution settings of output video device.
@@ -710,16 +699,6 @@ typedef struct _dsVideoPortResolution_t {
     dsVideoFrameRate_t  frameRate;                  ///< The associated frame rate.                             
     bool interlaced;                                ///< The associated scan mode(@a true if interlaced, @a false if progressive).
 }dsVideoPortResolution_t;
-
-/**
- * @ingroup DSHAL_AUDIO_TYPES
- * @brief Structure that defines the audio port type and associated ID.
- */
-
-typedef struct _dsAudioPortId_t {
-    dsAudioPortType_t type; ///< Audio port type.
-    int32_t index;          ///< Port ID/number.
-} dsAudioPortId_t;
 
 /**
  * @ingroup DSHAL_VIDEOPORT_TYPES
@@ -751,6 +730,7 @@ typedef struct _dsVideoPortTypeConfig_t {
  */
 #define HDCP_KEY_MAX_SIZE  (4*1024)
 
+
 /**
  * @brief Enumeration defines all of the standard HDR types.
  * Each bit of uint32_t represent a standard. 
@@ -770,40 +750,6 @@ typedef enum _dsHDRStandard_t {
 
 
 /**
- * @brief Enumeration defines surround mode.
- * Each bit of uint32_t represent supported surround mode. 
- */
-
-typedef enum _dsSURROUNDMode_t {
-    dsSURROUNDMODE_NONE = 0x0,      ///< No surround mode.
-    dsSURROUNDMODE_DD = 0x1,        ///< Surround mode Dolby Digital.
-    dsSURROUNDMODE_DDPLUS = 0x2,    ///< Surround mode Dolby Digital Plus
-    dsSURROUNDMODE_MAX,             ///< Out of range 
-} dsSURROUNDMode_t;
-
-/**
- * @brief Enumeration defines MS12 feature.
- */
-
-typedef enum _dsMS12FEATURE_t {
-    dsMS12FEATURE_DAPV2 = 0x0,  ///< Dolby Audio Processing Version 2
-    dsMS12FEATURE_DE = 0x1,     ///< ? Amit to provide update
-    dsMS12FEATURE_MAX = 0x2,    ///< Out of range 
-} dsMS12FEATURE_t;
-
-/**
- * @ingroup DSHAL_AUDIO_TYPES
- * @brief Structure that defines audio port configuration.
- */
-
-typedef struct _dsAudioPortConfig_t {
-    dsAudioPortId_t id;                         ///< Port ID.             
-    const dsVideoPortPortId_t *connectedVOPs;   ///< Connected video port.
-} dsAudioPortConfig_t;
-
-#define MAX_LANGUAGE_LEN 10
-
-/**
  * @ingroup DSHAL_VIDEOPORT_TYPES
  * @brief Structure that defines video port configuration settings.
  */
@@ -813,6 +759,31 @@ typedef struct _dsVideoPortPortConfig_t {
     dsAudioPortId_t connectedAOP;   ///< Connected audio port.
     const char *defaultResolution;  ///< Default resolution's name.
 } dsVideoPortPortConfig_t;
+
+/* End of DSHAL_VIDEOPORT_TYPES doxygen group.
+/**
+ * @}
+ */
+
+/** @addtogroup DSHAL_VIDEODEVICE_TYPES HAL VideoDevice Type Definitions
+ *  @ingroup DSHAL_VIDEODEVICE
+ *  @{
+ */
+
+/**
+ * @brief Structure that defines video device configuration for the output.
+ */
+
+typedef struct _dsVideoConfig_t {
+    size_t numSupportedDFCs;            ///< Number of zoom modes supported.
+    const dsVideoZoom_t *supportedDFCs; ///< List of zoom modes supported. 
+    dsVideoZoom_t defaultDFC;           ///< The default zoom mode.        
+} dsVideoConfig_t;
+
+/* End of DSHAL_VIDEODEVICE_TYPES doxygen group.
+/**
+ * @}
+ */
 
 /** @addtogroup DSHAL_FPD_TYPES HAL Front Panel Display (FPD) Type Definitions
  *  @ingroup DSHAL_FPD
@@ -977,10 +948,41 @@ typedef enum __dsFPDMode_t{
 #define MAX_EDID_BYTES_LEN  (1024)  ///< Maximum Byte length of EDID data 
 
 /**
+ * @brief HDCP status validation check.
+*/
+
+#define dsHdcpStatus_isValid(t)  (((t) >= dsHDCP_STATUS_UNPOWERED ) && ((t) < dsHDCP_STATUS_MAX))
+
+
+/**
  * @ingroup DSHAL_DISPLAY_TYPES
  * @brief Defines the structure that is used to get the EDID information of the video display.
  *
  */
+
+/**
+ * @brief This enumeration defines HDCP protocol version types 
+ */
+
+typedef enum _dsHdcpProtocolVersion_t {
+    dsHDCP_VERSION_1X = 0,  ///< HDCP Protocol version 1.x 
+    dsHDCP_VERSION_2X,      ///< HDCP Protocol version 2.x 
+    dsHDCP_VERSION_MAX      ///< Out of range 
+} dsHdcpProtocolVersion_t;
+
+/** 
+ * @brief This enumeration defines all HDCP Authentication Status 
+*/
+
+typedef enum _dsHdcpStatus_t {
+    dsHDCP_STATUS_UNPOWERED = 0,            ///< Connected Sink Device does not support HDCP
+    dsHDCP_STATUS_UNAUTHENTICATED,          ///< HDCP Authentication Process is not initiated
+    dsHDCP_STATUS_AUTHENTICATED,            ///< HDCP Authentication Process is initiated and Passed
+    dsHDCP_STATUS_AUTHENTICATIONFAILURE,    ///< HDCP Authentication Failure or Link Integroty Failure
+    dsHDCP_STATUS_INPROGRESS,               ///< HDCP Authentication in Progress
+    dsHDCP_STATUS_PORTDISABLED,             ///< HDMI output port disabled
+    dsHDCP_STATUS_MAX                       ///< Out of range 
+} dsHdcpStatus_t;
 
 typedef struct _dsDisplayEDID_t {
     int32_t productCode;               ///< Product code of the display device.      
@@ -1123,11 +1125,6 @@ typedef enum _dsHdmiInPort_t
     dsHDMI_IN_PORT_MAX         ///< Out of range 
 } dsHdmiInPort_t;
 
-/** @addtogroup DSHAL_HDMI_IN_STATUS HAL HDMI IN Signal Status Definitions
- *  @ingroup DSHAL_HDMI_IN
- *  @{
- */
-
 /**
  * @brief This enumeration defines the type of HDMI siganl status.
  */
@@ -1182,10 +1179,6 @@ typedef enum _dsCompInSignalStatus_t
     dsCOMP_IN_SIGNAL_STATUS_MAX           ///< Out of range 
 } dsCompInSignalStatus_t;
 
- /** @addtogroup DSHAL_COMPOSITE_IN_TYPES HAL COMPOSITE IN Type Definitions
- *  @ingroup DSHAL_COMPOSITE_IN
- *  @{
- */
 /**
  * @brief This enumeration defines the type of composite ports.
  */
@@ -1327,8 +1320,6 @@ typedef enum _dsAudioPortState {
  */
 #endif
 
-/** @} */
-/** @} */
-/** @} */
-/** @} */
-/** @} */
+/** @} */ // End of DeviceSettings_Module
+/** @} */ // End of DSHAL_API HAL Data Types
+/** @} */ // End of HPK

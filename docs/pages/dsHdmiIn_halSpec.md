@@ -48,25 +48,21 @@
 
 The diagram below describes a high-level software architecture of the HdmiIn stack.
 
-@todo change device settings to camel case and on Host
-
 ```mermaid
 %%{ init : { "theme" : "forest", "flowchart" : { "curve" : "linear" }}}%%
 flowchart TD
-y[Caller]<-->x[DEVICE SETTINGS HdmiIn HAL];
-x[DEVICE SETTINGS HdmiIn HAL]<-->z[SOC Drivers];
+y[Caller]<-->x[Device Settings HdmiIn HAL];
+x[Device Settings HdmiIn HAL]<-->z[SOC Drivers];
 style y fill:#99CCFF,stroke:#333,stroke-width:0.3px,align:left
 style z fill:#fcc,stroke:#333,stroke-width:0.3px,align:left
 style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
  ```
 
-@todo change HDMI port to HDMI input ports across entire document. And fix spelling and sentence errors.
-
-Device Settings `HdmiIn` `HAL` provides a set of `APIs` to initialize, query and set information about the HDMI ports, such as getting the number of HDMI ports, getting the current status of a selected HDMI port, setting the video scale and selecting which HDMI input to be selected as active. And registering callbacks fo asyncronous notifications.
+Device Settings `HdmiIn` `HAL` provides a set of `APIs` to initialize, query and set information about the HDMI input ports, such as getting the number of HDMI input ports, getting the current status of a selected HDMI input port, setting the video scale and selecting which HDMI input to be selected as active. And registering callbacks fo asyncronous notifications.
 
 ## Component Runtime Execution Requirements
 
-The component must adeptly manage resources to prevent issues like memory leaks and excessive utilization. It must also meet performance goals for response time, throughput, and resource use as per the platform's capabilities.
+The component shall adeptly manage resources to prevent issues like memory leaks and excessive utilization. It shall also meet performance goals for response time, throughput, and resource use as per the platform's capabilities.
 
 Failure to meet these requirements will likely result in undefined and unexpected behavior.
 
@@ -84,11 +80,11 @@ This interface is required to support a single instantiation with a single proce
 
 ### Memory Model
 
-This interface is not required to allocate any memory. Any pointers created by the interface must be cleaned up upon termination.
+This interface is not required to allocate any memory. Any pointers created by the interface shall be cleaned up upon termination.
 
 ### Power Management Requirements
 
-Although this interface is not required to be involved in any of the power management operations, the state transitions MUST not affect its operation. e.g. on resumption from a low power state, the interface should operate as if no transition has occurred.
+Although this interface is not required to be involved in any of the power management operations, the state transitions shall not affect its operation. e.g. on resumption from a low power state, the interface should operate as if no transition has occurred.
 
 ### Asynchronous Notification Model
 
@@ -96,10 +92,10 @@ Although this interface is not required to be involved in any of the power manag
 @todo change The `HAL` to This interface
 The `HdmiIn` module should support asynchronous notifications operations:
 
- - The `HdmiIn` `API` `dsHdmiInRegisterConnectCB()` should facilitate asynchronous status notifications using the callback `dsHdmiInConnectCB_t`.
- - The `HdmiIn` `API` `dsHdmiInRegisterSignalChangeCB()` should facilitate asynchronous status notifications using the callback `dsHdmiInSignalChangeCB_t`.
- - The `HdmiIn` `API` `dsHdmiInRegisterStatusChangeCB()` should facilitate asynchronous status notifications using the callback `dsHdmiInStatusChangeCB_t`.
- - The `HdmiIn` `API` `dsHdmiInRegisterVideoModeUpdateCB()` should facilitate asynchronous status notifications using the callback `dsHdmiInVideoModeUpdateCB_t`.
+ - The `HdmiIn` `API` `dsHdmiInRegisterConnectCB()` should facilitate asynchronous status notifications using the callback when the connection status of the callback `dsHdmiInConnectCB_t`. This callback should be used when the connection status when the HDMI input port changes.
+ - The `HdmiIn` `API` `dsHdmiInRegisterSignalChangeCB()` should facilitate asynchronous status notifications using the callback `dsHdmiInSignalChangeCB_t`. This callback should be used when the signal status changes.
+ - The `HdmiIn` `API` `dsHdmiInRegisterStatusChangeCB()` should facilitate asynchronous status notifications using the callback `dsHdmiInStatusChangeCB_t`. This callback should be used when the HDMI input status changes.
+ - The `HdmiIn` `API` `dsHdmiInRegisterVideoModeUpdateCB()` should facilitate asynchronous status notifications using the callback `dsHdmiInVideoModeUpdateCB_t`. This callback should be used when the video mode changes. This callback should be used when the ALLM mode changes.
  - The `HdmiIn` `API` `dsHdmiInRegisterAllmChangeCB()` should facilitate asynchronous status notifications using the callback `dsHdmiInAllmChangeCB_t`.
  - The `HAL` is allowed to establish its own thread context for its operation, ensuring minimal impact on system resources.
  - Additionally, the `HAL` is responsible for releasing the resources it creates for its operation once the respective operation concludes.
@@ -111,7 +107,7 @@ This interface is not required to have any blocking calls. Synchronous calls sho
 
 ### Internal Error Handling
 
-All the `API`s must return error synchronously as a return argument. `HAL` is responsible for handling system errors (e.g. out of memory) internally.
+The `API` shall return error synchronously as a return argument. `HAL` is responsible for handling system errors (e.g. out of memory) internally.
 
 ### Persistence Model
 
@@ -144,8 +140,6 @@ The `HAL` implementation is expected to released under the Apache License 2.0.
 
 ### Build Requirements
 
-@todo change shall/should back to must
-
 The source code shall build into a shared library for Device Settings as `HdmiIn` module is a part of Device Settings and shall be named as `libdshal.so`. The build mechanism shall be independent of Yocto.
  
 ### Variability Management
@@ -166,18 +160,25 @@ None
 
 The `caller` is expected to have complete control over the life cycle of the `HAL`.
 
-1. Initialize the `HAL` using function: `dsHdmiInInit()` before making any other `API`s calls.  If `dsHdmiInInit()` call fails, the `HAL` must return the respective error code, so that the `caller` can retry the operation.
+1. Initialize the `HAL` using function: `dsHdmiInInit()` before making any other `API`s calls.  If `dsHdmiInInit()` call fails, the `HAL` shall return the respective error code, so that the `caller` can retry the operation.
 
 2. The `caller` can call `dsHdmiInSelectPort()`, `dsHdmiInScaleVideo()`, `dsSetEdidVersion()` and `dsHdmiInSelectZoomMode()` to set the needed information.
 
 3. The `caller` can call `dsHdmiInGetNumberOfInputs()`, `dsHdmiInGetStatus()`, `dsGetEDIDBytesInfo()`, `dsIsHdmiARCPort()`, `dsGetHDMISPDInfo()`,  `dsGetEdidVersion()`, `dsGetAllmStatus()`, `dsGetSupportedGameFeaturesList()` and `dsHdmiInGetCurrentVideoMode()` to query the needed information.
 
-4. De-initialized the `HAL` using the function: `dsHdmiInTerm()`
+4. Callbacks can be set with `dsHdmiInRegisterConnectCB()`, `dsHdmiInRegisterSignalChangeCB()`, `dsHdmiInRegisterStatusChangeCB()`, `dsHdmiInRegisterVideoModeUpdateCB()` and `dsHdmiInRegisterAllmChangeCB()`.
+    - `dsHdmiInRegisterConnectCB()` is used when the HDMIin port connection status changes.
+    - `dsHdmiInRegisterSignalChangeCB()` is used when the HDMIin signal status changes.
+    - `dsHdmiInRegisterStatusChangeCB()` is used when the HDMI input status changes.
+    - `dsHdmiInRegisterVideoModeUpdateCB()` is used when the HDMIin video mode changes.
+    - `dsHdmiInRegisterAllmChangeCB()` is used when the HDMI input ALLM mode changes.
+
+5. De-initialized the `HAL` using the function: `dsHdmiInTerm()`
 
 ### Diagrams
 
 #### Operational Call Sequence
-
+@todo state diagram 
 ```mermaid
 %%{ init : { "theme" : "default", "flowchart" : { "curve" : "stepBefore" }}}%%
    sequenceDiagram
@@ -185,81 +186,101 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     participant HAL as DEVICE SETTINGS HdmiIn HAL
     participant Driver as SoC
     Caller->>HAL:dsHdmiInInit()
-    Note over HAL: SOC initializes the underlying subsystems.
+    Note over HAL: SOC initializes the underlying subsystems
+    HAL->>Driver:Initializes the underlying subsystems.
+    Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsHdmiInSelectPort()
-    Note over HAL: Sets the passed port as active.
-    HAL->>Driver:Setting the selected port as active.
+    Note over HAL: Sets the passed port as active
+    HAL->>Driver:Setting the selected port as active
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsHdmiInGetStatus()
-    Note over HAL: Gets the status of the current port.
-    HAL->>Driver:Getting the status of the current port.
+    Note over HAL: Gets the status of the current port
+    HAL->>Driver:Getting the status of the current port
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsHdmiInScaleVideo()
-    Note over HAL: Sets the video scale.
-    HAL->>Driver:Setting the video scale.
+    Note over HAL: Sets the video scale
+    HAL->>Driver:Setting the video scale
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsGetEDIDBytesInfo()
-    Note over HAL: Gets the EDID Bytes info.
-    HAL->>Driver:Returns the EDID Bytes info.
+    Note over HAL: Gets the EDID Bytes info
+    HAL->>Driver:Returns the EDID Bytes info
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsHdmiInGetNumberOfInputs()
-    Note over HAL: Gets the number of inputs.
-    HAL->>Driver:Returns the number of inputs.
+    Note over HAL: Gets the number of inputs
+    HAL->>Driver:Returns the number of inputs
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsHdmiInGetCurrentVideoMode()
-    Note over HAL: Gets the current video mode.
-    HAL->>Driver:Returns the current video mode.
+    Note over HAL: Gets the current video mode
+    HAL->>Driver:Returns the current video mode
     Driver-->>HAL:return
     HAL-->>Caller:return
-
     Caller->>HAL:dsSetEdidVersion()
-    Note over HAL: Sets the EDID version.
-    HAL->>Driver:Sets the EDID version.
+    Note over HAL: Sets the EDID version
+    HAL->>Driver:Sets the EDID version
     Driver-->>HAL:return
     HAL-->>Caller:return
-
     Caller->>HAL:dsGetEdidVersion()
-    Note over HAL: Gets the current EDID Version.
-    HAL->>Driver:Returns the current EDID Version.
+    Note over HAL: Gets the current EDID Version
+    HAL->>Driver:Returns the current EDID Version
     Driver-->>HAL:return
     HAL-->>Caller:return
-    
     Caller->>HAL:dsGetAllmStatus()
     Note over HAL: Gets the ALLM status
     HAL->>Driver:Returns the ALLM status
     Driver-->>HAL:return
     HAL-->>Caller:return
-
     Caller->>HAL:dsGetSupportedGameFeaturesList()
     Note over HAL: Gets the supported game features
-    HAL->>Driver:Returns the supported game features
-    Driver-->>HAL:return
     HAL-->>Caller:return
-
     Caller->>HAL:dsIsHdmiARCPort()
-    Note over HAL: Gets whether the specified HDMI port supports ARC
-    HAL->>Driver:Returns whether the specified HDMI port supports ARC
+    Note over HAL: Gets whether the specified HDMI input port supports ARC
+    HAL->>Driver:Returns whether the specified HDMI input port supports ARC
     Driver-->>HAL:return
     HAL-->>Caller:return
-
     Caller->>HAL:dsGetHDMISPDInfo()
     Note over HAL: Gets the HDMI SPD info
     HAL->>Driver:Returns the HDMI SPD info
     Driver-->>HAL:return
     HAL-->>Caller:return
-
     Caller->>HAL:dsHdmiInSelectZoomMode()
     Note over HAL: Sets the zoom mode
     HAL->>Driver:Setting the zoom mode
     Driver-->>HAL:return
     HAL-->>Caller:return
-
+    Caller->>HAL:dsHdmiInRegisterConnectCB()
+    Note over HAL: Creates the callback for when the HDMI connection status changes.
+    HAL-->>Caller:return
+    Caller->>HAL:dsHdmiInRegisterSignalChangeCB()
+    Note over HAL: Creates the callback for when the HDMI in signal status changes.
+    HAL-->>Caller:return
+    Caller->>HAL:dsHdmiInRegisterStatusChangeCB()
+    Note over HAL: Creates the callback for when the HDMI in status changes.
+    HAL-->>Caller:return
+    Caller->>HAL:dsHdmiInRegisterVideoModeUpdateCB()
+    Note over HAL: Creates the callback for when the video mode changes.
+    HAL-->>Caller:return
+    Caller->>HAL:dsHdmiInRegisterAllmChangeCB()
+    Note over HAL: Creates the callback for when the ALLM mode changes.
+    HAL-->>Caller:return
+    Note over HAL: HDMI Input connection status changed
+    HAL-->>Caller:dsHdmiInConnectCB_t callback returned
+    Note over HAL: The HDMI Input signal status changed
+    HAL-->>Caller:dsHdmiInSignalChangeCB_t callback returned
+    Note over HAL: HDMI Input status changed
+    HAL-->>Caller:dsHdmiInStatusChangeCB_t callback returned
+    Note over HAL: Hdmi Input video mode changed
+    HAL-->>Caller:dsHdmiInVideoModeUpdateCB_t callback returned
+    Note over HAL: HDMI Input mode changed
+    HAL-->>Caller:dsHdmiInAllmChangeCB_t callback returned
     Caller ->>HAL:dsHdmiInTerm()
+    Note over HAL: Terminates the underlying sub-systems
+    HAL->>Driver:Terminates the underlying sub-systems
+    Driver-->>HAL:return
     HAL-->>Caller:return
  ```
