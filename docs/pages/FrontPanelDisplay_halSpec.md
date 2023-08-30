@@ -4,8 +4,7 @@
 
 | Date(DD/MM/YY) | Comment | Version |
 | ---- | ------- | ------- |
-| 17/08/23 | Edit  | 1.0.1 |
-| 20/04/23 | First Release | 1.0.0 |
+| 17/08/23 | First Release | 1.0.0 |
 
 
 
