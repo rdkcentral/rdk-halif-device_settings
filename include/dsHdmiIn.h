@@ -574,11 +574,11 @@ dsError_t dsGetAllmStatus (int iHdmiPort, bool *allmStatus);
 
 dsError_t dsGetSupportedGameFeaturesList (dsSupportedGameFeatureList_t* features);
 
-/** @} */ // End of DSHAL_HdmiIn_API doxygen group 
-/** @} */ // End of DeviceSettings_Module
-/** @} */ // End of HPK
-
 #ifdef __cplusplus
 }
 #endif
 #endif /* _DS_dsHdmiInH_ */
+
+/** @} */ // End of DSHAL_HdmiIn_API doxygen group 
+/** @} */ // End of DeviceSettings_Module
+/** @} */ // End of HPK

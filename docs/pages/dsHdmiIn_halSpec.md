@@ -72,7 +72,7 @@ Failure to meet these requirements will likely result in undefined and unexpecte
 
 ### Threading Model
 
-This interface is not required to be thread safe. Any `caller` invoking the `API`s should ensure calls are made in a thread safe manner. `HAL` is allowed to create internal threads for its operations without excessively consuming system resources. Any threads created by the `HAL` should be handled gracefully and respective error codes should be returned if any corresponding `API` fails.
+This interface is not required to be thread safe. Any `caller` invoking the `API`s should ensure calls are made in a thread safe manner. This interface is allowed to create internal threads for its operations without excessively consuming system resources. Any threads created by this interface should be handled gracefully and respective error codes should be returned if any corresponding `API` fails.
 
 ### Process Model
 
@@ -88,7 +88,6 @@ Although this interface is not required to be involved in any of the power manag
 
 ### Asynchronous Notification Model
 
-@todo be more specific when referring to the asyncronus notifications on what they do
 @todo change The `HAL` to This interface
 The `HdmiIn` module should support asynchronous notifications operations:
 
@@ -97,8 +96,8 @@ The `HdmiIn` module should support asynchronous notifications operations:
  - The `HdmiIn` `API` `dsHdmiInRegisterStatusChangeCB()` should facilitate asynchronous status notifications using the callback `dsHdmiInStatusChangeCB_t`. This callback should be used when the HDMI input status changes.
  - The `HdmiIn` `API` `dsHdmiInRegisterVideoModeUpdateCB()` should facilitate asynchronous status notifications using the callback `dsHdmiInVideoModeUpdateCB_t`. This callback should be used when the video mode changes. This callback should be used when the ALLM mode changes.
  - The `HdmiIn` `API` `dsHdmiInRegisterAllmChangeCB()` should facilitate asynchronous status notifications using the callback `dsHdmiInAllmChangeCB_t`.
- - The `HAL` is allowed to establish its own thread context for its operation, ensuring minimal impact on system resources.
- - Additionally, the `HAL` is responsible for releasing the resources it creates for its operation once the respective operation concludes.
+ - This interface is allowed to establish its own thread context for its operation, ensuring minimal impact on system resources.
+ - Additionally, this interface is responsible for releasing the resources it creates for its operation once the respective operation concludes.
 
 
 ### Blocking calls
@@ -107,11 +106,11 @@ This interface is not required to have any blocking calls. Synchronous calls sho
 
 ### Internal Error Handling
 
-The `API` shall return error synchronously as a return argument. `HAL` is responsible for handling system errors (e.g. out of memory) internally.
+The `API` shall return error synchronously as a return argument. This interface is responsible for handling system errors (e.g. out of memory) internally.
 
 ### Persistence Model
 
-There is no requirement for the interface to persist any setting information. `Caller` is responsible to persist any settings related to the `HAL`.
+There is no requirement for the interface to persist any setting information. `Caller` is responsible to persist any settings related to this interface.
 
 ## Non-functional requirements
 
