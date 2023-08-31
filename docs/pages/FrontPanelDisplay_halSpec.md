@@ -109,7 +109,7 @@ This interface is not required to have any blocking calls. Synchronous calls mus
 
 ### Internal Error Handling
 
-All the `API`s must return error synchronously as a return argument. HAL is responsible for handling system errors (e.g. out of memory) internally.
+All the `API`s must return error synchronously as a return argument. `HAL` is responsible for handling system errors (e.g. out of memory) internally.
 
 ### Persistence Model
 
@@ -140,7 +140,7 @@ The `HAL` implementation is expected to released under the Apache License 2.0.
 
 ### Build Requirements
 
-The source code must build into a shared library for Device Settings `HAL` as Front Panel Display is a part of Device Settings and must be named as `libdshal.so`. The build mechanism must be independent of Yocto.
+The source code must build into a shared library for Device Settings `HAL` as `FPD` is a part of Device Settings and must be named as `libdshal.so`. The build mechanism must be independent of Yocto.
  
 ### Variability Management
 
@@ -158,9 +158,9 @@ None
 
 The `caller` is expected to have complete control over the life cycle of the `HAL`.
 
-1. Initialize the `FPD HAL` using function: `dsFPInit()` before making any other `API` calls.  If `dsFPInit()` call fails, the `HAL` must return the respective error code, so that the caller can retry the operation.
+1. Initialize the `FPD HAL` using function: `dsFPInit()` before making any other `API` calls.  If `dsFPInit()` call fails, the `HAL` must return the respective error code, so that the `caller` can retry the operation.
 
-2. Once the `FPD` sub-system is initialized, `Caller` can invoke `API`s to control the Front Panel `LED`s. The `FP` Brightness, Text, Color, Blink Interval, `FP LED` State(ON/OFF), Text Scroll can be set or retrieved.
+2. Once the `FPD` sub-system is initialized, `Caller` can invoke `API`s to control the Front Panel `LED`s. The `FP` Brightness, Text, Color, Blink interval, `FP LED` State(ON/OFF), Text Scroll can be set or retrieved.
 
 3. De-initialize the `FP HAL` using the function: `dsFPTerm()`.
 
@@ -207,27 +207,27 @@ NOTE: The module would operate deterministically if the above call sequence is f
  ```
 
 
-LEGEND:
+<br>LEGEND:</br>
 
-ds_FP_SetMethods:
-dsSetFPBlink(), 
-dsSetFPBrightness(), 
-dsSetFPState(),
-dsSetFPColor(),
-dsSetFPTime(),
-dsSetFPText(),
-dsSetFPTextBrightness(),
-dsSetFPScroll(),
-dsSetFPDBrightness(),
-dsSetFPScroll(),
-dsSetFPDBrightness(),
-dsSetFPDColor(),
-dsSetFPTimeFormat(),
-dsSetFPDMode()
+ds_FP_SetMethods:</br>
+dsSetFPBlink(),</br>
+dsSetFPBrightness(),</br> 
+dsSetFPState(),</br>
+dsSetFPColor(),</br>
+dsSetFPTime(),</br>
+dsSetFPText(),</br>
+dsSetFPTextBrightness(),</br>
+dsSetFPScroll(),</br>
+dsSetFPDBrightness(),</br>
+dsSetFPScroll(),</br>
+dsSetFPDBrightness(),</br>
+dsSetFPDColor(),</br>
+dsSetFPTimeFormat(),</br>
+dsSetFPDMode()</br>
 
-ds_FP_GetMethods:
-dsGetFPState(),
-dsGetFPBrightness(),
-dsGetFPColor(),
-dsGetFPTextBrightness(),
-dsGetFPTimeFormat()
+ds_FP_GetMethods:</br>
+dsGetFPState(),</br>
+dsGetFPBrightness(),</br>
+dsGetFPColor(),</br>
+dsGetFPTextBrightness(),</br>
+dsGetFPTimeFormat()</br>
