@@ -174,10 +174,13 @@ The `caller` is expected to have complete control over the life cycle of the `HA
 
 5. De-initialized the `HAL` using the function: `dsHdmiInTerm()`
 
+@todo make state diagrams for the callback events above.
+
 ### Diagrams
 
 #### Operational Call Sequence
 @todo state diagram 
+@todo add return from the SoC for the callbacks.
 ```mermaid
 %%{ init : { "theme" : "default", "flowchart" : { "curve" : "stepBefore" }}}%%
    sequenceDiagram
@@ -268,14 +271,19 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     Note over HAL: Creates the callback for when the ALLM mode changes.
     HAL-->>Caller:return
     Note over HAL: HDMI Input connection status changed
+    Driver-->>HAL:return
     HAL-->>Caller:dsHdmiInConnectCB_t callback returned
     Note over HAL: The HDMI Input signal status changed
+    Driver-->>HAL:return
     HAL-->>Caller:dsHdmiInSignalChangeCB_t callback returned
     Note over HAL: HDMI Input status changed
+    Driver-->>HAL:return
     HAL-->>Caller:dsHdmiInStatusChangeCB_t callback returned
     Note over HAL: Hdmi Input video mode changed
+    Driver-->>HAL:return
     HAL-->>Caller:dsHdmiInVideoModeUpdateCB_t callback returned
     Note over HAL: HDMI Input mode changed
+    Driver-->>HAL:return
     HAL-->>Caller:dsHdmiInAllmChangeCB_t callback returned
     Caller ->>HAL:dsHdmiInTerm()
     Note over HAL: Terminates the underlying sub-systems

@@ -94,6 +94,7 @@ typedef enum {
     dsERR_ALREADY_INITIALIZED,      ///< Module is already initialised
     dsERR_NOT_INITIALIZED,          ///< Module is not initialised
     dsERR_OPERATION_NOT_SUPPORTED,  ///< Operation not supported
+    dsERR_RESOURCE_NOT_AVAILABLE,   ///< Resources have failed to allocate
     dsErr_MAX
 } dsError_t;
 

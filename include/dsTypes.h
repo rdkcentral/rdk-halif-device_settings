@@ -338,7 +338,7 @@ typedef enum _dsAudioARCTypes_t {
  */
 #define MAX_SAD 15
 typedef struct _dsAudioSADList_t {
-    int sad[MAX_SAD];   ///< ? Amit to provide update
+    int sad[MAX_SAD];   ///< Array of SADs
     int count;          ///< Amount of items in SAD array.
 } dsAudioSADList_t;
 
@@ -394,7 +394,7 @@ typedef int dsIntelligentEqualizerMode_t;
  */
 typedef struct _dsVolumeLeveller_t {
     int mode;   ///< 0 = off, 1= on, 2= auto
-    int level;  ///< ? Amit to provide update
+    int level;  ///< Value for the volume leveller. From 0 to 10
 } dsVolumeLeveller_t;
 
 /**
@@ -402,7 +402,7 @@ typedef struct _dsVolumeLeveller_t {
  */
 typedef struct _dsSurroundVirtualizer_t {
     int mode;   ///< 0 = off, 1= on, 2= auto
-    int boost;  ///< ? Amit to provide update
+    int boost;  ///< Value for the boost level. From 0 to 96
 } dsSurroundVirtualizer_t;
 
 /**
@@ -485,7 +485,7 @@ typedef enum _dsSURROUNDMode_t {
 
 typedef enum _dsMS12FEATURE_t {
     dsMS12FEATURE_DAPV2 = 0x0,  ///< Dolby Audio Processing Version 2
-    dsMS12FEATURE_DE = 0x1,     ///< ? Amit to provide update
+    dsMS12FEATURE_DE = 0x1,     ///< Dolby Enhanced
     dsMS12FEATURE_MAX = 0x2,    ///< Out of range 
 } dsMS12FEATURE_t;
 
@@ -1140,6 +1140,7 @@ typedef enum _dsHdmiInSignalStatus_t
 
 /**
  * @brief Structure type for HDMI input status.
+ * 
  */
 typedef struct _dsHdmiInStatus_t
 {
@@ -1253,8 +1254,8 @@ struct dsSpd_infoframe_st {
     uint8_t pkttype;            ///< Package type
     uint8_t version;            ///< Version
     uint8_t length;             ///< length=25
-    uint8_t rsd;                ///< ? Amit to provide update
-    uint8_t checksum;           ///< ? Amit to provide update
+    uint8_t rsd;                ///< Repetition of statis data
+    uint8_t checksum;           ///< Checksum for spd info frame
     uint8_t vendor_name[8];     ///< Vendor Name Character
     uint8_t product_des[16];    ///< Product Description Character
     uint8_t source_info;        ///< byte 25

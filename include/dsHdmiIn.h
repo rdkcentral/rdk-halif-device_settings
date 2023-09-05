@@ -104,18 +104,19 @@ extern "C" {
 #endif
 
 /**
- * @brief Initializes the HDMI Input Hal.
+ * @brief Initializes the underlying HDMI Input sub-system.
+ * 
+ * This function must initialize the HDMI Input module and any associated resources.
  *
- *
- * @return dsError_t                   - Status
+ * @return dsError_t                    - Status
  * @retval dsERR_NONE                   - Success
- * @retval dsERR_ALREADY_INITIALIZED    - Function is already initialized.
+ * @retval dsERR_ALREADY_INITIALIZED    - Function is already initialized
+ * @retval dsERR_RESOURCE_NOT_AVAILABLE - ...
  * @retval dsERR_GENERAL                - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
  * 
  * @see dsHdmiInTerm()
- * 
  * 
  */
 
@@ -124,12 +125,11 @@ dsError_t dsHdmiInInit (void);
 /**
  * @brief Terminate the underlying HDMI Input sub-system.
  * 
- * This function must terminate the HDMI Input module and any associated data
- * structures.
+ * This function must terminate the HDMI Input module and any associated resources.
  *
- * @return dsError_t                   - Status
+ * @return dsError_t                    - Status
  * @retval dsERR_NONE                   - Success
- * @retval dsERR_ALREADY_INITIALIZED    - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED        - Module is not initialised
  * @retval dsERR_GENERAL                - Underlying undefined platform error
  * 
  * 
@@ -144,12 +144,12 @@ dsError_t dsHdmiInInit (void);
 dsError_t dsHdmiInTerm (void);
 
 /**
- * @brief This function is used to get the number of HDMI Input ports on the set-top.
+ * @brief This function is used to get the number of HDMI Input ports on the device.
  *
  * @param[out] pNumberOfInputs  - number of HDMI Input ports. 
- *                                  Max number of inputs is platform specific.
+ *                                  Max number of inputs is platform specific. Min is 0.
  * 
- * @return dsError_t                       - Status
+ * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -165,11 +165,11 @@ dsError_t dsHdmiInTerm (void);
 dsError_t dsHdmiInGetNumberOfInputs (uint8_t *pNumberOfInputs);
 
 /**
- * @brief This function is used to get the current HDMI Input Status.
+ * @brief This function is used to get the current HDMI Input port status.
  *
- * @param[out] pStatus  - current status of the HdmiInput port. See dsHdmiInStatus_t
+ * @param[out] pStatus  - current status of the Hdmi Input port. See dsHdmiInStatus_t
  *
- * @return dsError_t                       - Status
+ * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
