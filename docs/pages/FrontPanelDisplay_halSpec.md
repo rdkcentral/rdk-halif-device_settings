@@ -4,8 +4,7 @@
 
 | Date(DD/MM/YY) | Comment | Version |
 | ---- | ------- | ------- |
-| 17/08/23 | Edit  | 1.0.1 |
-| 20/04/23 | First Release | 1.0.0 |
+| 17/08/23 | First Release | 1.0.0 |
 
 
 
@@ -82,7 +81,7 @@ Failure to meet these requirements will likely result in undefined and unexpecte
 
 ### Threading Model
 
-This interface is not required to be thread safe. Any `caller` invoking the `API`s should ensure calls are made in a thread safe manner.
+This interface is not required to be thread safe. Any `caller` invoking the `API`s must ensure calls are made in a thread safe manner.
 
 ### Process Model
 
@@ -97,7 +96,7 @@ This interface is not required to allocate any memory.
 The `FPD HAL` is not involved in the power management operation directly. 
 But the `Caller` will initiate the change in `LED` as part of power management handling.
 
- The `Caller` is responsible for driving LED Status in accordance with Power Mode change.
+The `Caller` is responsible for driving LED Status in accordance with Power Mode change.
 
 ### Asynchronous Notification Model
 
@@ -110,12 +109,11 @@ This interface is not required to have any blocking calls. Synchronous calls mus
 
 ### Internal Error Handling
 
-All the `API`s must return error synchronously as a return argument. HAL is responsible for handling system errors (e.g. out of memory) internally.
+All the `API`s must return error synchronously as a return argument. `HAL` is responsible for handling system errors (e.g. out of memory) internally.
 
 ### Persistence Model
 
-The brightness and color of Front Panel `LED`s would be persisted if the `Caller` sets the persistence parameter to True while invoking corresponding `dsSetFPDBrightness()` and `dsSetFPDColor()` `API`s.
-
+There is no requirement for the interface to persist any setting information. `Caller` is responsible to persist any settings related to the `HAL`.
 
 ## Non-functional requirements
 
@@ -142,7 +140,7 @@ The `HAL` implementation is expected to released under the Apache License 2.0.
 
 ### Build Requirements
 
-The source code must build into a shared library for Device Settings as Front Panel Display is a part of Device Settings and must be named as `libdshal.so`. The build mechanism must be independent of Yocto.
+The source code must build into a shared library for Device Settings `HAL` as `FPD` is a part of Device Settings and must be named as `libdshal.so`. The build mechanism must be independent of Yocto.
  
 ### Variability Management
 
@@ -160,9 +158,9 @@ None
 
 The `caller` is expected to have complete control over the life cycle of the `HAL`.
 
-1. Initialize the `FPD HAL` using function: `dsFPInit()` before making any other `API` calls.  If `dsFPInit()` call fails, the `HAL` must return the respective error code, so that the caller can retry the operation.
+1. Initialize the `FPD HAL` using function: `dsFPInit()` before making any other `API` calls.  If `dsFPInit()` call fails, the `HAL` must return the respective error code, so that the `caller` can retry the operation.
 
-2. Once the `FPD` sub-system is initialized, `Caller` can invoke `API`s to control the Front Panel `LED`s. The `FP` Brightness, Text, Color, Blink Interval, `FP LED` State(ON/OFF), Text Scroll can be set or retrieved.
+2. Once the `FPD` sub-system is initialized, `Caller` can invoke `API`s to control the Front Panel `LED`s. The `FP` Brightness, Text, Color, Blink interval, `FP LED` State(ON/OFF), Text Scroll can be set or retrieved.
 
 3. De-initialize the `FP HAL` using the function: `dsFPTerm()`.
 
@@ -202,34 +200,34 @@ NOTE: The module would operate deterministically if the above call sequence is f
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller ->>HAL:dsFPTerm()
-    HAL ->> Driver: Releases all the resources during FPD init
+    HAL ->> Driver: Releases all the resources allocated during FPD init
     Driver-->>HAL:return
     HAL-->>Caller:return
 
  ```
 
 
-LEGEND:
+<br>LEGEND:</br>
 
-ds_FP_SetMethods:
-dsSetFPBlink(), 
-dsSetFPBrightness(), 
-dsSetFPState(),
-dsSetFPColor(),
-dsSetFPTime(),
-dsSetFPText(),
-dsSetFPTextBrightness(),
-dsSetFPScroll(),
-dsSetFPDBrightness(),
-dsSetFPScroll(),
-dsSetFPDBrightness(),
-dsSetFPDColor(),
-dsSetFPTimeFormat(),
-dsSetFPDMode()
+ds_FP_SetMethods:</br>
+dsSetFPBlink(),</br>
+dsSetFPBrightness(),</br> 
+dsSetFPState(),</br>
+dsSetFPColor(),</br>
+dsSetFPTime(),</br>
+dsSetFPText(),</br>
+dsSetFPTextBrightness(),</br>
+dsSetFPScroll(),</br>
+dsSetFPDBrightness(),</br>
+dsSetFPScroll(),</br>
+dsSetFPDBrightness(),</br>
+dsSetFPDColor(),</br>
+dsSetFPTimeFormat(),</br>
+dsSetFPDMode()</br>
 
-ds_FP_GetMethods:
-dsGetFPState(),
-dsGetFPBrightness(),
-dsGetFPColor(),
-dsGetFPTextBrightness(),
-dsGetFPTimeFormat()
+ds_FP_GetMethods:</br>
+dsGetFPState(),</br>
+dsGetFPBrightness(),</br>
+dsGetFPColor(),</br>
+dsGetFPTextBrightness(),</br>
+dsGetFPTimeFormat()</br>
