@@ -159,7 +159,7 @@
  * DeviceSettings HAL types and public API definitions that are part of the Device
  * Settings Front Panel Display (FPD) subsystem.
  * 
- * @defgroup DSHAL_HDMI_IN HAL HDMI Input Types
+ * @defgroup DSHAL_HDMI_IN HAL HDMI input Types
  * @ingroup DSHAL_API
  *
  * DeviceSettings HAL types and public API definitions that are part of the Device
@@ -689,6 +689,7 @@ typedef enum _dsVideoZoom_t {
 /**
  * @ingroup DSHAL_VIDEOPORT_TYPES
  * @brief Structure that defines video port resolution settings of output video device.
+ * @todo Check how the name is used in the actual code
  */
 
 typedef struct _dsVideoPortResolution_t {
@@ -1127,6 +1128,7 @@ typedef enum _dsHdmiInPort_t
 
 /**
  * @brief This enumeration defines the type of HDMI siganl status.
+ * @todo update the description on the signal status
  */
 typedef enum _dsHdmiInSignalStatus_t
 {
@@ -1134,7 +1136,7 @@ typedef enum _dsHdmiInSignalStatus_t
     dsHDMI_IN_SIGNAL_STATUS_NOSIGNAL,     ///< HDMI input No signal signal status
     dsHDMI_IN_SIGNAL_STATUS_UNSTABLE,     ///< HDMI input Unstable signal status
     dsHDMI_IN_SIGNAL_STATUS_NOTSUPPORTED, ///< HDMI input Not supported signal status
-    dsHDMI_IN_SIGNAL_STATUS_STABLE,       ///< HDMI input Stable signal status
+    dsHDMI_IN_SIGNAL_STATUS_STABLE,       ///< HDMI input Stable signal status are presented on plane
     dsHDMI_IN_SIGNAL_STATUS_MAX           ///< Out of range 
 } dsHdmiInSignalStatus_t;
 
@@ -1144,18 +1146,30 @@ typedef enum _dsHdmiInSignalStatus_t
  */
 typedef struct _dsHdmiInStatus_t
 {
-    bool             isPresented;                           ///< Boolean flag indicating Hdmi Input is enabled for presentation by client
-    bool             isPortConnected[dsHDMI_IN_PORT_MAX];   ///< Boolean flag indicating Hdmi source connected to this Hdmi Input port 
-    dsHdmiInPort_t   activePort;                            ///< Hdmi Input Port selected as the currently active port (to the set-top)
-                                                            ///<   - note that only one HDMI Input port can be active at a time 
+    bool             isPresented;                           ///< Boolean flag indicating HDMI input is presenting for the activePort
+    bool             isPortConnected[dsHDMI_IN_PORT_MAX];   ///< Boolean flag indicating HDMI source connected to this HDMI input port 
+    dsHdmiInPort_t   activePort;                            ///< HDMI input Port selected as the currently active port (to the set-top)
+                                                            ///<   - note that only one HDMI input port can be active at a time 
 } dsHdmiInStatus_t;
 /**
  * @brief Structure type for HDMI input ARC Capability.
  */
 typedef struct _dsHdmiInCap_t
 {
-    bool             isPortArcCapable[dsHDMI_IN_PORT_MAX]; ///< Boolean flag indicating Hdmi source is ARC capable 
+    bool             isPortArcCapable[dsHDMI_IN_PORT_MAX]; ///< Boolean flag indicating HDMI source is ARC capable 
 } dsHdmiInCap_t;
+
+/**
+ * @brief This enumeration defines the AVI Content Types
+ */
+typedef enum dsAviContentType {
+  dsAVICONTENT_TYPE_GRAPHICS,   ///< Content type Graphics.
+  dsAVICONTENT_TYPE_PHOTO,      ///< Content type Photo
+  dsAVICONTENT_TYPE_CINEMA,     ///< Content type Cinema
+  dsAVICONTENT_TYPE_GAME,       ///< Content type Game
+  dsAVICONTENT_TYPE_INVALID,    ///< Content type Invalid
+  dsAVICONTENT_TYPE_MAX,        ///< Out of range
+}dsAviContentType_t;
 
 /* End of DSHAL_HDMI_IN_TYPES doxygen group */
 /**
@@ -1196,10 +1210,10 @@ typedef enum _dsCompositeInPort_t
  */
 typedef struct _dsCompositeInStatus_t
 {
-    bool    isPresented;                               ///< Boolean flag indicating Composite Input is enabled for presentation by client
-    bool    isPortConnected[dsCOMPOSITE_IN_PORT_MAX];  ///< Boolean flag indicating Composite source connected to this Composite Input port
-    dsCompositeInPort_t   activePort;                  ///< Composite Input Port selected as the currently active port (to the set-top)
-                                                       ///<     - note that only one COMPOSITE Input port can be active at a time
+    bool    isPresented;                               ///< Boolean flag indicating Composite input is enabled for presentation by client
+    bool    isPortConnected[dsCOMPOSITE_IN_PORT_MAX];  ///< Boolean flag indicating Composite source connected to this Composite input port
+    dsCompositeInPort_t   activePort;                  ///< Composite input Port selected as the currently active port (to the set-top)
+                                                       ///<     - note that only one COMPOSITE input port can be active at a time
 } dsCompositeInStatus_t;
 
 /* End of DSHAL_COMPOSITE_IN doxygen group */
