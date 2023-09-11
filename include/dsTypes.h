@@ -186,6 +186,7 @@
 
 /** @addtogroup DSHAL_AUDIO HAL Audio Types
  *  @{
+ * @todo Check if the below define is platform specific
  */
 
 #define dsAUDIOPORT_TYPE_NUM_MAX 4     ///< Maximum number of audio output port types.  
@@ -207,6 +208,7 @@ typedef enum _dsAudioPortType_t{
 
 /**
  * @brief Audio output port type validation check.
+ * @todo look into why this is defined here. Should this be defined in the .c or here?
  */
 
 #define dsAudioType_isValid(t)  (((t) >= dsAUDIOPORT_TYPE_ID_LR ) && ((t) < dsAUDIOPORT_TYPE_MAX))
@@ -1286,6 +1288,7 @@ typedef enum tv_hdmi_edid_version_e {
 
 /**
  * @brief Structure that captures Supported Game Features list
+ * @todo list all possible values
  */
 
 #define MAX_FEATURE_LIST_BUFFER_LEN 1024

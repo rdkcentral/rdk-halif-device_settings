@@ -43,6 +43,8 @@
 - `EDID`   - Extended Display Information Data
 - `CPU`    - Central Processing Unit
 - `SoC`    - System on chip
+- `AV`     - Audio-Visual
+- `SPD`    - Source Product Description.
 
 ## Description
 

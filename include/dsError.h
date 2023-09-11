@@ -62,7 +62,7 @@
  */
 
 /** @defgroup DSHAL_ERROR_H Device Settings Status Codes
-*  @ingroup DSHAL_API
+*  @ingroup DSHAL_API @todo re-review after doing the other files.
 *
 *  Defined hereunder are the error codes that are used in the Device Settings library.
 *
@@ -90,7 +90,7 @@ typedef enum {
     dsERR_NONE = 0,                 ///< Input output operation is successful          
     dsERR_GENERAL = 1,              ///< Operation general error. @todo Change to more specific error in later phase.
     dsERR_INVALID_PARAM,            ///< Invalid parameter is passed to the module
-    dsERR_INVALID_STATE,
+    dsERR_INVALID_STATE,            ///< Module is in an invalid state
     dsERR_ALREADY_INITIALIZED,      ///< Module is already initialised
     dsERR_NOT_INITIALIZED,          ///< Module is not initialised
     dsERR_OPERATION_NOT_SUPPORTED,  ///< Operation not supported

@@ -55,10 +55,11 @@
  * - DS:      Device Settings.
  * - HAL:     Hardware Abstraction Layer.
  * - EDID:    Extended Display Identification Data.
- * - SPD:     Surge Protector Device.
+ * - SPD:     Source Product Description.
  * - ARC:     Audio Return Channel.
  * - ALLM:    Auto Low Latency Mode
  * - HDMI:    High-Definition Multimedia Interface
+ * - AV:      Audio-Visual
  *
  * @par Implementation Notes
  * -# None
@@ -119,11 +120,10 @@ extern "C" {
  * @see dsHdmiInTerm()
  * 
  */
-
 dsError_t dsHdmiInInit (void);
 
 /**
- * @brief Terminate the underlying HDMI input sub-system.
+ * @brief Terminates the underlying HDMI input sub-system.
  * 
  * This function must terminate the HDMI input module and any associated resources.
  *
@@ -140,11 +140,12 @@ dsError_t dsHdmiInInit (void);
  * @see dsHdmiInInit()
  * 
  */
-
 dsError_t dsHdmiInTerm (void);
 
 /**
- * @brief This function sets the number of HDMI input ports on the device.
+ * @brief Sets the number of HDMI input ports on the device.
+ * 
+ * This function sets the number of HDMI input ports on the device.
  *
  * @param[out] pNumberOfinputs  - number of HDMI input ports. 
  *                                  Max number of inputs is platform specific. Min is 0.
@@ -161,11 +162,12 @@ dsError_t dsHdmiInTerm (void);
  * @warning  This API is Not thread safe.
  * 
  */
-
 dsError_t dsHdmiInGetNumberOfinputs (uint8_t *pNumberOfinputs);
 
 /**
- * @brief This function sets the current HDMI input port status.
+ * @brief Sets the current HDMI input port status.
+ * 
+ * This function sets the current HDMI input port status.
  *
  * @param[out] pStatus  - current status of the HDMI input port. @see dsHdmiInStatus_t
  *
@@ -181,11 +183,12 @@ dsError_t dsHdmiInGetNumberOfinputs (uint8_t *pNumberOfinputs);
  * @warning  This API is Not thread safe.
  * 
  */
-
 dsError_t dsHdmiInGetStatus (dsHdmiInStatus_t *pStatus); 
 
 /**
- * @brief This function is used to select the HDMI input port for presentation.
+ * @brief Selects the HDMI input port for presentation.
+ * 
+ * This function selects the HDMI input port for presentation.
  *
  * @param[in] ePort     - HDMI input port to be presented. @see dsHdmiInPort_t
  * 
@@ -201,13 +204,12 @@ dsError_t dsHdmiInGetStatus (dsHdmiInStatus_t *pStatus);
  * @warning  This API is Not thread safe.
  * 
  */
-
 dsError_t dsHdmiInSelectPort (dsHdmiInPort_t ePort);
 
 /**
  * @todo Express out of range for the x and y coordinates for invalid param.
- * @brief Scale the HDMI input video
- * This function is used to scale the HDMI input video.
+ * @brief Scales the HDMI input video
+ * This function scales the HDMI input video.
  *
  * @param[in] x         - x coordinate for the video
  * @param[in] y         - y coordinate for the video
@@ -227,11 +229,12 @@ dsError_t dsHdmiInSelectPort (dsHdmiInPort_t ePort);
  * @warning  This API is Not thread safe.
  * 
  */
-
 dsError_t dsHdmiInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t height);
 
 /**
- * @brief This function updates the video zoom on the active HDMI input using the provided zoom mode.
+ * @brief Updates the video zoom on the active HDMI input using the provided zoom mode.
+ * 
+ * This function updates the video zoom on the active HDMI input using the provided zoom mode.
  *
  * @param[in] requestedZoomMode     - HDMI input zoom mode. @see dsVideoZoom_t
  * 
@@ -247,11 +250,12 @@ dsError_t dsHdmiInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t heigh
  * @warning  This API is Not thread safe.
  * 
  */
-
 dsError_t dsHdmiInSelectZoomMode (dsVideoZoom_t requestedZoomMode);
 
 /**
- * @brief This function gets the current HDMI input video mode of the active port
+ * @brief Gets the current HDMI input video mode of the active port
+ * 
+ * This function gets the current HDMI input video mode of the active port
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
@@ -265,7 +269,6 @@ dsError_t dsHdmiInSelectZoomMode (dsVideoZoom_t requestedZoomMode);
  * @warning  This API is Not thread safe.
  * 
  */
-
 dsError_t dsHdmiInGetCurrentVideoMode (dsVideoPortResolution_t *resolution);
 
 /**
@@ -302,7 +305,6 @@ typedef void (*dsHdmiInSignalChangeCB_t)(dsHdmiInPort_t port, dsHdmiInSignalStat
  * @pre dsHdmiInRegisterStatusChangeCB() must be called before this API
  *
  */
-
 typedef void (*dsHdmiInStatusChangeCB_t)(dsHdmiInStatus_t inputStatus);
 
 /**
@@ -318,13 +320,11 @@ typedef void (*dsHdmiInStatusChangeCB_t)(dsHdmiInStatus_t inputStatus);
  * @pre dsHdmiInRegisterVideoModeUpdateCB() must be called before this API
  *
  */
-
 typedef void (*dsHdmiInVideoModeUpdateCB_t)(dsHdmiInPort_t port, dsVideoPortResolution_t videoResolution);
 
 /**
  * @brief HAL must call this function when the HDMI input ALLM mode changes.
  * @todo discuss dolby vision game mode offline
- * @todo discuss how to handle film maker mode Double check that we're not missing any functions
  *
  * @param[in] port      - HDMI input port number in which ALLM Mode changed. @see dsHdmiInPort_t
  * @param[in] allm_mode - Current ALLM mode of the port. True if the port is in ALLM mode, false if not.
@@ -332,22 +332,21 @@ typedef void (*dsHdmiInVideoModeUpdateCB_t)(dsHdmiInPort_t port, dsVideoPortReso
  * @pre dsHdmiInRegisterAVLatencyChangeCB() must be called before this API
  *
  */
-
 typedef void (*dsHdmiInAllmChangeCB_t)(dsHdmiInPort_t port, bool allm_mode);
 
 /**
  * @brief Callback function used to notify applications of HDMI Input AV Latency
  *
  * HAL Implementation should call this method to deliver HDMI Input AV Latency
- * to the application (e.g. port, allm_mode(true/false) etc. for HDMI In ports).
+ * to the application.
  *
- * @param[in] audio_latency - Audio latency value. Max value 500. Min value 0.
- * @param[in] video_latency - Video latency value. Max value 500. Min value 0.
+ * @param[in] audio_latency - Audio latency value. Max value 500ms. Min value 0.
+ * @param[in] video_latency - Video latency value. Max value 500ms. Min value 0.
  *
- * @pre dsHdmiInRegisterAllmChangeCB() must be called before this API
+ * @pre dsHdmiInRegisterAVLatencyChangeCB() must be called before this API
  */
-
 typedef void (*dsAVLatencyChangeCB_t)(int audio_latency, int video_latency);
+
 /**
  * @brief Callback function used to notify applications of HDMI Input Content Type change
  *
@@ -362,8 +361,9 @@ typedef void (*dsAVLatencyChangeCB_t)(int audio_latency, int video_latency);
 typedef void (*dsHdmiInAviContentTypeChangeCB_t)(dsHdmiInPort_t port, dsAviContentType_t avi_content_type);
 
 /**
- * @brief This function is used to register a callback for the 
- *              HDMI input hot plug event notification from the HAL side.
+ * @brief Registers a callback for the HDMI input hot plug event notification from the HAL side.
+ * 
+ * This function registers a callback for the HDMI input hot plug event notification from the HAL side.
  *
  * @param[in] CBFunc    - HDMI input hot plug callback function. @see dsHdmiInConnectCB_t
  * 
@@ -379,11 +379,12 @@ typedef void (*dsHdmiInAviContentTypeChangeCB_t)(dsHdmiInPort_t port, dsAviConte
  * @warning  This API is Not thread safe.
  * 
  */
-
 dsError_t dsHdmiInRegisterConnectCB (dsHdmiInConnectCB_t CBFunc);
 
 /**
- * @brief This function is used to register a callback for the HDMI input Signal Change event.
+ * @brief Registers a callback for the HDMI input Signal Change event.
+ * 
+ * This function registers a callback for the HDMI input Signal Change event.
  *
  * @param[in] CBFunc    - HDMI input Signal change callback function. @see dsHdmiInSignalChangeCB_t
  * 
@@ -399,12 +400,12 @@ dsError_t dsHdmiInRegisterConnectCB (dsHdmiInConnectCB_t CBFunc);
  * @warning  This API is Not thread safe.
  * 
  */
-
 dsError_t dsHdmiInRegisterSignalChangeCB (dsHdmiInSignalChangeCB_t CBFunc);
 
 /**
- * @brief This function is used to register a callback for the HDMI input Status Change event.
- *               @see dsHdmiInStatus_t.
+ * @brief Registers a callback for the HDMI input Status Change event.
+ * 
+ * This function registers a callback for the HDMI input Status Change event.
  *
  * @param[in] CBFunc    - HDMI input Status change callback function. @see dsHdmiInStatusChangeCB_t
  * 
@@ -420,12 +421,13 @@ dsError_t dsHdmiInRegisterSignalChangeCB (dsHdmiInSignalChangeCB_t CBFunc);
  * @warning  This API is Not thread safe.
  * 
  */
-
 dsError_t dsHdmiInRegisterStatusChangeCB (dsHdmiInStatusChangeCB_t CBFunc);
 
 /**
- * @brief This function is used to register a callback for the HDMI input video mode Change event. 
- *                  The mode change is triggered whenever the video resolution changes.
+ * @brief Registers a callback for the HDMI input video mode Change event. 
+ * 
+ * This function registers a callback for the HDMI input video mode Change event. 
+ *       The mode change is triggered whenever the video resolution changes.
  *
  * @param[in] CBFunc    - HDMI input video mode change callback function. 
  *                              @see dsHdmiInVideoModeUpdateCB_t
@@ -442,11 +444,12 @@ dsError_t dsHdmiInRegisterStatusChangeCB (dsHdmiInStatusChangeCB_t CBFunc);
  * @warning  This API is Not thread safe.
  * 
  */
-
 dsError_t dsHdmiInRegisterVideoModeUpdateCB(dsHdmiInVideoModeUpdateCB_t CBFunc);
 
 /**
- * @brief This function is used to register a callback for the HDMI input ALLM Mode Change event.
+ * @brief Registers a callback for the HDMI input ALLM Mode Change event.
+ * 
+ * This function registers a callback for the HDMI input ALLM Mode Change event.
  *
  * @param[in] CBFunc    - HDMI input ALLM Mode change callback function. 
  *                              @see dsHdmiInAllmChangeCB_t
@@ -463,13 +466,12 @@ dsError_t dsHdmiInRegisterVideoModeUpdateCB(dsHdmiInVideoModeUpdateCB_t CBFunc);
  * @warning  This API is Not thread safe.
  * 
  */
-
 dsError_t dsHdmiInRegisterAllmChangeCB (dsHdmiInAllmChangeCB_t CBFunc);
 
 /**
- * @brief Register for the HDMI In Latency Change event.
+ * @brief Registers the HDMI In Latency Change event.
  *
- * This function is used to register for the AV Latency Change event.
+ * This function registers for the AV Latency Change event.
  *
  * @param[in] CBFunc    - HDMI input AV Latency change callback function. 
  *                              @see dsAVLatencyChangeCB_t
@@ -484,9 +486,9 @@ dsError_t dsHdmiInRegisterAllmChangeCB (dsHdmiInAllmChangeCB_t CBFunc);
 dsError_t dsHdmiInRegisterAVLatencyChangeCB (dsAVLatencyChangeCB_t CBFunc);
 
 /**
- * @brief Register for the HDMI Input Content type Change event.
+ * @brief Registers the HDMI Input Content type Change event.
  *
- * This function is used to register for the HDMI Input content type  Change event.
+ * This function registers for the HDMI Input content type change event.
  *
  * @param[in] CBFunc    - HDMI input Avi Content Mode change callback function. 
  *                              @see dsHdmiInAviContentTypeChangeCB_t
@@ -501,7 +503,9 @@ dsError_t dsHdmiInRegisterAVLatencyChangeCB (dsAVLatencyChangeCB_t CBFunc);
 dsError_t dsHdmiInRegisterAviContentTypeChangeCB (dsHdmiInAviContentTypeChangeCB_t CBFunc);
 
 /**
- * @brief This function checks if the given port is an HDMI ARC port or not
+ * @brief Checks if the given port is an HDMI ARC port or not
+ * 
+ * This function checks if the given port is an HDMI ARC port or not
  *
  * @param[in] iPort     - HDMI Arc port. Max value is device specific. Min value of 0.
  * @param[in] isArcPort - HDMI Arc port. Max value is device specific. Min value of 0.
@@ -518,11 +522,13 @@ dsError_t dsHdmiInRegisterAviContentTypeChangeCB (dsHdmiInAviContentTypeChangeCB
  * @warning  This API is Not thread safe.
  * 
  */
-
 dsError_t dsIsHdmiARCPort (dsHdmiInPort_t iPort, bool isArcPort);
 
 /**
- * @brief This function sets the EDID bytes info corresponds to the given input port.
+ * @brief Gets the EDID bytes info corresponds to the given input port.
+ * 
+ * This function gets the EDID bytes info corresponds to the given input port.
+ * @todo How the EDID information is read.
  *
  * @param[in] iHdmiPort     - HDMI input port. @see dsHdmiInPort_t
  * @param[out] edid         - EDID data for which info is required
@@ -540,14 +546,15 @@ dsError_t dsIsHdmiARCPort (dsHdmiInPort_t iPort, bool isArcPort);
  * @warning  This API is Not thread safe.
  * 
  */
-
 dsError_t dsGetEDIDBytesInfo (dsHdmiInPort_t iHdmiPort, unsigned char **edid, int *length);
 
 /**
- * @brief his function sets the HDMI SPD info.
+ * @brief Gets the HDMI SPD info.
+ * 
+ * This function gets the HDMI SPD info.
  *
  * @param[in] iHdmiPort     - HDMI input port. @see dsHdmiInPort_t
- * @param[out] data         - HDMI SPD info data to get
+ * @param[out] data         - HDMI SPD info data
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
@@ -561,14 +568,15 @@ dsError_t dsGetEDIDBytesInfo (dsHdmiInPort_t iHdmiPort, unsigned char **edid, in
  * @warning  This API is Not thread safe.
  * 
  */
-
 dsError_t dsGetHDMISPDInfo (dsHdmiInPort_t iHdmiPort, unsigned char **data);
 
 /**
- * @brief This function sets the EDID version to be used for a given port id
+ * @brief Sets the EDID version to be used for a given port id
+ * 
+ * This function sets the EDID version to be used for a given port id
  *
  * @param[in] iHdmiPort     - HDMI input port. @see dsHdmiInPort_t
- * @param[in] iEdidVersion  - input EDID version number to set
+ * @param[in] iEdidVersion  - input EDID version number to set @todo Create an enum iEdidVersion
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
@@ -584,14 +592,15 @@ dsError_t dsGetHDMISPDInfo (dsHdmiInPort_t iHdmiPort, unsigned char **data);
  * @see dsGetEdidVersion()
  * 
  */
-
 dsError_t dsSetEdidVersion (dsHdmiInPort_t iHdmiPort, int iEdidVersion);
 
 /**
- * @brief This function sets the EDID version currently being used for the given port id
+ * @brief Gets the EDID version currently being used for the given port id
+ * 
+ * This function gets the EDID version currently being used for the given port id
  *
  * @param[in] iHdmiPort     - HDMI input port. @see dsHdmiInPort_t
- * @param[out] iEdidVersion - input EDID version number to get.
+ * @param[out] iEdidVersion - input EDID version number
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
@@ -607,11 +616,12 @@ dsError_t dsSetEdidVersion (dsHdmiInPort_t iHdmiPort, int iEdidVersion);
  * @see dsSetEdidVersion()
  * 
  */
-
 dsError_t dsGetEdidVersion (dsHdmiInPort_t iHdmiPort, int *iEdidVersion);
 
 /**
- * @brief This function sets the allm status details of the specific port
+ * @brief Checks whether ALLM status is enabled or disabled for the specific HDMI input port
+ * 
+ * This function checks whether ALLM status is enabled or disabled for the specific HDMI input port
  *
  * @param[in] iHdmiPort     - HDMI input port. @see dsHdmiInPort_t
  * @param[out] allmStatus   - allmstatus. True if enabled, false if not.
@@ -628,11 +638,12 @@ dsError_t dsGetEdidVersion (dsHdmiInPort_t iHdmiPort, int *iEdidVersion);
  * @warning  This API is Not thread safe.
  * 
  */
-
 dsError_t dsGetAllmStatus (dsHdmiInPort_t iHdmiPort, bool *allmStatus);
 
 /**
- * @brief This function sets all the supported game features list information.
+ * @brief Gets all the supported game features list information.
+ * 
+ * This function gets all the supported game features list information.
  *
  * @param[out] features         - List of all supported game features. 
  *                                      @see dsSupportedGameFeatureList_t
@@ -649,14 +660,15 @@ dsError_t dsGetAllmStatus (dsHdmiInPort_t iHdmiPort, bool *allmStatus);
  * @warning  This API is Not thread safe.
  * 
  */
-
 dsError_t dsGetSupportedGameFeaturesList (dsSupportedGameFeatureList_t* features);
 
 /**
- * @brief This function gets the current AV latency.
+ * @brief Gets the current AV latency
+ * 
+ * This function gets the current AV latency.
  *
- * @param[out] audio_latency    - Audio latency value. Max value 500. Min value 0.
- * @param[out] video_latency    - Video latency value. Max value 500. Min value 0.
+ * @param[out] audio_latency    - Audio latency value. Max value 500ms. Min value 0.
+ * @param[out] video_latency    - Video latency value. Max value 500ms. Min value 0.
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
@@ -670,7 +682,6 @@ dsError_t dsGetSupportedGameFeaturesList (dsSupportedGameFeatureList_t* features
  * @warning  This API is Not thread safe.
  * 
  */
-
 dsError_t dsGetAVLatency (int *audio_latency, int *video_latency);
 
 #ifdef __cplusplus
