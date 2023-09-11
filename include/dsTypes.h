@@ -37,7 +37,6 @@
  * - FPD:     Front-Panel Display.
  * - HAL:     Hardware Abstraction Layer.
  * - SAD:     Short Audio Descriptors
-
  * - EDID:    Extended Display Information Data.
  * - HEVC:    High Efficiency Video Coding
  * - DTCP:    Digital Transmission Content Protection
@@ -186,7 +185,7 @@
 
 /** @addtogroup DSHAL_AUDIO HAL Audio Types
  *  @{
- * @todo Check if the below define is platform specific
+ * @todo check if these are used.
  */
 
 #define dsAUDIOPORT_TYPE_NUM_MAX 4     ///< Maximum number of audio output port types.  
@@ -208,15 +207,14 @@ typedef enum _dsAudioPortType_t{
 
 /**
  * @brief Audio output port type validation check.
- * @todo look into why this is defined here. Should this be defined in the .c or here?
  */
 
 #define dsAudioType_isValid(t)  (((t) >= dsAUDIOPORT_TYPE_ID_LR ) && ((t) < dsAUDIOPORT_TYPE_MAX))
 
 /**
  * @brief This enumeration defines the audio encoding types
+ * @todo remove all extraneous extra line spaces
  */
-
 typedef enum _dsAudioEncoding_t{
     dsAUDIO_ENC_NONE = 0,   ///< No digital audio output.                       
     dsAUDIO_ENC_DISPLAY,    ///< Platform-selected digital audio encoding format.
@@ -228,6 +226,8 @@ typedef enum _dsAudioEncoding_t{
 
 /**
  * @brief Audio encoding type validation check.
+ * @todo add @see to the proper enum for all isValid functions
+ * @todo move all isValid functions to the dsUtl.h file
  */
 
 #define dsAudioEncoding_isValid(t)  (((t) >= dsAUDIO_ENC_NONE ) && ((t) < dsAUDIO_ENC_MAX))
@@ -250,7 +250,7 @@ typedef enum _dsAudioCompression_t{
 
 typedef enum _dsAudioFormat_t {
     dsAUDIO_FORMAT_NONE,                ///< No audio format.
-    dsAUDIO_FORMAT_PCM,                 ///< Pluse-code Modulation audio format.
+    dsAUDIO_FORMAT_PCM,                 ///< Pulse-code Modulation audio format.
     dsAUDIO_FORMAT_DOLBY_AC3,           ///< Audio Compression 3 audio format.
     dsAUDIO_FORMAT_DOLBY_EAC3,          ///< Enhance Audio Compression 3 audio format.
     dsAUDIO_FORMAT_DOLBY_AC4,           ///< Audio Compression 4 audio format.
@@ -261,7 +261,7 @@ typedef enum _dsAudioFormat_t {
     dsAUDIO_FORMAT_DOLBY_MAT_ATMOS,     ///< Metadata-enhanced Audio Transmission Dolby Atmos audio format.
     dsAUDIO_FORMAT_DOLBY_AC4_ATMOS,     ///< Audio Compression 4 Dolby Atmos audio format.
     dsAUDIO_FORMAT_AAC,                 ///< Advanced Audio Coding.
-    dsAUDIO_FORMAT_VORBIS,              ///< Vorbus sound audio format.
+    dsAUDIO_FORMAT_VORBIS,              ///< Vorbis sound audio format.
     dsAUDIO_FORMAT_WMA,                 ///< Windows Media audio format.
     dsAUDIO_FORMAT_UNKNOWN,             ///< Unknown audio format.
     dsAUDIO_FORMAT_MAX                  ///< Out of range 
@@ -288,6 +288,7 @@ typedef enum _dsAudioDuckingType_t{
 
 /**
  * @brief This defines the type of audio compression.
+ * @todo check for duplicates
  */
 typedef int dsAudioCompressionValue_t;
 
@@ -335,17 +336,21 @@ typedef enum _dsAudioARCTypes_t {
 } dsAudioARCTypes_t;
 
 /**
- * @brief Structure that defines Short Audio Descriptors retrieved from 
+ * @brief @todo fill out brief for MAX_SAD
+ */
+#define MAX_SAD 15  
+
+/**
+ * @brief Structure that holds Short Audio Descriptors retrieved from 
  * connected ARC device
  */
-#define MAX_SAD 15
 typedef struct _dsAudioSADList_t {
     int sad[MAX_SAD];   ///< Array of SADs
     int count;          ///< Amount of items in SAD array.
 } dsAudioSADList_t;
 
 /**
- * @brief Structure that defines ARC status for the HDMI ARC/EARC port.
+ * @brief Structure that holds ARC status for the HDMI ARC/EARC port.
  */
 typedef struct _dsAudioARCStatus_t {
    dsAudioARCTypes_t type;  ///< ARC type.
@@ -366,10 +371,6 @@ typedef enum _dsMS12Capabilities_t {
     dsMS12SUPPORT_Invalid = 0x80,               ///< Invalid
     dsMS12SUPPORT_MAX,                          ///< Out of range 
 } dsMS12Capabilities_t;
-/**
- * @brief This defines the type of audio compression.
- */
-typedef int dsAudioCompressionValue_t;
 
 /**
  * @brief Structure that captures MS12 Audio Profile list 
@@ -382,17 +383,7 @@ typedef struct _dsMS12AudioProfileList_t {
 } dsMS12AudioProfileList_t;
 
 /**
- * @brief This defines the type of dialog enhancer level .
- */
-typedef int dsDialogEnhancer_t;
-
-/**
- * @brief This defines the type of dialog enhancer level .
- */
-typedef int dsIntelligentEqualizerMode_t;
-
-/**
- * @brief This defines the type of volume leveller param.
+ * @brief This defines the type of volume leveller mode.
  */
 typedef struct _dsVolumeLeveller_t {
     int mode;   ///< 0 = off, 1= on, 2= auto
@@ -400,7 +391,7 @@ typedef struct _dsVolumeLeveller_t {
 } dsVolumeLeveller_t;
 
 /**
- * @brief This defines the type of surround virtualizer param.
+ * @brief This defines the type of surround virtualizer mode.
  */
 typedef struct _dsSurroundVirtualizer_t {
     int mode;   ///< 0 = off, 1= on, 2= auto
@@ -416,7 +407,7 @@ typedef struct _dsSurroundVirtualizer_t {
  * @brief This enumeration defines the type of audio stereo mode.
  */
 typedef enum StereoMode{
-    dsAUDIO_STEREO_UNKNOWN,   ///< Unknown mode.                         
+    dsAUDIO_STEREO_UNKNOWN,   ///< Stereo mode none
     dsAUDIO_STEREO_MONO = 1,  ///< Mono mode.                            
     dsAUDIO_STEREO_STEREO,    ///< Normal stereo mode (L+R).             
     dsAUDIO_STEREO_SURROUND,  ///< Surround mode.                        
