@@ -150,14 +150,12 @@
 #include <sys/types.h>
 #include <stdint.h>    
 #include <stdbool.h>
-#include "dsAudioTypes.h"
+#include "dsAudioVisualTypes.h"
 #include "dsCompositeInTypes.h"
-#include "dsDisplayTypes.h"
 #include "dsFPDTypes.h"
 #include "dsHdmiInTypes.h"
 #include "dsVideoDeviceTypes.h"
 #include "dsHostTypes.h"
-#include "dsVideoPortTypes.h"
 
   /** @addtogroup DSHAL_VERSION_TYPES HAL VERSION Definitions
  *  @ingroup DSHAL_VERSION
