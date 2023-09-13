@@ -97,7 +97,6 @@ extern "C" {
  * @warning  This API is Not thread safe.
  * @see dsFPTerm()
  * 
- * 
  */
 
 dsError_t dsFPInit (void);

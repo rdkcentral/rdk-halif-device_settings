@@ -34,37 +34,7 @@
  * -# None
  *
  * @par Abbreviations
- * - FPD:     Front-Panel Display.
  * - HAL:     Hardware Abstraction Layer.
- * - SAD:     Short Audio Descriptors
- * - EDID:    Extended Display Information Data.
- * - HEVC:    High Efficiency Video Coding
- * - DTCP:    Digital Transmission Content Protection
- * - HDCP:    High-bandwidth Digital Copy Protection.
- * - HDR:     High Dynamic Range
- * - HDMI:    High-Definition Multimedia Interface
- * - ARC:     Audio Return Channel.
- * - eARC:    Enhance Audio Return Channel
- * - RF:      Radio Frequency.
- * - MS12:    MultiStream 12.
- * - SPDIF:   Sony/Phillips Digital Interface
- * - AC-3:    Audio Compression 3
- * - CEA:     Consumer Electornic Association
- * - ITU:     International Telecommunication Union
- * - ITU-R:   ITU Radiocommunication Sector
- * - BT:      British Telecomm
- * - SMPTE:   Society of Television and Motion Picture Engineers
- * - YCbCr:   Y is luma (brightness), Cb is blue minus luma (B-Y) and Cr is red minus luma (R-Y)
- * - XvYCC:   extended-gamut YCbCr.
- * - RGB:     Red Green Blue
- * - eDVI:    Digital Video Interface
- * - eFCC:    Future Computing and Communication
- * - IEC:     International Electrotechnical Commission
- * - MPEG4:   Moving Picture Experts Group version 4, part 14.
- * - AVC:     Advanced Video Coding
- * - LED:     Light-Emitting Diode.
- * - SCART:   SCART stands for Syndicat des Constructeursd’AppareilsRadiorécepteurs et Téléviseurs 
- *                      or Radio and Television Receiver Manufacturers.
  *
  * @par Implementation Notes
  * -# None
@@ -97,23 +67,15 @@
  *  @{
  */
 
-
 /**
  * @brief This enumeration defines the type of sleep modes.
+ * @see dsSleepMode_isValid
  */
-
 typedef enum _dsSleepMode_t{
     dsHOST_SLEEP_MODE_LIGHT,    ///< Light sleep mode.                              
     dsHOST_SLEEP_MODE_DEEP,     ///< Deep sleep mode.                               
     dsHOST_SLEEP_MODE_MAX,      ///< Out of range                 
 } dsSleepMode_t;
-
-/**
- * @brief Sleep mode validation check.
- */
-
-#define dsSleepMode_isValid(t)  (((t)  >= dsHOST_SLEEP_MODE_LIGHT) && ((t) < dsHOST_SLEEP_MODE_MAX))
-
 
 /* End of DSHAL_HOST_TYPES doxygen group */
 /**

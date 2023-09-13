@@ -34,11 +34,9 @@
  * -# None
  *
  * @par Abbreviations
- * - FPD:     Front-Panel Display.
  * - HAL:     Hardware Abstraction Layer.
  * - SAD:     Short Audio Descriptors
  * - EDID:    Extended Display Information Data.
- * - HEVC:    High Efficiency Video Coding
  * - DTCP:    Digital Transmission Content Protection
  * - HDCP:    High-bandwidth Digital Copy Protection.
  * - HDR:     High Dynamic Range
@@ -49,7 +47,7 @@
  * - MS12:    MultiStream 12.
  * - SPDIF:   Sony/Phillips Digital Interface
  * - AC-3:    Audio Compression 3
- * - CEA:     Consumer Electornic Association
+ * - CEA:     Consumer Electronic Association
  * - ITU:     International Telecommunication Union
  * - ITU-R:   ITU Radiocommunication Sector
  * - BT:      British Telecomm
@@ -61,7 +59,6 @@
  * - eFCC:    Future Computing and Communication
  * - IEC:     International Electrotechnical Commission
  * - MPEG4:   Moving Picture Experts Group version 4, part 14.
- * - AVC:     Advanced Video Coding
  * - LED:     Light-Emitting Diode.
  * - SCART:   SCART stands for Syndicat des Constructeursd’AppareilsRadiorécepteurs et Téléviseurs 
  *                      or Radio and Television Receiver Manufacturers.
@@ -102,6 +99,7 @@
 
 /**
  * @brief This enumeration defines the audio port types.
+ * @see dsAudioType_isValid
  */
 
 typedef enum _dsAudioPortType_t{
@@ -115,14 +113,8 @@ typedef enum _dsAudioPortType_t{
 } dsAudioPortType_t;
 
 /**
- * @brief Audio output port type validation check.
- */
-
-#define dsAudioType_isValid(t)  (((t) >= dsAUDIOPORT_TYPE_ID_LR ) && ((t) < dsAUDIOPORT_TYPE_MAX))
-
-/**
  * @brief This enumeration defines the audio encoding types
- * @todo remove all extraneous extra line spaces
+ * @see dsAudioEncoding_isValid
  */
 typedef enum _dsAudioEncoding_t{
     dsAUDIO_ENC_NONE = 0,   ///< No digital audio output.                       
@@ -134,17 +126,9 @@ typedef enum _dsAudioEncoding_t{
 } dsAudioEncoding_t;
 
 /**
- * @brief Audio encoding type validation check.
- * @todo add @see to the proper enum for all isValid functions
- * @todo move all isValid functions to the dsUtl.h file
- */
-
-#define dsAudioEncoding_isValid(t)  (((t) >= dsAUDIO_ENC_NONE ) && ((t) < dsAUDIO_ENC_MAX))
-
-/**
  * @brief This enumeration defines the type of audio compression.
+ * @see dsAudioCompression_isValid
  */
-
 typedef enum _dsAudioCompression_t{
     dsAUDIO_CMP_NONE,   ///< No audio compression.                    
     dsAUDIO_CMP_LIGHT,  ///< Light audio level compression.           
@@ -156,7 +140,6 @@ typedef enum _dsAudioCompression_t{
 /**
  * @brief This enumeration defines the type of audio format
  */
-
 typedef enum _dsAudioFormat_t {
     dsAUDIO_FORMAT_NONE,                ///< No audio format.
     dsAUDIO_FORMAT_PCM,                 ///< Pulse-code Modulation audio format.
@@ -175,7 +158,6 @@ typedef enum _dsAudioFormat_t {
     dsAUDIO_FORMAT_UNKNOWN,             ///< Unknown audio format.
     dsAUDIO_FORMAT_MAX                  ///< Out of range 
 }dsAudioFormat_t;
-
 
 /**
  * @brief This enumeration defines the type of audio ducking action.
@@ -197,7 +179,6 @@ typedef enum _dsAudioDuckingType_t{
 
 /**
  * @brief This defines the type of audio compression.
- * @todo check for duplicates
  */
 typedef int dsAudioCompressionValue_t;
 
@@ -210,7 +191,6 @@ typedef int dsDialogEnhancer_t;
  * @brief This defines the type of dialog enhancer level .
  */
 typedef int dsIntelligentEqualizerMode_t;
-
 
 /**
  * @brief Enumeration defines all of the supported Audio types.
@@ -245,7 +225,7 @@ typedef enum _dsAudioARCTypes_t {
 } dsAudioARCTypes_t;
 
 /**
- * @brief @todo fill out brief for MAX_SAD
+ * @brief Max values for SADs
  */
 #define MAX_SAD 15  
 
@@ -309,12 +289,8 @@ typedef struct _dsSurroundVirtualizer_t {
 } dsSurroundVirtualizer_t;
 
 /**
- * @brief Audio compression type validation check.
- */
-#define dsAudioCompression_isValid(t)  (((t) >= dsAUDIO_CMP_NONE ) && ((t) < dsAUDIO_CMP_MAX))
-
-/**
  * @brief This enumeration defines the type of audio stereo mode.
+ * @see dsAudioStereoMode_isValid
  */
 typedef enum StereoMode{
     dsAUDIO_STEREO_UNKNOWN,   ///< Stereo mode none
@@ -330,7 +306,6 @@ typedef enum StereoMode{
 /** 
  * @brief This enumeration defines HDCP protocol version types 
  */
-
 typedef enum _dsATMOSCapability_t{
     dsAUDIO_ATMOS_NOTSUPPORTED= 0,  ///< ATMOS audio not supported.
     dsAUDIO_ATMOS_DDPLUSSTREAM,     ///< can handle dd plus stream which is only way to pass ATMOS metadata.
@@ -339,16 +314,9 @@ typedef enum _dsATMOSCapability_t{
 } dsATMOSCapability_t;
 
 /**
- * @brief Audio stereo mode type validation check.
- */
-
-#define dsAudioStereoMode_isValid(t)  (((t) >= dsAUDIO_STEREO_UNKNOWN ) && ((t) < dsAUDIO_STEREO_MAX))
-
-/**
  * @ingroup DSHAL_AUDIO_TYPES
  * @brief Structure that defines audio output device configuration.
  */
-
 typedef struct _dsAudioTypeConfig_t {
     int32_t  typeId;                            ///< The audio output type.     
     const char *name;                           ///< Name of the audio output device. 
@@ -364,7 +332,6 @@ typedef struct _dsAudioTypeConfig_t {
  * @ingroup DSHAL_AUDIO_TYPES
  * @brief Structure that defines the audio port type and associated ID.
  */
-
 typedef struct _dsAudioPortId_t {
     dsAudioPortType_t type; ///< Audio port type.
     int32_t index;          ///< Port ID/number.
@@ -374,7 +341,6 @@ typedef struct _dsAudioPortId_t {
  * @brief Enumeration defines surround mode.
  * Each bit of uint32_t represent supported surround mode. 
  */
-
 typedef enum _dsSURROUNDMode_t {
     dsSURROUNDMODE_NONE = 0x0,      ///< No surround mode.
     dsSURROUNDMODE_DD = 0x1,        ///< Surround mode Dolby Digital.
@@ -385,7 +351,6 @@ typedef enum _dsSURROUNDMode_t {
 /**
  * @brief Enumeration defines MS12 feature.
  */
-
 typedef enum _dsMS12FEATURE_t {
     dsMS12FEATURE_DAPV2 = 0x0,  ///< Dolby Audio Processing Version 2
     dsMS12FEATURE_DE = 0x1,     ///< Dialogue Enhancement
@@ -418,7 +383,6 @@ typedef enum _dsAudioPortState {
  * @}
  */
 
-
 /** @addtogroup DSHAL_VIDEOPORT_TYPES HAL VideoPort Type Definitions
  *  @ingroup DSHAL_VIDEOPORT
  *  @{
@@ -426,8 +390,8 @@ typedef enum _dsAudioPortState {
 
 /**
  * @brief This enumeration defines all of the standard type of Video ports.
+ * @see dsVideoPortType_isValid
  */
-
 typedef enum _dsVideoPortType_t {
     dsVIDEOPORT_TYPE_RF = 0,      ///< RF modulator (channel 3/4) video output.           
     dsVIDEOPORT_TYPE_BB,          ///< Baseband (composite, RCA) video output.            
@@ -443,15 +407,9 @@ typedef enum _dsVideoPortType_t {
 } dsVideoPortType_t;
 
 /**
- * @brief Video output port type validation check.
- */
-
-#define dsVideoPortType_isValid(t)  (((t) >= dsVIDEOPORT_TYPE_RF ) && ((t) < dsVIDEOPORT_TYPE_MAX))
-
-/**
  * @brief This enumeration defines all of the standard video port resolutions.
+ * @see dsVideoPortPixelResolution_isValid
  */
-
 typedef enum _dsVideoResolution_t{
     dsVIDEO_PIXELRES_720x480,     ///< 720x480 Resolution.                       
     dsVIDEO_PIXELRES_720x576,     ///< 720x576 Resolution.                       
@@ -466,31 +424,32 @@ typedef enum _dsVideoResolution_t{
  * @brief This enumeration defines all of the standard TV 
  *      supported resolution with interlace information.
  */
-
 typedef enum _dsTVResolution_t{
-    dsTV_RESOLUTION_480i = 0x0001,      ///< 480i Resolution.                       
-    dsTV_RESOLUTION_480p = 0x0002,      ///< 480p Resolution.                       
-    dsTV_RESOLUTION_576i = 0x0004,      ///< 576p Resolution.                       
-    dsTV_RESOLUTION_576p = 0x0008,      ///< 576p Resolution.                       
-    dsTV_RESOLUTION_720p = 0x0010,      ///< 720p Resolution.                       
-    dsTV_RESOLUTION_1080i = 0x0020,     ///< 1080i Resolution.                      
-    dsTV_RESOLUTION_1080p = 0x0040,     ///< 1080p Resolution.                      
-    dsTV_RESOLUTION_2160p30 = 0x0080,   ///< 2160p30 Resolution.                    
-    dsTV_RESOLUTION_2160p60 = 0x0100,   ///< 2160p60 Resolution.                    
-    dsTV_RESOLUTION_MAX,                ///< Out of range 
+    dsTV_RESOLUTION_480i = 0x00001,     ///< 480i Resolution
+    dsTV_RESOLUTION_480p = 0x00002,     ///< 480p Resolution
+    dsTV_RESOLUTION_576i = 0x00004,     ///< 576p Resolution
+    dsTV_RESOLUTION_576p = 0x00008,     ///< 576p Resolution
+    dsTV_RESOLUTION_576p50 = 0x00010,   ///< 576p50 Resolution
+    dsTV_RESOLUTION_720p = 0x00020,     ///< 720p Resolution
+    dsTV_RESOLUTION_720p50 = 0x00040,   ///< 720p50 Resolution
+    dsTV_RESOLUTION_1080i = 0x00080,    ///< 1080i Resolution
+    dsTV_RESOLUTION_1080p = 0x00100,    ///< 1080p Resolution
+    dsTV_RESOLUTION_1080p24 = 0x00200,  ///< 1080p24 Resolution
+    dsTV_RESOLUTION_1080i25 = 0x00400,  ///< 1080i25 Resolution
+    dsTV_RESOLUTION_1080p30 = 0x00800,  ///< 1080p30 Resolution
+    dsTV_RESOLUTION_1080i50 = 0x01000,  ///< 1080i50 Resolution
+    dsTV_RESOLUTION_1080p50 = 0x02000,  ///< 1080p50 Resolution
+    dsTV_RESOLUTION_1080p60 = 0x04000,  ///< 1080p60 Resolution
+    dsTV_RESOLUTION_2160p30 = 0x08000,  ///< 2160p30 Resolution
+    dsTV_RESOLUTION_2160p50 = 0x10000,  ///< 2160p30 Resolution
+    dsTV_RESOLUTION_2160p60 = 0x20000,  ///< 2160p60 Resolution
 }dsTVResolution_t;
-
-/**
- * @brief Video output resolutions type validation check.
- */
-
-#define dsVideoPortPixelResolution_isValid(t)  (((t) >= dsVIDEO_PIXELRES_720x480 ) && ((t) < dsVIDEO_PIXELRES_MAX))
 
 /**
  * @brief This enumeration defines all of the standard frame rates at which 
  *      video may be played out of the video port.
+ * @see dsVideoPortFrameRate_isValid
  */
-
 typedef enum _dsVideoFrameRate_t{
     dsVIDEO_FRAMERATE_UNKNOWN,  ///< Unknown frame rate.                     
     dsVIDEO_FRAMERATE_24,       ///< Played at 24 frames per second.         
@@ -505,16 +464,10 @@ typedef enum _dsVideoFrameRate_t{
 }dsVideoFrameRate_t;
 
 /**
- * @brief Video output framerate validation check.
- */
-
-#define dsVideoPortFrameRate_isValid(t)  (((t) >= dsVIDEO_FRAMERATE_UNKNOWN ) && ((t) < dsVIDEO_FRAMERATE_MAX))
-
-/**
  * @brief This enumeration defines all of the standard video port scan modes.
+ * @see dsVideoPortScanMode_isValid
  * @todo Check to see where this is used. Might be unused.
  */
-
 typedef enum _dsVideoScanMode_t{
     dsVIDEO_SCANMODE_INTERLACED,    ///< Interlaced video.                 
     dsVIDEO_SCANMODE_PROGRESSIVE,   ///< Progressive video.                
@@ -524,7 +477,6 @@ typedef enum _dsVideoScanMode_t{
 /**
  * @brief This enumeration defines background color for video port.
  */
-
 typedef enum _dsVideoBackgroundColor_t{
     dsVIDEO_BGCOLOR_BLUE,   ///< Background color BLUE.
     dsVIDEO_BGCOLOR_BLACK,  ///< Background color BLACK.
@@ -533,15 +485,9 @@ typedef enum _dsVideoBackgroundColor_t{
 }dsVideoBackgroundColor_t;
 
 /**
- * @brief Video scan mode type validation check.
- */
-
-#define dsVideoPortScanMode_isValid(t)  (((t) >= dsVIDEO_SCANMODE_INTERLACED ) && ((t) < dsVIDEO_SCANMODE_MAX))
-
-/**
  * @brief This enumeration defines all of the standard video Stereo Scopic modes.
+ * @see dsVideoPortStereoScopicMode_isValid
  */
-
 typedef enum _dsVideoStereoScopicMode_t {
     dsVIDEO_SSMODE_UNKNOWN = 0,         ///< Unknown mode.                              
     dsVIDEO_SSMODE_2D,                  ///< 2D mode.                                   
@@ -551,16 +497,9 @@ typedef enum _dsVideoStereoScopicMode_t {
 }dsVideoStereoScopicMode_t;
 
 /**
- * @brief Video Stereo Scopic modes type validation check.
- */
-
-#define dsVideoPortStereoScopicMode_isValid(t)  (((t) >= dsVIDEO_SSMODE_UNKNOWN ) && ((t) < dsVIDEO_SSMODE_MAX))
-
-/**
  * @brief Structure that defines video port resolution settings of output video device.
  * @todo Check how the name is used in the actual code
  */
-
 typedef struct _dsVideoPortResolution_t {
     char name[32];                                  ///< Name the resolution. 
     dsVideoResolution_t  pixelResolution;           ///< The resolution associated with the name.               
@@ -573,7 +512,6 @@ typedef struct _dsVideoPortResolution_t {
 /**
  * @brief Structure that defines port id associated with video port.
  */
-
 typedef struct _dsVideoPortPortId_t {
     dsVideoPortType_t type; ///< Video port type.
     int32_t index;          ///< Port ID/number.
@@ -582,7 +520,6 @@ typedef struct _dsVideoPortPortId_t {
 /**
  * @brief Structure that defines the video output port configuration.
  */
-
 typedef struct _dsVideoPortTypeConfig_t {
     dsVideoPortType_t typeId;                       ///< The video output type.             
     const char *name;                               ///< Name of the video output port.     
@@ -598,30 +535,28 @@ typedef struct _dsVideoPortTypeConfig_t {
  */
 #define HDCP_KEY_MAX_SIZE  (4*1024)
 
-
 /**
  * @brief Enumeration defines all of the standard HDR types.
  * Each bit of uint32_t represent a standard. 
  * If a device supports multiple standards, the capability is the bitwise OR
  * of the standards.
  */
-
 typedef enum _dsHDRStandard_t {
     dsHDRSTANDARD_NONE = 0x0,               ///< When No video format is decoded
     dsHDRSTANDARD_HDR10 = 0x01,             ///< Video Format HDR
     dsHDRSTANDARD_HLG = 0x02,               ///< Video Format HLG
     dsHDRSTANDARD_DolbyVision = 0x04,       ///< Video Format Dolby Vision
     dsHDRSTANDARD_TechnicolorPrime = 0x08,  ///< Video Format Techinicolor Prime
+    dsHDRSTANDARD_HDR10PLUS = 0x10,         ///< Video Format HDRPlus 
+    dsHDRSTANDARD_SDR= 0x20,                ///< Video Format SDR 
     dsHDRSTANDARD_Invalid = 0x80,           ///< When invalid value observed
     dsHDRSTANDARD_MAX                       ///< Out of range 
 } dsHDRStandard_t;
-
 
 /**
  * @ingroup DSHAL_VIDEOPORT_TYPES
  * @brief Structure that defines video port configuration settings.
  */
-
 typedef struct _dsVideoPortPortConfig_t {
     dsVideoPortPortId_t id;         ///< Port ID.             
     dsAudioPortId_t connectedAOP;   ///< Connected audio port.
@@ -630,6 +565,7 @@ typedef struct _dsVideoPortPortConfig_t {
 
 /** 
  * @brief This enumeration defines all HDCP Authentication Status 
+ * @see dsHdcpStatus_isValid
 */
 typedef enum _dsHdcpStatus_t {
     dsHDCP_STATUS_UNPOWERED = 0,            ///< Connected Sink Device does not support HDCP
@@ -640,12 +576,6 @@ typedef enum _dsHdcpStatus_t {
     dsHDCP_STATUS_PORTDISABLED,             ///< HDMI output port disabled
     dsHDCP_STATUS_MAX                       ///< Out of range 
 } dsHdcpStatus_t;
-
-/**
- * @brief HDCP status validation check.
-*/
-
-#define dsHdcpStatus_isValid(t)  (((t) >= dsHDCP_STATUS_UNPOWERED ) && ((t) < dsHDCP_STATUS_MAX))
 
 /**
  * @brief This enumeration defines HDCP protocol version types 
@@ -661,7 +591,6 @@ typedef enum _dsHdcpProtocolVersion_t {
  * @}
  */
 
-
 /** @addtogroup DSHAL_DISPLAY_TYPES HAL Display Type Definitions
  *  @ingroup DSHAL_DISPLAY
  *  @{
@@ -670,20 +599,21 @@ typedef enum _dsHdcpProtocolVersion_t {
 /**
  * @brief Maximum Value  video modes are described in CEA specifictaion
  */
-
 #define dsEEDID_MAX_VIDEO_CODE  64  ///< Maximum Value EEDID Video COde .
+
 /**
  * @brief Maximum length for for Connected Display Monitor names.
 */
-
 #define dsEEDID_MAX_MON_NAME_LENGTH 14  ///< Maximum Length of Connected Display Monitor Name .
 
 /**
  * @brief Maximum length for EDID data.
 */
+#define MAX_EDID_BYTES_LEN  (1024)  ///< Maximum Byte length of EDID data
 
-#define MAX_EDID_BYTES_LEN  (1024)  ///< Maximum Byte length of EDID data 
-
+/**
+ * @brief Structure for the EDID display
+*/
 typedef struct _dsDisplayEDID_t {
     int32_t productCode;               ///< Product code of the display device.      
     int32_t serialNumber;              ///< Serial number of the display device.     
@@ -730,23 +660,15 @@ typedef enum _dsDisplayColorimetryInfo_t
     dsDisplay_COLORIMETRY_INFO_MAX                 ///< Out of range 
 } dsDisplayColorimetryInfo_t;
 
-
 /**
  * @brief This enumeration defines all of the standard video aspect ratios.
+ * @see dsVideoPortAspectRatio_isValid
  */
-
 typedef enum _dsVideoAspectRatio_t{
     dsVIDEO_ASPECT_RATIO_4x3,    ///< 4:3 aspect ratio.                    
     dsVIDEO_ASPECT_RATIO_16x9,   ///< 16:9 aspect ratio.                   
     dsVIDEO_ASPECT_RATIO_MAX     ///< Out of range 
 }dsVideoAspectRatio_t;
-
-/**
- * @brief Video aspect ratio type validation check.
- */
-
-#define dsVideoPortAspectRatio_isValid(t)  (((t)  >= dsVIDEO_ASPECT_RATIO_4x3 ) && ((t) < dsVIDEO_ASPECT_RATIO_MAX))
-
 
 /**
  * @brief This enumeration defines the type of display color spaces supported
@@ -772,7 +694,6 @@ typedef enum _dsDisplayQuantizationRange_t
     dsDISPLAY_QUANTIZATIONRANGE_FULL = 2,       ///< Full quantization range
     dsDISPLAY_QUANTIZATIONRANGE_MAX             ///< Out of range 
 } dsDisplayQuantizationRange_t;
-
 
 /**
  * @brief This enumeration defines the type of display Color depth.

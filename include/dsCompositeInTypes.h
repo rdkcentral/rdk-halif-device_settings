@@ -96,10 +96,11 @@
  *  @ingroup DSHAL_COMPOSITE_IN
  *  @{
  */
+
+
 /**
  * @brief This enumeration defines the type composite signal status.
  */
-
 typedef enum _dsCompInSignalStatus_t
 {
     dsCOMP_IN_SIGNAL_STATUS_NONE = -1,    ///< Composite input signal status NONE
@@ -113,7 +114,6 @@ typedef enum _dsCompInSignalStatus_t
 /**
  * @brief This enumeration defines the type of composite ports.
  */
-
 typedef enum _dsCompositeInPort_t
 {
     dsCOMPOSITE_IN_PORT_NONE = -1,  ///< No composite port.
@@ -121,6 +121,7 @@ typedef enum _dsCompositeInPort_t
     dsCOMPOSITE_IN_PORT_1,          ///< Composite port index 1.
     dsCOMPOSITE_IN_PORT_MAX         ///< Out of range 
 } dsCompositeInPort_t;
+
 /**
  * @brief Structure type for Composite input status.
  */

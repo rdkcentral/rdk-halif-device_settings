@@ -34,37 +34,11 @@
  * -# None
  *
  * @par Abbreviations
- * - FPD:     Front-Panel Display.
+ * - FPD:     Front-Panel Display. *
  * - HAL:     Hardware Abstraction Layer.
- * - SAD:     Short Audio Descriptors
- * - EDID:    Extended Display Information Data.
- * - HEVC:    High Efficiency Video Coding
- * - DTCP:    Digital Transmission Content Protection
- * - HDCP:    High-bandwidth Digital Copy Protection.
- * - HDR:     High Dynamic Range
- * - HDMI:    High-Definition Multimedia Interface
- * - ARC:     Audio Return Channel.
- * - eARC:    Enhance Audio Return Channel
  * - RF:      Radio Frequency.
- * - MS12:    MultiStream 12.
- * - SPDIF:   Sony/Phillips Digital Interface
- * - AC-3:    Audio Compression 3
- * - CEA:     Consumer Electornic Association
- * - ITU:     International Telecommunication Union
- * - ITU-R:   ITU Radiocommunication Sector
- * - BT:      British Telecomm
- * - SMPTE:   Society of Television and Motion Picture Engineers
- * - YCbCr:   Y is luma (brightness), Cb is blue minus luma (B-Y) and Cr is red minus luma (R-Y)
- * - XvYCC:   extended-gamut YCbCr.
  * - RGB:     Red Green Blue
- * - eDVI:    Digital Video Interface
- * - eFCC:    Future Computing and Communication
- * - IEC:     International Electrotechnical Commission
- * - MPEG4:   Moving Picture Experts Group version 4, part 14.
- * - AVC:     Advanced Video Coding
  * - LED:     Light-Emitting Diode.
- * - SCART:   SCART stands for Syndicat des Constructeursd’AppareilsRadiorécepteurs et Téléviseurs 
- *                      or Radio and Television Receiver Manufacturers.
  *
  * @par Implementation Notes
  * -# None
@@ -100,12 +74,14 @@
 /**
  * @brief dsFPDColor_t is an 4-byte integer that is composed of RGB32 value in the
  * following pattern:
- *
+ * 
  * @todo explain this in words, instead of a formula
  * 
  * FPD_COLOR = (((R8)<<16) | ((G8)<< 8) | ((B8) << 0))
  *
  * The Most Significant 8 bit is reserved.
+ * 
+ * @see dsFPDColor_isValid
  */
 typedef uint32_t dsFPDColor_t;
 
@@ -120,7 +96,6 @@ typedef uint32_t dsFPDColor_t;
 
 /**
  * @brief Define a set of common colors, for backward compatibility 
- * @todo check where these are used
  */
 #define dsFPD_COLOR_BLUE   dsFPDColor_Make(0, 0, 0xFF)          ///< Blue color LED.                 
 #define dsFPD_COLOR_GREEN  dsFPDColor_Make(0, 0xFF, 0)          ///< Green color LED.                
@@ -131,17 +106,12 @@ typedef uint32_t dsFPDColor_t;
 #define dsFPD_COLOR_MAX    6                                    ///< Out of range 
 
 /**
- * @brief Front panel LED colors validation check.
- * @todo Move isValid functions to dsUtls
- */
-#define dsFPDColor_isValid(t)  (((t) & 0xFF000000) == 0)
-
-/**
  * @brief dsFPDIndicator_t is an ID number that  uniquely identifies a HAL
  * LED entity on the front panel. Each HAL implementation is free
  * to assign any number to its LEDs. The mapping of LED ID to its
  * display name (such as "Record LED") is done outside HAL library.
  * @todo Look into how this is supposed to work
+ * @see dsFPDIndicator_isValid
  */
 typedef int32_t dsFPDIndicator_t;
 
@@ -158,23 +128,14 @@ typedef int32_t dsFPDIndicator_t;
 #define    dsFPD_INDICATOR_MAX      5   ///< Out of range            
 
 /**
- * @brief Front panel LED indicator type validation check.
- */
-#define dsFPDIndicator_isValid(t)  (true)
-
-/**
  * @brief This enumeration defines the FPD text display types.
+ * @see dsFPDTextDisplay_isValid
  */
 typedef enum __dsFPDTextDisplay_t
 {
     dsFPD_TEXTDISP_TEXT,    ///< 7-segment LED display.                  
     dsFPD_TEXTDISP_MAX      ///< Out of range 
 }dsFPDTextDisplay_t;
-
-/**
- * @brief FPD text display type validation check.
- */
-#define dsFPDTextDisplay_isValid(t)  (((t)  >= dsFPD_TEXTDISP_TEXT ) && ((t) < dsFPD_TEXTDISP_MAX))
 
 /**
  * @brief This enumeration defines the front panel display state.
@@ -187,6 +148,23 @@ typedef enum __dsFPDState_t
 }dsFPDState_t;
 
 /**
+ * This enumeration defines the front panel display state.
+ */
+typedef enum __dsFPDLedState_t
+{
+    dsFPD_LED_DEVICE_NONE = 0,
+    dsFPD_LED_DEVICE_ACTIVE = 1,
+    dsFPD_LED_DEVICE_STANDBY = 2,
+    dsFPD_LED_DEVICE_WPS_CONNECTING = 3,
+    dsFPD_LED_DEVICE_WPS_CONNECTED = 4,
+    dsFPD_LED_DEVICE_WPS_ERROR = 5,
+    dsFPD_LED_DEVICE_FACTORY_RESET = 6,
+    dsFPD_LED_DEVICE_USB_UPGRADE = 7,
+    dsFPD_LED_DEVICE_SOFTWARE_DOWNLOAD_ERROR = 8,
+    dsFPD_LED_DEVICE_MAX
+}dsFPDLedState_t;
+
+/**
  * @brief This enumeration defines the time formats to be used in the Front panel text display
  */
 typedef enum __dsFPDTimeFormat_t
@@ -196,10 +174,10 @@ typedef enum __dsFPDTimeFormat_t
     dsFPD_TIME_STRING,  ///< Text string.        
     dsFPD_TIME_MAX      ///< Out of range 
 }dsFPDTimeFormat_t;
+
 /**
  * @brief Maximum Value of FPD Led Brightness
  */
-
 #define dsFPD_BRIGHTNESS_MAX    100     ///< Maximum Value of FPD LED brightness.
 
 /**

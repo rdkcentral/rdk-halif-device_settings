@@ -34,37 +34,11 @@
  * -# None
  *
  * @par Abbreviations
- * - FPD:     Front-Panel Display.
  * - HAL:     Hardware Abstraction Layer.
- * - SAD:     Short Audio Descriptors
- * - EDID:    Extended Display Information Data.
- * - HEVC:    High Efficiency Video Coding
- * - DTCP:    Digital Transmission Content Protection
- * - HDCP:    High-bandwidth Digital Copy Protection.
- * - HDR:     High Dynamic Range
  * - HDMI:    High-Definition Multimedia Interface
  * - ARC:     Audio Return Channel.
- * - eARC:    Enhance Audio Return Channel
- * - RF:      Radio Frequency.
- * - MS12:    MultiStream 12.
- * - SPDIF:   Sony/Phillips Digital Interface
- * - AC-3:    Audio Compression 3
- * - CEA:     Consumer Electornic Association
- * - ITU:     International Telecommunication Union
- * - ITU-R:   ITU Radiocommunication Sector
- * - BT:      British Telecomm
- * - SMPTE:   Society of Television and Motion Picture Engineers
- * - YCbCr:   Y is luma (brightness), Cb is blue minus luma (B-Y) and Cr is red minus luma (R-Y)
- * - XvYCC:   extended-gamut YCbCr.
- * - RGB:     Red Green Blue
- * - eDVI:    Digital Video Interface
- * - eFCC:    Future Computing and Communication
- * - IEC:     International Electrotechnical Commission
- * - MPEG4:   Moving Picture Experts Group version 4, part 14.
- * - AVC:     Advanced Video Coding
- * - LED:     Light-Emitting Diode.
- * - SCART:   SCART stands for Syndicat des Constructeursd’AppareilsRadiorécepteurs et Téléviseurs 
- *                      or Radio and Television Receiver Manufacturers.
+ * - rsd:     Repetition of statis data
+ * - pkttype: Package type
  *
  * @par Implementation Notes
  * -# None
@@ -96,10 +70,10 @@
  *  @ingroup DSHAL_HDMI_IN
  *  @{
  */
+
 /**
  * @brief This enumeration defines the type of HDMI ports.
  */
-
 typedef enum _dsHdmiInPort_t
 {
     dsHDMI_IN_PORT_NONE = -1,  ///< HDMI input port index for NONE
@@ -110,7 +84,7 @@ typedef enum _dsHdmiInPort_t
 } dsHdmiInPort_t;
 
 /**
- * @brief This enumeration defines the type of HDMI siganl status.
+ * @brief This enumeration defines the type of HDMI signal status.
  * @todo update the description on the signal status
  */
 typedef enum _dsHdmiInSignalStatus_t
@@ -134,6 +108,7 @@ typedef struct _dsHdmiInStatus_t
     dsHdmiInPort_t   activePort;                            ///< HDMI input Port selected as the currently active port (to the set-top)
                                                             ///<   - note that only one HDMI input port can be active at a time 
 } dsHdmiInStatus_t;
+
 /**
  * @brief Structure type for HDMI input ARC Capability.
  */
@@ -155,12 +130,15 @@ typedef enum dsAviContentType {
 }dsAviContentType_t;
 
 /**
+ * @brief Max buffer length for the feature list
+ * 
+ */
+#define MAX_FEATURE_LIST_BUFFER_LEN 1024
+
+/**
  * @brief Structure that captures Supported Game Features list
  * @todo list all possible values
  */
-
-#define MAX_FEATURE_LIST_BUFFER_LEN 1024
-
 typedef struct _dsSupportedGameFeatureList_t {
     char gameFeatureList[MAX_FEATURE_LIST_BUFFER_LEN]; ///< buffer containing the list of comma separated supported game features (e.g: "allm")
     int gameFeatureCount;                              ///< Total number of supported game features
@@ -179,7 +157,6 @@ struct dsSpd_infoframe_st {
     uint8_t product_des[16];    ///< Product Description Character
     uint8_t source_info;        ///< byte 25
 } ;
-
 
 /* End of DSHAL_HDMI_IN_TYPES doxygen group */
 /**
