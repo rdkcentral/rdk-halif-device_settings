@@ -164,9 +164,9 @@ The `caller` is expected to have complete control over the life cycle of the `HA
 
 1. Initialize the `HAL` using function: `dsHdmiInInit()` before making any other `API`s calls.  If `dsHdmiInInit()` call fails, the `HAL` shall return the respective error code, so that the `caller` can retry the operation.
 
-2. The `caller` can call `dsHdmiInSelectPort()`, `dsHdmiInScaleVideo()`, `dsSetEdidVersion()` and `dsHdmiInSelectZoomMode()` to set the needed information.
+2. The `caller` can call `dsHdmiInSelectPort()`, `dsHdmiInScaleVideo()` and `dsHdmiInSelectZoomMode()` to set the needed information.
 
-3. The `caller` can call `dsHdmiInGetNumberOfInputs()`, `dsHdmiInGetStatus()`, `dsGetEDIDBytesInfo()`, `dsIsHdmiARCPort()`, `dsGetHDMISPDInfo()`,  `dsGetEdidVersion()`, `dsGetAllmStatus()`, `dsGetSupportedGameFeaturesList()`, `dsGetAVLatency()` and `dsHdmiInGetCurrentVideoMode()` to query the needed information.
+3. The `caller` can call `dsHdmiInGetNumberOfInputs()`, `dsHdmiInGetStatus()`, `dsGetEDIDBytesInfo()`, `dsIsHdmiARCPort()`, `dsGetHDMISPDInfo()`,  `dsGetAllmStatus()`, `dsGetSupportedGameFeaturesList()`, `dsGetAVLatency()` and `dsHdmiInGetCurrentVideoMode()` to query the needed information.
 
 4. Callbacks can be set with `dsHdmiInRegisterConnectCB()`, `dsHdmiInRegisterSignalChangeCB()`, `dsHdmiInRegisterStatusChangeCB()`, `dsHdmiInRegisterVideoModeUpdateCB()` and `dsHdmiInRegisterAllmChangeCB()`.
     - `dsHdmiInRegisterConnectCB()` is used when the HDMIin port connection status changes.
@@ -224,16 +224,6 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     Caller->>HAL:dsHdmiInGetCurrentVideoMode()
     Note over HAL: Gets the current video mode
     HAL->>Driver:Returns the current video mode
-    Driver-->>HAL:return
-    HAL-->>Caller:return
-    Caller->>HAL:dsSetEdidVersion()
-    Note over HAL: Sets the EDID version
-    HAL->>Driver:Sets the EDID version
-    Driver-->>HAL:return
-    HAL-->>Caller:return
-    Caller->>HAL:dsGetEdidVersion()
-    Note over HAL: Gets the current EDID Version
-    HAL->>Driver:Returns the current EDID Version
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsGetAllmStatus()
