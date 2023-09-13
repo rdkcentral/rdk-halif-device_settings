@@ -112,7 +112,7 @@ extern "C" {
  * @return dsError_t                    - Status
  * @retval dsERR_NONE                   - Success
  * @retval dsERR_ALREADY_INITIALIZED    - Function is already initialized
- * @retval dsERR_RESOURCE_NOT_AVAILABLE - ...
+ * @retval dsERR_RESOURCE_NOT_AVAILABLE - Resources have failed to allocate
  * @retval dsERR_GENERAL                - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
@@ -147,8 +147,8 @@ dsError_t dsHdmiInTerm (void);
  * 
  * This function sets the number of HDMI input ports on the device.
  *
- * @param[out] pNumberOfinputs  - number of HDMI input ports. 
- *                                  Max number of inputs is platform specific. Min is 0.
+ * @param[out] pNumberOfinputs  - number of HDMI input ports.
+ *                                  Max number of inputs is platform specific. Min is 0
  * 
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
@@ -207,9 +207,10 @@ dsError_t dsHdmiInGetStatus (dsHdmiInStatus_t *pStatus);
 dsError_t dsHdmiInSelectPort (dsHdmiInPort_t ePort);
 
 /**
- * @todo Express out of range for the x and y coordinates for invalid param.
  * @brief Scales the HDMI input video
- * This function scales the HDMI input video.
+ * This function scales the HDMI input video. The width and height, based on the x, y coordinates, 
+ *      cannot exceed that of the current resolution of the device.
+ *      e.g.  x(in pixels)+width cannot be greater then the width of the resolution.
  *
  * @param[in] x         - x coordinate for the video
  * @param[in] y         - y coordinate for the video
@@ -275,7 +276,8 @@ dsError_t dsHdmiInGetCurrentVideoMode (dsVideoPortResolution_t *resolution);
  * @brief HAL must call this function when the HDMI input port connection status changes.
  *
  * @param[in] Port              - Port id where connection status is changed. @see dsHdmiInPort_t
- * @param[in] isPortConnected   - Port connection status. True if connected, false if not.
+ * @param[in] isPortConnected   - Flag to control the port connection status. 
+ *                                  ( @a true to enable, @a false to disable)
  * 
  * @pre dsHdmiInRegisterConnectCB() must be called before this API
  *
@@ -309,7 +311,6 @@ typedef void (*dsHdmiInStatusChangeCB_t)(dsHdmiInStatus_t inputStatus);
 
 /**
  * @brief HAL must call this function when the HDMI input port video mode changes.
- * @todo looking into what some of the enum values are actually used for
  *
  * HAL Implementation must call this method to deliver updated HDMI input port video mode info
  * to the Caller
@@ -327,9 +328,10 @@ typedef void (*dsHdmiInVideoModeUpdateCB_t)(dsHdmiInPort_t port, dsVideoPortReso
  * @todo discuss dolby vision game mode offline
  *
  * @param[in] port      - HDMI input port number in which ALLM Mode changed. @see dsHdmiInPort_t
- * @param[in] allm_mode - Current ALLM mode of the port. True if the port is in ALLM mode, false if not.
+ * @param[in] allm_mode - Flag to hold the current ALLM mode of the port.
+ *                              ( @a true to enable, @a false to disable)
  * 
- * @pre dsHdmiInRegisterAVLatencyChangeCB() must be called before this API
+ * @pre dsHdmiInRegisterAllmChangeCB() must be called before this API
  *
  */
 typedef void (*dsHdmiInAllmChangeCB_t)(dsHdmiInPort_t port, bool allm_mode);
@@ -375,6 +377,7 @@ typedef void (*dsHdmiInAviContentTypeChangeCB_t)(dsHdmiInPort_t port, dsAviConte
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsHdmiInInit() must be called before calling this API.
+ * @see dsHdmiInConnectCB_t for related callback
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -396,6 +399,7 @@ dsError_t dsHdmiInRegisterConnectCB (dsHdmiInConnectCB_t CBFunc);
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsHdmiInInit() must be called before calling this API.
+ * @see dsHdmiInSignalChangeCB_t for related callback.
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -417,6 +421,7 @@ dsError_t dsHdmiInRegisterSignalChangeCB (dsHdmiInSignalChangeCB_t CBFunc);
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsHdmiInInit() must be called before calling this API.
+ * @see dsHdmiInStatusChangeCB_t for related callback.
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -440,6 +445,7 @@ dsError_t dsHdmiInRegisterStatusChangeCB (dsHdmiInStatusChangeCB_t CBFunc);
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsHdmiInInit() must be called before calling this API.
+ * @see dsHdmiInVideoModeUpdateCB_t for related callback.
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -462,6 +468,7 @@ dsError_t dsHdmiInRegisterVideoModeUpdateCB(dsHdmiInVideoModeUpdateCB_t CBFunc);
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsHdmiInInit() must be called before calling this API.
+ * @see dsHdmiInAllmChangeCB_t for related callback.
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -482,6 +489,12 @@ dsError_t dsHdmiInRegisterAllmChangeCB (dsHdmiInAllmChangeCB_t CBFunc);
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
+ * @pre dsHdmiInInit() must be called before calling this API.
+ * @see dsAVLatencyChangeCB_t for related callback.
+ * 
+ * @warning  This API is Not thread safe.
+ * 
  */
 dsError_t dsHdmiInRegisterAVLatencyChangeCB (dsAVLatencyChangeCB_t CBFunc);
 
@@ -499,6 +512,12 @@ dsError_t dsHdmiInRegisterAVLatencyChangeCB (dsAVLatencyChangeCB_t CBFunc);
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
+ * @pre dsHdmiInInit() must be called before calling this API.
+ * @see dsHdmiInAviContentTypeChangeCB_t for related callback.
+ * 
+ * @warning  This API is Not thread safe.
+ * 
  */
 dsError_t dsHdmiInRegisterAviContentTypeChangeCB (dsHdmiInAviContentTypeChangeCB_t CBFunc);
 
@@ -507,8 +526,9 @@ dsError_t dsHdmiInRegisterAviContentTypeChangeCB (dsHdmiInAviContentTypeChangeCB
  * 
  * This function checks if the given port is an HDMI ARC port or not
  *
- * @param[in] iPort     - HDMI Arc port. Max value is device specific. Min value of 0.
- * @param[in] isArcPort - HDMI Arc port. Max value is device specific. Min value of 0.
+ * @param[in] iPort     - HDMI Arc port. Max value is device specific. Min value of 0
+ * @param[in] isArcPort - Flag to hold the HDMI Arc port status 
+ *                              ( @a true to enable, @a false to disable)
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
@@ -532,7 +552,7 @@ dsError_t dsIsHdmiARCPort (dsHdmiInPort_t iPort, bool isArcPort);
  *
  * @param[in] iHdmiPort     - HDMI input port. @see dsHdmiInPort_t
  * @param[out] edid         - EDID data for which info is required
- * @param[out] length       - length of the EDID data. Min value of 0.
+ * @param[out] length       - length of the EDID data. Min value of 0
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
@@ -624,7 +644,8 @@ dsError_t dsGetEdidVersion (dsHdmiInPort_t iHdmiPort, int *iEdidVersion);
  * This function checks whether ALLM status is enabled or disabled for the specific HDMI input port
  *
  * @param[in] iHdmiPort     - HDMI input port. @see dsHdmiInPort_t
- * @param[out] allmStatus   - allmstatus. True if enabled, false if not.
+ * @param[out] allmStatus   - Flag to control the allm status
+ *                              ( @a true to enable, @a false to disable)
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
@@ -667,8 +688,8 @@ dsError_t dsGetSupportedGameFeaturesList (dsSupportedGameFeatureList_t* features
  * 
  * This function gets the current AV latency.
  *
- * @param[out] audio_latency    - Audio latency value. Max value 500ms. Min value 0.
- * @param[out] video_latency    - Video latency value. Max value 500ms. Min value 0.
+ * @param[out] audio_latency    - Audio latency value. Max value 500ms. Min value 0
+ * @param[out] video_latency    - Video latency value. Max value 500ms. Min value 0
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
