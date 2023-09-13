@@ -128,9 +128,9 @@ dsError_t dsSetFPBlink (dsFPDIndicator_t eIndicator, unsigned int uBlinkDuration
  * Panel Display to the specified brightness level. This function must return dsERR_OPERATION_NOT_SUPPORTED
  * if the FP State is "OFF".
  *
- * @param[in] eIndicator  - FPD indicator index. @see dsFPDIndicator_t.
+ * @param[in] eIndicator  - FPD indicator index. @see dsFPDIndicator_t
  * @param[in] eBrightness - The brightness value(0 to 100) for the specified indicator.
- *                            @see dsFPDBrightness_t.
+ *                            @see dsFPDBrightness_t
  *
  * @return dsError_t                      -  Status
  * @retval dsERR_NONE                     -  Success
@@ -155,7 +155,7 @@ dsError_t dsSetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t eBri
  * Panel. This function must return dsERR_OPERATION_NOT_SUPPORTED if FP State is "OFF".
  *
  * @param[in]  eIndicator  - FPD indicator index. @see dsFPDIndicator_t
- * @param[out] pBrightness - pointer to current brightness value(0 to 100) of the specified indicator. 
+ * @param[out] pBrightness - current brightness value(0 to 100) of the specified indicator. 
  *                             @see dsFPDBrightness_t
  *
  * @return dsError_t                      -  Status
@@ -178,7 +178,7 @@ dsError_t dsGetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t *pBr
  * @brief  This function will set the Front Panel indicator state of specified discrete LED.
  *
  * @param[in] eIndicator - FPD indicator index. @see dsFPDIndicator_t
- * @param[in] state      - Indicates the state of the indicator. @see dsFPDState_t
+ * @param[in] state      - Indicates the state of the indicator to be set. @see dsFPDState_t
  *
  * @return dsError_t                      -  Status
  * @retval dsERR_NONE                     -  Success
@@ -197,10 +197,10 @@ dsError_t dsGetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t *pBr
 dsError_t dsSetFPState(dsFPDIndicator_t eIndicator, dsFPDState_t state);
 
 /**
- * @brief This function will Get the Front Panel Indicator state of Specified discrete LED.
+ * @brief This function will get the Front Panel Indicator state of Specified discrete LED.
  * 
  * @param[in]  eIndicator - FPD indicator index. @see dsFPDIndicator_t
- * @param[out] state      - pointer to current state of the specified indicator. @see dsFPDState_t
+ * @param[out] state      - current state of the specified indicator. @see dsFPDState_t
  *
  * @return dsError_t                      -  Status
  * @retval dsERR_NONE                     -  Success
@@ -247,12 +247,12 @@ dsError_t dsSetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t eColor);
 /**
  * @brief  Gets the color of specified Front Panel LED.
  * 
- * This function Gets the color of the specified Front Panel Indicator LED. if the
+ * This function gets the color of the specified Front Panel Indicator LED, if the
  * indicator supports it (i.e. is multi-colored). It must return
- * dsERR_OPERATION_NOT_SUPPORTED if the indicator is single-colored or if the FP State is "OFF"
+ * dsERR_OPERATION_NOT_SUPPORTED if the indicator is single-colored or if the FP State is "OFF".
  *
  * @param[in] eIndicator - FPD indicator index. @see dsFPDIndicator_t
- * @param[out] pColor    - pointer to current color value of the specified indicator. @see dsFPDColor_t
+ * @param[out] pColor    - current color value of the specified indicator. @see dsFPDColor_t
  *
  * @return dsError_t                      -  Status
  * @retval dsERR_NONE                     -  Success
@@ -275,7 +275,7 @@ dsError_t dsGetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t *pColor);
  * 
  * This function sets the 7-segment display LEDs to show the time in specified format.
  * The format (12/24-hour) has to be specified. If there are no 7-Segment display LEDs present on the
- * device or of the FP State is "OFF" then dsERR_OPERATION_NOT_SUPPORTED must be returned.
+ * device or if the FP State is "OFF" then dsERR_OPERATION_NOT_SUPPORTED must be returned.
  * It must return dsERR_INVALID_PARAM if the format and hours values do not agree,
  * or if the hours/minutes are invalid.
  *
@@ -299,10 +299,10 @@ dsError_t dsGetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t *pColor);
 dsError_t dsSetFPTime (dsFPDTimeFormat_t eTimeFormat, const unsigned int uHour, const unsigned int uMinutes);
 
 /**
- * @brief  Displays the specified text on 7-Segment Display.
+ * @brief  Displays the specified text on 7-segment display.
  * 
  * This function is used to set the 7-segment display LEDs to show the given text.  
- * If there are no 7-Segment display LEDs present on the device or if the FP State is "OFF" 
+ * If there are no 7-Segment display LEDs present on the device or if the FP State is "OFF",
  * then dsERR_OPERATION_NOT_SUPPORTED must be returned.
  * Maximum length of Text is 10 characters.
  *
@@ -325,15 +325,15 @@ dsError_t dsSetFPTime (dsFPDTimeFormat_t eTimeFormat, const unsigned int uHour, 
 dsError_t dsSetFPText(const char* pText);
 
 /**
- * @brief  Sets the brightness level of 7-Segment Display.
+ * @brief  Sets the brightness level of 7-segment display.
  * 
- * This function will set the brightness of the specified 7-Segment Display LEDs on the Front
+ * This function will set the brightness of the specified 7-segment display LEDs on the Front
  * Panel Display to the specified brightness level. If there are no 7-Segment display LEDs present
  * on the device or if the FP State is "OFF" then dsERR_OPERATION_NOT_SUPPORTED must be returned.
  *
  * @param[in] eIndicator    - FPD Text indicator index. @see dsFPDTextDisplay_t
  * @param[in] eBrightness   - The brightness value for the specified indicator. From 0 to 100. 
- *                              @see dsFPDBrightness_t.
+ *                              @see dsFPDBrightness_t
  *
  * @return dsError_t                      -  Status
  * @retval dsERR_NONE                     -  Success
@@ -352,10 +352,10 @@ dsError_t dsSetFPText(const char* pText);
 dsError_t dsSetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_t eBrightness);
 
 /**
- * @brief  Gets the brightness of 7-Segment Display LEDs.
+ * @brief  Gets the brightness of 7-segment display LEDs.
  * 
- * This function will Get the brightness of the specified 7-Segment Display LEDs on the Front
- * Panel Text Display. If there are no 7-Segment display LEDs present or if the FP State is "OFF"
+ * This function will get the brightness of the specified 7-segment display LEDs on the Front
+ * Panel Text Display. If there are no 7-segment display LEDs present or if the FP State is "OFF"
  * then dsERR_OPERATION_NOT_SUPPORTED must be returned.
  *
  * @param[in] eIndicator    - FPD Text indicator index. @see dsFPDTextDisplay_t
@@ -378,7 +378,7 @@ dsError_t dsSetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_
 dsError_t dsGetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_t *eBrightness);
 
 /**
- * @brief  Enable/Disable the clock display of Front Panel
+ * @brief  Enable/Disable the clock display of Front Panel.
  * 
  * This function will enable or disable displaying of clock. It will return dsERR_OPERATION_NOT_SUPPORTED
  * if Clock display is not available
@@ -401,15 +401,16 @@ dsError_t dsGetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_
 dsError_t dsFPEnableCLockDisplay (int enable);
 
 /**
- * @brief  Enables Text Scrolling on 7-Segment Display.
+ * @brief  Enables Text Scrolling on 7-segment display.
  * 
- * This function scrolls the text in the 7-segment Display LEDs for the given number of iterations.
- * If there are no 7-Segment display LEDs present or if the FP State is "OFF" then
+ * This function scrolls the text in the 7-segment display LEDs for the given number of iterations.
+ * If there are no 7-segment display LEDs present or if the FP State is "OFF" then
  * dsERR_OPERATION_NOT_SUPPORTED must be returned. Horizontal and Vertical scroll cannot work at the same time.
  *
- * @param[in] uScrollHoldOnDur      - Duration in ms before between scrolling to the next position
- * @param[in] uHorzScrollIterations - Number of iterations for which to scroll horizontally.
- * @param[in] uVertScrollIterations - Number of iterations for which to scroll vertically.
+ * @param[in] uScrollHoldOnDur       - Duration in ms to hold each char before scrolling to the next position 
+ *                                       during one scroll iteration
+ * @param[in] uHorzScrollIterations  - Number of iterations to scroll horizontally
+ * @param[in] uVertScrollIterations  - Number of iterations to scroll vertically
  *
  * @return dsError_t                      -  Status
  * @retval dsERR_NONE                     -  Success
@@ -426,9 +427,9 @@ dsError_t dsFPEnableCLockDisplay (int enable);
 dsError_t dsSetFPScroll(unsigned int uScrollHoldOnDur, unsigned int uHorzScrollIterations, unsigned int uVertScrollIterations);
 
 /**
- * @brief  Terminates the the Front Panel Display sub-system.
+ * @brief  Terminates the the Front Panel Display sub-module.
  * 
- * This function resets any data structures used within Front Panel module,
+ * This function resets any data structures used within Front Panel sub-module,
  * and releases all the resources allocated during the init function.
  *
  * @return dsError_t                      -  Status
@@ -452,7 +453,7 @@ dsError_t dsFPTerm(void);
  * if the underlying hardware does not have support for Text or Clock.
  *
  * @param[in] eTimeFormat   -  Indicates the time format (12 hour or 24 hour). 
- *                               @see dsFPDTimeFormat_t.
+ *                               @see dsFPDTimeFormat_t
  *
  * @return dsError_t                      -  Status
  * @retval dsERR_NONE                     -  Success
@@ -473,12 +474,12 @@ dsError_t dsFPTerm(void);
 dsError_t dsSetFPTimeFormat (dsFPDTimeFormat_t eTimeFormat);
 
  /**
- * @brief  This function gets the Current time format set on 7-segment display LEDs panel.
+ * @brief  This function gets the current time format set on 7-segment display LEDs panel.
  * It must return dsERR_OPERATION_NOT_SUPPORTED if the underlying hardware does not 
- * have support for Clock.
+ * have support for clock.
  *
  * @param[out] pTimeFormat      - Current time format value (12 hour or 24 hour). 
- *                                  @see dsFPDTimeFormat_t.
+ *                                  @see dsFPDTimeFormat_t
  *
  * @return dsError_t                      -  Status
  * @retval dsERR_NONE                     -  Success
