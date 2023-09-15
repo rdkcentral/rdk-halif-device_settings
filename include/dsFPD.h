@@ -520,6 +520,50 @@ dsError_t dsGetFPTimeFormat (dsFPDTimeFormat_t *pTimeFormat);
  */
 dsError_t dsSetFPDMode (dsFPDMode_t eMode);
 
+/**
+ * @brief Gets the current led state
+ * 
+ * This function gets the current led state
+ *
+ * @param[out] returns - Current led state. @see dsFPDLedState_t
+ *
+ * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ * 
+ * @pre dsFPInit() must be called and FP State must be "ON" before calling this API.
+ * 
+ * @warning  This API is Not thread safe.
+ * 
+ * @see dsFPSetLEDState()
+ */
+dsError_t dsFPGetLEDState (dsFPDLedState_t* state);
+
+/**
+ * @brief Sets the led state
+ * 
+ * This function sets the led state
+ *
+ * @param[in] state - LED state. @see dsFPDLedState_t
+ *
+ * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ * 
+ * @pre dsFPInit() must be called and FP State must be "ON" before calling this API.
+ * 
+ * @warning  This API is Not thread safe.
+ * 
+ * @see dsFPGetLEDState()
+ */
+dsError_t dsFPSetLEDState (dsFPDLedState_t state);
+
 /** @} */ // End of DSHAL_FPD_API doxygen group 
 /** @} */ // End of DS HAL
 /** @} */ // End of HPK
