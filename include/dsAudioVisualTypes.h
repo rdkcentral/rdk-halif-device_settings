@@ -89,13 +89,43 @@
  * @{
  */
 
+/**
+ * @ingroup DSHAL_VIDEOPORT_TYPES
+ * @brief This enumeration defines all of the standard type of Video ports.
+ * @see dsVideoPortType_isValid
+ */
+typedef enum _dsVideoPortType_t {
+    dsVIDEOPORT_TYPE_RF = 0,      ///< RF modulator (channel 3/4) video output.           
+    dsVIDEOPORT_TYPE_BB,          ///< Baseband (composite, RCA) video output.            
+    dsVIDEOPORT_TYPE_SVIDEO,      ///< S-Video video output.                              
+    dsVIDEOPORT_TYPE_1394,        ///< IEEE 1394 (Firewire) video output.                 
+    dsVIDEOPORT_TYPE_DVI,         ///< DVI (Panel-Link, HDCP) video output.               
+    dsVIDEOPORT_TYPE_COMPONENT,   ///< Component video output.                            
+    dsVIDEOPORT_TYPE_HDMI,        ///< HDMI video output.                                 
+    dsVIDEOPORT_TYPE_HDMI_INPUT,  ///< HDMI video input.                                  
+    dsVIDEOPORT_TYPE_INTERNAL,    ///< Internal (integrated/internal display) video output.
+    dsVIDEOPORT_TYPE_SCART,       ///< SCART video output.                                
+    dsVIDEOPORT_TYPE_MAX          ///< Out of range               
+} dsVideoPortType_t;
+
+
+/**
+ * @ingroup DSHAL_VIDEOPORT_TYPES
+ * @brief Structure that defines port id associated with video port.
+ */
+typedef struct _dsVideoPortPortId_t {
+    dsVideoPortType_t type; ///< Video port type.
+    int32_t index;          ///< Port ID/number.
+} dsVideoPortPortId_t;
+
+
 /** @addtogroup DSHAL_AUDIO HAL Audio Types
  *  @{
  * @todo check if these are used.
  */
 
 #define dsAUDIOPORT_TYPE_NUM_MAX 4     ///< Maximum number of audio output port types.  
-#define dsAudioPORT_NUM_MAX 4          ///< Maximum number of audio output ports.       
+#define dsAudioPORT_NUM_MAX 4          ///< Maximum number of audio output ports.   
 
 /**
  * @brief This enumeration defines the audio port types.
@@ -111,6 +141,21 @@ typedef enum _dsAudioPortType_t{
     dsAUDIOPORT_TYPE_HEADPHONE, ///< 3.5mm headphone jack.            
     dsAUDIOPORT_TYPE_MAX        ///< Out of range 
 } dsAudioPortType_t;
+
+
+/**
+ * @brief Structure that defines the audio port type and associated ID.
+ */
+typedef struct _dsAudioPortId_t {
+    dsAudioPortType_t type; ///< Audio port type.
+    int32_t index;          ///< Port ID/number.
+} dsAudioPortId_t;
+
+/**
+ * defines the maximum size of buffer to hold ms12 config type details
+ * Ex: CONFIG_Z, CONFIG_X, CONFIG_Y etc.
+ */
+#define MS12_CONFIG_BUF_SIZE 16
 
 /**
  * @brief This enumeration defines the audio encoding types
@@ -329,15 +374,6 @@ typedef struct _dsAudioTypeConfig_t {
 } dsAudioTypeConfig_t;
 
 /**
- * @ingroup DSHAL_AUDIO_TYPES
- * @brief Structure that defines the audio port type and associated ID.
- */
-typedef struct _dsAudioPortId_t {
-    dsAudioPortType_t type; ///< Audio port type.
-    int32_t index;          ///< Port ID/number.
-} dsAudioPortId_t;
-
-/**
  * @brief Enumeration defines surround mode.
  * Each bit of uint32_t represent supported surround mode. 
  */
@@ -388,23 +424,6 @@ typedef enum _dsAudioPortState {
  *  @{
  */
 
-/**
- * @brief This enumeration defines all of the standard type of Video ports.
- * @see dsVideoPortType_isValid
- */
-typedef enum _dsVideoPortType_t {
-    dsVIDEOPORT_TYPE_RF = 0,      ///< RF modulator (channel 3/4) video output.           
-    dsVIDEOPORT_TYPE_BB,          ///< Baseband (composite, RCA) video output.            
-    dsVIDEOPORT_TYPE_SVIDEO,      ///< S-Video video output.                              
-    dsVIDEOPORT_TYPE_1394,        ///< IEEE 1394 (Firewire) video output.                 
-    dsVIDEOPORT_TYPE_DVI,         ///< DVI (Panel-Link, HDCP) video output.               
-    dsVIDEOPORT_TYPE_COMPONENT,   ///< Component video output.                            
-    dsVIDEOPORT_TYPE_HDMI,        ///< HDMI video output.                                 
-    dsVIDEOPORT_TYPE_HDMI_INPUT,  ///< HDMI video input.                                  
-    dsVIDEOPORT_TYPE_INTERNAL,    ///< Internal (integrated/internal display) video output.
-    dsVIDEOPORT_TYPE_SCART,       ///< SCART video output.                                
-    dsVIDEOPORT_TYPE_MAX          ///< Out of range               
-} dsVideoPortType_t;
 
 /**
  * @brief This enumeration defines all of the standard video port resolutions.
@@ -497,6 +516,17 @@ typedef enum _dsVideoStereoScopicMode_t {
 }dsVideoStereoScopicMode_t;
 
 /**
+ * @brief This enumeration defines all of the standard video aspect ratios.
+ * @see dsVideoPortAspectRatio_isValid
+ */
+typedef enum _dsVideoAspectRatio_t{
+    dsVIDEO_ASPECT_RATIO_4x3,    ///< 4:3 aspect ratio.                    
+    dsVIDEO_ASPECT_RATIO_16x9,   ///< 16:9 aspect ratio.                   
+    dsVIDEO_ASPECT_RATIO_MAX     ///< Out of range 
+}dsVideoAspectRatio_t;
+
+
+/**
  * @brief Structure that defines video port resolution settings of output video device.
  * @todo Check how the name is used in the actual code
  */
@@ -508,14 +538,6 @@ typedef struct _dsVideoPortResolution_t {
     dsVideoFrameRate_t  frameRate;                  ///< The associated frame rate.                             
     bool interlaced;                                ///< The associated scan mode(@a true if interlaced, @a false if progressive).
 }dsVideoPortResolution_t;
-
-/**
- * @brief Structure that defines port id associated with video port.
- */
-typedef struct _dsVideoPortPortId_t {
-    dsVideoPortType_t type; ///< Video port type.
-    int32_t index;          ///< Port ID/number.
-} dsVideoPortPortId_t;
 
 /**
  * @brief Structure that defines the video output port configuration.
@@ -586,7 +608,7 @@ typedef enum _dsHdcpProtocolVersion_t {
     dsHDCP_VERSION_MAX      ///< Out of range 
 } dsHdcpProtocolVersion_t;
 
-/* End of DSHAL_VIDEOPORT_TYPES doxygen group.
+/* End of DSHAL_VIDEOPORT_TYPES doxygen group. */
 /**
  * @}
  */
@@ -661,16 +683,6 @@ typedef enum _dsDisplayColorimetryInfo_t
 } dsDisplayColorimetryInfo_t;
 
 /**
- * @brief This enumeration defines all of the standard video aspect ratios.
- * @see dsVideoPortAspectRatio_isValid
- */
-typedef enum _dsVideoAspectRatio_t{
-    dsVIDEO_ASPECT_RATIO_4x3,    ///< 4:3 aspect ratio.                    
-    dsVIDEO_ASPECT_RATIO_16x9,   ///< 16:9 aspect ratio.                   
-    dsVIDEO_ASPECT_RATIO_MAX     ///< Out of range 
-}dsVideoAspectRatio_t;
-
-/**
  * @brief This enumeration defines the type of display color spaces supported
  */
 typedef enum _dsDisplayColorSpace_t
@@ -725,7 +737,7 @@ typedef enum _dsDisplayMatrixCoefficients_t
     dsDISPLAY_MATRIXCOEFFICIENT_eHDMI_RGB,     ///< eHDMI RGB Matrix Coefficient.
     dsDISPLAY_MATRIXCOEFFICIENT_eFCC,          ///< eFCC Matrix Coefficient.
     dsDISPLAY_MATRIXCOEFFICIENT_eSMPTE_240M,   ///< eSMPTE 240M Matrix Coefficient.
-    dsDISPLAY_MATRIXCOEFFICIENT_eHDMI_FR_YCbCr ///< eHDMI Full Range YcbCr Matrix Coefficient.
+    dsDISPLAY_MATRIXCOEFFICIENT_eHDMI_FR_YCbCr, ///< eHDMI Full Range YcbCr Matrix Coefficient.
     dsDISPLAY_MATRIXCOEFFICIENT_MAX            ///< Out of range 
 } dsDisplayMatrixCoefficients_t;
 

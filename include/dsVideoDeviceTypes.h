@@ -169,7 +169,7 @@ typedef struct
     dsVideoCodecProfileSupport_t entries[10];  ///< Contains a list of the supported Codex profiles.
 } dsVideoCodecInfo_t;
 
-/* End of DSHAL_VIDEODEVICE_TYPES doxygen group.
+/* End of DSHAL_VIDEODEVICE_TYPES doxygen group. */
 /**
  * @}
  */

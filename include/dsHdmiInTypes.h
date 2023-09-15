@@ -158,6 +158,16 @@ struct dsSpd_infoframe_st {
     uint8_t source_info;        ///< byte 25
 } ;
 
+/**
+ * @brief Enum for EDID version.
+ */
+
+typedef enum tv_hdmi_edid_version_e {
+    HDMI_EDID_VER_14 = 0,
+    HDMI_EDID_VER_20,
+    HDMI_EDID_VER_MAX,
+} tv_hdmi_edid_version_t;
+
 /* End of DSHAL_HDMI_IN_TYPES doxygen group */
 /**
  * @}
