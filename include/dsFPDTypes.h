@@ -155,16 +155,16 @@ typedef enum __dsFPDState_t
  */
 typedef enum __dsFPDLedState_t
 {
-    dsFPD_LED_DEVICE_NONE = 0,
-    dsFPD_LED_DEVICE_ACTIVE = 1,
-    dsFPD_LED_DEVICE_STANDBY = 2,
-    dsFPD_LED_DEVICE_WPS_CONNECTING = 3,
-    dsFPD_LED_DEVICE_WPS_CONNECTED = 4,
-    dsFPD_LED_DEVICE_WPS_ERROR = 5,
-    dsFPD_LED_DEVICE_FACTORY_RESET = 6,
-    dsFPD_LED_DEVICE_USB_UPGRADE = 7,
-    dsFPD_LED_DEVICE_SOFTWARE_DOWNLOAD_ERROR = 8,
-    dsFPD_LED_DEVICE_MAX
+    dsFPD_LED_DEVICE_NONE,                      ///< No LED device
+    dsFPD_LED_DEVICE_ACTIVE,                    ///< LED currently active
+    dsFPD_LED_DEVICE_STANDBY,                   ///< LED in standby mode
+    dsFPD_LED_DEVICE_WPS_CONNECTING,            ///< LED connecting to WPS
+    dsFPD_LED_DEVICE_WPS_CONNECTED,             ///< LED connected to WPS
+    dsFPD_LED_DEVICE_WPS_ERROR,                 ///< LED error when trying to connect to WPS
+    dsFPD_LED_DEVICE_FACTORY_RESET,             ///< Reset LED to factory base
+    dsFPD_LED_DEVICE_USB_UPGRADE,               ///< Updating from USB drive
+    dsFPD_LED_DEVICE_SOFTWARE_DOWNLOAD_ERROR,   ///< Error in downloading new software update
+    dsFPD_LED_DEVICE_MAX                        ///< Out of range 
 }dsFPDLedState_t;
 
 /**
