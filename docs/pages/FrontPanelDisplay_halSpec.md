@@ -223,11 +223,13 @@ dsSetFPScroll(),</br>
 dsSetFPDBrightness(),</br>
 dsSetFPDColor(),</br>
 dsSetFPTimeFormat(),</br>
-dsSetFPDMode()</br>
+dsSetFPDMode(),</br>
+dsFPSetLEDState()</br>
 
 ds_FP_GetMethods:</br>
 dsGetFPState(),</br>
 dsGetFPBrightness(),</br>
 dsGetFPColor(),</br>
 dsGetFPTextBrightness(),</br>
-dsGetFPTimeFormat()</br>
+dsGetFPTimeFormat(),</br>
+dsFPGetLEDState()</br>
