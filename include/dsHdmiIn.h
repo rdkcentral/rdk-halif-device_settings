@@ -591,6 +591,54 @@ dsError_t dsGetEDIDBytesInfo (dsHdmiInPort_t iHdmiPort, unsigned char **edid, in
 dsError_t dsGetHDMISPDInfo (dsHdmiInPort_t iHdmiPort, unsigned char **data);
 
 /**
+ * @brief Sets the EDID version to be used for a given port id
+ * 
+ * This function sets the EDID version to be used for a given port id
+ *
+ * @param[in] iHdmiPort     - HDMI input port. @see dsHdmiInPort_t
+ * @param[in] iEdidVersion  - input EDID version number to set @todo Create an enum iEdidVersion
+ *
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
+ * @pre dsHdmiInInit() must be called before calling this API.
+ * 
+ * @warning  This API is Not thread safe.
+ * 
+ * @see dsGetEdidVersion()
+ * 
+ */
+dsError_t dsSetEdidVersion (dsHdmiInPort_t iHdmiPort, int iEdidVersion);
+
+/**
+ * @brief Gets the EDID version currently being used for the given port id
+ * 
+ * This function gets the EDID version currently being used for the given port id
+ *
+ * @param[in] iHdmiPort     - HDMI input port. @see dsHdmiInPort_t
+ * @param[out] iEdidVersion - input EDID version number
+ *
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
+ * @pre dsHdmiInInit() must be called before calling this API.
+ * 
+ * @warning  This API is Not thread safe.
+ * 
+ * @see dsSetEdidVersion()
+ * 
+ */
+dsError_t dsGetEdidVersion (dsHdmiInPort_t iHdmiPort, int *iEdidVersion);
+
+/**
  * @brief Checks whether ALLM status is enabled or disabled for the specific HDMI input port
  * 
  * This function checks whether ALLM status is enabled or disabled for the specific HDMI input port
