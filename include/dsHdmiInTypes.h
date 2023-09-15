@@ -85,14 +85,13 @@ typedef enum _dsHdmiInPort_t
 
 /**
  * @brief This enumeration defines the type of HDMI signal status.
- * @todo update the description on the signal status
  */
 typedef enum _dsHdmiInSignalStatus_t
 {
-    dsHDMI_IN_SIGNAL_STATUS_NONE = -1,    ///< HDMI input signal status NONE
-    dsHDMI_IN_SIGNAL_STATUS_NOSIGNAL,     ///< HDMI input No signal signal status
-    dsHDMI_IN_SIGNAL_STATUS_UNSTABLE,     ///< HDMI input Unstable signal status
-    dsHDMI_IN_SIGNAL_STATUS_NOTSUPPORTED, ///< HDMI input Not supported signal status
+    dsHDMI_IN_SIGNAL_STATUS_NONE = -1,    ///< HDMI input signal status NONE. Default state upon start up
+    dsHDMI_IN_SIGNAL_STATUS_NOSIGNAL,     ///< HDMI input No signal signal status. No device connected
+    dsHDMI_IN_SIGNAL_STATUS_UNSTABLE,     ///< HDMI input Unstable signal status. Connection to device is not stable
+    dsHDMI_IN_SIGNAL_STATUS_NOTSUPPORTED, ///< HDMI input Not supported signal status. Connected device is not supported
     dsHDMI_IN_SIGNAL_STATUS_STABLE,       ///< HDMI input Stable signal status are presented on plane
     dsHDMI_IN_SIGNAL_STATUS_MAX           ///< Out of range 
 } dsHdmiInSignalStatus_t;
@@ -119,6 +118,7 @@ typedef struct _dsHdmiInCap_t
 
 /**
  * @brief This enumeration defines the AVI Content Types
+ * @todo see where dsAVICONTENT_TYPE_INVALID is used, and if it isn't, remove it
  */
 typedef enum dsAviContentType {
   dsAVICONTENT_TYPE_GRAPHICS,   ///< Content type Graphics.
@@ -137,7 +137,7 @@ typedef enum dsAviContentType {
 
 /**
  * @brief Structure that captures Supported Game Features list
- * @todo list all possible values
+ * @todo Discuss with Amit how to update gameFeaturesList to be more verbose
  */
 typedef struct _dsSupportedGameFeatureList_t {
     char gameFeatureList[MAX_FEATURE_LIST_BUFFER_LEN]; ///< buffer containing the list of comma separated supported game features (e.g: "allm")

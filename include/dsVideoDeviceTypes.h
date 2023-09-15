@@ -99,8 +99,8 @@
 
 /**
  * @brief This enumeration defines all of the standard screen zoom (format conversion) modes.
- * @see dsVideoPortDFC_isValid
  */
+
 typedef enum _dsVideoZoom_t {
     dsVIDEO_ZOOM_UNKNOWN = -1,      ///< Unknown mode.                                                                                 
     dsVIDEO_ZOOM_NONE = 0,          ///< Decoder format conversion is inactive.                                                        
@@ -120,8 +120,15 @@ typedef enum _dsVideoZoom_t {
 }dsVideoZoom_t;
 
 /**
+ * @brief Video screen zoom validation check.
+ */
+
+#define dsVideoPortDFC_isValid(t)  (((t) >= dsVIDEO_ZOOM_NONE ) && ((t) < dsVIDEO_ZOOM_MAX))
+
+/**
  * @brief Structure that defines video device configuration for the output.
  */
+
 typedef struct _dsVideoConfig_t {
     size_t numSupportedDFCs;            ///< Number of zoom modes supported.
     const dsVideoZoom_t *supportedDFCs; ///< List of zoom modes supported. 
@@ -130,7 +137,8 @@ typedef struct _dsVideoConfig_t {
 
 /**
  * @brief List of video compression formats that may be supported by the decoder. 
- */
+ * **/
+
 typedef enum
 {
     dsVIDEO_CODEC_MPEGHPART2 = (0x01 << 0),     ///< Also known HEVC, H.265
@@ -142,7 +150,8 @@ typedef enum
 /* HEVC version 1 profiles are listed. More may be added to it as the support becomes available.*/
 /**
  * @brief List of HEVC Profiles. 
- */
+ * **/
+
 typedef enum
 {
     dsVIDEO_CODEC_HEVC_PROFILE_MAIN = (0x01 << 0),              ///< 8-bit HEVC video profile.
@@ -150,7 +159,6 @@ typedef enum
     dsVIDEO_CODEC_HEVC_PROFILE_MAINSTILLPICTURE = (0x01 << 2),  ///< HECV Main Still Picture profile.
     dsVIDEO_CODEC_HEVC_MAX                                      ///< Out of range 
 } dsVideoCodecHevcProfiles_t;
-
 /**
  * @brief Structure type for HEVC profiles.
  */
@@ -159,7 +167,6 @@ typedef struct
    dsVideoCodecHevcProfiles_t profile;  ///< HEVC Profiles. See dsVideoCodecHevcProfiles_t
    float level;                         ///< level for the specieis HEVC profile.
 } dsVideoCodecProfileSupport_t;
-
 /**
  * @brief Structure type for Video codec info.
  */

@@ -63,23 +63,24 @@
  */
 
 /** @addtogroup DSHAL_HOST HAL Host Types
- * @ingroup DSHAL_API
+ * @ingroup DSHAL_API @todo check where this used, and remove if not needed
  *  @{
  */
 
 /**
  * @brief This enumeration defines the type of sleep modes.
  * @see dsSleepMode_isValid
+ * @todo double check to make sure this is still
  */
 typedef enum _dsSleepMode_t{
-    dsHOST_SLEEP_MODE_LIGHT,    ///< Light sleep mode.                              
-    dsHOST_SLEEP_MODE_DEEP,     ///< Deep sleep mode.                               
-    dsHOST_SLEEP_MODE_MAX,      ///< Out of range                 
+    dsHOST_SLEEP_MODE_LIGHT,    ///< Light sleep mode                              
+    dsHOST_SLEEP_MODE_DEEP,     ///< Deep sleep mode                               
+    dsHOST_SLEEP_MODE_MAX       ///< Out of range                 
 } dsSleepMode_t;
 
-/* End of DSHAL_HOST_TYPES doxygen group */
+/* End of DSHAL_HOST doxygen group */
 /**
  * @}
  */
-/** @} */ // End of DSHAL_API HAL Data Types
+/** @} */ // End of DSSETTINGS_HAL HAL Data Types
 /** @} */ // End of HPK

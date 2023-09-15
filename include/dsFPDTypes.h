@@ -75,6 +75,8 @@
  * @brief dsFPDColor_t is an 4-byte integer that is composed of RGB32 value in the
  * following pattern:
  * 
+ * 
+ *
  * @todo explain this in words, instead of a formula
  * 
  * FPD_COLOR = (((R8)<<16) | ((G8)<< 8) | ((B8) << 0))
@@ -96,6 +98,7 @@ typedef uint32_t dsFPDColor_t;
 
 /**
  * @brief Define a set of common colors, for backward compatibility 
+ * @todo check where these are used
  */
 #define dsFPD_COLOR_BLUE   dsFPDColor_Make(0, 0, 0xFF)          ///< Blue color LED.                 
 #define dsFPD_COLOR_GREEN  dsFPDColor_Make(0, 0xFF, 0)          ///< Green color LED.                
