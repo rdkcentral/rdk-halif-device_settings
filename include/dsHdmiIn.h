@@ -155,6 +155,7 @@ dsError_t dsHdmiInTerm (void);
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsHdmiInInit() must be called before calling this API.
@@ -176,6 +177,7 @@ dsError_t dsHdmiInGetNumberOfinputs (uint8_t *pNumberOfinputs);
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsHdmiInInit() must be called before calling this API.
@@ -197,6 +199,7 @@ dsError_t dsHdmiInGetStatus (dsHdmiInStatus_t *pStatus);
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported.
+ * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsHdmiInInit() must be called before calling this API.
@@ -222,6 +225,7 @@ dsError_t dsHdmiInSelectPort (dsHdmiInPort_t ePort);
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid. 
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * 
@@ -244,6 +248,7 @@ dsError_t dsHdmiInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t heigh
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsHdmiInInit() must be called before calling this API.
@@ -263,6 +268,7 @@ dsError_t dsHdmiInSelectZoomMode (dsVideoZoom_t requestedZoomMode);
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsHdmiInInit() must be called before calling this API.
@@ -374,6 +380,7 @@ typedef void (*dsHdmiInAviContentTypeChangeCB_t)(dsHdmiInPort_t port, dsAviConte
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsHdmiInInit() must be called before calling this API.
@@ -535,6 +542,7 @@ dsError_t dsHdmiInRegisterAviContentTypeChangeCB (dsHdmiInAviContentTypeChangeCB
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsHdmiInInit() must be called before calling this API.
@@ -559,6 +567,7 @@ dsError_t dsIsHdmiARCPort (dsHdmiInPort_t iPort, bool isArcPort);
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsHdmiInInit() must be called before calling this API.
@@ -581,6 +590,7 @@ dsError_t dsGetEDIDBytesInfo (dsHdmiInPort_t iHdmiPort, unsigned char **edid, in
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsHdmiInInit() must be called before calling this API.
@@ -596,13 +606,14 @@ dsError_t dsGetHDMISPDInfo (dsHdmiInPort_t iHdmiPort, unsigned char **data);
  * This function sets the EDID version to be used for a given port id
  *
  * @param[in] iHdmiPort     - HDMI input port. @see dsHdmiInPort_t
- * @param[in] iEdidVersion  - input EDID version number to set @todo Create an enum iEdidVersion
+ * @param[in] iEdidVersion  - input EDID version number to set. @see tv_hdmi_edid_version_t
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsHdmiInInit() must be called before calling this API.
@@ -612,7 +623,7 @@ dsError_t dsGetHDMISPDInfo (dsHdmiInPort_t iHdmiPort, unsigned char **data);
  * @see dsGetEdidVersion()
  * 
  */
-dsError_t dsSetEdidVersion (dsHdmiInPort_t iHdmiPort, int iEdidVersion);
+dsError_t dsSetEdidVersion (dsHdmiInPort_t iHdmiPort, tv_hdmi_edid_version_t iEdidVersion);
 
 /**
  * @brief Gets the EDID version currently being used for the given port id
@@ -620,13 +631,14 @@ dsError_t dsSetEdidVersion (dsHdmiInPort_t iHdmiPort, int iEdidVersion);
  * This function gets the EDID version currently being used for the given port id
  *
  * @param[in] iHdmiPort     - HDMI input port. @see dsHdmiInPort_t
- * @param[out] iEdidVersion - input EDID version number
+ * @param[out] iEdidVersion - input EDID version number. @see tv_hdmi_edid_version_t
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsHdmiInInit() must be called before calling this API.
@@ -636,7 +648,7 @@ dsError_t dsSetEdidVersion (dsHdmiInPort_t iHdmiPort, int iEdidVersion);
  * @see dsSetEdidVersion()
  * 
  */
-dsError_t dsGetEdidVersion (dsHdmiInPort_t iHdmiPort, int *iEdidVersion);
+dsError_t dsGetEdidVersion (dsHdmiInPort_t iHdmiPort, tv_hdmi_edid_version_t *iEdidVersion);
 
 /**
  * @brief Checks whether ALLM status is enabled or disabled for the specific HDMI input port
@@ -652,6 +664,7 @@ dsError_t dsGetEdidVersion (dsHdmiInPort_t iHdmiPort, int *iEdidVersion);
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsHdmiInInit() must be called before calling this API.
@@ -674,6 +687,7 @@ dsError_t dsGetAllmStatus (dsHdmiInPort_t iHdmiPort, bool *allmStatus);
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsHdmiInInit() must be called before calling this API.
@@ -696,6 +710,7 @@ dsError_t dsGetSupportedGameFeaturesList (dsSupportedGameFeatureList_t* features
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsHdmiInInit() must be called before calling this API.
