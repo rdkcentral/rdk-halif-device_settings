@@ -151,7 +151,10 @@ typedef enum __dsFPDState_t
 }dsFPDState_t;
 
 /**
- * This enumeration defines the front panel display state.
+ * @brief This enumeration defines the front panel display state.
+ * 
+ * The HAL shall define the responsibility of LED behavior during each of the bellow states.
+ * 
  */
 typedef enum __dsFPDLedState_t
 {

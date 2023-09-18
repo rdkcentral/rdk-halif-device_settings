@@ -521,11 +521,11 @@ dsError_t dsGetFPTimeFormat (dsFPDTimeFormat_t *pTimeFormat);
 dsError_t dsSetFPDMode (dsFPDMode_t eMode);
 
 /**
- * @brief Gets the current led state
+ * @brief Gets the current power LED state
  * 
- * This function gets the current led state
+ * This function gets the current power LED state
  *
- * @param[out] returns - Current led state. @see dsFPDLedState_t
+ * @param[out] returns - Current LED state. @see dsFPDLedState_t
  *
  * @return dsError_t                      -  Status
  * @retval dsERR_NONE                     -  Success
@@ -543,9 +543,9 @@ dsError_t dsSetFPDMode (dsFPDMode_t eMode);
 dsError_t dsFPGetLEDState (dsFPDLedState_t* state);
 
 /**
- * @brief Sets the led state
+ * @brief Sets the power LED state
  * 
- * This function sets the led state
+ * This function sets the power LED state
  *
  * @param[in] state - LED state. @see dsFPDLedState_t
  *
