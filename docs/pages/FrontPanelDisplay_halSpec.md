@@ -68,6 +68,8 @@ This interface provides a set of `API`s to facilitate communication to Front Pan
 
 The brightness, color and text of Front Panel `LED`s can be set or retrieved. It also provides `API` to enable or disable the specified discrete `LED` on the Front Panel Display.
 
+@todo Add the dsFPDLedState_t behavior into the halSpec. Discuss where it should be added.
+
 ## Component Runtime Execution Requirements
  
 The component must adeptly manage resources to prevent issues like memory leaks and excessive utilization. It must also meet performance goals for response time, throughput, and resource use as per the platform's capabilities.
