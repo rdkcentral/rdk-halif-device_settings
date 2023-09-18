@@ -111,6 +111,55 @@ dsError_t dsHostInit();
 dsError_t dsHostTerm();
 
 /**
+ * @brief Gets the preferred sleep mode which is persisted.
+ * 
+ * This function is not apart of the HAL interface.
+ *
+ * @param[out] pMode    - Preferred sleep mode. @see dsSleepMode_t
+ * 
+ *
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
+ * @pre dsHostInit() must be called before this function
+ * 
+ * @warning  This API is Not thread safe.
+ * 
+ * @see dsSetPreferredSleepMode()
+ * 
+ */
+
+dsError_t dsGetPreferredSleepMode(dsSleepMode_t *pMode);
+
+/**
+ * @brief Sets the preferred sleep mode. 
+ * 
+ * This function is not apart of the HAL interface.
+ *
+ * @param[in] mode  - Preferred sleep mode. @see dsSleepMode_t
+ *
+ * @return dsError_t                       - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
+ * @pre dsHostInit() must be called before this function
+ * 
+ * @warning  This API is Not thread safe.
+ * 
+ * @see dsGetPreferredSleepMode()
+ * 
+ */
+
+dsError_t dsSetPreferredSleepMode(dsSleepMode_t mode);
+
+/**
  * @brief This function gets the CPU temperature in centigrade.
  * 
  * @param[out] cpuTemperature   - CPU temperature value returned in centigrade.
@@ -121,6 +170,8 @@ dsError_t dsHostTerm();
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
+ * @pre dsHostInit() must be called before this function
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -139,6 +190,8 @@ dsError_t dsGetCPUTemperature(float *cpuTemperature);
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
+ * @pre dsHostInit() must be called before this function
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -160,6 +213,8 @@ dsError_t dsGetSocIDFromSDK(char *socID);
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
+ * @pre dsHostInit() must be called before this function
  * 
  * @warning  This API is Not thread safe.
  * 
