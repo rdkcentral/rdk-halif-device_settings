@@ -37,7 +37,7 @@ extern "C" {
 namespace  {
 
 /*
- * Enumerate the supported configurations here.
+ * @brief This enumeration defines the supported audio configurations.
  */
 /// Audio supported port types	
 static const dsAudioPortType_t 	    kSupportedPortTypes[] 				= { dsAUDIOPORT_TYPE_HDMI, dsAUDIOPORT_TYPE_SPDIF };
@@ -55,9 +55,8 @@ static const dsAudioCompression_t 	kSupportedSPDIFCompressions[] 		= { dsAUDIO_C
 static const dsAudioStereoMode_t 	kSupportedSPDIFStereoModes[] 		= { dsAUDIO_STEREO_STEREO, dsAUDIO_STEREO_SURROUND, };
 
 /* 
- * Enumerate the supported Audio port types 
+ * This enumeration defines the supported Audio port types. 
  */
-
 static const dsAudioTypeConfig_t 	kConfigs[]= {
 		{
 		/*.typeId = */					dsAUDIOPORT_TYPE_HDMI,
@@ -82,9 +81,8 @@ static const dsAudioTypeConfig_t 	kConfigs[]= {
 };
 
 /*
- * Enumerate the Video Ports that are connected to each Audio port.
+ * This enumeration defines the video ports that are connected to each audio port.
  */
-
 static const dsVideoPortPortId_t connectedVOPs[dsAUDIOPORT_TYPE_MAX][dsVIDEOPORT_TYPE_MAX] = {
 		{/*VOPs connected to LR Audio */
 
@@ -98,9 +96,8 @@ static const dsVideoPortPortId_t connectedVOPs[dsAUDIOPORT_TYPE_MAX][dsVIDEOPORT
 };
 
 /*
- * Enumerate the Audio Ports available on the device.  
+ * This enumeration defines the available audio ports on the device.  
  */
-
 static const dsAudioPortConfig_t kPorts[] = {
 		{
 		/*.typeId = */ 					{dsAUDIOPORT_TYPE_HDMI, 0},

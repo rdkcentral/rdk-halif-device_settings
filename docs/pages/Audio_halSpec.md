@@ -4,8 +4,7 @@
 
 | Date(DD/MM/YY) | Comment | Version |
 | ---- | ------- | ------- |
-| 24/08/23 | Edit  | 1.0.1 |
-| 20/04/23 | First Release | 1.0.0 |
+| 24/08/23 | First Release | 1.0.0 |
 
 
 
@@ -73,10 +72,12 @@ style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
  ```
 
 
-This interface provides a set of `APIs` to facilitate communication to the Audio Driver.
+This interface provides a set of `APIs` to facilitate communication to the Audio Driver. 
 
 
-This interface provides control to enable or disable Audio Output ports like TV Internal Speakers, ARC/eARC, Headphones, SPDIF and allows `Caller` to configure or retrieve various audio parameters.
+This interface provides control to enable or disable Audio Output ports like TV Internal Speakers, ARC/eARC, Headphones, SPDIF and allows `Caller` to configure or retrieve various audio parameters. Functionalities
+
+@todo Vendor shall follow the configurations - dsAudioSettings.h file can be pointed
 
 
 ## Component Runtime Execution Requirements
@@ -87,7 +88,7 @@ Failure to meet these requirements will likely result in undefined and unexpecte
 
 ### Initialization and Startup
 
-`Caller` should initialize by calling `dsAudioPortInit()` before calling any other `API`s. The `Caller` is expected to have complete control over the life cycle of the `Device Settings Audio` module.
+`Caller` must initialize by calling `dsAudioPortInit()` before calling any other `API`s. The `Caller` is expected to have complete control over the life cycle of the `DS` Audio module. 
 
 ### Threading Model
 
@@ -103,13 +104,13 @@ This interface is not required to allocate any memory.
 
 ### Power Management Requirements
 
-The Audio HAL is not involved in the power management operation.
+The Audio `HAL` is not involved in the power management operation.
 
 ### Asynchronous Notification Model
 
 AudioPort provides the following asynchronous registration : 
-- `dsAudioOutRegisterConnectCB` 
-- `dsAudioFormatUpdateCB`
+- `dsAudioOutRegisterConnectCB()` - Callback function to notify the Audio port connection status to the `Caller`
+- `dsAudioFormatUpdateCB()` - Callback funtion to notify the Audio Format Update to the `Caller`
 
 
 ### Blocking calls
@@ -167,11 +168,11 @@ None
 
 ### Theory of operation and key concepts
 
-The caller is expected to have complete control over the life cycle of the `HAL`
+The `caller` is expected to have complete control over the life cycle of the `HAL`
 
-1. Initialize the `Audio HAL` using function: `dsAudioPortInit()` before making any other `API` calls.  If `dsAudioPortInit()` call fails, the `HAL` must return the respective error code, so that the caller can retry the operation
+1. Initialize the `DS` Audio `HAL` using function: `dsAudioPortInit()` before making any other `API` calls.  If `dsAudioPortInit()` call fails, the `HAL` must return the respective error code, so that the `caller` can retry the operation.
 
-2. Once the Audio Ports are initialized, Audio Output ports like TV Internal Speakers, ARC/eARC, Headphones, SPDIF can be enabled or disabled using Audio Port Handle. 
+2. Once the Audio Ports are initialized, Audio Output ports like TV Internal Speakers, ARC/eARC, Headphones, SPDIF can be enabled or disabled using Audio Port Handle based on configuration file. 
 
 3. The Audio Parameters like Audio Encoding, Audio Format, Audio Compression, Dialog Enhancement, Dolby Volume Mode, Audio Ducking, Bass Enhancer, MI Steering, `LE`, Stereo Mode, Audio Gain, Loop Through, Intelligent Equivalizer, Dynamic Range Control, Fader Control, `MS12` capabilities, Audio Delay, Audio Mixing, Primary Language and Secondary Language can be set or retrieved for specific Audio Ports using Audio Port Handle.
 
@@ -238,66 +239,66 @@ NOTE: The module would operate deterministically if the above call sequence is f
  ```
 
 
- LEGEND:
+<br>LEGEND:</br>
 
-ds_Audio_SetMethods:
-dsSetAudioEncoding(),
-dsSetAudioCompression(),
-dsSetDialogEnhancement(),
-dsSetDolbyVolumeMode(),
-dsSetIntelligentEqualizerMode(),
-dsSetVolumeLeveller(),
-dsSetBassEnhancer(),
-dsSetDRCMode(),
-dsSetSurroundVirtualizer(),
-dsSetMISteering(),
-dsSetGraphicEqualizerMode(),
-dsSetMS12AudioProfile(),
-dsSetStereoMode(),
-dsSetStereoAuto(),
-dsSetAudioGain(),
-dsSetAudioDB(),
-dsSetAudioLevel(),
-dsSetAudioDucking(),
-dsSetAudioMute(),
-dsSetAudioDelay(),
-dsSetAudioDelayOffset(),
-dsSetMS12AudioProfileSetttingsOverride(),
-dsSetAssociatedAudioMixing(),
-dsSetFaderControl(),
-dsSetPrimaryLanguage(),
-dsSetSecondaryLanguage()
+ds_Audio_SetMethods:</br>
+dsSetAudioEncoding(),</br>
+dsSetAudioCompression(),</br>
+dsSetDialogEnhancement(),</br>
+dsSetDolbyVolumeMode(),</br>
+dsSetIntelligentEqualizerMode(),</br>
+dsSetVolumeLeveller(),</br>
+dsSetBassEnhancer(),</br>
+dsSetDRCMode(),</br>
+dsSetSurroundVirtualizer(),</br>
+dsSetMISteering(),</br>
+dsSetGraphicEqualizerMode(),</br>
+dsSetMS12AudioProfile(),</br>
+dsSetStereoMode(),</br>
+dsSetStereoAuto(),</br>
+dsSetAudioGain(),</br>
+dsSetAudioDB(),</br>
+dsSetAudioLevel(),</br>
+dsSetAudioDucking(),</br>
+dsSetAudioMute(),</br>
+dsSetAudioDelay(),</br>
+dsSetAudioDelayOffset(),</br>
+dsSetMS12AudioProfileSetttingsOverride(),</br>
+dsSetAssociatedAudioMixing(),</br>
+dsSetFaderControl(),</br>
+dsSetPrimaryLanguage(),</br>
+dsSetSecondaryLanguage()</br>
 
-ds_Audio_GetMethods:
-dsGetAudioEncoding(),
-dsGetAudioFormat(),
-dsGetAudioCompression(),
-dsGetDialogEnhancement(),
-dsGetDolbyVolumeMode(),
-dsGetIntelligentEqualizerMode(),
-dsGetVolumeLeveller(),
-dsGetBassEnhancer(),
-dsGetDRCMode(),
-dsGetSurroundVirtualizer(),
-dsGetMISteering(),
-dsGetGraphicEqualizerMode(),
-dsGetMS12AudioProfileList(),
-dsGetMS12AudioProfile(),
-dsGetSupportedARCTypes(),
-dsGetStereoMode(),
-dsGetStereoAuto(),
-dsGetAudioGain(),
-dsGetAudioDB(),
-dsGetAudioLevel(),
-dsGetAudioMaxDB(),
-dsGetAudioMinDB(),
-dsGetAudioOptimalLevel(),
-dsGetAudioDelay(),
-dsGetAudioDelayOffset(),
-dsGetLEConfig(),
-dsGetAudioCapabilities(),
-dsGetMS12Capabilities(),
-dsGetAssociatedAudioMixing(),
-dsGetFaderControl(),
-dsGetPrimaryLanguage(),
+ds_Audio_GetMethods:</br>
+dsGetAudioEncoding(),</br>
+dsGetAudioFormat(),</br>
+dsGetAudioCompression(),</br>
+dsGetDialogEnhancement(),</br>
+dsGetDolbyVolumeMode(),</br>
+dsGetIntelligentEqualizerMode(),</br>
+dsGetVolumeLeveller(),</br>
+dsGetBassEnhancer(),</br>
+dsGetDRCMode(),</br>
+dsGetSurroundVirtualizer(),</br>
+dsGetMISteering(),</br>
+dsGetGraphicEqualizerMode(),</br>
+dsGetMS12AudioProfileList(),</br>
+dsGetMS12AudioProfile(),</br>
+dsGetSupportedARCTypes(),</br>
+dsGetStereoMode(),</br>
+dsGetStereoAuto(),</br>
+dsGetAudioGain(),</br>
+dsGetAudioDB(),</br>
+dsGetAudioLevel(),</br>
+dsGetAudioMaxDB(),</br>
+dsGetAudioMinDB(),</br>
+dsGetAudioOptimalLevel(),</br>
+dsGetAudioDelay(),</br>
+dsGetAudioDelayOffset(),</br>
+dsGetLEConfig(),</br>
+dsGetAudioCapabilities(),</br>
+dsGetMS12Capabilities(),</br>
+dsGetAssociatedAudioMixing(),</br>
+dsGetFaderControl(),</br>
+dsGetPrimaryLanguage(),</br>
 dsGetSecondaryLanguage()
