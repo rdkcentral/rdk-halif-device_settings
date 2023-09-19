@@ -66,7 +66,7 @@ style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
 This interface provides a set of `API`s to facilitate communication to Front Panel `LED` Display SoC Drivers.
 
 
-The brightness, color and text of Front Panel `LED`s can be set or retrieved. It also provides `API` to enable or disable the specified discrete `LED` on the Front Panel Display.
+The brightness, color and text of Front Panel `LED`s can be set or retrieved. It also provides `API` to enable or disable the specified discrete `LED` on the Front Panel Display. 
 
 @todo Add the dsFPDLedState_t behavior into the halSpec. Discuss where it should be added.
 
@@ -150,7 +150,8 @@ Any changes in the `API`s must be reviewed and approved by the component archite
 
 ### Platform or Product Customization
 
-None
+The configuration settings file (dsFPDSettings.h) for DS Front Panel can be used for adding platform specific configurations. The sample file is available here
+@todo - Add hyperlink to fpsample
 
 ## Interface API Documentation
 
