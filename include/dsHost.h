@@ -18,7 +18,7 @@
 */
 
 /**
- * @addtogroup HPK HPK
+ * @addtogroup HPK Hardware Porting Kit
  * @{
  * @par The Hardware Porting Kit
  * HPK is the next evolution of the well-defined Hardware Abstraction Layer
@@ -31,11 +31,16 @@
  *
  */
 
-/** @defgroup DeviceSettings_Module DeviceSettings Module
+/** @defgroup DeviceSettings DeviceSettings Module
  * @par Application API Specification
  * Described herein are the DeviceSettings HAL types and functions that are part of
  * the Host subsystem. The Host subsystem manages system-specific HAL operations.
  *  @{
+ */
+/** @defgroup dsHOST_HAL dsHost HAL
+ *  @{
+ * @par Application API Specification
+ * dsHost HAL provides an interface for managing the host settings for the device settings module
  */
 
 /** @defgroup DSHAL_HOST_API Device Settings HAL Host Public API
@@ -228,5 +233,6 @@ dsError_t dsGetHostEDID(unsigned char *edid, int *length);
 #endif /* _DS_HOST_H_ */
 
 /** @} */ // End of DSHAL_HOST_API doxygen group 
+/** @} */ // End of dsHost HAL
 /** @} */ // End of DeviceSettings Module
 /** @} */ // End of HPK

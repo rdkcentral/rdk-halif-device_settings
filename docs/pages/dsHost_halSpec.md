@@ -61,7 +61,7 @@ style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
 
 `Device Settings Host` `HAL` provides a set of `APIs` to initialize, query information about the `SoC`.
 
-The main purpose is to facilitate communication between the `Caller`, and `HAL` interface, such that information about the Host EDID number, the current CPU temperature, and the SoC ID can be queried by the `Caller`.
+The main purpose is to facilitate communication between the `caller`, and `HAL` interface, such that information about the Host EDID number, the current CPU temperature, and the SoC ID can be queried by the `caller`.
 
 ## Component Runtime Execution Requirements
 
@@ -71,7 +71,7 @@ Failure to meet these requirements will likely result in undefined and unexpecte
 
 ### Initialization and Startup
 
-`Caller` initialize `dsHost` by calling `dsHostInit()` before calling any other `APIs`. The `Caller` is expected to have complete control over the life cycle of the this module.
+`Caller` initialize `dsHost` by calling `dsHostInit()` before calling any other `APIs`. The `caller` is expected to have complete control over the life cycle of the this module.
 
 ### Threading Model
 
