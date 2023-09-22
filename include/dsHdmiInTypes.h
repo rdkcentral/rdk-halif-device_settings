@@ -90,8 +90,9 @@ typedef enum _dsHdmiInSignalStatus_t
 {
     dsHDMI_IN_SIGNAL_STATUS_NONE = -1,    ///< HDMI input signal status NONE. Default state upon start up
     dsHDMI_IN_SIGNAL_STATUS_NOSIGNAL,     ///< HDMI input No signal signal status. No device connected
-    dsHDMI_IN_SIGNAL_STATUS_UNSTABLE,     ///< HDMI input Unstable signal status. Connection to device is not stable
-    dsHDMI_IN_SIGNAL_STATUS_NOTSUPPORTED, ///< HDMI input Not supported signal status. Connected device is not supported
+    dsHDMI_IN_SIGNAL_STATUS_UNSTABLE,     ///< HDMI input Unstable signal status. ///< HDMI input unstable signal status. This is normally a transitional state, 
+                                          ///< but can remain here due to some faults on HDMI Source / Cable
+    dsHDMI_IN_SIGNAL_STATUS_NOTSUPPORTED, ///< HDMI input Not supported signal status. 
     dsHDMI_IN_SIGNAL_STATUS_STABLE,       ///< HDMI input Stable signal status are presented on plane
     dsHDMI_IN_SIGNAL_STATUS_MAX           ///< Out of range 
 } dsHdmiInSignalStatus_t;
