@@ -22,7 +22,7 @@
 
 #warning "CONFIGING PLATFORM  FRONTPANELSETTINGS"
 
-#include "dsTypes.h"
+#include "/include/dsFPDTypes.h"
 
 #ifdef __cplusplus
 extern "C" {
