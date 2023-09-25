@@ -150,8 +150,8 @@ Any changes in the `API`s must be reviewed and approved by the component archite
 
 ### Platform or Product Customization
 
-The configuration settings file (dsFPDSettings.h) for DS Front Panel can be used for adding platform specific configurations. The sample file is available here
-@todo - Add hyperlink to fpsample
+The configuration settings file (dsFPDSettings.h) for DS Front Panel can be used for adding platform specific configurations. The sample file is available [here](/docs/pages/dsFPDSettings.h).
+
 
 ## Interface API Documentation
 
