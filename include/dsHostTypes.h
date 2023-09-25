@@ -18,7 +18,7 @@
 */
 
 /**
- * @file dsTypes.h
+ * @file dsHostTypes.h
  *
  * @brief HAL types.
  *
@@ -41,6 +41,9 @@
  *
  */
 
+#ifndef _DS_HOST_TYPES_H_
+#define _DS_HOST_TYPES_H_
+
 /**
  * @addtogroup HPK HPK
  * @{
@@ -55,32 +58,34 @@
  *
  */
 
-/** 
- * @defgroup DSSETTINGS_HAL HAL Types & Public API
- * HAL types and public API definitions.
- * @ingroup DSSETTINGS
+/** @addtogroup Device_Settings Device Settings Module
  * @{
  */
 
-/** @addtogroup DSHAL_HOST HAL Host Types
- * @ingroup DSHAL_API @todo check where this used, and remove if not needed
+/** 
+ * @addtogroup Device_Settings_HAL Device Settings HAL
+ * HAL types and public API definitions.
+ * @{
+ */
+
+/** @addtogroup dsHOST_HAL_Types Device Settings HAL Host Types
  *  @{
  */
 
 /**
- * @brief This enumeration defines the type of sleep modes.
+ * @brief This enumeration defines the type of sleep modes
  * @see dsSleepMode_isValid
  * @todo double check to make sure this is still
  */
 typedef enum _dsSleepMode_t{
-    dsHOST_SLEEP_MODE_LIGHT,    ///< Light sleep mode                              
-    dsHOST_SLEEP_MODE_DEEP,     ///< Deep sleep mode                               
-    dsHOST_SLEEP_MODE_MAX       ///< Out of range                 
+    dsHOST_SLEEP_MODE_LIGHT,    /**< Light sleep mode */                              
+    dsHOST_SLEEP_MODE_DEEP,     /**< Deep sleep mode */                           
+    dsHOST_SLEEP_MODE_MAX       /**< Out of range */                 
 } dsSleepMode_t;
 
-/* End of DSHAL_HOST doxygen group */
-/**
- * @}
- */
-/** @} */ // End of DSSETTINGS_HAL HAL Data Types
+/** @} */ // End of Device Settings Host Types
+/** @} */ // End of Device Settings HAL
+/** @} */ // End of Device Settings Module
 /** @} */ // End of HPK
+
+#endif // End of _DS_HOST_TYPES_H_

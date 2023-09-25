@@ -46,7 +46,7 @@
 
 ## Description
 
-The diagram below describes a high-level software architecture of the Host module.
+The diagram below describes a high-level software architecture of the Device Settings Host module.
 
 ```mermaid
 %%{ init : { "theme" : "forest", "flowchart" : { "curve" : "linear" }}}%%
@@ -60,11 +60,11 @@ style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
 
 `Device Settings Host` `HAL` provides a set of `APIs` to initialize, query information about the `SoC`.
 
-The main purpose is to facilitate communication between the `caller`, and `HAL` interface, such that information about the Host EDID number, the current CPU temperature, and the SoC ID can be queried by the `caller`.
+The main purpose of this module is to facilitate communication between the `caller`, and `HAL` interface, such that information about the Host EDID number, the current CPU temperature, and the SoC ID can be queried by the `caller`.
 
 ## Component Runtime Execution Requirements
 
-The component shall adeptly manage resources to prevent issues like memory leaks and excessive utilization. It shall also meet performance goals for response time, throughput, and resource use as per the platform's capabilities.
+This interface  shall adeptly manage resources to prevent issues like memory leaks and excessive utilization. It shall also meet performance goals for response time, throughput, and resource use as per the platform's capabilities.
 
 Failure to meet these requirements will likely result in undefined and unexpected behavior.
 
@@ -74,7 +74,7 @@ Failure to meet these requirements will likely result in undefined and unexpecte
 
 ### Threading Model
 
-This interface is not required to be thread safe. Any `caller` invoking the `API` shall ensure calls are made in a thread safe manner. `HAL` is allowed to create internal threads for its operations without excessively consuming system resources. Any threads created by the `HAL` shall be handled gracefully and respective error codes shall be returned if any corresponding `API` fails.
+This interface is not required to be thread safe. Any `caller` invoking the `APIs` shall ensure calls are made in a thread safe manner. `HAL` is allowed to create internal threads for its operations without excessively consuming system resources. Any threads created by the `HAL` shall be handled gracefully and respective error codes shall be returned if any corresponding `API` fails.
 
 ### Process Model
 
@@ -98,7 +98,7 @@ This interface is not required to have any blocking calls. Synchronous calls sha
 
 ### Internal Error Handling
 
-All the `API` shall return error synchronously as a return argument. `HAL` is responsible for handling system errors (e.g. out of memory) internally.
+All the `APIs` shall return error synchronously as a return argument. `HAL` is responsible for handling system errors (e.g. out of memory) internally.
 
 ### Persistence Model
 
@@ -106,7 +106,7 @@ There is no requirement for the interface to persist any setting information. `C
 
 ## Non-functional requirements
 
-The following non-functional requirements will be supported by the module.
+The following non-functional requirements will be supported by the module:
 
 ### Logging and debugging requirements
 
@@ -141,7 +141,7 @@ The source code shall build into a shared library for Device Settings as this mo
 
 ### Platform or Product Customization
 
-None
+This interface is not required to have any platform or product customizations.
 
 ## Interface API Documentation
 
@@ -170,7 +170,7 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     participant HAL as DEVICE SETTINGS HOST HAL
     participant Driver as SoC
     Caller->>HAL:dsHostInit()
-    Note over HAL: SOC initializes the underlying subsystems
+    Note over HAL: SOC can initialize the underlying subsystems if needed
     HAL-->>Caller:return
     Caller->>HAL:dsGetCPUTemperature()
     Note over HAL: Returns the current CPU temp

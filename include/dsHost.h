@@ -31,13 +31,18 @@
  *
  */
 
-/** @defgroup DeviceSettings DeviceSettings Module
+/** @defgroup Device_Settings Device Settings Module
+ * @{
+ */
+
+/**@defgroup Device_Settings_HAL Device Settings HAL
  * @par Application API Specification
  * Described herein are the DeviceSettings HAL types and functions that are part of
  * the Host subsystem. The Host subsystem manages system-specific HAL operations.
  *  @{
  */
-/** @defgroup dsHOST_HAL dsHost HAL
+
+/** @defgroup dsHOST_HAL Device Settings Host HAL
  *  @{
  * @par Application API Specification
  * dsHost HAL provides an interface for managing the host settings for the device settings module
@@ -52,7 +57,7 @@
 /** 
  * Describe the details about Device Settings HAL API specifications.
  *
- * <b> Following abbreviations present in HAL API </b>
+ * <b> Following abbreviations present in Device Settings Host HAL APIs </b>
  *
  * @par Abbreviations
  * - cb:      Callback function (suffix).
@@ -78,7 +83,7 @@ extern "C" {
 #define EDID_MAX_DATA_SIZE 512
 
 /**
- * @brief Initialize the Host HAL sub-system.
+ * @brief Initializes the Host HAL sub-system
  * 
  * This function initializes any needed resources within the module.
  *
@@ -98,7 +103,7 @@ extern "C" {
 dsError_t dsHostInit();
 
 /**
- * @brief Terminate the Host sub-system.
+ * @brief Terminates the Host sub-system
  *
  * This function has to release all the resources allocated during the init function.
  *
@@ -116,9 +121,9 @@ dsError_t dsHostInit();
 dsError_t dsHostTerm();
 
 /**
- * @brief Gets the preferred sleep mode which is persisted.
+ * @brief Gets the preferred sleep mode which is persisted
  * 
- * This function is not apart of the HAL interface.
+ * This function is not a part of the HAL interface.
  *
  * @param[out] pMode    - Preferred sleep mode. @see dsSleepMode_t
  * 
@@ -141,9 +146,9 @@ dsError_t dsHostTerm();
 dsError_t dsGetPreferredSleepMode(dsSleepMode_t *pMode);
 
 /**
- * @brief Sets the preferred sleep mode. 
+ * @brief Sets the preferred sleep mode
  * 
- * This function is not apart of the HAL interface.
+ * This function is not a part of the HAL interface.
  *
  * @param[in] mode  - Preferred sleep mode. @see dsSleepMode_t
  *
@@ -165,7 +170,7 @@ dsError_t dsGetPreferredSleepMode(dsSleepMode_t *pMode);
 dsError_t dsSetPreferredSleepMode(dsSleepMode_t mode);
 
 /**
- * @brief This function gets the CPU temperature in centigrade.
+ * @brief Gets the CPU temperature in centigrade
  * 
  * @param[out] cpuTemperature   - CPU temperature value returned in centigrade.
  *
@@ -185,7 +190,7 @@ dsError_t dsSetPreferredSleepMode(dsSleepMode_t mode);
 dsError_t dsGetCPUTemperature(float *cpuTemperature);
 
 /**
- * @brief This function returns SOC ID
+ * @brief Returns the SOC ID
  *
  * @param[out] socID    - 8 byte Chip ID programmed to the CHIP One Time Programmable area.
  *
@@ -205,7 +210,7 @@ dsError_t dsGetCPUTemperature(float *cpuTemperature);
 dsError_t dsGetSocIDFromSDK(char *socID);
 
 /**
- * @brief This function is used to get the host EDID and length.
+ * @brief Gets the host EDID and length
  * 
  * The host EDID will be used on devices supporting HDMI input feature.
  *
@@ -227,12 +232,13 @@ dsError_t dsGetSocIDFromSDK(char *socID);
 
 dsError_t dsGetHostEDID(unsigned char *edid, int *length);
 
+/** @} */ // End of DSHAL_HOST_API doxygen group 
+/** @} */ // End of DS Host HAL
+/** @} */ // End of Device Settings HAL
+/** @} */ // End of Device Settings Module
+/** @} */ // End of HPK
+
 #ifdef __cplusplus
 }
 #endif
 #endif /* _DS_HOST_H_ */
-
-/** @} */ // End of DSHAL_HOST_API doxygen group 
-/** @} */ // End of dsHost HAL
-/** @} */ // End of DeviceSettings Module
-/** @} */ // End of HPK
