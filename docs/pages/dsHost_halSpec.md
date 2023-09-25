@@ -70,7 +70,7 @@ Failure to meet these requirements will likely result in undefined and unexpecte
 
 ### Initialization and Startup
 
-`Caller` initialize `dsHost` by calling `dsHostInit()` before calling any other `APIs`. The `caller` is expected to have complete control over the life cycle of the this module.
+`Caller` shall initialize `dsHost` by calling `dsHostInit()` before calling any other `APIs`. The `caller` is expected to have complete control over the life cycle of the this module.
 
 ### Threading Model
 
@@ -131,7 +131,7 @@ The `HAL` implementation is expected to released under the Apache License 2.0.
 
 ### Build Requirements
 
-The source code shall build into a shared library for Device Settings as this module is a part of Device Settings and shall be named as `libdshal.so`. The build mechanism shall be independent of Yocto.
+The source code should build into a shared library for Device Settings as this module is a part of Device Settings and shall be named as `libdshal.so`. The build mechanism shall be independent of Yocto.
  
 ### Variability Management
 
@@ -171,6 +171,8 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     participant Driver as SoC
     Caller->>HAL:dsHostInit()
     Note over HAL: SOC can initialize the underlying subsystems if needed
+    HAL->>Driver:Initializing SoC Power Manager
+    Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsGetCPUTemperature()
     Note over HAL: Returns the current CPU temp
@@ -194,5 +196,7 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     Note over HAL: Gets the preferred sleep mode
     HAL-->>Caller:return
     Caller ->>HAL:dsHostTerm()
+    HAL->>Driver:Terminating SoC Power Manager
+    Driver-->>HAL:return
     HAL-->>Caller:return
  ```
