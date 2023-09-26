@@ -75,7 +75,6 @@
 /**
  * @brief This enumeration defines the type of sleep modes
  * @see dsSleepMode_isValid
- * @todo double check to make sure this is still
  */
 typedef enum _dsSleepMode_t{
     dsHOST_SLEEP_MODE_LIGHT,    /**< Light sleep mode */                              

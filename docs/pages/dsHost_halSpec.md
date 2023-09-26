@@ -64,17 +64,17 @@ The main purpose of this module is to facilitate communication between the `call
 
 ## Component Runtime Execution Requirements
 
-This interface  shall adeptly manage resources to prevent issues like memory leaks and excessive utilization. It shall also meet performance goals for response time, throughput, and resource use as per the platform's capabilities.
+This interface  must adeptly manage resources to prevent issues like memory leaks and excessive utilization. It must also meet performance goals for response time, throughput, and resource use as per the platform's capabilities.
 
 Failure to meet these requirements will likely result in undefined and unexpected behavior.
 
 ### Initialization and Startup
 
-`Caller` shall initialize `dsHost` by calling `dsHostInit()` before calling any other `APIs`. The `caller` is expected to have complete control over the life cycle of the this module.
+`Caller` must initialize `dsHost` by calling `dsHostInit()` before calling any other `APIs`. The `caller` is expected to have complete control over the life cycle of the this module.
 
 ### Threading Model
 
-This interface is not required to be thread safe. Any `caller` invoking the `APIs` shall ensure calls are made in a thread safe manner. `HAL` is allowed to create internal threads for its operations without excessively consuming system resources. Any threads created by the `HAL` shall be handled gracefully and respective error codes shall be returned if any corresponding `API` fails.
+This interface is not required to be thread safe. Any `caller` invoking the `APIs` must ensure calls are made in a thread safe manner. `HAL` is allowed to create internal threads for its operations without excessively consuming system resources. Any threads created by the `HAL` must be handled gracefully and respective error codes must be returned if any corresponding `API` fails.
 
 ### Process Model
 
@@ -86,7 +86,7 @@ This interface is not required to allocate any memory. Any pointers created by t
 
 ### Power Management Requirements
 
-Although this interface is not required to be involved in any of the power management operations, the state transitions shall not affect its operation. e.g. on resumption from a low power state, the interface shall operate as if no transition has occurred.
+Although this interface is not required to be involved in any of the power management operations, the state transitions must not affect its operation. e.g. on resumption from a low power state, the interface must operate as if no transition has occurred.
 
 ### Asynchronous Notification Model
 
@@ -94,11 +94,11 @@ This interface is not required to support asynchronous notification.
 
 ### Blocking calls
 
-This interface is not required to have any blocking calls. Synchronous calls shall complete within a reasonable time period.
+This interface is not required to have any blocking calls. Synchronous calls must complete within a reasonable time period.
 
 ### Internal Error Handling
 
-All the `APIs` shall return error synchronously as a return argument. `HAL` is responsible for handling system errors (e.g. out of memory) internally.
+All the `APIs` must return error synchronously as a return argument. `HAL` is responsible for handling system errors (e.g. out of memory) internally.
 
 ### Persistence Model
 
@@ -110,7 +110,7 @@ The following non-functional requirements will be supported by the module:
 
 ### Logging and debugging requirements
 
-This interface is required to support DEBUG, INFO and ERROR messages. INFO and DEBUG shall be disabled by default and enabled when required.
+This interface is required to support DEBUG, INFO and ERROR messages. INFO and DEBUG must be disabled by default and enabled when required.
 
 ### Memory and performance requirements
 
@@ -131,13 +131,13 @@ The `HAL` implementation is expected to released under the Apache License 2.0.
 
 ### Build Requirements
 
-The source code should build into a shared library for Device Settings as this module is a part of Device Settings and shall be named as `libdshal.so`. The build mechanism shall be independent of Yocto.
+The source code should build into a shared library for Device Settings as this module is a part of Device Settings and must be named as `libdshal.so`. The build mechanism must be independent of Yocto.
  
 ### Variability Management
 
-- Any changes in the `APIs` shall be reviewed and approved by the component architects.
-- `DeviceSettings Host` `HAL` modification shall support backward compatibility for the generic operations like image upgrade and downgrade.
-- This interface shall return the dsERR_OPERATION_NOT_SUPPORTED error code, if any of the interface - `APIs` are not supported by the underlying hardware.
+- Any changes in the `APIs` must be reviewed and approved by the component architects.
+- `DeviceSettings Host` `HAL` modification must support backward compatibility for the generic operations like image upgrade and downgrade.
+- This interface must return the dsERR_OPERATION_NOT_SUPPORTED error code, if any of the interface - `APIs` are not supported by the underlying hardware.
 
 ### Platform or Product Customization
 
@@ -151,7 +151,7 @@ This interface is not required to have any platform or product customizations.
 
 The `caller` is expected to have complete control over the life cycle of the `HAL`.
 
-1. Initialize the `HAL` using function: `dsHostInit()` before making any other `API` calls.  If `dsHostInit()` call fails, the `HAL` shall return the respective error code, so that the `caller` can retry the operation.
+1. Initialize the `HAL` using function: `dsHostInit()` before making any other `API` calls.  If `dsHostInit()` call fails, the `HAL` must return the respective error code, so that the `caller` can retry the operation.
 
 2. The `caller` can call `dsGetCPUTemperature()`, `dsGetHostEDID()`, `dsGetPreferredSleepMode()` and `dsGetSocIDFromSDK()` to query the needed information.
 

@@ -121,9 +121,9 @@ dsError_t dsHostInit();
 dsError_t dsHostTerm();
 
 /**
- * @brief Gets the preferred sleep mode which is persisted
+ * @brief Gets the preferred sleep mode
  * 
- * This function is not a part of the HAL interface.
+ * This function gets the preferred sleep mode
  *
  * @param[out] pMode    - Preferred sleep mode. @see dsSleepMode_t
  * 
@@ -148,7 +148,7 @@ dsError_t dsGetPreferredSleepMode(dsSleepMode_t *pMode);
 /**
  * @brief Sets the preferred sleep mode
  * 
- * This function is not a part of the HAL interface.
+ * This function sets the preferred sleep mode
  *
  * @param[in] mode  - Preferred sleep mode. @see dsSleepMode_t
  *
