@@ -41,8 +41,8 @@
  *
  */
 
-#ifndef _DS_HOST_TYPES_H_
-#define _DS_HOST_TYPES_H_
+#ifndef __DS_HOST_TYPES_H__
+#define __DS_HOST_TYPES_H__
 
 /**
  * @addtogroup HPK HPK
@@ -87,4 +87,4 @@ typedef enum _dsSleepMode_t{
 /** @} */ // End of Device Settings Module
 /** @} */ // End of HPK
 
-#endif // End of _DS_HOST_TYPES_H_
+#endif // End of __DS_HOST_TYPES_H__

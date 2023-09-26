@@ -69,8 +69,8 @@
  */
 
 
-#ifndef _DS_HOST_H_
-#define _DS_HOST_H_
+#ifndef __DS_HOST_H__
+#define __DS_HOST_H__
 
 #ifdef __cplusplus
 extern "C" {
@@ -241,4 +241,4 @@ dsError_t dsGetHostEDID(unsigned char *edid, int *length);
 #ifdef __cplusplus
 }
 #endif
-#endif /* _DS_HOST_H_ */
+#endif /* __DS_HOST_H__ */
