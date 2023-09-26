@@ -291,7 +291,6 @@ dsError_t dsHdmiInGetCurrentVideoMode (dsVideoPortResolution_t *resolution);
 typedef void (*dsHdmiInConnectCB_t)(dsHdmiInPort_t Port, bool isPortConnected);
 
 /**
- * @todo updating the signal status enum
  * @brief HAL must call this function when the HDMI input port signal status changes.
  * 
  * @param[in] port      - Port id where signal status is changed. @see dsHdmiInPort_t
@@ -331,7 +330,6 @@ typedef void (*dsHdmiInVideoModeUpdateCB_t)(dsHdmiInPort_t port, dsVideoPortReso
 
 /**
  * @brief HAL must call this function when the HDMI input ALLM mode changes.
- * @todo discuss dolby vision game mode offline
  *
  * @param[in] port      - HDMI input port number in which ALLM Mode changed. @see dsHdmiInPort_t
  * @param[in] allm_mode - Flag to hold the current ALLM mode of the port.
@@ -556,7 +554,6 @@ dsError_t dsIsHdmiARCPort (dsHdmiInPort_t iPort, bool isArcPort);
  * @brief Gets the EDID bytes info corresponds to the given input port.
  * 
  * This function gets the EDID bytes info corresponds to the given input port.
- * @todo How the EDID information is read.
  *
  * @param[in] iHdmiPort     - HDMI input port. @see dsHdmiInPort_t
  * @param[out] edid         - EDID data for which info is required

@@ -31,6 +31,7 @@
 - [Interface API Documentation](#interface-api-documentation)
   - [Theory of operation and key concepts](#theory-of-operation-and-key-concepts)
   - [Diagrams](#diagrams)
+  - [State Diagram](#state-diagram)
 
 ## Acronyms, Terms and Abbreviations
 
@@ -179,12 +180,9 @@ The `caller` is expected to have complete control over the life cycle of the `HA
 
 5. De-initialized the `HAL` using the function: `dsHdmiInTerm()`
 
-@todo make state diagrams for the callback events above.
-
 ### Diagrams
 
 #### Operational Call Sequence
-@todo state diagram 
 ```mermaid
 %%{ init : { "theme" : "default", "flowchart" : { "curve" : "stepBefore" }}}%%
    sequenceDiagram
@@ -312,3 +310,13 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     Driver-->>HAL:return
     HAL-->>Caller:return
  ```
+
+
+ ### **State Diagram**
+<br/>
+
+![State Diagram](/docs/pages/images/signal_state_diagram.png)
+    
+    
+
+<br/>

@@ -62,7 +62,7 @@
  */
 
 /** @defgroup DSHAL_ERROR_H Device Settings Status Codes
-*  @ingroup DSHAL_API @todo re-review after doing the other files.
+*  @ingroup DSHAL_API 
 *
 *  Defined hereunder are the error codes that are used in the Device Settings library.
 *
@@ -82,7 +82,6 @@ extern "C" {
  * 
  * A non-zero value indicates an error.
  * 
- * @todo CHANGE NOW: add dsERR_ALREADY_INITIALIZED and dsERR_NOT_INITIALIZED to enums, and update returns in the headers.
  * @todo change prefix dsERR to DS_STATUS in later phase
  */
 

@@ -119,7 +119,6 @@ typedef struct _dsHdmiInCap_t
 
 /**
  * @brief This enumeration defines the AVI Content Types
- * @todo see where dsAVICONTENT_TYPE_INVALID is used, and if it isn't, remove it
  */
 typedef enum dsAviContentType {
   dsAVICONTENT_TYPE_GRAPHICS,   ///< Content type Graphics.
@@ -138,7 +137,6 @@ typedef enum dsAviContentType {
 
 /**
  * @brief Structure that captures Supported Game Features list
- * @todo Discuss with Amit how to update gameFeaturesList to be more verbose
  */
 typedef struct _dsSupportedGameFeatureList_t {
     char gameFeatureList[MAX_FEATURE_LIST_BUFFER_LEN]; ///< buffer containing the list of comma separated supported game features (e.g: "allm")
