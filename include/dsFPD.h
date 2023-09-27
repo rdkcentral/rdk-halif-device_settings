@@ -31,21 +31,42 @@
  *
  */
 
-/**
- * @defgroup devicesettings Device Settings
+/** @defgroup Device_Settings Device Settings Module
+ * @{
+ */
+
+/**@defgroup Device_Settings_HAL Device Settings HAL
+ * @par Application API Specification
+ * Described herein are the DeviceSettings HAL types and functions that are part of
+ * the FPD subsystem. The FPD subsystem manages system-specific HAL operations.
+ *  @{
+ */
+
+/** @defgroup dsFPD_HAL Device Settings Front Panel Display HAL
+ *  @{
+ * @par Application API Specification
+ * dsFPD HAL provides an interface for managing Front Panel Display settings
+ */
+
+/** @defgroup DSHAL_FPD_API Device Settings HAL Front Panel Display Public API
  *
+ *
+ *  @{
+ */
+
+/**
  * Describe the details about Device Settings HAL API specifications.
  *
- * <b> Following abbreviations present in HAL API </b>
+ * <b> Following abbreviations present in Device Settings Front Panel Display API </b>
  *
  * @par Abbreviations
  * - DS  : Device Settings
  * - FPD : Front-Panel Display
  * - HAL : Hardware Abstraction Layer
  * - LED : Light-Emitting Diode
+ * - SoC : System-On-Chip
  * - ms  : miliseconds
  *
- * @ingroup DSSETTINGS_HAL
  */
 
 /** @addtogroup DS_Manager_HAL DS Manager Hal
@@ -62,12 +83,12 @@
  */
 
 
-#ifndef _DS_FPD_H_
-#define _DS_FPD_H_
+#ifndef __DS_FPD_H__
+#define __DS_FPD_H__
 
 #include <sys/types.h>
 #include "dsError.h"
-#include "dsTypes.h"
+#include "dsFPDTypes.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -565,10 +586,12 @@ dsError_t dsFPGetLEDState (dsFPDLedState_t* state);
 dsError_t dsFPSetLEDState (dsFPDLedState_t state);
 
 /** @} */ // End of DSHAL_FPD_API doxygen group 
-/** @} */ // End of DS HAL
+/** @} */ // End of DS FPD HAL
+/** @} */ // End of Device Settings HAL
+/** @} */ // End of Device Settings Module
 /** @} */ // End of HPK
 
 #ifdef __cplusplus
 }
 #endif
-#endif /* _DS_FPD_H_ */
+#endif /* __DS_FPD_H__ */
