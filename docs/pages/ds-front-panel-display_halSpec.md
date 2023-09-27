@@ -39,10 +39,11 @@
 - `DS`     - Device Settings
 - `HAL`    - Hardware Abstraction Layer
 - `API`    - Application Programming Interface
-- `Caller` - Any user of the interface via the `API`s
+- `Caller` - Any user of the interface via the `APIs`
 - `FPD`    - Front Panel Display
 - `LED`    - Light-Emitting Diode
 - `CPU`    - Central Processing Unit
+- `SoC`    - System-On-Chip
 
 
 
@@ -63,12 +64,10 @@ style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
  ```
 
 
-This interface provides a set of `API`s to facilitate communication to Front Panel `LED` Display SoC Drivers.
+This interface provides a set of `APIs` to facilitate communication to Front Panel `LED` Display `SoC` Drivers.
 
 
-The brightness, color and text of Front Panel `LED`s can be set or retrieved. It also provides `API` to enable or disable the specified discrete `LED` on the Front Panel Display. 
-
-@todo Add the dsFPDLedState_t behavior into the halSpec. Discuss where it should be added.
+The brightness, color and text of Front Panel `LEDs` can be set or retrieved. It also provides `API` to enable or disable the specified discrete `LED` on the Front Panel Display. 
 
 ## Component Runtime Execution Requirements
  
@@ -79,11 +78,11 @@ Failure to meet these requirements will likely result in undefined and unexpecte
 ### Initialization and Startup
 
 
-`Caller` must initialize by calling `dsFPInit()` before calling any other `API`s. `Caller` has complete control over the `FPD`.
+`Caller` must initialize by calling `dsFPInit()` before calling any other `APIs`. `Caller` has complete control over the `FPD`.
 
 ### Threading Model
 
-This interface is not required to be thread safe. Any `caller` invoking the `API`s must ensure calls are made in a thread safe manner.
+This interface is not required to be thread safe. Any `caller` invoking the `APIs` must ensure calls are made in a thread safe manner.
 
 ### Process Model
 
@@ -95,10 +94,10 @@ This interface is not required to allocate any memory.
 
 ### Power Management Requirements
 
-The `FPD HAL` is not involved in the power management operation directly. 
-But the `Caller` will initiate the change in `LED` as part of power management handling.
+The `FPD` `HAL` is not involved in the power management operation directly. 
+But the `caller` will initiate the change in `LED` as part of power management handling.
 
-The `Caller` is responsible for driving LED Status in accordance with Power Mode change.
+The `caller` is responsible for driving `LED` status in accordance with power mode change.
 
 ### Asynchronous Notification Model
 
@@ -111,7 +110,7 @@ This interface is not required to have any blocking calls. Synchronous calls mus
 
 ### Internal Error Handling
 
-All the `API`s must return error synchronously as a return argument. `HAL` is responsible for handling system errors (e.g. out of memory) internally.
+All the `APIs` must return error synchronously as a return argument. `HAL` is responsible for handling system errors (e.g. out of memory) internally.
 
 ### Persistence Model
 
@@ -146,11 +145,11 @@ The source code must build into a shared library for Device Settings `HAL` as `F
  
 ### Variability Management
 
-Any changes in the `API`s must be reviewed and approved by the component architects. `DS FPD` must return the dsERR_OPERATION_NOT_SUPPORTED error code if any of the interface `API`s are not supported by the underlying hardware.
+Any changes in the `APIs` must be reviewed and approved by the component architects. `DS` `FPD` must return the dsERR_OPERATION_NOT_SUPPORTED error code if any of the interface `APIs` are not supported by the underlying hardware.
 
 ### Platform or Product Customization
 
-The configuration settings file (dsFPDSettings.h) for DS Front Panel can be used for adding platform specific configurations. The sample file is available [here](/docs/pages/dsFPDSettings.h "dsFPDSettings.h").
+The configuration settings file (dsFPDSettings.h) for `DS` Front Panel can be used for adding platform specific configurations. The sample file is available [here](/docs/pages/dsFPDSettings.h "dsFPDSettings.h").
 
 
 ## Interface API Documentation
@@ -161,15 +160,27 @@ The configuration settings file (dsFPDSettings.h) for DS Front Panel can be used
 
 The `caller` is expected to have complete control over the life cycle of the `HAL`.
 
-1. Initialize the `FPD HAL` using function: `dsFPInit()` before making any other `API` calls.  If `dsFPInit()` call fails, the `HAL` must return the respective error code, so that the `caller` can retry the operation.
+1. Initialize the `FPD` `HAL` using function: `dsFPInit()` before making any other `API` calls.  If `dsFPInit()` call fails, the `HAL` must return the respective error code, so that the `caller` can retry the operation.
 
-2. Once the `FPD` sub-system is initialized, `Caller` can invoke `API`s to control the Front Panel `LED`s. The `FP` Brightness, Text, Color, Blink interval, `FP LED` State(ON/OFF), Text Scroll can be set or retrieved.
+2. Once the `FPD` sub-system is initialized, `caller` can invoke `APIs` to control the Front Panel `LEDs`. The `FP` brightness, text, color, blink interval, `FP` `LED` state(ON/OFF), text scroll can be set or retrieved.
 
-3. De-initialize the `FP HAL` using the function: `dsFPTerm()`.
+3. De-initialize the `FP` `HAL` using the function: `dsFPTerm()`.
 
 
 
 NOTE: The module would operate deterministically if the above call sequence is followed
+
+The various `FP` `LED` states are as follows:
+
+- Active
+- Standby
+- Connecting to WPS
+- Connected to WPS
+- WPS Error
+- Factory Reset
+- USB Upgrade
+- Software Download Error
+
 
 ### Diagrams
 
