@@ -60,13 +60,13 @@
  */
 
 /** 
- * @defgroup DSSETTINGS_HAL HAL Types & Public API
+ * @addtogroup DSSETTINGS_HAL HAL Types & Public API
  * HAL types and public API definitions.
  * @ingroup DSSETTINGS
  * @{
  */
 
-/** @addtogroup DSHAL_FPD_TYPES HAL Front Panel Display (FPD) Type Definitions
+/** @defgroup DSHAL_FPD_TYPES HAL Front Panel Display (FPD) Type Definitions
  *  @ingroup DSHAL_FPD
  *  @{
  */
@@ -75,9 +75,7 @@
  * @brief dsFPDColor_t is an 4-byte integer that is composed of RGB32 value in the
  * following pattern:
  * 
- * 
- *
- * @todo explain this in words, instead of a formula
+ * Combines the RGB Color values into a single Hex value
  * 
  * FPD_COLOR = (((R8)<<16) | ((G8)<< 8) | ((B8) << 0))
  *
@@ -100,12 +98,12 @@ typedef uint32_t dsFPDColor_t;
  * @brief Define a set of common colors, for backward compatibility 
  * @todo check where these are used
  */
-#define dsFPD_COLOR_BLUE   dsFPDColor_Make(0, 0, 0xFF)          ///< Blue color LED.                 
-#define dsFPD_COLOR_GREEN  dsFPDColor_Make(0, 0xFF, 0)          ///< Green color LED.                
-#define dsFPD_COLOR_RED    dsFPDColor_Make(0xFF, 0, 0x0)        ///< Red color LED.                  
-#define dsFPD_COLOR_YELLOW dsFPDColor_Make(0xFF, 0xFF, 0xE0)    ///< Yellow color LED.               
-#define dsFPD_COLOR_ORANGE dsFPDColor_Make(0xFF, 0x8C, 0x00)    ///< Orange color LED.               
-#define dsFPD_COLOR_WHITE  dsFPDColor_Make(0xFF, 0xFF, 0xFF)    ///< White color LED.               
+#define dsFPD_COLOR_BLUE   dsFPDColor_Make(0, 0, 0xFF)          ///< Blue color LED                 
+#define dsFPD_COLOR_GREEN  dsFPDColor_Make(0, 0xFF, 0)          ///< Green color LED                
+#define dsFPD_COLOR_RED    dsFPDColor_Make(0xFF, 0, 0x0)        ///< Red color LED                 
+#define dsFPD_COLOR_YELLOW dsFPDColor_Make(0xFF, 0xFF, 0xE0)    ///< Yellow color LED               
+#define dsFPD_COLOR_ORANGE dsFPDColor_Make(0xFF, 0x8C, 0x00)    ///< Orange color LED               
+#define dsFPD_COLOR_WHITE  dsFPDColor_Make(0xFF, 0xFF, 0xFF)    ///< White color LED               
 #define dsFPD_COLOR_MAX    6                                    ///< Out of range 
 
 /**
@@ -123,11 +121,11 @@ typedef int32_t dsFPDIndicator_t;
  * Implementation may not have to use these enumerators.
  * @todo change to enum in future phase
  */
-#define    dsFPD_INDICATOR_MESSAGE  0   ///< Message/Mail LED.         
-#define    dsFPD_INDICATOR_POWER    1   ///< Power LED.                
-#define    dsFPD_INDICATOR_RECORD   2   ///< Record LED.               
-#define    dsFPD_INDICATOR_REMOTE   3   ///< Remote LED.               
-#define    dsFPD_INDICATOR_RFBYPASS 4   ///< RF Bypass LED.            
+#define    dsFPD_INDICATOR_MESSAGE  0   ///< Message/Mail LED
+#define    dsFPD_INDICATOR_POWER    1   ///< Power LED          
+#define    dsFPD_INDICATOR_RECORD   2   ///< Record LED               
+#define    dsFPD_INDICATOR_REMOTE   3   ///< Remote LED               
+#define    dsFPD_INDICATOR_RFBYPASS 4   ///< RF Bypass LED            
 #define    dsFPD_INDICATOR_MAX      5   ///< Out of range            
 
 /**
@@ -136,7 +134,7 @@ typedef int32_t dsFPDIndicator_t;
  */
 typedef enum __dsFPDTextDisplay_t
 {
-    dsFPD_TEXTDISP_TEXT,    ///< 7-segment LED display.                  
+    dsFPD_TEXTDISP_TEXT,    ///< 7-segment LED display                 
     dsFPD_TEXTDISP_MAX      ///< Out of range 
 }dsFPDTextDisplay_t;
 
@@ -145,26 +143,26 @@ typedef enum __dsFPDTextDisplay_t
  */
 typedef enum __dsFPDState_t
 {
-    dsFPD_STATE_OFF=0,  ///< FPD State Disable.
-    dsFPD_STATE_ON,     ///< FPD State Enable.
+    dsFPD_STATE_OFF=0,  ///< FPD State Disable
+    dsFPD_STATE_ON,     ///< FPD State Enable
     dsFPD_STATE_MAX,    ///< Out of range 
 }dsFPDState_t;
 
 /**
  * @brief This enumeration defines the front panel display state.
  * 
- * The HAL shall define the responsibility of LED behavior during each of the bellow states.
+ * The HAL shall define the responsibility of LED behavior during each of the below states.
  * 
  */
 typedef enum __dsFPDLedState_t
 {
-    dsFPD_LED_DEVICE_NONE,                      ///< No LED device
-    dsFPD_LED_DEVICE_ACTIVE,                    ///< LED currently active
-    dsFPD_LED_DEVICE_STANDBY,                   ///< LED in standby mode
-    dsFPD_LED_DEVICE_WPS_CONNECTING,            ///< LED connecting to WPS
-    dsFPD_LED_DEVICE_WPS_CONNECTED,             ///< LED connected to WPS
-    dsFPD_LED_DEVICE_WPS_ERROR,                 ///< LED error when trying to connect to WPS
-    dsFPD_LED_DEVICE_FACTORY_RESET,             ///< Reset LED to factory base
+    dsFPD_LED_DEVICE_NONE,                      ///< No LED on device
+    dsFPD_LED_DEVICE_ACTIVE,                    ///< Device is active
+    dsFPD_LED_DEVICE_STANDBY,                   ///< Device is in standby mode
+    dsFPD_LED_DEVICE_WPS_CONNECTING,            ///< Device connecting to WPS
+    dsFPD_LED_DEVICE_WPS_CONNECTED,             ///< Device connected to WPS
+    dsFPD_LED_DEVICE_WPS_ERROR,                 ///< Error when trying to connect to WPS
+    dsFPD_LED_DEVICE_FACTORY_RESET,             ///< Reset Device to factory base
     dsFPD_LED_DEVICE_USB_UPGRADE,               ///< Updating from USB drive
     dsFPD_LED_DEVICE_SOFTWARE_DOWNLOAD_ERROR,   ///< Error in downloading new software update
     dsFPD_LED_DEVICE_MAX                        ///< Out of range 
@@ -175,16 +173,16 @@ typedef enum __dsFPDLedState_t
  */
 typedef enum __dsFPDTimeFormat_t
 {
-    dsFPD_TIME_12_HOUR, ///< 12 hour time format.
-    dsFPD_TIME_24_HOUR, ///< 24 hour time format.
-    dsFPD_TIME_STRING,  ///< Text string.        
+    dsFPD_TIME_12_HOUR, ///< 12 hour time format
+    dsFPD_TIME_24_HOUR, ///< 24 hour time format
+    dsFPD_TIME_STRING,  ///< Text string     
     dsFPD_TIME_MAX      ///< Out of range 
 }dsFPDTimeFormat_t;
 
 /**
  * @brief Maximum Value of FPD Led Brightness
  */
-#define dsFPD_BRIGHTNESS_MAX    100     ///< Maximum Value of FPD LED brightness.
+#define dsFPD_BRIGHTNESS_MAX    100     ///< Maximum Value of FPD LED brightness
 
 /**
  * @brief Type definition for the brightness setting of a front panel indicator LED.
