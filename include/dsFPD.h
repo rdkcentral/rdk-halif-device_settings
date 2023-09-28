@@ -585,13 +585,13 @@ dsError_t dsFPGetLEDState (dsFPDLedState_t* state);
  */
 dsError_t dsFPSetLEDState (dsFPDLedState_t state);
 
+#ifdef __cplusplus
+}
+#endif
+#endif /* __DS_FPD_H__ */
+
 /** @} */ // End of DSHAL_FPD_API doxygen group 
 /** @} */ // End of DS FPD HAL
 /** @} */ // End of Device Settings HAL
 /** @} */ // End of Device Settings Module
 /** @} */ // End of HPK
-
-#ifdef __cplusplus
-}
-#endif
-#endif /* __DS_FPD_H__ */
