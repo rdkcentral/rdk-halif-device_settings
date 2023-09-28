@@ -31,11 +31,11 @@
  *
  */
 
-/** @defgroup Device_Settings Device Settings Module
+/** @addtogroup Device_Settings Device Settings Module
  * @{
  */
 
-/**@defgroup Device_Settings_HAL Device Settings HAL
+/**@addtogroup Device_Settings_HAL Device Settings HAL
  * @par Application API Specification
  * Described herein are the DeviceSettings HAL types and functions that are part of
  * the FPD subsystem. The FPD subsystem manages system-specific HAL operations.
@@ -67,19 +67,6 @@
  * - SoC : System-On-Chip
  * - ms  : miliseconds
  *
- */
-
-/** @addtogroup DS_Manager_HAL DS Manager Hal
- * @par Application API Specification
- * Described herein are the DeviceSettings HAL types and functions that are part of
- * the FPD subsystem. The FPD subsystem manages system-specific HAL operations.
- *  @{
- */
-
-/** @defgroup DSHAL_FPD_API Device Settings HAL FPD Public API
- *
- *
- *  @{
  */
 
 
