@@ -17,8 +17,45 @@
  * limitations under the License.
 */
 
-#ifndef _DS_FRONTPANELSETTINGS_H_
-#define _DS_FRONTPANELSETTINGS_H_
+/**
+ * @addtogroup HPK HPK
+ * @{
+ * @par The Hardware Porting Kit
+ * HPK is the next evolution of the well-defined Hardware Abstraction Layer
+ * (HAL), but augmented with more comprehensive documentation and test suites
+ * that OEM or SOC vendors can use to self-certify their ports before taking
+ * them to RDKM for validation or to an operator for final integration and
+ * deployment. The Hardware Porting Kit effectively enables an OEM and/or SOC
+ * vendor to self-certify their own Video Accelerator devices, with minimal RDKM
+ * assistance.
+ *
+ */
+
+/** @addtogroup Device_Settings Device Settings Module
+ * @{
+ */
+
+/**@addtogroup Device_Settings_HAL Device Settings HAL
+ * @par Application API Specification
+ * Described herein are the DeviceSettings HAL types and functions that are part of
+ * the FPD subsystem. The FPD subsystem manages system-specific HAL operations.
+ *  @{
+ */
+
+/** @defgroup dsFPDSettings_template Device Settings Front Panel Template for FP Configurations
+ *  @{
+ * @par Application API Specification
+ * dsFPD provides an template for various Front Panel Indicator configurations
+ */
+
+/** @defgroup DSHAL_FPD_API Device Settings HAL Front Panel Display Public API
+ *
+ *
+ *  @{
+ */
+
+#ifndef __DS_FRONTPANELSETTINGS_H__
+#define __DS_FRONTPANELSETTINGS_H__
 
 #warning "CONFIGING PLATFORM  FRONTPANELSETTINGS"
 
@@ -40,36 +77,48 @@ namespace {
 #define _DEFAULT_COLOR_MODE 0
 #define dsFPD_COLOR_MAX_NEW 1
 
+/**
+ * @brief Structure that defines the Front Panel Display Color Configurations
+ */
 typedef struct _dsFPDColorConfig_t {
-    int id;
+	int id;
 	dsFPDColor_t color;
 }dsFPDColorConfig_t;
 
+/**
+ * @brief Structure that defines the Front Panel Display Indicator Configurations
+ */
 typedef struct _dsFPDIndicatorConfig_t {
-	dsFPDIndicator_t 		id;
+	dsFPDIndicator_t 	id;
 	dsFPDColorConfig_t *	supportedColors;
-	int						maxBrightness;
-	int 					maxCycleRate;
-    int                     minBrightness;
-    int                     levels;
-    int 					colorMode;
+	int			maxBrightness;
+	int 			maxCycleRate;
+        int                     minBrightness;
+        int                     levels;
+        int 			colorMode;
 } dsFPDIndicatorConfig_t;
 
+/**
+ * @brief Structure that defines the Front Panel Text Display Configurations
+ */
 typedef struct _dsFPDTextDisplayConfig_t {
-	dsFPDTextDisplay_t 		id;
-	const char * 			name;
+	dsFPDTextDisplay_t 	id;
+	const char * 		name;
 	dsFPDColorConfig_t *	supportedColors;
-	int						maxBrightness;
-	int 					maxCycleRate;
-	const char *			supportedCharacters;
-	int 					columns;
-	int 					rows;
-	int						maxHorizontalIterations;
-	int 					maxVerticalIterations;
-    int                     levels;
-    int 					colorMode;
+	int			maxBrightness;
+	int 			maxCycleRate;
+	const char *		supportedCharacters;
+	int 			columns;
+	int 			rows;
+	int			maxHorizontalIterations;
+	int 			maxVerticalIterations;
+    	int                     levels;
+    	int 			colorMode;
 } dsFPDTextDisplayConfig_t;
 
+/**
+ * @brief Array that holds various Front Panel Indicator Colors
+ */
 static   dsFPDColorConfig_t  kIndicatorColors[dsFPD_COLOR_MAX_NEW] = {
 	{
 		/*.Id = */ 2,
@@ -77,31 +126,37 @@ static   dsFPDColorConfig_t  kIndicatorColors[dsFPD_COLOR_MAX_NEW] = {
 	},
 };
 
+/**
+ * @brief Array that holds Front Panel Indicator Configurations of various Indicators
+ */
 static const dsFPDIndicatorConfig_t kIndicators[] = {
 	{
-		/*.id = */ 				dsFPD_INDICATOR_POWER,
-		/*.supportedColors = */ kIndicatorColors,
-		/*.maxBrightness   = */ _MAX_BRIGHTNESS,
-		/*.maxCycleRate    = */ _MAX_CYCLERATE,
-		/*.minBrightness   = */ _MIN_BRIGHTNESS,
-        /*.levels          = */ _DEFAULT_LEVELS,
-        /*.colorMode       = */ _DEFAULT_COLOR_MODE,
+		/*.id = */ 			dsFPD_INDICATOR_POWER,
+		/*.supportedColors = */		kIndicatorColors,
+		/*.maxBrightness   = */ 	_MAX_BRIGHTNESS,
+		/*.maxCycleRate    = */ 	_MAX_CYCLERATE,
+		/*.minBrightness   = */ 	_MIN_BRIGHTNESS,
+        	/*.levels          = */ 	_DEFAULT_LEVELS,
+        	/*.colorMode       = */ 	_DEFAULT_COLOR_MODE,
 	},
 };
 
+/**
+ * @brief Array that holds Front Panel Text Display Configurations
+ */
 static const dsFPDTextDisplayConfig_t  kTextDisplays[dsFPD_TEXTDISP_MAX] = {
 	{
-		/*.id = */ 					dsFPD_TEXTDISP_TEXT,
-		/*.name   = */ 				"Text",
+		/*.id = */ 			dsFPD_TEXTDISP_TEXT,
+		/*.name   = */ 			"Text",
 		/*.supportedColors =  */	kIndicatorColors,
 		/*.maxBrightness = */		_MAX_BRIGHTNESS,
-		/*.maxCycleRate = 	 */		_MAX_CYCLERATE,
+		/*.maxCycleRate = 	 */	_MAX_CYCLERATE,
 		/*.supportedCharacters=*/ 	"ABCDEFG",
-		/*.columns = */			 	_MAX_HORZ_COLS,
-		/*.rows= */ 			 	_MAX_VERT_ROWS,
-		/*.horizontal iterations =*/_MAX_HORZ_ITER,
+		/*.columns = */			_MAX_HORZ_COLS,
+		/*.rows= */ 			_MAX_VERT_ROWS,
+		/*.horizontal iterations =*/    _MAX_HORZ_ITER,
 		/*.vertical iterations */ 	_MAX_VERT_ITER,
-		/*.levels */ 	            _DEFAULT_LEVELS,
+		/*.levels */ 	                _DEFAULT_LEVELS,
 		/*.colorMode       = */		_DEFAULT_COLOR_MODE
 	},
 };
@@ -110,5 +165,10 @@ static const dsFPDTextDisplayConfig_t  kTextDisplays[dsFPD_TEXTDISP_MAX] = {
 }
 }
 #endif
+#endif /* __DS_FRONTPANELSETTINGS_H__ */
 
-#endif /* RPFRONTPANELSETTINGS_H_ */
+/** @} */ // End of DSHAL_FPD_API doxygen group 
+/** @} */ // End of DS FP Settings Template
+/** @} */ // End of Device Settings HAL
+/** @} */ // End of Device Settings Module
+/** @} */ // End of HPK
