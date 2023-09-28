@@ -82,7 +82,7 @@ This interface is required to support a single instantiation with a single proce
 
 ### Memory Model
 
-This interface is not required to allocate any memory. Any pointers created by the interface should be cleaned up upon termination.
+This interface is not required to allocate any memory. Any pointers created by the interface must be cleaned up upon termination.
 
 ### Power Management Requirements
 
@@ -131,7 +131,7 @@ The `HAL` implementation is expected to released under the Apache License 2.0.
 
 ### Build Requirements
 
-The source code should build into a shared library for Device Settings as this module is a part of Device Settings and must be named as `libdshal.so`. The build mechanism must be independent of Yocto.
+The source code must build into a shared library for Device Settings as this module is a part of Device Settings and must be named as `libdshal.so`. The build mechanism must be independent of Yocto.
  
 ### Variability Management
 
@@ -153,11 +153,9 @@ The `caller` is expected to have complete control over the life cycle of the `HA
 
 1. Initialize the `HAL` using function: `dsHostInit()` before making any other `API` calls.  If `dsHostInit()` call fails, the `HAL` must return the respective error code, so that the `caller` can retry the operation.
 
-2. The `caller` can call `dsGetCPUTemperature()`, `dsGetHostEDID()`, `dsGetPreferredSleepMode()` and `dsGetSocIDFromSDK()` to query the needed information.
+2. The `caller` can call `dsGetCPUTemperature()`, `dsGetHostEDID()` and `dsGetSocIDFromSDK()` to query the needed information.
 
-3. The `caller` can call `dsSetPreferredSleepMode()` to set the needed information.
-
-4. De-initialized the `HAL` using the function: `dsHostTerm()`
+3. De-initialized the `HAL` using the function: `dsHostTerm()`
 
 ### Diagrams
 
@@ -188,12 +186,6 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     Note over HAL: Returns the Host EDID
     HAL->>Driver:Getting the Host EDID
     Driver-->>HAL:return
-    HAL-->>Caller:return
-    Caller ->>HAL:dsSetPreferredSleepMode()
-    Note over HAL: Sets the preferred sleep mode
-    HAL-->>Caller:return
-    Caller ->>HAL:dsGetPreferredSleepMode()
-    Note over HAL: Gets the preferred sleep mode
     HAL-->>Caller:return
     Caller ->>HAL:dsHostTerm()
     HAL->>Driver:Terminating SoC Power Manager

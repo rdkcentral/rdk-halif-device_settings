@@ -99,7 +99,6 @@ extern "C" {
  * 
  * 
  */
-
 dsError_t dsHostInit();
 
 /**
@@ -117,57 +116,7 @@ dsError_t dsHostInit();
  * @see dsHostInit()
  * 
  */
-
 dsError_t dsHostTerm();
-
-/**
- * @brief Gets the preferred sleep mode
- * 
- * This function gets the preferred sleep mode
- *
- * @param[out] pMode    - Preferred sleep mode. @see dsSleepMode_t
- * 
- *
- * @return dsError_t                        - Status
- * @retval dsERR_NONE                       - Success
- * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
- * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
- * @retval dsERR_GENERAL                    - Underlying undefined platform error
- * 
- * @pre dsHostInit() must be called before this function
- * 
- * @warning  This API is Not thread safe.
- * 
- * @see dsSetPreferredSleepMode()
- * 
- */
-
-dsError_t dsGetPreferredSleepMode(dsSleepMode_t *pMode);
-
-/**
- * @brief Sets the preferred sleep mode
- * 
- * This function sets the preferred sleep mode
- *
- * @param[in] mode  - Preferred sleep mode. @see dsSleepMode_t
- *
- * @return dsError_t                       - Status
- * @retval dsERR_NONE                       - Success
- * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
- * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
- * @retval dsERR_GENERAL                    - Underlying undefined platform error
- * 
- * @pre dsHostInit() must be called before this function
- * 
- * @warning  This API is Not thread safe.
- * 
- * @see dsGetPreferredSleepMode()
- * 
- */
-
-dsError_t dsSetPreferredSleepMode(dsSleepMode_t mode);
 
 /**
  * @brief Gets the CPU temperature in centigrade
@@ -186,7 +135,6 @@ dsError_t dsSetPreferredSleepMode(dsSleepMode_t mode);
  * @warning  This API is Not thread safe.
  * 
  */
-
 dsError_t dsGetCPUTemperature(float *cpuTemperature);
 
 /**
@@ -206,7 +154,6 @@ dsError_t dsGetCPUTemperature(float *cpuTemperature);
  * @warning  This API is Not thread safe.
  * 
  */
-
 dsError_t dsGetSocIDFromSDK(char *socID);
 
 /**
@@ -229,7 +176,6 @@ dsError_t dsGetSocIDFromSDK(char *socID);
  * @warning  This API is Not thread safe.
  * 
  */
-
 dsError_t dsGetHostEDID(unsigned char *edid, int *length);
 
 /** @} */ // End of DSHAL_HOST_API doxygen group 
