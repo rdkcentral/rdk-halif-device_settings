@@ -95,7 +95,7 @@ extern "C" {
  * @warning  This API is Not thread safe.
  * @see dsHostTerm()
  * 
- * @todo dsErr_General to be removed (from all functions) in later phase.
+ * @todo dsErr_General to be removed (from all functions) in later phase
  * 
  * 
  */
@@ -104,7 +104,7 @@ dsError_t dsHostInit();
 /**
  * @brief Terminates the Host sub-system
  *
- * This function has to release all the resources allocated during the init function.
+ * This function has to release all the resources allocated in the initialisation function.
  *
  * @return dsError_t                - Status
  * @retval dsERR_NONE               - Success 
@@ -121,7 +121,7 @@ dsError_t dsHostTerm();
 /**
  * @brief Gets the CPU temperature in centigrade
  * 
- * @param[out] cpuTemperature   - CPU temperature value returned in centigrade.
+ * @param[out] cpuTemperature   - CPU temperature value returned in centigrade
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
@@ -140,7 +140,7 @@ dsError_t dsGetCPUTemperature(float *cpuTemperature);
 /**
  * @brief Returns the SOC ID
  *
- * @param[out] socID    - 8 byte Chip ID programmed to the CHIP One Time Programmable area.
+ * @param[out] socID    - 8 byte Chip ID programmed to the CHIP One Time Programmable area
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
