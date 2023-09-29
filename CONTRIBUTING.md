@@ -1,6 +1,15 @@
-Contributing When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
+# Contributing
 
-Please note we have a code of conduct, please follow it in all your interactions with the project.
+- If you wish to make code contributions to this project, the source is hosted at [github.com/rdkcentral](https://github.com/rdkcentral).
 
-Pull Request Process Ensure any install or build dependencies are removed before the end of the layer when doing a build. Update the README.md with details of changes to the interface, this includes new environment variables, exposed ports, useful file locations and container parameters. Increase the version numbers in any examples files and the README.md to the new version that this Pull Request would represent. You may merge the Pull Request in once you have the sign-off of two other developers, or if you do not have permission to do that, you may request the second reviewer to merge it for you.
+You can submit your changes for review via that site, by raising an issue in github, (https://github.com/rdkcentral/xxxx/issues), and following the sequence below.
 
+- create a branch with a name follow the guidelines gh(x)_(synopsis)
+- where x is the ticket number
+- where synopsis is a short synopsis for the reason for the branch.
+- create a pull request (https://github.com/rdkcentral/xxxx/compare) when the code changes are ready for review.
+- The team will review, and if accepted your changes will be merged to the mainline.
+
+- In order to contribute code, first-time users are requested to agree to the [license](https://wiki.rdkcentral.com/signup.action).
+
+- where `xxxx` is your module name
