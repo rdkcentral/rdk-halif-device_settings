@@ -87,6 +87,7 @@ typedef uint32_t dsFPDColor_t;
 
 /**
  * @brief Defines the color values in RGB format.
+ * @todo Check and see where the FPDColor calls are used, and if we need them or not.
 */
 #define dsFPDColor_Make(R8,G8,B8)  (((R8)<<16) | ((G8)<< 8) | ((B8) )) ///< combine Red Green Blue value to a single Hex value
 #define dsFPDColor_R(RGB32)    (((RGB32) >> 16) & 0xFF)                ///< Extract Red value form RGB value
@@ -95,6 +96,7 @@ typedef uint32_t dsFPDColor_t;
 
 /**
  * @brief Define a set of common colors, for backward compatibility .
+ * @todo check where these are used
  */
 #define dsFPD_COLOR_BLUE   dsFPDColor_Make(0, 0, 0xFF)          ///< Blue color LED                 
 #define dsFPD_COLOR_GREEN  dsFPDColor_Make(0, 0xFF, 0)          ///< Green color LED                
@@ -109,6 +111,7 @@ typedef uint32_t dsFPDColor_t;
  * LED entity on the front panel. Each HAL implementation is free
  * to assign any number to its LEDs. The mapping of LED ID to its
  * display name (such as "Record LED") is done outside HAL library.
+ * @todo Look into how this is supposed to work
  * 
  * @see dsFPDIndicator_isValid
  */
