@@ -116,9 +116,11 @@ typedef uint32_t dsFPDColor_t;
 
 /**
  * @brief dsFPDIndicator_t is an ID number that  uniquely identifies a HAL
- * LED entity on the front panel. Each HAL implementation is free
- * to assign any number to its LEDs. The mapping of LED ID to its
- * display name (such as "Record LED") is done outside HAL library.
+ * LED entity on the front panel. 
+ * 
+ * The valid values for dsFPDIndicator_t are listed bellow. 
+ * @see dsFPD_INDICATOR_MESSAGE, dsFPD_INDICATOR_POWER, dsFPD_INDICATOR_RECORD, 
+ * @see dsFPD_INDICATOR_REMOTE, dsFPD_INDICATOR_RFBYPASS, dsFPD_INDICATOR_MAX
  * 
  * @see dsFPDIndicator_isValid
  */
