@@ -221,29 +221,28 @@ The various `FP` `LED` states are as follows:
  ```
 
 
-<br>LEGEND:</br>
+<b> LEGEND: </b>
 
-ds_FP_SetMethods:</br>
-dsSetFPBlink(),</br>
-dsSetFPBrightness(),</br> 
-dsSetFPState(),</br>
-dsSetFPColor(),</br>
-dsSetFPTime(),</br>
-dsSetFPText(),</br>
-dsSetFPTextBrightness(),</br>
-dsSetFPScroll(),</br>
-dsSetFPDBrightness(),</br>
-dsSetFPScroll(),</br>
-dsSetFPDBrightness(),</br>
-dsSetFPDColor(),</br>
-dsSetFPTimeFormat(),</br>
-dsSetFPDMode(),</br>
-dsFPSetLEDState()</br>
+<b>ds_FP_SetMethods:</b>
+dsSetFPBlink(), dsSetFPBrightness(),
+dsSetFPState(),
+dsSetFPColor(),
+dsSetFPTime(),
+dsSetFPText(),
+dsSetFPTextBrightness(),
+dsSetFPScroll(),
+dsSetFPDBrightness(),
+dsSetFPScroll(),
+dsSetFPDBrightness(),
+dsSetFPDColor(),
+dsSetFPTimeFormat(),
+dsSetFPDMode(),
+dsFPSetLEDState()
 
-ds_FP_GetMethods:</br>
-dsGetFPState(),</br>
-dsGetFPBrightness(),</br>
-dsGetFPColor(),</br>
-dsGetFPTextBrightness(),</br>
-dsGetFPTimeFormat(),</br>
-dsFPGetLEDState()</br>
+<b>ds_FP_GetMethods:</b>
+dsGetFPState(),
+dsGetFPBrightness(),
+dsGetFPColor(),
+dsGetFPTextBrightness(),
+dsGetFPTimeFormat(),
+dsFPGetLEDState()
