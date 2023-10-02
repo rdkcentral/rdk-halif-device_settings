@@ -46,7 +46,7 @@
  */
 
 /**
- * @addtogroup HPK HPK
+ * @addtogroup HPK Hardware Porting Kit
  * @{
  * @par The Hardware Porting Kit
  * HPK is the next evolution of the well-defined Hardware Abstraction Layer
@@ -59,15 +59,25 @@
  *
  */
 
-/** 
- * @addtogroup DSSETTINGS_HAL HAL Types & Public API
- * HAL types and public API definitions.
- * @ingroup DSSETTINGS
+/** @addtogroup Device_Settings Device Settings Module
  * @{
  */
 
-/** @defgroup DSHAL_FPD_TYPES HAL Front Panel Display (FPD) Type Definitions
- *  @ingroup DSHAL_FPD
+/** @addtogroup Device_Settings_HAL Device Settings HAL
+ * @par Application API Specification
+ * Described herein are the DeviceSettings HAL types and functions that are part of
+ * the FPD subsystem. The FPD subsystem manages system-specific HAL operations.
+ *  @{
+ */
+
+/** @addtogroup dsFPD_HAL Device Settings Front Panel Display HAL
+ *  @{
+ * @par Application API Specification
+ * dsFPD HAL provides an interface for managing Front Panel Display settings
+ */
+
+/** @defgroup DSHAL_FPD_TYPES Device Settings HAL Front Panel Display (FPD) Type Definitions
+ *  @ingroup dsFPD_HAL
  *  @{
  */
 
@@ -200,9 +210,8 @@ typedef enum __dsFPDMode_t{
     dsFPD_MODE_MAX,     ///< Out of range 
 } dsFPDMode_t;
 
-/* End of DSHAL_FPD_TYPES doxygen group */
-/**
- * @}
- */
-/** @} */ // End of DSSETTINGS_HAL HAL Data Types
+/** @} */ // End of DSHAL_FPD_TYPES
+/** @} */ // End of DS FPD HAL
+/** @} */ // End of Device Settings HAL
+/** @} */ // End of Device Settings Module
 /** @} */ // End of HPK

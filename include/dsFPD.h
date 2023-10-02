@@ -18,7 +18,7 @@
 */
 
 /**
- * @addtogroup HPK HPK
+ * @addtogroup HPK Hardware Porting Kit
  * @{
  * @par The Hardware Porting Kit
  * HPK is the next evolution of the well-defined Hardware Abstraction Layer
@@ -35,7 +35,7 @@
  * @{
  */
 
-/**@addtogroup Device_Settings_HAL Device Settings HAL
+/** @addtogroup Device_Settings_HAL Device Settings HAL
  * @par Application API Specification
  * Described herein are the DeviceSettings HAL types and functions that are part of
  * the FPD subsystem. The FPD subsystem manages system-specific HAL operations.
@@ -48,9 +48,7 @@
  * dsFPD HAL provides an interface for managing Front Panel Display settings
  */
 
-/** @defgroup DSHAL_FPD_API Device Settings HAL Front Panel Display Public API
- *
- *
+/** @defgroup DSHAL_FPD_API Device Settings HAL Front Panel Display Public APIs
  *  @{
  */
 
@@ -533,7 +531,7 @@ dsError_t dsSetFPDMode (dsFPDMode_t eMode);
  * 
  * This function gets the current power LED state
  *
- * @param[out] returns - Current LED state. @see dsFPDLedState_t
+ * @param[out] state - Current LED state. @see dsFPDLedState_t
  *
  * @return dsError_t                      -  Status
  * @retval dsERR_NONE                     -  Success
@@ -577,7 +575,7 @@ dsError_t dsFPSetLEDState (dsFPDLedState_t state);
 #endif
 #endif /* __DS_FPD_H__ */
 
-/** @} */ // End of DSHAL_FPD_API doxygen group 
+/** @} */ // End of DSHAL FPD API
 /** @} */ // End of DS FPD HAL
 /** @} */ // End of Device Settings HAL
 /** @} */ // End of Device Settings Module
