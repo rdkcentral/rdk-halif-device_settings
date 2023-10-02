@@ -57,7 +57,7 @@
 #ifndef __DS_FRONTPANELSETTINGS_H__
 #define __DS_FRONTPANELSETTINGS_H__
 
-#warning "CONFIGING PLATFORM  FRONTPANELSETTINGS"
+#warning "CONFIGING PLATFORM FRONTPANELSETTINGS"
 
 #include "include/dsFPDTypes.h"
 
@@ -89,31 +89,31 @@ typedef struct _dsFPDColorConfig_t {
  * @brief Structure that defines the Front Panel Display Indicator Configurations
  */
 typedef struct _dsFPDIndicatorConfig_t {
-	dsFPDIndicator_t 	id;
-	dsFPDColorConfig_t *	supportedColors;
-	int			maxBrightness;
-	int 			maxCycleRate;
-        int                     minBrightness;
-        int                     levels;
-        int 			colorMode;
+	dsFPDIndicator_t id;
+	dsFPDColorConfig_t * supportedColors;
+	int	maxBrightness;
+	int maxCycleRate;
+    int minBrightness;
+    int levels;
+    int colorMode;
 } dsFPDIndicatorConfig_t;
 
 /**
  * @brief Structure that defines the Front Panel Text Display Configurations
  */
 typedef struct _dsFPDTextDisplayConfig_t {
-	dsFPDTextDisplay_t 	id;
-	const char * 		name;
-	dsFPDColorConfig_t *	supportedColors;
-	int			maxBrightness;
-	int 			maxCycleRate;
-	const char *		supportedCharacters;
-	int 			columns;
-	int 			rows;
-	int			maxHorizontalIterations;
-	int 			maxVerticalIterations;
-    	int                     levels;
-    	int 			colorMode;
+	dsFPDTextDisplay_t id;
+	const char * name;
+	dsFPDColorConfig_t * supportedColors;
+	int	maxBrightness;
+	int maxCycleRate;
+	const char * supportedCharacters;
+	int columns;
+	int rows;
+	int	maxHorizontalIterations;
+	int maxVerticalIterations;
+    int levels;
+    int colorMode;
 } dsFPDTextDisplayConfig_t;
 
 /**

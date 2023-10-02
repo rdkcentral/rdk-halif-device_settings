@@ -81,6 +81,10 @@
  *  @{
  */
 
+
+#ifndef __DS_FPD_TYPES_H__
+#define __DS_FPD_TYPES_H__
+
 /**
  * @brief dsFPDColor_t is an 4-byte integer that is composed of RGB32 value in the
  * following pattern:
@@ -131,12 +135,12 @@ typedef int32_t dsFPDIndicator_t;
  * Implementation may not have to use these enumerators.
  * @todo change to enum in future phase
  */
-#define    dsFPD_INDICATOR_MESSAGE  0   ///< Message/Mail LED
-#define    dsFPD_INDICATOR_POWER    1   ///< Power LED          
-#define    dsFPD_INDICATOR_RECORD   2   ///< Record LED               
-#define    dsFPD_INDICATOR_REMOTE   3   ///< Remote LED               
-#define    dsFPD_INDICATOR_RFBYPASS 4   ///< RF Bypass LED            
-#define    dsFPD_INDICATOR_MAX      5   ///< Out of range            
+#define dsFPD_INDICATOR_MESSAGE  0   ///< Message/Mail LED
+#define dsFPD_INDICATOR_POWER    1   ///< Power LED
+#define dsFPD_INDICATOR_RECORD   2   ///< Record LED
+#define dsFPD_INDICATOR_REMOTE   3   ///< Remote LED
+#define dsFPD_INDICATOR_RFBYPASS 4   ///< RF Bypass LED
+#define dsFPD_INDICATOR_MAX      5   ///< Out of range
 
 /**
  * @brief This enumeration defines the FPD text display types.
@@ -208,6 +212,8 @@ typedef enum __dsFPDMode_t{
     dsFPD_MODE_CLOCK,   ///< only clock mode is supported
     dsFPD_MODE_MAX,     ///< Out of range 
 } dsFPDMode_t;
+
+#endif /* __DS_FPD_TYPES_H__ */
 
 /** @} */ // End of DSHAL_FPD_TYPES
 /** @} */ // End of DS FPD HAL
