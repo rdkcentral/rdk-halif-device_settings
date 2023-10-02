@@ -67,11 +67,11 @@ style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
 This interface provides a set of `APIs` to facilitate communication to Front Panel `LED` Display `SoC` Drivers.
 
 
-The brightness, color and text of Front Panel `LEDs` can be set or retrieved. It also provides `API` to enable or disable the specified discrete `LED` on the Front Panel Display. 
+The brightness, color and text of Front Panel `LEDs` can be set or retrieved. This interface also provides `API` to enable or disable the specified discrete `LED` on the Front Panel Display.
 
 ## Component Runtime Execution Requirements
  
-The component must adeptly manage resources to prevent issues like memory leaks and excessive utilization. It must also meet performance goals for response time, throughput, and resource use as per the platform's capabilities.
+This interface must adeptly manage resources to prevent issues like memory leaks and excessive utilization. It must also meet performance goals for response time, throughput, and resource use as per the platform's capabilities.
 
 Failure to meet these requirements will likely result in undefined and unexpected behaviour.
 
@@ -95,7 +95,7 @@ This interface is not required to allocate any memory.
 ### Power Management Requirements
 
 The `FPD` `HAL` is not involved in the power management operation directly. 
-But the `caller` will initiate the change in `LED` as part of power management handling.
+However, the `caller` will initiate the change in `LED` as part of power management handling.
 
 The `caller` is responsible for driving `LED` status in accordance with power mode change.
 
@@ -120,7 +120,7 @@ There is no requirement for the interface to persist any setting information. `C
 
 ### Logging and debugging requirements
 
-This interface is required to support DEBUG, INFO and ERROR messages. INFO and DEBUG should be disabled by default and enabled when required.
+This interface is required to support DEBUG, INFO and ERROR messages. INFO and DEBUG must be disabled by default and enabled when required.
 
 ### Memory and performance requirements
 

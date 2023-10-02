@@ -54,8 +54,8 @@
  * dsFPD provides an template for various Front Panel Indicator configurations
  */
 
-#ifndef __DS_FRONTPANELSETTINGS_H__
-#define __DS_FRONTPANELSETTINGS_H__
+#ifndef __DS_FPD_SETTINGS_H__
+#define __DS_FPD_SETTINGS_H__
 
 #warning "CONFIGING PLATFORM FRONTPANELSETTINGS"
 
@@ -165,7 +165,7 @@ static const dsFPDTextDisplayConfig_t  kTextDisplays[dsFPD_TEXTDISP_MAX] = {
 }
 }
 #endif
-#endif /* __DS_FRONTPANELSETTINGS_H__ */
+#endif /* __DS_FPD_SETTINGS_H__ */
 
 /** @} */ // End of DS FP Settings Template
 /** @} */ // End of DS FPD HAL

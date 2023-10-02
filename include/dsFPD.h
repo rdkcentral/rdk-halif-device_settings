@@ -80,7 +80,7 @@ extern "C" {
 #endif
 
 /**
- * @brief Initializes the Front Panel Display(FPD) sub-module of Device Settings HAL
+ * @brief Initializes the Front Panel Display (FPD) sub-module of Device Settings HAL
  *
  * This function allocates required resources for Front Panel and is required to be called before the other APIs in this module.
  * 
@@ -101,7 +101,7 @@ extern "C" {
 dsError_t dsFPInit (void);
 
 /**
- * @brief Sets blink pattern of specified FP LED
+ * @brief Sets blink pattern of specified Front Panel Display LED
  * 
  * This function is used to set the individual discrete LED to blink for a specified number of iterations with blink interval.
  * This function must return dsERR_OPERATION_NOT_SUPPORTED if FP State is "OFF".
@@ -109,8 +109,7 @@ dsError_t dsFPInit (void);
  * @param[in] eIndicator        -  FPD indicator index. @see dsFPDIndicator_t
  * @param[in] uBlinkDuration    -  Blink interval. The time in ms the text display will remain ON 
  *                                   during one blink iteration.
- * @param[in] uBlinkIterations  -  The number of iterations per minute data will 
- *                                   blink.
+ * @param[in] uBlinkIterations  -  The number of iterations per minute data will blink
  * 
  * @return dsError_t                      -  Status
  * @retval dsERR_NONE                     -  Success
@@ -128,7 +127,7 @@ dsError_t dsFPInit (void);
 dsError_t dsSetFPBlink (dsFPDIndicator_t eIndicator, unsigned int uBlinkDuration, unsigned int uBlinkIterations);
 
 /**
- * @brief Sets the brightness level of specified Front Panel LED
+ * @brief Sets the brightness level of specified Front Panel Display LED
  * 
  * This function will set the brightness of the specified discrete LED on the Front
  * Panel Display to the specified brightness level. This function must return dsERR_OPERATION_NOT_SUPPORTED
@@ -155,7 +154,7 @@ dsError_t dsSetFPBlink (dsFPDIndicator_t eIndicator, unsigned int uBlinkDuration
 dsError_t dsSetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t eBrightness);
 
 /**
- * @brief Gets the brightness level of specified Front Panel LED
+ * @brief Gets the brightness level of specified Front Panel Display LED
  * 
  * This function returns the brightness level of the specified discrete LED on the Front
  * Panel. This function must return dsERR_OPERATION_NOT_SUPPORTED if FP State is "OFF".
@@ -181,7 +180,7 @@ dsError_t dsSetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t eBri
 dsError_t dsGetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t *pBrightness);
 
 /**
- * @brief Sets the Front Panel indicator state of specified discrete LED
+ * @brief Sets the indicator state of specified discrete Front Panel Display LED
  *
  * @param[in] eIndicator - FPD indicator index. @see dsFPDIndicator_t
  * @param[in] state      - Indicates the state of the indicator to be set. @see dsFPDState_t
@@ -203,7 +202,7 @@ dsError_t dsGetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t *pBr
 dsError_t dsSetFPState (dsFPDIndicator_t eIndicator, dsFPDState_t state);
 
 /**
- * @brief Gets the Front Panel Indicator state of Specified discrete LED
+ * @brief Gets the indicator state of specified discrete Front Panel Display LED
  * 
  * @param[in]  eIndicator - FPD indicator index. @see dsFPDIndicator_t
  * @param[out] state      - current state of the specified indicator. @see dsFPDState_t
@@ -225,7 +224,7 @@ dsError_t dsSetFPState (dsFPDIndicator_t eIndicator, dsFPDState_t state);
 dsError_t dsGetFPState (dsFPDIndicator_t eIndicator, dsFPDState_t* state);
 
 /**
- * @brief Sets the color of specified Front Panel LED
+ * @brief Sets the color of specified Front Panel Display LED
  * 
  * This function sets the color of the specified Front Panel Indicator LED, if the 
  * indicator supports it (i.e. is multi-colored). It must return
@@ -251,7 +250,7 @@ dsError_t dsGetFPState (dsFPDIndicator_t eIndicator, dsFPDState_t* state);
 dsError_t dsSetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t eColor);
 
 /**
- * @brief  Gets the color of specified Front Panel LED
+ * @brief  Gets the color of specified Front Panel Display LED
  * 
  * This function gets the color of the specified Front Panel Indicator LED, if the
  * indicator supports it (i.e. is multi-colored). It must return
@@ -277,7 +276,7 @@ dsError_t dsSetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t eColor);
 dsError_t dsGetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t *pColor);
 
 /**
- * @brief Sets the time on 7-Segment Display
+ * @brief Sets the time on 7-Segment Front Panel Display LEDs
  * 
  * This function sets the 7-segment display LEDs to show the time in specified format.
  * The format (12/24-hour) has to be specified. If there are no 7-Segment display LEDs present on the
@@ -305,7 +304,7 @@ dsError_t dsGetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t *pColor);
 dsError_t dsSetFPTime (dsFPDTimeFormat_t eTimeFormat, const unsigned int uHour, const unsigned int uMinutes);
 
 /**
- * @brief Displays the specified text on 7-segment display
+ * @brief Displays the specified text on 7-segment Front Panel Display LEDs
  * 
  * This function is used to set the 7-segment display LEDs to show the given text.  
  * If there are no 7-Segment display LEDs present on the device or if the FP State is "OFF",
@@ -331,7 +330,7 @@ dsError_t dsSetFPTime (dsFPDTimeFormat_t eTimeFormat, const unsigned int uHour, 
 dsError_t dsSetFPText(const char* pText);
 
 /**
- * @brief Sets the brightness level of 7-segment display
+ * @brief Sets the brightness level of 7-segment Front Panel Display LEDs
  * 
  * This function will set the brightness of the specified 7-segment display LEDs on the Front
  * Panel Display to the specified brightness level. If there are no 7-Segment display LEDs present
@@ -358,7 +357,7 @@ dsError_t dsSetFPText(const char* pText);
 dsError_t dsSetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_t eBrightness);
 
 /**
- * @brief Gets the brightness of 7-segment display LEDs
+ * @brief Gets the brightness of 7-segment Front Panel Display LEDs
  * 
  * This function will get the brightness of the specified 7-segment display LEDs on the Front
  * Panel Text Display. If there are no 7-segment display LEDs present or if the FP State is "OFF"
@@ -384,7 +383,7 @@ dsError_t dsSetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_
 dsError_t dsGetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_t *eBrightness);
 
 /**
- * @brief Enables/Disables the clock display of Front Panel
+ * @brief Enables/Disables the clock display of Front Panel Display LEDs
  * 
  * This function will enable or disable displaying of clock. It will return dsERR_OPERATION_NOT_SUPPORTED
  * if Clock display is not available
@@ -407,7 +406,7 @@ dsError_t dsGetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_
 dsError_t dsFPEnableCLockDisplay (int enable);
 
 /**
- * @brief Enables Text Scrolling on 7-segment display
+ * @brief Enables Text Scrolling on 7-segment Front Panel Display LEDs
  * 
  * This function scrolls the text in the 7-segment display LEDs for the given number of iterations.
  * If there are no 7-segment display LEDs present or if the FP State is "OFF" then
@@ -454,7 +453,7 @@ dsError_t dsSetFPScroll(unsigned int uScrollHoldOnDur, unsigned int uHorzScrollI
 dsError_t dsFPTerm(void);
 
 /**
- * @brief Sets the 7-segment display LEDs
+ * @brief Sets the current time format on the 7-segment Front Panel Display LEDs
  *
  * This function sets the 7-segment display LEDs to show the
  * specified time in specified format. It must return dsERR_OPERATION_NOT_SUPPORTED 
@@ -482,7 +481,7 @@ dsError_t dsFPTerm(void);
 dsError_t dsSetFPTimeFormat (dsFPDTimeFormat_t eTimeFormat);
 
  /**
- * @brief Gets the current time format
+ * @brief Gets the current time format on the 7-segment Front Panel Display LEDs
  *
  * This function gets the current time format set on 7-segment display LEDs panel.
  * It must return dsERR_OPERATION_NOT_SUPPORTED if the underlying hardware does not 
@@ -508,7 +507,7 @@ dsError_t dsSetFPTimeFormat (dsFPDTimeFormat_t eTimeFormat);
 dsError_t dsGetFPTimeFormat (dsFPDTimeFormat_t *pTimeFormat);
 
 /**
- * @brief Sets the display mode of the FPD text
+ * @brief Sets the display mode of the Front Panel Display LEDs
  *
  * This function sets the display mode (clock or text or both) for FPD.
  * It must return dsERR_OPERATION_NOT_SUPPORTED if the underlying hardware does not 
@@ -531,7 +530,7 @@ dsError_t dsGetFPTimeFormat (dsFPDTimeFormat_t *pTimeFormat);
 dsError_t dsSetFPDMode (dsFPDMode_t eMode);
 
 /**
- * @brief Gets the current power LED state
+ * @brief Gets the current power Front Panel Display LED state
  * 
  * This function gets the current power LED state
  *
@@ -553,7 +552,7 @@ dsError_t dsSetFPDMode (dsFPDMode_t eMode);
 dsError_t dsFPGetLEDState (dsFPDLedState_t* state);
 
 /**
- * @brief Sets the power LED state
+ * @brief Sets the power Front Panel Display LED state
  * 
  * This function sets the power LED state
  *
