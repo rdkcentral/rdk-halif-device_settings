@@ -34,11 +34,11 @@
  * -# None
  *
  * @par Abbreviations
- * - FPD:     Front-Panel Display. *
- * - HAL:     Hardware Abstraction Layer.
- * - RF:      Radio Frequency.
+ * - FPD:     Front-Panel Display
+ * - HAL:     Hardware Abstraction Layer
+ * - RF:      Radio Frequency
  * - RGB:     Red Green Blue
- * - LED:     Light-Emitting Diode.
+ * - LED:     Light-Emitting Diode
  *
  * @par Implementation Notes
  * -# None
@@ -75,7 +75,7 @@
  * @brief dsFPDColor_t is an 4-byte integer that is composed of RGB32 value in the
  * following pattern:
  * 
- * Combines the RGB Color values into a single Hex value
+ * Combines the RGB Color values into a single Hex value.
  * 
  * FPD_COLOR = (((R8)<<16) | ((G8)<< 8) | ((B8) << 0))
  *
@@ -87,7 +87,6 @@ typedef uint32_t dsFPDColor_t;
 
 /**
  * @brief Defines the color values in RGB format.
- * @todo Check and see where the FPDColor calls are used, and if we need them or not.
 */
 #define dsFPDColor_Make(R8,G8,B8)  (((R8)<<16) | ((G8)<< 8) | ((B8) )) ///< combine Red Green Blue value to a single Hex value
 #define dsFPDColor_R(RGB32)    (((RGB32) >> 16) & 0xFF)                ///< Extract Red value form RGB value
@@ -95,8 +94,7 @@ typedef uint32_t dsFPDColor_t;
 #define dsFPDColor_B(RGB32)    (((RGB32)      ) & 0xFF)                ///< Extract Blue value form RGB value
 
 /**
- * @brief Define a set of common colors, for backward compatibility 
- * @todo check where these are used
+ * @brief Define a set of common colors, for backward compatibility .
  */
 #define dsFPD_COLOR_BLUE   dsFPDColor_Make(0, 0, 0xFF)          ///< Blue color LED                 
 #define dsFPD_COLOR_GREEN  dsFPDColor_Make(0, 0xFF, 0)          ///< Green color LED                
@@ -111,7 +109,7 @@ typedef uint32_t dsFPDColor_t;
  * LED entity on the front panel. Each HAL implementation is free
  * to assign any number to its LEDs. The mapping of LED ID to its
  * display name (such as "Record LED") is done outside HAL library.
- * @todo Look into how this is supposed to work
+ * 
  * @see dsFPDIndicator_isValid
  */
 typedef int32_t dsFPDIndicator_t;
@@ -169,7 +167,7 @@ typedef enum __dsFPDLedState_t
 }dsFPDLedState_t;
 
 /**
- * @brief This enumeration defines the time formats to be used in the Front panel text display
+ * @brief This enumeration defines the time formats to be used in the front panel text display.
  */
 typedef enum __dsFPDTimeFormat_t
 {
@@ -180,13 +178,12 @@ typedef enum __dsFPDTimeFormat_t
 }dsFPDTimeFormat_t;
 
 /**
- * @brief Maximum Value of FPD Led Brightness
+ * @brief Maximum Value of FPD Led Brightness.
  */
 #define dsFPD_BRIGHTNESS_MAX    100     ///< Maximum Value of FPD LED brightness
 
 /**
  * @brief Type definition for the brightness setting of a front panel indicator LED.
- *
  */
 typedef uint32_t dsFPDBrightness_t;
 
