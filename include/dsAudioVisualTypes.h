@@ -311,6 +311,11 @@ typedef enum _dsAudioARCTypes_t {
 } dsAudioARCTypes_t;
 
 /**
+ * @brief Max values for SADs
+ */
+#define MAX_SAD 15  
+
+/**
  * @brief Structure that holds Short Audio Descriptors retrieved from 
  * connected ARC device
  */
@@ -436,6 +441,18 @@ typedef struct _dsAudioPortConfig_t {
     dsAudioPortId_t id;                         ///< Port ID.             
     const dsVideoPortPortId_t *connectedVOPs;   ///< Connected video port.
 } dsAudioPortConfig_t;
+
+#define MAX_LANGUAGE_LEN 10
+
+/**
+ * @brief List of Audio port state. 
+ * @todo check to see where this is used
+ * **/
+typedef enum _dsAudioPortState {
+   dsAUDIOPORT_STATE_UNINITIALIZED, ///< Audio port unintialized.
+   dsAUDIOPORT_STATE_INITIALIZED,   ///< Audio port initialized.
+   dsAUDIOPORT_STATE_MAX            ///< Out of range 
+} dsAudioPortState_t;
 
 /* End of DSHAL_AUDIO_TYPES doxygen group */
 /**
