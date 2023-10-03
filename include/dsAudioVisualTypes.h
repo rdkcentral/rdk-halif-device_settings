@@ -205,6 +205,7 @@ typedef enum _dsAudioPortType_t{
     dsAUDIOPORT_TYPE_MAX        ///< Out of range 
 } dsAudioPortType_t;
 
+
 /**
  * @brief Structure that defines the audio port type and associated ID.
  */
