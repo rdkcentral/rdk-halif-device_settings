@@ -140,7 +140,7 @@ dsError_t  dsGetVideoDevice(int index, int *handle);
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
- * @pre dsVideoDeviceInit() must be called before calling this function.
+ * @pre dsVideoDeviceInit() and dsGetVideoDevice() must be called before calling this function.
  * 
  * @warning  This function is Not thread safe.
  * \
@@ -163,7 +163,7 @@ dsError_t  dsSetDFC(int handle, dsVideoZoom_t dfc);
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
- * @pre dsVideoDeviceInit() must be called before calling this function.
+ * @pre dsVideoDeviceInit() and dsGetVideoDevice() must be called before calling this function.
  * 
  * @warning  This function is Not thread safe.
  * 
@@ -183,7 +183,7 @@ dsError_t  dsGetDFC(int handle, dsVideoZoom_t *dfc);
  * @retval dsERR_NOT_INITIALIZED- Module is not initialised
  * @retval dsERR_GENERAL        - General failure.
  * 
- * @pre dsVideoDeviceInit() must be called before calling this function.
+ * @pre dsVideoDeviceInit() and dsGetVideoDevice() must be called before calling this function.
  * 
  * @warning  This function is Not thread safe.
  * 
@@ -206,7 +206,7 @@ dsError_t  dsVideoDeviceTerm();
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
- * @pre dsVideoDeviceInit() must be called before calling this function.
+ * @pre dsVideoDeviceInit() and dsGetVideoDevice() must be called before calling this function.
  * 
  * @warning  This function is Not thread safe.
  * 
@@ -228,7 +228,7 @@ dsError_t dsGetHDRCapabilities(int handle, int *capabilities);
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
- * @pre dsVideoDeviceInit() must be called before calling this function.
+ * @pre dsVideoDeviceInit() and dsGetVideoDevice() must be called before calling this function.
  * 
  * @warning  This function is Not thread safe.
  * 
@@ -250,7 +250,7 @@ dsError_t dsGetSupportedVideoCodingFormats(int handle, unsigned int * supported_
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
- * @pre dsVideoDeviceInit() must be called before calling this function.
+ * @pre dsVideoDeviceInit() and dsGetVideoDevice() must be called before calling this function.
  * 
  * @warning  This function is Not thread safe.
  * 
@@ -272,7 +272,7 @@ dsError_t dsGetVideoCodecInfo(int handle, dsVideoCodingFormat_t codec, dsVideoCo
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
- * @pre dsVideoDeviceInit() must be called before calling this function.
+ * @pre dsVideoDeviceInit() and dsGetVideoDevice() must be called before calling this function.
  * 
  * @warning  This function is Not thread safe.
  * 
@@ -293,7 +293,7 @@ dsError_t dsForceDisableHDRSupport(int handle, bool disable);
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
- * @pre dsVideoDeviceInit() must be called before calling this function.
+ * @pre dsVideoDeviceInit() and dsGetVideoDevice() must be called before calling this function.
  * 
  * @warning  This function is Not thread safe.
  * 
@@ -317,7 +317,7 @@ dsError_t dsSetFRFMode(int handle, int frfmode);
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
- * @pre dsVideoDeviceInit() must be called before calling this function.
+ * @pre dsVideoDeviceInit() and dsGetVideoDevice() must be called before calling this function.
  * 
  * @warning  This function is Not thread safe.
  * 
@@ -340,7 +340,7 @@ dsError_t dsGetFRFMode(int handle, int *frfmode);
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
- * @pre dsVideoDeviceInit() must be called before calling this function.
+ * @pre dsVideoDeviceInit() and dsGetVideoDevice() must be called before calling this function.
  * 
  * @warning  This function is Not thread safe.
  * 
@@ -364,7 +364,7 @@ dsError_t dsGetCurrentDisplayframerate(int handle, char *framerate);
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
- * @pre dsVideoDeviceInit() must be called before calling this function.
+ * @pre dsVideoDeviceInit() and dsGetVideoDevice() must be called before calling this function.
  * 
  * @warning  This function is Not thread safe.
  * 
@@ -376,6 +376,8 @@ dsError_t dsSetDisplayframerate(int handle, char *framerate);
 /**
  * @brief Call back function to receive the framerate change event form the HAL side.
  * @param [in] tSecond time elapsed after the change. Time in seconds.
+ * 
+ * @pre dsVideoDeviceInit(), dsRegisterFrameratePreChangeCB() must be called before calling this function.
  *
  */
 typedef void (*dsRegisterFrameratePreChangeCB_t)(unsigned int tSecond);
@@ -395,6 +397,7 @@ typedef void (*dsRegisterFrameratePreChangeCB_t)(unsigned int tSecond);
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsVideoDeviceInit() must be called before calling this function.
+ * @post dsRegisterFrameratePreChangeCB_t callback must be called after calling this function.
  * 
  * @warning  This function is Not thread safe.
  * 
@@ -406,7 +409,8 @@ dsError_t dsRegisterFrameratePreChangeCB(dsRegisterFrameratePreChangeCB_t CBFunc
  * @brief Call back function to receive the framerate change is event.
  * @param [in] tSecond time elapsed after the change.
  * 
- * @pre dsVideoDeviceInit() must be called before calling this function.
+ * @pre dsVideoDeviceInit(), dsRegisterFrameratePostChangeCB() must be called before calling this function.
+ * 
  *
  */
 typedef void (*dsRegisterFrameratePostChangeCB_t)(unsigned int tSecond);
@@ -427,6 +431,7 @@ typedef void (*dsRegisterFrameratePostChangeCB_t)(unsigned int tSecond);
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsVideoDeviceInit() must be called before calling this function.
+ * @post dsRegisterFrameratePostChangeCB_t callback must be called after calling this function.
  * 
  * @warning  This function is Not thread safe.
  * 
