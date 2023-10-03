@@ -119,28 +119,33 @@ typedef uint32_t dsFPDColor_t;
 #define dsFPD_COLOR_MAX    6                                    ///< Out of range 
 
 /**
- * @brief dsFPDIndicator_t is an ID number that  uniquely identifies a HAL
- * LED entity on the front panel. 
- * 
- * The valid values for dsFPDIndicator_t are listed bellow. 
- * @see dsFPD_INDICATOR_MESSAGE, dsFPD_INDICATOR_POWER, dsFPD_INDICATOR_RECORD, 
- * @see dsFPD_INDICATOR_REMOTE, dsFPD_INDICATOR_RFBYPASS, dsFPD_INDICATOR_MAX
- * 
- * @see dsFPDIndicator_isValid
+ * @brief Front panel LED colors validation check.
+ * @see dsFPDColor_t
  */
-typedef int32_t dsFPDIndicator_t;
+#define dsFPDColor_isValid(t)  (((t) & 0xFF000000) == 0)
 
 /**
  * @brief This enumeration pre-defines common front panel indicators.
  * Implementation may not have to use these enumerators.
- * @todo change to enum in future phase
  */
-#define dsFPD_INDICATOR_MESSAGE  0   ///< Message/Mail LED
-#define dsFPD_INDICATOR_POWER    1   ///< Power LED
-#define dsFPD_INDICATOR_RECORD   2   ///< Record LED
-#define dsFPD_INDICATOR_REMOTE   3   ///< Remote LED
-#define dsFPD_INDICATOR_RFBYPASS 4   ///< RF Bypass LED
-#define dsFPD_INDICATOR_MAX      5   ///< Out of range
+
+typedef enum __dsFPDIndicator_t
+{
+    dsFPD_INDICATOR_MESSAGE,   ///< Message/Mail LED
+    dsFPD_INDICATOR_POWER,   ///< Power LED
+    dsFPD_INDICATOR_RECORD,   ///< Record LED
+    dsFPD_INDICATOR_REMOTE,   ///< Remote LED
+    dsFPD_INDICATOR_RFBYPASS,   ///< RF Bypass LED
+    dsFPD_INDICATOR_MAX    ///< Out of range
+}dsFPDIndicator_t
+
+
+/**
+ * @brief Front panel LED indicator type validation check.
+ * @see dsFPDIndicator_t
+ */
+#define dsFPDIndicator_isValid(t)  (((t)  >= dsFPD_INDICATOR_MESSAGE ) && ((t) < dsFPD_INDICATOR_MAX))
+
 
 /**
  * @brief This enumeration defines the FPD text display types.
@@ -151,6 +156,12 @@ typedef enum __dsFPDTextDisplay_t
     dsFPD_TEXTDISP_TEXT,    ///< 7-segment LED display                 
     dsFPD_TEXTDISP_MAX      ///< Out of range 
 }dsFPDTextDisplay_t;
+
+/**
+ * @brief FPD text display type validation check.
+ * @see dsFPDTextDisplay_t
+ */
+#define dsFPDTextDisplay_isValid(t)  (((t)  >= dsFPD_TEXTDISP_TEXT ) && ((t) < dsFPD_TEXTDISP_MAX))
 
 /**
  * @brief This enumeration defines the front panel display state.
@@ -207,9 +218,9 @@ typedef uint32_t dsFPDBrightness_t;
  * @brief This enumeration defines the front panel display mode.
  */
 typedef enum __dsFPDMode_t{
-    dsFPD_MODE_ANY = 0, ///< All modes (text/clock) are supported
-    dsFPD_MODE_TEXT,    ///< only Text mode is supported
-    dsFPD_MODE_CLOCK,   ///< only clock mode is supported
+    dsFPD_MODE_ANY = 0, ///< All modes (text/clock
+    dsFPD_MODE_TEXT,    ///< Text mode
+    dsFPD_MODE_CLOCK,   ///< Clock mode
     dsFPD_MODE_MAX,     ///< Out of range 
 } dsFPDMode_t;
 
