@@ -75,9 +75,9 @@ namespace {
 #define _MAX_HORZ_ITER  0           // Maximum horizontal iteration value
 #define _MAX_VERT_ITER  0           // Maximum vertical iteration value
 #define _DEFAULT_COLOR_MODE 0       // Color Mode of LED (Single or Multicolored)
-
-/**
- * @brief Structure that defines the Front Panel Display Color Configurations
+ 
+/**	
+* @brief Structure that defines the Front Panel Display Color Configurations
  */
 typedef struct _dsFPDColorConfig_t {
 	int id;
@@ -126,7 +126,7 @@ static   dsFPDColorConfig_t  kIndicatorColors[] = {
 };
 
 /**
- * @brief Array that holds Front Panel Indicator Configurations of various Indicators
+ * @brief Array that holds Front Panel Indicator Configurations
  */
 static const dsFPDIndicatorConfig_t kIndicators[] = {
 	{
