@@ -34,11 +34,11 @@
  * -# None
  *
  * @par Abbreviations
- * - FPD:     Front-Panel Display
- * - HAL:     Hardware Abstraction Layer
- * - RF:      Radio Frequency
- * - RGB:     Red Green Blue
- * - LED:     Light-Emitting Diode
+ * - FPD  :   Front-Panel Display
+ * - HAL  :   Hardware Abstraction Layer
+ * - RF   :   Radio Frequency
+ * - RGB  :   Red Green Blue
+ * - LED  :   Light-Emitting Diode
  *
  * @par Implementation Notes
  * -# None
@@ -84,6 +84,8 @@
 
 #ifndef __DS_FPD_TYPES_H__
 #define __DS_FPD_TYPES_H__
+
+#include <stdint.h>
 
 /**
  * @brief dsFPDColor_t is an 4-byte integer that is composed of RGB32 value in the
@@ -131,13 +133,13 @@ typedef uint32_t dsFPDColor_t;
 
 typedef enum __dsFPDIndicator_t
 {
-    dsFPD_INDICATOR_MESSAGE,   ///< Message/Mail LED
-    dsFPD_INDICATOR_POWER,   ///< Power LED
-    dsFPD_INDICATOR_RECORD,   ///< Record LED
-    dsFPD_INDICATOR_REMOTE,   ///< Remote LED
-    dsFPD_INDICATOR_RFBYPASS,   ///< RF Bypass LED
-    dsFPD_INDICATOR_MAX    ///< Out of range
-}dsFPDIndicator_t
+    dsFPD_INDICATOR_MESSAGE,     ///< Message/Mail LED
+    dsFPD_INDICATOR_POWER,       ///< Power LED
+    dsFPD_INDICATOR_RECORD,      ///< Record LED
+    dsFPD_INDICATOR_REMOTE,      ///< Remote LED
+    dsFPD_INDICATOR_RFBYPASS,    ///< RF Bypass LED
+    dsFPD_INDICATOR_MAX          ///< Out of range
+}dsFPDIndicator_t;
 
 
 /**
@@ -153,8 +155,8 @@ typedef enum __dsFPDIndicator_t
  */
 typedef enum __dsFPDTextDisplay_t
 {
-    dsFPD_TEXTDISP_TEXT,    ///< 7-segment LED display                 
-    dsFPD_TEXTDISP_MAX      ///< Out of range 
+    dsFPD_TEXTDISP_TEXT,      ///< 7-segment LED display                 
+    dsFPD_TEXTDISP_MAX       ///< Out of range 
 }dsFPDTextDisplay_t;
 
 /**
@@ -198,10 +200,10 @@ typedef enum __dsFPDLedState_t
  */
 typedef enum __dsFPDTimeFormat_t
 {
-    dsFPD_TIME_12_HOUR, ///< 12 hour time format
-    dsFPD_TIME_24_HOUR, ///< 24 hour time format
-    dsFPD_TIME_STRING,  ///< Text string     
-    dsFPD_TIME_MAX      ///< Out of range 
+    dsFPD_TIME_12_HOUR,  ///< 12 hour time format
+    dsFPD_TIME_24_HOUR,  ///< 24 hour time format
+    dsFPD_TIME_STRING,   ///< Text string     
+    dsFPD_TIME_MAX       ///< Out of range 
 }dsFPDTimeFormat_t;
 
 /**
@@ -218,7 +220,7 @@ typedef uint32_t dsFPDBrightness_t;
  * @brief This enumeration defines the front panel display mode.
  */
 typedef enum __dsFPDMode_t{
-    dsFPD_MODE_ANY = 0, ///< All modes (text/clock
+    dsFPD_MODE_ANY = 0, ///< All modes (text/clock)
     dsFPD_MODE_TEXT,    ///< Text mode
     dsFPD_MODE_CLOCK,   ///< Clock mode
     dsFPD_MODE_MAX,     ///< Out of range 

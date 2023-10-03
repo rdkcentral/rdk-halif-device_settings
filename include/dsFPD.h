@@ -115,7 +115,7 @@ dsError_t dsFPInit (void);
  * @retval dsERR_NONE                     -  Success
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/FP State is "OFF"
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
  * 
@@ -141,14 +141,14 @@ dsError_t dsSetFPBlink (dsFPDIndicator_t eIndicator, unsigned int uBlinkDuration
  * @retval dsERR_NONE                     -  Success
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/FP State is "OFF"
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
  * @pre dsFPInit() must be called and FP State must be "ON" before calling this API
  * 
  * @warning  This API is Not thread safe
  * 
- * @@see dsGetFPBrightness()
+ * @see dsGetFPBrightness()
  * 
  */
 dsError_t dsSetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t eBrightness);
@@ -167,7 +167,7 @@ dsError_t dsSetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t eBri
  * @retval dsERR_NONE                     -  Success
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/FP State is "OFF"
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
  * @pre dsFPInit() must be called and FP State must be "ON" before calling this API
@@ -237,7 +237,7 @@ dsError_t dsGetFPState (dsFPDIndicator_t eIndicator, dsFPDState_t* state);
  * @retval dsERR_NONE                     -  Success
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/FP State is "OFF"
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
  * @pre dsFPInit() must be called and FP State must be "ON" before calling this API
@@ -263,7 +263,7 @@ dsError_t dsSetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t eColor);
  * @retval dsERR_NONE                     -  Success
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/FP State is "OFF"
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
  * @pre dsFPInit() must be called and FP State must be "ON" before calling this API
@@ -292,7 +292,7 @@ dsError_t dsGetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t *pColor);
  * @retval dsERR_NONE                     -  Success
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported.
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/FP State is "OFF"
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
  * @pre dsFPInit() must be called and FP State must be "ON" before calling this API
@@ -309,9 +309,8 @@ dsError_t dsSetFPTime (dsFPDTimeFormat_t eTimeFormat, const unsigned int uHour, 
  * This function is used to set the 7-segment display LEDs to show the given text.  
  * If there are no 7-Segment display LEDs present on the device or if the FP State is "OFF",
  * then dsERR_OPERATION_NOT_SUPPORTED must be returned. @see dsFPDState_t
- * Maximum length of Text is 10 characters.
- *
- * @param[in] pText - Text to be displayed
+ * 
+ * @param[in] pText - Text to be displayed. Maximum length of Text is 10 characters.
  *
  * @return dsError_t                      -  Status
  * @retval dsERR_NONE                     -  Success
@@ -344,7 +343,7 @@ dsError_t dsSetFPText(const char* pText);
  * @retval dsERR_NONE                     -  Success
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/FP State is "OFF"
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
  * @pre dsFPInit() must be called and FP State must be "ON" before calling this API
@@ -370,7 +369,7 @@ dsError_t dsSetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_
  * @retval dsERR_NONE                     -  Success
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/FP State is "OFF"
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
  * @pre dsFPInit() must be called and FP State must be "ON" before calling this API

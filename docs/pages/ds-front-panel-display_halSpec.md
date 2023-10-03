@@ -224,17 +224,14 @@ The various `FP` `LED` states are as follows:
 <b> LEGEND: </b>
 
 <b>ds_FP_SetMethods:</b>
-dsSetFPBlink(), dsSetFPBrightness(),
+dsSetFPBlink(), 
+dsSetFPBrightness(),
 dsSetFPState(),
 dsSetFPColor(),
 dsSetFPTime(),
 dsSetFPText(),
 dsSetFPTextBrightness(),
 dsSetFPScroll(),
-dsSetFPDBrightness(),
-dsSetFPScroll(),
-dsSetFPDBrightness(),
-dsSetFPDColor(),
 dsSetFPTimeFormat(),
 dsSetFPDMode(),
 dsFPSetLEDState()

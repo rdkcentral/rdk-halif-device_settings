@@ -66,16 +66,15 @@ extern "C" {
 namespace {
 #endif
 
-#define _MAX_BRIGHTNESS 100
-#define _MIN_BRIGHTNESS 0
-#define _DEFAULT_LEVELS 10
-#define _MAX_CYCLERATE  2
-#define _MAX_HORZ_COLS  0
-#define _MAX_VERT_ROWS  0
-#define _MAX_HORZ_ITER  0
-#define _MAX_VERT_ITER  0
-#define _DEFAULT_COLOR_MODE 0
-#define dsFPD_COLOR_MAX_NEW 1
+#define _MAX_BRIGHTNESS 100         // Maximum brightness value of FPD LEDs
+#define _MIN_BRIGHTNESS 0           // Minimum brightness value of FPD LEDs
+#define _DEFAULT_LEVELS 10          // Default Levels
+#define _MAX_CYCLERATE  2           // Rate at which LED is rotating during scrolling
+#define _MAX_HORZ_COLS  0           // Maximum Horizontal Rows
+#define _MAX_VERT_ROWS  0           // Maximum Vertical Rows
+#define _MAX_HORZ_ITER  0           // Maximum horizontal iteration value
+#define _MAX_VERT_ITER  0           // Maximum vertical iteration value
+#define _DEFAULT_COLOR_MODE 0       // Color Mode of LED (Single or Multicolored)
 
 /**
  * @brief Structure that defines the Front Panel Display Color Configurations
@@ -119,10 +118,10 @@ typedef struct _dsFPDTextDisplayConfig_t {
 /**
  * @brief Array that holds various Front Panel Indicator Colors
  */
-static   dsFPDColorConfig_t  kIndicatorColors[dsFPD_COLOR_MAX_NEW] = {
+static   dsFPDColorConfig_t  kIndicatorColors[] = {
 	{
-		/*.Id = */ 2,
-		/*.color = */ dsFPD_COLOR_RED,
+		/*.Id = */      dsFPD_INDICATOR_POWER,
+		/*.color = */   dsFPD_COLOR_RED,
 	},
 };
 
@@ -131,13 +130,13 @@ static   dsFPDColorConfig_t  kIndicatorColors[dsFPD_COLOR_MAX_NEW] = {
  */
 static const dsFPDIndicatorConfig_t kIndicators[] = {
 	{
-		/*.id = */ 			dsFPD_INDICATOR_POWER,
+		/*.id = */ 			        dsFPD_INDICATOR_POWER,
 		/*.supportedColors = */		kIndicatorColors,
 		/*.maxBrightness   = */ 	_MAX_BRIGHTNESS,
 		/*.maxCycleRate    = */ 	_MAX_CYCLERATE,
 		/*.minBrightness   = */ 	_MIN_BRIGHTNESS,
-        	/*.levels          = */ 	_DEFAULT_LEVELS,
-        	/*.colorMode       = */ 	_DEFAULT_COLOR_MODE,
+        /*.levels          = */ 	_DEFAULT_LEVELS,
+        /*.colorMode       = */ 	_DEFAULT_COLOR_MODE,
 	},
 };
 
@@ -146,18 +145,18 @@ static const dsFPDIndicatorConfig_t kIndicators[] = {
  */
 static const dsFPDTextDisplayConfig_t  kTextDisplays[dsFPD_TEXTDISP_MAX] = {
 	{
-		/*.id = */ 			dsFPD_TEXTDISP_TEXT,
-		/*.name   = */ 			"Text",
-		/*.supportedColors =  */	kIndicatorColors,
-		/*.maxBrightness = */		_MAX_BRIGHTNESS,
-		/*.maxCycleRate = 	 */	_MAX_CYCLERATE,
-		/*.supportedCharacters=*/ 	"ABCDEFG",
-		/*.columns = */			_MAX_HORZ_COLS,
-		/*.rows= */ 			_MAX_VERT_ROWS,
-		/*.horizontal iterations =*/    _MAX_HORZ_ITER,
-		/*.vertical iterations */ 	_MAX_VERT_ITER,
-		/*.levels */ 	                _DEFAULT_LEVELS,
-		/*.colorMode       = */		_DEFAULT_COLOR_MODE
+		/*.id = */ 			          dsFPD_TEXTDISP_TEXT,
+		/*.name   = */ 			      "Text",
+		/*.supportedColors =  */	  kIndicatorColors,
+		/*.maxBrightness = */		  _MAX_BRIGHTNESS,
+		/*.maxCycleRate = 	 */	      _MAX_CYCLERATE,
+		/*.supportedCharacters=*/ 	  "ABCDEFG",
+		/*.columns = */			      _MAX_HORZ_COLS,
+		/*.rows= */ 			      _MAX_VERT_ROWS,
+		/*.horizontal iterations =*/  _MAX_HORZ_ITER,
+		/*.vertical iterations */ 	  _MAX_VERT_ITER,
+		/*.levels */ 	              _DEFAULT_LEVELS,
+		/*.colorMode       = */		  _DEFAULT_COLOR_MODE
 	},
 };
 
