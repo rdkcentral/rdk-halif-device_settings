@@ -315,7 +315,7 @@ dsError_t dsSetFPTime (dsFPDTimeFormat_t eTimeFormat, const unsigned int uHour, 
  * 
  * @note Whether this device has a 7-Segment display LEDs should be within the dsFPDSettings file.
  *
- * @param[in] pText - Text to be displayed
+ * @param[in] pText - Text to be displayed. Maximum length of Text is 10 characters. Min is 0.
  *
  * @return dsError_t                      -  Status
  * @retval dsERR_NONE                     -  Success

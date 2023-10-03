@@ -66,15 +66,45 @@ extern "C" {
 namespace {
 #endif
 
+/**
+ * @brief Max brightness
+ */
 #define _MAX_BRIGHTNESS 100
+/**
+ * @brief Min brightness
+ */
 #define _MIN_BRIGHTNESS 0
+/**
+ * @brief Default levels
+ */
 #define _DEFAULT_LEVELS 10
+/**
+ * @brief Max Cyclerate
+ */
 #define _MAX_CYCLERATE  2
+/**
+ * @brief Max Horizontal Columns
+ */
 #define _MAX_HORZ_COLS  0
+/**
+ * @brief Max vertical rows
+ */
 #define _MAX_VERT_ROWS  0
+/**
+ * @brief Max Horizontal iterators
+ */
 #define _MAX_HORZ_ITER  0
+/**
+ * @brief Max vertical iterators
+ */
 #define _MAX_VERT_ITER  0
+/**
+ * @brief Default color mode
+ */
 #define _DEFAULT_COLOR_MODE 0
+/**
+ * @brief Color Max
+ */
 #define dsFPD_COLOR_MAX_NEW 1
 
 /**
@@ -127,7 +157,7 @@ static   dsFPDColorConfig_t  kIndicatorColors[dsFPD_COLOR_MAX_NEW] = {
 };
 
 /**
- * @brief Array that holds Front Panel Indicator Configurations of various Indicators
+ * @brief Array that holds Front Panel Indicator Configurations
  */
 static const dsFPDIndicatorConfig_t kIndicators[] = {
 	{
