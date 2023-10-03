@@ -108,6 +108,12 @@ typedef enum _dsVideoPortType_t {
     dsVIDEOPORT_TYPE_MAX          ///< Out of range               
 } dsVideoPortType_t;
 
+/**
+ * @brief Video output port type validation check.
+ * @see dsVideoPortType_t
+ */
+#define dsVideoPortType_isValid(t)  (((t) >= dsVIDEOPORT_TYPE_RF ) && ((t) < dsVIDEOPORT_TYPE_MAX))
+
 
 /**
  * @ingroup DSHAL_VIDEOPORT_TYPES
@@ -142,6 +148,12 @@ typedef enum _dsAudioPortType_t{
     dsAUDIOPORT_TYPE_MAX        ///< Out of range 
 } dsAudioPortType_t;
 
+/**
+ * @brief Audio output port type validation check.
+ * @see dsAudioPortType_t
+ */
+#define dsAudioType_isValid(t)  (((t) >= dsAUDIOPORT_TYPE_ID_LR ) && ((t) < dsAUDIOPORT_TYPE_MAX))
+
 
 /**
  * @brief Structure that defines the audio port type and associated ID.
@@ -171,6 +183,12 @@ typedef enum _dsAudioEncoding_t{
 } dsAudioEncoding_t;
 
 /**
+ * @brief Audio encoding type validation check.
+ * @see dsAudioEncoding_t
+ */
+#define dsAudioEncoding_isValid(t)  (((t) >= dsAUDIO_ENC_NONE ) && ((t) < dsAUDIO_ENC_MAX))
+
+/**
  * @brief This enumeration defines the type of audio compression.
  * @see dsAudioCompression_isValid
  */
@@ -181,6 +199,12 @@ typedef enum _dsAudioCompression_t{
     dsAUDIO_CMP_HEAVY,  ///< Heavy audio level compression.           
     dsAUDIO_CMP_MAX     ///< Out of range 
 } dsAudioCompression_t;
+
+/**
+ * @brief Audio compression type validation check.
+ * @see dsAudioCompression_t
+ */
+#define dsAudioCompression_isValid(t)  (((t) >= dsAUDIO_CMP_NONE ) && ((t) < dsAUDIO_CMP_MAX))
 
 /**
  * @brief This enumeration defines the type of audio format
@@ -348,6 +372,12 @@ typedef enum StereoMode{
     dsAUDIO_STEREO_MAX        ///< Out of range          
 } dsAudioStereoMode_t;
 
+/**
+ * @brief Audio stereo mode type validation check.
+ * @see dsAudioStereoMode_t
+ */
+#define dsAudioStereoMode_isValid(t)  (((t) >= dsAUDIO_STEREO_UNKNOWN ) && ((t) < dsAUDIO_STEREO_MAX))
+
 /** 
  * @brief This enumeration defines HDCP protocol version types 
  */
@@ -440,6 +470,12 @@ typedef enum _dsVideoResolution_t{
 }dsVideoResolution_t;
 
 /**
+ * @brief Video output resolutions type validation check.
+ * @see dsVideoResolution_t
+ */
+#define dsVideoPortPixelResolution_isValid(t)  (((t) >= dsVIDEO_PIXELRES_720x480 ) && ((t) < dsVIDEO_PIXELRES_MAX))
+
+/**
  * @brief This enumeration defines all of the standard TV 
  *      supported resolution with interlace information.
  */
@@ -483,6 +519,12 @@ typedef enum _dsVideoFrameRate_t{
 }dsVideoFrameRate_t;
 
 /**
+ * @brief Video output framerate validation check.
+ * @see dsVideoFrameRate_t
+ */
+#define dsVideoPortFrameRate_isValid(t)  (((t) >= dsVIDEO_FRAMERATE_UNKNOWN ) && ((t) < dsVIDEO_FRAMERATE_MAX))
+
+/**
  * @brief This enumeration defines all of the standard video port scan modes.
  * @see dsVideoPortScanMode_isValid
  * @todo Check to see where this is used. Might be unused.
@@ -492,6 +534,12 @@ typedef enum _dsVideoScanMode_t{
     dsVIDEO_SCANMODE_PROGRESSIVE,   ///< Progressive video.                
     dsVIDEO_SCANMODE_MAX            ///< Out of range 
 }dsVideoScanMode_t;
+
+/**
+ * @brief Video scan mode type validation check.
+ * @see dsVideoScanMode_t
+ */
+#define dsVideoPortScanMode_isValid(t)  (((t) >= dsVIDEO_SCANMODE_INTERLACED ) && ((t) < dsVIDEO_SCANMODE_MAX))
 
 /**
  * @brief This enumeration defines background color for video port.
@@ -516,6 +564,12 @@ typedef enum _dsVideoStereoScopicMode_t {
 }dsVideoStereoScopicMode_t;
 
 /**
+ * @brief Video Stereo Scopic modes type validation check.
+ * @see dsVideoStereoScopicMode_t
+ */
+#define dsVideoPortStereoScopicMode_isValid(t)  (((t) >= dsVIDEO_SSMODE_UNKNOWN ) && ((t) < dsVIDEO_SSMODE_MAX))
+
+/**
  * @brief This enumeration defines all of the standard video aspect ratios.
  * @see dsVideoPortAspectRatio_isValid
  */
@@ -524,6 +578,12 @@ typedef enum _dsVideoAspectRatio_t{
     dsVIDEO_ASPECT_RATIO_16x9,   ///< 16:9 aspect ratio.                   
     dsVIDEO_ASPECT_RATIO_MAX     ///< Out of range 
 }dsVideoAspectRatio_t;
+
+/**
+ * @brief Video aspect ratio type validation check.
+ * @see dsVideoAspectRatio_t
+ */
+#define dsVideoPortAspectRatio_isValid(t)  (((t)  >= dsVIDEO_ASPECT_RATIO_4x3 ) && ((t) < dsVIDEO_ASPECT_RATIO_MAX))
 
 
 /**
@@ -598,6 +658,12 @@ typedef enum _dsHdcpStatus_t {
     dsHDCP_STATUS_PORTDISABLED,             ///< HDMI output port disabled
     dsHDCP_STATUS_MAX                       ///< Out of range 
 } dsHdcpStatus_t;
+
+/**
+ * @brief HDCP status validation check.
+ * @see dsHdcpStatus_t
+*/
+#define dsHdcpStatus_isValid(t)  (((t) >= dsHDCP_STATUS_UNPOWERED ) && ((t) < dsHDCP_STATUS_MAX))
 
 /**
  * @brief This enumeration defines HDCP protocol version types 
