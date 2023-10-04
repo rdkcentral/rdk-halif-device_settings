@@ -161,7 +161,6 @@ typedef enum __dsFPDTextDisplay_t
 }dsFPDTextDisplay_t;
 
 /**
-<<<<<<< Updated upstream
  * @brief FPD text display type validation check.
  * @see dsFPDTextDisplay_t
  */
@@ -185,7 +184,7 @@ typedef enum __dsFPDState_t
  */
 typedef enum __dsFPDLedState_t
 {
-    dsFPD_LED_DEVICE_NONE,                      ///< No LED on device
+    dsFPD_LED_DEVICE_NONE,                      ///< Default state
     dsFPD_LED_DEVICE_ACTIVE,                    ///< Device is active
     dsFPD_LED_DEVICE_STANDBY,                   ///< Device is in standby mode
     dsFPD_LED_DEVICE_WPS_CONNECTING,            ///< Device connecting to WPS
