@@ -104,7 +104,7 @@ dsError_t dsFPInit (void);
  * @brief Sets blink pattern of specified Front Panel Display LED
  * 
  * This function is used to set the individual discrete LED to blink for a specified number of iterations with blink interval.
- * This function must return dsERR_OPERATION_NOT_SUPPORTED if FP State is "OFF". @see dsFPDState_t
+ * This function must return dsERR_OPERATION_NOT_SUPPORTED if FP State is "OFF". 
  *
  * @param[in] eIndicator        -  FPD indicator index. @see dsFPDIndicator_t
  * @param[in] uBlinkDuration    -  Blink interval. The time in ms the text display will remain ON 
@@ -115,7 +115,7 @@ dsError_t dsFPInit (void);
  * @retval dsERR_NONE                     -  Success
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/FP State is "OFF"
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/FP State is "OFF". @see dsFPDState_t
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
  * 
@@ -131,7 +131,7 @@ dsError_t dsSetFPBlink (dsFPDIndicator_t eIndicator, unsigned int uBlinkDuration
  * 
  * This function will set the brightness of the specified discrete LED on the Front
  * Panel Display to the specified brightness level. This function must return dsERR_OPERATION_NOT_SUPPORTED
- * if the FP State is "OFF". @see dsFPDState_t
+ * if the FP State is "OFF". 
  *
  * @param[in] eIndicator  - FPD indicator index. @see dsFPDIndicator_t
  * @param[in] eBrightness - The brightness value(0 to 100) for the specified indicator.
@@ -141,7 +141,7 @@ dsError_t dsSetFPBlink (dsFPDIndicator_t eIndicator, unsigned int uBlinkDuration
  * @retval dsERR_NONE                     -  Success
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/FP State is "OFF"
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/FP State is "OFF". @see dsFPDState_t
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
  * @pre dsFPInit() must be called and FP State must be "ON" before calling this API
@@ -157,7 +157,7 @@ dsError_t dsSetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t eBri
  * @brief Gets the brightness level of specified Front Panel Display LED
  * 
  * This function returns the brightness level of the specified discrete LED on the Front
- * Panel. This function must return dsERR_OPERATION_NOT_SUPPORTED if FP State is "OFF". @see dsFPDState_t
+ * Panel. This function must return dsERR_OPERATION_NOT_SUPPORTED if FP State is "OFF". 
  *
  * @param[in]  eIndicator  - FPD indicator index. @see dsFPDIndicator_t
  * @param[out] pBrightness - current brightness value(0 to 100) of the specified indicator
@@ -167,7 +167,7 @@ dsError_t dsSetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t eBri
  * @retval dsERR_NONE                     -  Success
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/FP State is "OFF"
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/FP State is "OFF". @see dsFPDState_t
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
  * @pre dsFPInit() must be called and FP State must be "ON" before calling this API
@@ -228,7 +228,7 @@ dsError_t dsGetFPState (dsFPDIndicator_t eIndicator, dsFPDState_t* state);
  * 
  * This function sets the color of the specified Front Panel Indicator LED, if the 
  * indicator supports it (i.e. is multi-colored). It must return
- * dsERR_OPERATION_NOT_SUPPORTED if the indicator is single-colored or if the FP State is "OFF". @see dsFPDState_t
+ * dsERR_OPERATION_NOT_SUPPORTED if the indicator is single-colored or if the FP State is "OFF". 
  *
  * @param[in] eIndicator    - FPD indicator index. @see dsFPDIndicator_t
  * @param[in] eColor        - The color index for the specified indicator. @see dsFPDColor_t
@@ -237,7 +237,7 @@ dsError_t dsGetFPState (dsFPDIndicator_t eIndicator, dsFPDState_t* state);
  * @retval dsERR_NONE                     -  Success
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/FP State is "OFF"
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/FP State is "OFF". @see dsFPDState_t
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
  * @pre dsFPInit() must be called and FP State must be "ON" before calling this API
@@ -254,7 +254,7 @@ dsError_t dsSetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t eColor);
  * 
  * This function gets the color of the specified Front Panel Indicator LED, if the
  * indicator supports it (i.e. is multi-colored). It must return
- * dsERR_OPERATION_NOT_SUPPORTED if the indicator is single-colored or if the FP State is "OFF" @see dsFPDState_t
+ * dsERR_OPERATION_NOT_SUPPORTED if the indicator is single-colored or if the FP State is "OFF". 
  *
  * @param[in] eIndicator - FPD indicator index. @see dsFPDIndicator_t
  * @param[out] pColor    - current color value of the specified indicator. @see dsFPDColor_t
@@ -263,7 +263,7 @@ dsError_t dsSetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t eColor);
  * @retval dsERR_NONE                     -  Success
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/FP State is "OFF"
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/FP State is "OFF". @see dsFPDState_t
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
  * @pre dsFPInit() must be called and FP State must be "ON" before calling this API
@@ -280,7 +280,7 @@ dsError_t dsGetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t *pColor);
  * 
  * This function sets the 7-segment display LEDs to show the time in specified format.
  * The format (12/24-hour) has to be specified. If there are no 7-Segment display LEDs present on the
- * device or if the FP State is "OFF" then dsERR_OPERATION_NOT_SUPPORTED must be returned. @see dsFPDState_t
+ * device or if the FP State is "OFF" then dsERR_OPERATION_NOT_SUPPORTED must be returned.
  * It must return dsERR_INVALID_PARAM if the format and hours values do not agree,
  * or if the hours/minutes are invalid.
  * The FP Display Mode must be dsFPD_MODE_CLOCK. @see dsFPDMode_t
@@ -295,7 +295,7 @@ dsError_t dsGetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t *pColor);
  * @retval dsERR_NONE                     -  Success
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/FP State is "OFF"
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/FP State is "OFF". @see dsFPDState_t
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
  * @pre dsFPInit() must be called and FP State must be "ON" before calling this API
@@ -339,7 +339,8 @@ dsError_t dsSetFPText(const char* pText);
  * 
  * This function will set the brightness of the specified 7-segment display LEDs on the Front
  * Panel Display to the specified brightness level. If there are no 7-Segment display LEDs present
- * on the device or if the FP State is "OFF" then dsERR_OPERATION_NOT_SUPPORTED must be returned. @see dsFPDState_t.
+ * on the device or if the FP State is "OFF" then dsERR_OPERATION_NOT_SUPPORTED must be returned.
+ * The FP Display Mode must be dsFPD_MODE_TEXT. @see dsFPDMode_t
  *
  * @note Whether this device has a 7-Segment display LEDs should be within the dsFPDSettings file.
  * 
@@ -351,7 +352,7 @@ dsError_t dsSetFPText(const char* pText);
  * @retval dsERR_NONE                     -  Success
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/FP State is "OFF"
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/FP State is "OFF". @see dsFPDState_t
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
  * @pre dsFPInit() must be called and FP State must be "ON" before calling this API
@@ -368,7 +369,8 @@ dsError_t dsSetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_
  * 
  * This function will get the brightness of the specified 7-segment display LEDs on the Front
  * Panel Text Display. If there are no 7-segment display LEDs present or if the FP State is "OFF"
- * then dsERR_OPERATION_NOT_SUPPORTED must be returned @see dsFPDState_t. 
+ * then dsERR_OPERATION_NOT_SUPPORTED must be returned. 
+ * The FP Display Mode must be dsFPD_MODE_TEXT. @see dsFPDMode_t
  *
  * @note Whether this device has a 7-Segment display LEDs should be within the dsFPDSettings file.
  * 
@@ -379,7 +381,7 @@ dsError_t dsSetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_
  * @retval dsERR_NONE                     -  Success
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/FP State is "OFF"
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/FP State is "OFF". @see dsFPDState_t
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
  * @pre dsFPInit() must be called and FP State must be "ON" before calling this API
@@ -421,7 +423,7 @@ dsError_t dsFPEnableCLockDisplay (int enable);
  * 
  * This function scrolls the text in the 7-segment display LEDs for the given number of iterations.
  * If there are no 7-segment display LEDs present or if the FP State is "OFF" then
- * dsERR_OPERATION_NOT_SUPPORTED must be returned. @see dsFPDState_t.
+ * dsERR_OPERATION_NOT_SUPPORTED must be returned.
  * Horizontal and Vertical scroll cannot work at the same time.
  *
  * @note Whether this device has a 7-Segment display LEDs should be within the dsFPDSettings file.
@@ -435,7 +437,7 @@ dsError_t dsFPEnableCLockDisplay (int enable);
  * @retval dsERR_NONE                     -  Success
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/FP State is "OFF". @see dsFPDState_t
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
  * @pre dsFPInit() must be called and FP State must be "ON" before calling this API
