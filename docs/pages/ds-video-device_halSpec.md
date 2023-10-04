@@ -1,10 +1,10 @@
-# DEVICE SETTINGS Host HAL Documentation
+# DEVICE SETTINGS Video Device HAL Documentation
 
 ## Version History
 
 | Date(DD/MM/YY) | Comment | Version |
 | ---- | ------- | ------- |
-| 23/08/23 | First Release  | 1.0.0 |
+| 04/10/23 | First Release  | 1.0.0 |
 
 ## Table of Contents
 
@@ -46,7 +46,7 @@
 
 ## Description
 
-The diagram below describes a high-level software architecture of the Device Settings Host module.
+The diagram below describes a high-level software architecture of the Device Settings Video Device module.
 
 ```mermaid
 %%{ init : { "theme" : "forest", "flowchart" : { "curve" : "linear" }}}%%
@@ -58,9 +58,10 @@ style z fill:#fcc,stroke:#333,stroke-width:0.3px,align:left
 style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
  ```
 
-`Device Settings VIDEO DEVICE` `HAL` provides a set of `APIs` to initialize, query information about the `SoC`.
+`Device Settings Video Device` `HAL` provides a set of `APIs` to initialize, query information about the `SoC`.
 
-The main purpose of this module is to facilitate communication between the `caller`, and `HAL` interface, such that information about the zoom mode, HDR capabilities, Video encoding formats, and frame rate information can be set and queried.
+The main purpose of this module is to facilitate communication between the `caller`, and `HAL` interface, such that information about the zoom mode, HDR capabilities, Video encoding formats frame rate information and etc can be set and queried.
+@todo doublecheck that these are all the major components
 
 ## Component Runtime Execution Requirements
 
@@ -90,9 +91,7 @@ Although this interface is not required to be involved in any of the power manag
 
 ### Asynchronous Notification Model
 
-- The `dsVideoDevice` `API` `dsRegisterFrameratePreChangeCB()` should facilitate asynchronous status notifications using the callback before the framerate is changed using the callback `dsRegisterFrameratePreChangeCB_t`. This callback should used before the framerate is changed.
-
-- The `dsVideoDevice` `API` `dsRegisterFrameratePostChangeCB()` should facilitate asynchronous status notifications using the callback after the framerate is changed using the callback `dsRegisterFrameratePostChangeCB_t`. This callback should be used after the framerate has been changed.
+This interface is not required to support asynchronous notification.
 
 ### Blocking calls
 
@@ -138,7 +137,7 @@ The source code must build into a shared library for Device Settings as this mod
 ### Variability Management
 
 - Any changes in the `APIs` must be reviewed and approved by the component architects.
-- `DeviceSettings Host` `HAL` modification must support backward compatibility for the generic operations like image upgrade and downgrade.
+- `DeviceSettings Video Device` `HAL` modification must support backward compatibility for the generic operations like image upgrade and downgrade.
 - This interface must return the dsERR_OPERATION_NOT_SUPPORTED error code, if any of the interface - `APIs` are not supported by the underlying hardware.
 
 ### Platform or Product Customization
@@ -157,15 +156,11 @@ The `caller` is expected to have complete control over the life cycle of the `HA
 
 2. The `caller` can call `dsGetVideoDevice()` to get the handle for a specific video device, to be used in the other function calls.
 
-4. The `caller` can call `dsSetDFC()`, `dsSetDisplayframerate()`, `dsSetFRFMode()` and `dsForceDisableHDRSupport()` to set the needed information.
+3. The `caller` can call `dsSetDFC()`, `dsSetDisplayframerate()`, `dsSetFRFMode()` and `dsForceDisableHDRSupport()` to set the needed information.
 
 4. The `caller` can call `dsGetDFC()`, `dsGetHDRCapabilities()`, `dsGetSupportedVideoCodingFormats()`, `dsGetVideoCodecInfo()`, `dsGetFRFMode()`, `dsGetCurrentDisplayframerate()`, to query the needed information.
 
-5. Callbacks can be set with `dsRegisterFrameratePreChangeCB()` and `dsRegisterFrameratePostChangeCB()`.
-    - `dsRegisterFrameratePreChangeCB()` is used before the framerate is changed.
-    - `dsRegisterFrameratePostChangeCB()` is used after the framerate is changed.
-
-6. De-initialized the `HAL` using the function: `dsVideoDeviceTerm()`
+5. De-initialized the `HAL` using the function: `dsVideoDeviceTerm()`
 
 ### Diagrams
 
@@ -191,18 +186,6 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     HAL->>Driver:Getting the Video Device Parameters
     Driver-->>HAL:return
     HAL-->>Caller:return
-    Caller->>HAL:dsRegisterFrameratePreChangeCB()
-    Note over HAL: Creates the callback for the pre-change framerate callback.
-    HAL-->>Caller:return
-    Caller->>HAL:dsRegisterFrameratePostChangeCB()
-    Note over HAL: Creates the callback for the post-change framerate callback.
-    HAL-->>Caller:return
-    Driver-->>HAL:Frame rate about to change.
-    Note over HAL: Framerate about to change.
-    HAL-->>Caller:dsRegisterFrameratePreChangeCB_t callback returned
-    Driver-->>HAL:Framerate has changed.
-    Note over HAL: Framerate has changed.
-    HAL-->>Caller:dsRegisterFrameratePostChangeCB_t callback returned
     Caller ->>HAL:dsVideoDeviceTerm()
     HAL ->> Driver: Releases all the resources allocated during Video Device init
     Driver-->>HAL:return

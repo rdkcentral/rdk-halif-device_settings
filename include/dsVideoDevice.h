@@ -28,7 +28,7 @@
  * - DS:      Device Settings.
  * - HAL:     Hardware Abstraction Layer.
  * - FPS:     Frames Per Second.
- * - FRF:     TODO
+ * - FRF:     @todo
  * - HDR:     High Dynamic Range
  * 
  * @ingroup DSSETTINGS_HAL
@@ -71,7 +71,7 @@
 
 #include <sys/types.h>
 #include "dsError.h"
-#include "dsTypes.h"
+#include "dsVideoDeviceTypes.h"
 
 
 #ifdef __cplusplus
@@ -131,7 +131,7 @@ dsError_t  dsGetVideoDevice(int index, int *handle);
  * @brief This function is used to set the screen zoom mode (decoder format conversion).
  *
  * @param[in] handle    - The handle returned from the dsGetVideoDevice() function
- * @param[in] dfc       - Type of zoom mode to be used. See dsVideoZoom_t
+ * @param[in] dfc       - Type of zoom mode to be used. @see dsVideoZoom_t
  * 
  * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
@@ -143,7 +143,7 @@ dsError_t  dsGetVideoDevice(int index, int *handle);
  * @pre dsVideoDeviceInit() and dsGetVideoDevice() must be called before calling this function.
  * 
  * @warning  This function is Not thread safe.
- * \
+ * 
  * @see dsGetDFC()
  * 
  */
@@ -154,7 +154,7 @@ dsError_t  dsSetDFC(int handle, dsVideoZoom_t dfc);
  * @brief This function is used to get the screen zoom mode (decoder format conversion).
  *
  * @param[in] handle    - The handle returned from the dsGetVideoDevice() function
- * @param[out] dfc      - Type of zoom mode to be used. See dsVideoZoom_t
+ * @param[out] dfc      - Type of zoom mode being used. @see dsVideoZoom_t
  * 
  * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
@@ -183,6 +183,8 @@ dsError_t  dsGetDFC(int handle, dsVideoZoom_t *dfc);
  * @retval dsERR_NOT_INITIALIZED- Module is not initialised
  * @retval dsERR_GENERAL        - General failure.
  * 
+ * @todo check to see if dsGetVideoDevice() is necessary as a pre condition
+ * 
  * @pre dsVideoDeviceInit() and dsGetVideoDevice() must be called before calling this function.
  * 
  * @warning  This function is Not thread safe.
@@ -197,8 +199,10 @@ dsError_t  dsVideoDeviceTerm();
  * @brief This function is used to get the HDR capabilities.
  *
  * @param[in]  handle       - The handle returned from the dsGetVideoDevice() function
- * @param[out] capabilities - OR-ed values of all supported HDR standards. See dsHDRStandard_t,
+ * @param[out] capabilities - OR-ed values of all supported HDR standards. @see dsHDRStandard_t,
  *
+ * @todo see where dsHDRStandard_t is currently used at
+ * 
  * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
@@ -219,7 +223,7 @@ dsError_t dsGetHDRCapabilities(int handle, int *capabilities);
  *
  * @param[in]   handle              - The handle returned from the dsGetVideoDevice() function
  * @param[out]  supported_formats   - OR-ed values of all the supported video codec formats. 
- *                                          See dsVideoCodingFormat_t
+ *                                          @see dsVideoCodingFormat_t
  *
  * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
@@ -240,8 +244,8 @@ dsError_t dsGetSupportedVideoCodingFormats(int handle, unsigned int * supported_
  * @brief This function is used to get the video codec information.
  *
  * @param[in]  handle   - The handle returned from the dsGetVideoDevice() function
- * @param[in]  codec    - OR-ed value of supported video codec formats. See dsVideoCodingFormat_t.
- * @param[out] info     - Structure containing Video codec information. See dsVideoCodecInfo_t
+ * @param[in]  codec    - OR-ed value of supported video codec formats. @see dsVideoCodingFormat_t.
+ * @param[out] info     - Structure containing Video codec information. @see dsVideoCodecInfo_t
  *
  * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
@@ -333,7 +337,7 @@ dsError_t dsGetFRFMode(int handle, int *frfmode);
  * @param[out] framerate    - Current frame rate will be represented in FPS. 
  *                                  Max Framerate is device specific. Min Framerate is 0.
  *
- * @return dsError_t                       - Status
+ * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -372,72 +376,6 @@ dsError_t dsGetCurrentDisplayframerate(int handle, char *framerate);
  * 
  */
 dsError_t dsSetDisplayframerate(int handle, char *framerate);
-
-/**
- * @brief Call back function to receive the framerate change event form the HAL side.
- * @param [in] tSecond time elapsed after the change. Time in seconds.
- * 
- * @pre dsVideoDeviceInit(), dsRegisterFrameratePreChangeCB() must be called before calling this function.
- *
- */
-typedef void (*dsRegisterFrameratePreChangeCB_t)(unsigned int tSecond);
-
-
-/**
- * @brief This function is used to register the callback function for the Display framerate pre change event.
- *
- * @param[in] CBFunc    - Function callback to register for the event. 
- *                              See dsRegisterFrameratePreChangeCB_t.
- *
- * @return dsError_t                       - Status
- * @retval dsERR_NONE                       - Success
- * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
- * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
- * @retval dsERR_GENERAL                    - Underlying undefined platform error
- * 
- * @pre dsVideoDeviceInit() must be called before calling this function.
- * @post dsRegisterFrameratePreChangeCB_t callback must be called after calling this function.
- * 
- * @warning  This function is Not thread safe.
- * 
- */
-dsError_t dsRegisterFrameratePreChangeCB(dsRegisterFrameratePreChangeCB_t CBFunc);
-
-
-/**
- * @brief Call back function to receive the framerate change is event.
- * @param [in] tSecond time elapsed after the change.
- * 
- * @pre dsVideoDeviceInit(), dsRegisterFrameratePostChangeCB() must be called before calling this function.
- * 
- *
- */
-typedef void (*dsRegisterFrameratePostChangeCB_t)(unsigned int tSecond);
-
-
-/**
- * @brief This function is used to register a callback function for the Display framerate 
- *                      post change event from the HAL side.
- *
- * @param[in] CBFunc    - Function to register for the event. 
- *                                  See dsRegisterFrameratePostChangeCB_t.
- *
- * @return dsError_t                       - Status
- * @retval dsERR_NONE                       - Success
- * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
- * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
- * @retval dsERR_GENERAL                    - Underlying undefined platform error
- * 
- * @pre dsVideoDeviceInit() must be called before calling this function.
- * @post dsRegisterFrameratePostChangeCB_t callback must be called after calling this function.
- * 
- * @warning  This function is Not thread safe.
- * 
- */
-dsError_t dsRegisterFrameratePostChangeCB(dsRegisterFrameratePostChangeCB_t CBFunc);
-
 
 /** @} */ // End of DSHAL_VIDEODEVICE_API doxygen group 
 /** @} */ // End of DS HAL

@@ -97,6 +97,8 @@
  *  @{
  */
 
+#include "dsAudioVisualTypes.h"
+
 /**
  * @brief This enumeration defines all of the standard screen zoom (format conversion) modes.
  */
@@ -144,7 +146,7 @@ typedef enum
     dsVIDEO_CODEC_MPEGHPART2 = (0x01 << 0),     ///< Also known HEVC, H.265
     dsVIDEO_CODEC_MPEG4PART10 = (0x01 << 1),    ///< Also known as H.264, MPEG4 AVC
     dsVIDEO_CODEC_MPEG2 = (0x01 << 2),          ///< Also known as H.222/H.262
-    dsVIDEO_CODEC_MAX                           ///< Out of range 
+    dsVIDEO_CODEC_MAX   = (0x01 << 3)           ///< Out of range @todo match this edit in other enums where necessary
 } dsVideoCodingFormat_t;
 
 /* HEVC version 1 profiles are listed. More may be added to it as the support becomes available.*/
