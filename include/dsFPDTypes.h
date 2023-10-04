@@ -226,6 +226,46 @@ typedef enum __dsFPDMode_t{
     dsFPD_MODE_MAX,     ///< Out of range 
 } dsFPDMode_t;
 
+/**	
+* @brief Structure that defines the Front Panel Display Color Configurations
+ */
+typedef struct _dsFPDColorConfig_t {
+	int id;              // FPD Color Identifier
+	dsFPDColor_t color;  // Color of the FPD LED
+}dsFPDColorConfig_t;
+
+/**
+ * @brief Structure that defines the Front Panel Display Indicator Configurations
+ */
+typedef struct _dsFPDIndicatorConfig_t {
+	dsFPDIndicator_t id;                   // FPD LED Identifier
+	dsFPDColorConfig_t * supportedColors;  // Supported Colors of the FPD LEDs 
+	int	maxBrightness;                     // Maximum Brightness of FPD LEDs
+	int maxCycleRate;                      // Maximum Cycle Rate of FPD LEDs
+    int minBrightness;                     // Minimum Brightness of FPD LEDs
+    int levels;                            // 
+    int colorMode;                         // Color Mode(Single(0) or Multi-colored(1)) of FPD LEDs
+} dsFPDIndicatorConfig_t;
+
+/**
+ * @brief Structure that defines the Front Panel Text Display Configurations
+ */
+typedef struct _dsFPDTextDisplayConfig_t {
+	dsFPDTextDisplay_t id;                 // FP Text Display Identifier
+	const char * name;                     // Name of the 
+	dsFPDColorConfig_t * supportedColors;  // Supported Colors of 7-Segement LED Display
+	int	maxBrightness;                     // Maximum Brightness of 7-Segement LED Display
+	int maxCycleRate;                      // Maximum Cycle Rate of 7-Segement LED Display
+	const char * supportedCharacters;      // Supported Characters of 7-Segement LED Display
+	int columns;                           // Maximum  Horizontal Columns of 7-Segement LED Display
+	int rows;                              // Maximum Vertical Rows of 7-Segement LED Display
+	int	maxHorizontalIterations;           // Maximum Horizontal Iterations of 7-Segement LED Display
+	int maxVerticalIterations;             // Maximum Vertical Iterations of 7-Segement LED Display
+    int levels;                            //
+    int colorMode;                         // Color Mode (Single(0) or Multi-colored(1)) of 7-Segement LED Display
+} dsFPDTextDisplayConfig_t;
+
+
 #endif /* __DS_FPD_TYPES_H__ */
 
 /** @} */ // End of DSHAL_FPD_TYPES

@@ -283,6 +283,7 @@ dsError_t dsGetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t *pColor);
  * device or if the FP State is "OFF" then dsERR_OPERATION_NOT_SUPPORTED must be returned. @see dsFPDState_t
  * It must return dsERR_INVALID_PARAM if the format and hours values do not agree,
  * or if the hours/minutes are invalid.
+ * The FP Display Mode must be dsFPD_MODE_CLOCK. @see dsFPDMode_t
  * 
  * @note Whether this device has a 7-Segment display LEDs should be within the dsFPDSettings file.
  *
@@ -310,7 +311,8 @@ dsError_t dsSetFPTime (dsFPDTimeFormat_t eTimeFormat, const unsigned int uHour, 
  * 
  * This function is used to set the 7-segment display LEDs to show the given text.  
  * If there are no 7-Segment display LEDs present on the device or if the FP State is "OFF",
- * then dsERR_OPERATION_NOT_SUPPORTED must be returned. @see dsFPDState_t
+ * then dsERR_OPERATION_NOT_SUPPORTED must be returned. @see dsFPDState_t.
+ * The FP Display Mode must be dsFPD_MODE_TEXT. @see dsFPDMode_t
  * 
  * @param[in] pText - Text to be displayed. Maximum length of Text is 10 characters.
  * 
@@ -337,7 +339,7 @@ dsError_t dsSetFPText(const char* pText);
  * 
  * This function will set the brightness of the specified 7-segment display LEDs on the Front
  * Panel Display to the specified brightness level. If there are no 7-Segment display LEDs present
- * on the device or if the FP State is "OFF" then dsERR_OPERATION_NOT_SUPPORTED must be returned. @see dsFPDState_t
+ * on the device or if the FP State is "OFF" then dsERR_OPERATION_NOT_SUPPORTED must be returned. @see dsFPDState_t.
  *
  * @note Whether this device has a 7-Segment display LEDs should be within the dsFPDSettings file.
  * 
@@ -419,7 +421,7 @@ dsError_t dsFPEnableCLockDisplay (int enable);
  * 
  * This function scrolls the text in the 7-segment display LEDs for the given number of iterations.
  * If there are no 7-segment display LEDs present or if the FP State is "OFF" then
- * dsERR_OPERATION_NOT_SUPPORTED must be returned. @see dsFPDState_t
+ * dsERR_OPERATION_NOT_SUPPORTED must be returned. @see dsFPDState_t.
  * Horizontal and Vertical scroll cannot work at the same time.
  *
  * @note Whether this device has a 7-Segment display LEDs should be within the dsFPDSettings file.

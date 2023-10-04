@@ -69,74 +69,61 @@ namespace {
 #define _MAX_BRIGHTNESS 100         // Maximum brightness value of FPD LEDs
 #define _MIN_BRIGHTNESS 0           // Minimum brightness value of FPD LEDs
 #define _DEFAULT_LEVELS 10          // Default Levels
-#define _MAX_CYCLERATE  2           // Rate at which LED is rotating during scrolling
+#define _MAX_CYCLERATE  2           // Maximum Rate at which LED is rotating during scrolling
 #define _MAX_HORZ_COLS  0           // Maximum Horizontal Rows
 #define _MAX_VERT_ROWS  0           // Maximum Vertical Rows
 #define _MAX_HORZ_ITER  0           // Maximum horizontal iteration value
 #define _MAX_VERT_ITER  0           // Maximum vertical iteration value
-#define _DEFAULT_COLOR_MODE 0       // Color Mode of LED (Single or Multicolored)
- 
-/**	
-* @brief Structure that defines the Front Panel Display Color Configurations
- */
-typedef struct _dsFPDColorConfig_t {
-	int id;
-	dsFPDColor_t color;
-}dsFPDColorConfig_t;
-
-/**
- * @brief Structure that defines the Front Panel Display Indicator Configurations
- */
-typedef struct _dsFPDIndicatorConfig_t {
-	dsFPDIndicator_t id;
-	dsFPDColorConfig_t * supportedColors;
-	int	maxBrightness;
-	int maxCycleRate;
-    int minBrightness;
-    int levels;
-    int colorMode;
-} dsFPDIndicatorConfig_t;
-
-/**
- * @brief Structure that defines the Front Panel Text Display Configurations
- */
-typedef struct _dsFPDTextDisplayConfig_t {
-	dsFPDTextDisplay_t id;
-	const char * name;
-	dsFPDColorConfig_t * supportedColors;
-	int	maxBrightness;
-	int maxCycleRate;
-	const char * supportedCharacters;
-	int columns;
-	int rows;
-	int	maxHorizontalIterations;
-	int maxVerticalIterations;
-    int levels;
-    int colorMode;
-} dsFPDTextDisplayConfig_t;
+#define _DEFAULT_COLOR_MODE 0       // Color Mode of LED (Single(0) or Multicolored(1))
 
 /**
  * @brief Array that holds various Front Panel Indicator Colors
  */
 static   dsFPDColorConfig_t  kIndicatorColors[] = {
 	{
-		/*.Id = */      dsFPD_INDICATOR_POWER,
-		/*.color = */   dsFPD_COLOR_RED,
+		0,					/*.Id */
+		dsFPD_COLOR_BLUE,	/*.color */   
+	},
+	{
+		1,					/*.Id */   
+		dsFPD_COLOR_GREEN,	/*.color */
+	},
+	{
+		2,					/*.Id */ 
+		dsFPD_COLOR_RED,	/*.color */
 	},
 };
 
 /**
  * @brief Array that holds Front Panel Indicator Configurations
  */
-static const dsFPDIndicatorConfig_t kIndicators[] = {
+static const dsFPDIndicatorConfig_t kIndicators[dsFPD_INDICATOR_MAX] = {
 	{
-		/*.id = */ 			        dsFPD_INDICATOR_POWER,
-		/*.supportedColors = */		kIndicatorColors,
-		/*.maxBrightness   = */ 	_MAX_BRIGHTNESS,
-		/*.maxCycleRate    = */ 	_MAX_CYCLERATE,
-		/*.minBrightness   = */ 	_MIN_BRIGHTNESS,
-        /*.levels          = */ 	_DEFAULT_LEVELS,
-        /*.colorMode       = */ 	_DEFAULT_COLOR_MODE,
+		dsFPD_INDICATOR_MESSAGE,	/*.id */
+		kIndicatorColors,			/*.supportedColors */
+		_MAX_BRIGHTNESS,			/*.maxBrightness */
+		_MAX_CYCLERATE,				/*.maxCycleRate  */
+		_MIN_BRIGHTNESS,			/*.minBrightness */
+        _DEFAULT_LEVELS,			/*.levels        */
+        _DEFAULT_COLOR_MODE,		/*.colorMode     */
+	},
+	{
+		dsFPD_INDICATOR_POWER,		/*.id */
+		kIndicatorColors,			/*.supportedColors */
+		_MAX_BRIGHTNESS,			/*.maxBrightness */
+		_MAX_CYCLERATE,				/*.maxCycleRate  */
+		_MIN_BRIGHTNESS,			/*.minBrightness */
+        _DEFAULT_LEVELS,			/*.levels        */
+        _DEFAULT_COLOR_MODE,		/*.colorMode     */
+	},
+	{
+		dsFPD_INDICATOR_RECORD,		/*.id */
+		kIndicatorColors,			/*.supportedColors */
+		_MAX_BRIGHTNESS,			/*.maxBrightness */
+		_MAX_CYCLERATE,				/*.maxCycleRate  */
+		_MIN_BRIGHTNESS,			/*.minBrightness */
+        _DEFAULT_LEVELS,			/*.levels        */
+        _DEFAULT_COLOR_MODE,		/*.colorMode     */
 	},
 };
 
@@ -145,18 +132,18 @@ static const dsFPDIndicatorConfig_t kIndicators[] = {
  */
 static const dsFPDTextDisplayConfig_t  kTextDisplays[dsFPD_TEXTDISP_MAX] = {
 	{
-		/*.id = */ 			          dsFPD_TEXTDISP_TEXT,
-		/*.name   = */ 			      "Text",
-		/*.supportedColors =  */	  kIndicatorColors,
-		/*.maxBrightness = */		  _MAX_BRIGHTNESS,
-		/*.maxCycleRate = 	 */	      _MAX_CYCLERATE,
-		/*.supportedCharacters=*/ 	  "ABCDEFG",
-		/*.columns = */			      _MAX_HORZ_COLS,
-		/*.rows= */ 			      _MAX_VERT_ROWS,
-		/*.horizontal iterations =*/  _MAX_HORZ_ITER,
-		/*.vertical iterations */ 	  _MAX_VERT_ITER,
-		/*.levels */ 	              _DEFAULT_LEVELS,
-		/*.colorMode       = */		  _DEFAULT_COLOR_MODE
+		dsFPD_TEXTDISP_TEXT,		/*.id	*/
+		"Text",						/*.name	*/
+		kIndicatorColors,			/*.supportedColors	*/
+		_MAX_BRIGHTNESS,			/*.maxBrightness	*/
+		_MAX_CYCLERATE,				/*.maxCycleRate	*/
+		"ABCDEFG",					/*.supportedCharacters	*/
+		_MAX_HORZ_COLS,				/*.columns	*/
+		_MAX_VERT_ROWS,				/*.rows	*/
+		_MAX_HORZ_ITER,				/*.horizontal iterations	*/
+		_MAX_VERT_ITER,				/*.vertical iterations	*/
+		_DEFAULT_LEVELS,			/*.levels	*/ 	              
+		_DEFAULT_COLOR_MODE			/*.colorMode	*/
 	},
 };
 
