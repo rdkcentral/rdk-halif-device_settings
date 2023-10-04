@@ -42,49 +42,37 @@
  *  @{
  */
 
-/** @defgroup DS_LOGGER Device Settings Logger
+/** @addtogroup DS_LOGGER Device Settings Logger
  *  @{
  * @par Application API Specification
  * dsHost HAL provides an interface for managing the HdmiIn settings for the device settings module
  */
 
-/** @defgroup DSHAL_HAL_LOGGER Device Settings HAL Logger
+/** @defgroup DSHAL_HAL_LOGGER_REGISTER Device Settings HAL Logger Register
  *
  *
  *  @{
  */
-#ifndef _DS_HAL_LOGGER_H_
-#define _DS_HAL_LOGGER_H_
 
-#include <stdio.h>
-#include "dshalregisterlog.h"
 
-/**
- * @brief This function logs the sent message based on the priority.
- * 
- * @param[in]  priority - Priority of the message to be logged.
- * @param[out] format   - Message format.
- * 
- * @return int         - Status. Success if non-negative, failure if negative.
- * 
- */
+#ifndef _DS_HAL_REGISTER_H_
+#define _DS_HAL_REGISTER_H_
 
-int ds_hal_log(int priority,const char *format, ...);  
+typedef void (*DSHal_LogCb)(int priority,const char *);
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+void DSHal_RegisterForLog(DSHal_LogCb cb);
+#ifdef __cplusplus
+};
+#endif
 
-#define INFO_LEVEL   0  ///< Messages giving a general overview of the program execution.
-#define WARN_LEVEL   1  ///< Messages giving warning about the program execution.
-#define ERROR_LEVEL  2  ///< Messages giving an overview of program errors.
-#define DEBUG_LEVEL  3  ///< Messages giving an overview of the program execution for debugging.
-
-#define INT_INFO(FORMAT, ...)           ds_hal_log(INFO_LEVEL ,FORMAT, ##__VA_ARGS__ )      ///< To handle logging of info level logs.
-#define INT_WARN(FORMAT, ...)           ds_hal_log(WARN_LEVEL ,FORMAT,  ##__VA_ARGS__ )     ///< To handle logging of warn level logs.
-#define INT_ERROR(FORMAT, ...)          ds_hal_log(ERROR_LEVEL ,FORMAT,  ##__VA_ARGS__ )    ///< To handle logging of error level logs.
-#define INT_DEBUG(FORMAT, ...)          ds_hal_log(DEBUG_LEVEL ,FORMAT,  ##__VA_ARGS__ )    ///< To handle logging of debug level logs.
 
 #endif
 
-/** @} */ // End of DSHAL_HAL_LOGGER doxygen group 
-/** @} */ // End of DS LOGGER
+/** @} */ // End of DSHAL HAL Logger Register doxygen group 
+/** @} */ // End of DS Logger
 /** @} */ // End of Device Settings HAL
 /** @} */ // End of Device Settings Module
 /** @} */ // End of HPK

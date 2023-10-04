@@ -37,7 +37,7 @@
 
 - `HAL`    - Hardware Abstraction Layer
 - `API`    - Caller Programming Interface
-- `Caller` - Any user of the interface via the `API`s
+- `Caller` - Any user of the interface via the `APIs`
 - `CPU`    - Central Processing Unit
 - `DS`     - Device Settings
 - `HAL`    - Hardware Abstraction Layer
@@ -45,6 +45,7 @@
 - `CPU`    - Central Processing Unit
 - `SoC`    - System on chip
 - `AV`     - Audio-Visual
+- `HDMI`   - High-Definition Multimedia Interface
 - `SPD`    - Source Product Description.
 
 ## Description
@@ -61,7 +62,7 @@ style z fill:#fcc,stroke:#333,stroke-width:0.3px,align:left
 style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
  ```
 
-Device Settings `HdmiIn` `HAL` provides a set of `APIs` to initialize, query and set information about the HDMI input ports, such as getting the number of HDMI input ports, getting the current status of a selected HDMI input port, setting the video scale and selecting which HDMI input to be selected as active. And registering callbacks fo asyncronous notifications.
+Device Settings `HdmiIn` `HAL` provides a set of `APIs` to initialize, query and set information about the HDMI input ports such as getting the number of HDMI input ports, getting the current status of a selected HDMI input port, setting the video scale, selecting which HDMI input to be selected as active and registering callbacks fo asynchronous notifications.
 
 ## Component Runtime Execution Requirements
 
@@ -75,7 +76,7 @@ Failure to meet these requirements will likely result in undefined and unexpecte
 
 ### Threading Model
 
-This interface is not required to be thread safe. Any `caller` invoking the `API`s should ensure calls are made in a thread safe manner. This interface is allowed to create internal threads for its operations without excessively consuming system resources. Any threads created by this interface should be handled gracefully and respective error codes should be returned if any corresponding `API` fails.
+This interface is not required to be thread safe. Any `caller` invoking the `APIs` should ensure calls are made in a thread safe manner. This interface is allowed to create internal threads for its operations without excessively consuming system resources. Any threads created by this interface should be handled gracefully and respective error codes should be returned if any corresponding `API` fails.
 
 ### Process Model
 
@@ -163,7 +164,7 @@ None
 
 The `caller` is expected to have complete control over the life cycle of the `HAL`.
 
-1. Initialize the `HAL` using function: `dsHdmiInInit()` before making any other `API`s calls.  If `dsHdmiInInit()` call fails, the `HAL` shall return the respective error code, so that the `caller` can retry the operation.
+1. Initialize the `HAL` using function: `dsHdmiInInit()` before making any other `APIs` calls.  If `dsHdmiInInit()` call fails, the `HAL` shall return the respective error code, so that the `caller` can retry the operation.
 
 2. The `caller` can call `dsHdmiInSelectPort()`, `dsHdmiInScaleVideo()`, `dsSetEdidVersion()` and `dsHdmiInSelectZoomMode()` to set the needed information.
 

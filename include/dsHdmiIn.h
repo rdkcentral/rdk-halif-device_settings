@@ -67,7 +67,7 @@
  */
 
 /**
- * @addtogroup HPK HPK
+ * @addtogroup HPK Hardware Porting Kit
  * @{
  * @par The Hardware Porting Kit
  * HPK is the next evolution of the well-defined Hardware Abstraction Layer
@@ -80,25 +80,35 @@
  *
  */
 
-/** @addtogroup DeviceSettings_Module DeviceSettings Module
+/** @defgroup Device_Settings Device Settings Module
+ * @{
+ */
+
+/** @addtogroup Device_Settings_HAL Device Settings HAL
  * @par Application API Specification
  * Described herein are the DeviceSettings HAL types and functions that are part of
- * the HdmiIn subsystem. The HdmiIn subsystem manages system-specific HAL operations.
+ * the Host subsystem. The Host subsystem manages system-specific HAL operations.
  *  @{
  */
 
-/** @defgroup DSHAL_HdmiIn_API Device Settings HAL HdmiIn Public API
+/** @defgroup dsHdmiIn_HAL Device Settings Host HAL
+ *  @{
+ * @par Application API Specification
+ * dsHost HAL provides an interface for managing the HdmiIn settings for the device settings module
+ */
+
+/** @defgroup DSHAL_HDMI_IN_API Device Settings HAL Hdmi Input Public API
  *
  *
  *  @{
  */
 
-#ifndef _DS_dsHdmiInH_
-#define _DS_dsHdmiInH_
+#ifndef __DS_HDMI_IN_H__
+#define __DS_HDMI_IN_H__
 
 #include <sys/types.h>
 #include "dsError.h"
-#include "dsTypes.h"
+#include "dsHdmiInTypes.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -143,12 +153,12 @@ dsError_t dsHdmiInInit (void);
 dsError_t dsHdmiInTerm (void);
 
 /**
- * @brief Sets the number of HDMI input ports on the device.
+ * @brief Gets the number of HDMI input ports on the device.
  * 
- * This function sets the number of HDMI input ports on the device.
+ * This function gets the number of HDMI input ports on the device.
  *
- * @param[out] pNumberOfinputs  - number of HDMI input ports.
- *                                  Max number of inputs is platform specific. Min is 0
+ * @param[out] pNumberOfinputs  - number of HDMI input ports. 
+ *                                       Max number of inputs is platform specific. Min is 0
  * 
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
@@ -166,9 +176,9 @@ dsError_t dsHdmiInTerm (void);
 dsError_t dsHdmiInGetNumberOfinputs (uint8_t *pNumberOfinputs);
 
 /**
- * @brief Sets the current HDMI input port status.
+ * @brief Gets the current HDMI input port status.
  * 
- * This function sets the current HDMI input port status.
+ * This function gets the current HDMI input port status.
  *
  * @param[out] pStatus  - current status of the HDMI input port. @see dsHdmiInStatus_t
  *
@@ -717,11 +727,14 @@ dsError_t dsGetSupportedGameFeaturesList (dsSupportedGameFeatureList_t* features
  */
 dsError_t dsGetAVLatency (int *audio_latency, int *video_latency);
 
+/** @} */ // End of DSHAL_HDMI_IN_API doxygen group 
+/** @} */ // End of DS HdmiIn HAL
+/** @} */ // End of Device Settings HAL
+/** @} */ // End of Device Settings Module
+/** @} */ // End of HPK
+
 #ifdef __cplusplus
 }
 #endif
 #endif /* _DS_dsHdmiInH_ */
 
-/** @} */ // End of DSHAL_HdmiIn_API doxygen group 
-/** @} */ // End of DeviceSettings_Module
-/** @} */ // End of HPK

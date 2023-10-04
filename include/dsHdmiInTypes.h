@@ -37,6 +37,7 @@
  * - HAL:     Hardware Abstraction Layer.
  * - HDMI:    High-Definition Multimedia Interface
  * - ARC:     Audio Return Channel.
+ * - SPD:     Source Product Description
  * - rsd:     Repetition of statis data
  * - pkttype: Package type
  *
@@ -46,7 +47,7 @@
  */
 
 /**
- * @addtogroup HPK HPK
+ * @addtogroup HPK Hardware Porting Kit
  * @{
  * @par The Hardware Porting Kit
  * HPK is the next evolution of the well-defined Hardware Abstraction Layer
@@ -59,17 +60,36 @@
  *
  */
 
-/** 
- * @defgroup DSSETTINGS_HAL HAL Types & Public API
- * HAL types and public API definitions.
- * @ingroup DSSETTINGS
+/** @addtogroup Device_Settings Device Settings Module
  * @{
  */
- 
- /** @addtogroup DSHAL_HDMI_IN_TYPES HAL HDMI IN Type Definitions
- *  @ingroup DSHAL_HDMI_IN
+
+/** @addtogroup Device_Settings_HAL Device Settings HAL
+ * @par Application API Specification
+ * Described herein are the DeviceSettings HAL types and functions that are part of
+ * the Host subsystem. The Host subsystem manages system-specific HAL operations.
  *  @{
  */
+
+/** @addtogroup dsHdmiIn_HAL_Type Device Settings Host HAL
+ *  @{
+ * @par Application API Specification
+ * dsHost HAL provides an interface for managing the HdmiIn settings for the device settings module
+ */
+
+/** @defgroup DSHAL_HDMI_IN_TYPES Device Settings HAL Hdmi Input Public API
+ *
+ *
+ *  @{
+ */
+
+#include "dsVideoDevice.h"
+
+/**
+ * @brief Max buffer length for the feature list
+ * 
+ */
+#define MAX_FEATURE_LIST_BUFFER_LEN 1024
 
 /**
  * @brief This enumeration defines the type of HDMI ports.
@@ -130,12 +150,6 @@ typedef enum dsAviContentType {
 }dsAviContentType_t;
 
 /**
- * @brief Max buffer length for the feature list
- * 
- */
-#define MAX_FEATURE_LIST_BUFFER_LEN 1024
-
-/**
  * @brief Structure that captures Supported Game Features list
  */
 typedef struct _dsSupportedGameFeatureList_t {
@@ -149,11 +163,11 @@ typedef struct _dsSupportedGameFeatureList_t {
 struct dsSpd_infoframe_st {
     uint8_t pkttype;            ///< Package type
     uint8_t version;            ///< Version
-    uint8_t length;             ///< length=25
+    uint8_t length;             ///< max length 25, mine length 0
     uint8_t rsd;                ///< Repetition of statis data
     uint8_t checksum;           ///< Checksum for spd info frame
-    uint8_t vendor_name[8];     ///< Vendor Name Character
-    uint8_t product_des[16];    ///< Product Description Character
+    uint8_t vendor_name[8];     ///< Vendor Name string. Min length 0
+    uint8_t product_des[16];    ///< Product Description string. Min length 0
     uint8_t source_info;        ///< byte 25
 } ;
 
@@ -167,9 +181,8 @@ typedef enum tv_hdmi_edid_version_e {
     HDMI_EDID_VER_MAX,
 } tv_hdmi_edid_version_t;
 
-/* End of DSHAL_HDMI_IN_TYPES doxygen group */
-/**
- * @}
- */
-/** @} */ // End of DSHAL_API HAL Data Types
+/** @} */ // End of DSHAL_HDMI_IN_TYPES doxygen group 
+/** @} */ // End of DS HdmiIn HAL
+/** @} */ // End of Device Settings HAL
+/** @} */ // End of Device Settings Module
 /** @} */ // End of HPK
