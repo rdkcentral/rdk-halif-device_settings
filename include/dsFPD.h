@@ -572,9 +572,9 @@ dsError_t dsSetFPDMode (dsFPDMode_t eMode);
 dsError_t dsFPGetLEDState (dsFPDLedState_t* state);
 
 /**
- * @brief Sets the power Front Panel Display LED state
+ * @brief Sets the current power Front Panel Display LED state
  * 
- * This function sets the power LED state
+ * This function sets the current power LED state
  *
  * @param[in] state - LED state. @see dsFPDLedState_t
  *
