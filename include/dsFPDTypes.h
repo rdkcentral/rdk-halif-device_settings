@@ -45,6 +45,7 @@
  *
  */
 
+
 /**
  * @addtogroup HPK Hardware Porting Kit
  * @{
@@ -150,7 +151,7 @@ typedef enum __dsFPDIndicator_t
 
 
 /**
- * @brief This enumeration defines the FPD text display types.
+ * @brief This enumeration defines the FPD text display types
  * @see dsFPDTextDisplay_isValid
  */
 typedef enum __dsFPDTextDisplay_t
@@ -160,13 +161,14 @@ typedef enum __dsFPDTextDisplay_t
 }dsFPDTextDisplay_t;
 
 /**
+<<<<<<< Updated upstream
  * @brief FPD text display type validation check.
  * @see dsFPDTextDisplay_t
  */
 #define dsFPDTextDisplay_isValid(t)  (((t)  >= dsFPD_TEXTDISP_TEXT ) && ((t) < dsFPD_TEXTDISP_MAX))
 
 /**
- * @brief This enumeration defines the front panel display state.
+ * @brief This enumeration defines the front panel display state
  */
 typedef enum __dsFPDState_t
 {
@@ -176,9 +178,9 @@ typedef enum __dsFPDState_t
 }dsFPDState_t;
 
 /**
- * @brief This enumeration defines the front panel display state.
+ * @brief This enumeration defines the front panel display state
  * 
- * The HAL shall define the responsibility of LED behavior during each of the below states.
+ * The HAL shall define the responsibility of LED behavior during each of the below states
  * 
  */
 typedef enum __dsFPDLedState_t
