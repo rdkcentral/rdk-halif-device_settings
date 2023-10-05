@@ -16,30 +16,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
 */
- 
-/** 
- * @defgroup devicesettings Device Settings
- * Describe the details about Device Settings HAL function specifications.
- *
- * <b> Following abbreviations present in HAL function </b>
- *
- * @par Abbreviations
- * - cb:      Callback function (suffix).
- * - DS:      Device Settings.
- * - HAL:     Hardware Abstraction Layer.
- * - FPS:     Frames Per Second.
- * - FRF:     @todo
- * - HDR:     High Dynamic Range
- * 
- * @ingroup DSSETTINGS_HAL
- */
 
 /**
- * @file dsVideoDevice.h
- */
-
-/**
- * @addtogroup HPK HPK
+ * @addtogroup HPK Hardware Porting Kit
  * @{
  * @par The Hardware Porting Kit
  * HPK is the next evolution of the well-defined Hardware Abstraction Layer
@@ -52,26 +31,58 @@
  *
  */
 
-/** @addtogroup DS_Manager_HAL DS Manager Hal
+/** @defgroup Device_Settings Device Settings Module
+ * @{
+ */
+
+/** @defgroup Device_Settings_HAL Device Settings HAL
  * @par Application API Specification
  * Described herein are the DeviceSettings HAL types and functions that are part of
  * the Video Device subsystem. The Video Device subsystem manages system-specific HAL operations.
  *  @{
  */
 
-/** @defgroup DSHAL_VIDEODEVICE_API Device Settings HAL Video Device Public API
+/** @defgroup dsVIDEODEVICE_HAL Device Settings Video Device HAL
+ *  @{
+ * @par Application API Specification
+ * dsVideoDevice HAL provides an interface for managing the VideoDevice settings for the device settings module
+ */
+
+/** @defgroup DS_VIDEODEVICE_API Device Settings HAL Video Device Public API
  *
  *
  *  @{
  */
+ 
+/** 
+ * @defgroup devicesettings Device Settings
+ * Describe the details about Device Settings HAL function specifications.
+ *
+ * <b> Following abbreviations present in HAL function </b>
+ *
+ * @par Abbreviations
+ * - cb:      Callback function (suffix).
+ * - DS:      Device Settings.
+ * - HAL:     Hardware Abstraction Layer.
+ * - FPS:     Frames Per Second.
+ * - FRF:     Frame Rate Frequency
+ * - HDR:     High Dynamic Range
+ * 
+ * @ingroup DSSETTINGS_HAL
+ */
+
+/**
+ * @file dsVideoDevice.h
+ */
 
 
-#ifndef _DS_VIDEODEVICE_H_
-#define _DS_VIDEODEVICE_H_
+#ifndef __DS_VIDEODEVICE_H__
+#define __DS_VIDEODEVICE_H__
 
 #include <sys/types.h>
 #include "dsError.h"
 #include "dsVideoDeviceTypes.h"
+#include "dsAudioVisualTypes.h"
 
 
 #ifdef __cplusplus
@@ -183,9 +194,7 @@ dsError_t  dsGetDFC(int handle, dsVideoZoom_t *dfc);
  * @retval dsERR_NOT_INITIALIZED- Module is not initialised
  * @retval dsERR_GENERAL        - General failure.
  * 
- * @todo check to see if dsGetVideoDevice() is necessary as a pre condition
- * 
- * @pre dsVideoDeviceInit() and dsGetVideoDevice() must be called before calling this function.
+ * @pre dsVideoDeviceInit() must be called before calling this function.
  * 
  * @warning  This function is Not thread safe.
  * 
@@ -200,8 +209,8 @@ dsError_t  dsVideoDeviceTerm();
  *
  * @param[in]  handle       - The handle returned from the dsGetVideoDevice() function
  * @param[out] capabilities - OR-ed values of all supported HDR standards. @see dsHDRStandard_t,
+ *                                  dsHDRStandard_t is currently in the audioVisual combined file.
  *
- * @todo see where dsHDRStandard_t is currently used at
  * 
  * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
@@ -378,7 +387,9 @@ dsError_t dsGetCurrentDisplayframerate(int handle, char *framerate);
 dsError_t dsSetDisplayframerate(int handle, char *framerate);
 
 /** @} */ // End of DSHAL_VIDEODEVICE_API doxygen group 
-/** @} */ // End of DS HAL
+/** @} */ // End of DS Video Device HAL
+/** @} */ // End of Device Settings HAL
+/** @} */ // End of Device Settings Module
 /** @} */ // End of HPK
 
 #ifdef __cplusplus

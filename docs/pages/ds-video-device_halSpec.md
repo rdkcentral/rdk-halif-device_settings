@@ -208,4 +208,4 @@ dsGetSupportedVideoCodingFormats(),
 dsGetVideoCodecInfo(),
 dsGetVideo_DeviceTimeFormat(),
 dsGetFRFMode(),
-dsGetCurrentDisplayframerate)_
+dsGetCurrentDisplayframerate()

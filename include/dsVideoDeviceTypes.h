@@ -18,7 +18,43 @@
 */
 
 /**
- * @file dsTypes.h
+ * @addtogroup HPK Hardware Porting Kit
+ * @{
+ * @par The Hardware Porting Kit
+ * HPK is the next evolution of the well-defined Hardware Abstraction Layer
+ * (HAL), but augmented with more comprehensive documentation and test suites
+ * that OEM or SOC vendors can use to self-certify their ports before taking
+ * them to RDKM for validation or to an operator for final integration and
+ * deployment. The Hardware Porting Kit effectively enables an OEM and/or SOC
+ * vendor to self-certify their own Video Accelerator devices, with minimal RDKM
+ * assistance.
+ *
+ */
+
+/** @defgroup Device_Settings Device Settings Module
+ * @{
+ */
+
+/** @defgroup Device_Settings_HAL Device Settings HAL
+ * @par Application API Specification
+ * Described herein are the DeviceSettings HAL types and functions that are part of
+ * the Video Device subsystem. The Video Device subsystem manages system-specific HAL operations.
+ *  @{
+ */
+
+/** @defgroup dsVIDEODEVICE_HAL Device Settings Video Device HAL
+ *  @{
+ * @par Application API Specification
+ * dsVideoDevice HAL provides an interface for managing the VideoDevice settings for the device settings module
+ */
+
+/** @addtogroup DSHAL_VIDEODEVICE_TYPES HAL VideoDevice Type Definitions
+ *  @ingroup DSHAL_VIDEODEVICE
+ *  @{
+ */
+
+/**
+ * @file dsVideoDeviceTypes.h
  *
  * @brief HAL types.
  *
@@ -71,33 +107,6 @@
  *
  */
 
-/**
- * @addtogroup HPK HPK
- * @{
- * @par The Hardware Porting Kit
- * HPK is the next evolution of the well-defined Hardware Abstraction Layer
- * (HAL), but augmented with more comprehensive documentation and test suites
- * that OEM or SOC vendors can use to self-certify their ports before taking
- * them to RDKM for validation or to an operator for final integration and
- * deployment. The Hardware Porting Kit effectively enables an OEM and/or SOC
- * vendor to self-certify their own Video Accelerator devices, with minimal RDKM
- * assistance.
- *
- */
-
-/** 
- * @defgroup DSSETTINGS_HAL HAL Types & Public API
- * HAL types and public API definitions.
- * @ingroup DSSETTINGS
- * @{
- */
-
-/** @addtogroup DSHAL_VIDEODEVICE_TYPES HAL VideoDevice Type Definitions
- *  @ingroup DSHAL_VIDEODEVICE
- *  @{
- */
-
-#include "dsAudioVisualTypes.h"
 
 /**
  * @brief This enumeration defines all of the standard screen zoom (format conversion) modes.
@@ -146,7 +155,7 @@ typedef enum
     dsVIDEO_CODEC_MPEGHPART2 = (0x01 << 0),     ///< Also known HEVC, H.265
     dsVIDEO_CODEC_MPEG4PART10 = (0x01 << 1),    ///< Also known as H.264, MPEG4 AVC
     dsVIDEO_CODEC_MPEG2 = (0x01 << 2),          ///< Also known as H.222/H.262
-    dsVIDEO_CODEC_MAX   = (0x01 << 3)           ///< Out of range @todo match this edit in other enums where necessary
+    dsVIDEO_CODEC_MAX   = (0x01 << 3)           ///< Out of range
 } dsVideoCodingFormat_t;
 
 /* HEVC version 1 profiles are listed. More may be added to it as the support becomes available.*/
@@ -159,7 +168,7 @@ typedef enum
     dsVIDEO_CODEC_HEVC_PROFILE_MAIN = (0x01 << 0),              ///< 8-bit HEVC video profile.
     dsVIDEO_CODEC_HEVC_PROFILE_MAIN10 = (0x01 << 1),            ///< 10-bit HEVC video profile.
     dsVIDEO_CODEC_HEVC_PROFILE_MAINSTILLPICTURE = (0x01 << 2),  ///< HECV Main Still Picture profile.
-    dsVIDEO_CODEC_HEVC_MAX                                      ///< Out of range 
+    dsVIDEO_CODEC_HEVC_MAX  = (0x01 << 3)                       ///< Out of range 
 } dsVideoCodecHevcProfiles_t;
 /**
  * @brief Structure type for HEVC profiles.
@@ -178,9 +187,8 @@ typedef struct
     dsVideoCodecProfileSupport_t entries[10];  ///< Contains a list of the supported Codex profiles.
 } dsVideoCodecInfo_t;
 
-/* End of DSHAL_VIDEODEVICE_TYPES doxygen group. */
-/**
- * @}
- */
-/** @} */ // End of DSHAL_API HAL Data Types
+/** @} */ // End of DSHAL_VIDEODEVICE_TYPES doxygen group 
+/** @} */ // End of DS Video Device HAL
+/** @} */ // End of Device Settings HAL
+/** @} */ // End of Device Settings Module
 /** @} */ // End of HPK
