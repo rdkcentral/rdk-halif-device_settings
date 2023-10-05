@@ -47,6 +47,7 @@
 - `AV`     - Audio-Visual
 - `HDMI`   - High-Definition Multimedia Interface
 - `SPD`    - Source Product Description.
+- `HdmiIn` - HDMI Input
 
 ## Description
 
@@ -62,17 +63,17 @@ style z fill:#fcc,stroke:#333,stroke-width:0.3px,align:left
 style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
  ```
 
-Device Settings `HdmiIn` `HAL` provides a set of `APIs` to initialize, query and set information about the HDMI input ports such as getting the number of HDMI input ports, getting the current status of a selected HDMI input port, setting the video scale, selecting which HDMI input to be selected as active and registering callbacks fo asynchronous notifications.
+DS `HdmiIn` `HAL` provides a set of `APIs` to initialize, query and set information about the HDMI input ports such as getting the number of HDMI input ports, getting the current status of a selected HDMI input port, setting the video scale, selecting which HDMI input to be selected as active and registering callbacks fo asynchronous notifications.
 
 ## Component Runtime Execution Requirements
 
-The component shall adeptly manage resources to prevent issues like memory leaks and excessive utilization. It shall also meet performance goals for response time, throughput, and resource use as per the platform's capabilities.
+The component shall adeptly manage resources to prevent issues like memory leaks and excessive utilization. It shall also meet performance goals for response time, throughput and resource use as per the platform's capabilities.
 
 Failure to meet these requirements will likely result in undefined and unexpected behavior.
 
 ### Initialization and Startup
 
-`Caller` shall initialize `Device Settings HdmiIn` module by calling `dsHdmiInInit()` before calling any other `APIs`. The `Caller` is expected to have complete control over the life cycle of this module.
+`Caller` shall initialize DS `HdmiIn` module by calling `dsHdmiInInit()` before calling any other `APIs`. The `Caller` is expected to have complete control over the life cycle of this module.
 
 ### Threading Model
 
@@ -94,13 +95,13 @@ Although this interface is not required to be involved in any of the power manag
 
 The `HdmiIn` module should support asynchronous notifications operations:
 
- - The `HdmiIn` `API` `dsHdmiInRegisterConnectCB()` should facilitate asynchronous status notifications using the callback when the connection status of the callback `dsHdmiInConnectCB_t`. This callback should be used when the connection status when the HDMI input port changes.
- - The `HdmiIn` `API` `dsHdmiInRegisterSignalChangeCB()` should facilitate asynchronous status notifications using the callback `dsHdmiInSignalChangeCB_t`. This callback should be used when the signal status changes.
- - The `HdmiIn` `API` `dsHdmiInRegisterStatusChangeCB()` should facilitate asynchronous status notifications using the callback `dsHdmiInStatusChangeCB_t`. This callback should be used when the HDMI input status changes.
- - The `HdmiIn` `API` `dsHdmiInRegisterVideoModeUpdateCB()` should facilitate asynchronous status notifications using the callback `dsHdmiInVideoModeUpdateCB_t`. This callback should be used when the video mode changes. This callback should be used when the ALLM mode changes.
- - The `HdmiIn` `API` `dsHdmiInRegisterAllmChangeCB()` should facilitate asynchronous status notifications using the callback `dsHdmiInAllmChangeCB_t`.
- - The `HdmiIn` `API` `dsHdmiInRegisterAVLatencyChangeCB()` should facilitate asynchronous notifications using the callback `dsAVLatencyChangeCB_t` when the AV latency changes.
- - The `HdmiIn` `API` `dsHdmiInRegisterAviContentTypeChangeCB()` should facilitate asynchronous notifications using the call back `dsHdmiInAviContentTypeChangeCB_t` when HDMI input content type changes.
+ - The `dsHdmiInRegisterConnectCB()` should facilitate asynchronous status notifications using the callback when the connection status of the callback `dsHdmiInConnectCB_t`. This callback should be used when the connection status when the HDMI input port changes.
+ - The `dsHdmiInRegisterSignalChangeCB()` should facilitate asynchronous status notifications using the callback `dsHdmiInSignalChangeCB_t`. This callback should be used when the signal status changes.
+ - The `dsHdmiInRegisterStatusChangeCB()` should facilitate asynchronous status notifications using the callback `dsHdmiInStatusChangeCB_t`. This callback should be used when the HDMI input status changes.
+ - The `dsHdmiInRegisterVideoModeUpdateCB()` should facilitate asynchronous status notifications using the callback `dsHdmiInVideoModeUpdateCB_t`. This callback should be used when the video mode changes. This callback should be used when the ALLM mode changes.
+ - The `dsHdmiInRegisterAllmChangeCB()` should facilitate asynchronous status notifications using the callback `dsHdmiInAllmChangeCB_t`.
+ - The `dsHdmiInRegisterAVLatencyChangeCB()` should facilitate asynchronous notifications using the callback `dsAVLatencyChangeCB_t` when the AV latency changes.
+ - The `dsHdmiInRegisterAviContentTypeChangeCB()` should facilitate asynchronous notifications using the call back `dsHdmiInAviContentTypeChangeCB_t` when HDMI input content type changes.
  - This interface is allowed to establish its own thread context for its operation, ensuring minimal impact on system resources.
  - Additionally, this interface is responsible for releasing the resources it creates for its operation once the respective operation concludes.
 
@@ -144,7 +145,7 @@ The `HAL` implementation is expected to released under the Apache License 2.0.
 
 ### Build Requirements
 
-The source code shall build into a shared library for Device Settings as `HdmiIn` module is a part of Device Settings and shall be named as `libdshal.so`. The build mechanism shall be independent of Yocto.
+The source code shall build into a shared library for DS as `HdmiIn` module is a part of DS and shall be named as `libdshal.so`. The build mechanism shall be independent of Yocto.
  
 ### Variability Management
 
@@ -212,7 +213,7 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     HAL-->>Caller:return
     Caller->>HAL:dsGetEDIDBytesInfo()
     Note over HAL: Gets the EDID Bytes info
-    HAL->>Driver:Returns the EDID Bytes info
+    HAL->>Driver:Getting the EDID Bytes info
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsHdmiInGetNumberOfInputs()
@@ -222,7 +223,7 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     HAL-->>Caller:return
     Caller->>HAL:dsHdmiInGetCurrentVideoMode()
     Note over HAL: Gets the current video mode
-    HAL->>Driver:Returns the current video mode
+    HAL->>Driver:Getting the current video mode
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsSetEdidVersion()
@@ -232,12 +233,12 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     HAL-->>Caller:return
     Caller->>HAL:dsGetEdidVersion()
     Note over HAL: Gets the current EDID Version
-    HAL->>Driver:Returns the current EDID Version
+    HAL->>Driver:Getting the current EDID Version
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsGetAllmStatus()
     Note over HAL: Gets the ALLM status
-    HAL->>Driver:Returns the ALLM status
+    HAL->>Driver:Getting the ALLM status
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsGetSupportedGameFeaturesList()
@@ -245,12 +246,12 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     HAL-->>Caller:return
     Caller->>HAL:dsIsHdmiARCPort()
     Note over HAL: Gets whether the specified HDMI input port supports ARC
-    HAL->>Driver:Returns whether the specified HDMI input port supports ARC
+    HAL->>Driver:Getting whether the specified HDMI input port supports ARC
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsGetHDMISPDInfo()
     Note over HAL: Gets the HDMI SPD info
-    HAL->>Driver:Returns the HDMI SPD info
+    HAL->>Driver:Getting the HDMI SPD info
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsHdmiInSelectZoomMode()
@@ -260,7 +261,7 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     HAL-->>Caller:return
     Caller->>HAL:dsGetAVLatency()
     Note over HAL: Gets the AV latency
-    HAL->>Driver:Returns the AV latency
+    HAL->>Driver:Getting the AV latency
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsHdmiInRegisterConnectCB()

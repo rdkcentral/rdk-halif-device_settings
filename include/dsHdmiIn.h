@@ -60,6 +60,7 @@
  * - ALLM:    Auto Low Latency Mode
  * - HDMI:    High-Definition Multimedia Interface
  * - AV:      Audio-Visual
+ * - HdmiIn:  HDMI Input
  *
  * @par Implementation Notes
  * -# None
