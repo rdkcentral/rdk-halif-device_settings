@@ -239,31 +239,31 @@ typedef struct _dsFPDColorConfig_t {
  * @brief Structure that defines the Front Panel Display Indicator Configurations
  */
 typedef struct _dsFPDIndicatorConfig_t {
-	dsFPDIndicator_t id;                   // FPD LED Identifier
-	dsFPDColorConfig_t * supportedColors;  // Supported Colors of the FPD LEDs 
-	int	maxBrightness;                     // Maximum Brightness of FPD LEDs
-	int maxCycleRate;                      // Maximum Cycle Rate of FPD LEDs
-    int minBrightness;                     // Minimum Brightness of FPD LEDs
-    int levels;                            // 
-    int colorMode;                         // Color Mode(Single(0) or Multi-colored(1)) of FPD LEDs
+	dsFPDIndicator_t id;			// FPD LED Identifier
+	dsFPDColorConfig_t * supportedColors;	// Supported Colors of the FPD LEDs 
+	int maxBrightness;			// Maximum Brightness of FPD LEDs
+	int maxCycleRate;			// Maximum Cycle Rate of FPD LEDs
+    	int minBrightness;			// Minimum Brightness of FPD LEDs
+    	int levels;				// Default brightness level of FP LEDs 
+    	int colorMode;				// Color Mode(Single(0) or Multi-colored(1)) of FPD LEDs
 } dsFPDIndicatorConfig_t;
 
 /**
  * @brief Structure that defines the Front Panel Text Display Configurations
  */
 typedef struct _dsFPDTextDisplayConfig_t {
-	dsFPDTextDisplay_t id;                 // FP Text Display Identifier
-	const char * name;                     // Name of the 
-	dsFPDColorConfig_t * supportedColors;  // Supported Colors of 7-Segement LED Display
-	int	maxBrightness;                     // Maximum Brightness of 7-Segement LED Display
-	int maxCycleRate;                      // Maximum Cycle Rate of 7-Segement LED Display
-	const char * supportedCharacters;      // Supported Characters of 7-Segement LED Display
-	int columns;                           // Maximum  Horizontal Columns of 7-Segement LED Display
-	int rows;                              // Maximum Vertical Rows of 7-Segement LED Display
-	int	maxHorizontalIterations;           // Maximum Horizontal Iterations of 7-Segement LED Display
-	int maxVerticalIterations;             // Maximum Vertical Iterations of 7-Segement LED Display
-    int levels;                            //
-    int colorMode;                         // Color Mode (Single(0) or Multi-colored(1)) of 7-Segement LED Display
+	dsFPDTextDisplay_t id;                 	// FP Text Display Identifier
+	const char * name;                     	// Name of the FP Text Display
+	dsFPDColorConfig_t * supportedColors;	// Supported Colors of 7-Segement LED Display
+	int	maxBrightness;                 	// Maximum Brightness of 7-Segement LED Display
+	int maxCycleRate;                      	// Maximum Cycle Rate of 7-Segement LED Display
+	const char * supportedCharacters;      	// Supported Characters of 7-Segement LED Display
+	int columns;                           	// Maximum  Horizontal Columns of 7-Segement LED Display
+	int rows;                              	// Maximum Vertical Rows of 7-Segement LED Display
+	int	maxHorizontalIterations;      	// Maximum Horizontal Iterations of 7-Segement LED Display
+	int maxVerticalIterations;             	// Maximum Vertical Iterations of 7-Segement LED Display
+	int levels;                            	// Default brightness level of FP Text Display
+	int colorMode;                         	// Color Mode (Single(0) or Multi-colored(1)) of 7-Segement LED Display
 } dsFPDTextDisplayConfig_t;
 
 

@@ -68,28 +68,29 @@ namespace {
 
 #define _MAX_BRIGHTNESS 100         // Maximum brightness value of FPD LEDs
 #define _MIN_BRIGHTNESS 0           // Minimum brightness value of FPD LEDs
-#define _DEFAULT_LEVELS 10          // Default Levels
+#define _DEFAULT_LEVELS 10          // Default Brightness level for the FP text display
 #define _MAX_CYCLERATE  2           // Maximum Rate at which LED is rotating during scrolling
-#define _MAX_HORZ_COLS  0           // Maximum Horizontal Rows
-#define _MAX_VERT_ROWS  0           // Maximum Vertical Rows
-#define _MAX_HORZ_ITER  0           // Maximum horizontal iteration value
-#define _MAX_VERT_ITER  0           // Maximum vertical iteration value
+#define _MAX_HORZ_COLS  0           // Maximum Horizontal Rows of 7-segement display
+#define _MAX_VERT_ROWS  0           // Maximum Vertical Rows of 7-segment display
+#define _MAX_HORZ_ITER  0           // Maximum horizontal iteration value of 7-segment display 
+#define _MAX_VERT_ITER  0           // Maximum vertical iteration value of 7-segment display
 #define _DEFAULT_COLOR_MODE 0       // Color Mode of LED (Single(0) or Multicolored(1))
+#define dsFPD_TEXTDISP_MAX  1	    // Maximum Front Panel Text Displays
 
 /**
  * @brief Array that holds various Front Panel Indicator Colors
  */
 static   dsFPDColorConfig_t  kIndicatorColors[] = {
 	{
-		0,					/*.Id */
+		0,			/*.Id */
 		dsFPD_COLOR_BLUE,	/*.color */   
 	},
 	{
-		1,					/*.Id */   
+		1,			/*.Id */   
 		dsFPD_COLOR_GREEN,	/*.color */
 	},
 	{
-		2,					/*.Id */ 
+		2,			/*.Id */ 
 		dsFPD_COLOR_RED,	/*.color */
 	},
 };
@@ -100,30 +101,30 @@ static   dsFPDColorConfig_t  kIndicatorColors[] = {
 static const dsFPDIndicatorConfig_t kIndicators[dsFPD_INDICATOR_MAX] = {
 	{
 		dsFPD_INDICATOR_MESSAGE,	/*.id */
-		kIndicatorColors,			/*.supportedColors */
-		_MAX_BRIGHTNESS,			/*.maxBrightness */
-		_MAX_CYCLERATE,				/*.maxCycleRate  */
-		_MIN_BRIGHTNESS,			/*.minBrightness */
-        _DEFAULT_LEVELS,			/*.levels        */
-        _DEFAULT_COLOR_MODE,		/*.colorMode     */
+		kIndicatorColors_1,		/*.supportedColors */
+		_MAX_BRIGHTNESS,		/*.maxBrightness */
+		_MAX_CYCLERATE,			/*.maxCycleRate  */
+		_MIN_BRIGHTNESS,		/*.minBrightness */
+        	_DEFAULT_LEVELS,		/*.levels        */
+        	_DEFAULT_COLOR_MODE,		/*.colorMode     */
 	},
 	{
 		dsFPD_INDICATOR_POWER,		/*.id */
-		kIndicatorColors,			/*.supportedColors */
-		_MAX_BRIGHTNESS,			/*.maxBrightness */
-		_MAX_CYCLERATE,				/*.maxCycleRate  */
-		_MIN_BRIGHTNESS,			/*.minBrightness */
-        _DEFAULT_LEVELS,			/*.levels        */
-        _DEFAULT_COLOR_MODE,		/*.colorMode     */
+		kIndicatorColors_2,		/*.supportedColors */
+		_MAX_BRIGHTNESS,		/*.maxBrightness */
+		_MAX_CYCLERATE,			/*.maxCycleRate  */
+		_MIN_BRIGHTNESS,		/*.minBrightness */
+        	_DEFAULT_LEVELS,		/*.levels        */
+        	_DEFAULT_COLOR_MODE,		/*.colorMode     */
 	},
 	{
 		dsFPD_INDICATOR_RECORD,		/*.id */
-		kIndicatorColors,			/*.supportedColors */
-		_MAX_BRIGHTNESS,			/*.maxBrightness */
-		_MAX_CYCLERATE,				/*.maxCycleRate  */
-		_MIN_BRIGHTNESS,			/*.minBrightness */
-        _DEFAULT_LEVELS,			/*.levels        */
-        _DEFAULT_COLOR_MODE,		/*.colorMode     */
+		kIndicatorColors_3,		/*.supportedColors */
+		_MAX_BRIGHTNESS,		/*.maxBrightness */
+		_MAX_CYCLERATE,			/*.maxCycleRate  */
+		_MIN_BRIGHTNESS,		/*.minBrightness */
+        	_DEFAULT_LEVELS,		/*.levels        */
+        	_DEFAULT_COLOR_MODE,		/*.colorMode     */
 	},
 };
 
@@ -133,17 +134,17 @@ static const dsFPDIndicatorConfig_t kIndicators[dsFPD_INDICATOR_MAX] = {
 static const dsFPDTextDisplayConfig_t  kTextDisplays[dsFPD_TEXTDISP_MAX] = {
 	{
 		dsFPD_TEXTDISP_TEXT,		/*.id	*/
-		"Text",						/*.name	*/
-		kIndicatorColors,			/*.supportedColors	*/
-		_MAX_BRIGHTNESS,			/*.maxBrightness	*/
-		_MAX_CYCLERATE,				/*.maxCycleRate	*/
-		"ABCDEFG",					/*.supportedCharacters	*/
-		_MAX_HORZ_COLS,				/*.columns	*/
-		_MAX_VERT_ROWS,				/*.rows	*/
-		_MAX_HORZ_ITER,				/*.horizontal iterations	*/
-		_MAX_VERT_ITER,				/*.vertical iterations	*/
-		_DEFAULT_LEVELS,			/*.levels	*/ 	              
-		_DEFAULT_COLOR_MODE			/*.colorMode	*/
+		"Text",				/*.name	*/
+		kIndicatorColors,		/*.supportedColors	*/
+		_MAX_BRIGHTNESS,		/*.maxBrightness	*/
+		_MAX_CYCLERATE,			/*.maxCycleRate	*/
+		"ABCDEFG",			/*.supportedCharacters	*/
+		_MAX_HORZ_COLS,			/*.columns	*/
+		_MAX_VERT_ROWS,			/*.rows	*/
+		_MAX_HORZ_ITER,			/*.horizontal iterations	*/
+		_MAX_VERT_ITER,			/*.vertical iterations	*/
+		_DEFAULT_LEVELS,		/*.levels	*/ 	              
+		_DEFAULT_COLOR_MODE		/*.colorMode	*/
 	},
 };
 
