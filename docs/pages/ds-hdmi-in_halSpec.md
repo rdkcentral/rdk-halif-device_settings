@@ -196,7 +196,7 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsHdmiInSelectPort()
-    Note over HAL: Sets the passed port as active
+    Note over HAL: Sets the passed port as active and available for presentation
     HAL->>Driver:Setting the selected port as active
     Driver-->>HAL:return
     HAL-->>Caller:return
@@ -216,8 +216,8 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsHdmiInGetNumberOfInputs()
-    Note over HAL: Gets the number of inputs
-    HAL->>Driver:Returns the number of inputs
+    Note over HAL: Gets the number of HDMI inputs
+    HAL->>Driver:Getting the number of HDMI inputs
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsHdmiInGetCurrentVideoMode()

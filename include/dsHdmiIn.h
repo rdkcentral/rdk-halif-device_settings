@@ -164,7 +164,7 @@ dsError_t dsHdmiInTerm (void);
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
@@ -186,7 +186,7 @@ dsError_t dsHdmiInGetNumberOfinputs (uint8_t *pNumberOfinputs);
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
@@ -208,7 +208,7 @@ dsError_t dsHdmiInGetStatus (dsHdmiInStatus_t *pStatus);
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported.
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices.
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
@@ -234,7 +234,7 @@ dsError_t dsHdmiInSelectPort (dsHdmiInPort_t ePort);
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid. 
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
@@ -257,7 +257,7 @@ dsError_t dsHdmiInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t heigh
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
@@ -277,7 +277,7 @@ dsError_t dsHdmiInSelectZoomMode (dsVideoZoom_t requestedZoomMode);
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
@@ -377,7 +377,7 @@ typedef void (*dsAVLatencyChangeCB_t)(int audio_latency, int video_latency);
 typedef void (*dsHdmiInAviContentTypeChangeCB_t)(dsHdmiInPort_t port, dsAviContentType_t avi_content_type);
 
 /**
- * @brief Registers a callback for the HDMI input hot plug event notification from the HAL side.
+ * @brief Registers a callback for the HDMI input hot plug event notification
  * 
  * This function registers a callback for the HDMI input hot plug event notification from the HAL side.
  *
@@ -387,8 +387,7 @@ typedef void (*dsHdmiInAviContentTypeChangeCB_t)(dsHdmiInPort_t port, dsAviConte
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
- * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsHdmiInInit() must be called before calling this API.
@@ -410,7 +409,7 @@ dsError_t dsHdmiInRegisterConnectCB (dsHdmiInConnectCB_t CBFunc);
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsHdmiInInit() must be called before calling this API.
@@ -432,7 +431,7 @@ dsError_t dsHdmiInRegisterSignalChangeCB (dsHdmiInSignalChangeCB_t CBFunc);
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsHdmiInInit() must be called before calling this API.
@@ -456,7 +455,7 @@ dsError_t dsHdmiInRegisterStatusChangeCB (dsHdmiInStatusChangeCB_t CBFunc);
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsHdmiInInit() must be called before calling this API.
@@ -479,7 +478,7 @@ dsError_t dsHdmiInRegisterVideoModeUpdateCB(dsHdmiInVideoModeUpdateCB_t CBFunc);
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsHdmiInInit() must be called before calling this API.
@@ -502,7 +501,7 @@ dsError_t dsHdmiInRegisterAllmChangeCB (dsHdmiInAllmChangeCB_t CBFunc);
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsHdmiInInit() must be called before calling this API.
@@ -525,7 +524,7 @@ dsError_t dsHdmiInRegisterAVLatencyChangeCB (dsAVLatencyChangeCB_t CBFunc);
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsHdmiInInit() must be called before calling this API.
@@ -549,7 +548,7 @@ dsError_t dsHdmiInRegisterAviContentTypeChangeCB (dsHdmiInAviContentTypeChangeCB
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
@@ -573,7 +572,7 @@ dsError_t dsIsHdmiARCPort (dsHdmiInPort_t iPort, bool isArcPort);
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
@@ -596,7 +595,7 @@ dsError_t dsGetEDIDBytesInfo (dsHdmiInPort_t iHdmiPort, unsigned char **edid, in
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
@@ -619,7 +618,7 @@ dsError_t dsGetHDMISPDInfo (dsHdmiInPort_t iHdmiPort, unsigned char **data);
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
@@ -644,7 +643,7 @@ dsError_t dsSetEdidVersion (dsHdmiInPort_t iHdmiPort, tv_hdmi_edid_version_t iEd
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
@@ -670,7 +669,7 @@ dsError_t dsGetEdidVersion (dsHdmiInPort_t iHdmiPort, tv_hdmi_edid_version_t *iE
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
@@ -693,7 +692,7 @@ dsError_t dsGetAllmStatus (dsHdmiInPort_t iHdmiPort, bool *allmStatus);
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
@@ -716,7 +715,7 @@ dsError_t dsGetSupportedGameFeaturesList (dsSupportedGameFeatureList_t* features
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
@@ -736,5 +735,5 @@ dsError_t dsGetAVLatency (int *audio_latency, int *video_latency);
 #ifdef __cplusplus
 }
 #endif
-#endif /* _DS_dsHdmiInH_ */
+#endif /* __DS_HDMI_IN_H__ */
 
