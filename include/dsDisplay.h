@@ -32,7 +32,7 @@
 #define _DS_VIDEODISPLAY_H_
 
 #include "dsError.h"
-#include "dsTypes.h"
+#include "dsAudioVisualTypes.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -53,16 +53,13 @@ typedef enum _dsDisplayEvent_t {
 } dsDisplayEvent_t;
 
 /**
- * @brief Callback function used to notify display related events to application.
+ * @brief Callback function used to notify display related events to the caller.
  * 
- * This callback is triggered whenever there is a display related change and notify the application. 
+ * This callback is triggered whenever there is a display related change and it is notified to the caller.
  *
  * @param[in]  handle   - Handle of the display device
  * @param[in]  event    - Display event. @see dsDisplayEvent_t
  * @param[in] eventData - Data associated with the event(optional parameter)
- *
- * @note HAL implementation is responsible for allocation of memory needed for event data. 
- * The memory can be free'd after callback returns.
  *
  * @return None
  * 
