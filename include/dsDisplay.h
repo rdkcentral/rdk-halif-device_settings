@@ -195,8 +195,6 @@ dsError_t dsGetEDID(intptr_t handle, dsDisplayEDID_t *edid);
  * @param[out] length   - length of the EDID buffer data. Min value is 0
  *
  * @return dsError_t                        - Status
- * @retval dsERR_NONE                       - Success
- * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -286,4 +284,3 @@ dsError_t dsRegisterDisplayEventCallback(intptr_t handle, dsDisplayEventCallback
 
 #ifdef __cplusplus
 }
-#endif
