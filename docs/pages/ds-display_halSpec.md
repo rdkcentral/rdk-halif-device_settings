@@ -44,21 +44,21 @@
 
 ## Description
 
-The diagram below describes a high-level software architecture of the Device Settings Display module.
+The diagram below describes a high-level software architecture of the `DS` Display module.
 
 ```mermaid
 %%{ init : { "theme" : "forest", "flowchart" : { "curve" : "linear" }}}%%
 flowchart TD
 y[Caller]<-->x[Device Settings Display HAL];
-x[Device Settings Display HAL]<-->z[SOC Drivers];
+x[DS Display HAL]<-->z[SOC Drivers];
 style y fill:#99CCFF,stroke:#333,stroke-width:0.3px,align:left
 style z fill:#fcc,stroke:#333,stroke-width:0.3px,align:left
 style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
  ```
 
-Device Settings Display `HAL` provides a set of `APIs` to manage operations related to connected display devices.
+`DS` Display `HAL` provides a set of `APIs` to manage operations related to connected display devices connected to HDMI Output port of the source devices.
 
-The main purpose of this module is to facilitate communication between the `caller`, and `HAL` interface, such that information about the EDID , Aspect Ratio can be queried by the `caller`. 
+The main purpose of this module is to facilitate communication between the `caller`, and `HAL` interface, such that information about the EDID , Aspect Ratio can be queried by the `caller`. The Display Device parameters such as Device Connected/Disconnected, HDCP Protocol Changes, RX Sense ON/OFF are notified to the `caller`.
 
 ## Component Runtime Execution Requirements
 
@@ -84,12 +84,12 @@ This interface is not required to allocate any memory. Any pointers created by t
 
 ### Power Management Requirements
 
-The Display `HAL` is not involved in the power management operation.
+The `DS` Display `HAL` is not involved in the power management operation.
 
 ### Asynchronous Notification Model
 
 The below mentioned callback registration is used for aysnchronous notification:
-- dsRegisterDisplayEventCallback - Callback registration which listens for display events
+- dsRegisterDisplayEventCallback() - Callback registration which listens for display events
 
 
 ### Blocking calls
@@ -136,7 +136,7 @@ The source code must build into a shared library for Device Settings as this mod
 ### Variability Management
 
 - Any changes in the `APIs` must be reviewed and approved by the component architects.
-- Device Settings Display `HAL` modification must support backward compatibility for the generic operations like image upgrade and downgrade.
+- `DS` Display `HAL` modification must support backward compatibility for the generic operations like image upgrade and downgrade.
 - This interface must return the dsERR_OPERATION_NOT_SUPPORTED error code, if any of the interface - `APIs` are not supported by the underlying hardware.
 
 ### Platform or Product Customization
@@ -151,11 +151,11 @@ This interface is not required to have any platform or product customizations.
 
 The `caller` is expected to have complete control over the life cycle of the `HAL`.
 
-1. Initialize the Display `HAL` using function: `dsDisplayInit()` before making any other `API` calls.  If `dsDisplayInit()` call fails, the `HAL` must return the respective error code, so that the `caller` can retry the operation.
+1. Initialize the `DS` Display `HAL` using function: `dsDisplayInit()` before making any other `API` calls.  If `dsDisplayInit()` call fails, the `HAL` must return the respective error code, so that the `caller` can retry the operation.
 
-2. The `caller` can call `dsGetEDID()`, `dsGetDisplayAspectRatio()` and `dsGetEDIDBytes`to query the information of connected display device. It is also used to notify HDCP Protocol changes of display device to the `caller`.
+2. The `caller` can call `dsGetEDID()`, `dsGetDisplayAspectRatio()` and `dsGetEDIDBytes()` to query the information of connected display device. It is also used to notify HDCP Protocol changes of display device to the `caller`.
 
-3. De-initialized the `HAL` using the function: `dsDisplayTerm()`
+3. De-initialize the `HAL` using the function: `dsDisplayTerm()`
 
 ### Diagrams
 
@@ -165,7 +165,7 @@ The `caller` is expected to have complete control over the life cycle of the `HA
 %%{ init : { "theme" : "default", "flowchart" : { "curve" : "stepBefore" }}}%%
    sequenceDiagram
     participant Caller as Caller
-    participant HAL as DEVICE SETTINGS DISPLAY HAL
+    participant HAL as DS DISPLAY HAL
     participant Driver as SoC
     Caller->>HAL:dsDisplayInit()
     Note over HAL: SoC initializes the underlying Display subsystem 
