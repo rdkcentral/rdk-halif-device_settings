@@ -58,7 +58,7 @@ style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
 
 `DS` Display `HAL` provides a set of `APIs` to manage operations related to connected display devices connected to HDMI Output port of the source devices.
 
-The main purpose of this module is to facilitate communication between the `caller`, and `HAL` interface, such that information about the EDID , Aspect Ratio can be queried by the `caller`. The Display Device parameters such as Device Connected/Disconnected, HDCP Protocol Changes, RX Sense ON/OFF are notified to the `caller`.
+The main purpose of this module is to facilitate communication between the `caller`, and `HAL` interface, such that information about the `EDID` , Aspect Ratio of connected display device can be queried by the `caller`. The Display Device parameters such as Device Connected/Disconnected, `HDCP` Protocol Changes, RX Sense ON/OFF are notified to the `caller`.
 
 ## Component Runtime Execution Requirements
 
@@ -89,7 +89,7 @@ The `DS` Display `HAL` is not involved in the power management operation.
 ### Asynchronous Notification Model
 
 The below mentioned callback registration is used for aysnchronous notification:
-- dsRegisterDisplayEventCallback() - Callback registration which listens for display events
+- dsRegisterDisplayEventCallback() - Callback registration which for display related events
 
 
 ### Blocking calls
@@ -153,7 +153,7 @@ The `caller` is expected to have complete control over the life cycle of the `HA
 
 1. Initialize the `DS` Display `HAL` using function: `dsDisplayInit()` before making any other `API` calls.  If `dsDisplayInit()` call fails, the `HAL` must return the respective error code, so that the `caller` can retry the operation.
 
-2. The `caller` can call `dsGetEDID()`, `dsGetDisplayAspectRatio()` and `dsGetEDIDBytes()` to query the information of connected display device. It is also used to notify HDCP Protocol changes of display device to the `caller`.
+2. The `caller` can call `dsGetEDID()`, `dsGetDisplayAspectRatio()` and `dsGetEDIDBytes()` to query the information of connected display device. It is also used to notify `HDCP` Protocol changes of display device to the `caller`.
 
 3. De-initialize the `HAL` using the function: `dsDisplayTerm()`
 
