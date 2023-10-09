@@ -285,7 +285,7 @@ dsError_t dsGetFPColor (dsFPDIndicator_t eIndicator, dsFPDColor_t *pColor);
  * or if the hours/minutes are invalid.
  * The FP Display Mode must be dsFPD_MODE_CLOCK. @see dsFPDMode_t
  * 
- * @note Whether this device has a 7-Segment display LEDs should be within the dsFPDSettings file.
+ * @note Whether this device has a 7-Segment display LEDs should be within the dsFPDSettings_template file.
  *
  * @param[in] eTimeFormat   - Time format (12 or 24 hrs). @see dsFPDTimeFormat_t
  * @param[in] uHour         - Hour information
@@ -316,7 +316,7 @@ dsError_t dsSetFPTime (dsFPDTimeFormat_t eTimeFormat, const unsigned int uHour, 
  * 
  * @param[in] pText - Text to be displayed. Maximum length of Text is 10 characters.
  * 
- * @note Whether this device has a 7-Segment display LEDs should be within the dsFPDSettings file.
+ * @note Whether this device has a 7-Segment display LEDs should be within the dsFPDSettings_template file.
  *
  * @return dsError_t                      -  Status
  * @retval dsERR_NONE                     -  Success
@@ -342,7 +342,7 @@ dsError_t dsSetFPText(const char* pText);
  * on the device or if the FP State is "OFF" then dsERR_OPERATION_NOT_SUPPORTED must be returned.
  * The FP Display Mode must be dsFPD_MODE_TEXT. @see dsFPDMode_t
  *
- * @note Whether this device has a 7-Segment display LEDs should be within the dsFPDSettings file.
+ * @note Whether this device has a 7-Segment display LEDs should be within the dsFPDSettings_template file.
  * 
  * @param[in] eIndicator    - FPD Text indicator index. @see dsFPDTextDisplay_t
  * @param[in] eBrightness   - The brightness value for the specified indicator. Valid range is from 0 to 100
@@ -372,7 +372,7 @@ dsError_t dsSetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_
  * then dsERR_OPERATION_NOT_SUPPORTED must be returned. 
  * The FP Display Mode must be dsFPD_MODE_TEXT. @see dsFPDMode_t
  *
- * @note Whether this device has a 7-Segment display LEDs should be within the dsFPDSettings file.
+ * @note Whether this device has a 7-Segment display LEDs should be within the dsFPDSettings_template file.
  * 
  * @param[in] eIndicator    - FPD Text indicator index. @see dsFPDTextDisplay_t
  * @param[out] eBrightness  - Brightness value. Valid range is from 0 to 100. @see dsFPDBrightness_t.
@@ -399,7 +399,7 @@ dsError_t dsGetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_
  * This function will enable or disable displaying of clock. It will return dsERR_OPERATION_NOT_SUPPORTED
  * if Clock display is not available
  *
- * @note Whether this device has a 7-Segment display LEDs should be within the dsFPDSettings file.
+ * @note Whether this device has a 7-Segment display LEDs should be within the dsFPDSettings_template_template file.
  * 
  * @param[in] enable    - Indicates the clock to be enabled or disabled. 
  *                          1 if enabled, 0 if disabled.
@@ -426,7 +426,7 @@ dsError_t dsFPEnableCLockDisplay (int enable);
  * dsERR_OPERATION_NOT_SUPPORTED must be returned.
  * Horizontal and Vertical scroll cannot work at the same time.
  *
- * @note Whether this device has a 7-Segment display LEDs should be within the dsFPDSettings file.
+ * @note Whether this device has a 7-Segment display LEDs should be within the dsFPDSettings_template file.
  * 
  * @param[in] uScrollHoldOnDur       - Duration in ms to hold each char before scrolling to the next position 
  *                                       during one scroll iteration
@@ -473,9 +473,9 @@ dsError_t dsFPTerm(void);
  *
  * This function sets the 7-segment display LEDs to show the
  * specified time in specified format. It must return dsERR_OPERATION_NOT_SUPPORTED 
- * if the underlying hardware does not have support for Text or Clock.
+ * if the underlying hardware does not have support for clock.
  *
- * @note Whether this device has a 7-Segment display LEDs should be within the dsFPDSettings file.
+ * @note Whether this device has a 7-Segment display LEDs should be within the dsFPDSettings_template file.
  * 
  * @param[in] eTimeFormat   -  Indicates the time format (12 hour or 24 hour). 
  *                               @see dsFPDTimeFormat_t
@@ -505,7 +505,7 @@ dsError_t dsSetFPTimeFormat (dsFPDTimeFormat_t eTimeFormat);
  * It must return dsERR_OPERATION_NOT_SUPPORTED if the underlying hardware does not 
  * have support for clock.
  *
- * @note Whether this device has a 7-Segment display LEDs should be within the dsFPDSettings file.
+ * @note Whether this device has a 7-Segment display LEDs should be within the dsFPDSettings_template file.
  * 
  * @param[out] pTimeFormat      - Current time format value (12 hour or 24 hour). 
  *                                  @see dsFPDTimeFormat_t
@@ -533,7 +533,7 @@ dsError_t dsGetFPTimeFormat (dsFPDTimeFormat_t *pTimeFormat);
  * It must return dsERR_OPERATION_NOT_SUPPORTED if the underlying hardware does not 
  * have support for Text or Clock.
  *
- * @note Whether this device has a 7-Segment display LEDs should be within the dsFPDSettings file.
+ * @note Whether this device has a 7-Segment display LEDs should be within the dsFPDSettings_template file.
  * 
  * @param[in] eMode - Indicates the mode. @see dsFPDMode_t
  *
