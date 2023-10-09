@@ -80,7 +80,43 @@ namespace {
 /**
  * @brief Array that holds various Front Panel Indicator Colors
  */
-static   dsFPDColorConfig_t  kIndicatorColors[] = {
+static   dsFPDColorConfig_t  kIndicatorColors_1[] = {
+	{
+		0,			/*.Id */
+		dsFPD_COLOR_BLUE,	/*.color */   
+	},
+	{
+		1,			/*.Id */   
+		dsFPD_COLOR_GREEN,	/*.color */
+	},
+	{
+		2,			/*.Id */ 
+		dsFPD_COLOR_RED,	/*.color */
+	},
+};
+
+/**
+ * @brief Array that holds various Front Panel Indicator Colors
+ */
+static   dsFPDColorConfig_t  kIndicatorColors_2[] = {
+	{
+		0,			/*.Id */
+		dsFPD_COLOR_BLUE,	/*.color */   
+	},
+	{
+		1,			/*.Id */   
+		dsFPD_COLOR_GREEN,	/*.color */
+	},
+	{
+		2,			/*.Id */ 
+		dsFPD_COLOR_RED,	/*.color */
+	},
+};
+
+/**
+ * @brief Array that holds various Front Panel Indicator Colors
+ */
+static   dsFPDColorConfig_t  kIndicatorColors_3[] = {
 	{
 		0,			/*.Id */
 		dsFPD_COLOR_BLUE,	/*.color */   
