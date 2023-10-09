@@ -71,7 +71,6 @@
 #ifndef __DS_FPD_H__
 #define __DS_FPD_H__
 
-#include <sys/types.h>
 #include "dsError.h"
 #include "dsFPDTypes.h"
 
