@@ -408,7 +408,7 @@ dsError_t dsGetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_
  * @retval dsERR_NONE                     -  Success
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/FP State is "OFF". @see dsFPDState_t
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/FP State is "OFF". @see dsFPDState_t/ If Clock display is not available
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
  * @pre dsFPInit() must be called and FP State must be "ON" before calling this API
