@@ -105,7 +105,7 @@ static const dsFPDIndicatorConfig_t kIndicators[dsFPD_INDICATOR_MAX] = {
 		_MAX_BRIGHTNESS,		/*.maxBrightness */
 		_MAX_CYCLERATE,			/*.maxCycleRate  */
 		_MIN_BRIGHTNESS,		/*.minBrightness */
-        	_DEFAULT_LEVELS,		/*.levels        */
+        	_DEFAULT_LEVELS,		/*.default brightness levels        */
         	_DEFAULT_COLOR_MODE,		/*.colorMode     */
 	},
 	{
@@ -114,7 +114,7 @@ static const dsFPDIndicatorConfig_t kIndicators[dsFPD_INDICATOR_MAX] = {
 		_MAX_BRIGHTNESS,		/*.maxBrightness */
 		_MAX_CYCLERATE,			/*.maxCycleRate  */
 		_MIN_BRIGHTNESS,		/*.minBrightness */
-        	_DEFAULT_LEVELS,		/*.levels        */
+        	_DEFAULT_LEVELS,		/*.default brightness levels        */
         	_DEFAULT_COLOR_MODE,		/*.colorMode     */
 	},
 	{
@@ -123,7 +123,7 @@ static const dsFPDIndicatorConfig_t kIndicators[dsFPD_INDICATOR_MAX] = {
 		_MAX_BRIGHTNESS,		/*.maxBrightness */
 		_MAX_CYCLERATE,			/*.maxCycleRate  */
 		_MIN_BRIGHTNESS,		/*.minBrightness */
-        	_DEFAULT_LEVELS,		/*.levels        */
+        	_DEFAULT_LEVELS,		/*.default brightness levels        */
         	_DEFAULT_COLOR_MODE,		/*.colorMode     */
 	},
 };
@@ -143,7 +143,7 @@ static const dsFPDTextDisplayConfig_t  kTextDisplays[dsFPD_TEXTDISP_MAX] = {
 		_MAX_VERT_ROWS,			/*.rows	*/
 		_MAX_HORZ_ITER,			/*.horizontal iterations	*/
 		_MAX_VERT_ITER,			/*.vertical iterations	*/
-		_DEFAULT_LEVELS,		/*.levels	*/ 	              
+		_DEFAULT_LEVELS,		/*.default brightness levels	*/ 	              
 		_DEFAULT_COLOR_MODE		/*.colorMode	*/
 	},
 };
