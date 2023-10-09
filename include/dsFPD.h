@@ -322,7 +322,7 @@ dsError_t dsSetFPTime (dsFPDTimeFormat_t eTimeFormat, const unsigned int uHour, 
  * @retval dsERR_NONE                     -  Success
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/FP State is "OFF". @see dsFPDState_t
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
  * @pre dsFPInit() must be called and FP State must be "ON" before calling this API
@@ -408,7 +408,7 @@ dsError_t dsGetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_
  * @retval dsERR_NONE                     -  Success
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/FP State is "OFF". @see dsFPDState_t
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
  * @pre dsFPInit() must be called and FP State must be "ON" before calling this API
@@ -484,7 +484,7 @@ dsError_t dsFPTerm(void);
  * @retval dsERR_NONE                     -  Success
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/FP State is "OFF". @see dsFPDState_t
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
  * @pre dsFPInit() must be called and FP State must be "ON" before calling this API
@@ -514,7 +514,7 @@ dsError_t dsSetFPTimeFormat (dsFPDTimeFormat_t eTimeFormat);
  * @retval dsERR_NONE                     -  Success
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/FP State is "OFF". @see dsFPDState_t
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
  * @pre dsFPInit() must be called before calling this API
@@ -541,7 +541,7 @@ dsError_t dsGetFPTimeFormat (dsFPDTimeFormat_t *pTimeFormat);
  * @retval dsERR_NONE                     -  Success
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/FP State is "OFF". @see dsFPDState_t
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
  * @pre dsFPInit() must be called and FP State must be "ON" before calling this API
