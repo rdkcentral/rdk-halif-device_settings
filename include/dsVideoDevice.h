@@ -119,6 +119,8 @@ dsError_t  dsVideoDeviceInit();
 /**
  * @brief This function gets the handle for the video device requested.
  * 
+ * @note Index is always 0, due to devices only having a single video device.
+ * 
  * @param[in]  index    - Index of video device. Max number is device specific. Min of 0.
  * @param[out] handle   - The handle used by Caller to uniquely identify the HAL instance
  * 
@@ -344,7 +346,7 @@ dsError_t dsGetFRFMode(int handle, int *frfmode);
  *
  * @param[in]  handle       - The handle returned from the dsGetVideoDevice() function
  * @param[out] framerate    - Current frame rate will be represented in FPS. 
- *                                  Max Framerate is device specific. Min Framerate is 0.
+ *                                  Max Framerate is device specific. Min Framerate is 0. Expecting a char* param.
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
