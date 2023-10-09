@@ -62,7 +62,8 @@ typedef enum _dsDisplayEvent_t {
  * @param[in] eventData - Data associated with the event(optional parameter)
  *
  * @return None
- * 
+ *
+ * @pre dsRegisterDisplayEventCallback()
  */
 typedef void (*dsDisplayEventCallback_t)(int handle, dsDisplayEvent_t event,
                                              void *eventData/*Optional*/);
@@ -71,7 +72,9 @@ typedef void (*dsDisplayEventCallback_t)(int handle, dsDisplayEvent_t event,
  * @brief Initializes the DS Display sub-system.
  *
  * This function initializes all required resources for Display sub-system and
- * is required to be called before the other APIs in this module.
+ * is required to be called before the other APIs in this module. Also this function
+ * needs to initialize all the required device handles for the different display ports and 
+ * the number of connected devices for each display port. 
  * 
  * @return dsError_t                    - Status
  * @retval dsERR_NONE                   - Success
@@ -88,7 +91,7 @@ dsError_t dsDisplayInit();
 /**
  * @brief Gets the handle of connected display device.
  * 
- * This function is used to get the handle for the connected display device corresponding to the 
+ * This function is used to get the handle(as created in dsDisplayInit()) for the connected display device corresponding to the 
  * specified video port.
  *
  * @param[in]  vType    - Type of video port. @see dsVideoPortType_t
@@ -101,7 +104,7 @@ dsError_t dsDisplayInit();
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported.
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre  dsDisplayInit() must be called before calling this API
@@ -137,7 +140,7 @@ dsError_t dsGetEDID(intptr_t handle, dsDisplayEDID_t *edid);
 /**
  * @brief Gets the EDID buffer and EDID length of connected display device. 
  * 
- * This function is used to get the EDID buffer and size of the connected display corresponding to
+ * This function is used to get the EDID buffer and EDID size of the connected display corresponding to
  * the specified display device handle.
  *
  * @param[in] handle    - Handle of the display device
@@ -148,7 +151,8 @@ dsError_t dsGetEDID(intptr_t handle, dsDisplayEDID_t *edid);
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported/Port does not supporting EDID Data
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre  dsDisplayInit() and dsGetDisplay() must be called before calling this API
@@ -168,7 +172,7 @@ dsError_t dsGetEDIDBytes(intptr_t handle, unsigned char **edid, int *length);
  * @param[out] aspectRatio  - Current aspect ratio of the specified display device
  *                              @see dsVideoAspectRatio_t
  *
- * @return dsError_t                       - Status
+ * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
@@ -194,7 +198,7 @@ dsError_t dsGetDisplayAspectRatio(intptr_t handle, dsVideoAspectRatio_t *aspectR
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
- * @pre  dsDisplayInit() and dsGetDisplay() must be called before calling this API
+ * @pre  dsDisplayInit() must be called before calling this API
  * 
  * @warning  This API is Not thread safe
  * 
@@ -204,7 +208,7 @@ dsError_t dsGetDisplayAspectRatio(intptr_t handle, dsVideoAspectRatio_t *aspectR
 dsError_t dsDisplayTerm();
 
 /**
- * @brief Callback registration which listens for display events 
+ * @brief Callback registration for display related events.
  * 
  * This function registers a callback for display events corresponding to
  * the specified display device handle.
@@ -223,9 +227,11 @@ dsError_t dsDisplayTerm();
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
+ * @pre  dsDisplayInit() and dsGetDisplay() must be called before calling this API
+ *
  * @warning  This API is Not thread safe
  * 
- * @see dsRegisterDisplayEventCallback()
+ * @see dsDisplayEventCallback_t()
  * 
  */
 dsError_t dsRegisterDisplayEventCallback(intptr_t handle, dsDisplayEventCallback_t cb);
