@@ -18,18 +18,58 @@
 */
  
 /**
- * @file dsDisplay.h
+ * @addtogroup HPK Hardware Porting Kit
+ * @{
+ * @par The Hardware Porting Kit
+ * HPK is the next evolution of the well-defined Hardware Abstraction Layer
+ * (HAL), but augmented with more comprehensive documentation and test suites
+ * that OEM or SOC vendors can use to self-certify their ports before taking
+ * them to RDKM for validation or to an operator for final integration and
+ * deployment. The Hardware Porting Kit effectively enables an OEM and/or SOC
+ * vendor to self-certify their own Video Accelerator devices, with minimal RDKM
+ * assistance.
+ *
  */
 
-/**
-* @defgroup devicesettings Device Settings
-* @{
-* @defgroup hal Device Settings HAL
-* @{
-**/
+/** @addtogroup Device_Settings Device Settings Module
+ * @{
+ */
 
-#ifndef _DS_VIDEODISPLAY_H_
-#define _DS_VIDEODISPLAY_H_
+/**@addtogroup Device_Settings_HAL Device Settings HAL
+ * @par Application API Specification
+ * Described herein are the DeviceSettings HAL types and functions that are part of
+ * the Host subsystem. The Host subsystem manages system-specific HAL operations.
+ *  @{
+ */
+
+/** @defgroup dsDisplay_HAL Device Settings Display HAL
+ *  @{
+ * @par Application API Specification
+ * dsDisplay HAL provides an interface for managing the display related settings of device settings module
+ */
+
+/** @defgroup DSHAL_DISPLAY_API Device Settings HAL Display Public API
+ *
+ *
+ *  @{
+ */
+
+/** 
+ * Describe the details about Device Settings HAL API specifications.
+ *
+ * <b> Following abbreviations present in Device Settings Display HAL APIs </b>
+ *
+ * @par Abbreviations
+ * - cb     - Callback function (suffix)
+ * - DS     - Device Settings
+ * - HAL    - Hardware Abstraction Layer
+ * - EDID   - Extended Display Identification Data
+ * - Rx     - Receive and Transmit
+ * - HDCP   - High-bandwidth Digital Content Protection
+ */
+ 
+#ifndef __DS_VIDEODISPLAY_H__
+#define __DS_VIDEODISPLAY_H__
 
 #include "dsError.h"
 #include "dsAudioVisualTypes.h"
@@ -91,8 +131,8 @@ dsError_t dsDisplayInit();
 /**
  * @brief Gets the handle of connected display device.
  * 
- * This function is used to get the handle(as created in dsDisplayInit()) for the connected display device corresponding to the 
- * specified video port.
+ * This function is used to get the handle(as created in dsDisplayInit()) for the connected display device
+ * corresponding to the specified video port.
  *
  * @param[in]  vType    - Type of video port. @see dsVideoPortType_t
  * @param[in]  index    - Index of the video port
@@ -236,10 +276,14 @@ dsError_t dsDisplayTerm();
  */
 dsError_t dsRegisterDisplayEventCallback(intptr_t handle, dsDisplayEventCallback_t cb);
 
-/** @} */ // End of DSHAL_DISPLAY_API doxygen group 
-/** @} */ // End of DS HAL
-/** @} */ // End of HPK
-
 #ifdef __cplusplus
 }
 #endif
+#endif /* __DS_VIDEODISPLAY_H__ */
+
+/** @} */ // End of DSHAL DISPLAY API
+/** @} */ // End of DS Display HAL
+/** @} */ // End of Device Settings HAL
+/** @} */ // End of Device Settings Module
+/** @} */ // End of HPK
+
