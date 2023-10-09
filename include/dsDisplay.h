@@ -18,36 +18,7 @@
 */
  
 /**
- * @file dsDisplay.h
- * 
- *  @brief Device Settings HAL error codes.
- *
- * This API defines common error codes used by the Device Settings HAL.
- *
- * @par Document
- * Document reference.
- *
- * @par Open Issues (in no particular order)
- * -# None
- *
- * @par Assumptions
- * -# None
- *
- * @par Abbreviations
- * - cb     - Callback function (suffix)
- * - DS     - Device Settings
- * - HAL    - Hardware Abstraction Layer
- * - EDID   - Extended Display Identification Data
- * - Rx     - Receive and Transmit
- * - HDCP   - High-bandwidth Digital Content Protection
- *
- * @par Implementation Notes
- * -# None
- *
- */
-
-/**
- * @addtogroup HPK HPK
+ * @addtogroup HPK Hardware Porting Kit
  * @{
  * @par The Hardware Porting Kit
  * HPK is the next evolution of the well-defined Hardware Abstraction Layer
@@ -60,21 +31,43 @@
  *
  */
 
-/** @addtogroup DS_Manager_HAL DS Manager Hal
+/** @addtogroup Device_Settings Device Settings Module
+ * @{
+ */
+
+/**@addtogroup Device_Settings_HAL Device Settings HAL
  * @par Application API Specification
- *  Described herein are DeviceSettings HAL types and functions that are part of the
- *  Display subsystem. The Display subsystem manages operations relating to connected
- *  display devices, e.g. TVs.
- *  Vendors please add appropriate events needed for your implementation.
+ * Described herein are the DeviceSettings HAL types and functions that are part of
+ * the Host subsystem. The Host subsystem manages system-specific HAL operations.
  *  @{
  */
 
-/** @defgroup DSHAL_DISPLAY_API Device Settings HAL Video Port Public API
+/** @defgroup dsDisplay_HAL Device Settings Display HAL
+ *  @{
+ * @par Application API Specification
+ * dsDisplay HAL provides an interface for managing the display related settings of device settings module
+ */
+
+/** @defgroup DSHAL_DISPLAY_API Device Settings HAL Display Public API
  *
  *
  *  @{
  */
 
+/** 
+ * Describe the details about Device Settings HAL API specifications.
+ *
+ * <b> Following abbreviations present in Device Settings Display HAL APIs </b>
+ *
+ * @par Abbreviations
+ * - cb     - Callback function (suffix)
+ * - DS     - Device Settings
+ * - HAL    - Hardware Abstraction Layer
+ * - EDID   - Extended Display Identification Data
+ * - Rx     - Receive and Transmit
+ * - HDCP   - High-bandwidth Digital Content Protection
+ */
+ 
 #ifndef __DS_VIDEODISPLAY_H__
 #define __DS_VIDEODISPLAY_H__
 
@@ -138,8 +131,8 @@ dsError_t dsDisplayInit();
 /**
  * @brief Gets the handle of connected display device.
  * 
- * This function is used to get the handle(as created in dsDisplayInit()) for the connected display device corresponding to the 
- * specified video port.
+ * This function is used to get the handle(as created in dsDisplayInit()) for the connected display device
+ * corresponding to the specified video port.
  *
  * @param[in]  vType    - Type of video port. @see dsVideoPortType_t
  * @param[in]  index    - Index of the video port
@@ -281,9 +274,14 @@ dsError_t dsDisplayTerm();
  */
 dsError_t dsRegisterDisplayEventCallback(intptr_t handle, dsDisplayEventCallback_t cb);
 
-/** @} */ // End of DSHAL_DISPLAY_API doxygen group 
-/** @} */ // End of DS HAL
-/** @} */ // End of HPK
-
 #ifdef __cplusplus
 }
+#endif
+#endif /* __DS_VIDEODISPLAY_H__ */
+
+/** @} */ // End of DSHAL DISPLAY API
+/** @} */ // End of DS Display HAL
+/** @} */ // End of Device Settings HAL
+/** @} */ // End of Device Settings Module
+/** @} */ // End of HPK
+
