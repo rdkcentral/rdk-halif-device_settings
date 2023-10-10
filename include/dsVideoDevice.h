@@ -101,7 +101,7 @@ extern "C" {
  */
 
 /**
- * @brief This function initialize all the video devices in the system.
+ * @brief This function initializes all the video devices in the system.
  *
  * @return dsError_t                   - Status
  * @retval dsERR_NONE                   - Success
@@ -122,11 +122,11 @@ dsError_t  dsVideoDeviceInit();
  * @note Index is always 0, due to devices only having a single video device.
  * 
  * @param[in]  index    - Index of video device. Max number is device specific. Min of 0.
- * @param[out] handle   - The handle used by Caller to uniquely identify the HAL instance
+ * @param[out] handle   - The handle used by the Caller to uniquely identify the HAL instance
  * 
  * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialized
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -148,7 +148,7 @@ dsError_t  dsGetVideoDevice(int index, int *handle);
  * 
  * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialized
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -171,7 +171,7 @@ dsError_t  dsSetDFC(int handle, dsVideoZoom_t dfc);
  * 
  * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialized
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -187,13 +187,13 @@ dsError_t  dsGetDFC(int handle, dsVideoZoom_t *dfc);
 
 
 /**
- * @brief This function deinitialize all the video devices in the system.
+ * @brief This function deinitializes all the video devices in the system.
  * This function reset any data structures used within this module and 
  *              release any handles specific to the video devices.
  *
  * @return dsError_t           - Status
  * @retval dsERR_NONE           - Success 
- * @retval dsERR_NOT_INITIALIZED- Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED- Module is not initialized
  * @retval dsERR_GENERAL        - General failure.
  * 
  * @pre dsVideoDeviceInit() must be called before calling this function.
@@ -216,7 +216,7 @@ dsError_t  dsVideoDeviceTerm();
  * 
  * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialized
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -238,7 +238,7 @@ dsError_t dsGetHDRCapabilities(int handle, int *capabilities);
  *
  * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialized
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -260,7 +260,7 @@ dsError_t dsGetSupportedVideoCodingFormats(int handle, unsigned int * supported_
  *
  * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialized
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -282,7 +282,7 @@ dsError_t dsGetVideoCodecInfo(int handle, dsVideoCodingFormat_t codec, dsVideoCo
  * 
  * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialized
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -327,7 +327,7 @@ dsError_t dsSetFRFMode(int handle, int frfmode);
  *
  * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialized
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -345,12 +345,13 @@ dsError_t dsGetFRFMode(int handle, int *frfmode);
  * @brief This function is used to get the current Framerate of the device
  *
  * @param[in]  handle       - The handle returned from the dsGetVideoDevice() function
- * @param[out] framerate    - Current frame rate will be represented in FPS. 
- *                                  Max Framerate is device specific. Min Framerate is 0. Expecting a char* param.
+ * @param[out] framerate    - Current frame rate will be represented in FPS.
+ *                            Max Framerate is device specific. Min Framerate is 0.
+ *                            Updates the value as a string(eg:"60").
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialized 
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
@@ -370,11 +371,12 @@ dsError_t dsGetCurrentDisplayframerate(int handle, char *framerate);
  *
  * @param[in] handle    - The handle returned from the dsGetVideoDevice() function
  * @param[in] framerate - Framerate value to be set frame will be represented in FPS. 
- *                                  Max Framerate is device specific. Min Framerate is 0.
+ *                        Max Framerate is device specific. Min Framerate is 0.
+ *                        Expects the value as a string(eg:"60").
  *
  * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialized
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
