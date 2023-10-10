@@ -1,4 +1,4 @@
-# DEVICE SETTINGS Host HAL Documentation
+# Device Settings Host HAL Documentation
 
 ## Version History
 
@@ -165,7 +165,7 @@ The `caller` is expected to have complete control over the life cycle of the `HA
 %%{ init : { "theme" : "default", "flowchart" : { "curve" : "stepBefore" }}}%%
    sequenceDiagram
     participant Caller as Caller
-    participant HAL as DEVICE SETTINGS HOST HAL
+    participant HAL as DS HOST HAL
     participant Driver as SoC
     Caller->>HAL:dsHostInit()
     Note over HAL: SOC can initialize the underlying subsystems if needed

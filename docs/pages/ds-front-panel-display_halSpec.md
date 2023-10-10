@@ -1,4 +1,4 @@
-# DEVICE SETTINGS FRONT PANEL DISPLAY HAL Documentation
+# Device Settings Front Panel Display HAL Documentation
 
 ## Version History
 
@@ -63,20 +63,17 @@ style z fill:#fcc,stroke:#333,stroke-width:0.3px,align:left
 style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
  ```
 
-
 This interface provides a set of `APIs` to facilitate communication to Front Panel `LED` Display `SoC` Drivers.
-
 
 The brightness, color and text of Front Panel `LEDs` can be set or retrieved. This interface also provides `API` to enable or disable the specified discrete `LED` on the Front Panel Display.
 
 ## Component Runtime Execution Requirements
- 
+
 This interface must adeptly manage resources to prevent issues like memory leaks and excessive utilization. It must also meet performance goals for response time, throughput, and resource use as per the platform's capabilities.
 
 Failure to meet these requirements will likely result in undefined and unexpected behaviour.
 
 ### Initialization and Startup
-
 
 `Caller` must initialize by calling `dsFPInit()` before calling any other `APIs`. `Caller` has complete control over the `FPD`.
 
@@ -149,7 +146,7 @@ Any changes in the `APIs` must be reviewed and approved by the component archite
 
 ### Platform or Product Customization
 
-The configuration settings file (dsFPDSettings.h) for `DS` Front Panel can be used for adding platform specific configurations. The sample file is available [here](/docs/pages/dsFPDSettings_template.h "dsFPDSettings_template.h").
+The configuration settings file (dsFPDSettings.h) for `DS` Front Panel can be used for adding platform specific configurations. The sample file is available [<b>here</b>](./dsFPDSettings_template.h "dsFPDSettings_template.h").
 
 
 ## Interface API Documentation
@@ -160,17 +157,15 @@ The configuration settings file (dsFPDSettings.h) for `DS` Front Panel can be us
 
 The `caller` is expected to have complete control over the life cycle of the `HAL`.
 
-1. Initialize the `FPD` `HAL` using function: `dsFPInit()` before making any other `API` calls.  If `dsFPInit()` call fails, the `HAL` must return the respective error code, so that the `caller` can retry the operation.
+1. Initialize the `FPD` `HAL` using function: `dsFPInit()` before making any other `API` calls.  If the init call fails, the `HAL` must return the respective error code, so that the `caller` can retry the operation.
 
 2. Once the `FPD` sub-system is initialized, `caller` can invoke `APIs` to control the Front Panel `LEDs`. The `FP` brightness, text, color, blink interval, `FP` `LED` state(ON/OFF), text scroll can be set or retrieved.
 
 3. De-initialize the `FP` `HAL` using the function: `dsFPTerm()`.
 
+<u>Note :</u> The module would operate deterministically if the above call sequence is followed
 
-
-NOTE: The module would operate deterministically if the above call sequence is followed
-
-The various `FP` `LED` states are as follows:
+The various `DS` `FP` `LED` states are as follows:
 
 - Active
 - Standby
@@ -191,26 +186,26 @@ The various `FP` `LED` states are as follows:
 %%{ init : { "theme" : "default", "flowchart" : { "curve" : "stepBefore" }}}%%
    sequenceDiagram
     participant Caller as Caller
-    participant HAL as DEVICE SETTINGS FRONT PANEL DISPLAY HAL
+    participant HAL as DS FPD HAL
     participant Driver as SoC
     Caller->>HAL:dsFPInit()
     Note over HAL: SoC initializes the FPD subsystem
     HAL->>Driver: Allocates required resources for FPD
     Driver-->>HAL:return
     HAL-->>Caller:return
-    Caller->>HAL: ds_FP_SetMethods
+    Caller->>HAL: ds_FP_SetMethods()
     Note over HAL: APIs to set the FPD Parameters
-    HAL->>Driver:Setting the FPD Parameters
+    HAL->>Driver:Sets the FPD Parameters
     Driver-->>HAL:return
     HAL-->>Caller:return
-    Caller->>HAL: ds_FP_GetMethods
+    Caller->>HAL: ds_FP_GetMethods()
     Note over HAL: APIs to get the FPD Parameters
-    HAL->>Driver:Getting the FPD Parameters
+    HAL->>Driver:Gets the FPD Parameters
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsEnableClockDisplay()
     Note over HAL: API to enable or disable Clock Display on FP LED
-    HAL->>Driver: Enable or Disable the clock display on the Front Panel LED
+    HAL->>Driver: Enables or Disables the clock display on the Front Panel LED
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller ->>HAL:dsFPTerm()
@@ -220,11 +215,10 @@ The various `FP` `LED` states are as follows:
 
  ```
 
-
 <b> LEGEND: </b>
 
 <b>ds_FP_SetMethods:</b>
-dsSetFPBlink(), 
+dsSetFPBlink(),
 dsSetFPBrightness(),
 dsSetFPState(),
 dsSetFPColor(),
