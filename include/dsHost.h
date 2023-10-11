@@ -77,7 +77,6 @@ extern "C" {
 #endif
 
 #include "dsError.h"
-#include "dsTypes.h"
 
 #define EDID_DATA_SIZE 256
 #define EDID_MAX_DATA_SIZE 512
