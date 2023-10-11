@@ -564,7 +564,7 @@ dsError_t dsSetFPDMode (dsFPDMode_t eMode);
  * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
- * @pre dsFPInit() must be called and FP State must be "ON" before calling this API
+ * @pre dsFPInit() must be called before calling this API
  * 
  * @warning  This API is Not thread safe
  * 
@@ -586,7 +586,7 @@ dsError_t dsFPGetLEDState (dsFPDLedState_t* state);
  * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
- * @pre dsFPInit() must be called and FP State must be "ON" before calling this API
+ * @pre dsFPInit() must be called before calling this API
  * 
  * @warning  This API is Not thread safe
  * 
