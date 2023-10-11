@@ -737,4 +737,3 @@ dsError_t dsGetAVLatency (int *audio_latency, int *video_latency);
 }
 #endif
 #endif /* __DS_HDMI_IN_H__ */
-
