@@ -174,7 +174,7 @@ const dsFPDTextDisplayConfig_t  kTextDisplays[dsFPD_TEXTDISP_MAX] = {
 		kIndicatorColors,		/**< supportedColors */
 		_MAX_BRIGHTNESS,		/**< maxBrightness */
 		_MAX_CYCLERATE,			/**< maxCycleRate */
-		"ABCDEFG",			/**< supportedCharacters */
+		"ABCDEFG",			/**< supportedCharacters (all alpha-numric characters except sprcial characters)*/
 		_MAX_HORZ_COLS,			/**< columns */
 		_MAX_VERT_ROWS,			/**< rows */
 		_MAX_HORZ_ITER,			/**< horizontal iterations */
