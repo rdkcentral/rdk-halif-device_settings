@@ -257,7 +257,7 @@ typedef struct _dsFPDTextDisplayConfig_t {
 	dsFPDColorConfig_t * supportedColors;	// Supported Colors of 7-Segement LED Display
 	int	maxBrightness;                 	// Maximum Brightness of 7-Segement LED Display
 	int maxCycleRate;                      	// Maximum Cycle Rate of 7-Segement LED Display
-	const char * supportedCharacters;      	// Supported Characters of 7-Segement LED Display
+	const char * supportedCharacters;      	// Supported Characters (alpha-numeric characters except special characters) of 7-Segement LED Display
 	int columns;                           	// Maximum  Horizontal Columns of 7-Segement LED Display
 	int rows;                              	// Maximum Vertical Rows of 7-Segement LED Display
 	int	maxHorizontalIterations;      	// Maximum Horizontal Iterations of 7-Segement LED Display
