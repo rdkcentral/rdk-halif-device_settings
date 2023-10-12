@@ -31,18 +31,18 @@
  *
  */
 
-/** @defgroup Device_Settings Device Settings Module
+/** @addtogroup Device_Settings Device Settings Module
  * @{
  */
 
-/** @defgroup Device_Settings_HAL Device Settings HAL
+/** @addtogroup Device_Settings_HAL Device Settings HAL
  * @par Application API Specification
  * Described herein are the DeviceSettings HAL types and functions that are part of
  * the Video Device subsystem. The Video Device subsystem manages system-specific HAL operations.
  *  @{
  */
 
-/** @defgroup dsVIDEODEVICE_HAL Device Settings Video Device HAL
+/** @addtogroup dsVIDEODEVICE_HAL Device Settings Video Device HAL
  *  @{
  * @par Application API Specification
  * dsVideoDevice HAL provides an interface for managing the VideoDevice settings for the device settings module
