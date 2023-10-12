@@ -548,7 +548,7 @@ dsError_t dsHdmiInRegisterAviContentTypeChangeCB (dsHdmiInAviContentTypeChangeCB
  * This function checks if the given port is an HDMI ARC port or not
  *
  * @param[in] iPort     - HDMI Arc port. Max value is device specific. Min value of 0
- * @param[in] isArcPort - Flag to hold the HDMI Arc port status 
+ * @param[out] isArcPort - Flag to hold the HDMI Arc port status 
  *                              ( @a true to enable, @a false to disable)
  *
  * @return dsError_t                        - Status
@@ -564,7 +564,7 @@ dsError_t dsHdmiInRegisterAviContentTypeChangeCB (dsHdmiInAviContentTypeChangeCB
  * @warning  This API is Not thread safe.
  * 
  */
-dsError_t dsIsHdmiARCPort (dsHdmiInPort_t iPort, bool isArcPort);
+dsError_t dsIsHdmiARCPort (dsHdmiInPort_t iPort, bool *isArcPort);
 
 /**
  * @brief Gets the EDID bytes info corresponds to the given input port.
