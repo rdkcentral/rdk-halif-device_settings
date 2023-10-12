@@ -31,26 +31,28 @@
  *
  */
 
-/** @defgroup Device_Settings Device Settings Module
+/**
+ * @defgroup Device_Settings Device Settings Module
  * @{
  */
 
-/**@defgroup Device_Settings_HAL Device Settings HAL
+/**
+ * @defgroup Device_Settings_HAL Device Settings HAL
  * @par Application API Specification
  * Described herein are the DeviceSettings HAL types and functions that are part of
  * the Host subsystem. The Host subsystem manages system-specific HAL operations.
  *  @{
  */
 
-/** @defgroup dsHOST_HAL Device Settings Host HAL
+/**
+ * @defgroup dsHOST_HAL Device Settings Host HAL
  *  @{
  * @par Application API Specification
  * dsHost HAL provides an interface for managing the host settings for the device settings module
  */
 
-/** @defgroup DSHAL_HOST_API Device Settings HAL Host Public API
- *
- *
+/**
+ * @defgroup DSHAL_HOST_API Device Settings HAL Host Public API
  *  @{
  */
 
