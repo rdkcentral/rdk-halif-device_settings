@@ -79,7 +79,7 @@
 #ifndef __DS_VIDEODEVICE_H__
 #define __DS_VIDEODEVICE_H__
 
-#include <sys/types.h>
+#include <stdbool.h>
 #include "dsError.h"
 #include "dsVideoDeviceTypes.h"
 #include "dsAudioVisualTypes.h"

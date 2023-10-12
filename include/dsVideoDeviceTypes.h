@@ -107,6 +107,8 @@
  *
  */
 
+#include <sys/types.h>
+
 
 /**
  * @brief This enumeration defines all of the standard screen zoom (format conversion) modes.
