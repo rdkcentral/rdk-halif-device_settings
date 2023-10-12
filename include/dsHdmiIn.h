@@ -81,7 +81,7 @@
  *
  */
 
-/** @defgroup Device_Settings Device Settings Module
+/** @addtogroup Device_Settings Device Settings Module
  * @{
  */
 
