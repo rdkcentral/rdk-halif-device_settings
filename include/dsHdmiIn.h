@@ -107,9 +107,12 @@
 #ifndef __DS_HDMI_IN_H__
 #define __DS_HDMI_IN_H__
 
-#include <sys/types.h>
+#include <stdint.h>    
+#include <stdbool.h>
 #include "dsError.h"
 #include "dsHdmiInTypes.h"
+#include "dsVideoDeviceTypes.h"
+#include "dsAudioVisualTypes.h"
 
 #ifdef __cplusplus
 extern "C" {

@@ -83,7 +83,7 @@
  *  @{
  */
 
-#include "dsVideoDevice.h"
+#pragma once //Required for compilation, until header structure is properly updated.
 
 /**
  * @brief Max buffer length for the feature list
