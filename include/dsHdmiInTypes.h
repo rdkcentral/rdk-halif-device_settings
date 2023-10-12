@@ -38,7 +38,7 @@
  * - HDMI:    High-Definition Multimedia Interface
  * - ARC:     Audio Return Channel.
  * - SPD:     Source Product Description
- * - rsd:     Repetition of statis data
+ * - rsd:     Repetition of static data
  * - pkttype: Package type
  *
  * @par Implementation Notes
@@ -165,7 +165,7 @@ struct dsSpd_infoframe_st {
     uint8_t pkttype;            /*!< Package type */
     uint8_t version;            /*!< Version */
     uint8_t length;             /*!< max length 25, mine length 0 */
-    uint8_t rsd;                /*!< Repetition of statis data */
+    uint8_t rsd;                /*!< Repetition of static data */
     uint8_t checksum;           /*!< Checksum for spd info frame */
     uint8_t vendor_name[8];     /*!< Vendor Name string. Min length 0 */
     uint8_t product_des[16];    /*!< Product Description string. Min length 0 */
