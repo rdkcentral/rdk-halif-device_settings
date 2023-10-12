@@ -296,7 +296,7 @@ dsError_t dsHdmiInSelectZoomMode (dsVideoZoom_t requestedZoomMode);
 dsError_t dsHdmiInGetCurrentVideoMode (dsVideoPortResolution_t *resolution);
 
 /**
- * @brief HAL must call this function when the HDMI input port connection status changes.
+ * @brief Notifies applications when the HDMI input port connection status changes.
  *
  * @param[in] Port              - Port id where connection status is changed. @see dsHdmiInPort_t
  * @param[in] isPortConnected   - Flag to control the port connection status. 
@@ -308,7 +308,7 @@ dsError_t dsHdmiInGetCurrentVideoMode (dsVideoPortResolution_t *resolution);
 typedef void (*dsHdmiInConnectCB_t)(dsHdmiInPort_t Port, bool isPortConnected);
 
 /**
- * @brief HAL must call this function when the HDMI input port signal status changes.
+ * @brief Notifies applications when the HDMI input port signal status changes.
  * 
  * @param[in] port      - Port id where signal status is changed. @see dsHdmiInPort_t
  * @param[in] sigStatus - Current signal status of the port. @see dsHdmiInSignalStatus_t
@@ -319,7 +319,7 @@ typedef void (*dsHdmiInConnectCB_t)(dsHdmiInPort_t Port, bool isPortConnected);
 typedef void (*dsHdmiInSignalChangeCB_t)(dsHdmiInPort_t port, dsHdmiInSignalStatus_t sigStatus);
 
 /**
- * @brief HAL must call this function when the HDMI input status changes on any port.
+ * @brief Notifies applications when the HDMI input status changes on any port.
  *
  * HAL Implementation must call this method to deliver HDMI input status
  * to the Caller whenever the HDMI input status changes.
@@ -332,7 +332,7 @@ typedef void (*dsHdmiInSignalChangeCB_t)(dsHdmiInPort_t port, dsHdmiInSignalStat
 typedef void (*dsHdmiInStatusChangeCB_t)(dsHdmiInStatus_t inputStatus);
 
 /**
- * @brief HAL must call this function when the HDMI input port video mode changes.
+ * @brief Notifies applications when the HDMI input port video mode changes.
  *
  * HAL Implementation must call this method to deliver updated HDMI input port video mode info
  * to the Caller
@@ -346,7 +346,7 @@ typedef void (*dsHdmiInStatusChangeCB_t)(dsHdmiInStatus_t inputStatus);
 typedef void (*dsHdmiInVideoModeUpdateCB_t)(dsHdmiInPort_t port, dsVideoPortResolution_t videoResolution);
 
 /**
- * @brief HAL must call this function when the HDMI input ALLM mode changes.
+ * @brief Notifies applications when the HDMI input ALLM mode changes.
  *
  * @param[in] port      - HDMI input port number in which ALLM Mode changed. @see dsHdmiInPort_t
  * @param[in] allm_mode - Flag to hold the current ALLM mode of the port.
@@ -358,7 +358,7 @@ typedef void (*dsHdmiInVideoModeUpdateCB_t)(dsHdmiInPort_t port, dsVideoPortReso
 typedef void (*dsHdmiInAllmChangeCB_t)(dsHdmiInPort_t port, bool allm_mode);
 
 /**
- * @brief Callback function used to notify applications of HDMI Input AV Latency
+ * @brief Notifies applications of HDMI Input AV Latency
  *
  * HAL Implementation should call this method to deliver HDMI Input AV Latency
  * to the application.
@@ -371,7 +371,7 @@ typedef void (*dsHdmiInAllmChangeCB_t)(dsHdmiInPort_t port, bool allm_mode);
 typedef void (*dsAVLatencyChangeCB_t)(int audio_latency, int video_latency);
 
 /**
- * @brief Callback function used to notify applications of HDMI Input Content Type change
+ * @brief Notifies applications of HDMI Input Content Type change
  *
  * HAL Implementation should call this method to deliver HDMI Input Content Type change 
  * to the application
