@@ -202,7 +202,7 @@ dsError_t dsHdmiInGetNumberOfinputs (uint8_t *pNumberOfinputs);
 dsError_t dsHdmiInGetStatus (dsHdmiInStatus_t *pStatus); 
 
 /**
- * @brief Selects the HDMI input port for presentation.
+ * @brief Selects the HDMI input port as active and available for presentation.
  * 
  * This function selects the HDMI input port for presentation.
  *
