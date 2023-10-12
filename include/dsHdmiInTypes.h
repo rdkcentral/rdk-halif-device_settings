@@ -164,7 +164,7 @@ typedef struct _dsSupportedGameFeatureList_t {
 struct dsSpd_infoframe_st {
     uint8_t pkttype;            /*!< Package type */
     uint8_t version;            /*!< Version */
-    uint8_t length;             /*!< max length 25, mine length 0 */
+    uint8_t length;             /*!< max length 25, min length 0 */
     uint8_t rsd;                /*!< Repetition of static data */
     uint8_t checksum;           /*!< Checksum for spd info frame */
     uint8_t vendor_name[8];     /*!< Vendor Name string. Min length 0 */
