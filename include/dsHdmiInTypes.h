@@ -96,11 +96,11 @@
  */
 typedef enum _dsHdmiInPort_t
 {
-    dsHDMI_IN_PORT_NONE = -1,  ///< HDMI input port index for NONE
-    dsHDMI_IN_PORT_0,          ///< HDMI input port index for PORT 0
-    dsHDMI_IN_PORT_1,          ///< HDMI input port index for PORT 1
-    dsHDMI_IN_PORT_2,          ///< HDMI input port index for PORT 2
-    dsHDMI_IN_PORT_MAX         ///< Out of range 
+    dsHDMI_IN_PORT_NONE = -1,  /*!< HDMI input port index for NONE */
+    dsHDMI_IN_PORT_0,          /*!< HDMI input port index for PORT 0 */
+    dsHDMI_IN_PORT_1,          /*!< HDMI input port index for PORT 1 */
+    dsHDMI_IN_PORT_2,          /*!< HDMI input port index for PORT 2 */
+    dsHDMI_IN_PORT_MAX         /*!< Out of range  */
 } dsHdmiInPort_t;
 
 /**
@@ -108,14 +108,14 @@ typedef enum _dsHdmiInPort_t
  */
 typedef enum _dsHdmiInSignalStatus_t
 {
-    dsHDMI_IN_SIGNAL_STATUS_NONE = -1,    ///< HDMI input signal status NONE. Default state upon start up
-    dsHDMI_IN_SIGNAL_STATUS_NOSIGNAL,     ///< HDMI input No signal signal status. No device connected
-    dsHDMI_IN_SIGNAL_STATUS_UNSTABLE,     ///< HDMI input unstable signal status. This is normally a transitional state, 
-                                          ///< but can remain here due to some faults on HDMI Source / Cable
-    dsHDMI_IN_SIGNAL_STATUS_NOTSUPPORTED, ///< HDMI input Not supported signal status. 
-                                          ///< e.g. The sink device does not support the incoming HDMI In signal from source.
-    dsHDMI_IN_SIGNAL_STATUS_STABLE,       ///< HDMI input Stable signal status are presented on plane
-    dsHDMI_IN_SIGNAL_STATUS_MAX           ///< Out of range 
+    dsHDMI_IN_SIGNAL_STATUS_NONE = -1,    /*!< HDMI input signal status NONE. Default state upon start up */
+    dsHDMI_IN_SIGNAL_STATUS_NOSIGNAL,     /*!< HDMI input No signal signal status. No device connected */
+    dsHDMI_IN_SIGNAL_STATUS_UNSTABLE,     /*!< HDMI input unstable signal status. This is normally a transitional state,  */
+                                          /*!< but can remain here due to some faults on HDMI Source / Cable */
+    dsHDMI_IN_SIGNAL_STATUS_NOTSUPPORTED, /*!< HDMI input Not supported signal status.  */
+                                          /*!< e.g. The sink device does not support the incoming HDMI In signal from source. */
+    dsHDMI_IN_SIGNAL_STATUS_STABLE,       /*!< HDMI input Stable signal status are presented on plane */
+    dsHDMI_IN_SIGNAL_STATUS_MAX           /*!< Out of range  */
 } dsHdmiInSignalStatus_t;
 
 /**
@@ -124,10 +124,10 @@ typedef enum _dsHdmiInSignalStatus_t
  */
 typedef struct _dsHdmiInStatus_t
 {
-    bool             isPresented;                           ///< Boolean flag indicating HDMI input is presenting for the activePort
-    bool             isPortConnected[dsHDMI_IN_PORT_MAX];   ///< Boolean flag indicating HDMI source connected to this HDMI input port 
-    dsHdmiInPort_t   activePort;                            ///< HDMI input Port selected as the currently active port (to the set-top)
-                                                            ///<   - note that only one HDMI input port can be active at a time 
+    bool             isPresented;                           /*!< Boolean flag indicating HDMI input is presenting for the activePort */
+    bool             isPortConnected[dsHDMI_IN_PORT_MAX];   /*!< Boolean flag indicating HDMI source connected to this HDMI input port  */
+    dsHdmiInPort_t   activePort;                            /*!< HDMI input Port selected as the currently active port (to the set-top) */
+                                                            /*!<   - note that only one HDMI input port can be active at a time  */
 } dsHdmiInStatus_t;
 
 /**
@@ -135,41 +135,41 @@ typedef struct _dsHdmiInStatus_t
  */
 typedef struct _dsHdmiInCap_t
 {
-    bool    isPortArcCapable[dsHDMI_IN_PORT_MAX]; ///< Boolean flag indicating HDMI source is ARC capable 
+    bool    isPortArcCapable[dsHDMI_IN_PORT_MAX]; /*!< Boolean flag indicating HDMI source is ARC capable  */
 } dsHdmiInCap_t;
 
 /**
  * @brief This enumeration defines the AVI Content Types
  */
 typedef enum dsAviContentType {
-  dsAVICONTENT_TYPE_GRAPHICS,   ///< Content type Graphics.
-  dsAVICONTENT_TYPE_PHOTO,      ///< Content type Photo
-  dsAVICONTENT_TYPE_CINEMA,     ///< Content type Cinema
-  dsAVICONTENT_TYPE_GAME,       ///< Content type Game
-  dsAVICONTENT_TYPE_INVALID,    ///< Content type Invalid
-  dsAVICONTENT_TYPE_MAX,        ///< Out of range
+  dsAVICONTENT_TYPE_GRAPHICS,   /*!< Content type Graphics. */
+  dsAVICONTENT_TYPE_PHOTO,      /*!< Content type Photo */
+  dsAVICONTENT_TYPE_CINEMA,     /*!< Content type Cinema */
+  dsAVICONTENT_TYPE_GAME,       /*!< Content type Game */
+  dsAVICONTENT_TYPE_INVALID,    /*!< Content type Invalid */
+  dsAVICONTENT_TYPE_MAX,        /*!< Out of range */
 }dsAviContentType_t;
 
 /**
  * @brief Structure that captures Supported Game Features list
  */
 typedef struct _dsSupportedGameFeatureList_t {
-    char gameFeatureList[MAX_FEATURE_LIST_BUFFER_LEN]; ///< buffer containing the list of comma separated supported game features (e.g: "allm")
-    int gameFeatureCount;                              ///< Total number of supported game features
+    char gameFeatureList[MAX_FEATURE_LIST_BUFFER_LEN]; /*!< buffer containing the list of comma separated supported game features (e.g: "allm") */
+    int gameFeatureCount;                              /*!< Total number of supported game features */
 } dsSupportedGameFeatureList_t;
 
 /**
  * @brief Structure type for spd info frame.
  */
 struct dsSpd_infoframe_st {
-    uint8_t pkttype;            ///< Package type
-    uint8_t version;            ///< Version
-    uint8_t length;             ///< max length 25, mine length 0
-    uint8_t rsd;                ///< Repetition of statis data
-    uint8_t checksum;           ///< Checksum for spd info frame
-    uint8_t vendor_name[8];     ///< Vendor Name string. Min length 0
-    uint8_t product_des[16];    ///< Product Description string. Min length 0
-    uint8_t source_info;        ///< byte 25
+    uint8_t pkttype;            /*!< Package type */
+    uint8_t version;            /*!< Version */
+    uint8_t length;             /*!< max length 25, mine length 0 */
+    uint8_t rsd;                /*!< Repetition of statis data */
+    uint8_t checksum;           /*!< Checksum for spd info frame */
+    uint8_t vendor_name[8];     /*!< Vendor Name string. Min length 0 */
+    uint8_t product_des[16];    /*!< Product Description string. Min length 0 */
+    uint8_t source_info;        /*!< Source info of the frame.  */
 } ;
 
 /**
@@ -177,9 +177,9 @@ struct dsSpd_infoframe_st {
  */
 
 typedef enum tv_hdmi_edid_version_e {
-    HDMI_EDID_VER_14 = 0,
-    HDMI_EDID_VER_20,
-    HDMI_EDID_VER_MAX,
+    HDMI_EDID_VER_14 = 0,   /*!< EDID version 1.4 */
+    HDMI_EDID_VER_20,       /*!< EDID version 2.0 */
+    HDMI_EDID_VER_MAX,      /*!< Out of bounds */
 } tv_hdmi_edid_version_t;
 
 /** @} */ // End of DSHAL_HDMI_IN_TYPES doxygen group 
