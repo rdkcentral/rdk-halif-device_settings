@@ -180,11 +180,11 @@ dsError_t dsHdmiInTerm (void);
 dsError_t dsHdmiInGetNumberOfinputs (uint8_t *pNumberOfinputs);
 
 /**
- * @brief Gets the current HDMI input port status.
+ * @brief Gets the HDMI input port status of all ports.
  * 
- * This function gets the current HDMI input port status.
+ * This function gets the HDMI input port status.
  *
- * @param[out] pStatus  - current status of the HDMI input port. @see dsHdmiInStatus_t
+ * @param[out] pStatus  - status of the HDMI input ports. @see dsHdmiInStatus_t
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
