@@ -622,6 +622,7 @@ typedef struct _dsVideoPortTypeConfig_t {
  * Each bit of uint32_t represent a standard. 
  * If a device supports multiple standards, the capability is the bitwise OR
  * of the standards.
+ * Used in videoDevice.h @see dsGetHDRCapabilities()
  */
 typedef enum _dsHDRStandard_t {
     dsHDRSTANDARD_NONE = 0x0,               ///< When No video format is decoded
@@ -632,7 +633,7 @@ typedef enum _dsHDRStandard_t {
     dsHDRSTANDARD_HDR10PLUS = 0x10,         ///< Video Format HDRPlus 
     dsHDRSTANDARD_SDR= 0x20,                ///< Video Format SDR 
     dsHDRSTANDARD_Invalid = 0x80,           ///< When invalid value observed
-    dsHDRSTANDARD_MAX                       ///< Out of range 
+    dsHDRSTANDARD_MAX   = 0x100             ///< Out of range 
 } dsHDRStandard_t;
 
 /**

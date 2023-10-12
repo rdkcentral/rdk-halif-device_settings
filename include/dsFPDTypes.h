@@ -87,6 +87,7 @@
 #define __DS_FPD_TYPES_H__
 
 #include <stdint.h>
+#pragma once
 
 /**
  * @brief dsFPDColor_t is an 4-byte integer that is composed of RGB32 value in the
