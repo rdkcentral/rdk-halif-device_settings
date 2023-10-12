@@ -60,8 +60,8 @@ style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
 
 `Device Settings Video Device` `HAL` provides a set of `APIs` to initialize, query information about the `SoC`.
 
-The main purpose of this module is to facilitate communication between the `caller`, and `HAL` interface, such that information about the zoom mode, HDR capabilities, Video encoding formats frame rate information and etc can be set and queried.
-@todo doublecheck that these are all the major components
+The main purpose of this module is to facilitate communication between the `caller` and `HAL` interface, such that information about the zoom mode, HDR capabilities, Video encoding formats frame rate information and etc can be set and queried.
+
 
 ## Component Runtime Execution Requirements
 
@@ -169,7 +169,7 @@ The `caller` is expected to have complete control over the life cycle of the `HA
 %%{ init : { "theme" : "default", "flowchart" : { "curve" : "stepBefore" }}}%%
    sequenceDiagram
     participant Caller as Caller
-    participant HAL as DEVICE SETTINGS VIDEO DEVICE HAL
+    participant HAL as DS VIDEO DEVICE HAL
     participant Driver as SoC
     Caller->>HAL:dsVideoDeviceInit()
     Note over HAL: SoC initializes the Video Device subsystem
@@ -187,7 +187,7 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller ->>HAL:dsVideoDeviceTerm()
-    HAL ->> Driver: Releases all the resources allocated during Video Device init
+    HAL ->> Driver: Releases all the resources allocated during dsVideoDeviceInit()
     Driver-->>HAL:return
     HAL-->>Caller:return
 ``````
