@@ -573,7 +573,7 @@ dsError_t dsIsHdmiARCPort (dsHdmiInPort_t iPort, bool *isArcPort);
  *
  * @param[in] iHdmiPort     - HDMI input port. @see dsHdmiInPort_t
  * @param[out] edid         - EDID data for which info is required
- * @param[out] length       - length of the EDID data. Min value of 0
+ * @param[out] length       - length of the EDID data. Min value of 0. Max length 256.
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
