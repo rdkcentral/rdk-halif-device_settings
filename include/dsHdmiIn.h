@@ -276,7 +276,10 @@ dsError_t dsHdmiInSelectZoomMode (dsVideoZoom_t requestedZoomMode);
  * @brief Gets the current HDMI input video mode of the active port
  * 
  * This function gets the current HDMI input video mode of the active port
- *
+ * 
+ * @param[out] Port              - Current video port resolution. @see dsVideoPortResolution_t
+ * 
+ * 
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
