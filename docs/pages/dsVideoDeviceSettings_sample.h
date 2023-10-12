@@ -64,7 +64,6 @@
  * - cb:      Callback function (suffix).
  * - DS:      Device Settings.
  * - HAL:     Hardware Abstraction Layer.
-
  * - HDMI:    High-Definition Multimedia Interface
  * - DFC:     Decoder format conversion
  * 
@@ -93,9 +92,9 @@ namespace  {
  * @note The size of the array is fixed and cannot be changed.
  */
 static const dsVideoZoom_t kSupportedDFCs[] = { 
-    dsVIDEO_ZOOM_NONE,      ///< Decoder format conversion is inactive,
-    dsVIDEO_ZOOM_FULL,      ///< Full screen (16:9 video is zoomed to fit 4:3 frame)
-    dsVIDEO_ZOOM_PLATFORM}; ///< Control over the decoder format conversions is managed by the platform.
+    dsVIDEO_ZOOM_NONE,      /*!< Decoder format conversion is inactive, */
+    dsVIDEO_ZOOM_FULL,      /*!< Full screen (16:9 video is zoomed to fit 4:3 frame) */
+    dsVIDEO_ZOOM_PLATFORM}; /*!< Control over the decoder format conversions is managed by the platform. */
 /**
  * @brief Default ZOOM Settings value
  *
@@ -103,8 +102,7 @@ static const dsVideoZoom_t kSupportedDFCs[] = {
  * values cannot be modified at runtime.
  *
  */
-static const dsVideoZoom_t kDefaultDFC  = dsVIDEO_ZOOM_FULL; 
-        //16:9 Zoom (4:3 video is zoomed to fill 16:9 frame).
+static const dsVideoZoom_t kDefaultDFC  = dsVIDEO_ZOOM_FULL; ///<16:9 Zoom (4:3 video is zoomed to fill 16:9 frame).
 
 /**
  * @brief Number of Video Devices supported
@@ -126,9 +124,9 @@ static const int kNumVideoDevices = 1;
 
 static const dsVideoConfig_t kConfigs[]= {
     {
-    /*.numSupportedDFCs = */    dsUTL_DIM(kSupportedDFCs),  ///< Number of supported DFCs. 0 means "Info available at runtime"
-    /*.supportedDFCs = */       kSupportedDFCs,             ///< Supported DFCs.
-    /*.defaultDFC = */          dsVIDEO_ZOOM_FULL,          ///< 16:9 Zoom (4:3 video is zoomed to fill 16:9 frame).
+    /*.numSupportedDFCs = */    dsUTL_DIM(kSupportedDFCs),  /*!< Number of supported DFCs. 0 means "Info available at runtime" */
+    /*.supportedDFCs = */       kSupportedDFCs,             /*!< Supported DFCs. */
+    /*.defaultDFC = */          dsVIDEO_ZOOM_FULL,          /*!< 16:9 Zoom (4:3 video is zoomed to fill 16:9 frame). */
     },
 };
 

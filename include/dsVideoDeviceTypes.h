@@ -116,21 +116,21 @@
  */
 
 typedef enum _dsVideoZoom_t {
-    dsVIDEO_ZOOM_UNKNOWN = -1,      ///< Unknown mode.                                                                                 
-    dsVIDEO_ZOOM_NONE = 0,          ///< Decoder format conversion is inactive.                                                        
-    dsVIDEO_ZOOM_FULL,              ///< Full screen (16:9 video is streched to fit 4:3 frame).                                        
-    dsVIDEO_ZOOM_LB_16_9,           ///< 16:9 Letterbox (16:9 video is placed in a 4:3 frame with a full letterbox effect).            
-    dsVIDEO_ZOOM_LB_14_9,           ///< 14:9 Letterbox (16:9 video is transferred into a 4:3 frame with 14:9
-                                    ///< letterbox effect).       
-    dsVIDEO_ZOOM_CCO,               ///< Center Cut-out (16:9 video is cut to fill 4:3 frame with its center part).                    
-    dsVIDEO_ZOOM_PAN_SCAN,          ///< Pan & Scan (16:9 is cut and panned to fille 4:3 frame, following MPEG pan & scan vectors).    
-    dsVIDEO_ZOOM_LB_2_21_1_ON_4_3,  ///< 2.21:1 Letterbox on 4:3 (video is transferred into 4:3 frame with a 2.21:1 letterbox effect). 
-    dsVIDEO_ZOOM_LB_2_21_1_ON_16_9, ///< 2.21:1 Letterbox on 16:9 (video is transferred into 16:9 frame with a 2.21:1 letterbox effect).
-    dsVIDEO_ZOOM_PLATFORM,          ///< Control over the decoder format conversions is managed by the platform.                       
-    dsVIDEO_ZOOM_16_9_ZOOM,         ///< 16:9 Zoom (4:3 video is zoomed to fill 16:9 frame).                                           
-    dsVIDEO_ZOOM_PILLARBOX_4_3,     ///< Pillarbox 4:3 (4:3 video is placed in a 16:9 frame with a pillarbox effect)                   
-    dsVIDEO_ZOOM_WIDE_4_3,          ///< Wide 4:3 (4:3 video is stretched to fill 16:9 frame).                                         
-    dsVIDEO_ZOOM_MAX                ///< Out of range                                                         
+    dsVIDEO_ZOOM_UNKNOWN = -1,      /*!< Unknown mode.                                                                                  */
+    dsVIDEO_ZOOM_NONE = 0,          /*!< Decoder format conversion is inactive.                                                         */
+    dsVIDEO_ZOOM_FULL,              /*!< Full screen (16:9 video is streched to fit 4:3 frame).                                         */
+    dsVIDEO_ZOOM_LB_16_9,           /*!< 16:9 Letterbox (16:9 video is placed in a 4:3 frame with a full letterbox effect).             */
+    dsVIDEO_ZOOM_LB_14_9,           /*!< 14:9 Letterbox (16:9 video is transferred into a 4:3 frame with 14:9 */
+                                    /*!< letterbox effect).        */
+    dsVIDEO_ZOOM_CCO,               /*!< Center Cut-out (16:9 video is cut to fill 4:3 frame with its center part).                     */
+    dsVIDEO_ZOOM_PAN_SCAN,          /*!< Pan & Scan (16:9 is cut and panned to fille 4:3 frame, following MPEG pan & scan vectors).     */
+    dsVIDEO_ZOOM_LB_2_21_1_ON_4_3,  /*!< 2.21:1 Letterbox on 4:3 (video is transferred into 4:3 frame with a 2.21:1 letterbox effect).  */
+    dsVIDEO_ZOOM_LB_2_21_1_ON_16_9, /*!< 2.21:1 Letterbox on 16:9 (video is transferred into 16:9 frame with a 2.21:1 letterbox effect). */
+    dsVIDEO_ZOOM_PLATFORM,          /*!< Control over the decoder format conversions is managed by the platform.                        */
+    dsVIDEO_ZOOM_16_9_ZOOM,         /*!< 16:9 Zoom (4:3 video is zoomed to fill 16:9 frame).                                            */
+    dsVIDEO_ZOOM_PILLARBOX_4_3,     /*!< Pillarbox 4:3 (4:3 video is placed in a 16:9 frame with a pillarbox effect)                    */
+    dsVIDEO_ZOOM_WIDE_4_3,          /*!< Wide 4:3 (4:3 video is stretched to fill 16:9 frame).                                          */
+    dsVIDEO_ZOOM_MAX                /*!< Out of range                                                          */
 }dsVideoZoom_t;
 
 /**
@@ -144,9 +144,9 @@ typedef enum _dsVideoZoom_t {
  */
 
 typedef struct _dsVideoConfig_t {
-    size_t numSupportedDFCs;            ///< Number of zoom modes supported.
-    const dsVideoZoom_t *supportedDFCs; ///< List of zoom modes supported. 
-    dsVideoZoom_t defaultDFC;           ///< The default zoom mode.        
+    size_t numSupportedDFCs;            /*!< Number of zoom modes supported. */
+    const dsVideoZoom_t *supportedDFCs; /*!< List of zoom modes supported.  */
+    dsVideoZoom_t defaultDFC;           /*!< The default zoom mode.         */
 } dsVideoConfig_t;
 
 /**
@@ -155,10 +155,10 @@ typedef struct _dsVideoConfig_t {
 
 typedef enum
 {
-    dsVIDEO_CODEC_MPEGHPART2 = (0x01 << 0),     ///< Also known HEVC, H.265
-    dsVIDEO_CODEC_MPEG4PART10 = (0x01 << 1),    ///< Also known as H.264, MPEG4 AVC
-    dsVIDEO_CODEC_MPEG2 = (0x01 << 2),          ///< Also known as H.222/H.262
-    dsVIDEO_CODEC_MAX   = (0x01 << 3)           ///< Out of range
+    dsVIDEO_CODEC_MPEGHPART2 = (0x01 << 0),     /*!< Also known HEVC, H.265 */
+    dsVIDEO_CODEC_MPEG4PART10 = (0x01 << 1),    /*!< Also known as H.264, MPEG4 AVC */
+    dsVIDEO_CODEC_MPEG2 = (0x01 << 2),          /*!< Also known as H.222/H.262 */
+    dsVIDEO_CODEC_MAX   = (0x01 << 3)           /*!< Out of range */
 } dsVideoCodingFormat_t;
 
 /* HEVC version 1 profiles are listed. More may be added to it as the support becomes available.*/
@@ -168,26 +168,26 @@ typedef enum
 
 typedef enum
 {
-    dsVIDEO_CODEC_HEVC_PROFILE_MAIN = (0x01 << 0),              ///< 8-bit HEVC video profile.
-    dsVIDEO_CODEC_HEVC_PROFILE_MAIN10 = (0x01 << 1),            ///< 10-bit HEVC video profile.
-    dsVIDEO_CODEC_HEVC_PROFILE_MAINSTILLPICTURE = (0x01 << 2),  ///< HECV Main Still Picture profile.
-    dsVIDEO_CODEC_HEVC_MAX  = (0x01 << 3)                       ///< Out of range 
+    dsVIDEO_CODEC_HEVC_PROFILE_MAIN = (0x01 << 0),              /*!< 8-bit HEVC video profile. */
+    dsVIDEO_CODEC_HEVC_PROFILE_MAIN10 = (0x01 << 1),            /*!< 10-bit HEVC video profile. */
+    dsVIDEO_CODEC_HEVC_PROFILE_MAINSTILLPICTURE = (0x01 << 2),  /*!< HECV Main Still Picture profile. */
+    dsVIDEO_CODEC_HEVC_MAX  = (0x01 << 3)                       /*!< Out of range  */
 } dsVideoCodecHevcProfiles_t;
 /**
  * @brief Structure type for HEVC profiles.
  */
 typedef struct
 {
-   dsVideoCodecHevcProfiles_t profile;  ///< HEVC Profiles. See dsVideoCodecHevcProfiles_t
-   float level;                         ///< level for the specieis HEVC profile.
+   dsVideoCodecHevcProfiles_t profile;  /*!< HEVC Profiles. See dsVideoCodecHevcProfiles_t */
+   float level;                         /*!< level for the specieis HEVC profile. */
 } dsVideoCodecProfileSupport_t;
 /**
  * @brief Structure type for Video codec info.
  */
 typedef struct
 {
-    unsigned int num_entries;                  ///< Number of entries
-    dsVideoCodecProfileSupport_t entries[10];  ///< Contains a list of the supported Codex profiles.
+    unsigned int num_entries;                  /*!< Number of entries */
+    dsVideoCodecProfileSupport_t entries[10];  /*!< Contains a list of the supported Codex profiles. */
 } dsVideoCodecInfo_t;
 
 /** @} */ // End of DSHAL_VIDEODEVICE_TYPES doxygen group 
