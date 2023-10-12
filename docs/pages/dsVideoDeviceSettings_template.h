@@ -31,25 +31,29 @@
  *
  */
 
-/** @addtogroup Device_Settings Device Settings Module
+/**
+ * @addtogroup Device_Settings Device Settings Module
  * @{
  */
 
-/** @addtogroup Device_Settings_HAL Device Settings HAL
+/**
+ * @addtogroup Device_Settings_HAL Device Settings HAL
  * @par Application API Specification
  * Described herein are the DeviceSettings HAL types and functions that are part of
  * the Video Device subsystem. The Video Device subsystem manages system-specific HAL operations.
  *  @{
  */
 
-/** @addtogroup dsVIDEODEVICE_HAL Device Settings Video Device HAL
+/**
+ * @addtogroup dsVIDEODEVICE_HAL DS Video Device HAL
  *  @{
  * @par Application API Specification
  * dsVideoDevice HAL provides an interface for managing the VideoDevice settings for the device settings module
  */
 
-/** @addtogroup DSHAL_VIDEODEVICE_SETTINGS HAL VideoDevice Settings
- *  @ingroup DSHAL_VIDEODEVICE
+/**
+ * @addtogroup DSHAL_VIDEODEVICE_SETTINGS_H DS Video Device Settings Header
+ *  @ingroup dsVIDEODEVICE_HAL
  *  @{
  */
 
@@ -67,12 +71,12 @@
  * - HDMI:    High-Definition Multimedia Interface
  * - DFC:     Decoder format conversion
  * 
- * @ingroup DSSETTINGS_HAL
+ * @ingroup Device_Settings_HAL
  */
 
 
-#ifndef _DS_VIDEODEVICESETTINGS_H_
-#define _DS_VIDEODEVICESETTINGS_H_
+#ifndef __DS_VIDEO_DEVICE_SETTINGS_H__
+#define __DS_VIDEO_DEVICE_SETTINGS_H__
 
 #include "dsUtl.h"
 #include "dsTypes.h"
@@ -83,6 +87,7 @@ extern "C" {
 #endif
 
 namespace  {
+
 /**
  * @brief A static constant array of supported ZOOM settings.
  *
@@ -95,6 +100,7 @@ static const dsVideoZoom_t kSupportedDFCs[] = {
     dsVIDEO_ZOOM_NONE,      /*!< Decoder format conversion is inactive, */
     dsVIDEO_ZOOM_FULL,      /*!< Full screen (16:9 video is zoomed to fit 4:3 frame) */
     dsVIDEO_ZOOM_PLATFORM}; /*!< Control over the decoder format conversions is managed by the platform. */
+
 /**
  * @brief Default ZOOM Settings value
  *
@@ -102,7 +108,7 @@ static const dsVideoZoom_t kSupportedDFCs[] = {
  * values cannot be modified at runtime.
  *
  */
-static const dsVideoZoom_t kDefaultDFC  = dsVIDEO_ZOOM_FULL; ///<16:9 Zoom (4:3 video is zoomed to fill 16:9 frame).
+static const dsVideoZoom_t kDefaultDFC  = dsVIDEO_ZOOM_FULL; /*!< 16:9 Zoom (4:3 video is zoomed to fill 16:9 frame) */
 
 /**
  * @brief Number of Video Devices supported
@@ -121,7 +127,6 @@ static const int kNumVideoDevices = 1;
  *
  * @note The size of the array is fixed and cannot be changed.
  */
-
 static const dsVideoConfig_t kConfigs[]= {
     {
     /*.numSupportedDFCs = */    dsUTL_DIM(kSupportedDFCs),  /*!< Number of supported DFCs. 0 means "Info available at runtime" */
@@ -130,18 +135,24 @@ static const dsVideoConfig_t kConfigs[]= {
     },
 };
 
+/**
+ * @brief Checks if number of elements in ::kConfigs is the same as in ::kNumVideoDevices
+ *
+ */
 typedef int _SafetyCheck[(dsUTL_DIM(kConfigs) == kNumVideoDevices) ? 1 : -1];
 
 }
 
-/** @} */ // End of DSHAL_VIDEODEVICE_SETTINGS doxygen group 
-/** @} */ // End of DS Video Device HAL
-/** @} */ // End of Device Settings HAL
-/** @} */ // End of Device Settings Module
-/** @} */ // End of HPK
+
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* RPVIDEODEVICESETTINGS_H_ */
+#endif /* __DS_VIDEO_DEVICE_SETTINGS_H__ */
+
+/** @} */ // End of DS Video Device Settings Header
+/** @} */ // End of DS Video Device HAK
+/** @} */ // End of Device Settings HAL
+/** @} */ // End of Device Settings Module
+/** @} */ // End of HPK
 
