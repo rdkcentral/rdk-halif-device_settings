@@ -18,7 +18,7 @@
 */
  
 /**
- * @addtogroup HPK HPK
+ * @addtogroup HPK Hardware Porting Kit
  * @{
  * @par The Hardware Porting Kit
  * HPK is the next evolution of the well-defined Hardware Abstraction Layer
@@ -31,7 +31,25 @@
  *
  */
 
-/** @addtogroup DS_Manager_HAL DS Manager Hal
+/** @defgroup Device_Settings Device Settings Module
+ * @{
+ */
+
+/** @defgroup Device_Settings_HAL Device Settings HAL
+ * @par Application API Specification
+ * Described herein are the DeviceSettings HAL types and functions that are part of
+ * the Video Device subsystem. The Video Device subsystem manages system-specific HAL operations.
+ *  @{
+ */
+
+/** @defgroup dsVIDEODEVICE_HAL Device Settings Video Device HAL
+ *  @{
+ * @par Application API Specification
+ * dsVideoDevice HAL provides an interface for managing the VideoDevice settings for the device settings module
+ */
+
+/** @addtogroup DSHAL_VIDEODEVICE_SETTINGS HAL VideoDevice Settings
+ *  @ingroup DSHAL_VIDEODEVICE
  *  @{
  */
 
@@ -117,12 +135,15 @@ static const dsVideoConfig_t kConfigs[]= {
 typedef int _SafetyCheck[(dsUTL_DIM(kConfigs) == kNumVideoDevices) ? 1 : -1];
 
 }
+
+/** @} */ // End of DSHAL_VIDEODEVICE_SETTINGS doxygen group 
+/** @} */ // End of DS Video Device HAL
+/** @} */ // End of Device Settings HAL
+/** @} */ // End of Device Settings Module
+/** @} */ // End of HPK
 #ifdef __cplusplus
 }
 #endif
 
 #endif /* RPVIDEODEVICESETTINGS_H_ */
 
-
-/** @} */
-/** @} */
