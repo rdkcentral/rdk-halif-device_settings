@@ -67,14 +67,14 @@
 /** @addtogroup Device_Settings_HAL Device Settings HAL
  * @par Application API Specification
  * Described herein are the DeviceSettings HAL types and functions that are part of
- * the Host subsystem. The Host subsystem manages system-specific HAL operations.
+ * the HdmiIn subsystem. The HdmiIn subsystem manages system-specific HAL operations.
  *  @{
  */
 
-/** @addtogroup dsHdmiIn_HAL_Type Device Settings Host HAL
+/** @addtogroup dsHdmiIn_HAL_Type Device Settings HdmiIn HAL
  *  @{
  * @par Application API Specification
- * dsHost HAL provides an interface for managing the HdmiIn settings for the device settings module
+ * dsHdmiIn HAL provides an interface for managing the HdmiIn settings for the device settings module
  */
 
 /** @defgroup DSHAL_HDMI_IN_TYPES Device Settings HAL Hdmi Input Public API
