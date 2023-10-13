@@ -295,7 +295,7 @@ dsError_t dsForceDisableHDRSupport(int handle, bool disable);
  *
  * @param[in] handle    - The handle returned from the dsGetVideoDevice() function
  * @param[in] frfmode   - integer with corresponding Framerate value. 
- *                              Max framerate is device specific. Min framerate is 0.
+ *                              @see for dsVideoFrameRate_t max framerate.Min framerate is 0.
  *
  * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
@@ -344,7 +344,7 @@ dsError_t dsGetFRFMode(int handle, int *frfmode);
  *
  * @param[in]  handle       - The handle returned from the dsGetVideoDevice() function
  * @param[out] framerate    - Current frame rate will be represented in FPS
- *                            Max Framerate is device specific. Min Framerate is 0.
+ *                            @see for dsVideoFrameRate_t max framerate. Min Framerate is 0.
  *                            Updates the value as a string(eg:"60").
  *
  * @return dsError_t                        - Status
@@ -370,7 +370,7 @@ dsError_t dsGetCurrentDisplayframerate(int handle, char *framerate);
  *
  * @param[in] handle    - The handle returned from the dsGetVideoDevice() function
  * @param[in] framerate - Framerate value to be set frame will be represented in FPS. 
- *                        Max Framerate is device specific. Min Framerate is 0.
+ *                        @see for dsVideoFrameRate_t max framerate. Min Framerate is 0.
  *                        Expects the value as a string(eg:"60").
  *
  * @return dsError_t                       - Status
