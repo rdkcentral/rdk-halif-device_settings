@@ -31,24 +31,28 @@
  *
  */
 
-/** @addtogroup Device_Settings Device Settings Module
+/**
+ * @addtogroup Device_Settings Device Settings Module
  * @{
  */
 
-/** @addtogroup Device_Settings_HAL Device Settings HAL
+/**
+ * @addtogroup Device_Settings_HAL Device Settings HAL
  * @par Application API Specification
  * Described herein are the DeviceSettings HAL types and functions that are part of
  * the FPD subsystem. The FPD subsystem manages system-specific HAL operations.
  *  @{
  */
 
-/** @addtogroup dsFPD_HAL Device Settings Front Panel Display HAL
+/**
+ * @addtogroup dsFPD_HAL DS Front Panel Display HAL
  *  @{
  * @par Application API Specification
  * dsFPD HAL provides an interface for managing Front Panel Display settings
  */
 
-/** @defgroup dsFPD_Settings_Template Device Settings Front Panel Display Settings Template
+/**
+ * @defgroup dsFPD_Settings_H DS Front Panel Display Settings Header
  *  @{
  * @par Application API Specification
  * dsFPD provides an template for various Front Panel Indicator configurations
@@ -190,7 +194,7 @@ const dsFPDTextDisplayConfig_t  kTextDisplays[dsFPD_TEXTDISP_MAX] = {
 #endif
 #endif /* __DS_FPD_SETTINGS_H__ */
 
-/** @} */ // End of DS FP Settings Template
+/** @} */ // End of DS FP Settings Header
 /** @} */ // End of DS FPD HAL
 /** @} */ // End of Device Settings HAL
 /** @} */ // End of Device Settings Module

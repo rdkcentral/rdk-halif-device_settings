@@ -31,24 +31,28 @@
  *
  */
 
-/** @addtogroup Device_Settings Device Settings Module
+/**
+ * @addtogroup Device_Settings Device Settings Module
  * @{
  */
 
-/** @addtogroup Device_Settings_HAL Device Settings HAL
+/**
+ * @addtogroup Device_Settings_HAL Device Settings HAL
  * @par Application API Specification
  * Described herein are the DeviceSettings HAL types and functions that are part of
  * the FPD subsystem. The FPD subsystem manages system-specific HAL operations.
  *  @{
  */
 
-/** @defgroup dsFPD_HAL Device Settings Front Panel Display HAL
+/**
+ * @defgroup dsFPD_HAL Device Settings Front Panel Display HAL
  *  @{
  * @par Application API Specification
  * dsFPD HAL provides an interface for managing Front Panel Display settings
  */
 
-/** @defgroup DSHAL_FPD_API Device Settings HAL Front Panel Display Public APIs
+/**
+ * @defgroup DSHAL_FPD_API Device Settings HAL Front Panel Display Public APIs
  *  @{
  */
 
