@@ -81,24 +81,28 @@
  *
  */
 
-/** @addtogroup Device_Settings Device Settings Module
+/**
+ * @addtogroup Device_Settings Device Settings Module
  * @{
  */
 
-/** @addtogroup Device_Settings_HAL Device Settings HAL
+/**
+ * @addtogroup Device_Settings_HAL Device Settings HAL
  * @par Application API Specification
  * Described herein are the DeviceSettings HAL types and functions that are part of
  * the HdmiIn subsystem. The HdmiIn subsystem manages system-specific HAL operations.
  *  @{
  */
 
-/** @defgroup dsHdmiIn_HAL DS HdmiIn HAL
+/**
+*   @defgroup dsHdmiIn_HAL DS HdmiIn HAL
  *  @{
  * @par Application API Specification
  * dsHdmiIn HAL provides an interface for managing the HdmiIn settings for the device settings module
  */
 
-/** @defgroup DSHAL_HDMI_IN_API DS HAL Hdmi Input Public APIs
+/**
+ * @defgroup DSHAL_HDMI_IN_API DS HAL Hdmi Input Public APIs
  *  @{
  */
 
