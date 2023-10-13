@@ -47,6 +47,7 @@
 - `HDMI`   - High-Definition Multimedia Interface
 - `SPD`    - Source Product Description.
 - `HdmiIn` - HDMI Input
+- `ALLM`   - Auto Low Latency Mode
 
 ## Description
 

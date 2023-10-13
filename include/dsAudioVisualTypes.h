@@ -504,7 +504,7 @@ typedef enum _dsTVResolution_t{
  * @brief This enumeration defines all of the standard frame rates at which 
  *      video may be played out of the video port.
  * @see dsVideoPortFrameRate_isValid
- * @note Also used in ::dsVideoDevice.h
+ * @note Also used in @link dsVideoDevice.h @endlink
  */
 typedef enum _dsVideoFrameRate_t{
     dsVIDEO_FRAMERATE_UNKNOWN,  ///< Unknown frame rate.                     
@@ -590,7 +590,7 @@ typedef enum _dsVideoAspectRatio_t{
 /**
  * @brief Structure that defines video port resolution settings of output video device.
  * @todo Check how the name is used in the actual code
- * @note also used in ::dsHdmiIn.h
+ * @note also used in @link dsHdmiIn.h @endlink
  */
 typedef struct _dsVideoPortResolution_t {
     char name[32];                                  ///< Name the resolution. 
@@ -624,7 +624,7 @@ typedef struct _dsVideoPortTypeConfig_t {
  * Each bit of uint32_t represent a standard. 
  * If a device supports multiple standards, the capability is the bitwise OR
  * of the standards.
- * @note Also used in ::dsVideoDevice.h 
+ * @note Also used in @link dsVideoDevice.h @endlink
  */
 typedef enum _dsHDRStandard_t {
     dsHDRSTANDARD_NONE = 0x0,               ///< When No video format is decoded

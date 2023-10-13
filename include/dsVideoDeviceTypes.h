@@ -117,7 +117,7 @@
 
 /**
  * @brief This enumeration defines all of the standard screen zoom (format conversion) modes.
- * @note also used ::dsHdmiIn.h
+ * @note also used @link dsHdmiIn.h @endlink
  */
 typedef enum _dsVideoZoom_t {
     dsVIDEO_ZOOM_UNKNOWN = -1,      /*!< Unknown mode */

@@ -129,7 +129,6 @@ dsError_t dsHostTerm();
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
- * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsHostInit() must be called before this function
@@ -149,7 +148,6 @@ dsError_t dsGetCPUTemperature(float *cpuTemperature);
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
- * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsHostInit() must be called before this function
@@ -172,7 +170,6 @@ dsError_t dsGetSocIDFromSDK(char *socID);
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
- * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsHostInit() must be called before this function

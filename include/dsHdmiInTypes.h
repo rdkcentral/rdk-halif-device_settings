@@ -40,6 +40,7 @@
  * - SPD:     Source Product Description
  * - rsd:     Repetition of static data
  * - pkttype: Package type
+ * - ALLM:    Auto Low Latency Mode
  *
  * @par Implementation Notes
  * -# None
