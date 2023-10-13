@@ -1,6 +1,6 @@
 # Device Settings HdmiIn HAL Documentation
 
-# History
+## Version History
 
 | Date(DD/MM/YY) | Comment | Version |
 | ---- | ------- | ------- |
