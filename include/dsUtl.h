@@ -20,7 +20,7 @@
 /**
  * @file
  *
- * @brief Device Settings HAL utilities.
+ * @brief Device Settings HAL utilities
  *
  * This API defines some common utilities for the Device Settings HAL.
  *
@@ -65,26 +65,18 @@
  */
 
 
-/** @defgroup DSHAL_UTLS Device Settings HAL dsUtls
- *
- *
+/** @defgroup DSHAL_UTLS_H Device Settings HAL Utils Header
  *  @{
  */
 
-#ifndef _DS_UTILS_H_
-#define _DS_UTILS_H_
+#ifndef __DS_UTILS_H__
+#define __DS_UTILS_H__
 
 #include <stdio.h>
-
-/** @addtogroup DSHAL_UTILS Device Settings HAL Utilities
- *  @ingroup DSHAL_API
- *  @{
- */
 
 /**
  * @brief Device Settings general Assert Failure inline definition.
  */
-
 #define dsUTL_ASSERT(x) do {\
     if (!(x)) printf("ASSERTFAILURE at %s-%d\r\n", __FUNCTION__, __LINE__);\
 }\
@@ -93,17 +85,11 @@ while(0)
 /**
  * @brief Device Settings general Array dimension calculation inline definition.
  */
-
 #define dsUTL_DIM(arr) (sizeof((arr))/sizeof((arr)[0]))
 
-/* End of DSHAL_UTILS doxygen group */
-/**
- * @}
- */
+#endif /* __DS_UTILS_H__ */
 
-#endif /* _DS_UTILS_H_ */
-
-/** @} */ // End of DS Utls
+/** @} */ // End of DSHAL_UTLS_H
 /** @} */ // End of Device Settings HAL
 /** @} */ // End of Device Settings Module
 /** @} */ // End of HPK

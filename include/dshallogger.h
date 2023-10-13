@@ -41,18 +41,14 @@
  *  @{
  */
 
-/** @defgroup DS_LOGGER Device Settings Logger
+/** @defgroup DSHAL_LOGGER_H DS Logger Header
  *  @{
  * @par Application API Specification
  */
 
-/** @defgroup DSHAL_HAL_LOGGER Device Settings HAL Logger
- *
- *
- *  @{
- */
-#ifndef _DS_HAL_LOGGER_H_
-#define _DS_HAL_LOGGER_H_
+
+#ifndef __DS_HAL_LOGGER_H__
+#define __DS_HAL_LOGGER_H__
 
 #include <stdio.h>
 #include "dshalregisterlog.h"
@@ -69,20 +65,19 @@
 
 int ds_hal_log(int priority,const char *format, ...);  
 
-#define INFO_LEVEL   0  ///< Messages giving a general overview of the program execution.
-#define WARN_LEVEL   1  ///< Messages giving warning about the program execution.
-#define ERROR_LEVEL  2  ///< Messages giving an overview of program errors.
-#define DEBUG_LEVEL  3  ///< Messages giving an overview of the program execution for debugging.
+#define INFO_LEVEL   0  /*!<  Messages giving a general overview of the program execution */
+#define WARN_LEVEL   1  /*!<  Messages giving warning about the program execution */
+#define ERROR_LEVEL  2  /*!<  Messages giving an overview of program errors */
+#define DEBUG_LEVEL  3  /*!<  Messages giving an overview of the program execution for debugging */
 
-#define INT_INFO(FORMAT, ...)           ds_hal_log(INFO_LEVEL ,FORMAT, ##__VA_ARGS__ )      ///< To handle logging of info level logs.
-#define INT_WARN(FORMAT, ...)           ds_hal_log(WARN_LEVEL ,FORMAT,  ##__VA_ARGS__ )     ///< To handle logging of warn level logs.
-#define INT_ERROR(FORMAT, ...)          ds_hal_log(ERROR_LEVEL ,FORMAT,  ##__VA_ARGS__ )    ///< To handle logging of error level logs.
-#define INT_DEBUG(FORMAT, ...)          ds_hal_log(DEBUG_LEVEL ,FORMAT,  ##__VA_ARGS__ )    ///< To handle logging of debug level logs.
+#define INT_INFO(FORMAT, ...)           ds_hal_log(INFO_LEVEL ,FORMAT, ##__VA_ARGS__ )      /*!<  To handle logging of info level logs */
+#define INT_WARN(FORMAT, ...)           ds_hal_log(WARN_LEVEL ,FORMAT,  ##__VA_ARGS__ )     /*!<  To handle logging of warn level logs */
+#define INT_ERROR(FORMAT, ...)          ds_hal_log(ERROR_LEVEL ,FORMAT,  ##__VA_ARGS__ )    /*!<  To handle logging of error level logs */
+#define INT_DEBUG(FORMAT, ...)          ds_hal_log(DEBUG_LEVEL ,FORMAT,  ##__VA_ARGS__ )    /*!<  To handle logging of debug level logs */
 
-#endif
+#endif // End of __DS_HAL_LOGGER_H__
 
-/** @} */ // End of DSHAL_HAL_LOGGER doxygen group 
-/** @} */ // End of DS LOGGER
+/** @} */ // End of DSHAL_LOGGER_H
 /** @} */ // End of Device Settings HAL
 /** @} */ // End of Device Settings Module
 /** @} */ // End of HPK

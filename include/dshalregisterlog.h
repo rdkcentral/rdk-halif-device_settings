@@ -41,7 +41,7 @@
  *  @{
  */
 
-/** @addtogroup DS_LOGGER Device Settings Logger
+/** @addtogroup DSHAL_LOGGER_H DS Logger Header
  *  @{
  * @par Application API Specification
  * Logging interface
@@ -54,24 +54,27 @@
  */
 
 
-#ifndef _DS_HAL_REGISTER_H_
-#define _DS_HAL_REGISTER_H_
+#ifndef __DS_HAL_REGISTER_H__
+#define __DS_HAL_REGISTER_H__
 
 typedef void (*DSHal_LogCb)(int priority,const char *);
+
 #ifdef __cplusplus
 extern "C"
 {
 #endif
+
 void DSHal_RegisterForLog(DSHal_LogCb cb);
+
 #ifdef __cplusplus
 };
 #endif
 
 
-#endif
+#endif // End of __DS_HAL_REGISTER_H__
 
-/** @} */ // End of DSHAL HAL Logger Register doxygen group 
-/** @} */ // End of DS Logger
+/** @} */ // End of DSHAL_HAL_LOGGER_REGISTER
+/** @} */ // End of DSHAL_LOGGER_H
 /** @} */ // End of Device Settings HAL
 /** @} */ // End of Device Settings Module
 /** @} */ // End of HPK

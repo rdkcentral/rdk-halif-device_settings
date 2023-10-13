@@ -71,15 +71,13 @@
  *  @{
  */
 
-/** @addtogroup dsHdmiIn_HAL_Type Device Settings HdmiIn HAL
+/** @addtogroup dsHdmiIn_HAL_Type DS HdmiIn HAL
  *  @{
  * @par Application API Specification
  * dsHdmiIn HAL provides an interface for managing the HdmiIn settings for the device settings module
  */
 
-/** @defgroup DSHAL_HDMI_IN_TYPES Device Settings HAL Hdmi Input Public API
- *
- *
+/** @defgroup DSHAL_HDMI_IN_TYPES DS HAL Hdmi Input Type Definitions
  *  @{
  */
 
@@ -100,7 +98,7 @@ typedef enum _dsHdmiInPort_t
     dsHDMI_IN_PORT_0,          /*!< HDMI input port index for PORT 0 */
     dsHDMI_IN_PORT_1,          /*!< HDMI input port index for PORT 1 */
     dsHDMI_IN_PORT_2,          /*!< HDMI input port index for PORT 2 */
-    dsHDMI_IN_PORT_MAX         /*!< Out of range  */
+    dsHDMI_IN_PORT_MAX         /*!< Out of range */
 } dsHdmiInPort_t;
 
 /**
@@ -112,8 +110,8 @@ typedef enum _dsHdmiInSignalStatus_t
     dsHDMI_IN_SIGNAL_STATUS_NOSIGNAL,     /*!< HDMI input No signal signal status. No device connected */
     dsHDMI_IN_SIGNAL_STATUS_UNSTABLE,     /*!< HDMI input unstable signal status. This is normally a transitional state,  */
                                           /*!< but can remain here due to some faults on HDMI Source / Cable */
-    dsHDMI_IN_SIGNAL_STATUS_NOTSUPPORTED, /*!< HDMI input Not supported signal status.  */
-                                          /*!< e.g. The sink device does not support the incoming HDMI In signal from source. */
+    dsHDMI_IN_SIGNAL_STATUS_NOTSUPPORTED, /*!< HDMI input not supported signal status */
+                                          /*!< e.g. The sink device does not support the incoming HDMI In signal from source */
     dsHDMI_IN_SIGNAL_STATUS_STABLE,       /*!< HDMI input Stable signal status are presented on plane */
     dsHDMI_IN_SIGNAL_STATUS_MAX           /*!< Out of range  */
 } dsHdmiInSignalStatus_t;
@@ -127,7 +125,7 @@ typedef struct _dsHdmiInStatus_t
     bool             isPresented;                           /*!< Boolean flag indicating HDMI input is presenting for the activePort */
     bool             isPortConnected[dsHDMI_IN_PORT_MAX];   /*!< Boolean flag indicating HDMI source connected to this HDMI input port  */
     dsHdmiInPort_t   activePort;                            /*!< HDMI input Port selected as the currently active port (to the set-top) */
-                                                            /*!<   - note that only one HDMI input port can be active at a time  */
+                                                            /** @note that only one HDMI input port can be active at a time  */
 } dsHdmiInStatus_t;
 
 /**
@@ -169,13 +167,12 @@ struct dsSpd_infoframe_st {
     uint8_t checksum;           /*!< Checksum for spd info frame */
     uint8_t vendor_name[8];     /*!< Vendor Name string. Min length 0 */
     uint8_t product_des[16];    /*!< Product Description string. Min length 0 */
-    uint8_t source_info;        /*!< Source info of the frame.  */
+    uint8_t source_info;        /*!< Source info of the frame  */
 } ;
 
 /**
  * @brief Enum for EDID version.
  */
-
 typedef enum tv_hdmi_edid_version_e {
     HDMI_EDID_VER_14 = 0,   /*!< EDID version 1.4 */
     HDMI_EDID_VER_20,       /*!< EDID version 2.0 */

@@ -92,15 +92,13 @@
  *  @{
  */
 
-/** @defgroup dsHdmiIn_HAL Device Settings HdmiIn HAL
+/** @defgroup dsHdmiIn_HAL DS HdmiIn HAL
  *  @{
  * @par Application API Specification
  * dsHdmiIn HAL provides an interface for managing the HdmiIn settings for the device settings module
  */
 
-/** @defgroup DSHAL_HDMI_IN_API Device Settings HAL Hdmi Input Public API
- *
- *
+/** @defgroup DSHAL_HDMI_IN_API DS HAL Hdmi Input Public APIs
  *  @{
  */
 
@@ -119,7 +117,7 @@ extern "C" {
 #endif
 
 /**
- * @brief Initializes the underlying HDMI input sub-system.
+ * @brief Initializes the underlying HDMI input sub-system
  * 
  * This function must initialize the HDMI input module and any associated resources.
  *
@@ -137,7 +135,7 @@ extern "C" {
 dsError_t dsHdmiInInit (void);
 
 /**
- * @brief Terminates the underlying HDMI input sub-system.
+ * @brief Terminates the underlying HDMI input sub-system
  * 
  * This function must terminate the HDMI input module and any associated resources.
  *
@@ -157,7 +155,7 @@ dsError_t dsHdmiInInit (void);
 dsError_t dsHdmiInTerm (void);
 
 /**
- * @brief Gets the number of HDMI input ports on the device.
+ * @brief Gets the number of HDMI input ports on the device
  * 
  * This function gets the number of HDMI input ports on the device.
  *
@@ -180,7 +178,7 @@ dsError_t dsHdmiInTerm (void);
 dsError_t dsHdmiInGetNumberOfinputs (uint8_t *pNumberOfinputs);
 
 /**
- * @brief Gets the HDMI input port status of all ports.
+ * @brief Gets the HDMI input port status of all ports
  * 
  * This function gets the HDMI input port status.
  *
@@ -202,7 +200,7 @@ dsError_t dsHdmiInGetNumberOfinputs (uint8_t *pNumberOfinputs);
 dsError_t dsHdmiInGetStatus (dsHdmiInStatus_t *pStatus); 
 
 /**
- * @brief Selects the HDMI input port as active and available for presentation.
+ * @brief Selects the HDMI input port as active and available for presentation
  * 
  * This function selects the HDMI input port for presentation.
  *
@@ -225,6 +223,7 @@ dsError_t dsHdmiInSelectPort (dsHdmiInPort_t ePort);
 
 /**
  * @brief Scales the HDMI input video
+ *
  * This function scales the HDMI input video. The width and height, based on the x, y coordinates, 
  *      cannot exceed that of the current resolution of the device.
  *      e.g.  x(in pixels)+width cannot be greater then the width of the resolution.
@@ -251,7 +250,7 @@ dsError_t dsHdmiInSelectPort (dsHdmiInPort_t ePort);
 dsError_t dsHdmiInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t height);
 
 /**
- * @brief Updates the video zoom on the active HDMI input using the provided zoom mode.
+ * @brief Updates the video zoom on the active HDMI input using the provided zoom mode
  * 
  * This function updates the video zoom on the active HDMI input using the provided zoom mode.
  *
@@ -277,7 +276,7 @@ dsError_t dsHdmiInSelectZoomMode (dsVideoZoom_t requestedZoomMode);
  * 
  * This function gets the current HDMI input video mode of the active port
  * 
- * @param[out] Port              - Current video port resolution. @see dsVideoPortResolution_t
+ * @param[out] resolution              - Current video port resolution. @see dsVideoPortResolution_t
  * 
  * 
  * @return dsError_t                        - Status
@@ -296,7 +295,7 @@ dsError_t dsHdmiInSelectZoomMode (dsVideoZoom_t requestedZoomMode);
 dsError_t dsHdmiInGetCurrentVideoMode (dsVideoPortResolution_t *resolution);
 
 /**
- * @brief Notifies applications when the HDMI input port connection status changes.
+ * @brief Notifies applications when the HDMI input port connection status changes
  *
  * @param[in] Port              - Port id where connection status is changed. @see dsHdmiInPort_t
  * @param[in] isPortConnected   - Flag to control the port connection status. 
@@ -308,7 +307,7 @@ dsError_t dsHdmiInGetCurrentVideoMode (dsVideoPortResolution_t *resolution);
 typedef void (*dsHdmiInConnectCB_t)(dsHdmiInPort_t Port, bool isPortConnected);
 
 /**
- * @brief Notifies applications when the HDMI input port signal status changes.
+ * @brief Notifies applications when the HDMI input port signal status changes
  * 
  * @param[in] port      - Port id where signal status is changed. @see dsHdmiInPort_t
  * @param[in] sigStatus - Current signal status of the port. @see dsHdmiInSignalStatus_t
@@ -332,7 +331,7 @@ typedef void (*dsHdmiInSignalChangeCB_t)(dsHdmiInPort_t port, dsHdmiInSignalStat
 typedef void (*dsHdmiInStatusChangeCB_t)(dsHdmiInStatus_t inputStatus);
 
 /**
- * @brief Notifies applications when the HDMI input port video mode changes.
+ * @brief Notifies applications when the HDMI input port video mode changes
  *
  * HAL Implementation must call this method to deliver updated HDMI input port video mode info
  * to the Caller
@@ -346,7 +345,7 @@ typedef void (*dsHdmiInStatusChangeCB_t)(dsHdmiInStatus_t inputStatus);
 typedef void (*dsHdmiInVideoModeUpdateCB_t)(dsHdmiInPort_t port, dsVideoPortResolution_t videoResolution);
 
 /**
- * @brief Notifies applications when the HDMI input ALLM mode changes.
+ * @brief Notifies applications when the HDMI input ALLM mode changes
  *
  * @param[in] port      - HDMI input port number in which ALLM Mode changed. @see dsHdmiInPort_t
  * @param[in] allm_mode - Flag to hold the current ALLM mode of the port.
@@ -397,7 +396,7 @@ typedef void (*dsHdmiInAviContentTypeChangeCB_t)(dsHdmiInPort_t port, dsAviConte
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
- * @pre dsHdmiInInit() must be called before calling this API.
+ * @pre dsHdmiInInit() must be called before calling this API
  * @see dsHdmiInConnectCB_t for related callback
  * 
  * @warning  This API is Not thread safe.
@@ -406,7 +405,7 @@ typedef void (*dsHdmiInAviContentTypeChangeCB_t)(dsHdmiInPort_t port, dsAviConte
 dsError_t dsHdmiInRegisterConnectCB (dsHdmiInConnectCB_t CBFunc);
 
 /**
- * @brief Registers a callback for the HDMI input Signal Change event.
+ * @brief Registers a callback for the HDMI input Signal Change event
  * 
  * This function registers a callback for the HDMI input Signal Change event.
  *
@@ -419,8 +418,8 @@ dsError_t dsHdmiInRegisterConnectCB (dsHdmiInConnectCB_t CBFunc);
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
- * @pre dsHdmiInInit() must be called before calling this API.
- * @see dsHdmiInSignalChangeCB_t for related callback.
+ * @pre dsHdmiInInit() must be called before calling this API
+ * @see dsHdmiInSignalChangeCB_t for related callback
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -428,7 +427,7 @@ dsError_t dsHdmiInRegisterConnectCB (dsHdmiInConnectCB_t CBFunc);
 dsError_t dsHdmiInRegisterSignalChangeCB (dsHdmiInSignalChangeCB_t CBFunc);
 
 /**
- * @brief Registers a callback for the HDMI input Status Change event.
+ * @brief Registers a callback for the HDMI input Status Change event
  * 
  * This function registers a callback for the HDMI input Status Change event.
  *
@@ -441,8 +440,8 @@ dsError_t dsHdmiInRegisterSignalChangeCB (dsHdmiInSignalChangeCB_t CBFunc);
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
- * @pre dsHdmiInInit() must be called before calling this API.
- * @see dsHdmiInStatusChangeCB_t for related callback.
+ * @pre dsHdmiInInit() must be called before calling this API
+ * @see dsHdmiInStatusChangeCB_t for related callback
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -450,7 +449,7 @@ dsError_t dsHdmiInRegisterSignalChangeCB (dsHdmiInSignalChangeCB_t CBFunc);
 dsError_t dsHdmiInRegisterStatusChangeCB (dsHdmiInStatusChangeCB_t CBFunc);
 
 /**
- * @brief Registers a callback for the HDMI input video mode Change event. 
+ * @brief Registers a callback for the HDMI input video mode Change event
  * 
  * This function registers a callback for the HDMI input video mode Change event. 
  *       The mode change is triggered whenever the video resolution changes.
@@ -465,8 +464,8 @@ dsError_t dsHdmiInRegisterStatusChangeCB (dsHdmiInStatusChangeCB_t CBFunc);
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
- * @pre dsHdmiInInit() must be called before calling this API.
- * @see dsHdmiInVideoModeUpdateCB_t for related callback.
+ * @pre dsHdmiInInit() must be called before calling this API
+ * @see dsHdmiInVideoModeUpdateCB_t for related callback
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -474,7 +473,7 @@ dsError_t dsHdmiInRegisterStatusChangeCB (dsHdmiInStatusChangeCB_t CBFunc);
 dsError_t dsHdmiInRegisterVideoModeUpdateCB(dsHdmiInVideoModeUpdateCB_t CBFunc);
 
 /**
- * @brief Registers a callback for the HDMI input ALLM Mode Change event.
+ * @brief Registers a callback for the HDMI input ALLM Mode Change event
  * 
  * This function registers a callback for the HDMI input ALLM Mode Change event.
  *
@@ -488,8 +487,8 @@ dsError_t dsHdmiInRegisterVideoModeUpdateCB(dsHdmiInVideoModeUpdateCB_t CBFunc);
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
- * @pre dsHdmiInInit() must be called before calling this API.
- * @see dsHdmiInAllmChangeCB_t for related callback.
+ * @pre dsHdmiInInit() must be called before calling this API
+ * @see dsHdmiInAllmChangeCB_t for related callback
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -497,7 +496,7 @@ dsError_t dsHdmiInRegisterVideoModeUpdateCB(dsHdmiInVideoModeUpdateCB_t CBFunc);
 dsError_t dsHdmiInRegisterAllmChangeCB (dsHdmiInAllmChangeCB_t CBFunc);
 
 /**
- * @brief Registers the HDMI In Latency Change event.
+ * @brief Registers the HDMI In Latency Change event
  *
  * This function registers for the AV Latency Change event.
  *
@@ -511,16 +510,16 @@ dsError_t dsHdmiInRegisterAllmChangeCB (dsHdmiInAllmChangeCB_t CBFunc);
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
- * @pre dsHdmiInInit() must be called before calling this API.
- * @see dsAVLatencyChangeCB_t for related callback.
- * 
+ * @pre dsHdmiInInit() must be called before calling this API
+ * @see dsAVLatencyChangeCB_t for related callback
+ *
  * @warning  This API is Not thread safe.
  * 
  */
 dsError_t dsHdmiInRegisterAVLatencyChangeCB (dsAVLatencyChangeCB_t CBFunc);
 
 /**
- * @brief Registers the HDMI Input Content type Change event.
+ * @brief Registers the HDMI Input Content type Change event
  *
  * This function registers for the HDMI Input content type change event.
  *
@@ -533,9 +532,9 @@ dsError_t dsHdmiInRegisterAVLatencyChangeCB (dsAVLatencyChangeCB_t CBFunc);
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
- * 
- * @pre dsHdmiInInit() must be called before calling this API.
- * @see dsHdmiInAviContentTypeChangeCB_t for related callback.
+ *
+ * @pre dsHdmiInInit() must be called before calling this API
+ * @see dsHdmiInAviContentTypeChangeCB_t for related callback
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -559,7 +558,7 @@ dsError_t dsHdmiInRegisterAviContentTypeChangeCB (dsHdmiInAviContentTypeChangeCB
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
- * @pre dsHdmiInInit() must be called before calling this API.
+ * @pre dsHdmiInInit() must be called before calling this API
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -567,7 +566,7 @@ dsError_t dsHdmiInRegisterAviContentTypeChangeCB (dsHdmiInAviContentTypeChangeCB
 dsError_t dsIsHdmiARCPort (dsHdmiInPort_t iPort, bool *isArcPort);
 
 /**
- * @brief Gets the EDID bytes info corresponds to the given input port.
+ * @brief Gets the EDID bytes info corresponds to the given input port
  * 
  * This function gets the EDID bytes info corresponds to the given input port.
  *
@@ -583,7 +582,7 @@ dsError_t dsIsHdmiARCPort (dsHdmiInPort_t iPort, bool *isArcPort);
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
- * @pre dsHdmiInInit() must be called before calling this API.
+ * @pre dsHdmiInInit() must be called before calling this API
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -591,7 +590,7 @@ dsError_t dsIsHdmiARCPort (dsHdmiInPort_t iPort, bool *isArcPort);
 dsError_t dsGetEDIDBytesInfo (dsHdmiInPort_t iHdmiPort, unsigned char **edid, int *length);
 
 /**
- * @brief Gets the HDMI SPD info.
+ * @brief Gets the HDMI SPD info
  * 
  * This function gets the HDMI SPD info.
  *
@@ -606,7 +605,7 @@ dsError_t dsGetEDIDBytesInfo (dsHdmiInPort_t iHdmiPort, unsigned char **edid, in
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
- * @pre dsHdmiInInit() must be called before calling this API.
+ * @pre dsHdmiInInit() must be called before calling this API
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -629,9 +628,9 @@ dsError_t dsGetHDMISPDInfo (dsHdmiInPort_t iHdmiPort, unsigned char **data);
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
- * @pre dsHdmiInInit() must be called before calling this API.
+ * @pre dsHdmiInInit() must be called before calling this API
  * 
- * @warning  This API is Not thread safe.
+ * @warning  This API is Not thread safe
  * 
  * @see dsGetEdidVersion()
  * 
@@ -654,9 +653,9 @@ dsError_t dsSetEdidVersion (dsHdmiInPort_t iHdmiPort, tv_hdmi_edid_version_t iEd
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
- * @pre dsHdmiInInit() must be called before calling this API.
+ * @pre dsHdmiInInit() must be called before calling this API
  * 
- * @warning  This API is Not thread safe.
+ * @warning  This API is Not thread safe
  * 
  * @see dsSetEdidVersion()
  * 
@@ -680,15 +679,15 @@ dsError_t dsGetEdidVersion (dsHdmiInPort_t iHdmiPort, tv_hdmi_edid_version_t *iE
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
- * @pre dsHdmiInInit() must be called before calling this API.
+ * @pre dsHdmiInInit() must be called before calling this API
  * 
- * @warning  This API is Not thread safe.
+ * @warning  This API is Not thread safe
  * 
  */
 dsError_t dsGetAllmStatus (dsHdmiInPort_t iHdmiPort, bool *allmStatus);
 
 /**
- * @brief Gets all the supported game features list information.
+ * @brief Gets all the supported game features list information
  * 
  * This function gets all the supported game features list information.
  *
@@ -703,9 +702,9 @@ dsError_t dsGetAllmStatus (dsHdmiInPort_t iHdmiPort, bool *allmStatus);
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
- * @pre dsHdmiInInit() must be called before calling this API.
+ * @pre dsHdmiInInit() must be called before calling this API
  * 
- * @warning  This API is Not thread safe.
+ * @warning  This API is Not thread safe
  * 
  */
 dsError_t dsGetSupportedGameFeaturesList (dsSupportedGameFeatureList_t* features);
@@ -726,20 +725,21 @@ dsError_t dsGetSupportedGameFeaturesList (dsSupportedGameFeatureList_t* features
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
- * @pre dsHdmiInInit() must be called before calling this API.
+ * @pre dsHdmiInInit() must be called before calling this API
  * 
- * @warning  This API is Not thread safe.
+ * @warning  This API is Not thread safe
  * 
  */
 dsError_t dsGetAVLatency (int *audio_latency, int *video_latency);
 
-/** @} */ // End of DSHAL_HDMI_IN_API doxygen group 
-/** @} */ // End of DS HdmiIn HAL
-/** @} */ // End of Device Settings HAL
-/** @} */ // End of Device Settings Module
-/** @} */ // End of HPK
 
 #ifdef __cplusplus
 }
 #endif
 #endif /* __DS_HDMI_IN_H__ */
+
+/** @} */ // End of DS HAL Hdmi Input Public APIs
+/** @} */ // End of DS HdmiIn HAL
+/** @} */ // End of Device Settings HAL
+/** @} */ // End of Device Settings Module
+/** @} */ // End of HPK

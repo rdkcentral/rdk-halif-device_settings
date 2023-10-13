@@ -31,7 +31,6 @@
 - [Interface API Documentation](#interface-api-documentation)
   - [Theory of operation and key concepts](#theory-of-operation-and-key-concepts)
   - [Diagrams](#diagrams)
-  - [State Diagram](#state-diagram)
 
 ## Acronyms, Terms and Abbreviations
 
@@ -63,7 +62,7 @@ style z fill:#fcc,stroke:#333,stroke-width:0.3px,align:left
 style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
  ```
 
-DS `HdmiIn` `HAL` provides a set of `APIs` to initialize, query and set information about the HDMI input ports such as getting the number of HDMI input ports, getting the current status of a selected HDMI input port, setting the video scale, selecting which HDMI input to be selected as active and registering callbacks fo asynchronous notifications.
+DS `HdmiIn` `HAL` provides a set of `APIs` to initialize, query and set information about the HDMI input ports such as getting the number of input ports, getting the current status of a selected input port, setting the video scale, selecting which HDMI input to be selected as active and registering callbacks for asynchronous notifications.
 
 ## Component Runtime Execution Requirements
 
@@ -73,7 +72,7 @@ Failure to meet these requirements will likely result in undefined and unexpecte
 
 ### Initialization and Startup
 
-`Caller` must initialize DS `HdmiIn` module by calling `dsHdmiInInit()` before calling any other `APIs`. The `Caller` is expected to have complete control over the life cycle of this module.
+`Caller` must initialize this interface by calling `dsHdmiInInit()` before calling any other `APIs`. The `caller` is expected to have complete control over the life cycle of this module.
 
 ### Threading Model
 
@@ -93,17 +92,18 @@ Although this interface is not required to be involved in any of the power manag
 
 ### Asynchronous Notification Model
 
-The `HdmiIn` module must support asynchronous notifications operations:
+This interface must support asynchronous notifications operations:
 
- - The `dsHdmiInRegisterConnectCB()` must facilitate asynchronous status notifications using the callback when the connection status of the callback `dsHdmiInConnectCB_t`. This callback must be used when the connection status when the HDMI input port changes.
- - The `dsHdmiInRegisterSignalChangeCB()` must facilitate asynchronous status notifications using the callback `dsHdmiInSignalChangeCB_t`. This callback must be used when the signal status changes.
- - The `dsHdmiInRegisterStatusChangeCB()` must facilitate asynchronous status notifications using the callback `dsHdmiInStatusChangeCB_t`. This callback must be used when the HDMI input status changes.
- - The `dsHdmiInRegisterVideoModeUpdateCB()` must facilitate asynchronous status notifications using the callback `dsHdmiInVideoModeUpdateCB_t`. This callback must be used when the video mode changes. This callback must be used when the ALLM mode changes.
- - The `dsHdmiInRegisterAllmChangeCB()` must facilitate asynchronous status notifications using the callback `dsHdmiInAllmChangeCB_t`.
- - The `dsHdmiInRegisterAVLatencyChangeCB()` must facilitate asynchronous notifications using the callback `dsAVLatencyChangeCB_t` when the AV latency changes.
- - The `dsHdmiInRegisterAviContentTypeChangeCB()` must facilitate asynchronous notifications using the call back `dsHdmiInAviContentTypeChangeCB_t` when HDMI input content type changes.
- - This interface is allowed to establish its own thread context for its operation, ensuring minimal impact on system resources.
- - Additionally, this interface is responsible for releasing the resources it creates for its operation once the respective operation concludes.
+ - `dsHdmiInRegisterConnectCB()` must facilitate asynchronous status notifications using the callback when the connection status of the callback `dsHdmiInConnectCB_t`. This callback must be used when the connection status when the HDMI input port changes.
+ - `dsHdmiInRegisterSignalChangeCB()` must facilitate asynchronous status notifications using the callback `dsHdmiInSignalChangeCB_t`. This callback must be used when the signal status changes.
+ - `dsHdmiInRegisterStatusChangeCB()` must facilitate asynchronous status notifications using the callback `dsHdmiInStatusChangeCB_t`. This callback must be used when the HDMI input status changes.
+ - `dsHdmiInRegisterVideoModeUpdateCB()` must facilitate asynchronous status notifications using the callback `dsHdmiInVideoModeUpdateCB_t`. This callback must be used when the video mode changes. This callback must be used when the ALLM mode changes.
+ - `dsHdmiInRegisterAllmChangeCB()` must facilitate asynchronous status notifications using the callback `dsHdmiInAllmChangeCB_t`.
+ - `dsHdmiInRegisterAVLatencyChangeCB()` must facilitate asynchronous notifications using the callback `dsAVLatencyChangeCB_t` when the AV latency changes.
+ - `dsHdmiInRegisterAviContentTypeChangeCB()` must facilitate asynchronous notifications using the call back `dsHdmiInAviContentTypeChangeCB_t` when HDMI input content type changes.
+
+
+ This interface is allowed to establish its own thread context for its operation, ensuring minimal impact on system resources. Additionally, this interface is responsible for releasing the resources it creates for its operation once the respective operation concludes.
 
 
 ### Blocking calls
@@ -165,22 +165,22 @@ This interface is not required to have any platform or product customizations.
 
 The `caller` is expected to have complete control over the life cycle of the `HAL`.
 
-1. Initialize the `HAL` using function: `dsHdmiInInit()` before making any other `APIs` calls.  If `dsHdmiInInit()` call fails, the `HAL` must return the respective error code, so that the `caller` can retry the operation.
+1. Initialize the `HAL` `dsHdmiInInit()` before making any other `APIs` calls.  If `dsHdmiInInit()` call fails, the `HAL` must return the respective error code, so that the `caller` can retry the operation.
 
 2. The `caller` can call `dsHdmiInSelectPort()`, `dsHdmiInScaleVideo()`, `dsSetEdidVersion()` and `dsHdmiInSelectZoomMode()` to set the needed information.
 
 3. The `caller` can call `dsHdmiInGetNumberOfInputs()`, `dsHdmiInGetStatus()`, `dsGetEDIDBytesInfo()`, `dsIsHdmiARCPort()`, `dsGetHDMISPDInfo()`,  `dsGetEdidVersion()`, `dsGetAllmStatus()`, `dsGetSupportedGameFeaturesList()`, `dsGetAVLatency()` and `dsHdmiInGetCurrentVideoMode()` to query the needed information.
 
 4. Callbacks can be set with:
-    - `dsHdmiInRegisterConnectCB()` is used when the HDMIin port connection status changes.
-    - `dsHdmiInRegisterSignalChangeCB()` is used when the HDMIin signal status changes.
-    - `dsHdmiInRegisterStatusChangeCB()` is used when the HDMI input status changes.
-    - `dsHdmiInRegisterVideoModeUpdateCB()` is used when the HDMIin video mode changes.
-    - `dsHdmiInRegisterAllmChangeCB()` is used when the HDMI input ALLM mode changes.
-    - `dsHdmiInRegisterAVLatencyChangeCB()` is used when the AV latency changes.
-    - `dsHdmiInRegisterAviContentTypeChangeCB()` is used when the Avi Content type changes.
+    - `dsHdmiInRegisterConnectCB()` - used when the HDMIin port connection status changes
+    - `dsHdmiInRegisterSignalChangeCB()` - used when the HDMIin signal status changes
+    - `dsHdmiInRegisterStatusChangeCB()` - used when the HDMI input status changes
+    - `dsHdmiInRegisterVideoModeUpdateCB()` - used when the HDMIin video mode changes
+    - `dsHdmiInRegisterAllmChangeCB()` - used when the HDMI input ALLM mode changes
+    - `dsHdmiInRegisterAVLatencyChangeCB()` - used when the AV latency changes
+    - `dsHdmiInRegisterAviContentTypeChangeCB()` - used when the Avi Content type changes
 
-5. De-initialized the `HAL` using the function: `dsHdmiInTerm()`
+5. De-initialize the `HAL` using `dsHdmiInTerm()`
 
 ### Diagrams
 
@@ -189,7 +189,7 @@ The `caller` is expected to have complete control over the life cycle of the `HA
 %%{ init : { "theme" : "default", "flowchart" : { "curve" : "stepBefore" }}}%%
    sequenceDiagram
     participant Caller as Caller
-    participant HAL as DEVICE SETTINGS HdmiIn HAL
+    participant HAL as DS HdmiIn HAL
     participant Driver as SoC
     Caller->>HAL:dsHdmiInInit()
     Note over HAL: SOC initializes the underlying subsystems
@@ -313,12 +313,9 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     HAL-->>Caller:return
  ```
 
-
- ### **State Diagram**
+ #### Flow Diagram
 <br/>
 
 ![State Diagram](/docs/pages/images/signal_state_diagram.png)
-    
-    
 
 <br/>

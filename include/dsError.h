@@ -44,7 +44,7 @@
  */
 
 /**
- * @addtogroup HPK HPK
+ * @addtogroup HPK Hardware Porting Kit
  * @{
  * @par The Hardware Porting Kit
  * HPK is the next evolution of the well-defined Hardware Abstraction Layer
@@ -57,20 +57,26 @@
  *
  */
 
-/** @defgroup DeviceSettings_Module DeviceSettings Module
+/** @addtogroup Device_Settings Device Settings Module
+ * @{
+ */
+
+/** @addtogroup Device_Settings_HAL Device Settings HAL
+ * @par Application API Specification
  *  @{
  */
 
+
+
 /** @defgroup DSHAL_ERROR_H Device Settings Status Codes
-*  @ingroup DSHAL_API 
 *
 *  Defined hereunder are the error codes that are used in the Device Settings library.
 *
 *  @{
 */
 
-#ifndef _DS_ERROR_H_ 
-#define _DS_ERROR_H_
+#ifndef __DS_ERROR_H__
+#define __DS_ERROR_H__
 
 #ifdef __cplusplus
 extern "C" {
@@ -84,7 +90,6 @@ extern "C" {
  * 
  * @todo change prefix dsERR to DS_STATUS in later phase
  */
-
 typedef enum {
     dsERR_NONE = 0,                 ///< Input output operation is successful          
     dsERR_GENERAL = 1,              ///< Operation general error. @todo Change to more specific error in later phase.
@@ -103,8 +108,9 @@ typedef enum {
 #ifdef __cplusplus
 }
 #endif
-#endif /* _DS_ERROR_H_ */
+#endif /* __DS_ERROR_H__ */
 
 /** @} */ // End of DSHAL_ERROR_H
-/** @} */ // End of DeviceSettings_Module
+/** @} */ // End of Device Settings HAL
+/** @} */ // End of Device Settings Module
 /** @} */ // End of HPK
