@@ -590,7 +590,7 @@ typedef enum _dsVideoAspectRatio_t{
 /**
  * @brief Structure that defines video port resolution settings of output video device.
  * @todo Check how the name is used in the actual code
- * @see dsHdmiInGetCurrentVideoMode for functions used outside videoPort
+ * @note also used in ::dsHdmiIn.h
  */
 typedef struct _dsVideoPortResolution_t {
     char name[32];                                  ///< Name the resolution. 
