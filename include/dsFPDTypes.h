@@ -81,7 +81,7 @@
  */
 
 /**
- * @defgroup DSHAL_FPD_TYPES Device Settings HAL Front Panel Display (FPD) Type Definitions
+ * @defgroup DSHAL_FPD_TYPES DS HAL Front Panel Display (FPD) Type Definitions
  *  @ingroup dsFPD_HAL
  *  @{
  */

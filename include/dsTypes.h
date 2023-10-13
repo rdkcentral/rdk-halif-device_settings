@@ -54,7 +54,7 @@
  */
 
 /** 
- * @defgroup DSSETTINGS_HAL HAL Types & Public API
+ * @addtogroup DSSETTINGS_HAL Device Settings HAL Types & Public API
  * HAL types and public API definitions.
  * @ingroup DSSETTINGS
  */
@@ -89,7 +89,7 @@
  * DeviceSettings HAL types and public API definitions that are part of the Device
  * Settings Host subsystem.
  *
- * @defgroup DSHAL_AUDIO HAL Audio Types
+ * @defgroup DSHAL_AUDIO Device Settings HAL Audio Types
  * @ingroup DSHAL_API
  *
  *  DeviceSettings HAL types and public API definitions that are part of the Device
