@@ -74,7 +74,7 @@
  */
 
 /**
- * @addtogroup dsFPD_HAL Device Settings Front Panel Display HAL
+ * @addtogroup dsFPD_HAL DS Front Panel Display HAL
  *  @{
  * @par Application API Specification
  * dsFPD HAL provides an interface for managing Front Panel Display settings
