@@ -20,7 +20,7 @@
 /**
  * @file
  *
- * @brief Device Settings HAL utilities.
+ * @brief Device Settings HAL utilities
  *
  * This API defines some common utilities for the Device Settings HAL.
  *
@@ -34,17 +34,7 @@
  * -# None
  *
  * @par Abbreviations
- * - BE:      Big-Endian.
- * - cb:      Callback function (suffix).
- * - DS:      Device Settings.
- * - FPD:     Front-Panel Display.
  * - HAL:     Hardware Abstraction Layer.
- * - LE:      Little-Endian.
- * - LS:      Least Significant.
- * - MBZ:     Must be zero.
- * - MS:      Most Significant.
- * - RDK:     Reference Design Kit.
- * - _t:      Type (suffix).
  *
  * @par Implementation Notes
  * -# None
@@ -52,43 +42,46 @@
  */
 
 /**
-* @defgroup devicesettings Device Settings
-* @{
-* @defgroup hal Device Settings HAL
-* @{
-**/
+ * @addtogroup HPK Hardware Porting Kit
+ * @{
+ * @par The Hardware Porting Kit
+ * HPK is the next evolution of the well-defined Hardware Abstraction Layer
+ * (HAL), but augmented with more comprehensive documentation and test suites
+ * that OEM or SOC vendors can use to self-certify their ports before taking
+ * them to RDKM for validation or to an operator for final integration and
+ * deployment. The Hardware Porting Kit effectively enables an OEM and/or SOC
+ * vendor to self-certify their own Video Accelerator devices, with minimal RDKM
+ * assistance.
+ *
+ */
 
-#ifndef _DS_UTILS_H_
-#define _DS_UTILS_H_
+/** @addtogroup Device_Settings Device Settings Module
+ * @{
+ */
 
-#include <stdio.h>
-
-/** @addtogroup DSHAL_UTILS Device Settings HAL Utilities
- *  @ingroup DSHAL_API
+/** @addtogroup Device_Settings_HAL Device Settings HAL
+ * @par Application API Specification
  *  @{
  */
 
-/**
- * @brief Device Settings general Assert Failure inline definition.
+
+/** @defgroup DSHAL_UTLS_H Device Settings HAL Utils Header
+ *  @{
  */
 
-#define dsUTL_ASSERT(x) do {\
-	if (!(x)) printf("ASSERTFAILURE at %s-%d\r\n", __FUNCTION__, __LINE__);\
-}\
-while(0)
+#ifndef __DS_UTILS_H__
+#define __DS_UTILS_H__
+
+#include <stdio.h>
 
 /**
  * @brief Device Settings general Array dimension calculation inline definition.
  */
-
 #define dsUTL_DIM(arr) (sizeof((arr))/sizeof((arr)[0]))
 
-/* End of DSHAL_UTILS doxygen group */
-/**
- * @}
- */
+#endif /* __DS_UTILS_H__ */
 
-#endif /* _DS_UTILS_H_ */
-
-/** @} */
-/** @} */
+/** @} */ // End of DSHAL_UTLS_H
+/** @} */ // End of Device Settings HAL
+/** @} */ // End of Device Settings Module
+/** @} */ // End of HPK

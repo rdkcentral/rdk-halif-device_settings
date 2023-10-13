@@ -34,17 +34,9 @@
  * -# None
  *
  * @par Abbreviations
- * - BE:      Big-Endian.
  * - cb:      Callback function (suffix).
  * - DS:      Device Settings.
- * - FPD:     Front-Panel Display.
  * - HAL:     Hardware Abstraction Layer.
- * - LE:      Little-Endian.
- * - LS:      Least Significant.
- * - MBZ:     Must be zero.
- * - MS:      Most Significant.
- * - RDK:     Reference Design Kit.
- * - _t:      Type (suffix).
  *
  * @par Implementation Notes
  * -# None
@@ -52,57 +44,73 @@
  */
 
 /**
-* @defgroup devicesettings Device Settings
-* @{
-* @defgroup hal Device Settings HAL
-* @{
-**/
+ * @addtogroup HPK Hardware Porting Kit
+ * @{
+ * @par The Hardware Porting Kit
+ * HPK is the next evolution of the well-defined Hardware Abstraction Layer
+ * (HAL), but augmented with more comprehensive documentation and test suites
+ * that OEM or SOC vendors can use to self-certify their ports before taking
+ * them to RDKM for validation or to an operator for final integration and
+ * deployment. The Hardware Porting Kit effectively enables an OEM and/or SOC
+ * vendor to self-certify their own Video Accelerator devices, with minimal RDKM
+ * assistance.
+ *
+ */
 
-#ifndef _DS_ERROR_H_ 
-#define _DS_ERROR_H_
+/** @addtogroup Device_Settings Device Settings Module
+ * @{
+ */
+
+/** @addtogroup Device_Settings_HAL Device Settings HAL
+ * @par Application API Specification
+ *  @{
+ */
+
+
+
+/** @defgroup DSHAL_ERROR_H Device Settings Status Codes
+*
+*  Defined hereunder are the error codes that are used in the Device Settings library.
+*
+*  @{
+*/
+
+#ifndef __DS_ERROR_H__
+#define __DS_ERROR_H__
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-/** @addtogroup DSHAL_ERROR Device Settings HAL Error Codes
-*  @ingroup DSHAL_API
-*
-*  Defined hereunder are the error codes that are used in the Device Settings library.
-*  @{
-*/
 
 /** 
  * @brief Device Settings API Error return codes.
  * 
  * A non-zero value indicates an error.
  * 
+ * @todo change prefix dsERR to DS_STATUS in later phase
  */
-
 typedef enum {
-    /// No error (success)
-    dsERR_NONE = 0,                   
-    /// General failure to take action
-    dsERR_GENERAL = 0x1000,           
-    /// Invalid input parameter
-    dsERR_INVALID_PARAM,              
-    /// Failure due to invalid state
-    dsERR_INVALID_STATE,              
-    /// Operation not supported
-    dsERR_OPERATION_NOT_SUPPORTED,   
-    /// Unknown error
-    dsERR_UNKNOWN                    
+    dsERR_NONE = 0,                 ///< Input output operation is successful          
+    dsERR_GENERAL = 1,              ///< Operation general error. @todo Change to more specific error in later phase.
+    dsERR_INVALID_PARAM,            ///< Invalid parameter is passed to the module
+    dsERR_INVALID_STATE,            ///< Module is in an invalid state
+    dsERR_ALREADY_INITIALIZED,      ///< Module is already initialised
+    dsERR_NOT_INITIALIZED,          ///< Module is not initialised
+    dsERR_OPERATION_NOT_SUPPORTED,  ///< Operation not supported
+    dsERR_RESOURCE_NOT_AVAILABLE,   ///< Resources have failed to allocate
+    dsERR_OPERATION_FAILED,         ///< The attempted operation has failed. Used when a SoC call has a failure
+    dsErr_MAX
 } dsError_t;
 
-/* End of DSHAL_ERROR doxygen group */
-/**
- * @}
- */
+
 
 #ifdef __cplusplus
 }
 #endif
-#endif /* _DS_ERROR_H_ */
+#endif /* __DS_ERROR_H__ */
 
-/** @} */
-/** @} */
+/** @} */ // End of DSHAL_ERROR_H
+/** @} */ // End of Device Settings HAL
+/** @} */ // End of Device Settings Module
+/** @} */ // End of HPK

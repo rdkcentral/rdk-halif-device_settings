@@ -288,7 +288,7 @@ dsError_t dsForceDisableHDRSupport(int handle, bool disable);
  *
  * @param[in] handle    - The handle returned from the dsGetVideoDevice() function
  * @param[in] frfmode   - integer with corresponding Framerate value. 
- *                              Max framerate is device specific. Min framerate is 0.
+ *                              @see for dsVideoFrameRate_t max and min framerate.
  *
  * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
@@ -312,7 +312,7 @@ dsError_t dsSetFRFMode(int handle, int frfmode);
  *
  * @param[in]  handle   - The handle returned from the dsGetVideoDevice() function
  * @param[out] frfmode  - integer with corresponding Framerate value of the device. 
- *                              Max framerate device specific. Min framerate is 0.
+ *                              @see for dsVideoFrameRate_t max and min framerate.
  *
  * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
@@ -335,7 +335,7 @@ dsError_t dsGetFRFMode(int handle, int *frfmode);
  *
  * @param[in]  handle       - The handle returned from the dsGetVideoDevice() function
  * @param[out] framerate    - Current frame rate will be represented in FPS
- *                            Max Framerate is device specific. Min Framerate is 0.
+ *                            @see for dsVideoFrameRate_t max and min framerate.
  *                            Updates the value as a string(eg:"60").
  *
  * @return dsError_t                        - Status
@@ -360,7 +360,7 @@ dsError_t dsGetCurrentDisplayframerate(int handle, char *framerate);
  *
  * @param[in] handle    - The handle returned from the dsGetVideoDevice() function
  * @param[in] framerate - Framerate value to be set frame will be represented in FPS. 
- *                        Max Framerate is device specific. Min Framerate is 0.
+ *                        @see for dsVideoFrameRate_t max and min framerate.
  *                        Expects the value as a string(eg:"60").
  *
  * @return dsError_t                       - Status
