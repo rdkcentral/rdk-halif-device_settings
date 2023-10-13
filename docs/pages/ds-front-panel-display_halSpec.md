@@ -45,10 +45,6 @@
 - `CPU`    - Central Processing Unit
 - `SoC`    - System-On-Chip
 
-
-
-
-
 ## Description
 
 The diagram below describes a high-level software architecture of the `DS` Front Panel Display stack.
@@ -157,11 +153,11 @@ The configuration settings file (dsFPDSettings.h) for `DS` Front Panel can be us
 
 The `caller` is expected to have complete control over the life cycle of the `HAL`.
 
-1. Initialize the `FPD` `HAL` using function: `dsFPInit()` before making any other `API` calls.  If the init call fails, the `HAL` must return the respective error code, so that the `caller` can retry the operation.
+1. Initialize the `FPD` `HAL` using `dsFPInit()` before making any other `API` calls.  If the init call fails, the `HAL` must return the respective error code, so that the `caller` can retry the operation.
 
 2. Once the `FPD` sub-system is initialized, `caller` can invoke `APIs` to control the Front Panel `LEDs`. The `FP` brightness, text, color, blink interval, `FP` `LED` state(ON/OFF), text scroll can be set or retrieved.
 
-3. De-initialize the `FP` `HAL` using the function: `dsFPTerm()`.
+3. De-initialize the `FP` `HAL` using `dsFPTerm()`.
 
 <u>Note :</u> The module would operate deterministically if the above call sequence is followed
 

@@ -627,7 +627,7 @@ typedef enum _dsVideoZoom_t {
  * @}
  */
 
-/** @addtogroup DSHAL_VIDEODEVICE_TYPES Device Settings HAL VideoDevice Type Definitions
+/** @addtogroup DSHAL_VIDEODEVICE_TYPES DS Video Device Type Definitions
  *  @ingroup DSHAL_VIDEODEVICE
  *  @{
  */
