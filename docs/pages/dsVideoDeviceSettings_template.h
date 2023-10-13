@@ -41,26 +41,24 @@
  * @par Application API Specification
  * Described herein are the DeviceSettings HAL types and functions that are part of
  * the Video Device subsystem. The Video Device subsystem manages system-specific HAL operations.
- *  @{
+ * @{
  */
 
 /**
  * @addtogroup dsVIDEODEVICE_HAL DS Video Device HAL
- *  @{
+ * @{
  * @par Application API Specification
  * dsVideoDevice HAL provides an interface for managing the VideoDevice settings for the device settings module
  */
 
 /**
  * @addtogroup DSHAL_VIDEODEVICE_SETTINGS_H DS Video Device Settings Header
- *  @ingroup dsVIDEODEVICE_HAL
- *  @{
+ * @{
+ * @par Application API Specification
  */
 
 /** 
  * @file
- *
- * @brief Device Settings HAL error codes.
  * 
  * <b> Following abbreviations present in HAL API </b>
  *
@@ -70,8 +68,7 @@
  * - HAL:     Hardware Abstraction Layer.
  * - HDMI:    High-Definition Multimedia Interface
  * - DFC:     Decoder format conversion
- * 
- * @ingroup Device_Settings_HAL
+ *
  */
 
 
@@ -84,19 +81,20 @@
 
 #ifdef __cplusplus
 extern "C" {
+namespace  {
 #endif
 
-namespace  {
+
 
 /**
- * @brief A static constant array of supported ZOOM settings.
+ * @brief A constant array of supported ZOOM settings.
  *
  * The array is accessible only within the current translation unit and the
  * values cannot be modified at runtime.
  *
  * @note The size of the array is fixed and cannot be changed.
  */
-static const dsVideoZoom_t kSupportedDFCs[] = { 
+const dsVideoZoom_t kSupportedDFCs[] = {
     dsVIDEO_ZOOM_NONE,      /*!< Decoder format conversion is inactive, */
     dsVIDEO_ZOOM_FULL,      /*!< Full screen (16:9 video is zoomed to fit 4:3 frame) */
     dsVIDEO_ZOOM_PLATFORM}; /*!< Control over the decoder format conversions is managed by the platform. */
@@ -108,7 +106,7 @@ static const dsVideoZoom_t kSupportedDFCs[] = {
  * values cannot be modified at runtime.
  *
  */
-static const dsVideoZoom_t kDefaultDFC  = dsVIDEO_ZOOM_FULL; /*!< 16:9 Zoom (4:3 video is zoomed to fill 16:9 frame) */
+const dsVideoZoom_t kDefaultDFC  = dsVIDEO_ZOOM_FULL; /*!< 16:9 Zoom (4:3 video is zoomed to fill 16:9 frame) */
 
 /**
  * @brief Number of Video Devices supported
@@ -117,17 +115,17 @@ static const dsVideoZoom_t kDefaultDFC  = dsVIDEO_ZOOM_FULL; /*!< 16:9 Zoom (4:3
  * values cannot be modified at runtime.
  *
  */
-static const int kNumVideoDevices = 1;
+const int kNumVideoDevices = 1;
 
 /**
- * @brief A static constant array of the device configuration
+ * @brief A constant array of the device configuration
  *
  * The variable is accessible only within the current translation unit and the
  * values cannot be modified at runtime.
  *
  * @note The size of the array is fixed and cannot be changed.
  */
-static const dsVideoConfig_t kConfigs[]= {
+const dsVideoConfig_t kConfigs[]= {
     {
     /*.numSupportedDFCs = */    dsUTL_DIM(kSupportedDFCs),  /*!< Number of supported DFCs. 0 means "Info available at runtime" */
     /*.supportedDFCs = */       kSupportedDFCs,             /*!< Supported DFCs. */
@@ -141,10 +139,11 @@ static const dsVideoConfig_t kConfigs[]= {
  */
 typedef int _SafetyCheck[(dsUTL_DIM(kConfigs) == kNumVideoDevices) ? 1 : -1];
 
-}
+
 
 
 #ifdef __cplusplus
+}
 }
 #endif
 

@@ -69,7 +69,7 @@
  */
 
 /**
- * @addtogroup HPK HPK
+ * @addtogroup HPK Hardware Porting Kit
  * @{
  * @par The Hardware Porting Kit
  * HPK is the next evolution of the well-defined Hardware Abstraction Layer
@@ -83,7 +83,7 @@
  */
 
 /** 
- * @defgroup DSSETTINGS_HAL HAL Types & Public API
+ * @defgroup DSSETTINGS_HAL Device Settings HAL Types & Public API
  * HAL types and public API definitions.
  * @ingroup DSSETTINGS
  * @{
@@ -125,7 +125,7 @@ typedef struct _dsVideoPortPortId_t {
 } dsVideoPortPortId_t;
 
 
-/** @addtogroup DSHAL_AUDIO HAL Audio Types
+/** @addtogroup DSHAL_AUDIO Device Settings HAL Audio Types
  *  @{
  * @todo check if these are used.
  */
@@ -449,7 +449,7 @@ typedef enum _dsAudioPortState {
  * @}
  */
 
-/** @addtogroup DSHAL_VIDEOPORT_TYPES HAL VideoPort Type Definitions
+/** @addtogroup DSHAL_VIDEOPORT_TYPES Device Settings HAL VideoPort Type Definitions
  *  @ingroup DSHAL_VIDEOPORT
  *  @{
  */
@@ -680,7 +680,7 @@ typedef enum _dsHdcpProtocolVersion_t {
  * @}
  */
 
-/** @addtogroup DSHAL_DISPLAY_TYPES HAL Display Type Definitions
+/** @addtogroup DSHAL_DISPLAY_TYPES Device Settings HAL Display Type Definitions
  *  @ingroup DSHAL_DISPLAY
  *  @{
  */

@@ -45,14 +45,14 @@
  */
 
 /**
- * @addtogroup dsFPD_HAL Device Settings Front Panel Display HAL
+ * @addtogroup dsFPD_HAL DS Front Panel Display HAL
  *  @{
  * @par Application API Specification
  * dsFPD HAL provides an interface for managing Front Panel Display settings
  */
 
 /**
- * @defgroup dsFPD_Settings_H Device Settings Front Panel Display Settings Header
+ * @defgroup dsFPD_Settings_H DS Front Panel Display Settings Header
  *  @{
  * @par Application API Specification
  * dsFPD provides an template for various Front Panel Indicator configurations

@@ -42,14 +42,14 @@
  *  @{
  */
 
-/** @addtogroup dsVIDEODEVICE_HAL Device Settings Video Device HAL
+/** @addtogroup dsVIDEODEVICE_HAL DS Video Device HAL
  *  @{
  * @par Application API Specification
  * dsVideoDevice HAL provides an interface for managing the VideoDevice settings for the device settings module
  */
 
-/** @defgroup DSHAL_VIDEODEVICE_TYPES HAL VideoDevice Type Definitions
- *  @ingroup DSHAL_VIDEODEVICE
+/** @defgroup DSHAL_VIDEODEVICE_TYPES DS Video Device Type Definitions
+ *  @ingroup dsVIDEODEVICE_HAL
  *  @{
  */
 
@@ -61,7 +61,7 @@
  * @brief This API defines common types used by the HAL.
  *
  * @par Document
- * Document reference.
+ * Document reference
  *
  * @par Open Issues (in no particular order)
  * -# None
@@ -70,16 +70,16 @@
  * -# None
  *
  * @par Abbreviations
- * - FPD:     Front-Panel Display.
- * - HAL:     Hardware Abstraction Layer.
+ * - FPD:     Front-Panel Display
+ * - HAL:     Hardware Abstraction Layer
  * - SAD:     Short Audio Descriptors
- * - EDID:    Extended Display Information Data.
+ * - EDID:    Extended Display Information Data
  * - HEVC:    High Efficiency Video Coding
  * - DTCP:    Digital Transmission Content Protection
- * - HDCP:    High-bandwidth Digital Copy Protection.
+ * - HDCP:    High-bandwidth Digital Copy Protection
  * - HDR:     High Dynamic Range
  * - HDMI:    High-Definition Multimedia Interface
- * - ARC:     Audio Return Channel.
+ * - ARC:     Audio Return Channel
  * - eARC:    Enhance Audio Return Channel
  * - RF:      Radio Frequency.
  * - MS12:    MultiStream 12.
@@ -91,21 +91,25 @@
  * - BT:      British Telecomm
  * - SMPTE:   Society of Television and Motion Picture Engineers
  * - YCbCr:   Y is luma (brightness), Cb is blue minus luma (B-Y) and Cr is red minus luma (R-Y)
- * - XvYCC:   extended-gamut YCbCr.
+ * - XvYCC:   extended-gamut YCbCr
  * - RGB:     Red Green Blue
  * - eDVI:    Digital Video Interface
  * - eFCC:    Future Computing and Communication
  * - IEC:     International Electrotechnical Commission
- * - MPEG4:   Moving Picture Experts Group version 4, part 14.
+ * - MPEG4:   Moving Picture Experts Group version 4, part 14
  * - AVC:     Advanced Video Coding
- * - LED:     Light-Emitting Diode.
+ * - LED:     Light-Emitting Diode
  * - SCART:   SCART stands for Syndicat des Constructeursd’AppareilsRadiorécepteurs et Téléviseurs 
- *                      or Radio and Television Receiver Manufacturers.
+ *                      or Radio and Television Receiver Manufacturers
  *
  * @par Implementation Notes
  * -# None
  *
  */
+
+#ifndef __DS_VIDEO_DEVICE_TYPES_H__
+#define __DS_VIDEO_DEVICE_TYPES_H__
+
 #pragma once
 #include <sys/types.h>
 
@@ -114,45 +118,41 @@
 /**
  * @brief This enumeration defines all of the standard screen zoom (format conversion) modes.
  */
-
 typedef enum _dsVideoZoom_t {
-    dsVIDEO_ZOOM_UNKNOWN = -1,      /*!< Unknown mode.                                                                                  */
-    dsVIDEO_ZOOM_NONE = 0,          /*!< Decoder format conversion is inactive.                                                         */
-    dsVIDEO_ZOOM_FULL,              /*!< Full screen (16:9 video is streched to fit 4:3 frame).                                         */
-    dsVIDEO_ZOOM_LB_16_9,           /*!< 16:9 Letterbox (16:9 video is placed in a 4:3 frame with a full letterbox effect).             */
+    dsVIDEO_ZOOM_UNKNOWN = -1,      /*!< Unknown mode */
+    dsVIDEO_ZOOM_NONE = 0,          /*!< Decoder format conversion is inactive */
+    dsVIDEO_ZOOM_FULL,              /*!< Full screen (16:9 video is streched to fit 4:3 frame) */
+    dsVIDEO_ZOOM_LB_16_9,           /*!< 16:9 Letterbox (16:9 video is placed in a 4:3 frame with a full letterbox effect) */
     dsVIDEO_ZOOM_LB_14_9,           /*!< 14:9 Letterbox (16:9 video is transferred into a 4:3 frame with 14:9 */
-                                    /*!< letterbox effect).        */
-    dsVIDEO_ZOOM_CCO,               /*!< Center Cut-out (16:9 video is cut to fill 4:3 frame with its center part).                     */
-    dsVIDEO_ZOOM_PAN_SCAN,          /*!< Pan & Scan (16:9 is cut and panned to fille 4:3 frame, following MPEG pan & scan vectors).     */
-    dsVIDEO_ZOOM_LB_2_21_1_ON_4_3,  /*!< 2.21:1 Letterbox on 4:3 (video is transferred into 4:3 frame with a 2.21:1 letterbox effect).  */
-    dsVIDEO_ZOOM_LB_2_21_1_ON_16_9, /*!< 2.21:1 Letterbox on 16:9 (video is transferred into 16:9 frame with a 2.21:1 letterbox effect). */
-    dsVIDEO_ZOOM_PLATFORM,          /*!< Control over the decoder format conversions is managed by the platform.                        */
-    dsVIDEO_ZOOM_16_9_ZOOM,         /*!< 16:9 Zoom (4:3 video is zoomed to fill 16:9 frame).                                            */
-    dsVIDEO_ZOOM_PILLARBOX_4_3,     /*!< Pillarbox 4:3 (4:3 video is placed in a 16:9 frame with a pillarbox effect)                    */
-    dsVIDEO_ZOOM_WIDE_4_3,          /*!< Wide 4:3 (4:3 video is stretched to fill 16:9 frame).                                          */
-    dsVIDEO_ZOOM_MAX                /*!< Out of range                                                          */
+                                    /*!< letterbox effect) */
+    dsVIDEO_ZOOM_CCO,               /*!< Center Cut-out (16:9 video is cut to fill 4:3 frame with its center part) */
+    dsVIDEO_ZOOM_PAN_SCAN,          /*!< Pan & Scan (16:9 is cut and panned to fille 4:3 frame, following MPEG pan & scan vectors) */
+    dsVIDEO_ZOOM_LB_2_21_1_ON_4_3,  /*!< 2.21:1 Letterbox on 4:3 (video is transferred into 4:3 frame with a 2.21:1 letterbox effect) */
+    dsVIDEO_ZOOM_LB_2_21_1_ON_16_9, /*!< 2.21:1 Letterbox on 16:9 (video is transferred into 16:9 frame with a 2.21:1 letterbox effect) */
+    dsVIDEO_ZOOM_PLATFORM,          /*!< Control over the decoder format conversions is managed by the platform  */
+    dsVIDEO_ZOOM_16_9_ZOOM,         /*!< 16:9 Zoom (4:3 video is zoomed to fill 16:9 frame) */
+    dsVIDEO_ZOOM_PILLARBOX_4_3,     /*!< Pillarbox 4:3 (4:3 video is placed in a 16:9 frame with a pillarbox effect) */
+    dsVIDEO_ZOOM_WIDE_4_3,          /*!< Wide 4:3 (4:3 video is stretched to fill 16:9 frame) */
+    dsVIDEO_ZOOM_MAX                /*!< Out of range */
 }dsVideoZoom_t;
 
 /**
- * @brief Video screen zoom validation check.
+ * @brief Video screen zoom validation check
  */
-
 #define dsVideoPortDFC_isValid(t)  (((t) >= dsVIDEO_ZOOM_NONE ) && ((t) < dsVIDEO_ZOOM_MAX))
 
 /**
- * @brief Structure that defines video device configuration for the output.
+ * @brief Structure that defines video device configuration for the output
  */
-
 typedef struct _dsVideoConfig_t {
-    size_t numSupportedDFCs;            /*!< Number of zoom modes supported. */
-    const dsVideoZoom_t *supportedDFCs; /*!< List of zoom modes supported.  */
-    dsVideoZoom_t defaultDFC;           /*!< The default zoom mode.         */
+    size_t numSupportedDFCs;            /*!< Number of zoom modes supported */
+    const dsVideoZoom_t *supportedDFCs; /*!< List of zoom modes supported  */
+    dsVideoZoom_t defaultDFC;           /*!< The default zoom mode         */
 } dsVideoConfig_t;
 
 /**
- * @brief List of video compression formats that may be supported by the decoder. 
- * **/
-
+ * @brief List of video compression formats that may be supported by the decoder
+ */
 typedef enum
 {
     dsVIDEO_CODEC_MPEGHPART2 = (0x01 << 0),     /*!< Also known HEVC, H.265 */
@@ -161,36 +161,39 @@ typedef enum
     dsVIDEO_CODEC_MAX   = (0x01 << 3)           /*!< Out of range */
 } dsVideoCodingFormat_t;
 
-/* HEVC version 1 profiles are listed. More may be added to it as the support becomes available.*/
 /**
- * @brief List of HEVC Profiles. 
- * **/
-
+ * @brief List of HEVC Profiles
+ * @note HEVC version 1 profiles are listed. More may be added to it as the support becomes available
+ */
 typedef enum
 {
     dsVIDEO_CODEC_HEVC_PROFILE_MAIN = (0x01 << 0),              /*!< 8-bit HEVC video profile. */
     dsVIDEO_CODEC_HEVC_PROFILE_MAIN10 = (0x01 << 1),            /*!< 10-bit HEVC video profile. */
-    dsVIDEO_CODEC_HEVC_PROFILE_MAINSTILLPICTURE = (0x01 << 2),  /*!< HECV Main Still Picture profile. */
+    dsVIDEO_CODEC_HEVC_PROFILE_MAINSTILLPICTURE = (0x01 << 2),  /*!< HECV Main Still Picture profile */
     dsVIDEO_CODEC_HEVC_MAX  = (0x01 << 3)                       /*!< Out of range  */
 } dsVideoCodecHevcProfiles_t;
+
 /**
- * @brief Structure type for HEVC profiles.
+ * @brief Structure type for HEVC profiles
  */
 typedef struct
 {
    dsVideoCodecHevcProfiles_t profile;  /*!< HEVC Profiles. See dsVideoCodecHevcProfiles_t */
-   float level;                         /*!< level for the specieis HEVC profile. */
+   float level;                         /*!< level for the specieis HEVC profile */
 } dsVideoCodecProfileSupport_t;
+
 /**
- * @brief Structure type for Video codec info.
+ * @brief Structure type for Video codec info
  */
 typedef struct
 {
     unsigned int num_entries;                  /*!< Number of entries */
-    dsVideoCodecProfileSupport_t entries[10];  /*!< Contains a list of the supported Codex profiles. */
+    dsVideoCodecProfileSupport_t entries[10];  /*!< Contains a list of the supported Codex profiles */
 } dsVideoCodecInfo_t;
 
-/** @} */ // End of DSHAL_VIDEODEVICE_TYPES doxygen group 
+#endif // End of __DS_VIDEO_DEVICE_TYPES_H__
+
+/** @} */ // End of DSHAL_VIDEODEVICE_TYPES
 /** @} */ // End of DS Video Device HAL
 /** @} */ // End of Device Settings HAL
 /** @} */ // End of Device Settings Module
