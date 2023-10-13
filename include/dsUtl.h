@@ -75,14 +75,6 @@
 #include <stdio.h>
 
 /**
- * @brief Device Settings general Assert Failure inline definition.
- */
-#define dsUTL_ASSERT(x) do {\
-    if (!(x)) printf("ASSERTFAILURE at %s-%d\r\n", __FUNCTION__, __LINE__);\
-}\
-while(0)
-
-/**
  * @brief Device Settings general Array dimension calculation inline definition.
  */
 #define dsUTL_DIM(arr) (sizeof((arr))/sizeof((arr)[0]))

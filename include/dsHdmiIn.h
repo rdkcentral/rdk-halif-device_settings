@@ -160,7 +160,7 @@ dsError_t dsHdmiInTerm (void);
  * This function gets the number of HDMI input ports on the device.
  *
  * @param[out] pNumberOfinputs  - number of HDMI input ports. 
- *                                       Max number of inputs is platform specific. Min is 0
+ *                                       @see dsHdmiInPort_t for max number of inputs. Min is 0
  * 
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
@@ -255,6 +255,7 @@ dsError_t dsHdmiInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t heigh
  * This function updates the video zoom on the active HDMI input using the provided zoom mode.
  *
  * @param[in] requestedZoomMode     - HDMI input zoom mode. @see dsVideoZoom_t
+ *                                          dsVideoZoom_t is within vidoeDeviceTypes.h
  * 
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
@@ -277,6 +278,7 @@ dsError_t dsHdmiInSelectZoomMode (dsVideoZoom_t requestedZoomMode);
  * This function gets the current HDMI input video mode of the active port
  * 
  * @param[out] resolution              - Current video port resolution. @see dsVideoPortResolution_t
+ *                                          dsVideoPortResolution_t is currently in the audioVisual combined file.
  * 
  * 
  * @return dsError_t                        - Status
@@ -338,6 +340,7 @@ typedef void (*dsHdmiInStatusChangeCB_t)(dsHdmiInStatus_t inputStatus);
  *
  * @param[in] port              - Port in which video mode updated. @see dsHdmiInPort_t
  * @param[in] videoResolution   - current video resolution of the port. @see dsVideoPortResolution_t
+ *                                  dsVideoPortResolution_t is currently in the audioVisual combined file.
  * 
  * @pre dsHdmiInRegisterVideoModeUpdateCB() must be called before this API
  *
@@ -596,6 +599,7 @@ dsError_t dsGetEDIDBytesInfo (dsHdmiInPort_t iHdmiPort, unsigned char **edid, in
  *
  * @param[in] iHdmiPort     - HDMI input port. @see dsHdmiInPort_t
  * @param[out] data         - HDMI SPD info data
+ *                              Min is 0. Should not exceed sizeof(dsSpd_infoframe_st). @see dsSpd_infoframe_st
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success

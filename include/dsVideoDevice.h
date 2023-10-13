@@ -118,6 +118,7 @@ dsError_t  dsVideoDeviceInit();
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialized
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsVideoDeviceInit() must be called before calling this function
@@ -139,6 +140,7 @@ dsError_t  dsGetVideoDevice(int index, int *handle);
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialized
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsVideoDeviceInit() and dsGetVideoDevice() must be called before calling this function
@@ -162,6 +164,7 @@ dsError_t  dsSetDFC(int handle, dsVideoZoom_t dfc);
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialized
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsVideoDeviceInit() and dsGetVideoDevice() must be called before calling this function.
@@ -208,6 +211,7 @@ dsError_t  dsVideoDeviceTerm();
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialized
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsVideoDeviceInit() and dsGetVideoDevice() must be called before calling this function.
@@ -230,6 +234,7 @@ dsError_t dsGetHDRCapabilities(int handle, int *capabilities);
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialized
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsVideoDeviceInit() and dsGetVideoDevice() must be called before calling this function.
@@ -252,6 +257,7 @@ dsError_t dsGetSupportedVideoCodingFormats(int handle, unsigned int * supported_
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialized
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsVideoDeviceInit() and dsGetVideoDevice() must be called before calling this function.
@@ -274,6 +280,7 @@ dsError_t dsGetVideoCodecInfo(int handle, dsVideoCodingFormat_t codec, dsVideoCo
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialized
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsVideoDeviceInit() and dsGetVideoDevice() must be called before calling this function.
@@ -295,6 +302,7 @@ dsError_t dsForceDisableHDRSupport(int handle, bool disable);
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsVideoDeviceInit() and dsGetVideoDevice() must be called before calling this function.
@@ -319,6 +327,7 @@ dsError_t dsSetFRFMode(int handle, int frfmode);
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialized
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsVideoDeviceInit() and dsGetVideoDevice() must be called before calling this function.
@@ -343,6 +352,7 @@ dsError_t dsGetFRFMode(int handle, int *frfmode);
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialized 
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsVideoDeviceInit() and dsGetVideoDevice() must be called before calling this function.
@@ -368,6 +378,7 @@ dsError_t dsGetCurrentDisplayframerate(int handle, char *framerate);
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialized
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre dsVideoDeviceInit() and dsGetVideoDevice() must be called before calling this function
