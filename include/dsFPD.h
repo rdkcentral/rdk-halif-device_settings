@@ -89,10 +89,11 @@ extern "C" {
  * 
  * @todo Proper prefix for all enums and APIs to be added in next phase ie DS_FPD_*
  *
- * @return dsError_t                  -  Status
- * @retval dsERR_NONE                 -  Success
- * @retval dsERR_ALREADY_INITIALIZED  -  Function is already initialized
- * @retval dsERR_GENERAL              -  Underlying undefined platform error
+ * @return dsError_t                        -  Status
+ * @retval dsERR_NONE                       -  Success
+ * @retval dsERR_ALREADY_INITIALIZED        -  Function is already initialized
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                    -  Underlying undefined platform error
  * 
  * @todo Remove dsERR_GENERAL and add specific error codes in next phase
  *
@@ -111,8 +112,8 @@ dsError_t dsFPInit (void);
  *
  * @param[in] eIndicator        -  FPD indicator index. @see dsFPDIndicator_t
  * @param[in] uBlinkDuration    -  Blink interval. The time in ms the text display will remain ON 
- *                                   during one blink iteration.
- * @param[in] uBlinkIterations  -  The number of iterations per minute data will blink
+ *                                   during one blink iteration. Max of 60000ms (60s)
+ * @param[in] uBlinkIterations  -  The number of iterations per minute data will blink. Max of 180. (3 blinks per second)
  * 
  * @return dsError_t                      -  Status
  * @retval dsERR_NONE                     -  Success
