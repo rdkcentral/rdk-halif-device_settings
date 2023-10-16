@@ -19,28 +19,234 @@
 
 /**
  * @file dsVideoPort.h
+ *
+ * @brief Device Settings HAL Video Port Public API.
+ * This API defines the HAL for the Device Settings Video Port interface.
+ *
+ * @par Document
+ * Document reference.
+ *
+ * @par Open Issues (in no particular order)
+ * -# None
+ *
+ * @par Assumptions
+ * -# None
+ *
+ * @par Abbreviations
+ * - HAL:   Hardware Abstraction Layer
+ * - API:   Caller Programming Interface
+ * - Caller:  Any user of the interface via the APIs
+ * - CPU:   Central Processing Unit
+ * - DS:    Device Settings
+ * - SoC:   System on Chip
+ * - HDMI:  High-Definition Multimedia Interface
+ * - DTCP:  Digital Transmission Content Protection
+ * - HDCP:  High-bandwidth Digital Content Protection
+ * - HDR:   High Dynamic Range
+ * - SDR:   Standard Dynamic Range
+ * - SCART: Syndicat des Constructeurs d'Appareils Radiorécepteurs et Téléviseurs - Radio and Television Receiver Manufacturers' Association
+ * - EDID:  Extended Display Identification Data
+ *
+ * @par Implementation Notes
+ * -# None
+ *
+ */
+
+/**
+ * @addtogroup HPK Hardware Porting Kit
+ * @{
+ * @par The Hardware Porting Kit
+ * HPK is the next evolution of the well-defined Hardware Abstraction Layer
+ * (HAL), but augmented with more comprehensive documentation and test suites
+ * that OEM or SOC vendors can use to self-certify their ports before taking
+ * them to RDKM for validation or to an operator for final integration and
+ * deployment. The Hardware Porting Kit effectively enables an OEM and/or SOC
+ * vendor to self-certify their own Video Accelerator devices, with minimal RDKM
+ * assistance.
+ *
+ */
+
+/**
+ * @addtogroup Device_Settings Device Settings Module
+ * @{
+ */
+
+/**
+ * @addtogroup Device_Settings_HAL Device Settings HAL
+ * @par Application API Specification
+ * Described herein are the DeviceSettings HAL types and functions that are part of
+ * the HdmiIn subsystem. The HdmiIn subsystem manages system-specific HAL operations.
+ *  @{
+ */
+
+/**
+*   @defgroup dsHdmiIn_HAL DS Video Port HAL
+ *  @{
+ * @par Application API Specification
+ * dsVideoPort HAL provides an interface for managing the Video Port settings for the device settings module
+ */
+
+/**
+ * @defgroup DSHAL_VIDEO_PORT_API DS HAL Video Port Public APIs
+ *  @{
  */
 
 
-
-/**
-* @defgroup devicesettings Device Settings
-* @{
-* @defgroup hal Device Settings HAL
-* @{
-**/
-
-
-#ifndef _DS_VIDEOPORT_H
-#define _DS_VIDEOPORT_H
+#ifndef __DS_VIDEOPORT_H__
+#define __DS_VIDEOPORT_H__
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 #include "dsError.h"
-#include "dsTypes.h"
+#include "dsAudioVisualTypes.h"
 
+/**
+ * @brief Initializes the underlying Video Port sub-system.
+ * 
+ * This function must initialize all the video specific output ports and any associated resources.
+ *
+ * @return dsError_t                    - Status
+ * @retval dsERR_NONE                   - Success
+ * @retval dsERR_ALREADY_INITIALIZED    - Function is already initialized
+ * @retval dsERR_RESOURCE_NOT_AVAILABLE - Resources have failed to allocate
+ * @retval dsERR_GENERAL                - Underlying undefined platform error
+ * 
+ * @warning  This API is Not thread safe.
+ * 
+ * @see dsVideoPortTerm()
+ */
+dsError_t  dsVideoPortInit();
+
+ /**
+ * @brief Terminates the underlying Video Port sub-system.
+ *
+ * This function must terminate all the video output ports and any associated resources.
+ *
+ * @return dsError_t                - Status
+ * @retval dsERR_NONE               - Success
+ * @retval dsERR_NOT_INITIALIZED    - Module is not initialised
+ * @retval dsERR_GENERAL            - Underlying undefined platform error
+ * 
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * 
+ * @warning  This API is Not thread safe.
+ * 
+ * @see dsVideoPortInit()
+ */
+dsError_t dsVideoPortTerm();
+
+/**
+ * @brief Gets the handle for video port requested 
+ * 
+ * This function is used to get the handle of the video port corresponding to specified port type. It must return
+ * dsERR_OPERATION_NOT_SUPPORTED if the requested video port is unavailable.
+ *
+ * @param[in]  type     - Type of video port (e.g. HDMI)
+ * @param[in]  index    - Index of the video device (0, 1, ...)
+ * @param[out] handle   - The handle used by the Caller to uniquely identify the HAL instance
+ * 
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialized
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
+ * @pre dsVideoPortInit() should be called before calling this API.
+ * 
+ * @warning  This API is Not thread safe.
+ */
+dsError_t  dsGetVideoPort(dsVideoPortType_t type, int index, int *handle);
+
+/**
+ * @brief Checks whether a video port is enabled or not.
+ * 
+ * This function indicates whether the specified video port is enabled or not.
+ *
+ * @param[in]  handle   - Handle of the video port returned from dsGetVideoPort()
+ * @param[out] enabled  - Flag to hold the enabled status of Video Port. 
+ *                          ( @a true when video port is enabled or @a false otherwise)
+ * 
+ * @return dsError_t                      -  Status 
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ * 
+ * @pre dsVideoPortInit() and dsGetVideoPort() must be called before calling this API.
+ * 
+ * @warning  This API is Not thread safe.
+ * 
+ * @see dsEnableVideoPort()
+ */
+dsError_t  dsIsVideoPortEnabled(int handle, bool *enabled);
+
+/**
+ * @brief Checks whether the specific video port is connected to display.
+ * 
+ * This function is used to check whether video port is connected to a display or not.
+ *
+ * @param[in]  handle       - Handle of the video port returned from dsGetVideoPort()
+ * @param[out] connected    - Flag to hold the connection status of display
+ *                              ( @a true if display is connected or @a false otherwise)
+ * 
+ * @return dsError_t                      -  Status 
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ * 
+ * @pre dsVideoPortInit() and dsGetVideoPort() should be called before calling this API.
+ * 
+ * @warning  This API is Not thread safe.
+ */
+dsError_t  dsIsDisplayConnected(int handle, bool *connected);
+
+/**
+ * @brief Checks if the connected display supports the audio surround.
+ * 
+ * This function is used to check if the display connected to video port supports the audio surround.
+ *
+ * @param[in]  handle   - Handle of the video port returned from dsGetVideoPort()
+ * @param[out] surround - Audio surround support  ( @a true if display supports surround sound or @a false otherwise)
+ *
+ * @return dsError_t                      -  Status 
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ * 
+ * @pre dsVideoPortInit() and dsGetVideoPort() should be called before calling this API.
+ * 
+ * @warning  This API is Not thread safe.
+ */
+dsError_t  dsIsDisplaySurround(int handle, bool *surround);
+
+/**
+ * @brief Gets the surround mode of video port
+ * 
+ * This function is used to get the surround mode of the specified video port.
+ *
+ * @param[in]  handle   - Handle of the video port returned from dsGetVideoPort()
+ * @param[out] surround - Surround mode .@see dsSURROUNDMode_t
+ *
+ * @return dsError_t                      -  Status 
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ * 
+ * @pre dsVideoPortInit() and dsGetVideoPort() should be called before calling this API.
+ * 
+ * @warning  This API is Not thread safe.
+ */
+dsError_t  dsGetSurroundMode(int handle, int *surround);
 
 /**
  * @brief Callback function to notify the Video Format change event to the clients.
@@ -51,131 +257,6 @@ extern "C" {
  *
  */
 typedef void (*dsVideoFormatUpdateCB_t)(dsHDRStandard_t videoFormat);
-
-/** 
- * @addtogroup DSHAL_VIDEOPORT_API Device Settings HAL Video Port Public API
- * @ingroup devicesettingshalapi
- *
- *  Described herein are the DeviceSettings HAL types and functions that are part of the
- *  Video Port subsystem. The Video Port subsystem manages video output port hardware operations.
- * @{
- */
-
-/**
- * @brief Initialize underlying Video Port sub-system.
- * 
- * This function must initialize all the video specific output ports.
- *
- * @return dsError_t - error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @warning  This API is Not thread safe.
- * @see dsVideoPortTerm()
- */
-dsError_t  dsVideoPortInit();
-
-
-/**
- * @brief Get the video port handle.
- * 
- * This function used to get the handle of the video port type, requested. It must return
- * ::dsERR_OPERATION_NOT_SUPPORTED if the requested video port is unavailable.
- *
- * @param[in]  type       Type of video port (e.g. HDMI).
- * @param[in]  index      The index of the video device (0, 1, ...).
- * @param[out] handle     Requested video port handle.
- * 
- * @return dsError_t - error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  Init or  preceding Init has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @pre dsVideoPortInit() should be called before calling this API.
- * @warning  This API is Not thread safe.
- */
-dsError_t  dsGetVideoPort(dsVideoPortType_t type, int index, int *handle);
-
-
-/**
- * @brief Indicate whether a video port is enabled.
- * 
- * This function indicates whether the specified video port is enabled or not.
- *
- * @param[in]  handle      Handle of the video port.
- * @param[out] enabled     Enabled state of the video port. True means enabled False means disabled.
- *                          on return (@a true when port is enabled, @a false otherwise).
- * 
- * @return dsError_t - error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @pre dsVideoPortInit() should be called before calling this API.
- * @warning  This API is Not thread safe.
- * @see dsEnableVideoPort()
- */
-dsError_t  dsIsVideoPortEnabled(int handle, bool *enabled);
-
-
-/**
- * @brief Routine to check the specific video port is connected to a display.
- * 
- * This function is used to find out whether the video port is connected to a display or not.
- *
- * @param[in]  handle        Handle of the video port.
- * @param[out] connected    The address of a location to hold the connection state on
- *                            return (@a true when connected, @a false otherwise).
- * 
- * @return dsError_t - error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @pre dsVideoPortInit() should be called before calling this API.
- * @warning  This API is Not thread safe.
- */
-dsError_t  dsIsDisplayConnected(int handle, bool *connected);
-
-
-/**
- * @brief This function is used to check if the connected display supports the audio surround.
- *
- * @param[in]  handle Handle of the video port.
- * @param[out] surround True means surround is supported False means surround not supported.
- *
- * @return dsError_t - error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @pre dsVideoPortInit() should be called before calling this API.
- * @warning  This API is Not thread safe.
- */
-dsError_t  dsIsDisplaySurround(int handle, bool *surround);
-
-
-/**
- * @brief This function is used to get supported surround modes by the device.
- *
- * @param[in]  handle Handle of the video port.
- * @param[out] surround mode as defined in dsSURROUNDMode_t.
- *
- * @return dsError_t - error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @pre dsVideoPortInit() should be called before calling this API.
- * @warning  This API is Not thread safe.
- */
-dsError_t  dsGetSurroundMode(int handle, int *surround);
-
 
 /**
  * @brief This function is used to indicate whether a video port is connected to a display.
@@ -194,7 +275,6 @@ dsError_t  dsGetSurroundMode(int handle, int *surround);
  * @warning  This API is Not thread safe.
  */
 dsError_t  dsIsVideoPortActive(int handle, bool *active);
-
 
 /**
  * @brief Toggle DTCP protection of a video port.
@@ -372,25 +452,6 @@ dsError_t  dsGetResolution(int handle, dsVideoPortResolution_t *resolution);
  * @warning  This API is Not thread safe.
  */
 dsError_t dsSetActiveSource(int handle);
-
-
- /**
- * @brief Terminate the Video Port sub-system.
- *
- * This function must terminate all the video output ports. It must reset any data
- * structures used within video port module and release any video port specific handles.
- *
- * @return dsError_t - error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling dsVideoPortInit() or  preceding dsVideoPortInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * @pre dsVideoPortInit() should be called before calling this API.
- * @warning  This API is Not thread safe.
- * @see dsVideoPortInit()
- */
-dsError_t dsVideoPortTerm();
-
 
 /**
  * @brief Initialize the Video Resolution
