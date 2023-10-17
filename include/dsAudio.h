@@ -1906,7 +1906,7 @@ dsError_t  dsGetAssociatedAudioMixing(int handle, bool *mixing);
 /**
  * @brief Sets the mixerbalance between main and associated audio
  *
- * This function will set the mixerbalance between main and associated audio
+ * This function will set the mixerbalance between main and associated audio of audio port corresponding to specified port handle.
  *
  * @param[in] handle        - Handle for the output Audio port
  * @param[in] mixerbalance  - int value -32(mute associated audio) to +32(mute main audio)
@@ -1929,7 +1929,7 @@ dsError_t  dsSetFaderControl(int handle, int mixerbalance);
 /**
  * @brief To get the mixer balance between main and associated audio
  *
- * This function will get the mixer balance between main and associated audio
+ * This function will get the mixer balance between main and associated audio of audio port corresponding to specified port handle.
  *
  * @param[in]  handle        - Handle for the output Audio port
  * @param[out] mixerbalance  - int value -32(mute associated audio) to +32(mute main audio)
@@ -1952,7 +1952,7 @@ dsError_t  dsGetFaderControl(int handle, int* mixerbalance);
 /**
  * @brief Sets AC4 Primary language
  *
- * This function will set AC4 Primary language
+ * This function will set AC4 Primary language of audio port corresponding to specified port handle.
  *
  * @param[in] handle  - Handle for the output Audio port
  * @param[in] pLang   - char* 3 letter language code string as per ISO 639-3
@@ -1975,7 +1975,7 @@ dsError_t  dsSetPrimaryLanguage(int handle, const char* pLang);
 /**
  * @brief To get AC4 Primary language
  *
- * This function will get AC4 Primary language
+ * This function will get AC4 Primary language of audio port corresponding to specified port handle.
  *
  * @param[in] handle  - Handle for the output Audio port
  * @param[out] pLang  - char* 3 letter lang code should be used as per ISO 639-3
@@ -1998,7 +1998,7 @@ dsError_t  dsGetPrimaryLanguage(int handle, char* pLang);
 /**
  * @brief To set AC4 Secondary language
  *
- * This function will set AC4 Secondary language
+ * This function will set AC4 Secondary language of audio port corresponding to specified port handle.
  *
  * @param[in] handle  - Handle for the output Audio port (Not Used as setting is not port specific)
  * @param[in] sLang   - char* 3 letter lang code should be used as per ISO 639-3
@@ -2019,9 +2019,9 @@ dsError_t  dsGetPrimaryLanguage(int handle, char* pLang);
 dsError_t  dsSetSecondaryLanguage(int handle, const char* sLang);
 
 /**
- * @brief To get AC4 Secondary language
+ * @brief Gets the AC4 Secondary language
  *
- * This function will get AC4 Secondary language
+ * This function will get AC4 Secondary language of audio port corresponding to specified port handle.
  *
  * @param[in] handle  - Handle for the output Audio port (Not Used as setting is not port specific)
  * @param[out] sLang  - char* 3 letter lang code should be used as per ISO 639-3
@@ -2042,11 +2042,11 @@ dsError_t  dsSetSecondaryLanguage(int handle, const char* sLang);
 dsError_t  dsGetSecondaryLanguage(int handle, char* sLang);
 
 /**
- * @brief Get the audio HDMI ARC port ID for each platform
+ * @brief Gets the audio HDMI ARC port ID for each platform
  *
- * This function will get audio HDMI ARC port ID
+ * This function will get audio HDMI ARC port ID of platform
  *
- * @param[in] portId  - Get audio HDMI ARC port ID
+ * @param[in] portId  - HDMI ARC port ID
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
