@@ -190,8 +190,8 @@ dsError_t  dsAudioPortTerm();
  * @retval dsERR_NONE                     -  Success
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid(port is not present or index is out of range)
- * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
  * @pre  dsAudioPortInit() should be called before calling this API.
  * 
@@ -363,8 +363,9 @@ dsError_t  dsSetDialogEnhancement(int handle, int level);
  *
  * This function returns the dolby audio mode status used in the audio port corresponding to the specified port handle.
  *
- * @param[in] handle  - Handle for the output audio port.
- * @param[out] mode   - Dolby volume mode true if enabled, and false if disabled.
+ * @param[in] handle  - Handle for the output audio port
+ * @param[out] mode   - Dolby volume mode 
+ *                        ( @a true if Dolby Volume mode is enabled, and @a false if disabled)
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -386,8 +387,9 @@ dsError_t  dsGetDolbyVolumeMode(int handle, bool *mode);
  * 
  * This function sets the dolby audio mode status to the audio port corresponding to port handle.
  *
- * @param[in] handle  - Handle for the output audio port.
- * @param[in] mode    - Dolby volume mode. (0 for OFF, 1 for ON and 2 for AUTO mode)
+ * @param[in] handle  - Handle for the output audio port
+ * @param[in] mode    - Dolby volume mode. 
+ *                        ( @a true to enable Dolby volume mode and @a false to disable Dolby volume mode )
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -570,7 +572,7 @@ dsError_t  dsSetBassEnhancer(int handle, int boost);
 dsError_t  dsIsSurroundDecoderEnabled(int handle, bool *enabled);
 
 /**
- * @brief To Enable / Disable the audio Surround Decoder.
+ * @brief Enables / Disables the audio Surround Decoder.
  *
  * This function will enable/disable surround decoder of the audio port corresponding to specified port handle.
  *
@@ -1435,7 +1437,7 @@ dsError_t  dsEnableAudioPort(int handle, bool enabled);
  * @param[in] handle   - Handle of the output audio port
  * @param[in] feature  - Enums for MS12 features. @see dsMS12FEATURE_t
  * @param[in] enable   - Flag to control the MS12 features
- *                         (true to enable, false to disable)
+ *                         ( @a true to enable, @a false to disable)
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -1712,7 +1714,7 @@ dsError_t dsAudioFormatUpdateRegisterCB(dsAudioFormatUpdateCB_t cbFun);
  * This function is used to get the supported Audio capabilities for the input port supported by the platform.
  *
  * @param[in]  handle        - Handle for the output audio port 
- * @param[out] capabilities  - OR-ed value of supported Audio standards. @see dsAudioCapabilities_t
+ * @param[out] capabilities  - Bitwise OR value of supported Audio standards. @see dsAudioCapabilities_t
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -1760,8 +1762,8 @@ dsError_t dsGetMS12Capabilities(int handle, int *capabilities);
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_OPERATION_FAILED         -  The attempted operation failed
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
- *  @retval dsERR_OPERATION_FAILED         -  The attempted operation failed
  * 
  * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
  * 
@@ -1781,8 +1783,8 @@ dsError_t dsResetDialogEnhancement(int handle);
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
- * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * @retval dsERR_OPERATION_FAILED         -  The attempted operation failed
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
  * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
  * 
