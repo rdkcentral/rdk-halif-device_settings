@@ -998,7 +998,8 @@ dsError_t  dsSetStereoAuto(int handle, int autoMode);
  * This function returns the current audio gain for the audio port corresponding to specified port handle.
  *
  * @param[in] handle  - Handle for the output audio port
- * @param[out] gain   - Pointer to hold the audio gain value of the specified audio port(platform specific)
+ * @param[out] gain   - Pointer to hold the audio gain value of the specified audio port.
+                          The gain ranges between -2080 and 480
  * 
  * @todo - can we bring in the max and min values to sample file . Any spec for the range of values(Amit / Deekshit)
  *
@@ -1023,7 +1024,8 @@ dsError_t  dsGetAudioGain(int handle, float *gain);
  * This function sets the gain to be used on the audio port corresponding to specified port handle.
  *
  * @param[in] handle  - Handle for the output audio port
- * @param[in] gain    - Audio Gain to be used on the audio port value (platform specific)
+ * @param[in] gain    - Audio Gain to be used on the audio port value
+ *                         The Gain ranges between -2080 and 480
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
