@@ -1000,8 +1000,6 @@ dsError_t  dsSetStereoAuto(int handle, int autoMode);
  * @param[in] handle  - Handle for the output audio port
  * @param[out] gain   - Pointer to hold the audio gain value of the specified audio port.
                           The gain ranges between -2080 and 480
- * 
- * @todo - can we bring in the max and min values to sample file . Any spec for the range of values(Amit / Deekshit)
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -1071,11 +1069,11 @@ dsError_t  dsGetAudioDB(int handle, float *db);
  * @brief Sets the current audio dB level of an audio port.
  * 
  * This function sets the dB level to be used on the audio port corresponding to specified port handle.
+ * Max dB is 180 and Min dB is -1450
  *
  * @param[in] handle  - Handle for the output audio port
  * @param[in] db      - Audio dB level to be used on the audio port
  * 
- * @todo - confirm the range of dB
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -1145,8 +1143,6 @@ dsError_t  dsSetAudioLevel(int handle, float level);
  *
  * @param[in] handle  - Handle for the output audio port
  * @param[out] maxDb  - Pointer to hold the maximum audio dB value (float value e.g:10.0) supported by the specified audio port(platform specific)
- *
- * @todo - General Spec or Is it specific to platform
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -1189,8 +1185,6 @@ dsError_t  dsGetAudioMinDB(int handle, float *minDb);
  *
  * @param[in] handle        - Handle for the output audio port
  * @param[out] optimalLevel - Pointer to hold the optimal level value of the specified audio port(platform specific)
- * 
- * @todo - check if is really needed or can min or max DB handle it
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
