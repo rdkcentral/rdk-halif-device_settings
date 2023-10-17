@@ -352,6 +352,7 @@ typedef struct _dsMS12AudioProfileList_t {
 
 /**
  * @brief This defines the type of volume leveller mode.
+ * @todo Enums for volume leveller modes will be added in next phase
  */
 typedef struct _dsVolumeLeveller_t {
     int mode;   ///< 0 = off, 1= on, 2= auto
