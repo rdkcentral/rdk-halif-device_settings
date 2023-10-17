@@ -120,8 +120,8 @@ typedef enum _dsVideoPortType_t {
  * @brief Structure that defines port id associated with video port.
  */
 typedef struct _dsVideoPortPortId_t {
-    dsVideoPortType_t type; ///< Video port type.
-    int32_t index;          ///< Port ID/number.
+    dsVideoPortType_t type; ///< Video port type
+    int32_t index;          ///< Port ID/number
 } dsVideoPortPortId_t;
 
 
@@ -130,8 +130,8 @@ typedef struct _dsVideoPortPortId_t {
  * @todo check if these are used.
  */
 
-#define dsAUDIOPORT_TYPE_NUM_MAX 4     ///< Maximum number of audio output port types.  
-#define dsAudioPORT_NUM_MAX 4          ///< Maximum number of audio output ports.
+#define dsAUDIOPORT_TYPE_NUM_MAX 4     ///< Maximum number of audio output port types
+#define dsAudioPORT_NUM_MAX 4          ///< Maximum number of audio output ports
 
 /**
  * @brief Audio output port type validation check.
@@ -178,12 +178,12 @@ typedef struct _dsVideoPortPortId_t {
  * @see dsAudioType_isValid
  */
 typedef enum _dsAudioPortType_t{
-    dsAUDIOPORT_TYPE_ID_LR,     ///< RCA audio output.                
-    dsAUDIOPORT_TYPE_HDMI,      ///< HDMI audio output.               
-    dsAUDIOPORT_TYPE_SPDIF,     ///< SPDIF audio output.             
-    dsAUDIOPORT_TYPE_SPEAKER,   ///< SPEAKER audio output.            
-    dsAUDIOPORT_TYPE_HDMI_ARC,  ///< HDMI ARC/EARC audio output.      
-    dsAUDIOPORT_TYPE_HEADPHONE, ///< 3.5mm headphone jack.            
+    dsAUDIOPORT_TYPE_ID_LR,     ///< RCA audio output               
+    dsAUDIOPORT_TYPE_HDMI,      ///< HDMI audio output               
+    dsAUDIOPORT_TYPE_SPDIF,     ///< SPDIF audio output             
+    dsAUDIOPORT_TYPE_SPEAKER,   ///< SPEAKER audio output            
+    dsAUDIOPORT_TYPE_HDMI_ARC,  ///< HDMI ARC/EARC audio output      
+    dsAUDIOPORT_TYPE_HEADPHONE, ///< Headphone jack 
     dsAUDIOPORT_TYPE_MAX        ///< Out of range 
 } dsAudioPortType_t;
 
@@ -191,8 +191,8 @@ typedef enum _dsAudioPortType_t{
  * @brief Structure that defines the audio port type and associated ID.
  */
 typedef struct _dsAudioPortId_t {
-    dsAudioPortType_t type; ///< Audio port type.
-    int32_t index;          ///< Port ID/number.
+    dsAudioPortType_t type; ///< Audio port type
+    int32_t index;          ///< Port ID/number
 } dsAudioPortId_t;
 
 /**
@@ -200,11 +200,11 @@ typedef struct _dsAudioPortId_t {
  * @see dsAudioEncoding_isValid
  */
 typedef enum _dsAudioEncoding_t{
-    dsAUDIO_ENC_NONE = 0,   ///< No digital audio output.                       
-    dsAUDIO_ENC_DISPLAY,    ///< Platform-selected digital audio encoding format.
-    dsAUDIO_ENC_PCM,        ///< PCM digital audio encoding format.             
-    dsAUDIO_ENC_AC3,        ///< AC-3 digital audio encoding format.            
-    dsAUDIO_ENC_EAC3,       ///< DD+/E-AC-3 digital audio encoding format.      
+    dsAUDIO_ENC_NONE = 0,   ///< No digital audio output            
+    dsAUDIO_ENC_DISPLAY,    ///< Platform-selected digital audio encoding format
+    dsAUDIO_ENC_PCM,        ///< PCM digital audio encoding format
+    dsAUDIO_ENC_AC3,        ///< AC-3 digital audio encoding format            
+    dsAUDIO_ENC_EAC3,       ///< DD+/E-AC-3 digital audio encoding format
     dsAUDIO_ENC_MAX         ///< Out of range         
 } dsAudioEncoding_t;
 
