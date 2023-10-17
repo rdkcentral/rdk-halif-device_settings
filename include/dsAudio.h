@@ -1979,7 +1979,7 @@ dsError_t  dsGetFaderControl(int handle, int* mixerbalance);
  * This function will set AC4 Primary language
  *
  * @param[in] handle  - Handle for the output Audio port
- * @param[in] pLang   - char* 3 letter language code string as per ISO 639.
+ * @param[in] pLang   - char* 3 letter language code string as per ISO 639-3
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -2002,7 +2002,7 @@ dsError_t  dsSetPrimaryLanguage(int handle, const char* pLang);
  * This function will get AC4 Primary language
  *
  * @param[in] handle  - Handle for the output Audio port
- * @param[out] pLang  - char* 3 letter lang code should be used as per ISO 639
+ * @param[out] pLang  - char* 3 letter lang code should be used as per ISO 639-3
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -2025,7 +2025,7 @@ dsError_t  dsGetPrimaryLanguage(int handle, char* pLang);
  * This function will set AC4 Secondary language
  *
  * @param[in] handle  - Handle for the output Audio port (Not Used as setting is not port specific)
- * @param[in] sLang   - char* 3 letter lang code should be used as per ISO 639
+ * @param[in] sLang   - char* 3 letter lang code should be used as per ISO 639-3
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -2048,7 +2048,7 @@ dsError_t  dsSetSecondaryLanguage(int handle, const char* sLang);
  * This function will get AC4 Secondary language
  *
  * @param[in] handle  - Handle for the output Audio port (Not Used as setting is not port specific)
- * @param[out] sLang  - char* 3 letter lang code should be used as per ISO 639
+ * @param[out] sLang  - char* 3 letter lang code should be used as per ISO 639-3
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
