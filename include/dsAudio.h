@@ -1833,8 +1833,8 @@ dsError_t dsResetVolumeLeveller(int handle);
  * @param[in] handle               - Handle for the output Audio port
  * @param[in] profileState         - possible values ADD and REMOVE setting from the persistence
  * @param[in] profileName          - Profile Name. @see _dsMS12AudioProfileList_t
- * @param[in] profileSettingsName  - supported MS12 property name. @todo: property name can be represented in header and can be referred here and rdkservice doc
- * @param[in] profileSettingValue  - supported MS12 property value to be set. @todo supported values to be added
+ * @param[in] profileSettingsName  - supported MS12 property name. 
+ * @param[in] profileSettingValue  - supported MS12 property value to be set.
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -1859,7 +1859,7 @@ dsError_t  dsSetMS12AudioProfileSetttingsOverride(int handle,const char* profile
  *
  * This function will enable/disable associated audio mixing feature of audio port corresponding to specified port handle.
  *
- * @param[in] handle  - Handle for the output audio port (Not Used as setting is not port specific) - @todo confirm
+ * @param[in] handle  - Handle for the output audio port
  * @param[in] mixing  - Flag to control audio mixing feature
  *                        ( @a true to enable, @a false to disable)
  * 
