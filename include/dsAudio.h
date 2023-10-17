@@ -1929,8 +1929,6 @@ dsError_t  dsGetAssociatedAudioMixing(int handle, bool *mixing);
  * @brief Sets the mixerbalance between main and associated audio
  *
  * This function will set the mixerbalance between main and associated audio
- * 
- * @todo - get info about this API. Check with deekshit
  *
  * @param[in] handle        - Handle for the output Audio port
  * @param[in] mixerbalance  - int value -32(mute associated audio) to +32(mute main audio)
