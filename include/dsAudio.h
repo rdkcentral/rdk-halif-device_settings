@@ -904,7 +904,7 @@ dsError_t dsAudioEnableARC(int handle, dsAudioARCStatus_t arcStatus);
  * @param[out] stereoMode - Pointer to hold the stereo mode setting of the
  *                            specified audio port. @see dsAudioStereoMode_t
  * 
- * @todo dsAudioStereoMode_t - naming convention
+ * @todo dsAudioStereoMode_t - naming convention will be corrected in next phase
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
