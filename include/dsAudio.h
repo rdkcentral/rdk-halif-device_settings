@@ -1208,12 +1208,10 @@ dsError_t  dsGetAudioOptimalLevel(int handle, float *optimalLevel);
 /**
  * @brief Gets the audio delay (in ms) of an audio port
  *
- * This function returns the audio delay (in milliseconds) of audio port corresponding to the specified port handle.
+ * This function returns the audio delay (in milliseconds) of audio port with respect to video corresponding to the specified port handle.
  *
  * @param[in] handle        - Handle for the output Audio port
  * @param[out] audioDelayMs - Pointer to Audio delay (in milliseconds)
- * 
- * @todo - what exactly is audio delay, is it with respect to Video
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
