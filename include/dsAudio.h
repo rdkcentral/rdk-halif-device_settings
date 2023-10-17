@@ -1044,8 +1044,7 @@ dsError_t  dsSetAudioGain(int handle, float gain);
  * @brief Gets the current audio dB level of an audio port.
  * 
  * This function returns the current audio dB level for the audio port corresponding to specified port handle.
- *
- * @todo - range has to be confirmed
+ * The Audio dB level ranges from -1450 to 180 dB 
  * 
  * @param[in] handle  - Handle for the output audio port
  * @param[out] db     - Pointer to hold the Audio dB level of the specified audio port
@@ -1444,8 +1443,6 @@ dsError_t  dsEnableAudioPort(int handle, bool enabled);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @todo why it is const bool
- * 
  * @see dsGetMS12AudioProfileList(), dsGetMS12AudioProfile()
  */
 dsError_t  dsEnableMS12Config(int handle, dsMS12FEATURE_t feature,const bool enable);
@@ -1456,8 +1453,6 @@ dsError_t  dsEnableMS12Config(int handle, dsMS12FEATURE_t feature,const bool ena
  * @param[in] handle  - Handle of the output audio port
  * @param[in] enable  - Flag to control the LE features
  *                        ( @a true to enable, @a false to disable)
- * 
- * @todo - true/false Italics across the file
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -1676,7 +1671,6 @@ dsError_t dsAudioOutIsConnected(int handle, bool* isConnected);
  * @pre  dsAudioPortInit() should be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
- * @todo - add @pre in methods invoked after this CB.
  */
 dsError_t dsAudioOutRegisterConnectCB(dsAudioOutPortConnectCB_t CBFunc);
 
@@ -1697,8 +1691,6 @@ dsError_t dsAudioOutRegisterConnectCB(dsAudioOutPortConnectCB_t CBFunc);
  * @pre  dsAudioPortInit() should be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
- * 
- * @todo - add @pre in methods invoked after this CB
  */
 dsError_t dsAudioFormatUpdateRegisterCB(dsAudioFormatUpdateCB_t cbFun);
 
@@ -1781,7 +1773,9 @@ dsError_t dsResetDialogEnhancement(int handle);
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
  * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
- * 
+ *
+ * @see dsGetBassEnhancer, dsSetBassEnhancer
+ *
  * @warning  This API is Not thread safe.
  */
 dsError_t dsResetBassEnhancer(int handle);
@@ -1791,9 +1785,7 @@ dsError_t dsResetBassEnhancer(int handle);
  *
  * This function is used to reset the audio surround virtualizer level of audio port corresponding to port handle to its platform-specific default boost value.
  *
- * @todo - platform
  * @param[in] handle  - Handle for the output audio port
- * 
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -1803,12 +1795,10 @@ dsError_t dsResetBassEnhancer(int handle);
  * @retval dsERR_OPERATION_FAILED         -  The attempted operation failed
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
- * @todo - dsERR_GENERAL to be added at the end
- * 
  * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
- * 
- * @todo - Add new return type in dsError.h
- * 
+ *
+ * @see dsGetSurroundVirtualizer, dsSetSurroundVirtualizer
+ *
  * @warning  This API is Not thread safe.
  */
 dsError_t dsResetSurroundVirtualizer(int handle);
@@ -1834,7 +1824,6 @@ dsError_t dsResetSurroundVirtualizer(int handle);
  * 
  * @see dsGetVolumeLeveller(), dsSetVolumeLeveller()
  * 
- * @todo - add @see for all resets and link related APIs
  */
 dsError_t dsResetVolumeLeveller(int handle);
 
@@ -1863,7 +1852,6 @@ dsError_t dsResetVolumeLeveller(int handle);
  * 
  * @see dsGetMS12AudioProfileList(), dsGetMS12AudioProfile()
  * 
- * @todo - Settings Typo has to be changed in DisplaySettings and ds generic
  */
 dsError_t  dsSetMS12AudioProfileSetttingsOverride(int handle,const char* profileState,const char* profileName,
                                                    const char* profileSettingsName,const char* profileSettingValue);
@@ -1884,8 +1872,6 @@ dsError_t  dsSetMS12AudioProfileSetttingsOverride(int handle,const char* profile
  * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
  * @retval dsERR_OPERATION_FAILED         -  The attempted operation failed
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
- * 
- * @todo platform specific/if some operation is happening - dsERR_OPERATION_FAILED
  * 
  * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
  * 
