@@ -18,21 +18,56 @@
 */
  
 /**
-* @defgroup devicesettings Device Settings
-* @{
-* @defgroup hal Device Settings HAL
-* @{
-**/
+ * @addtogroup HPK Hardware Porting Kit
+ * @{
+ * @par The Hardware Porting Kit
+ * HPK is the next evolution of the well-defined Hardware Abstraction Layer
+ * (HAL), but augmented with more comprehensive documentation and test suites
+ * that OEM or SOC vendors can use to self-certify their ports before taking
+ * them to RDKM for validation or to an operator for final integration and
+ * deployment. The Hardware Porting Kit effectively enables an OEM and/or SOC
+ * vendor to self-certify their own Video Accelerator devices, with minimal RDKM
+ * assistance.
+ *
+ */
 
-#ifndef _DS_AUDIOOUTPUTPORTSETTINGS_H
-#define _DS_AUDIOOUTPUTPORTSETTINGS_H
+/**
+ * @addtogroup Device_Settings Device Settings Module
+ * @{
+ */
+
+/**
+ * @addtogroup Device_Settings_HAL Device Settings HAL
+ * @par Application API Specification
+ * Described herein are the DeviceSettings HAL types and functions that are part of
+ * the Audio subsystem. The Audio subsystem manages audio-specific HAL operations.
+ *  @{
+ */
+
+/**
+ * @addtogroup dsAudio_HAL Audio HAL
+ *  @{
+ * @par Application API Specification
+ * dsAudio HAL provides an interface for managing Audio related settings
+ */
+
+/**
+ * @defgroup dsAudio_Settings_H DS Audio Settings Header
+ *  @{
+ * @par Application API Specification
+ * dsAudio provides a template for various Audio configurations
+ */
+
+
+#ifndef __DS_AUDIOOUTPUTPORTSETTINGS_H__
+#define __DS_AUDIOOUTPUTPORTSETTINGS_H__
+
+#include "dsUtl.h"
+#include "include/dsAudioVisualTypes.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-#include "dsUtl.h"
-#include "include/dsAudioVisualTypes.h"
 
 namespace  {
 
@@ -40,15 +75,15 @@ namespace  {
  * @brief This enumeration defines the supported audio configurations.
  */
 /// Audio supported port types	
-static const dsAudioPortType_t 	    kSupportedPortTypes[] 				= { dsAUDIOPORT_TYPE_HDMI, dsAUDIOPORT_TYPE_SPDIF };
+static const dsAudioPortType_t 	    kSupportedPortTypes[] 			= { dsAUDIOPORT_TYPE_HDMI, dsAUDIOPORT_TYPE_SPDIF };
 /// Audio supported encoding types
-static const dsAudioEncoding_t 		kSupportedHDMIEncodings[]			= { dsAUDIO_ENC_PCM, dsAUDIO_ENC_AC3};
+static const dsAudioEncoding_t 		kSupportedHDMIEncodings[]		= { dsAUDIO_ENC_PCM, dsAUDIO_ENC_AC3};
 /// Audio supported HDMI compression types
 static const dsAudioCompression_t 	kSupportedHDMICompressions[] 		= { dsAUDIO_CMP_NONE, dsAUDIO_CMP_LIGHT, dsAUDIO_CMP_MEDIUM, dsAUDIO_CMP_HEAVY, };
 /// Audio supported HDMI stereo mode types
 static const dsAudioStereoMode_t 	kSupportedHDMIStereoModes[] 		= { dsAUDIO_STEREO_STEREO, dsAUDIO_STEREO_SURROUND, };
 /// Audio supported SPDIF encoding types
-static const dsAudioEncoding_t 		kSupportedSPDIFEncodings[] 			= { dsAUDIO_ENC_PCM, dsAUDIO_ENC_AC3, };
+static const dsAudioEncoding_t 		kSupportedSPDIFEncodings[] 		= { dsAUDIO_ENC_PCM, dsAUDIO_ENC_AC3, };
 /// Audio supported SPDIF compression types 
 static const dsAudioCompression_t 	kSupportedSPDIFCompressions[] 		= { dsAUDIO_CMP_NONE, dsAUDIO_CMP_LIGHT, dsAUDIO_CMP_MEDIUM, dsAUDIO_CMP_HEAVY, };
 /// Audio supported SPDIF stereo mode types
@@ -59,24 +94,24 @@ static const dsAudioStereoMode_t 	kSupportedSPDIFStereoModes[] 		= { dsAUDIO_STE
  */
 static const dsAudioTypeConfig_t 	kConfigs[]= {
 		{
-		/*.typeId = */					dsAUDIOPORT_TYPE_HDMI,
-		/*.name = */					"HDMI", //HDMI
-		/*.numSupportedCompressions = */dsUTL_DIM(kSupportedHDMICompressions),
+		/*.typeId = */				dsAUDIOPORT_TYPE_HDMI,
+		/*.name = */				"HDMI", //HDMI
+		/*.numSupportedCompressions = */	dsUTL_DIM(kSupportedHDMICompressions),
 		/*.compressions = */			kSupportedHDMICompressions,
-		/*.numSupportedEncodings = */	dsUTL_DIM(kSupportedHDMIEncodings),
-		/*.encodings = */				kSupportedHDMIEncodings,
-		/*.numSupportedStereoModes = */	dsUTL_DIM(kSupportedHDMIStereoModes),
-		/*.stereoModes = */				kSupportedHDMIStereoModes,
+		/*.numSupportedEncodings = */		dsUTL_DIM(kSupportedHDMIEncodings),
+		/*.encodings = */			kSupportedHDMIEncodings,
+		/*.numSupportedStereoModes = */		dsUTL_DIM(kSupportedHDMIStereoModes),
+		/*.stereoModes = */			kSupportedHDMIStereoModes,
 		},
 		{
-		/*.typeId = */					dsAUDIOPORT_TYPE_SPDIF,
-		/*.name = */					"SPDIF", //SPDIF
-		/*.numSupportedCompressions = */dsUTL_DIM(kSupportedSPDIFCompressions),
+		/*.typeId = */				dsAUDIOPORT_TYPE_SPDIF,
+		/*.name = */				"SPDIF", //SPDIF
+		/*.numSupportedCompressions = */	dsUTL_DIM(kSupportedSPDIFCompressions),
 		/*.compressions = */			kSupportedSPDIFCompressions,
-		/*.numSupportedEncodings = */	dsUTL_DIM(kSupportedSPDIFEncodings),
-		/*.encodings = */				kSupportedSPDIFEncodings,
-		/*.numSupportedStereoModes = */	dsUTL_DIM(kSupportedSPDIFStereoModes),
-		/*.stereoModes = */				kSupportedSPDIFStereoModes,
+		/*.numSupportedEncodings = */		dsUTL_DIM(kSupportedSPDIFEncodings),
+		/*.encodings = */			kSupportedSPDIFEncodings,
+		/*.numSupportedStereoModes = */		dsUTL_DIM(kSupportedSPDIFStereoModes),
+		/*.stereoModes = */			kSupportedSPDIFStereoModes,
 		}
 };
 
@@ -100,11 +135,11 @@ static const dsVideoPortPortId_t connectedVOPs[dsAUDIOPORT_TYPE_MAX][dsVIDEOPORT
  */
 static const dsAudioPortConfig_t kPorts[] = {
 		{
-		/*.typeId = */ 					{dsAUDIOPORT_TYPE_HDMI, 0},
+		/*.typeId = */ 				{dsAUDIOPORT_TYPE_HDMI, 0},
 		/*.connectedVOPs = */			connectedVOPs[dsAUDIOPORT_TYPE_HDMI],
 		},
 		{
-		/*.typeId = */ 					{dsAUDIOPORT_TYPE_SPDIF, 0},
+		/*.typeId = */ 				{dsAUDIOPORT_TYPE_SPDIF, 0},
 		/*.connectedVOPs = */			connectedVOPs[dsAUDIOPORT_TYPE_SPDIF],
 		},
 };
@@ -114,7 +149,13 @@ static const dsAudioPortConfig_t kPorts[] = {
 }
 #endif
 
-#endif
+#endif /* __DS_AUDIO_SETTINGS_H__ */
+
+/** @} */ // End of DS Audio Settings Header
+/** @} */ // End of DS Audio HAL
+/** @} */ // End of Device Settings HAL
+/** @} */ // End of Device Settings Module
+/** @} */ // End of HPK
 
 /** @} */
 /** @} */
