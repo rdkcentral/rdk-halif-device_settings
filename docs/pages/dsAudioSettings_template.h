@@ -32,7 +32,7 @@ extern "C" {
 #endif
 
 #include "dsUtl.h"
-#include "dsTypes.h"
+#include "include/dsAudioVisualTypes.h"
 
 namespace  {
 
