@@ -75,24 +75,24 @@ namespace  {
  * @brief This enumeration defines the supported audio configurations.
  */
 /// Audio supported port types	
-static const dsAudioPortType_t 	    kSupportedPortTypes[] 			= { dsAUDIOPORT_TYPE_HDMI, dsAUDIOPORT_TYPE_SPDIF };
+const dsAudioPortType_t 	    kSupportedPortTypes[] 			= { dsAUDIOPORT_TYPE_HDMI, dsAUDIOPORT_TYPE_SPDIF };
 /// Audio supported encoding types
-static const dsAudioEncoding_t 		kSupportedHDMIEncodings[]		= { dsAUDIO_ENC_PCM, dsAUDIO_ENC_AC3};
+const dsAudioEncoding_t 		kSupportedHDMIEncodings[]		= { dsAUDIO_ENC_PCM, dsAUDIO_ENC_AC3};
 /// Audio supported HDMI compression types
-static const dsAudioCompression_t 	kSupportedHDMICompressions[] 		= { dsAUDIO_CMP_NONE, dsAUDIO_CMP_LIGHT, dsAUDIO_CMP_MEDIUM, dsAUDIO_CMP_HEAVY, };
+const dsAudioCompression_t 	kSupportedHDMICompressions[] 		= { dsAUDIO_CMP_NONE, dsAUDIO_CMP_LIGHT, dsAUDIO_CMP_MEDIUM, dsAUDIO_CMP_HEAVY, };
 /// Audio supported HDMI stereo mode types
-static const dsAudioStereoMode_t 	kSupportedHDMIStereoModes[] 		= { dsAUDIO_STEREO_STEREO, dsAUDIO_STEREO_SURROUND, };
+const dsAudioStereoMode_t 	kSupportedHDMIStereoModes[] 		= { dsAUDIO_STEREO_STEREO, dsAUDIO_STEREO_SURROUND, };
 /// Audio supported SPDIF encoding types
-static const dsAudioEncoding_t 		kSupportedSPDIFEncodings[] 		= { dsAUDIO_ENC_PCM, dsAUDIO_ENC_AC3, };
+const dsAudioEncoding_t 		kSupportedSPDIFEncodings[] 		= { dsAUDIO_ENC_PCM, dsAUDIO_ENC_AC3, };
 /// Audio supported SPDIF compression types 
-static const dsAudioCompression_t 	kSupportedSPDIFCompressions[] 		= { dsAUDIO_CMP_NONE, dsAUDIO_CMP_LIGHT, dsAUDIO_CMP_MEDIUM, dsAUDIO_CMP_HEAVY, };
+const dsAudioCompression_t 	kSupportedSPDIFCompressions[] 		= { dsAUDIO_CMP_NONE, dsAUDIO_CMP_LIGHT, dsAUDIO_CMP_MEDIUM, dsAUDIO_CMP_HEAVY, };
 /// Audio supported SPDIF stereo mode types
-static const dsAudioStereoMode_t 	kSupportedSPDIFStereoModes[] 		= { dsAUDIO_STEREO_STEREO, dsAUDIO_STEREO_SURROUND, };
+const dsAudioStereoMode_t 	kSupportedSPDIFStereoModes[] 		= { dsAUDIO_STEREO_STEREO, dsAUDIO_STEREO_SURROUND, };
 
 /* 
  * This enumeration defines the supported Audio port types. 
  */
-static const dsAudioTypeConfig_t 	kConfigs[]= {
+const dsAudioTypeConfig_t 	kConfigs[]= {
 		{
 		/*.typeId = */				dsAUDIOPORT_TYPE_HDMI,
 		/*.name = */				"HDMI", //HDMI
@@ -118,7 +118,7 @@ static const dsAudioTypeConfig_t 	kConfigs[]= {
 /*
  * This enumeration defines the video ports that are connected to each audio port.
  */
-static const dsVideoPortPortId_t connectedVOPs[dsAUDIOPORT_TYPE_MAX][dsVIDEOPORT_TYPE_MAX] = {
+const dsVideoPortPortId_t connectedVOPs[dsAUDIOPORT_TYPE_MAX][dsVIDEOPORT_TYPE_MAX] = {
 		{/*VOPs connected to LR Audio */
 
 		},
@@ -133,7 +133,7 @@ static const dsVideoPortPortId_t connectedVOPs[dsAUDIOPORT_TYPE_MAX][dsVIDEOPORT
 /*
  * This enumeration defines the available audio ports on the device.  
  */
-static const dsAudioPortConfig_t kPorts[] = {
+const dsAudioPortConfig_t kPorts[] = {
 		{
 		/*.typeId = */ 				{dsAUDIOPORT_TYPE_HDMI, 0},
 		/*.connectedVOPs = */			connectedVOPs[dsAUDIOPORT_TYPE_HDMI],
