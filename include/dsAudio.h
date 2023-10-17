@@ -1248,8 +1248,6 @@ dsError_t dsSetAudioDelay(int handle, const uint32_t audioDelayMs);
  * @brief Gets the audio delay offset (in ms) of an audio port.
  *
  * This function returns the audio delay offset (in milliseconds) of the audio port corresponding to specified port handle.
- * 
- * @todo - what does offset actually do
  *
  * @param[in] handle               - Handle for the output Audio port
  * @param[out] audioDelayOffsetMs  - Audio delay offset in milliseconds
