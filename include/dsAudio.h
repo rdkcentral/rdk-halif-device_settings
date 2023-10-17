@@ -19,10 +19,48 @@
 
 /**
  * @file dsAudio.h
+ *
+ * @brief Device Settings HAL Audio Public API.
+ * This API defines the HAL for the Device Settings Audio interface.
+ *
+ * @par Document
+ * Document reference.
+ *
+ * @par Open Issues (in no particular order)
+ * -# None
+ *
+ * @par Assumptions
+ * -# None
+ *
+ * @par Abbreviations
+ * - `DS`     - Device Settings
+ * - `HAL`    - Hardware Abstraction Layer
+ * - `API`    - Application Programming Interface
+ * - `Caller` - Any user of the interface via the `APIs`
+ * - `CB`     - Callback function (suffix)
+ * - `ARC`    - Audio Return Channel
+ * - `eARC`   - Enhanced Audio Return Channel
+ * - `HDMI`   - High-Definition Multimedia Interface
+ * - `LE`     - Loudness Equivalence
+ * - `DRC`    - Dynamic Range Control
+ * - `MI`     - Media Intelligent
+ * - `RF`     - Radio Frequency
+ * - `dB`     - Decibel
+ * - `MS12`   - MultiStream 12
+ * - `AC4`    - Audio Compression 4
+ * - `ms`     - milliseconds
+ * - `CPU`    - Central Processing Unit
+ * - `SAD`    - Short Audio Descriptor
+ * - `DAPV2`  - Dolby Audio Processing Version 2
+ * - `DE`     - Dialog Enhacement
+ *
+ * @par Implementation Notes
+ * -# None
+ *
  */
-
+ 
 /**
- * @addtogroup HPK HPK
+ * @addtogroup HPK Hardware Porting Kit
  * @{
  * @par The Hardware Porting Kit
  * HPK is the next evolution of the well-defined Hardware Abstraction Layer
@@ -36,80 +74,68 @@
  */
 
 /**
- * @addtogroup devicesettings Device Settings - @todo
- *
- * Describe the details about Device Settings HAL API specifications.
- *
- * <b> Following abbreviations present in HAL API </b>
- *
- * @par Abbreviations
- * - `DS`     - Device Settings
- * - `HAL`    - Hardware Abstraction Layer
- * - `API`    - Application Programming Interface
- * - `Caller` - Any user of the interface via the `API`s
- * - `CB`     - Callback function (suffix)
- * - `ARC`    - Audio Return Channel
- * - `eARC`   - Enhanced Audio Return Channel
- * - `HDMI`   - High-Definition Multimedia Interface
- * - `LE`     - Loudness Equivalence
- * - `DRC`    - Dynamic Range Control
- * - `RF`     - Radio Frequency
- * - `dB`     - Decibel
- * - `MS12`   - MultiStream 12
- * - `AC4`    - Audio Compression 4
- * - `ms`     - milliseconds
- * - `CPU`    - Central Processing Unit
- * - `SAD`    - Short Audio Descriptor
- * - `DAPV2`  - Dolby Audio Processing Version 2
- * - `DE`     - Dialog Enhacement
- *
- * @ingroup DSSETTINGS_HAL
+ * @addtogroup Device_Settings Device Settings Module
+ * @{
  */
 
-/** @addtogroup DSHAL_AUDIO_API Device Settings HAL Audio Public API
- *  @ingroup devicesettingshalapi
- *
- *  Described herein are the DeviceSettings HAL types and functions that are part of the
- *  Audio subsystem. The Audio subsystem manages audio hardware operations.
- *
+/**
+ * @addtogroup Device_Settings_HAL Device Settings HAL
+ * @par Application API Specification
+ * Described herein are the DeviceSettings HAL types and functions that are part of
+ * the HdmiIn subsystem. The HdmiIn subsystem manages system-specific HAL operations.
  *  @{
  */
 
-#ifndef _DS_AUDIOOUTPORT_H_
-#define _DS_AUDIOOUTPORT_H_
+/**
+*   @defgroup dsHdmiIn_HAL DS Audio HAL
+ *  @{
+ * @par Application API Specification
+ * dsHdmiIn HAL provides an interface for managing the Audio settings for the device settings module
+ */
+
+/**
+ * @defgroup DSHAL_AUDIO_API DS HAL Audio Public APIs
+ *  @{
+ */
+
+#ifndef __DS_AUDIOOUTPORT_H__
+#define __DS_AUDIOOUTPORT_H__
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include <sys/types.h>
 #include "dsError.h"
-#include "dsTypes.h"
+#include "dsAudioVisualTypes.h"
 
 /**
  * @brief Callback function used to notify the Audio port connection status change to the `caller`.
  *
- * HAL Implementation should call this method to deliver updated Audio port connection event
+ * HAL Implementation should call this method to deliver updated audio port connection event
  * to the `caller`.
  * 
- * @param[in] portType  - Type of the audio port where connection status is changed
+ * @param[in] portType  - Type of the audio port where connection status is changed. @see dsAudioPortType_t
  * @param[in] uiPortNo  - Port number in which the connection status changed
- * @param[in] isPortCon - Current connection status of the port
+ * @param[in] isPortCon - Current connection status of the audio port
+ *
+ * @pre - dsAudioOutRegisterConnectCB
  */
 typedef void (*dsAudioOutPortConnectCB_t)(dsAudioPortType_t portType, unsigned int uiPortNo, bool isPortCon);
 
 /**
- * @brief Callback function used to notify Audio Format change to the `Caller`
+ * @brief Callback function used to notify Audio Format change to the `caller`.
  *
- * HAL Implementation should call this method to deliver updated Audio Format event
+ * HAL Implementation should call this method to deliver updated audio format event
  * to the `caller`.
  * 
- * @param[in] audioFormat : New audio format @see dsAudioFormat_t
+ * @param[in] audioFormat : New audio format. @see dsAudioFormat_t
+ *
+ * @pre - dsAudioFormatUpdateRegisterCB
  */
 typedef void (*dsAudioFormatUpdateCB_t)(dsAudioFormat_t audioFormat);
 
 /**
- * @brief Initializes the Audio Port sub-system of Device Settings HAL.
+ * @brief Initializes the audio port sub-system of Device Settings HAL.
  * 
  * This function initializes all the audio output ports and allocates required resources. 
  * It must return dsERR_OPERATION_NOT_SUPPORTED when there are no audio ports present in the device 
@@ -157,8 +183,8 @@ dsError_t  dsAudioPortTerm();
  * dsERR_OPERATION_NOT_SUPPORTED if an unavailable audio port is requested.
  *
  * @param[in] type     - Type of audio port (HDMI, SPDIF and so on). @see dsAudioPortType_t
- * @param[in] index    - Index of audio port depending on the available ports(0, 1, ...). Maximum value of number of ports is platform specific.
- * @param[out] handle  - Pointer to hold the handle of the audio port.
+ * @param[in] index    - Index of audio port depending on the available ports(0, 1, ...). Maximum value of number of ports is platform specific. @see dsAudioPortConfig_t
+ * @param[out] handle  - Pointer to hold the handle of the audio port
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -180,8 +206,6 @@ dsError_t  dsGetAudioPort(dsAudioPortType_t type, int index, int *handle);
  *
  * @param[in] handle     -  Handle for the output audio port
  * @param[out] encoding  -  Pointer to hold the encoding setting of the audio port.@see dsAudioEncoding_t
- *
- * @todo - see if this is used or can be removed
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -204,7 +228,7 @@ dsError_t  dsGetAudioEncoding(int handle, dsAudioEncoding_t *encoding);
  * This function sets the audio encoding type to be used on the specified audio port.
  *
  * @param[in] handle    - Handle for the output audio port
- * @param[in] encoding  - The encoding type to be used on the audio port
+ * @param[in] encoding  - The encoding type to be used on the audio port. @see dsAudioEncoding_t
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -389,7 +413,8 @@ dsError_t  dsSetDolbyVolumeMode(int handle, bool mode);
  * @param[out] mode  - Pointer to Intelligent Equalizer mode. 0 = OFF, 1 = Open, 2 = Rich, 3 = Focused,
  *                       4 = Balanced, 5 = Warm, 6 = Detailed
  *
- * @todo - make modes to enums
+ * @todo - Intelligent Equalizer modes will be moved to enums in next phase
+ *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
@@ -575,7 +600,7 @@ dsError_t  dsEnableSurroundDecoder(int handle, bool enabled);
  * @param[in] handle - Handle for the output Audio port
  * @param[out] mode  - Pointer to DRC mode (0 for DRC line mode and 1 for DRC RF mode)
  * 
- * @todo enum for DRC mode
+ * @todo DRC modes will be moved to enums in next phase
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -715,7 +740,7 @@ dsError_t  dsSetMISteering(int handle, bool enabled);
  * @param[in] handle - Handle for the output audio port.
  * @param[out] mode  - Graphic Equalizer Mode. 0 = EQ OFF, 1 = EQ Open, 2 = EQ Rich and 3 = EQ Focused 
  *
- * @todo mode to enum
+ * @todo Graphic Equalizer modes will be moved to enums in the next phase
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -809,7 +834,7 @@ dsError_t  dsGetMS12AudioProfile(int handle, char *profile);
  * @param[in] handle - Handle for the HDMI ARC/eARC port
  * @param[out] types - Value of supported ARC types. @see dsAudioARCTypes_t
  * 
- * @todo return enum instead of int*
+ * @todo Return enum instead of int * will be done in next phase
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -924,6 +949,8 @@ dsError_t  dsSetStereoMode(int handle, dsAudioStereoMode_t mode);
  *
  * @param[in] handle     - Handle for the output audio port
  * @param[out] autoMode  - Pointer to hold the auto mode setting (0 for Disabled, 1 for Enabled) of the specified audio port
+ * 
+ * @todo autoMode will be moved to bool in next phase
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -1950,7 +1977,7 @@ dsError_t  dsGetFaderControl(int handle, int* mixerbalance);
  * This function will set AC4 Primary language
  *
  * @param[in] handle  - Handle for the output Audio port
- * @param[in] pLang   - 3 letter language code string as per ISO 639. @todo - refer the correct ISO version
+ * @param[in] pLang   - char* 3 letter language code string as per ISO 639.
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
