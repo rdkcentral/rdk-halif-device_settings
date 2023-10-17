@@ -48,36 +48,38 @@
 - `HDMI`   - High-Definition Multimedia Interface
 - `LE`     - Loudness Equivalence
 - `DRC`    - Dynamic Range Control
+- `MI`     - Media Intelligent
 - `RF`     - Radio Frequency
 - `dB`     - Decibel
 - `MS12`   - MultiStream 12
 - `AC4`    - Audio Compression 4
 - `ms`     - milliseconds
 - `CPU`    - Central Processing Unit
+- `SoC`    - System-on-Chip
 
 ## References
 
 
 ## Description
 
-The diagram below describes a high-level software architecture of the Device Settings Audio module.
+The diagram below describes a high-level software architecture of the `DS` Audio module.
 
 ```mermaid
 %%{ init : { "theme" : "forest", "flowchart" : { "curve" : "linear" }}}%%
 flowchart TD
 y[Caller]<-->x[DEVICE SETTINGS AUDIO HAL];
-x[DEVICE SETTINGS AUDIO HAL]<-->z[Audio Driver];
+x[DEVICE SETTINGS AUDIO HAL]<-->z[Audio SoC Driver];
 style y fill:#99CCFF,stroke:#333,stroke-width:0.3px,align:left
 style z fill:#fcc,stroke:#333,stroke-width:0.3px,align:left
 style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
  ```
 
 
-This interface provides a set of `APIs` to facilitate communication to the Audio Driver. 
+This interface provides a set of `APIs` to facilitate communication to the Audio `SoC` Driver. 
 
-This interface provides control to enable or disable Audio Output ports like TV Internal Speakers, `ARC`/`eARC`, Headphones, `SPDIF` and allows `caller` to configure or retrieve various audio parameters like audio encoding, audio compression, dialog enhancement, dolby volume mode, intelligent equalizer, volume leveller, bass enhancer, `DRC` mode, surround virtualizer, MI steering, graphic equalizer, `MS12` audio profile, stereo mode, audio gain, audio `dB`, audio level, audio max and min `dB`, audio delay, fader control, primary language and secondary language. It also provides `APIs` to  enable loop through, set audio ducking, enable `LE`, get the Atmos capability of sink device
+This interface provides control to enable or disable Audio Output ports like TV Internal Speakers, `ARC`/`eARC`, Headphones, `SPDIF` and allows `caller` to configure or retrieve various audio parameters like audio encoding, audio compression, dialog enhancement, dolby volume mode, intelligent equalizer, volume leveller, bass enhancer, `DRC` mode, surround virtualizer, `MI` steering, graphic equalizer, `MS12` audio profile, stereo mode, audio gain, audio `dB`, audio level, audio max and min `dB`, audio delay, fader control, primary language and secondary language. It also provides `APIs` to  enable loop through, set audio ducking, enable `LE`, get the Atmos capability of sink device
 
-Vendor shall follow the configurations - dsAudioSettings.h file can be pointed
+Audio Settings template can be found [here](docs/pages/dsAudioSettings_template.h "dsAudioSettings_template.h")
 
 
 ## Component Runtime Execution Requirements
@@ -176,7 +178,7 @@ The `caller` is expected to have complete control over the life cycle of the `HA
 
 1. Initialize the `DS` Audio `HAL` using function: `dsAudioPortInit()` before making any other `API` calls.  If `dsAudioPortInit()` call fails, the `HAL` must return the respective error code, so that the `caller` can retry the operation.
 
-2. Once the Audio Ports are initialized, Audio Output ports like TV Internal Speakers, `ARC`/`eARC`, Headphones, `SPDIF` can be enabled or disabled using Audio Port Handle based on file. 
+2. Once the Audio Ports are initialized, Audio Output ports like TV Internal Speakers, `ARC`/`eARC`, Headphones, `SPDIF` can be enabled or disabled using Audio Port Handle based on [Audio Settings Template](docs/pages/dsAudioSettings_template.h "dsAudioSettings_template.h"). 
 
 3. The following Audio functionalities are supported:
    - Audio Encoding
@@ -186,7 +188,7 @@ The `caller` is expected to have complete control over the life cycle of the `HA
    - Dolby Volume Mode
    - Audio Ducking
    - Bass Enhancer
-   - MI Steering
+   - `MI` Steering
    - `LE`
    - Stereo Mode
    - Audio Gain
@@ -230,12 +232,12 @@ NOTE: The module would operate deterministically if the above call sequence is f
     HAL->>Driver:Specified Audio Port is enabled or disabled 
     Driver-->>HAL:return
     HAL-->>Caller:return
-    Caller->>HAL:ds_Audio_SetMethods()
+    Caller->>HAL:dsAudio_SetMethods()
     Note over HAL: APIs to set the Audio related parameters 
     HAL->>Driver: Set the Audio Paramters using Audio Port Handle
     Driver-->>HAL:return
     HAL-->>Caller:return
-    Caller->>HAL:ds_Audio_GetMethods()
+    Caller->>HAL:dsAudio_GetMethods()
     Note over HAL: APIs to get the Audio related parameters 
     HAL->>Driver: Get the Audio Paramters using Audio Port Handle
     Driver-->>HAL:return
@@ -262,7 +264,7 @@ NOTE: The module would operate deterministically if the above call sequence is f
 
 <b>LEGEND:</b>
 
-<b>ds_Audio_SetMethods:</b>
+<b>dsAudio_SetMethods:</b>
 dsSetAudioEncoding(),
 dsSetAudioCompression(),
 dsSetDialogEnhancement(),
@@ -290,7 +292,7 @@ dsSetFaderControl(),
 dsSetPrimaryLanguage(),
 dsSetSecondaryLanguage()
 
-<b>ds_Audio_GetMethods:</b>
+<b>dsAudio_GetMethods:</b>
 dsGetAudioEncoding(),
 dsGetAudioFormat(),
 dsGetAudioCompression(),
