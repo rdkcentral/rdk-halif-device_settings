@@ -40,7 +40,7 @@
 - `DS`     - Device Settings
 - `HAL`    - Hardware Abstraction Layer
 - `API`    - Application Programming Interface
-- `Caller` - Any user of the interface via the `API`s
+- `Caller` - Any user of the interface via the `APIs`
 - `CB`     - Callback function (suffix)
 - `ARC`    - Audio Return Channel
 - `eARC`   - Enhanced Audio Return Channel
@@ -94,7 +94,7 @@ Failure to meet these requirements will likely result in undefined and unexpecte
 
 ### Threading Model
 
-This interface is not required to be thread safe. Any `caller` invoking the APIs must ensure calls are made in a thread safe manner. This interface is allowed to create internal threads for its operations without excessively consuming system resources. Any threads created by this interface must be handled gracefully and respective error codes must be returned if any corresponding `API` fails.
+This interface is not required to be thread safe. Any `caller` invoking the `APIs` must ensure calls are made in a thread safe manner. This interface is allowed to create internal threads for its operations without excessively consuming system resources. Any threads created by this interface must be handled gracefully and respective error codes must be returned if any corresponding `API` fails.
 
 ### Process Model
 
@@ -122,11 +122,11 @@ This interface is not required to have any blocking calls. Synchronous calls mus
 
 ### Internal Error Handling
 
-All the `API`s must return error synchronously as a return argument. `HAL` is responsible for handling system errors (e.g. out of memory) internally.
+All the `APIs` must return error synchronously as a return argument. `HAL` is responsible for handling system errors (e.g. out of memory) internally.
 
 ### Persistence Model
 
-There is no requirement for the interface to persist any setting information. Caller is responsible to persist any settings related to this interface.
+There is no requirement for the interface to persist any setting information. `Caller` is responsible to persist any settings related to this interface.
 
 
 ## Non-functional requirements
@@ -139,7 +139,7 @@ This interface is required to support DEBUG, INFO and ERROR messages. INFO and D
 
 ### Memory and performance requirements
 
-This interface will ensure optimal use of memory and CPU according to the specific capabilities of the platform.
+This interface will ensure optimal use of memory and `CPU` according to the specific capabilities of the platform.
 
 ### Quality Control
 
@@ -255,7 +255,7 @@ NOTE: The module would operate deterministically if the above call sequence is f
     HAL->>Driver: Get the HDMI ARC Port ID   
     Driver-->>HAL:return
     HAL-->>Caller:return
-    Caller ->>HAL:dsFPTerm()
+    Caller ->>HAL:dsAudioTerm()
     HAL ->> Driver: 
     Driver-->>HAL:return
     HAL-->>Caller:return
