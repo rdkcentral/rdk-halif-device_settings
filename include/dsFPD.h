@@ -111,8 +111,8 @@ dsError_t dsFPInit (void);
  *
  * @param[in] eIndicator        -  FPD indicator index. @see dsFPDIndicator_t
  * @param[in] uBlinkDuration    -  Blink interval. The time in ms the text display will remain ON 
- *                                   during one blink iteration.
- * @param[in] uBlinkIterations  -  The number of iterations per minute data will blink
+ *                                   during one blink iteration. Max 5000ms
+ * @param[in] uBlinkIterations  -  The number of iterations per minute data will blink. Max 180
  * 
  * @return dsError_t                      -  Status
  * @retval dsERR_NONE                     -  Success
