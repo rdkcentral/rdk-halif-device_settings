@@ -64,7 +64,7 @@ style z fill:#fcc,stroke:#333,stroke-width:0.3px,align:left
 style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
  ```
 
-`DS` Video Port `HAL` provides a set of `APIs` to initialize, query and set information about the Video ports like getting  video port handle, fetching connected display information such as color depth, color space, matrix coefficients, quantization range, supported video resolutions using the video port handle. It is also used to enable or disable content protection like HDCP and DTCP. It provides `APIs` to set  the `SCART` parameters , background color and preferred color depth of the video port.
+`DS` Video Port `HAL` provides a set of `APIs` to initialize, query and set information about the Video ports like getting  video port handle, fetching connected display information such as color depth, color space, matrix coefficients, quantization range, supported video resolutions using the video port handle. It also provides `APIs` to enable or disable content protection like HDCP and DTCP, to set  the `SCART` parameters , background color and preferred color depth of the video port.
 
 
 ## Component Runtime Execution Requirements
@@ -97,8 +97,8 @@ Although this interface is not required to be involved in any of the power manag
 
 This interface must support asynchronous notifications operations:
 
- - `dsRegisterHdcpStatusCallback()` must facilitate asynchronous status notifications using the callback when the connection status of the callback `dsHDCPStatusCallback_t`. This callback must be triggered when the connection status when the HDCP status of video port changes.
- - `dsVideoFormatUpdateRegisterCB()` must facilitate asynchronous status notifications using the callback `dsVideoFormatUpdateCB`. This callback must be used when the video format changes.
+ - `dsHDCPStatusCallback_t` is triggered when the connection status when the HDCP status of video port changes.
+ -`dsVideoFormatUpdateCB` is triggered when the video format changes.
  
 
  This interface is allowed to establish its own thread context for its operation, ensuring minimal impact on system resources. Additionally, this interface is responsible for releasing the resources it creates for its operation once the respective operation concludes.
@@ -114,7 +114,8 @@ The `API` must return error synchronously as a return argument. This interface i
 
 ### Persistence Model
 
-There is no requirement for the interface to persist any setting information. `Caller` is responsible to persist any settings related to this interface.
+- The resolution of the Video Port is persisted in a local file for `dsSetResolution()`.
+- The preferred color depth values are persisted in a local file for `dsGetPreferredColorDepth()` and `dsSetPreferredColorDepth()`.
 
 ## Non-functional requirements
 
@@ -170,8 +171,8 @@ The `caller` is expected to have complete control over the life cycle of the `HA
 3. The `caller` can call `dsGetVideoPort()`, `dsGetSurroundMode()`, `dsGetResolution()`, `dsIsVideoPortEnabled()`, `dsIsDisplayConnected()`,  `dsIsDisplaySurround()`, `dsGetSurroundMode()`, `dsIsVideoPortActive()`, `dsIsDTCPEnabled()` , `dsIsHDCPEnabled()`, `dsGetResolution()`, `dsGetHDCPStatus()`, `dsGetHDCPProtocol()`, `dsGetHDCPReceiverProtocol()`, `dsGetHDCPCurrentProtocol()`, `dsGetTVHDRCapabilities()`, `dsGetForceDisable4KSupport()`, `dsGetVideoEOTF()`, `dsGetMatrixCoefficients()`, `dsGetColorDepth()` to query the needed information.
 
 4. Callbacks can be set with:
-    - `dsRegisterHdcpStatusCallback()` - triggered when there is a change in HDCP status of the video port
-    - `dsVideoFormatUpdateCB()` - triggered when there is a change in video format of the content
+    - `dsRegisterHdcpStatusCallback()` is triggered when there is a change in HDCP status of the video port
+    - `dsVideoFormatUpdateCB()` is triggered when there is a change in video format of the content
     
 
 5. De-initialize the `HAL` using `dsVideoPortTerm()`
