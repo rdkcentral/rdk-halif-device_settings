@@ -16,7 +16,38 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
 */
- 
+
+/**
+ * @file dsHdmiIn.h
+ *
+ * @brief Device Settings HAL HDMI input Public API.
+ * This API defines the HAL for the Device Settings HDMI input interface.
+ *
+ * @par Document
+ * Document reference.
+ *
+ * @par Open Issues (in no particular order)
+ * -# None
+ *
+ * @par Assumptions
+ * -# None
+ *
+ * @par Abbreviations
+ * - cb:      Callback function (suffix).
+ * - DS:      Device Settings.
+ * - HAL:     Hardware Abstraction Layer.
+ * - EDID:    Extended Display Identification Data.
+ * - HDMI:    High-Definition Multimedia Interface
+ * - DVI:     Digital Visual Interface
+ * - EDID:    Extended Display Identification Data
+ * - HDCP:    High-bandwidth Digital Content Protection
+ * - SoC:     System on chip
+ *
+ * @par Implementation Notes
+ * -# None
+ *
+ */
+
 /**
  * @addtogroup HPK Hardware Porting Kit
  * @{
@@ -38,7 +69,7 @@
 /**@addtogroup Device_Settings_HAL Device Settings HAL
  * @par Application API Specification
  * Described herein are the DeviceSettings HAL types and functions that are part of
- * the Host subsystem. The Host subsystem manages system-specific HAL operations.
+ * the Display subsystem. The Display subsystem manages displayu-specific HAL operations.
  *  @{
  */
 
@@ -52,22 +83,6 @@
  *
  *
  *  @{
- */
-
-/** 
- * Describe the details about Device Settings HAL API specifications.
- *
- * <b> Following abbreviations present in Device Settings Display HAL APIs </b>
- *
- * @par Abbreviations
- * - cb     - Callback function (suffix)
- * - DS     - Device Settings
- * - HAL    - Hardware Abstraction Layer
- * - HDMI   - High-Definition Multimedia Interface
- * - DVI    - Digital Visual Interface
- * - EDID   - Extended Display Identification Data
- * - Rx     - Receive and Transmit
- * - HDCP   - High-bandwidth Digital Content Protection
  */
  
 #ifndef __DS_VIDEODISPLAY_H__
