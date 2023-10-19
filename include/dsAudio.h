@@ -880,7 +880,8 @@ dsError_t dsAudioSetSAD(int handle, dsAudioSADList_t sad_list);
  * This function enables/disables ARC/EARC and routes audio to connected device. @see _dsAudioARCStatus_t and dsAudioARCTypes_t
  *
  * @param[in] handle    - Handle for the HDMI ARC/eARC port
- * @param[in] arcStatus - enable(1)/disable(0) ARC/eARC feature. @see _dsAudioARCStatus_t
+ * @param[in] arcStatus - ARC/eARC feature. @see _dsAudioARCStatus_t
+ *                          ( @a true to enable ARC/eARC, @a false to disable )
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -950,7 +951,7 @@ dsError_t  dsSetStereoMode(int handle, dsAudioStereoMode_t mode);
  * This function returns the current auto mode of audio port corresponding to specified port handle.
  *
  * @param[in] handle     - Handle for the output audio port
- * @param[out] autoMode  - Pointer to hold the auto mode setting (0 for Disabled, 1 for Enabled) of the specified audio port
+ * @param[out] autoMode  - Pointer to hold the auto mode setting ( @a if enabled, @a false if disabled) of the specified audio port
  * 
  * @todo autoMode will be moved to bool in next phase
  *
@@ -975,7 +976,7 @@ dsError_t  dsGetStereoAuto(int handle, int *autoMode);
  * This function sets the auto mode to be used on the specified audio port.
  *
  * @param[in] handle    - Handle for the output audio port.
- * @param[in] autoMode  - Indicates the auto mode (0 for Disabled, 1 for Enabled ) to be used on audio port.
+ * @param[in] autoMode  - Indicates the auto mode ( @a true if enabled, @a false if disabled ) to be used on audio port.
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -1296,7 +1297,7 @@ dsError_t dsSetAudioDelayOffset(int handle, const uint32_t audioDelayOffsetMs);
  * This function will set the Audio Atmos output mode.
  *
  * @param[in] handle  - Handle for the output Audio port
- * @param[in] enable  - Audio ATMOS output mode(1 = enable and 0 = disable)
+ * @param[in] enable  - Audio ATMOS output mode( @a true to enable  @a false to disable)
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -1361,7 +1362,7 @@ dsError_t  dsIsAudioLoopThru(int handle, bool *loopThru);
  *
  * @param[in] handle  - Handle for the output audio port
  * @param[out] muted  - Mute status of the specified audio port
- *                        (True if audio is muted, false otherwise)
+ *                        ( @a true if audio is muted, @a false otherwise)
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -1383,7 +1384,7 @@ dsError_t  dsIsAudioMute(int handle, bool *muted);
  *
  * @param[in] handle    - Handle of the output audio port
  * @param[out] enabled  - Audio port enabled/disabled state
- *                          (true when audio port is enabled, false otherwise)
+ *                          ( @a true when audio port is enabled, @a false otherwise)
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -1405,7 +1406,7 @@ dsError_t  dsIsAudioPortEnabled(int handle, bool *enabled);
  *
  * @param[in] handle   - Handle of the output audio port
  * @param[in] enabled  - Flag to control the audio port state
- *                         (true to enable, false to disable)
+ *                         ( @a true to enable, @a false to disable)
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -1727,6 +1728,8 @@ dsError_t dsGetAudioCapabilities(int handle, int *capabilities);
  * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ * 
+ * @todo return type of capabilities will be changed to dsMS12Capabilities_t in next phase
  * 
  * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
  * 
