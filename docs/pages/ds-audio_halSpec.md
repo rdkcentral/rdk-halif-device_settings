@@ -11,7 +11,6 @@
 ## Table of Contents
 
 - [Acronyms, Terms and Abbreviations](#acronyms-terms-and-abbreviations)
-- [References](#references)
 - [Description](#description)
 - [Component Runtime Execution Requirements](#component-runtime-execution-requirements)
   - [Initialization and Startup](#initialization-and-startup)
@@ -56,8 +55,6 @@
 - `ms`     - milliseconds
 - `CPU`    - Central Processing Unit
 - `SoC`    - System-on-Chip
-
-## References
 
 
 ## Description
