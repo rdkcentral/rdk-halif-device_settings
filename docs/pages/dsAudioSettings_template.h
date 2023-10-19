@@ -1,4 +1,4 @@
-/*
+f/*
  * If not stated otherwise in this file or this component's Licenses.txt file the
  * following copyright and licenses apply:
  *
@@ -59,8 +59,8 @@
  */
 
 
-#ifndef __DS_AUDIOOUTPUTPORTSETTINGS_H__
-#define __DS_AUDIOOUTPUTPORTSETTINGS_H__
+#ifndef __DS_AUDIO_SETTINGS_H__
+#define __DS_AUDIO_SETTINGS_H__
 
 #include "dsUtl.h"
 #include "include/dsAudioVisualTypes.h"
@@ -157,5 +157,3 @@ const dsAudioPortConfig_t kPorts[] = {
 /** @} */ // End of Device Settings Module
 /** @} */ // End of HPK
 
-/** @} */
-/** @} */
