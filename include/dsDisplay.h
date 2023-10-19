@@ -63,6 +63,8 @@
  * - cb     - Callback function (suffix)
  * - DS     - Device Settings
  * - HAL    - Hardware Abstraction Layer
+ * - HDMI   - High-Definition Multimedia Interface
+ * - DVI    - Digital Visual Interface
  * - EDID   - Extended Display Identification Data
  * - Rx     - Receive and Transmit
  * - HDCP   - High-bandwidth Digital Content Protection
@@ -106,7 +108,7 @@ typedef enum _dsDisplayEvent_t {
  * @pre dsRegisterDisplayEventCallback()
  */
 typedef void (*dsDisplayEventCallback_t)(int handle, dsDisplayEvent_t event,
-                                             void *eventData/*Optional*/);
+                                             void* eventData/*Optional*/);
 
 /**
  * @brief Initializes the DS Display sub-system.
@@ -152,7 +154,7 @@ dsError_t dsDisplayInit();
  * @warning  This API is Not thread safe
  * 
  */
- dsError_t dsGetDisplay(dsVideoPortType_t vType, int index, intptr_t *handle);
+ dsError_t dsGetDisplay(dsVideoPortType_t vType, int index, intptr_t* handle);
   
 /** 
  * @brief Gets the EDID information from the specified display device.
@@ -175,7 +177,7 @@ dsError_t dsDisplayInit();
  * @warning  This API is Not thread safe
  * 
  */
-dsError_t dsGetEDID(intptr_t handle, dsDisplayEDID_t *edid);
+dsError_t dsGetEDID(intptr_t handle, dsDisplayEDID_t* edid);
 
 /**
  * @brief Gets the EDID buffer and EDID length of connected display device. 
@@ -184,7 +186,7 @@ dsError_t dsGetEDID(intptr_t handle, dsDisplayEDID_t *edid);
  * the specified display device handle.
  *
  * @param[in] handle    - Handle of the display device
- * @param[out] edid     - EDID raw buffer of the current display device
+ * @param[out] edid     - size of EDID raw buffer
  * @param[out] length   - length of the EDID buffer data. Min value is 0
  *
  * @return dsError_t                        - Status
@@ -198,7 +200,7 @@ dsError_t dsGetEDID(intptr_t handle, dsDisplayEDID_t *edid);
  * @warning  This API is Not thread safe
  * 
  */
-dsError_t dsGetEDIDBytes(intptr_t handle, unsigned char **edid, int *length);
+dsError_t dsGetEDIDBytes(intptr_t handle, unsigned char** edid, int* length);
 
 /**
  * @brief Gets the aspect ratio of connected display device.
@@ -222,7 +224,7 @@ dsError_t dsGetEDIDBytes(intptr_t handle, unsigned char **edid, int *length);
  * @warning  This API is Not thread safe
  * 
  */
-dsError_t dsGetDisplayAspectRatio(intptr_t handle, dsVideoAspectRatio_t *aspectRatio);
+dsError_t dsGetDisplayAspectRatio(intptr_t handle, dsVideoAspectRatio_t* aspectRatio);
 
 /**
  * @brief Terminate the display sub-system.
