@@ -62,6 +62,8 @@ style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
 
 The primary objective of this module is to streamline communication between the `caller` and the `HAL` interface. This allows the `caller` to inquire about information related to the EDID, Aspect Ratio and other `HDMI` related information of the connected display device. Additionally, the module notifies the `caller` about Display Device parameters, such as Device Connection/Disconnection, HDCP Protocol Changes, and RX Sense ON/OFF etc.
 
+Display module will get its configuration profile from [videoPortSettings.h](include/dsVideoPortSettings_sample.h) 
+
 ## Component Runtime Execution Requirements
 
 This interface  must adeptly manage resources to prevent issues like memory leaks and excessive utilization. It must also meet performance goals for response time, throughput, and resource use as per the platform's capabilities.
