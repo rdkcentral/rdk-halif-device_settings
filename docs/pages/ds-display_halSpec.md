@@ -38,6 +38,8 @@
 - `Caller`  - Any user of the interface via the `API`
 - `DS`      - Device Settings
 - `HAL`     - Hardware Abstraction Layer
+- `HDMI`    - High-Definition Multimedia Interface
+- `DVI`     - Digital Visual Interface
 - `EDID`    - Extended Display Identification Data
 - `HDCP`    - High-bandwidth Digital Content Protection
 - `SoC`     - System on chip
@@ -56,9 +58,9 @@ style z fill:#fcc,stroke:#333,stroke-width:0.3px,align:left
 style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
  ```
 
-`DS` Display `HAL` provides a set of `APIs` to manage operations related to connected display devices connected to HDMI Output port of the source devices.
+`DS` Display `HAL` provides a set of `APIs` to manage operations related to connected display devices connected to `HDMI` Output port of the source devices.
 
-The main purpose of this module is to facilitate communication between the `caller`, and `HAL` interface, such that information about the `EDID` , Aspect Ratio of connected display device can be queried by the `caller`. The Display Device parameters such as Device Connected/Disconnected, `HDCP` Protocol Changes, RX Sense ON/OFF are notified to the `caller`.
+The primary objective of this module is to streamline communication between the `caller` and the `HAL` interface. This allows the `caller` to inquire about information related to the EDID, Aspect Ratio and other `HDMI` related information of the connected display device. Additionally, the module notifies the `caller` about Display Device parameters, such as Device Connection/Disconnection, HDCP Protocol Changes, and RX Sense ON/OFF etc.
 
 ## Component Runtime Execution Requirements
 
@@ -68,7 +70,7 @@ Failure to meet these requirements will likely result in undefined and unexpecte
 
 ### Initialization and Startup
 
-`Caller` must initialize `dsDisplay` by calling `dsDisplayInit()` before calling any other `APIs`. The `caller` is expected to have complete control over the life cycle of the this module.
+`Caller` must initialize this interface by calling `dsDisplayInit()` before calling any other API. The `caller` is expected to have complete control over the life cycle of the this module.
 
 ### Threading Model
 
@@ -89,7 +91,8 @@ The `DS` Display `HAL` is not involved in the power management operation.
 ### Asynchronous Notification Model
 
 The below mentioned callback registration is used for aysnchronous notification:
-- dsRegisterDisplayEventCallback() - Callback registration which for display related events
+
+- dsDisplayEventCallback_t() - is triggered when there is a change in display related events like Device Connection/Disconnection, HDCP Protocol Changes, and RX Sense                                       ON/OFF 
 
 
 ### Blocking calls
@@ -151,11 +154,11 @@ This interface is not required to have any platform or product customizations.
 
 The `caller` is expected to have complete control over the life cycle of the `HAL`.
 
-1. Initialize the `DS` Display `HAL` using function: `dsDisplayInit()` before making any other `API` calls.  If `dsDisplayInit()` call fails, the `HAL` must return the respective error code, so that the `caller` can retry the operation.
+1. Initialize the interface using: `dsDisplayInit()` before making any other `API` calls.  If `dsDisplayInit()` call fails, the `HAL` must return the respective error code, so that the `caller` can retry the operation.
 
-2. The `caller` can call `dsGetEDID()`, `dsGetDisplayAspectRatio()` and `dsGetEDIDBytes()` to query the information of connected display device. It is also used to notify `HDCP` Protocol changes of display device to the `caller`.
+2. The `caller` can call `dsGetEDID()`, `dsGetDisplayAspectRatio()` and `dsGetEDIDBytes()` to query the information of connected display device. This interface is also used to notify `HDCP` Protocol changes of display device to the `caller`.
 
-3. De-initialize the `HAL` using the function: `dsDisplayTerm()`
+3. De-initialize the HAL using `dsDisplayTerm()`.
 
 ### Diagrams
 
