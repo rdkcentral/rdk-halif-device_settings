@@ -1707,6 +1707,8 @@ dsError_t dsAudioFormatUpdateRegisterCB(dsAudioFormatUpdateCB_t cbFun);
  * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ *
+ * @todo return type of capabilities will be changed to dsMS12Capabilities_t in next phase
  * 
  * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
  * 
