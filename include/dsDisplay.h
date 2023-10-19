@@ -152,7 +152,7 @@ dsError_t dsDisplayInit();
  * corresponding to the specified video port.
  *
  * @param[in]  vType    - Type of video port. @see dsVideoPortType_t
- * @param[in]  index    - Index of the video port
+ * @param[in]  index    - Index of the video port. (Index of the port must be 0 if not specified)
  *                          Max index is platform specific. Min value is 0.
  * @param[out] handle   - Pointer to hold the handle of display device corresponding 
  *                          to specified video port
