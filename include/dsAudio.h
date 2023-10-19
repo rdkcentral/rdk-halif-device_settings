@@ -205,7 +205,7 @@ dsError_t  dsGetAudioPort(dsAudioPortType_t type, int index, int *handle);
  * This function returns the current audio encoding setting for the specified audio port.
  *
  * @param[in] handle     -  Handle for the output audio port
- * @param[out] encoding  -  Pointer to hold the encoding setting of the audio port.@see dsAudioEncoding_t , @see [dsAudioSettings_template.h](docs/pages/dsAudioSettings_template.h "dsAudioSettings_template.h")
+ * @param[out] encoding  -  Pointer to hold the encoding setting of the audio port.@see dsAudioEncoding_t , @link dsAudioSettings_template.h @endlink
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
