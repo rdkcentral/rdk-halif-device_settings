@@ -128,7 +128,7 @@ typedef void (*dsAudioOutPortConnectCB_t)(dsAudioPortType_t portType, unsigned i
  * HAL Implementation should call this method to deliver updated audio format event
  * to the `caller`.
  * 
- * @param[in] audioFormat : New audio format. @see dsAudioFormat_t
+ * @param[in] audioFormat : New audio format of the active port. @see dsAudioFormat_t
  *
  * @pre - dsAudioFormatUpdateRegisterCB
  */
@@ -856,7 +856,7 @@ dsError_t dsGetSupportedARCTypes(int handle, int *types);
  *
  * This function sets the Short Audio Descriptor based on best available options
  * of Audio capabilities supported by connected ARC device. Required when ARC output
- * mode is Auto/Passthrough. @see dsAudioSADList_t
+ * mode is Auto/Passthrough. @see dsAudioSADList_t, @see dsSetStereoMode
  * 
  * @param[in] handle   - Handle for the HDMI ARC/eARC port.
  * @param[in] sad_list - All SADs retrieved from CEC for the connected ARC device.
@@ -1139,7 +1139,7 @@ dsError_t  dsSetAudioLevel(int handle, float level);
 /**
  * @brief Gets the maximum audio dB level of an audio port.
  * 
- * This function returns the maximum audio dB level supported by the audio port corresponding to specified port handle.
+ * This function returns the maximum audio dB level supported by the audio port corresponding to specified port handle(platform specific).
  *
  * @param[in] handle  - Handle for the output audio port
  * @param[out] maxDb  - Pointer to hold the maximum audio dB value (float value e.g:10.0) supported by the specified audio port(platform specific)
@@ -1181,7 +1181,7 @@ dsError_t  dsGetAudioMinDB(int handle, float *minDb);
 /**
  * @brief Gets the optimal audio level of an audio port.
  * 
- * This function returns the optimal audio level (dB) of the audio port corresponding to specified port handle.
+ * This function returns the optimal audio level (dB) of the audio port corresponding to specified port handle(platform specific).
  *
  * @param[in] handle        - Handle for the output audio port
  * @param[out] optimalLevel - Pointer to hold the optimal level value of the specified audio port(platform specific)
@@ -1205,7 +1205,7 @@ dsError_t  dsGetAudioOptimalLevel(int handle, float *optimalLevel);
  * This function returns the audio delay (in milliseconds) of audio port with respect to video corresponding to the specified port handle.
  *
  * @param[in] handle        - Handle for the output Audio port
- * @param[out] audioDelayMs - Pointer to Audio delay (in milliseconds)
+ * @param[out] audioDelayMs - Pointer to Audio delay ( ranges from 0 to 200 milliseconds )
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -1340,7 +1340,7 @@ dsError_t dsGetSinkDeviceAtmosCapability(int handle, dsATMOSCapability_t *capabi
  *
  * @param[in] handle     - Handle for the output audio port
  * @param[out] loopThru  - Status of loop-through feature for the specified audio port
- *                           (True when output is looped through, false otherwise)
+ *                           ( @a true when output is looped through, @a false otherwise)
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -1708,7 +1708,7 @@ dsError_t dsAudioFormatUpdateRegisterCB(dsAudioFormatUpdateCB_t cbFun);
  * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  *
- * @todo return type of capabilities will be changed to dsMS12Capabilities_t in next phase
+ * @todo return type of capabilities will be changed to dsAudioCapabilities_t in next phase
  * 
  * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
  * 
@@ -1838,8 +1838,8 @@ dsError_t dsResetVolumeLeveller(int handle);
  * @param[in] handle               - Handle for the output Audio port
  * @param[in] profileState         - possible values ADD and REMOVE setting from the persistence
  * @param[in] profileName          - Profile Name. @see _dsMS12AudioProfileList_t
- * @param[in] profileSettingsName  - supported MS12 property name. 
- * @param[in] profileSettingValue  - supported MS12 property value to be set.
+ * @param[in] profileSettingsName  - supported MS12 property name. see audioProfileList[]
+ * @param[in] profileSettingValue  - supported MS12 property value to be set. 
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
