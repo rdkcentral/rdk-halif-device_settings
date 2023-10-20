@@ -205,7 +205,6 @@ dsError_t dsGetEDID(intptr_t handle, dsDisplayEDID_t* edid);
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
- * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported/Port does not supporting EDID Data
