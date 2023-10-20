@@ -279,21 +279,6 @@ typedef enum _dsAudioDuckingType_t{
 } dsAudioDuckingType_t;
 
 /**
- * @brief This defines the type of audio compression.
- */
-typedef int dsAudioCompressionValue_t;
-
-/**
- * @brief This defines the type of dialog enhancer level .
- */
-typedef int dsDialogEnhancer_t;
-
-/**
- * @brief This defines the type of dialog enhancer level .
- */
-typedef int dsIntelligentEqualizerMode_t;
-
-/**
  * @brief Enumeration defines all of the supported Audio types.
  * Each bit of uint32_t represent a standard. 
  * If a device supports multiple standards, the capability is the bitwise OR
