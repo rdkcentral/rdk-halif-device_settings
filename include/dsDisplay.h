@@ -200,7 +200,7 @@ dsError_t dsGetEDID(intptr_t handle, dsDisplayEDID_t* edid);
  * the specified display device handle.
  *
  * @param[in] handle    - Handle of the display device
- * @param[out] edid     - size of EDID raw buffer
+ * @param[out] edid     - Pointer to raw EDID buffer
  * @param[out] length   - length of the EDID buffer data. Min value is 0
  *
  * @return dsError_t                        - Status
