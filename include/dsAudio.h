@@ -115,7 +115,7 @@ extern "C" {
  * to the `caller`.
  * 
  * @param[in] portType  - Type of the audio port where connection status is changed. @see dsAudioPortType_t
- * @param[in] uiPortNo  - Port number in which the connection status changed
+ * @param[in] uiPortNo  - Port number in which the connection status changed. @link dsAudioPORT_NUM_MAX @endlink
  * @param[in] isPortCon - Current connection status of the audio port
  *
  * @pre - dsAudioOutRegisterConnectCB
