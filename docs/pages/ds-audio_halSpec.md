@@ -76,8 +76,6 @@ This interface provides a set of `APIs` to facilitate communication to the Audio
 
 This interface provides control to enable or disable Audio Output ports like TV Internal Speakers, `ARC`/`eARC`, Headphones, `SPDIF` and allows `caller` to configure or retrieve various audio parameters like audio encoding, audio compression, dialog enhancement, dolby volume mode, intelligent equalizer, volume leveller, bass enhancer, `DRC` mode, surround virtualizer, `MI` steering, graphic equalizer, `MS12` audio profile, stereo mode, audio gain, audio `dB`, audio level, audio max and min `dB`, audio delay, fader control, primary language and secondary language. It also provides `APIs` to  enable loop through, set audio ducking, enable `LE`, get the Atmos capability of sink device
 
-Audio Settings template can be found [here](docs/pages/dsAudioSettings_template.h "dsAudioSettings_template.h")
-
 
 ## Component Runtime Execution Requirements
 
@@ -163,7 +161,7 @@ The source code must build into a shared library for `DS` as Audio is a part of 
 
 ### Platform or Product Customization 
 
-This interface is not required to have any platform or product customizations.
+The configuration settings file (dsAudioSettings_template.h) for `DS` Audio can be used for adding platform specific configurations. The sample file is available [<b>here</b>](./dsAudioSettings_template.h "dsAudioSettings_template.h").
 
 ## Interface API Documentation
 
