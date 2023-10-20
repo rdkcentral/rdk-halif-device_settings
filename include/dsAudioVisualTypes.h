@@ -339,8 +339,7 @@ typedef enum _dsMS12Capabilities_t {
     dsMS12SUPPORT_DolbyVolume = 0x01,           ///< MS12 supported Dolby Volume
     dsMS12SUPPORT_InteligentEqualizer = 0x02,   ///< MS12 supported Intelligent Equalizer
     dsMS12SUPPORT_DialogueEnhancer = 0x04,      ///< MS12 Dialogue Enhancer supported
-    dsMS12SUPPORT_Invalid = 0x80,               ///< Invalid
-    dsMS12SUPPORT_MAX,                          ///< Out of range 
+    dsMS12SUPPORT_Invalid = 0x80               ///< Invalid / Out of range
 } dsMS12Capabilities_t;
 
 /**
