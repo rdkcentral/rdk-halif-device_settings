@@ -58,7 +58,6 @@ f/*
  * dsAudio provides a template for various Audio configurations
  */
 
-
 #ifndef __DS_AUDIO_SETTINGS_H__
 #define __DS_AUDIO_SETTINGS_H__
 
@@ -79,15 +78,15 @@ const dsAudioPortType_t 	    kSupportedPortTypes[] 			= { dsAUDIOPORT_TYPE_HDMI,
 /// Audio supported encoding types
 const dsAudioEncoding_t 		kSupportedHDMIEncodings[]		= { dsAUDIO_ENC_PCM, dsAUDIO_ENC_AC3};
 /// Audio supported HDMI compression types
-const dsAudioCompression_t 	kSupportedHDMICompressions[] 		= { dsAUDIO_CMP_NONE, dsAUDIO_CMP_LIGHT, dsAUDIO_CMP_MEDIUM, dsAUDIO_CMP_HEAVY, };
+const dsAudioCompression_t 	kSupportedHDMICompressions[] 			= { dsAUDIO_CMP_NONE, dsAUDIO_CMP_LIGHT, dsAUDIO_CMP_MEDIUM, dsAUDIO_CMP_HEAVY, };
 /// Audio supported HDMI stereo mode types
-const dsAudioStereoMode_t 	kSupportedHDMIStereoModes[] 		= { dsAUDIO_STEREO_STEREO, dsAUDIO_STEREO_SURROUND, };
+const dsAudioStereoMode_t 	kSupportedHDMIStereoModes[] 			= { dsAUDIO_STEREO_STEREO, dsAUDIO_STEREO_SURROUND, };
 /// Audio supported SPDIF encoding types
 const dsAudioEncoding_t 		kSupportedSPDIFEncodings[] 		= { dsAUDIO_ENC_PCM, dsAUDIO_ENC_AC3, };
 /// Audio supported SPDIF compression types 
-const dsAudioCompression_t 	kSupportedSPDIFCompressions[] 		= { dsAUDIO_CMP_NONE, dsAUDIO_CMP_LIGHT, dsAUDIO_CMP_MEDIUM, dsAUDIO_CMP_HEAVY, };
+const dsAudioCompression_t 	kSupportedSPDIFCompressions[] 			= { dsAUDIO_CMP_NONE, dsAUDIO_CMP_LIGHT, dsAUDIO_CMP_MEDIUM, dsAUDIO_CMP_HEAVY, };
 /// Audio supported SPDIF stereo mode types
-const dsAudioStereoMode_t 	kSupportedSPDIFStereoModes[] 		= { dsAUDIO_STEREO_STEREO, dsAUDIO_STEREO_SURROUND, };
+const dsAudioStereoMode_t 	kSupportedSPDIFStereoModes[] 			= { dsAUDIO_STEREO_STEREO, dsAUDIO_STEREO_SURROUND, };
 
 /* 
  * This enumeration defines the supported Audio port types. 
