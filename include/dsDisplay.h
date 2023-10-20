@@ -79,7 +79,7 @@
 /** @defgroup DSHAL_DISPLAY_API DS Display HAL Public API
  * 
  * @brief DS Display HAL Public APIs.
- * This API defines the HAL for the Device Settings HDMI input interface.
+ * This API defines the HAL for the Device Settings Display interface.
  *
  *  @{
  */
@@ -207,7 +207,7 @@ dsError_t dsGetEDID(intptr_t handle, dsDisplayEDID_t* edid);
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported/Port does not supporting EDID Data
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  * 
  * @pre  dsDisplayInit() and dsGetDisplay() must be called before calling this API
@@ -242,7 +242,7 @@ dsError_t dsGetEDIDBytes(intptr_t handle, unsigned char** edid, int* length);
 dsError_t dsGetDisplayAspectRatio(intptr_t handle, dsVideoAspectRatio_t* aspectRatio);
 
 /**
- * @brief Terminate the display sub-system.
+ * @brief Terminates the display sub-system.
  * 
  * This function resets any data structures used within Display sub-system,
  * and releases all the resources allocated during the init function.
