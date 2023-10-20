@@ -1143,6 +1143,7 @@ dsError_t  dsSetAudioLevel(int handle, float level);
  *
  * @param[in] handle  - Handle for the output audio port
  * @param[out] maxDb  - Pointer to hold the maximum audio dB value (float value e.g:10.0) supported by the specified audio port(platform specific)
+ *                        Maximum value can be 180 dB
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -1164,6 +1165,7 @@ dsError_t  dsGetAudioMaxDB(int handle, float *maxDb);
  *
  * @param[in] handle  - Handle for the output audio port
  * @param[out] minDb  - Pointer to hold the minimum audio dB value (float. e.g: 0.0) supported by the specified audio port(platform specific)
+ *                        Minimum value can be -1450 dB
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
