@@ -45,7 +45,7 @@ f/*
  */
 
 /**
- * @addtogroup dsAudio_HAL Audio HAL
+ * @addtogroup dsAudio_HAL DS Audio HAL
  *  @{
  * @par Application API Specification
  * dsAudio HAL provides an interface for managing Audio related settings
@@ -62,13 +62,14 @@ f/*
 #define __DS_AUDIO_SETTINGS_H__
 
 #include "dsUtl.h"
-#include "include/dsAudioVisualTypes.h"
+#include "dsAudioVisualTypes.h"
 
 #ifdef __cplusplus
 extern "C" {
+namespace  {
 #endif
 
-namespace  {
+
 
 #define dsAUDIOPORT_TYPE_NUM_MAX 4     ///< Maximum number of audio output port types
 #define dsAudioPORT_NUM_MAX 4          ///< Maximum number of audio output ports

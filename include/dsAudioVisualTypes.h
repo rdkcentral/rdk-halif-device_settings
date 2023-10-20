@@ -18,7 +18,7 @@
 */
 
 /**
- * @file dsTypes.h
+ * @file dsAudioVisualTypes.h
  *
  * @brief HAL types.
  *
