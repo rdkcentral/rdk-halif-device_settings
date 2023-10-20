@@ -92,7 +92,8 @@
 /**
  * @ingroup DSHAL_VIDEOPORT_TYPES
  * @brief This enumeration defines all of the standard type of Video ports.
- * @see dsVideoPortType_isValid
+ * @see dsVideoPortType_isValid @link 
+ * @note also used in @link dsDisplay.h @endlink
  */
 typedef enum _dsVideoPortType_t {
     dsVIDEOPORT_TYPE_RF = 0,      ///< RF modulator (channel 3/4) video output.           
@@ -572,6 +573,7 @@ typedef enum _dsVideoStereoScopicMode_t {
 /**
  * @brief This enumeration defines all of the standard video aspect ratios.
  * @see dsVideoPortAspectRatio_isValid
+ * @note also used in @link dsDisplay.h @endlink
  */
 typedef enum _dsVideoAspectRatio_t{
     dsVIDEO_ASPECT_RATIO_4x3,    ///< 4:3 aspect ratio.                    
