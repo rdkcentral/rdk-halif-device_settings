@@ -82,12 +82,37 @@
  *
  */
 
-/** 
- * @defgroup DSSETTINGS_HAL Device Settings HAL Types & Public API
- * HAL types and public API definitions.
- * @ingroup DSSETTINGS
+/**
+ * @addtogroup Device_Settings Device Settings Module
  * @{
  */
+
+/**
+ * @addtogroup Device_Settings_HAL Device Settings HAL
+ * @par Application API Specification
+ * Described herein are the DeviceSettings HAL types and functions that are part of
+ * the FPD subsystem. The FPD subsystem manages system-specific HAL operations.
+ *  @{
+ */
+
+/**
+ * @addtogroup dsAudio_HAL DS Audio HAL
+ *  @{
+ * @par Application API Specification
+ * dsAudio HAL provides an interface for managing the Audio settings for the device settings module 
+ */
+
+/**
+ * @defgroup DSHAL_AUDIO_VISUAL_TYPES DS HAL Audio Visual Types Definitions
+ *  @ingroup dsFPD_HAL
+ *  @{
+ */
+
+
+#ifndef __DS_AUDIO_VISUAL_TYPES_H__
+#define __DS_AUDIO_VISUAL_TYPES_H__
+
+#pragma once
 
 /**
  * @ingroup DSHAL_VIDEOPORT_TYPES
@@ -803,5 +828,11 @@ typedef enum _dsDisplayMatrixCoefficients_t
 /**
  * @}
  */
-/** @} */ // End of DSHAL_API HAL Data Types
+
+#endif /* __DS_AUDIO_VISUAL_TYPES_H__ */
+
+/** @} */ // End of DSHAL_AUDIO_VISUAL_TYPES
+/** @} */ // End of DS Audio HAL
+/** @} */ // End of Device Settings HAL
+/** @} */ // End of Device Settings Module
 /** @} */ // End of HPK
