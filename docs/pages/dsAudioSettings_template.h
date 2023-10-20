@@ -70,6 +70,9 @@ extern "C" {
 
 namespace  {
 
+#define dsAUDIOPORT_TYPE_NUM_MAX 4     ///< Maximum number of audio output port types
+#define dsAudioPORT_NUM_MAX 4          ///< Maximum number of audio output ports
+
 /*
  * @brief This enumeration defines the supported audio configurations.
  */
