@@ -143,11 +143,10 @@ const dsAudioPortConfig_t kPorts[] = {
 		},
 };
 
-}
 #ifdef __cplusplus
 }
+}
 #endif
-
 #endif /* __DS_AUDIO_SETTINGS_H__ */
 
 /** @} */ // End of DS Audio Settings Header
