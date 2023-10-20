@@ -59,6 +59,8 @@
  * @ingroup DSSETTINGS
  */
 
+
+
 /**
  * @defgroup DSHAL_API HAL Data Types
  * @ingroup DSSETTINGS_HAL

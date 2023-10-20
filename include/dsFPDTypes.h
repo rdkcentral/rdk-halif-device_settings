@@ -18,7 +18,7 @@
 */
 
 /**
- * @file dsTypes.h
+ * @file dsFPDTypes.h
  *
  * @brief HAL types.
  *
@@ -91,6 +91,7 @@
 #define __DS_FPD_TYPES_H__
 
 #include <stdint.h>
+
 #pragma once
 
 /**

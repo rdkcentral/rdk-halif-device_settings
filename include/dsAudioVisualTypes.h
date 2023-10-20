@@ -18,7 +18,7 @@
 */
 
 /**
- * @file dsTypes.h
+ * @file dsAudioVisualTypes.h
  *
  * @brief HAL types.
  *
@@ -82,12 +82,39 @@
  *
  */
 
-/** 
- * @defgroup DSSETTINGS_HAL Device Settings HAL Types & Public API
- * HAL types and public API definitions.
- * @ingroup DSSETTINGS
+/**
+ * @addtogroup Device_Settings Device Settings Module
  * @{
  */
+
+/**
+ * @addtogroup Device_Settings_HAL Device Settings HAL
+ * @par Application API Specification
+ * Described herein are the DeviceSettings HAL types and functions that are part of
+ * the FPD subsystem. The FPD subsystem manages system-specific HAL operations.
+ *  @{
+ */
+
+/**
+ * @addtogroup dsAudio_HAL DS Audio HAL
+ *  @{
+ * @par Application API Specification
+ * dsAudio HAL provides an interface for managing the Audio settings for the device settings module 
+ */
+
+/**
+ * @defgroup DSHAL_AUDIO_VISUAL_TYPES DS HAL Audio Visual Types Definitions
+ *  @ingroup dsFPD_HAL
+ *  @{
+ */
+
+
+#ifndef __DS_AUDIO_VISUAL_TYPES_H__
+#define __DS_AUDIO_VISUAL_TYPES_H__
+
+#include<sys/types.h>
+
+#pragma once
 
 /**
  * @ingroup DSHAL_VIDEOPORT_TYPES
@@ -120,33 +147,15 @@ typedef enum _dsVideoPortType_t {
  * @brief Structure that defines port id associated with video port.
  */
 typedef struct _dsVideoPortPortId_t {
-    dsVideoPortType_t type; ///< Video port type.
-    int32_t index;          ///< Port ID/number.
+    dsVideoPortType_t type; ///< Video port type
+    int32_t index;          ///< Port ID/number
 } dsVideoPortPortId_t;
 
 
-/** @addtogroup DSHAL_AUDIO Device Settings HAL Audio Types
+/** @addtogroup DSHAL_AUDIO_TYPES Device Settings HAL Audio Types
  *  @{
  * @todo check if these are used.
  */
-
-#define dsAUDIOPORT_TYPE_NUM_MAX 4     ///< Maximum number of audio output port types.  
-#define dsAudioPORT_NUM_MAX 4          ///< Maximum number of audio output ports.   
-
-/**
- * @brief This enumeration defines the audio port types.
- * @see dsAudioType_isValid
- */
-
-typedef enum _dsAudioPortType_t{
-    dsAUDIOPORT_TYPE_ID_LR,     ///< RCA audio output.                
-    dsAUDIOPORT_TYPE_HDMI,      ///< HDMI audio output.               
-    dsAUDIOPORT_TYPE_SPDIF,     ///< SPDIF audio output.             
-    dsAUDIOPORT_TYPE_SPEAKER,   ///< SPEAKER audio output.            
-    dsAUDIOPORT_TYPE_HDMI_ARC,  ///< HDMI ARC/EARC audio output.      
-    dsAUDIOPORT_TYPE_HEADPHONE, ///< 3.5mm headphone jack.            
-    dsAUDIOPORT_TYPE_MAX        ///< Out of range 
-} dsAudioPortType_t;
 
 /**
  * @brief Audio output port type validation check.
@@ -154,39 +163,68 @@ typedef enum _dsAudioPortType_t{
  */
 #define dsAudioType_isValid(t)  (((t) >= dsAUDIOPORT_TYPE_ID_LR ) && ((t) < dsAUDIOPORT_TYPE_MAX))
 
+/**
+ * @brief Audio encoding type validation check.
+ * @see dsAudioEncoding_t
+ */
+#define dsAudioEncoding_isValid(t)  (((t) >= dsAUDIO_ENC_NONE ) && ((t) < dsAUDIO_ENC_MAX))
+
+/**
+ * @brief Audio compression type validation check.
+ * @see dsAudioCompression_t
+ */
+#define dsAudioCompression_isValid(t)  (((t) >= dsAUDIO_CMP_NONE ) && ((t) < dsAUDIO_CMP_MAX))
+
+/**
+ * @brief Audio stereo mode type validation check.
+ * @see dsAudioStereoMode_t
+ */
+#define dsAudioStereoMode_isValid(t)  (((t) >= dsAUDIO_STEREO_UNKNOWN ) && ((t) < dsAUDIO_STEREO_MAX))
+
+/**
+ * @brief Max values for SADs.
+ */
+#define MAX_SAD 15
+
+/**
+ * @brief Max length of Language Code String.
+ */
+#define MAX_LANGUAGE_LEN 4
+
+/**
+ * @brief This enumeration defines the audio port types.
+ * @see dsAudioType_isValid
+ */
+typedef enum _dsAudioPortType_t{
+    dsAUDIOPORT_TYPE_ID_LR,     ///< RCA audio output               
+    dsAUDIOPORT_TYPE_HDMI,      ///< HDMI audio output               
+    dsAUDIOPORT_TYPE_SPDIF,     ///< SPDIF audio output             
+    dsAUDIOPORT_TYPE_SPEAKER,   ///< SPEAKER audio output            
+    dsAUDIOPORT_TYPE_HDMI_ARC,  ///< HDMI ARC/EARC audio output      
+    dsAUDIOPORT_TYPE_HEADPHONE, ///< Headphone jack 
+    dsAUDIOPORT_TYPE_MAX        ///< Out of range 
+} dsAudioPortType_t;
 
 /**
  * @brief Structure that defines the audio port type and associated ID.
  */
 typedef struct _dsAudioPortId_t {
-    dsAudioPortType_t type; ///< Audio port type.
-    int32_t index;          ///< Port ID/number.
+    dsAudioPortType_t type; ///< Audio port type
+    int32_t index;          ///< Port ID/number
 } dsAudioPortId_t;
-
-/**
- * defines the maximum size of buffer to hold ms12 config type details
- * Ex: CONFIG_Z, CONFIG_X, CONFIG_Y etc.
- */
-#define MS12_CONFIG_BUF_SIZE 16
 
 /**
  * @brief This enumeration defines the audio encoding types
  * @see dsAudioEncoding_isValid
  */
 typedef enum _dsAudioEncoding_t{
-    dsAUDIO_ENC_NONE = 0,   ///< No digital audio output.                       
-    dsAUDIO_ENC_DISPLAY,    ///< Platform-selected digital audio encoding format.
-    dsAUDIO_ENC_PCM,        ///< PCM digital audio encoding format.             
-    dsAUDIO_ENC_AC3,        ///< AC-3 digital audio encoding format.            
-    dsAUDIO_ENC_EAC3,       ///< DD+/E-AC-3 digital audio encoding format.      
+    dsAUDIO_ENC_NONE = 0,   ///< No digital audio output            
+    dsAUDIO_ENC_DISPLAY,    ///< Platform-selected digital audio encoding format
+    dsAUDIO_ENC_PCM,        ///< PCM digital audio encoding format
+    dsAUDIO_ENC_AC3,        ///< AC-3 digital audio encoding format            
+    dsAUDIO_ENC_EAC3,       ///< DD+/E-AC-3 digital audio encoding format
     dsAUDIO_ENC_MAX         ///< Out of range         
 } dsAudioEncoding_t;
-
-/**
- * @brief Audio encoding type validation check.
- * @see dsAudioEncoding_t
- */
-#define dsAudioEncoding_isValid(t)  (((t) >= dsAUDIO_ENC_NONE ) && ((t) < dsAUDIO_ENC_MAX))
 
 /**
  * @brief This enumeration defines the type of audio compression.
@@ -199,12 +237,6 @@ typedef enum _dsAudioCompression_t{
     dsAUDIO_CMP_HEAVY,  ///< Heavy audio level compression.           
     dsAUDIO_CMP_MAX     ///< Out of range 
 } dsAudioCompression_t;
-
-/**
- * @brief Audio compression type validation check.
- * @see dsAudioCompression_t
- */
-#define dsAudioCompression_isValid(t)  (((t) >= dsAUDIO_CMP_NONE ) && ((t) < dsAUDIO_CMP_MAX))
 
 /**
  * @brief This enumeration defines the type of audio format
@@ -247,21 +279,6 @@ typedef enum _dsAudioDuckingType_t{
 } dsAudioDuckingType_t;
 
 /**
- * @brief This defines the type of audio compression.
- */
-typedef int dsAudioCompressionValue_t;
-
-/**
- * @brief This defines the type of dialog enhancer level .
- */
-typedef int dsDialogEnhancer_t;
-
-/**
- * @brief This defines the type of dialog enhancer level .
- */
-typedef int dsIntelligentEqualizerMode_t;
-
-/**
  * @brief Enumeration defines all of the supported Audio types.
  * Each bit of uint32_t represent a standard. 
  * If a device supports multiple standards, the capability is the bitwise OR
@@ -294,11 +311,6 @@ typedef enum _dsAudioARCTypes_t {
 } dsAudioARCTypes_t;
 
 /**
- * @brief Max values for SADs
- */
-#define MAX_SAD 15  
-
-/**
  * @brief Structure that holds Short Audio Descriptors retrieved from 
  * connected ARC device
  */
@@ -323,12 +335,11 @@ typedef struct _dsAudioARCStatus_t {
  * @todo Check to see where is used.
  */
 typedef enum _dsMS12Capabilities_t {
-    dsMS12SUPPORT_NONE = 0x0,                   ///< MS12 Supported None.
-    dsMS12SUPPORT_DolbyVolume = 0x01,           ///< MS12 supported Dolby Volume.
+    dsMS12SUPPORT_NONE = 0x0,                   ///< MS12 Supported None
+    dsMS12SUPPORT_DolbyVolume = 0x01,           ///< MS12 supported Dolby Volume
     dsMS12SUPPORT_InteligentEqualizer = 0x02,   ///< MS12 supported Intelligent Equalizer
-    dsMS12SUPPORT_DialogueEnhancer = 0x04,      ///< MS12 Dialogue Enhancer supported.
-    dsMS12SUPPORT_Invalid = 0x80,               ///< Invalid
-    dsMS12SUPPORT_MAX,                          ///< Out of range 
+    dsMS12SUPPORT_DialogueEnhancer = 0x04,      ///< MS12 Dialogue Enhancer supported
+    dsMS12SUPPORT_Invalid = 0x80               ///< Invalid / Out of range
 } dsMS12Capabilities_t;
 
 /**
@@ -336,13 +347,14 @@ typedef enum _dsMS12Capabilities_t {
  */
 #define MAX_PROFILE_LIST_BUFFER_LEN 1024
 typedef struct _dsMS12AudioProfileList_t {
-    char audioProfileList[MAX_PROFILE_LIST_BUFFER_LEN]; ///< buffer containing the list of comma separated audio profile names 
+    char audioProfileList[MAX_PROFILE_LIST_BUFFER_LEN]; ///< buffer containing the list of comma separated audio profile names for menu list
                                                         ///< (e.g: "Music,Movie,Voice,Night")
     int audioProfileCount;                              ///< Total number of profiles
 } dsMS12AudioProfileList_t;
 
 /**
  * @brief This defines the type of volume leveller mode.
+ * @todo Enums for volume leveller modes will be added in next phase
  */
 typedef struct _dsVolumeLeveller_t {
     int mode;   ///< 0 = off, 1= on, 2= auto
@@ -372,14 +384,8 @@ typedef enum StereoMode{
     dsAUDIO_STEREO_MAX        ///< Out of range          
 } dsAudioStereoMode_t;
 
-/**
- * @brief Audio stereo mode type validation check.
- * @see dsAudioStereoMode_t
- */
-#define dsAudioStereoMode_isValid(t)  (((t) >= dsAUDIO_STEREO_UNKNOWN ) && ((t) < dsAUDIO_STEREO_MAX))
-
 /** 
- * @brief This enumeration defines HDCP protocol version types 
+ * @brief This enumeration defines ATMOS protocol version types 
  */
 typedef enum _dsATMOSCapability_t{
     dsAUDIO_ATMOS_NOTSUPPORTED= 0,  ///< ATMOS audio not supported.
@@ -389,7 +395,6 @@ typedef enum _dsATMOSCapability_t{
 } dsATMOSCapability_t;
 
 /**
- * @ingroup DSHAL_AUDIO_TYPES
  * @brief Structure that defines audio output device configuration.
  */
 typedef struct _dsAudioTypeConfig_t {
@@ -431,18 +436,6 @@ typedef struct _dsAudioPortConfig_t {
     dsAudioPortId_t id;                         ///< Port ID.             
     const dsVideoPortPortId_t *connectedVOPs;   ///< Connected video port.
 } dsAudioPortConfig_t;
-
-#define MAX_LANGUAGE_LEN 10
-
-/**
- * @brief List of Audio port state. 
- * @todo check to see where this is used
- * **/
-typedef enum _dsAudioPortState {
-   dsAUDIOPORT_STATE_UNINITIALIZED, ///< Audio port unintialized.
-   dsAUDIOPORT_STATE_INITIALIZED,   ///< Audio port initialized.
-   dsAUDIOPORT_STATE_MAX            ///< Out of range 
-} dsAudioPortState_t;
 
 /* End of DSHAL_AUDIO_TYPES doxygen group */
 /**
@@ -814,5 +807,11 @@ typedef enum _dsDisplayMatrixCoefficients_t
 /**
  * @}
  */
-/** @} */ // End of DSHAL_API HAL Data Types
+
+#endif /* __DS_AUDIO_VISUAL_TYPES_H__ */
+
+/** @} */ // End of DSHAL_AUDIO_VISUAL_TYPES
+/** @} */ // End of DS Audio HAL
+/** @} */ // End of Device Settings HAL
+/** @} */ // End of Device Settings Module
 /** @} */ // End of HPK

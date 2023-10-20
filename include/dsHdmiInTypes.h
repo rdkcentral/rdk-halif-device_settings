@@ -18,7 +18,7 @@
 */
 
 /**
- * @file dsTypes.h
+ * @file dsHdmiInTypes.h
  *
  * @brief HAL types.
  *
@@ -85,6 +85,11 @@
  * @defgroup dsHdmiIn_HAL_Type_H DS HAL Hdmi Input Type Definitions
  *  @{
  */
+
+#ifndef __DS_HDMI_IN_TYPES_H__
+#define __DS_HDMI_IN_TYPES_H__
+
+#include <stdint.h>
 
 #pragma once //Required for compilation, until header structure is properly updated.
 
@@ -183,6 +188,8 @@ typedef enum tv_hdmi_edid_version_e {
     HDMI_EDID_VER_20,       /*!< EDID version 2.0 */
     HDMI_EDID_VER_MAX,      /*!< Out of bounds */
 } tv_hdmi_edid_version_t;
+
+#endif // End of __DS_HDMI_IN_TYPES_H__
 
 /** @} */ // End of dsHdmiIn_HAL_Type_H
 /** @} */ // End of DS HdmiIn HAL

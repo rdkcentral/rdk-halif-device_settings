@@ -76,7 +76,7 @@
 #define __DS_VIDEO_DEVICE_SETTINGS_H__
 
 #include "dsUtl.h"
-#include "dsTypes.h"
+#include "dsVideoDeviceTypes.h"
 
 
 #ifdef __cplusplus
