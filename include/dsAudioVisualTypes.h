@@ -130,9 +130,6 @@ typedef struct _dsVideoPortPortId_t {
  * @todo check if these are used.
  */
 
-#define dsAUDIOPORT_TYPE_NUM_MAX 4     ///< Maximum number of audio output port types
-#define dsAudioPORT_NUM_MAX 4          ///< Maximum number of audio output ports
-
 /**
  * @brief Audio output port type validation check.
  * @see dsAudioPortType_t
