@@ -18,10 +18,7 @@
 */
 
 /**
- * @file dsHdmiIn.h
- *
- * @brief Device Settings HAL HDMI input Public API.
- * This API defines the HAL for the Device Settings HDMI input interface.
+ * @file dsDisplay.h
  *
  * @par Document
  * Document reference.
@@ -69,24 +66,26 @@
 /**@addtogroup Device_Settings_HAL Device Settings HAL
  * @par Application API Specification
  * Described herein are the DeviceSettings HAL types and functions that are part of
- * the Display subsystem. The Display subsystem manages displayu-specific HAL operations.
+ * the Display subsystem. The Display subsystem manages display-specific HAL operations.
  *  @{
  */
 
-/** @defgroup dsDisplay_HAL Device Settings Display HAL
+/** @defgroup dsDisplay_HAL DS Display HAL
  *  @{
  * @par Application API Specification
  * dsDisplay HAL provides an interface for managing the display related settings of device settings module
  */
 
-/** @defgroup DSHAL_DISPLAY_API Device Settings HAL Display Public API
- *
+/** @defgroup DSHAL_DISPLAY_API DS Display HAL Public API
+ * 
+ * @brief DS Display HAL Public APIs.
+ * This API defines the HAL for the Device Settings HDMI input interface.
  *
  *  @{
  */
  
-#ifndef __DS_VIDEODISPLAY_H__
-#define __DS_VIDEODISPLAY_H__
+#ifndef __DS_VIDEO_DISPLAY_H__
+#define __DS_VIDEO_DISPLAY_H__
 
 #include "dsError.h"
 #include "dsAudioVisualTypes.h"
@@ -296,7 +295,7 @@ dsError_t dsRegisterDisplayEventCallback(intptr_t handle, dsDisplayEventCallback
 #ifdef __cplusplus
 }
 #endif
-#endif /* __DS_VIDEODISPLAY_H__ */
+#endif /* __DS_VIDEO_DISPLAY_H__ */
 
 /** @} */ // End of DSHAL DISPLAY API
 /** @} */ // End of DS Display HAL
