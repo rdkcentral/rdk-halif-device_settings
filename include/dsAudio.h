@@ -82,15 +82,15 @@
  * @addtogroup Device_Settings_HAL Device Settings HAL
  * @par Application API Specification
  * Described herein are the DeviceSettings HAL types and functions that are part of
- * the HdmiIn subsystem. The HdmiIn subsystem manages system-specific HAL operations.
+ * the Audio subsystem. The Audio subsystem manages system-specific HAL operations.
  *  @{
  */
 
 /**
-*   @defgroup dsHdmiIn_HAL DS Audio HAL
+*   @defgroup dsAudio_HAL DS Audio HAL
  *  @{
  * @par Application API Specification
- * dsHdmiIn HAL provides an interface for managing the Audio settings for the device settings module
+ * dsAudio HAL provides an interface for managing the Audio settings for the device settings module
  */
 
 /**
@@ -98,8 +98,8 @@
  *  @{
  */
 
-#ifndef __DS_AUDIOOUTPORT_H__
-#define __DS_AUDIOOUTPORT_H__
+#ifndef __DS_AUDIO_H__
+#define __DS_AUDIO_H__
 
 #ifdef __cplusplus
 extern "C" {
@@ -2075,8 +2075,10 @@ dsError_t dsGetHDMIARCPortId(int *portId);
 #ifdef __cplusplus
 }
 #endif
-#endif /* _DS_AUDIOOUTPORT_H_ */
+#endif /* __DS_AUDIO_H__ */
 
-
-/** @} */
-/** @} */
+/** @} */ // End of DS HAL Audio Public APIs
+/** @} */ // End of DS Audio HAL
+/** @} */ // End of Device Settings HAL
+/** @} */ // End of Device Settings Module
+/** @} */ // End of HPK
