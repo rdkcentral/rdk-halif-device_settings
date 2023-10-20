@@ -1834,35 +1834,6 @@ dsError_t dsResetSurroundVirtualizer(int handle);
 dsError_t dsResetVolumeLeveller(int handle);
 
 /**
- * @brief Overrides the individual MS12 audio settings to optimize the customer experience. 
- *  
- * This function overrides the specific MS12 audio setting of the specified profile.
- *
- * @param[in] handle               - Handle for the output Audio port
- * @param[in] profileState         - possible values ADD and REMOVE setting from the persistence
- * @param[in] profileName          - Profile Name. @see _dsMS12AudioProfileList_t
- * @param[in] profileSettingsName  - supported MS12 property name. see audioProfileList[]
- * @param[in] profileSettingValue  - supported MS12 property value to be set. 
- * 
- * @return dsError_t                      -  Status 
- * @retval dsERR_NONE                     -  Success
- * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
- * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
- * @retval dsERR_OPERATION_FAILED         -  The attempted operation failed
- * @retval dsERR_GENERAL                  -  Underlying undefined platform error
- * 
- * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
- * 
- * @warning  This API is Not thread safe.
- * 
- * @see dsGetMS12AudioProfileList(), dsGetMS12AudioProfile()
- * 
- */
-dsError_t  dsSetMS12AudioProfileSetttingsOverride(int handle,const char* profileState,const char* profileName,
-                                                   const char* profileSettingsName,const char* profileSettingValue);
-
-/**
  * @brief Enables/Disables associated audio mixing feature.
  *
  * This function will enable/disable associated audio mixing feature of audio port corresponding to specified port handle.
