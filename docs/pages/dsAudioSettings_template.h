@@ -123,13 +123,23 @@ const dsAudioTypeConfig_t 	kConfigs[]= {
  */
 const dsVideoPortPortId_t connectedVOPs[dsAUDIOPORT_TYPE_MAX][dsVIDEOPORT_TYPE_MAX] = {
 		{/*VOPs connected to LR Audio */
-
+			// This is left empty since in this example there is no LR Audio port but needs to 
+			    corresponds to @link kPorts @endlink
 		},
 		{/*VOPs connected to HDMI Audio */
 				{dsVIDEOPORT_TYPE_HDMI, 0},
 		},
 		{/*VOPs connected to SPDIF Audio */
 				{dsVIDEOPORT_TYPE_HDMI, 0},
+		},
+		{/*VOPs connected to Speaker Audio */
+
+		},
+		{/*VOPs connected to HDMI ARC */
+
+		},
+		{/*VOPs connected to Headphone */
+
 		},
 };
 
