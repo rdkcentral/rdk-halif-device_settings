@@ -59,7 +59,7 @@
  * @ingroup DSSETTINGS
  */
 
-#include <stdint.h>
+
 
 /**
  * @defgroup DSHAL_API HAL Data Types

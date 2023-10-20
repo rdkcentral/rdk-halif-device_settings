@@ -18,7 +18,7 @@
 */
 
 /**
- * @file dsTypes.h
+ * @file dsHdmiInTypes.h
  *
  * @brief HAL types.
  *
@@ -88,6 +88,8 @@
 
 #ifndef __DS_HDMI_IN_TYPES_H__
 #define __DS_HDMI_IN_TYPES_H__
+
+#include <stdint.h>
 
 #pragma once //Required for compilation, until header structure is properly updated.
 

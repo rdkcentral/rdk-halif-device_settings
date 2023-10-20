@@ -105,6 +105,7 @@
 extern "C" {
 #endif
 
+#include <stdint.h>
 #include "dsError.h"
 #include "dsAudioVisualTypes.h"
 

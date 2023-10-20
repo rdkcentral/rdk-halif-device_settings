@@ -150,7 +150,7 @@ typedef struct _dsVideoPortPortId_t {
 } dsVideoPortPortId_t;
 
 
-/** @addtogroup DSHAL_AUDIO Device Settings HAL Audio Types
+/** @addtogroup DSHAL_AUDIO_TYPES Device Settings HAL Audio Types
  *  @{
  * @todo check if these are used.
  */
@@ -415,7 +415,6 @@ typedef enum _dsATMOSCapability_t{
 } dsATMOSCapability_t;
 
 /**
- * @ingroup DSHAL_AUDIO_TYPES
  * @brief Structure that defines audio output device configuration.
  */
 typedef struct _dsAudioTypeConfig_t {
