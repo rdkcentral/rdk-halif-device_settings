@@ -62,7 +62,6 @@ style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
 
 The primary objective of this module is to streamline communication between the `caller` and the `HAL` interface. This allows the `caller` to inquire about information related to the EDID, Aspect Ratio and other `HDMI` related information of the connected display device. Additionally, the module notifies the `caller` about Display Device parameters, such as Device Connection/Disconnection, HDCP Protocol Changes, and RX Sense ON/OFF etc.
 
-Display module will get its configuration profile from [videoPortSettings.h](include/dsVideoPortSettings_sample.h) 
 
 ## Component Runtime Execution Requirements
 
@@ -146,7 +145,7 @@ The source code must build into a shared library for Device Settings as this mod
 
 ### Platform or Product Customization
 
-This interface is not required to have any platform or product customizations.
+The configuration settings file for DS Display can be used for adding platform specific configurations. The sample file is available [here](include/dsVideoPortSettings_sample.h) 
 
 ## Interface API Documentation
 
