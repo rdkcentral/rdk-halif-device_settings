@@ -162,12 +162,6 @@ typedef struct _dsVideoPortPortId_t {
 #define dsAudioType_isValid(t)  (((t) >= dsAUDIOPORT_TYPE_ID_LR ) && ((t) < dsAUDIOPORT_TYPE_MAX))
 
 /**
- * defines the maximum size of buffer to hold ms12 config type details
- * Ex: CONFIG_Z, CONFIG_X, CONFIG_Y etc.
- */
-#define MS12_CONFIG_BUF_SIZE 16
-
-/**
  * @brief Audio encoding type validation check.
  * @see dsAudioEncoding_t
  */
