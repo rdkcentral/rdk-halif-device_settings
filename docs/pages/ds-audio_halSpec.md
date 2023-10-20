@@ -173,7 +173,7 @@ The `caller` is expected to have complete control over the life cycle of the `HA
 
 1. Initialize the `DS` Audio `HAL` using function: `dsAudioPortInit()` before making any other `API` calls.  If `dsAudioPortInit()` call fails, the `HAL` must return the respective error code, so that the `caller` can retry the operation.
 
-2. Once the Audio Ports are initialized, Audio Output ports like TV Internal Speakers, `ARC`/`eARC`, Headphones, `SPDIF` can be enabled or disabled using Audio Port Handle based on [Audio Settings Template](docs/pages/dsAudioSettings_template.h "dsAudioSettings_template.h"). 
+2. Once the Audio Ports are initialized, Audio Output ports like TV Internal Speakers, `ARC`/`eARC`, Headphones, `SPDIF` can be enabled or disabled using Audio Port Handle based on [Audio Settings Template](./dsAudioSettings_template.h "dsAudioSettings_template.h").
 
 3. The following Audio functionalities are supported:
    - Audio Encoding
