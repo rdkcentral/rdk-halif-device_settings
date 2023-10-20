@@ -2068,10 +2068,6 @@ dsError_t  dsGetSecondaryLanguage(int handle, char* sLang);
  */
 dsError_t dsGetHDMIARCPortId(int *portId);
 
-/**
- * @}
- */
-
 #ifdef __cplusplus
 }
 #endif
