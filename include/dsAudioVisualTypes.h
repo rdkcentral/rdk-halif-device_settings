@@ -189,7 +189,7 @@ typedef struct _dsVideoPortPortId_t {
 /**
  * @brief Max length of Language Code String.
  */
-#define MAX_LANGUAGE_LEN 10
+#define MAX_LANGUAGE_LEN 4
 
 /**
  * @brief This enumeration defines the audio port types.
