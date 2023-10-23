@@ -264,7 +264,7 @@ typedef void (*dsVideoFormatUpdateCB_t)(dsHDRStandard_t videoFormat);
  * @brief Checks whether a video port is active or not.
  * 
  * This function is used to indicate whether a video port is active or not. A HDMI output port is active if it is connected 
- * to the active port of sink device. E.g. if RxSense is *true.
+ * to the active port of sink device. 
  *
  * @param[in]  handle   - Handle of the video port returned from dsGetVideoPort()
  * @param[out] active   - Connection state of the video port 
