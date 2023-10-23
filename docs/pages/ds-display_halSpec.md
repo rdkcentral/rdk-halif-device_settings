@@ -145,7 +145,7 @@ The source code must build into a shared library for Device Settings as this mod
 
 ### Platform or Product Customization
 
-The configuration settings file for `DS` Display can be used for adding platform specific configurations. The sample file is available [here](docs/pages/dsVideoPortSettings_template.h "dsVideoPortSettings_template.h") 
+This interface is not required to have any platform or product customizations.
 
 ## Interface API Documentation
 
