@@ -68,7 +68,7 @@
  * Described herein are the DeviceSettings HAL types and functions that are part of
  * the Display subsystem. The Display subsystem manages display-specific HAL operations.
  *  @{
- */
+ */8
 
 /** @defgroup dsDisplay_HAL DS Display HAL
  *  @{
@@ -204,7 +204,7 @@ dsError_t dsGetEDID(intptr_t handle, dsDisplayEDID_t* edid);
  * @param[out] edid     - Pointer to raw EDID buffer
  * @param[out] length   - length of the EDID buffer data. Min value is 0
  *
- * @note The Caller is responsible for freeing the EDID buffer
+ * @note Caller is responsible for allocating memory for edid(@see MAX_EDID_BYTES_LEN) and freeing the EDID buffer
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
@@ -218,7 +218,7 @@ dsError_t dsGetEDID(intptr_t handle, dsDisplayEDID_t* edid);
  * @warning  This API is Not thread safe
  * 
  */
-dsError_t dsGetEDIDBytes(intptr_t handle, unsigned char** edid, int* length);
+dsError_t dsGetEDIDBytes(intptr_t handle, unsigned char* edid, int* length);
 
 /**
  * @brief Gets the aspect ratio of connected display device.
