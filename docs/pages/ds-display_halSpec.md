@@ -58,14 +58,14 @@ style z fill:#fcc,stroke:#333,stroke-width:0.3px,align:left
 style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
  ```
 
-`DS` Display `HAL` provides a set of `APIs` to manage operations related to connected display devices connected to `HDMI` Output port of the source devices.
+`DS` Display `HAL` provides a set of `APIs` to manage operations related to display devices connected to `HDMI` Output port of the source devices.
 
 The primary objective of this module is to streamline communication between the `caller` and the `HAL` interface. This allows the `caller` to inquire about information related to the EDID, Aspect Ratio and other `HDMI` related information of the connected display device. Additionally, the module notifies the `caller` about Display Device parameters, such as Device Connection/Disconnection, HDCP Protocol Changes, and RX Sense ON/OFF etc.
 
 
 ## Component Runtime Execution Requirements
 
-This interface  must adeptly manage resources to prevent issues like memory leaks and excessive utilization. It must also meet performance goals for response time, throughput, and resource use as per the platform's capabilities.
+This interface must adeptly manage resources to prevent issues like memory leaks and excessive utilization. It must also meet performance goals for response time, throughput, and resource use as per the platform's capabilities.
 
 Failure to meet these requirements will likely result in undefined and unexpected behavior.
 
