@@ -204,7 +204,7 @@ dsError_t dsGetEDID(intptr_t handle, dsDisplayEDID_t* edid);
  * @param[out] edid     - Pointer to raw EDID buffer
  * @param[out] length   - length of the EDID buffer data. Min value is 0
  *
- * @note HAL allocates memory for EDID Buffer and sends it to Caller. The Caller is responsible for freeing the EDID buffer
+ * @note The Caller is responsible for freeing the EDID buffer
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
