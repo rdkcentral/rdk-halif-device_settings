@@ -627,7 +627,7 @@ dsError_t dsGetHDCPCurrentProtocol (int handle, dsHdcpProtocolVersion_t *protoco
  * This function is used to get the HDR capabilities of the TV/display device.
  *
  * @param[in] handle            - Handle of the video port(TV) returned from dsGetVideoPort()
- * @param [out] capabilities    - Bitwise OR-ed value of supported HDR standards
+ * @param [out] capabilities    - Bitwise OR-ed value of supported HDR standards. @see dsHDRStandard_t
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
