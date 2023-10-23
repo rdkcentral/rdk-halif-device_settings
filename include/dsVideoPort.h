@@ -909,7 +909,7 @@ dsError_t dsIsOutputHDR(int handle, bool* hdr);
  * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
- * @pre dsVideoPortInit() and dsGetVideoPort() must be called before calling this API.
+ * @pre dsVideoPortInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
  */
