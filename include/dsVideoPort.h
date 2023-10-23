@@ -505,7 +505,7 @@ dsError_t  dsInitResolution(dsVideoPortResolution_t *resolution);
  * to the caller(e.g. Authentication , Failure etc.).
  * 
  * @param[in] handle    - Handle of the video port returned from dsGetVideoPort()
- * @param[in] status    - HDCP status change
+ * @param[in] status    - HDCP status change. @see dsHdcpStatus_t
  */
 typedef void (*dsHDCPStatusCallback_t)(int handle, dsHdcpStatus_t status);
 
@@ -539,7 +539,7 @@ typedef void (*dsHDCPStatusCallback_t)(int handle, dsHdcpStatus_t status);
  * @brief Gets the current HDCP status of the specified video port.
  *
  * @param[in] handle    - Handle of the video port returned from dsGetVideoPort()
- * @param[out] status   - HDCP status of the video port
+ * @param[out] status   - HDCP status of the video port. @see dsHdcpStatus_t
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
