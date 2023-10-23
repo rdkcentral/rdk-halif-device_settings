@@ -144,8 +144,9 @@ dsError_t dsVideoPortTerm();
  * This function is used to get the handle of the video port corresponding to specified port type. It must return
  * dsERR_OPERATION_NOT_SUPPORTED if the requested video port is unavailable.
  *
- * @param[in]  type     - Type of video port (e.g. HDMI)
- * @param[in]  index    - Index of the video device (0, 1, ...)
+ * @param[in]  type     - Type of video port (e.g. HDMI). @see dsVideoPortType_t
+ * @param[in]  index    - Index of the video device (0, 1, ...)  (Index of the port must be 0 if not specified)
+ *                          Max index is platform specific. Min value is 0.
  * @param[out] handle   - The handle used by the Caller to uniquely identify the HAL instance
  * 
  * @return dsError_t                        - Status
@@ -254,7 +255,7 @@ dsError_t  dsGetSurroundMode(int handle, int *surround);
  *
  * HAL Implementation must call this method to update the Video Format info event
  * to the application
- * @param[in] videoFormat Current video format.
+ * @param[in] videoFormat Current video format. @see dsHDRStandard_t
  *
  */
 typedef void (*dsVideoFormatUpdateCB_t)(dsHDRStandard_t videoFormat);
@@ -625,7 +626,7 @@ dsError_t dsGetHDCPCurrentProtocol (int handle, dsHdcpProtocolVersion_t *protoco
  * This function is used to get the HDR capabilities of the TV/display device.
  *
  * @param[in] handle            - Handle of the video port(TV) returned from dsGetVideoPort()
- * @param [out] capabilities    - OR-ed value of supported HDR standards
+ * @param [out] capabilities    - Bitwise OR-ed value of supported HDR standards
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -963,7 +964,7 @@ dsError_t dsGetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentPr
 /**
  * @brief Gets the IgnoreEDID status variable set in the device.
  *
- * This function is used to get the status variable to understand whether to ignore the EDID data or not for Sky Devices.
+ * This function is used to get the status variable to understand whether to ignore the EDID data or not.
  *
  * @param[in] handle        - Handle of the video port returned from dsGetVideoPort()
  * @param [out] status      - Status of IgnoreEDID variable, true if EDID data is Ignored false otherwise
