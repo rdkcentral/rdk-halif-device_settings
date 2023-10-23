@@ -648,7 +648,7 @@ dsError_t dsGetTVHDRCapabilities(int handle, int *capabilities);
  * This function is used to get TV supported resolutions of TV/display device.
  *
  * @param[in] handle            - Handle of the video port(TV) returned from dsGetVideoPort()
- * @param [out] resolutions     - OR-ed value supported resolutions
+ * @param [out] resolutions     - OR-ed value supported resolutions. @see dsTVResolution_t
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
