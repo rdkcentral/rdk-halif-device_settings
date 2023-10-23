@@ -116,6 +116,7 @@ typedef enum _dsDisplayEvent_t {
  * @param[in]  handle   - Handle of the display device
  * @param[in]  event    - Display event. @see dsDisplayEvent_t
  * @param[in] eventData - Data associated with the event(optional parameter)
+ *                         eventData contains additional information such as HPD status when a display is connected/disconnected
  *
  * @return None
  *
