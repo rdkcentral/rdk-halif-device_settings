@@ -16,27 +16,56 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
 */
- 
-
 
 /**
-* @defgroup devicesettings Device Settings
-* @{
-* @defgroup hal Device Settings HAL
-* @{
-**/
+ * @addtogroup HPK Hardware Porting Kit
+ * @{
+ * @par The Hardware Porting Kit
+ * HPK is the next evolution of the well-defined Hardware Abstraction Layer
+ * (HAL), but augmented with more comprehensive documentation and test suites
+ * that OEM or SOC vendors can use to self-certify their ports before taking
+ * them to RDKM for validation or to an operator for final integration and
+ * deployment. The Hardware Porting Kit effectively enables an OEM and/or SOC
+ * vendor to self-certify their own Video Accelerator devices, with minimal RDKM
+ * assistance.
+ *
+ */
 
+/**
+ * @addtogroup Device_Settings Device Settings Module
+ * @{
+ */
 
-#ifndef _DS_VIDEORESOLUTIONSETTINGS_H_
-#define _DS_VIDEORESOLUTIONSETTINGS_H_
+/**
+ * @addtogroup Device_Settings_HAL Device Settings HAL
+ * @par Application API Specification
+ * Described herein are the DeviceSettings HAL types and functions that are part of
+ * the Video Port subsystem. The Video Port subsystem manages system-specific HAL operations.
+ * @{
+ */
 
-#include "dsTypes.h"
+/**
+ * @addtogroup dsVideoPort_HAL DS Video Port HAL
+ * @{
+ * @par Application API Specification
+ * dsVideoPort HAL provides an interface for managing the VideoPort settings for the device settings module
+ */
+
+/**
+ * @defgroup DSHAL_VIDEO_RESOLUTION_SETTINGS_H DS Video Resolution Settings Header
+ * @{
+ * @par Application API Specification
+ */
+
+#ifndef __DS_VIDEO_RESOLUTION_SETTINGS_H__
+#define __DS_VIDEO_RESOLUTION_SETTINGS_H__
+
+#include "dsAudioVisualTypes.h"
 
 #ifdef __cplusplus
 extern "C" {
 namespace {
 #endif
-
 
 #define  _INTERLACED true
 #define _PROGRESSIVE false
@@ -126,9 +155,10 @@ static const int kDefaultResIndex = 3; //Pick one resolution from kResolutions[]
 }
 }
 #endif
+#endif /* __VIDEO_RESOLUTION_SETTINGS_H__ */
 
-#endif /* VIDEORESOLUTIONSETTINGS_H_ */
-
-
-/** @} */
-/** @} */
+/** @} */ // End of DS Video Resolution Settings Header
+/** @} */ // End of DS Video Port HAL
+/** @} */ // End of Device Settings HAL
+/** @} */ // End of Device Settings Module
+/** @} */ // End of HPK
