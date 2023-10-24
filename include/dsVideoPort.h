@@ -80,7 +80,7 @@
  */
 
 /**
-*   @defgroup dsHdmiIn_HAL DS Video Port HAL
+*   @defgroup dsVideoPort_HAL DS Video Port HAL
  *  @{
  * @par Application API Specification
  * dsVideoPort HAL provides an interface for managing the Video Port settings for the device settings module
@@ -688,7 +688,7 @@ dsError_t dsSupportedTvResolutions(int handle, int *resolutions);
 dsError_t dsSetForceDisable4KSupport(int handle, bool disable);
 
 /**
- * @bried Gets ForceDiable 4K support variable.
+ * @brief Gets ForceDiable 4K support variable.
  *
  * This function is used to get status if the device is Forcefully disabled 4K support.
  *
@@ -1094,15 +1094,13 @@ dsError_t dsGetPreferredColorDepth(int handle, dsDisplayColorDepth_t *colorDepth
  */
 dsError_t dsSetPreferredColorDepth(int handle,dsDisplayColorDepth_t colorDepth, bool persist );
 
-/**
- * @}
- */
-
 #ifdef __cplusplus
 }
 #endif
 #endif /* __DS_VIDEOPORT_H__ */
 
-
-/** @} */
-/** @} */
+/** @} */ // End of DS HAL VIDEO PORT Public APIs
+/** @} */ // End of DS Video Port HAL
+/** @} */ // End of Device Settings HAL
+/** @} */ // End of Device Settings Module
+/** @} */ // End of HPK
