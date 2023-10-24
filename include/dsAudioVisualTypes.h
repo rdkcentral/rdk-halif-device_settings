@@ -120,6 +120,7 @@
  * @ingroup DSHAL_VIDEOPORT_TYPES
  * @brief This enumeration defines all of the standard type of Video ports.
  * @see dsVideoPortType_isValid
+ * @note also used in @link dsDisplay.h @endlink
  */
 typedef enum _dsVideoPortType_t {
     dsVIDEOPORT_TYPE_RF = 0,      ///< RF modulator (channel 3/4) video output.           
@@ -566,6 +567,7 @@ typedef enum _dsVideoStereoScopicMode_t {
 /**
  * @brief This enumeration defines all of the standard video aspect ratios.
  * @see dsVideoPortAspectRatio_isValid
+ * @note also used in @link dsDisplay.h @endlink
  */
 typedef enum _dsVideoAspectRatio_t{
     dsVIDEO_ASPECT_RATIO_4x3,    ///< 4:3 aspect ratio.                    
@@ -724,25 +726,6 @@ typedef enum _dsPowerState_t{
     dsPOWER_OFF,        ///< Host Power-off state. 
     dsPOWER_MAX,        ///< Out of range 
 }dsPowerState_t;
-
-/**
- * @brief This enumeration defines the type of display colorimetry
- * @todo see where this is used. May not be used anywhere.
- */
-typedef enum _dsDisplayColorimetryInfo_t
-{
-    dsDISPLAY_COLORIMETRY_INFO_UNKNOWN = 0,        ///< Unknown Colorimetry
-    dsDISPLAY_COLORIMETRY_INFO_XVYCC601 = 0x01,    ///< Standard Definition Colorimetry based on IEC 61966-2-4
-    dsDISPLAY_COLORIMETRY_INFO_XVYCC709 = 0x02,    ///< High Definition Colorimetry based on IEC 61966-2-4
-    dsDISPLAY_COLORIMETRY_INFO_SYCC601 = 0x04,     ///< Colorimetry based on IEC 61966-2-1/Amendment 1
-    dsDISPLAY_COLORIMETRY_INFO_ADOBEYCC601 = 0x08, ///< Colorimetry based on IEC 61966-2-5 [32], Annex A
-    dsDISPLAY_COLORIMETRY_INFO_ADOBERGB = 0x10,    ///< Colorimetry based on IEC 61966-2-5
-    dsDISPLAY_COLORIMETRY_INFO_BT2020CL = 0x20,    ///< Colorimetry based on ITU-R BT.2020 [39] Y’cC’BCC’RC
-    dsDISPLAY_COLORIMETRY_INFO_BT2020NCL = 0x40,   ///< Colorimetry based on ITU-R BT.2020 [39] Y’C’BC’R
-    dsDISPLAY_COLORIMETRY_INFO_BT2020RGB = 0x80,   ///< Colorimetry based on ITU-R BT.2020 [39] R’G’B’
-    dsDISPLAY_COLORIMETRY_INFO_DCI_P3 = 0x100,     ///< Colorimetry based on DCI-P3 */
-    dsDisplay_COLORIMETRY_INFO_MAX                 ///< Out of range 
-} dsDisplayColorimetryInfo_t;
 
 /**
  * @brief This enumeration defines the type of display color spaces supported
