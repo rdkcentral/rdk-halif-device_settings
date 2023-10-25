@@ -111,7 +111,7 @@ typedef struct _dsCompositeInStatus_t
 {
     bool    isPresented;                               ///< Boolean flag indicating Composite input is enabled for presentation by client
     bool    isPortConnected[dsCOMPOSITE_IN_PORT_MAX];  ///< Boolean flag indicating Composite source connected to this Composite input port
-    dsCompositeInPort_t   activePort;                  ///< Composite input Port selected as the currently active port (to the set-top)
+    dsCompositeInPort_t   activePort;                  ///< Composite input Port selected as the currently active port
                                                        ///<     - note that only one COMPOSITE input port can be active at a time
 } dsCompositeInStatus_t;
 
