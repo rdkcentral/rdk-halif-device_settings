@@ -39,7 +39,6 @@
 - `Caller`      - Any user of the interface via the `APIs`
 - `CPU`         - Central Processing Unit
 - `DS`          - Device Settings
-- `CPU`         - Central Processing Unit
 - `SoC`         - System on chip
 - `CompositeIn` - Composite Input
 
@@ -211,18 +210,16 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     Caller->>HAL:dsCompositeInRegisterStatusChangeCB()
     Note over HAL: Creates the callback for when the Composite in status changes.
     HAL-->>Caller:return
-    Note over HAL: Composite Input connection status changed
+    Note over HAL: Composite Input hotplug connection has changed
     Driver-->>HAL:return
-    HAL-->>Caller:dsCompositeInStatus_t callback returned
-    Note over HAL: The Composite Input signal status changed
-    Driver-->>HAL:return
-    HAL-->>Caller:dsCompositeInStatusChangeCB_t callback returned
-    Note over HAL: Composite Input status changed
+    HAL-->>Caller:dsCompositeInConnectCB_t callback returned
+    Note over HAL: Composite Input signal status changed
     Driver-->>HAL:return
     HAL-->>Caller:dsCompositeInSignalChangeCB_t callback returned
-    Note over HAL: Composite Input status changed
+    Note over HAL: The Composite Input status changed
     Driver-->>HAL:return
-    Caller ->>HAL:dsCompositeInInit()
+    HAL-->>Caller:dsCompositeInStatusChangeCB_t callback returned
+    Caller ->>HAL:dsCompositeInTerm()
     Note over HAL: Terminates the underlying sub-systems
     HAL->>Driver:Terminates the underlying sub-systems
     Driver-->>HAL:return

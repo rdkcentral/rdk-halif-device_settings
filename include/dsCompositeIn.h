@@ -36,6 +36,46 @@
 */
 
 /**
+ * @addtogroup HPK Hardware Porting Kit
+ * @{
+ * @par The Hardware Porting Kit
+ * HPK is the next evolution of the well-defined Hardware Abstraction Layer
+ * (HAL), but augmented with more comprehensive documentation and test suites
+ * that OEM or SOC vendors can use to self-certify their ports before taking
+ * them to RDKM for validation or to an operator for final integration and
+ * deployment. The Hardware Porting Kit effectively enables an OEM and/or SOC
+ * vendor to self-certify their own Video Accelerator devices, with minimal RDKM
+ * assistance.
+ *
+ */
+
+/**
+ * @addtogroup Device_Settings Device Settings Module
+ * @{
+ */
+
+/**
+ * @addtogroup Device_Settings_HAL Device Settings HAL
+ * @par Application API Specification
+ * Described herein are the DeviceSettings HAL types and functions that are part of
+ * the CompositeIn subsystem. The CompositeIn subsystem manages system-specific HAL operations.
+ *  @{
+ */
+
+/**
+*   @defgroup dsCompositeIn_HAL DS CompositeIn HAL
+ *  @{
+ * @par Application API Specification
+ * dsCompositeIn HAL provides an interface for managing the CompositeIn settings for the device settings module
+ */
+
+/**
+ * @defgroup DSHAL_COMPOSITE_IN_API DS HAL Composite Input Public APIs
+ *  @{
+ */
+
+
+/**
  * @file dsCompositeIn.h
  *
  * @brief Device Settings HAL COMPOSITE Input Public API.
@@ -68,15 +108,8 @@
  *
  */
 
-/**
-* @defgroup devicesettings Device Settings
-* @{
-* @defgroup hal Device Settings HAL
-* @{
-**/
-
-#ifndef _DS_dsCompositeInH_
-#define _DS_dsCompositeInH_
+#ifndef __DS_COMPOSITE_IN_H__
+#define __DS_COMPOSITE_IN_H__
 
 #include "dsError.h"
 #include "dsCompositeInTypes.h"
@@ -131,13 +164,13 @@ dsError_t dsCompositeInTerm (void);
 /**
  * @brief Gets the number of COMPOSITE Input ports on the specific platform.
  *
- * This function is used to get the number of COMPOSITE Input ports on the specific platform for eg: set-top.
+ * This function is used to get the number of COMPOSITE Input ports on the specific platform.
  *
- * @param[in] pNumberOfInputs   - number of COMPOSITE Input ports.
+ * @param[out] pNumberOfInputs   - number of COMPOSITE Input ports. Min 0. Max @see dsCompositeInPort_t
  *
  * @return dsError_t                      -  Status
  * @retval dsERR_NONE                     -  Success
- * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid(port is not present or index is out of range)
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
@@ -151,7 +184,7 @@ dsError_t dsCompositeInGetNumberOfInputs (uint8_t *pNumberOfInputs);
 /**
  * @brief Gets the COMPOSITE Input Status.
  *
- * This function is used to get the current COMPOSITE Input Status.
+ * This function is used to get the status of all COMPOSITE Input Status.
  *
  * @param [out] pStatus - status of compositeIn ports. @see dsCompositeInStatus_t
  * 
@@ -190,7 +223,9 @@ dsError_t dsCompositeInSelectPort (dsCompositeInPort_t Port);
 
 /**
  * @brief Scales the COMPOSITE In video
- * This function is used to scale the COMPOSITE In video.
+ * This function scales the COMPOSITE input video. The width and height, based on the x, y coordinates, 
+ *      cannot exceed that of the current resolution of the device.
+ *      e.g.  x(in pixels)+width cannot be greater then the width of the resolution.
  *
  * @param[in] x         - x coordinate for the video
  * @param[in] y         - y coordinate for the video
@@ -199,13 +234,13 @@ dsError_t dsCompositeInSelectPort (dsCompositeInPort_t Port);
  *
  * @return dsError_t                      -  Status
  * @retval dsERR_NONE                     -  Success
- * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid(port is not present or index is out of range)
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
  * 
- * @pre  dsCompositeInInit() should be called before calling this API.
+ * @pre  dsCompositeInInit(), dsCompositeInSelectPort() should be called before calling this API.
  */
 
 dsError_t dsCompositeInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t height);
@@ -220,8 +255,6 @@ dsError_t dsCompositeInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t 
  * @param[in] isPortConnected   - Connection state of COMPOSITE In Port. True if connected, false if not
  *
  * @return None.
- * 
- * @warning  This API is Not thread safe.
  * 
  * @pre  dsCompositeInRegisterConnectCB() should be called before calling this API.
  * 
@@ -241,8 +274,6 @@ typedef void (*dsCompositeInConnectCB_t)(dsCompositeInPort_t Port, bool isPortCo
  *
  * @return None.
  * 
- * @warning  This API is Not thread safe.
- * 
  * @pre  dsCompositeInRegisterSignalChangeCB() should be called before calling this API.
  * 
  * @see dsCompositeInRegisterSignalChangeCB()
@@ -260,8 +291,6 @@ typedef void (*dsCompositeInSignalChangeCB_t)(dsCompositeInPort_t port, dsCompIn
  *
  * @return None.
  * 
- * @warning  This API is Not thread safe.
- * 
  * @pre  dsCompositeInRegisterStatusChangeCB() should be called before calling this API.
  * 
  * @see dsCompositeInRegisterStatusChangeCB()
@@ -278,7 +307,7 @@ typedef void (*dsCompositeInStatusChangeCB_t)(dsCompositeInStatus_t inputStatus)
  * 
  * @return dsError_t                      -  Status
  * @retval dsERR_NONE                     -  Success
- * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid(port is not present or index is out of range)
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
@@ -300,7 +329,7 @@ dsError_t dsCompositeInRegisterConnectCB (dsCompositeInConnectCB_t CBFunc);
  * 
  * @return dsError_t                      -  Status
  * @retval dsERR_NONE                     -  Success
- * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid(port is not present or index is out of range)
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
@@ -321,7 +350,7 @@ dsError_t dsCompositeInRegisterSignalChangeCB (dsCompositeInSignalChangeCB_t CBF
  * 
  * @return dsError_t                      -  Status
  * @retval dsERR_NONE                     -  Success
- * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid(port is not present or index is out of range)
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
@@ -342,7 +371,10 @@ dsError_t dsCompositeInRegisterStatusChangeCB (dsCompositeInStatusChangeCB_t CBF
 #ifdef __cplusplus
 }
 #endif
-#endif /* _DS_dsCompositeInH_ */
+#endif /* __DS_COMPOSITE_IN_H__ */
 
-/** @} */
-/** @} */
+/** @} */ // End of DS HAL Composite Input Public APIs
+/** @} */ // End of DS CompositeIn HAL
+/** @} */ // End of Device Settings HAL
+/** @} */ // End of Device Settings Module
+/** @} */ // End of HPK

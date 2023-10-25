@@ -18,6 +18,45 @@
 */
 
 /**
+ * @addtogroup HPK Hardware Porting Kit
+ * @{
+ * @par The Hardware Porting Kit
+ * HPK is the next evolution of the well-defined Hardware Abstraction Layer
+ * (HAL), but augmented with more comprehensive documentation and test suites
+ * that OEM or SOC vendors can use to self-certify their ports before taking
+ * them to RDKM for validation or to an operator for final integration and
+ * deployment. The Hardware Porting Kit effectively enables an OEM and/or SOC
+ * vendor to self-certify their own Video Accelerator devices, with minimal RDKM
+ * assistance.
+ *
+ */
+
+/**
+ * @addtogroup Device_Settings Device Settings Module
+ * @{
+ */
+
+/**
+ * @addtogroup Device_Settings_HAL Device Settings HAL
+ * @par Application API Specification
+ * Described herein are the DeviceSettings HAL types and functions that are part of
+ * the CompositeIn subsystem. The CompositeIn subsystem manages system-specific HAL operations.
+ *  @{
+ */
+
+/**
+*   @addtogroup dsCompositeIn_HAL DS CompositeIn HAL
+ *  @{
+ * @par Application API Specification
+ * dsCompositeIn HAL provides an interface for managing the CompositeIn settings for the device settings module
+ */
+
+/**
+ * @defgroup DSHAL_COMPOSITE_IN_TYPES DS HAL Composite Input Public APIs
+ *  @{
+ */
+
+/**
  * @file dsTypes.h
  *
  * @brief HAL types.
@@ -40,33 +79,6 @@
  * -# None
  *
  */
-
-/**
- * @addtogroup HPK HPK
- * @{
- * @par The Hardware Porting Kit
- * HPK is the next evolution of the well-defined Hardware Abstraction Layer
- * (HAL), but augmented with more comprehensive documentation and test suites
- * that OEM or SOC vendors can use to self-certify their ports before taking
- * them to RDKM for validation or to an operator for final integration and
- * deployment. The Hardware Porting Kit effectively enables an OEM and/or SOC
- * vendor to self-certify their own Video Accelerator devices, with minimal RDKM
- * assistance.
- *
- */
-
-/** 
- * @defgroup DSSETTINGS_HAL HAL Types & Public API
- * HAL types and public API definitions.
- * @ingroup DSSETTINGS
- * @{
- */
-
-/** @addtogroup DSHAL_COMPOSITE_IN_STATUS HAL Composite IN Signal Status Definitions
- *  @ingroup DSHAL_COMPOSITE_IN
- *  @{
- */
-
 
 /**
  * @brief This enumeration defines the type composite signal status.
@@ -103,9 +115,8 @@ typedef struct _dsCompositeInStatus_t
                                                        ///<     - note that only one COMPOSITE input port can be active at a time
 } dsCompositeInStatus_t;
 
-/* End of DSHAL_COMPOSITE_IN doxygen group */
-/**
- * @}
- */
-/** @} */ // End of DSHAL_API HAL Data Types
+/** @} */ // End of DS HAL Composite Input Public Types
+/** @} */ // End of DS CompositeIn HAL
+/** @} */ // End of Device Settings HAL
+/** @} */ // End of Device Settings Module
 /** @} */ // End of HPK
