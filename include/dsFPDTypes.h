@@ -209,7 +209,7 @@ typedef enum __dsFPDTimeFormat_t
 {
     dsFPD_TIME_12_HOUR,  ///< 12 hour time format
     dsFPD_TIME_24_HOUR,  ///< 24 hour time format
-    dsFPD_TIME_STRING,   ///< Text string     
+    dsFPD_TIME_STRING,   ///< Text string     //@todo Remove as seperate commit
     dsFPD_TIME_MAX       ///< Out of range 
 }dsFPDTimeFormat_t;
 
