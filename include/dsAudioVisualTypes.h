@@ -762,7 +762,6 @@ typedef enum _dsDisplayColorDepth_t
     dsDISPLAY_COLORDEPTH_10BIT = 0x02,  ///< 10 bit color depth
     dsDISPLAY_COLORDEPTH_12BIT = 0x04,  ///< 12 bit color depth
     dsDISPLAY_COLORDEPTH_AUTO = 0x08,   ///< Automatic color depth
-    dsDISPLAY_COLORDEPTH_MAX            ///< Out of range 
 } dsDisplayColorDepth_t;
 
 /**
