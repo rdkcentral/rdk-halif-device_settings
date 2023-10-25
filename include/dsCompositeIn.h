@@ -190,7 +190,7 @@ dsError_t dsCompositeInGetNumberOfInputs (uint8_t *pNumberOfInputs);
  * 
  * @return dsError_t                      -  Status
  * @retval dsERR_NONE                     -  Success
- * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid(port is not present or index is out of range)
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
