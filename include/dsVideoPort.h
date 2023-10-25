@@ -251,6 +251,18 @@ dsError_t  dsIsDisplaySurround(int handle, bool *surround);
 dsError_t  dsGetSurroundMode(int handle, int *surround);
 
 /**
+ * @brief Callback function to notify the Video Format change event to the clients.
+ *
+ * HAL Implementation must call this method to update the Video Format info event
+ * to the application.
+ *
+ * @param[in] videoFormat Current video format. @see dsHDRStandard_t
+ *
+ * @pre dsVideoFormatUpdateRegisterCB()
+ */
+typedef void (*dsVideoFormatUpdateCB_t)(dsHDRStandard_t videoFormat);
+
+/**
  * @brief Callback Registration for the Video Format update event.
  *
  * This function registers a callback function to receive the Video Format update events.
@@ -269,18 +281,6 @@ dsError_t  dsGetSurroundMode(int handle, int *surround);
  * @warning  This API is Not thread safe.
  */
  dsError_t dsVideoFormatUpdateRegisterCB (dsVideoFormatUpdateCB_t cb);
-
-/**
- * @brief Callback function to notify the Video Format change event to the clients.
- *
- * HAL Implementation must call this method to update the Video Format info event
- * to the application.
- *
- * @param[in] videoFormat Current video format. @see dsHDRStandard_t
- *
- * @pre dsVideoFormatUpdateRegisterCB()
- */
-typedef void (*dsVideoFormatUpdateCB_t)(dsHDRStandard_t videoFormat);
 
 /**
  * @brief Checks whether a video port is active or not.
@@ -522,6 +522,19 @@ dsError_t dsSetActiveSource(int handle);
 dsError_t  dsInitResolution(dsVideoPortResolution_t *resolution);
 
 /**
+ * @brief Callback function to notify the HDCP status change.
+ * 
+ * HAL Implementation must invoke this callback to notify the HDCP status change event
+ * to the caller(e.g. Authentication , Failure etc.).
+ * 
+ * @param[in] handle    - Handle of the video port returned from dsGetVideoPort()
+ * @param[in] status    - HDCP status change. @see dsHdcpStatus_t
+ *
+ *@pre dsRegisterHdcpStatusCallback()
+ */
+typedef void (*dsHDCPStatusCallback_t)(int handle, dsHdcpStatus_t status);
+
+/**
  * @brief Callback Registration for the HDCP status change event.
  *
  * This function registers a callback function to receive the HDCP status change event from
@@ -546,19 +559,6 @@ dsError_t  dsInitResolution(dsVideoPortResolution_t *resolution);
  * @warning  This API is Not thread safe.
  */
  dsError_t dsRegisterHdcpStatusCallback (int handle, dsHDCPStatusCallback_t cb);
-
-/**
- * @brief Callback function to notify the HDCP status change.
- * 
- * HAL Implementation must invoke this callback to notify the HDCP status change event
- * to the caller(e.g. Authentication , Failure etc.).
- * 
- * @param[in] handle    - Handle of the video port returned from dsGetVideoPort()
- * @param[in] status    - HDCP status change. @see dsHdcpStatus_t
- *
- *@pre dsRegisterHdcpStatusCallback()
- */
-typedef void (*dsHDCPStatusCallback_t)(int handle, dsHdcpStatus_t status);
 
  /**
  * @brief Gets the current HDCP status of the specified video port.
