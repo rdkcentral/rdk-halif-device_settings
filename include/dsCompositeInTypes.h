@@ -80,8 +80,8 @@
  *
  */
 
-#ifndef DS_COMPOSITE_IN_TYPES_H
-#define DS_COMPOSITE_IN_TYPES_H
+#ifndef __DS_COMPOSITE_IN_TYPES_H__
+#define __DS_COMPOSITE_IN_TYPES_H__
 #pragma once
 
 /**
@@ -119,7 +119,7 @@ typedef struct _dsCompositeInStatus_t
                                                        ///<     - note that only one COMPOSITE input port can be active at a time
 } dsCompositeInStatus_t;
 
-#endif /* DS_COMPOSITE_IN_TYPES_H */
+#endif /* __DS_COMPOSITE_IN_TYPES_H__ */
 
 /** @} */ // End of DS HAL Composite Input Public Types
 /** @} */ // End of DS CompositeIn HAL
