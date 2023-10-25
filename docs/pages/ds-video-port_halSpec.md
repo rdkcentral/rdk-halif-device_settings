@@ -98,7 +98,7 @@ Although this interface is not required to be involved in any of the power manag
 This interface must support asynchronous notifications operations:
 
  - `dsHDCPStatusCallback_t` is triggered when the connection status when the HDCP status of video port changes.
- -`dsVideoFormatUpdateCB` is triggered when the video format changes.
+ - `dsVideoFormatUpdateCB` is triggered when the video format changes.
  
 
  This interface is allowed to establish its own thread context for its operation, ensuring minimal impact on system resources. Additionally, this interface is responsible for releasing the resources it creates for its operation once the respective operation concludes.
@@ -175,7 +175,7 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     - `dsVideoFormatUpdateCB()` is triggered when there is a change in video format of the content
     
 
-5. De-initialize the `HAL` using `dsVideoPortTerm()`
+5. De-initialize the `HAL` using `dsVideoPortTerm()`.
 
 ### Diagrams
 
