@@ -80,6 +80,10 @@
  *
  */
 
+#ifndef DS_COMPOSITE_IN_TYPES_H
+#define DS_COMPOSITE_IN_TYPES_H
+#pragma once
+
 /**
  * @brief This enumeration defines the type composite signal status.
  */
@@ -114,6 +118,8 @@ typedef struct _dsCompositeInStatus_t
     dsCompositeInPort_t   activePort;                  ///< Composite input Port selected as the currently active port
                                                        ///<     - note that only one COMPOSITE input port can be active at a time
 } dsCompositeInStatus_t;
+
+#endif /* DS_COMPOSITE_IN_TYPES_H */
 
 /** @} */ // End of DS HAL Composite Input Public Types
 /** @} */ // End of DS CompositeIn HAL
