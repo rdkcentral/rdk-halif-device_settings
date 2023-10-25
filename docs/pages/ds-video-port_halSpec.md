@@ -154,7 +154,7 @@ The source code must build into a shared library for `DS` as Video Port module i
 
 ### Platform or Product Customization
 
-This interface is not required to have any platform or product customizations.
+The configuration settings file (dsVideoPortSettings.h) for `DS` Video Port can be used for adding platform specific configurations. The sample file is available [<b>here</b>](./dsVideoPortSettings_template.h "dsVideoPortSettings_template.h").
 
 ## Interface API Documentation
 
@@ -232,7 +232,7 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsGetResolution()
-    Note over HAL: Sets the resolution of video port
+    Note over HAL: Gets the resolution of video port
     HAL->>Driver:Getting the resolution of display corresponding to specified video port
     Driver-->>HAL:return
     HAL-->>Caller:return
