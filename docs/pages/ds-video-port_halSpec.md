@@ -154,7 +154,7 @@ The source code must build into a shared library for `DS` as Video Port module i
 
 ### Platform or Product Customization
 
-The configuration settings file (dsVideoPortSettings.h) for `DS` Video Port can be used for adding platform specific configurations. The sample file is available [<b>here</b>](./dsVideoPortSettings_template.h "dsVideoPortSettings_template.h").
+The configuration settings file for `DS` Video Port can be used for adding platform specific configurations. The sample file is available [<b>here</b>](./dsVideoPortSettings_template.h "dsVideoPortSettings_template.h").
 
 ## Interface API Documentation
 
