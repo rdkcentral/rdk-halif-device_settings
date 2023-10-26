@@ -189,6 +189,16 @@ typedef enum tv_hdmi_edid_version_e {
     HDMI_EDID_VER_MAX,      /*!< Out of bounds */
 } tv_hdmi_edid_version_t;
 
+/**
+ * @brief Enum for Video Plant Types
+ */
+typedef enum dsVideoPlaneType {
+    dsVideoPlane_PRIMARY,       /*!< Primary Video Plane*/
+    dsVideoPlane_SECONDARY,     /*!< Secondary Video Plane*/
+    dsVideoPlane_INVALID,       /*!< Invalid Video Plane*/
+    dsVideoPlane_MAX            /*!< Out of bounds*/
+}dsVideoPlaneType_t;
+
 #endif // End of __DS_HDMI_IN_TYPES_H__
 
 /** @} */ // End of dsHdmiIn_HAL_Type_H
