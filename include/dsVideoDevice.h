@@ -379,6 +379,66 @@ dsError_t dsGetCurrentDisplayframerate(int handle, char *framerate);
  */
 dsError_t dsSetDisplayframerate(int handle, char *framerate);
 
+/**
+ * @brief Call back function to receive the framerate change event form the HAL side.
+ * @param [in] tSecond time elapsed after the change. Time in seconds.
+ * 
+ * @pre dsVideoDeviceInit(), dsRegisterFrameratePreChangeCB() must be called before calling this function.
+ *
+ */
+typedef void (*dsRegisterFrameratePreChangeCB_t)(unsigned int tSecond);
+/**
+ * @brief This function is used to register the callback function for the Display framerate pre change event.
+ *
+ * @param[in] CBFunc    - Function callback to register for the event. 
+ *                              See dsRegisterFrameratePreChangeCB_t.
+ *
+ * @return dsError_t                       - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
+ * @pre dsVideoDeviceInit() must be called before calling this function.
+ * @post dsRegisterFrameratePreChangeCB_t callback must be called after calling this function.
+ * 
+ * @warning  This function is Not thread safe.
+ * 
+ */
+dsError_t dsRegisterFrameratePreChangeCB(dsRegisterFrameratePreChangeCB_t CBFunc);
+/**
+ * @brief Call back function to receive the framerate change is event.
+ * @param [in] tSecond time elapsed after the change.
+ * 
+ * @pre dsVideoDeviceInit(), dsRegisterFrameratePostChangeCB() must be called before calling this function.
+ * 
+ *
+ */
+typedef void (*dsRegisterFrameratePostChangeCB_t)(unsigned int tSecond);
+/**
+ * @brief This function is used to register a callback function for the Display framerate 
+ *                      post change event from the HAL side.
+ *
+ * @param[in] CBFunc    - Function to register for the event. 
+ *                                  See dsRegisterFrameratePostChangeCB_t.
+ *
+ * @return dsError_t                       - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
+ * @pre dsVideoDeviceInit() must be called before calling this function.
+ * @post dsRegisterFrameratePostChangeCB_t callback must be called after calling this function.
+ * 
+ * @warning  This function is Not thread safe.
+ * 
+ */
+dsError_t dsRegisterFrameratePostChangeCB(dsRegisterFrameratePostChangeCB_t CBFunc);
+
+
 #ifdef __cplusplus
 }
 #endif
