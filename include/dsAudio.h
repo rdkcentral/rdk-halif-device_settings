@@ -136,9 +136,9 @@ typedef void (*dsAudioOutPortConnectCB_t)(dsAudioPortType_t portType, unsigned i
 typedef void (*dsAudioFormatUpdateCB_t)(dsAudioFormat_t audioFormat);
 
 /**
- * @brief Call back fundtion used to notify audio sink Atmos capability change
+ * @brief Call back function used to notify audio sink Atmos capability change
  *
- * HAL Implementation should call this method to deliver updated atmos capbility change event
+ * HAL Implementation should call this method to deliver updated atmos capability change event
  * to the `caller`.
  *
  * @param[in] atmosCap  - current atmos capability of the sink device
