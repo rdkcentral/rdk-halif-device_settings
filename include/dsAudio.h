@@ -136,6 +136,18 @@ typedef void (*dsAudioOutPortConnectCB_t)(dsAudioPortType_t portType, unsigned i
 typedef void (*dsAudioFormatUpdateCB_t)(dsAudioFormat_t audioFormat);
 
 /**
+ * @brief Call back fundtion used to notify audio sink Atmos capability change
+ *
+ * HAL Implementation should call this method to deliver updated atmos capbility change event
+ * to the `caller`.
+ *
+ * @param[in] atmosCap  - current atmos capability of the sink device
+ *
+ * @pre - dsAudioAtmosCapsChangeRegisterCB
+ */
+typedef void (*dsAtmosCapsChangeCB_t) (dsATMOSCapability_t atmosCaps, bool status);
+
+/**
  * @brief Initializes the audio port sub-system of Device Settings HAL.
  * 
  * This function initializes all the audio output ports and allocates required resources. 
@@ -1695,6 +1707,24 @@ dsError_t dsAudioOutRegisterConnectCB(dsAudioOutPortConnectCB_t CBFunc);
  * @warning  This API is Not thread safe.
  */
 dsError_t dsAudioFormatUpdateRegisterCB(dsAudioFormatUpdateCB_t cbFun);
+
+/**
+ * @brief Register for the Atmos capability change event of the sink device
+ *
+ * @param[in] cbFun  - Atmos Capability chance callback function.
+ *
+ * @return dsError_t                      -  Status 
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ * 
+ * @pre  dsAudioPortInit() should be called before calling this API.
+ * 
+ * @warning  This API is Not thread safe.
+**/
+dsError_t dsAudioAtmosCapsChangeRegisterCB (dsAtmosCapsChangeCB_t cbFun);
 
 /**
  * @brief Gets the Audio Format capabilities .
