@@ -564,7 +564,7 @@ typedef void (*dsHDCPStatusCallback_t)(int handle, dsHdcpStatus_t status);
 dsError_t dsGetHDCPStatus (int handle, dsHdcpStatus_t *status);
 
 /**
- * @brief Gets the STB HDCP protocol version
+ * @brief Gets the HDCP protocol version of the device.
  *
  * @param[in] handle                - Handle of the video port returned from dsGetVideoPort()
  * @param [out] protocolVersion     - HDCP protocol version. @see dsHdcpProtocolVersion_t
@@ -585,7 +585,7 @@ dsError_t dsGetHDCPStatus (int handle, dsHdcpStatus_t *status);
 dsError_t dsGetHDCPProtocol (int handle, dsHdcpProtocolVersion_t *protocolVersion);
 
 /**
- * @brief Gets the Receiver/TV HDCP protocol version
+ * @brief Gets the HDCP protocol version of the connected sink device
  *
  * @param[in] handle                - Handle of the video port returned from dsGetVideoPort()
  * @param [out] protocolVersion     - HDCP protocol version. @see dsHdcpProtocolVersion_t
