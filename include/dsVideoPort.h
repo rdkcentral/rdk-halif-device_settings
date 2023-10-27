@@ -504,26 +504,6 @@ dsError_t  dsGetResolution(int handle, dsVideoPortResolution_t *resolution);
 dsError_t dsSetActiveSource(int handle);
 
 /**
- * @brief Initializes the Video Resolution
- *
- * This function initializes the Video Resolution
- *
- * @param[in] resolution    - Video Resolution which has to be initialized. @see dsVideoPortResolution_t
- *                            
- * @return dsError_t                      -  Status 
- * @retval dsERR_NONE                     -  Success
- * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
- * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
- * @retval dsERR_GENERAL                  -  Underlying undefined platform error
- * 
- * @pre dsVideoPortInit() must be called before calling this API.
- * 
- * @warning  This API is Not thread safe.
- */
-dsError_t  dsInitResolution(dsVideoPortResolution_t *resolution);
-
-/**
  * @brief Callback function to notify the HDCP status change.
  * 
  * HAL Implementation must invoke this callback to notify the HDCP status change event
