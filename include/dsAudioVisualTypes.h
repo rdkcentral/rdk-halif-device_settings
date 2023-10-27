@@ -295,7 +295,6 @@ typedef enum _dsAudioCapabilities_t {
     dsAUDIOSUPPORT_MS12 = 0x20,     ///< Multi Stream 12.
     dsAUDIOSUPPORT_MS12V2 = 0x40,   ///< Multi Stream Version 2.
     dsAUDIOSUPPORT_Invalid = 0x80,  ///< Invalid.
-    dsAUDTIOSUPPORT_MAX,            ///< Out of range 
 } dsAudioCapabilities_t;
 
 /**
@@ -308,7 +307,6 @@ typedef enum _dsAudioARCTypes_t {
     dsAUDIOARCSUPPORT_NONE = 0x0,   ///< None
     dsAUDIOARCSUPPORT_ARC = 0x01,   ///< Audio Return Channel
     dsAUDIOARCSUPPORT_eARC = 0x02,  ///< Enhanced Audio Return Channel
-    dsAUDIOARCSUPPORT_MAX,          ///< Out of range 
 } dsAudioARCTypes_t;
 
 /**
@@ -415,8 +413,8 @@ typedef struct _dsAudioTypeConfig_t {
  */
 typedef enum _dsSURROUNDMode_t {
     dsSURROUNDMODE_NONE = 0x0,      ///< No surround mode.
-    dsSURROUNDMODE_DD = 0x1,        ///< Surround mode Dolby Digital.
-    dsSURROUNDMODE_DDPLUS = 0x2,    ///< Surround mode Dolby Digital Plus
+    dsSURROUNDMODE_DD,        ///< Surround mode Dolby Digital.
+    dsSURROUNDMODE_DDPLUS,    ///< Surround mode Dolby Digital Plus
     dsSURROUNDMODE_MAX,             ///< Out of range 
 } dsSURROUNDMode_t;
 
@@ -630,7 +628,6 @@ typedef enum _dsHDRStandard_t {
     dsHDRSTANDARD_HDR10PLUS = 0x10,         ///< Video Format HDRPlus 
     dsHDRSTANDARD_SDR= 0x20,                ///< Video Format SDR 
     dsHDRSTANDARD_Invalid = 0x80,           ///< When invalid value observed
-    dsHDRSTANDARD_MAX   = 0x100             ///< Out of range 
 } dsHDRStandard_t;
 
 /**
