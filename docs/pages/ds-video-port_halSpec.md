@@ -114,8 +114,7 @@ The `API` must return error synchronously as a return argument. This interface i
 
 ### Persistence Model
 
-- The resolution of the Video Port is persisted in a local file for `dsSetResolution()`.
-- The preferred color depth values are persisted in a local file for `dsGetPreferredColorDepth()` and `dsSetPreferredColorDepth()`.
+There is no requirement for the interface to persist any setting information. Caller is responsible to persist any settings related to the HAL.
 
 ## Non-functional requirements
 
