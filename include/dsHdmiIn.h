@@ -178,7 +178,7 @@ dsError_t dsHdmiInTerm (void);
  * @warning  This API is Not thread safe.
  * 
  */
-dsError_t dsHdmiInGetNumberOfinputs (uint8_t *pNumberOfinputs);
+dsError_t dsHdmiInGetNumberOfInputs (uint8_t *pNumberOfinputs);
 
 /**
  * @brief Gets the HDMI input port status of all ports
@@ -721,6 +721,51 @@ dsError_t dsGetSupportedGameFeaturesList (dsSupportedGameFeatureList_t* features
  * 
  */
 dsError_t dsGetAVLatency (int *audio_latency, int *video_latency);
+
+
+/**
+ * @brief Sets the EDID ALLM support
+ * 
+ * This function sets the EDID ALLM support
+ *
+ * @param[in] iHdmiPort      - HDMI input port. @see dsHdmiInPort_t
+ * @param[in] allmSupport    - Allm support. False for disabled, True for enabled
+ *
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
+ * 
+ * @pre dsHdmiInInit() must be called before calling this API
+ * 
+ * @warning  This API is Not thread safe
+ * 
+ */
+dsError_t dsSetEdid2AllmSupport (dsHdmiInPort_t iHdmiPort, bool allmSupport);
+
+/**
+ * @brief Sets the EDID ALLM support
+ * 
+ * This function sets the EDID ALLM support
+ *
+ * @param[in] iHdmiPort    - HDMI input port. @see dsHdmiInPort_t
+ * @param[out] allmSupport - Allm support. False for disabled, True for enabled
+ *
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
+ * 
+ * @pre dsHdmiInInit() must be called before calling this API
+ * 
+ * @warning  This API is Not thread safe
+ * 
+ */
+dsError_t dsGetEdid2AllmSupport (dsHdmiInPort_t iHdmiPort, bool *allmSupport);
 
 
 #ifdef __cplusplus
