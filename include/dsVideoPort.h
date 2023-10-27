@@ -594,7 +594,7 @@ dsError_t dsGetHDCPProtocol (int handle, dsHdcpProtocolVersion_t *protocolVersio
  * @retval dsERR_NONE                     -  Success
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/Sink Device invokes this API
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/When a sink device invokes this API
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
  * @pre dsVideoPortInit() and dsGetVideoPort() must be called before calling this API.
@@ -615,7 +615,7 @@ dsError_t dsGetHDCPReceiverProtocol (int handle, dsHdcpProtocolVersion_t *protoc
  * @retval dsERR_NONE                     -  Success
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/When a source device invokes this API
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
  * @pre dsVideoPortInit() and dsGetVideoPort() must be called before calling this API.
