@@ -373,8 +373,8 @@ dsError_t dsSetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_
  * This function will get the brightness of the specified 7-segment display LEDs on the Front
  * Panel Text Display. If there are no 7-segment display LEDs present or if the FP State is "OFF"
  * then dsERR_OPERATION_NOT_SUPPORTED must be returned. 
- * The FP Display Mode must be dsFPD_MODE_TEXT/dsFPD_MODE_ANY. @see dsFPDMode_t
- *
+ * The FP Display Mode must be dsFPD_MODE_CLOCK/dsFPD_MODE_ANY. @see dsFPDMode_t
+ *  *
  * @note Whether this device has a 7-Segment display LEDs should be within the dsFPDSettings_template file.
  * 
  * @param[in] eIndicator    - FPD Text indicator index. @see dsFPDTextDisplay_t
@@ -427,7 +427,7 @@ dsError_t dsFPEnableCLockDisplay (int enable);
  * This function scrolls the text in the 7-segment display LEDs for the given number of iterations.
  * If there are no 7-segment display LEDs present or if the FP State is "OFF" then
  * dsERR_OPERATION_NOT_SUPPORTED must be returned.
- * Horizontal and Vertical scroll cannot work at the same time.
+ * Horizontal and Vertical scroll cannot work at the same time. If both values are entered return dsERR_OPERATION_NOT_SUPPORTED
  *
  * @note Whether this device has a 7-Segment display LEDs should be within the dsFPDSettings_template file.
  * 
