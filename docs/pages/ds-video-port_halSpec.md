@@ -69,7 +69,7 @@ style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
 
 ## Component Runtime Execution Requirements
 
-The component must adeptly manage resources to prevent issues like memory leaks and excessive utilization. It must also meet performance goals for response time, throughput and resource use as per the platform's capabilities.
+The interface must adeptly manage resources to prevent issues like memory leaks and excessive utilization. It must also meet performance goals for response time, throughput and resource use as per the platform's capabilities.
 
 Failure to meet these requirements will likely result in undefined and unexpected behavior.
 

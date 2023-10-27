@@ -18,41 +18,6 @@
 */
 
 /**
- * @file dsVideoPort.h
- *
- * @brief Device Settings HAL Video Port Public API.
- * This API defines the HAL for the Device Settings Video Port interface.
- *
- * @par Document
- * Document reference.
- *
- * @par Open Issues (in no particular order)
- * -# None
- *
- * @par Assumptions
- * -# None
- *
- * @par Abbreviations
- * - HAL:   Hardware Abstraction Layer
- * - API:   Caller Programming Interface
- * - Caller:  Any user of the interface via the APIs
- * - CPU:   Central Processing Unit
- * - DS:    Device Settings
- * - SoC:   System on Chip
- * - HDMI:  High-Definition Multimedia Interface
- * - DTCP:  Digital Transmission Content Protection
- * - HDCP:  High-bandwidth Digital Content Protection
- * - HDR:   High Dynamic Range
- * - SDR:   Standard Dynamic Range
- * - SCART: Syndicat des Constructeurs d'Appareils Radiorécepteurs et Téléviseurs - Radio and Television Receiver Manufacturers' Association
- * - EDID:  Extended Display Identification Data
- *
- * @par Implementation Notes
- * -# None
- *
- */
-
-/**
  * @addtogroup HPK Hardware Porting Kit
  * @{
  * @par The Hardware Porting Kit
@@ -91,9 +56,43 @@
  *  @{
  */
 
+/**
+ * @file dsVideoPort.h
+ *
+ * @brief Device Settings HAL Video Port Public API.
+ * This API defines the HAL for the Device Settings Video Port interface.
+ *
+ * @par Document
+ * Document reference.
+ *
+ * @par Open Issues (in no particular order)
+ * -# None
+ *
+ * @par Assumptions
+ * -# None
+ *
+ * @par Abbreviations
+ * - HAL:   Hardware Abstraction Layer
+ * - API:   Caller Programming Interface
+ * - Caller:  Any user of the interface via the APIs
+ * - CPU:   Central Processing Unit
+ * - DS:    Device Settings
+ * - SoC:   System on Chip
+ * - HDMI:  High-Definition Multimedia Interface
+ * - DTCP:  Digital Transmission Content Protection
+ * - HDCP:  High-bandwidth Digital Content Protection
+ * - HDR:   High Dynamic Range
+ * - SDR:   Standard Dynamic Range
+ * - SCART: Syndicat des Constructeurs d'Appareils Radiorécepteurs et Téléviseurs - Radio and Television Receiver Manufacturers' Association
+ * - EDID:  Extended Display Identification Data
+ *
+ * @par Implementation Notes
+ * -# None
+ *
+ */
 
-#ifndef __DS_VIDEOPORT_H__
-#define __DS_VIDEOPORT_H__
+#ifndef __DS_VIDEO_PORT_H__
+#define __DS_VIDEO_PORT_H__
 
 #ifdef __cplusplus
 extern "C" {
@@ -118,7 +117,7 @@ extern "C" {
  * 
  * @see dsVideoPortTerm()
  */
-dsError_t  dsVideoPortInit();
+dsError_t dsVideoPortInit();
 
  /**
  * @brief Terminates the underlying Video Port sub-system.
@@ -301,6 +300,8 @@ typedef void (*dsVideoFormatUpdateCB_t)(dsHDRStandard_t videoFormat);
  * 
  * @pre dsVideoPortInit() and dsGetVideoPort() must be called before calling this API.
  * 
+ * @see dsSetActiveSource()
+ * 
  * @warning  This API is Not thread safe.
  */
 dsError_t  dsIsVideoPortActive(int handle, bool *active);
@@ -343,7 +344,7 @@ dsError_t  dsEnableDTCP(int handle, bool contentProtect);
  * @param[in] contentProtect    - Flag to enable/disable DTCP content protection
  *                                  ( @a true to enable, @a false to disable)
  * @param[in] hdcpKey           - HDCP key
- * @param[in] keySize           - HDCP key size
+ * @param[in] keySize           - HDCP key size. @see HDCP_KEY_MAX_SIZE
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -496,6 +497,8 @@ dsError_t  dsGetResolution(int handle, dsVideoPortResolution_t *resolution);
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
  * @pre dsVideoPortInit() and dsGetVideoPort() must be called before calling this API.
+ * 
+ * @see dsIsVideoPortActive()
  * 
  * @warning  This API is Not thread safe.
  */
@@ -662,6 +665,8 @@ dsError_t dsGetHDCPCurrentProtocol (int handle, dsHdcpProtocolVersion_t *protoco
  * 
  * @pre dsVideoPortInit() and dsGetVideoPort() must be called before calling this API.
  * 
+ * @see dsIsOutputHDR()
+ * 
  * @warning  This API is Not thread safe.
  */
 dsError_t dsGetTVHDRCapabilities(int handle, int *capabilities);
@@ -712,7 +717,7 @@ dsError_t dsSupportedTvResolutions(int handle, int *resolutions);
 dsError_t dsSetForceDisable4KSupport(int handle, bool disable);
 
 /**
- * @brief Gets ForceDiable 4K support variable.
+ * @brief Gets ForceDisable 4K support variable.
  *
  * This function is used to get status if the device is Forcefully disabled 4K support.
  *
@@ -918,6 +923,8 @@ dsError_t dsGetCurrentOutputSettings(int handle, dsHDRStandard_t* video_eotf, ds
  * 
  * @pre dsVideoPortInit() and dsGetVideoPort() must be called before calling this API.
  * 
+ * @see dsGetTVHDRCapabilities()
+ * 
  * @warning  This API is Not thread safe.
  */
 dsError_t dsIsOutputHDR(int handle, bool* hdr);
@@ -989,10 +996,10 @@ dsError_t dsGetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentPr
 /**
  * @brief Gets the IgnoreEDID status variable set in the device.
  *
- * This function is used to get the status variable to understand whether to ignore the EDID data or not.
+ * This function is used to retrieve the status variable in order to determine whether to ignore the EDID data or not.
  *
  * @param[in] handle        - Handle of the video port returned from dsGetVideoPort()
- * @param [out] status      - Status of IgnoreEDID variable, true if EDID data is Ignored false otherwise
+ * @param [out] status      - Status of IgnoreEDID variable, ( @a true if EDID data ccan be ignored, @a false otherwise )
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -1121,7 +1128,7 @@ dsError_t dsSetPreferredColorDepth(int handle,dsDisplayColorDepth_t colorDepth, 
 #ifdef __cplusplus
 }
 #endif
-#endif /* __DS_VIDEOPORT_H__ */
+#endif /* __DS_VIDEO_PORT_H__ */
 
 /** @} */ // End of DS HAL VIDEO PORT Public APIs
 /** @} */ // End of DS Video Port HAL

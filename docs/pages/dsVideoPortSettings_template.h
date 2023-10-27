@@ -57,12 +57,25 @@
  * @par Application API Specification
  */
 
+/** 
+ * @file dsVideoPortSettings_template.h
+ * 
+ * <b> Following abbreviations present in HAL API </b>
+ *
+ * @par Abbreviations
+ * - cb:      Callback function (suffix).
+ * - DS:      Device Settings.
+ * - HAL:     Hardware Abstraction Layer.
+ * - HDMI:    High-Definition Multimedia Interface
+ *
+ */
+
 #ifndef __DS_VIDEO_PORT_SETTINGS_H__
 #define __DS_VIDEO_PORT_SETTINGS_H__
 
 #include "dsAudioVisualTypes.h"
 #include "dsUtl.h"
-#include "dsVideoResolutionSettings_sample.h"
+#include "dsVideoResolutionSettings_template.h"
 
 #ifdef __cplusplus
 extern "C" {
