@@ -444,7 +444,6 @@ dsError_t  dsEnableVideoPort(int handle, bool enabled);
  *
  * @param[in] handle        - Handle of the video port returned from dsGetVideoPort()
  * @param[in] resolution    - Video resolution.@see dsVideoPortResolution_t
- * @param[in] persist       - Persistence value( @a true to persist resolution, @a false otherwise )
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -1084,7 +1083,6 @@ dsError_t dsColorDepthCapabilities(int handle, unsigned int *colorDepthCapabilit
  *
  * @param[in] handle        - Handle of the video port returned from dsGetVideoPort()
  * @param [out] colorDepth  - color depth value. @see dsDisplayColorDepth_t
- * @param[in] persist       - Persistence value. ( @a true if color depth is persisted, @a false otherwise )
  *   
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -1108,7 +1106,6 @@ dsError_t dsGetPreferredColorDepth(int handle, dsDisplayColorDepth_t *colorDepth
  *
  * @param[in] handle        - Handle of the video port returned from dsGetVideoPort()
  * @param[in] colorDepth    - color depth value. @see dsDisplayColorDepth_t
- * @param[in] persist       - Persistence value ( @a true if color depth is persisted, @a false otherwise )
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
