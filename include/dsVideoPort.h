@@ -459,7 +459,7 @@ dsError_t  dsEnableVideoPort(int handle, bool enabled);
  * 
  * @see dsGetResolution()
  */
-dsError_t  dsSetResolution(int handle, dsVideoPortResolution_t *resolution, bool persist);
+dsError_t  dsSetResolution(int handle, dsVideoPortResolution_t *resolution);
 
 /**
  * @brief Gets the display resolution of specified video port.
@@ -1099,7 +1099,7 @@ dsError_t dsColorDepthCapabilities(int handle, unsigned int *colorDepthCapabilit
  * 
  * @see dsSetPreferredColorDepth()
  */
-dsError_t dsGetPreferredColorDepth(int handle, dsDisplayColorDepth_t *colorDepth, bool persist );
+dsError_t dsGetPreferredColorDepth(int handle, dsDisplayColorDepth_t *colorDepth);
 
 /**
  * @brief Sets the preferred color depth for the specified video port.
@@ -1123,7 +1123,7 @@ dsError_t dsGetPreferredColorDepth(int handle, dsDisplayColorDepth_t *colorDepth
  * 
  * @see dsGetPreferredColorDepth()
  */
-dsError_t dsSetPreferredColorDepth(int handle,dsDisplayColorDepth_t colorDepth, bool persist );
+dsError_t dsSetPreferredColorDepth(int handle,dsDisplayColorDepth_t colorDepth);
 
 #ifdef __cplusplus
 }
