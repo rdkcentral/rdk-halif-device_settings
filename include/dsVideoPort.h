@@ -739,8 +739,8 @@ dsError_t dsGetForceDisable4KSupport(int handle, bool *disable);
  *
  *
  * @param[in] handle            - Handle of the video port returned from dsGetVideoPort()
- * @param[in] parameter_str     - Name of SCART parameter
- * @param[in] value_str         - Value of SCART parameter
+ * @param[in] parameter_str     - Name of SCART parameter(Max value is 12 bytes)
+ * @param[in] value_str         - Value of SCART parameter(Max value is 12 bytes)
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
