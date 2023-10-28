@@ -157,7 +157,6 @@
 #include "dsFPDTypes.h"
 #include "dsHdmiInTypes.h"
 #include "dsVideoDeviceTypes.h"
-#include "dsHostTypes.h"
 
   /** @addtogroup DSHAL_VERSION_TYPES HAL VERSION Definitions
  *  @ingroup DSHAL_VERSION
