@@ -184,6 +184,8 @@ dsError_t dsGetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t *pBr
 
 /**
  * @brief Sets the indicator state of specified discrete Front Panel Display LED
+ * It must return
+ * dsERR_OPERATION_NOT_SUPPORTED if the indicator is single-colored or if the FP State is "OFF".
  *
  * @param[in] eIndicator - FPD indicator index. @see dsFPDIndicator_t
  * @param[in] state      - Indicates the state of the indicator to be set. @see dsFPDState_t
@@ -206,6 +208,8 @@ dsError_t dsSetFPState (dsFPDIndicator_t eIndicator, dsFPDState_t state);
 
 /**
  * @brief Gets the indicator state of specified discrete Front Panel Display LED
+ * It must return
+ * dsERR_OPERATION_NOT_SUPPORTED if the indicator is single-colored or if the FP State is "OFF".
  * 
  * @param[in]  eIndicator - FPD indicator index. @see dsFPDIndicator_t
  * @param[out] state      - current state of the specified indicator. @see dsFPDState_t
