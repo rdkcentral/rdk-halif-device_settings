@@ -107,7 +107,7 @@ Although this interface is not required to be involved in any of the power manag
 
 AudioPort provides the following asynchronous registration : 
 - `dsAudioOutRegisterConnectCB()` - Callback function to notify the audio port connection status to the `caller`
-- `dsAudioFormatUpdateCB()` - Callback function to notify the audio format update to the `caller`
+- `dsAudioFormatUpdateRegisterCB()` - Callback function to notify the audio format update to the `caller`
 - `dsAudioAtmosCapsChangeRegisterCB()` - Callback function to notify the atmos capability update to the `caller`
 
 This interface is allowed to establish its own thread context for its operation, ensuring minimal impact on system resources. Additionally, this interface is responsible for releasing the resources it creates for its operation once the respective operation concludes.

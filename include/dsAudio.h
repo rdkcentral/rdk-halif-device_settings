@@ -143,7 +143,7 @@ typedef void (*dsAudioFormatUpdateCB_t)(dsAudioFormat_t audioFormat);
  *
  * @param[in] atmosCap  - current atmos capability of the sink device
  *
- * @pre - dsAudioAtmosCapsChangeRegisterCB
+ * @pre - dsAudioAtmosCapsChangeRegisterCB()
  */
 typedef void (*dsAtmosCapsChangeCB_t) (dsATMOSCapability_t atmosCaps, bool status);
 
