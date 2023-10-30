@@ -184,6 +184,7 @@ dsError_t dsGetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t *pBr
 
 /**
  * @brief Sets the indicator state of specified discrete Front Panel Display LED
+ * 
  * It must return
  * dsERR_OPERATION_NOT_SUPPORTED if the indicator is single-colored or if the FP State is "OFF".
  *
@@ -208,6 +209,7 @@ dsError_t dsSetFPState (dsFPDIndicator_t eIndicator, dsFPDState_t state);
 
 /**
  * @brief Gets the indicator state of specified discrete Front Panel Display LED
+ * 
  * It must return
  * dsERR_OPERATION_NOT_SUPPORTED if the indicator is single-colored or if the FP State is "OFF".
  * 
@@ -431,7 +433,8 @@ dsError_t dsFPEnableCLockDisplay (int enable);
  * This function scrolls the text in the 7-segment display LEDs for the given number of iterations.
  * If there are no 7-segment display LEDs present or if the FP State is "OFF" then
  * dsERR_OPERATION_NOT_SUPPORTED must be returned.
- * Horizontal and Vertical scroll cannot work at the same time. If both values are entered return dsERR_OPERATION_NOT_SUPPORTED
+ * Horizontal and Vertical scroll cannot work at the same time. If both values are non-zero values
+ * it should return dsERR_OPERATION_NOT_SUPPORTED.
  *
  * @note Whether this device has a 7-Segment display LEDs should be within the dsFPDSettings_template file.
  * 
