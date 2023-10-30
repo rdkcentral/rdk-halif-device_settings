@@ -454,7 +454,8 @@ typedef struct _dsAudioPortConfig_t {
 typedef enum _dsVideoResolution_t{
     dsVIDEO_PIXELRES_720x480,     ///< 720x480 Resolution.                       
     dsVIDEO_PIXELRES_720x576,     ///< 720x576 Resolution.                       
-    dsVIDEO_PIXELRES_1280x720,    ///< 1280x720 Resolution.                      
+    dsVIDEO_PIXELRES_1280x720,    ///< 1280x720 Resolution.
+    dsVIDEO_PIXELRES_1366x768,    ///< 1366x768 Resolution.
     dsVIDEO_PIXELRES_1920x1080,   ///< 1920x1080 Resolution.                     
     dsVIDEO_PIXELRES_3840x2160,   ///< 3840x2160 Resolution.                     
     dsVIDEO_PIXELRES_4096x2160,   ///< 3840x2160 Resolution.                     
