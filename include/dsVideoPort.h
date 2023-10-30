@@ -585,7 +585,9 @@ dsError_t dsGetHDCPStatus (int handle, dsHdcpStatus_t *status);
 dsError_t dsGetHDCPProtocol (int handle, dsHdcpProtocolVersion_t *protocolVersion);
 
 /**
- * @brief Gets the HDCP protocol version of the connected sink device
+ * @brief Gets the HDCP protocol version of the connected sink device.
+ * 
+ * This function is only for source devices.
  *
  * @param[in] handle                - Handle of the video port returned from dsGetVideoPort()
  * @param [out] protocolVersion     - HDCP protocol version. @see dsHdcpProtocolVersion_t
@@ -606,7 +608,7 @@ dsError_t dsGetHDCPProtocol (int handle, dsHdcpProtocolVersion_t *protocolVersio
 dsError_t dsGetHDCPReceiverProtocol (int handle, dsHdcpProtocolVersion_t *protocolVersion);
 
 /**
- * @brief Gets the current HDCP protocol version
+ * @brief Gets the current negotiated HDCP protocol version.
  *
  * @param[in] handle                - Handle of the video port returned from dsGetVideoPort()
  * @param [out] protocolVersion     - HDCP protocol version. @see dsHdcpProtocolVersion_t
@@ -615,7 +617,7 @@ dsError_t dsGetHDCPReceiverProtocol (int handle, dsHdcpProtocolVersion_t *protoc
  * @retval dsERR_NONE                     -  Success
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported/When a source device invokes this API
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
  * @pre dsVideoPortInit() and dsGetVideoPort() must be called before calling this API.
