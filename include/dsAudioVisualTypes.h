@@ -112,8 +112,9 @@
 #ifndef __DS_AUDIO_VISUAL_TYPES_H__
 #define __DS_AUDIO_VISUAL_TYPES_H__
 
-#include<sys/types.h>
-#include<stdint.h>
+#include <sys/types.h>
+#include <stdint.h>
+#include <stdbool.h>
 
 #pragma once
 
