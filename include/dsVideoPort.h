@@ -719,42 +719,6 @@ dsError_t dsSetForceDisable4KSupport(int handle, bool disable);
  */
 dsError_t dsGetForceDisable4KSupport(int handle, bool *disable);
 
- /**
- * @brief Sets various SCART parameters
- *
- * Supported values:
- * parameter_str  value_str
- * "aspect_ratio" "4x3", 16x9"
- * "tv_startup"   "on", "off"
- * "tv_startup"   "on", "off"
- * "rgb"          "on" (disables cvbs)
- * "cvbs"         "on" (disables rgb)
- * "macrovision", "*"  (not implemented)
- * "cgms",        "disabled"
- * "cgms",        "copyNever"
- * "cgms",        "copyOnce"
- * "cgms",        "copyFreely"
- * "cgms",        "copyNoMore"
- * "port"         "on", "off"
- *
- *
- * @param[in] handle            - Handle of the video port returned from dsGetVideoPort()
- * @param[in] parameter_str     - Name of SCART parameter(Max value is 12 bytes)
- * @param[in] value_str         - Value of SCART parameter(Max value is 12 bytes)
- * 
- * @return dsError_t                      -  Status 
- * @retval dsERR_NONE                     -  Success
- * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
- * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
- * @retval dsERR_GENERAL                  -  Underlying undefined platform error
- * 
- * @pre dsVideoPortInit() and dsGetVideoPort() must be called before calling this API.
- * 
- * @warning  This API is Not thread safe.
- */
-dsError_t dsSetScartParameter(int handle, const char* parameter_str, const char* value_str);
-
 /**
  * @brief Gets the current video Electro-Optical Transfer Function (EOT) value.
  * 
