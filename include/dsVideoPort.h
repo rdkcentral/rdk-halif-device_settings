@@ -145,7 +145,7 @@ dsError_t dsVideoPortTerm();
  *
  * @param[in]  type     - Type of video port (e.g. HDMI). @see dsVideoPortType_t
  * @param[in]  index    - Index of the video device (0, 1, ...)  (Index of the port must be 0 if not specified)
- *                          Max index is platform specific. Min value is 0.
+ *                          Max index is platform specific. Min value is 0.  @see kSupportedPortTypes
  * @param[out] handle   - The handle used by the Caller to uniquely identify the HAL instance
  * 
  * @return dsError_t                        - Status
