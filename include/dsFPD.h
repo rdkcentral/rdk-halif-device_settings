@@ -605,6 +605,27 @@ dsError_t dsFPGetLEDState (dsFPDLedState_t* state);
  */
 dsError_t dsFPSetLEDState (dsFPDLedState_t state);
 
+/**
+ * @brief Gets the supported led states
+ * 
+ * This function gets the supported led states
+ *
+ * @param[out] states - The bitwise value of all supported led states by the platform
+ *
+ * * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ * 
+ * @pre dsFPInit() must be called before calling this API
+ * 
+ * @warning  This API is Not thread safe
+ */
+dsError_t dsFPGetSupportedLEDStates (unsigned int* states);
+
+
 #ifdef __cplusplus
 }
 #endif
