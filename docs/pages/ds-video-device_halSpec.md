@@ -193,16 +193,16 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsRegisterFrameratePreChangeCB()
-    Note over HAL: Creates the callback for the pre-change framerate callback.
+    Note over HAL: Creates the callback for the pre-change framerate callback
     HAL-->>Caller:return
     Caller->>HAL:dsRegisterFrameratePostChangeCB()
-    Note over HAL: Creates the callback for the post-change framerate callback.
+    Note over HAL: Creates the callback for the post-change framerate callback
     HAL-->>Caller:return
-    Driver-->>HAL:Frame rate about to change.
-    Note over HAL: Framerate about to change.
+    Driver-->>HAL:Frame rate about to change
+    Note over HAL: Framerate about to change
     HAL-->>Caller:dsRegisterFrameratePreChangeCB_t callback returned
-    Driver-->>HAL:Framerate has changed.
-    Note over HAL: Framerate has changed.
+    Driver-->>HAL:Framerate has changed
+    Note over HAL: Framerate has changed
     HAL-->>Caller:dsRegisterFrameratePostChangeCB_t callback returned
     Caller ->>HAL:dsVideoDeviceTerm()
     HAL ->> Driver: Releases all the resources allocated during dsVideoDeviceInit()
