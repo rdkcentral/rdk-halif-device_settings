@@ -56,11 +56,11 @@ style z fill:#fcc,stroke:#333,stroke-width:0.3px,align:left
 style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
  ```
 
-DS `CompositeIn` `HAL` provides a set of `APIs` to initialize, query and set information about the COMPOSITE input ports such as getting the number of input ports, getting the current status of a selected input port, setting the video scale, selecting which COMPOSITE input to be selected as active and registering callbacks for asynchronous notifications.
+DS `CompositeIn` `HAL` provides a set of `APIs` to initialize, query and set information about the Composite input ports such as getting the number of input ports, getting the current status of a selected input port, setting the video scale, selecting which Composite input to be selected as active and registering callbacks for asynchronous notifications.
 
 ## Component Runtime Execution Requirements
 
-The component must adeptly manage resources to prevent issues like memory leaks and excessive utilization. It must also meet performance goals for response time, throughput and resource use as per the platform's capabilities.
+This interface must adeptly manage resources to prevent issues like memory leaks and excessive utilization. It must also meet performance goals for response time, throughput and resource use as per the platform's capabilities.
 
 Failure to meet these requirements will likely result in undefined and unexpected behavior.
 
@@ -88,9 +88,9 @@ Although this interface is not required to be involved in any of the power manag
 
 This interface must support asynchronous notifications operations:
 
- - `dsCompositeInRegisterConnectCB()` must facilitate asynchronous status notifications using the callback when the connection status of the callback `dsCompositeInConnectCB_t`. This callback must be used when the connection status when the COMPOSITE input port changes.
- - `dsCompositeInRegisterSignalChangeCB()` must facilitate asynchronous status notifications using the callback `dsCompositeInSignalChangeCB_t`. This callback must be used when the COMPOSITE input signal status changes.
- - `dsCompositeInRegisterStatusChangeCB()` must facilitate asynchronous status notifications using the callback `dsCompositeInStatusChangeCB_t`. This callback must be used when the COMPOSITE input status changes.
+ - `dsCompositeInRegisterConnectCB()` must facilitate asynchronous status notifications using the callback when the connection status of the callback `dsCompositeInConnectCB_t`. This callback must be used when the connection status when the Composite input port changes.
+ - `dsCompositeInRegisterSignalChangeCB()` must facilitate asynchronous status notifications using the callback `dsCompositeInSignalChangeCB_t`. This callback must be used when the Composite input signal status changes.
+ - `dsCompositeInRegisterStatusChangeCB()` must facilitate asynchronous status notifications using the callback `dsCompositeInStatusChangeCB_t`. This callback must be used when the Composite input status changes.
 
  This interface is allowed to establish its own thread context for its operation, ensuring minimal impact on system resources. Additionally, this interface is responsible for releasing the resources it creates for its operation once the respective operation concludes.
 
@@ -187,8 +187,8 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsCompositeInGetStatus()
-    Note over HAL: Gets the status of the current port
-    HAL->>Driver:Getting the status of the current port
+    Note over HAL: Gets the status of the Composite Input ports
+    HAL->>Driver:Getting the status of the Composite Input ports
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsCompositeInGetNumberOfInputs()
@@ -202,13 +202,13 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsCompositeInRegisterConnectCB()
-    Note over HAL: Creates the callback for when the Composite Input connection status changes.
+    Note over HAL: Registers the callback for when the Composite Input connection status changes.
     HAL-->>Caller:return
     Caller->>HAL:dsCompositeInRegisterSignalChangeCB()
-    Note over HAL: Creates the callback for when the Composite in signal status 
+    Note over HAL: Registers the callback for when the Composite in signal status 
     HAL-->>Caller:return
     Caller->>HAL:dsCompositeInRegisterStatusChangeCB()
-    Note over HAL: Creates the callback for when the Composite in status changes.
+    Note over HAL: Registers the callback for when the Composite in status changes.
     HAL-->>Caller:return
     Note over HAL: Composite Input hotplug connection has changed
     Driver-->>HAL:return

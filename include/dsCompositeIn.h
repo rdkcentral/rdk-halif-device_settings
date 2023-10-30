@@ -118,21 +118,17 @@
 extern "C" {
 #endif
 
-/** @addtogroup DSHAL_CompositeIn_API Device Settings HAL COMPOSITE Input Public APIs
- *  @ingroup devicesettingshalapi
- *  @{
- */
-
 /**
  * @brief Initializes the underlying COMPOSITE Input sub-system.
  *
  * This function must initialize the COMPOSITE Input module and any associated data
  * structures.
  *
- * @return dsError_t                      -  Status
- * @retval dsERR_NONE                     -  Success
- * @retval dsERR_ALREADY_INITIALIZED      -  Module is already initialised
- * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ * @return dsError_t                      - Status
+ * @retval dsERR_NONE                     - Success
+ * @retval dsERR_ALREADY_INITIALIZED      - Module is already initialised
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_GENERAL                  - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -147,10 +143,11 @@ dsError_t dsCompositeInInit (void);
  * This function must terminate the COMPOSITE Input module and any associated data
  * structures.
  *
- * @return dsError_t                      -  Status
- * @retval dsERR_NONE                     -  Success
- * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
- * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ * @return dsError_t                      - Status
+ * @retval dsERR_NONE                     - Success
+ * @retval dsERR_NOT_INITIALIZED          - Module is not initialised
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_GENERAL                  - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -168,11 +165,12 @@ dsError_t dsCompositeInTerm (void);
  *
  * @param[out] pNumberOfInputs   - number of COMPOSITE Input ports. Min 0. Max @see dsCompositeInPort_t
  *
- * @return dsError_t                      -  Status
- * @retval dsERR_NONE                     -  Success
- * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
- * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ * @return dsError_t                      - Status
+ * @retval dsERR_NONE                     - Success
+ * @retval dsERR_INVALID_PARAM            - Parameter passed to this function is invalid
+ * @retval dsERR_NOT_INITIALIZED          - Module is not initialised
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_GENERAL                  - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -188,11 +186,12 @@ dsError_t dsCompositeInGetNumberOfInputs (uint8_t *pNumberOfInputs);
  *
  * @param [out] pStatus - status of compositeIn ports. @see dsCompositeInStatus_t
  * 
- * @return dsError_t                      -  Status
- * @retval dsERR_NONE                     -  Success
- * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
- * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ * @return dsError_t                      - Status
+ * @retval dsERR_NONE                     - Success
+ * @retval dsERR_INVALID_PARAM            - Parameter passed to this function is invalid
+ * @retval dsERR_NOT_INITIALIZED          - Module is not initialised
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_GENERAL                  - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -202,17 +201,18 @@ dsError_t dsCompositeInGetNumberOfInputs (uint8_t *pNumberOfInputs);
 dsError_t dsCompositeInGetStatus (dsCompositeInStatus_t *pStatus);
 
 /**
- * @brief Selects the COMPOSITE Input port to be presented.
+ * @brief Sets the COMPOSITE Input port to be presented.
  *
- * This function is used to select the COMPOSITE Input port for presentation.
+ * This function is used to set the COMPOSITE Input port for presentation.
  *
  * @param[in] Port  - COMPOSITE Input port to be presented. @see dsCompositeInPort_t
  * 
- * @return dsError_t                      -  Status
- * @retval dsERR_NONE                     -  Success
- * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid(port is not present or index is out of range)
- * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
- * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ * @return dsError_t                      - Status
+ * @retval dsERR_NONE                     - Success
+ * @retval dsERR_INVALID_PARAM            - Parameter passed to this function is invalid(port is not present or index is out of range)
+ * @retval dsERR_NOT_INITIALIZED          - Module is not initialised
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_GENERAL                  - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -232,11 +232,12 @@ dsError_t dsCompositeInSelectPort (dsCompositeInPort_t Port);
  * @param[in] width     - width of the video
  * @param[in] height    - height of the video
  *
- * @return dsError_t                      -  Status
- * @retval dsERR_NONE                     -  Success
- * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
- * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ * @return dsError_t                      - Status
+ * @retval dsERR_NONE                     - Success
+ * @retval dsERR_INVALID_PARAM            - Parameter passed to this function is invalid
+ * @retval dsERR_NOT_INITIALIZED          - Module is not initialised
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_GENERAL                  - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -305,11 +306,12 @@ typedef void (*dsCompositeInStatusChangeCB_t)(dsCompositeInStatus_t inputStatus)
  *
  * @param[in] CBFunc    - COMPOSITE Input hot plug callback function. @see dsCompositeInConnectCB_t
  * 
- * @return dsError_t                      -  Status
- * @retval dsERR_NONE                     -  Success
- * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
- * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ * @return dsError_t                      - Status
+ * @retval dsERR_NONE                     - Success
+ * @retval dsERR_INVALID_PARAM            - Parameter passed to this function is invalid
+ * @retval dsERR_NOT_INITIALIZED          - Module is not initialised
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_GENERAL                  - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -327,11 +329,12 @@ dsError_t dsCompositeInRegisterConnectCB (dsCompositeInConnectCB_t CBFunc);
  *
  * @param[in] CBFunc    - Composite Input Signal change callback function. @see dsCompositeInSignalChangeCB_t
  * 
- * @return dsError_t                      -  Status
- * @retval dsERR_NONE                     -  Success
- * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
- * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ * @return dsError_t                      - Status
+ * @retval dsERR_NONE                     - Success
+ * @retval dsERR_INVALID_PARAM            - Parameter passed to this function is invalid
+ * @retval dsERR_NOT_INITIALIZED          - Module is not initialised
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_GENERAL                  - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -348,11 +351,12 @@ dsError_t dsCompositeInRegisterSignalChangeCB (dsCompositeInSignalChangeCB_t CBF
  *
  * @param[in] CBFunc    - Composite Input Status change callback function. @see dsCompositeInStatusChangeCB_t
  * 
- * @return dsError_t                      -  Status
- * @retval dsERR_NONE                     -  Success
- * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
- * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ * @return dsError_t                      - Status
+ * @retval dsERR_NONE                     - Success
+ * @retval dsERR_INVALID_PARAM            - Parameter passed to this function is invalid
+ * @retval dsERR_NOT_INITIALIZED          - Module is not initialised
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_GENERAL                  - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -362,11 +366,6 @@ dsError_t dsCompositeInRegisterSignalChangeCB (dsCompositeInSignalChangeCB_t CBF
  */
 
 dsError_t dsCompositeInRegisterStatusChangeCB (dsCompositeInStatusChangeCB_t CBFunc);
-
-/* End of DSHAL_CompositeIn_API doxygen group */
-/**
- * @}
- */
 
 #ifdef __cplusplus
 }
