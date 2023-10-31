@@ -153,11 +153,9 @@
 #include <stdint.h>    
 #include <stdbool.h>
 #include "dsAudioVisualTypes.h"
-#include "dsCompositeInTypes.h"
 #include "dsFPDTypes.h"
 #include "dsHdmiInTypes.h"
 #include "dsVideoDeviceTypes.h"
-#include "dsHostTypes.h"
 
   /** @addtogroup DSHAL_VERSION_TYPES HAL VERSION Definitions
  *  @ingroup DSHAL_VERSION
