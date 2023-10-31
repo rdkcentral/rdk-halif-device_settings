@@ -178,7 +178,7 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     participant Driver as SoC
     Caller->>HAL:dsCompositeInInit()
     Note over HAL: SOC initializes the underlying subsystems
-    HAL->>Driver:Initializes the underlying subsystems.
+    HAL->>Driver:Initializes the underlying subsystems
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsCompositeInSelectPort()
@@ -202,13 +202,13 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsCompositeInRegisterConnectCB()
-    Note over HAL: Registers the callback for when the Composite Input connection status changes.
+    Note over HAL: Registers the callback for when the Composite Input connection status changes
     HAL-->>Caller:return
     Caller->>HAL:dsCompositeInRegisterSignalChangeCB()
-    Note over HAL: Registers the callback for when the Composite in signal status 
+    Note over HAL: Registers the callback for when the Composite in signal status changes
     HAL-->>Caller:return
     Caller->>HAL:dsCompositeInRegisterStatusChangeCB()
-    Note over HAL: Registers the callback for when the Composite in status changes.
+    Note over HAL: Registers the callback for when the Composite in status changes
     HAL-->>Caller:return
     Note over HAL: Composite Input hotplug connection has changed
     Driver-->>HAL:return
