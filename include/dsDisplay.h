@@ -87,8 +87,9 @@
 #ifndef __DS_VIDEO_DISPLAY_H__
 #define __DS_VIDEO_DISPLAY_H__
 
+#include <stdint.h>
 #include "dsError.h"
-#include "dsAudioVisualTypes.h"
+#include "dsAVDTypes.h"
 
 #ifdef __cplusplus
 extern "C" {
