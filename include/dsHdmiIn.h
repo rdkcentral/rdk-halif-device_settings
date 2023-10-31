@@ -582,7 +582,7 @@ dsError_t dsIsHdmiARCPort (dsHdmiInPort_t iPort, bool *isArcPort);
  * @warning  This API is Not thread safe.
  * 
  */
-dsError_t dsGetEDIDBytesInfo (dsHdmiInPort_t iHdmiPort, unsigned char **edid, int *length);
+dsError_t dsGetEDIDBytesInfo (dsHdmiInPort_t iHdmiPort, unsigned char *edid, int *length);
 
 /**
  * @brief Gets the HDMI SPD info
@@ -605,7 +605,7 @@ dsError_t dsGetEDIDBytesInfo (dsHdmiInPort_t iHdmiPort, unsigned char **edid, in
  * @warning  This API is Not thread safe.
  * 
  */
-dsError_t dsGetHDMISPDInfo (dsHdmiInPort_t iHdmiPort, unsigned char **data);
+dsError_t dsGetHDMISPDInfo (dsHdmiInPort_t iHdmiPort, unsigned char *data);
 
 /**
  * @brief Sets the EDID version to be used for a given port id
