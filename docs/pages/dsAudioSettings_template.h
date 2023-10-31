@@ -78,18 +78,14 @@ namespace  {
  * @brief This enumeration defines the supported audio configurations
  */
 
-const dsAudioPortType_t 	    kSupportedPortTypes[] 			= { dsAUDIOPORT_TYPE_HDMI, dsAUDIOPORT_TYPE_SPDIF };
+const dsAudioPortType_t 	 kSupportedPortTypes[] 				= { dsAUDIOPORT_TYPE_HDMI_ARC, dsAUDIOPORT_TYPE_SPDIF };
 
-const dsAudioEncoding_t 		kSupportedHDMIEncodings[]		= { dsAUDIO_ENC_PCM, dsAUDIO_ENC_AC3};  /**< Audio supported port types */
+const dsAudioEncoding_t 	kSupportedARCEncodings[]			= { dsAUDIO_ENC_PCM, dsAUDIO_ENC_AC3};  /**< Audio supported port types */
+const dsAudioCompression_t 	kSupportedARCCompressions[] 			= { dsAUDIO_CMP_NONE, dsAUDIO_CMP_LIGHT, dsAUDIO_CMP_MEDIUM, dsAUDIO_CMP_HEAVY, }; /**< Audio supported HDMI compression types */
+const dsAudioStereoMode_t 	kSupportedARCStereoModes[] 			= { dsAUDIO_STEREO_STEREO, dsAUDIO_STEREO_SURROUND, }; /**< Audio supported HDMI stereo mode types */
 
-const dsAudioCompression_t 	kSupportedHDMICompressions[] 			= { dsAUDIO_CMP_NONE, dsAUDIO_CMP_LIGHT, dsAUDIO_CMP_MEDIUM, dsAUDIO_CMP_HEAVY, }; /**< Audio supported HDMI compression types */
-
-const dsAudioStereoMode_t 	kSupportedHDMIStereoModes[] 			= { dsAUDIO_STEREO_STEREO, dsAUDIO_STEREO_SURROUND, }; /**< Audio supported HDMI stereo mode types */
-
-const dsAudioEncoding_t 		kSupportedSPDIFEncodings[] 		= { dsAUDIO_ENC_PCM, dsAUDIO_ENC_AC3, }; /**< Audio supported SPDIF encoding types */
-
+const dsAudioEncoding_t 	kSupportedSPDIFEncodings[] 			= { dsAUDIO_ENC_PCM, dsAUDIO_ENC_AC3, }; /**< Audio supported SPDIF encoding types */
 const dsAudioCompression_t 	kSupportedSPDIFCompressions[] 			= { dsAUDIO_CMP_NONE, dsAUDIO_CMP_LIGHT, dsAUDIO_CMP_MEDIUM, dsAUDIO_CMP_HEAVY, }; /**< Audio supported SPDIF compression types */
-
 const dsAudioStereoMode_t 	kSupportedSPDIFStereoModes[] 			= { dsAUDIO_STEREO_STEREO, dsAUDIO_STEREO_SURROUND, }; /**< Audio supported SPDIF stereo mode types */
 
 /**
@@ -97,15 +93,16 @@ const dsAudioStereoMode_t 	kSupportedSPDIFStereoModes[] 			= { dsAUDIO_STEREO_ST
  */
 const dsAudioTypeConfig_t 	kConfigs[]= {
 		{
-		/*.typeId = */				dsAUDIOPORT_TYPE_HDMI,
-		/*.name = */				"HDMI", //HDMI
-		/*.numSupportedCompressions = */	dsUTL_DIM(kSupportedHDMICompressions),
-		/*.compressions = */			kSupportedHDMICompressions,
-		/*.numSupportedEncodings = */		dsUTL_DIM(kSupportedHDMIEncodings),
-		/*.encodings = */			kSupportedHDMIEncodings,
-		/*.numSupportedStereoModes = */		dsUTL_DIM(kSupportedHDMIStereoModes),
-		/*.stereoModes = */			kSupportedHDMIStereoModes,
+		/*.typeId = */				dsAUDIOPORT_TYPE_HDMI_ARC,
+		/*.name = */				"HDMI_ARC", //HDMI
+		/*.numSupportedCompressions = */	dsUTL_DIM(kSupportedARCCompressions),
+		/*.compressions = */			kSupportedARCCompressions,
+		/*.numSupportedEncodings = */		dsUTL_DIM(kSupportedARCEncodings),
+		/*.encodings = */			kSupportedARCEncodings,
+		/*.numSupportedStereoModes = */		dsUTL_DIM(kSupportedARCStereoModes),
+		/*.stereoModes = */			kSupportedARCStereoModes,
 		},
+
 		{
 		/*.typeId = */				dsAUDIOPORT_TYPE_SPDIF,
 		/*.name = */				"SPDIF", //SPDIF
@@ -131,18 +128,19 @@ const dsVideoPortPortId_t connectedVOPs[dsAUDIOPORT_TYPE_MAX][dsVIDEOPORT_TYPE_M
 		 *
 		*/
 		{
+
 		},
 		{/*VOPs connected to HDMI Audio */
-				{dsVIDEOPORT_TYPE_HDMI, 0},
+				
 		},
 		{/*VOPs connected to SPDIF Audio */
-				{dsVIDEOPORT_TYPE_HDMI, 0},
+				{dsVIDEOPORT_TYPE_INTERNAL, 0},
 		},
 		{/*VOPs connected to Speaker Audio */
 
 		},
 		{/*VOPs connected to HDMI ARC */
-
+				{dsVIDEOPORT_TYPE_INTERNAL, 0},
 		},
 		{/*VOPs connected to Headphone */
 
@@ -154,8 +152,8 @@ const dsVideoPortPortId_t connectedVOPs[dsAUDIOPORT_TYPE_MAX][dsVIDEOPORT_TYPE_M
  */
 const dsAudioPortConfig_t kPorts[] = {
 		{
-		/*.typeId = */ 				{dsAUDIOPORT_TYPE_HDMI, 0},
-		/*.connectedVOPs = */			connectedVOPs[dsAUDIOPORT_TYPE_HDMI],
+		/*.typeId = */ 				{dsAUDIOPORT_TYPE_HDMI_ARC, 0},
+		/*.connectedVOPs = */			connectedVOPs[dsAUDIOPORT_TYPE_HDMI_ARC],
 		},
 		{
 		/*.typeId = */ 				{dsAUDIOPORT_TYPE_SPDIF, 0},
