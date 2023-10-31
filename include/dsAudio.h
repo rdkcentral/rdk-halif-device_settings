@@ -107,7 +107,7 @@ extern "C" {
 
 #include <stdint.h>
 #include "dsError.h"
-#include "dsAudioVisualTypes.h"
+#include "dsAVDTypes.h"
 
 /**
  * @brief Callback function used to notify the Audio port connection status change to the `caller`.

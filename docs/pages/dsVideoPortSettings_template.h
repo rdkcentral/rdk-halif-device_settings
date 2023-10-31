@@ -73,7 +73,7 @@
 #ifndef __DS_VIDEO_PORT_SETTINGS_H__
 #define __DS_VIDEO_PORT_SETTINGS_H__
 
-#include "dsAudioVisualTypes.h"
+#include "dsAVDTypes.h"
 #include "dsUtl.h"
 #include "dsVideoResolutionSettings_template.h"
 

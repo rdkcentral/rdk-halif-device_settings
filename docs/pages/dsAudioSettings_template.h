@@ -62,7 +62,7 @@
 #define __DS_AUDIO_SETTINGS_H__
 
 #include "dsUtl.h"
-#include "dsAudioVisualTypes.h"
+#include "dsAVDTypes.h"
 
 #ifdef __cplusplus
 extern "C" {

@@ -82,7 +82,7 @@
 #include <stdbool.h>
 #include "dsError.h"
 #include "dsVideoDeviceTypes.h"
-#include "dsAudioVisualTypes.h"
+#include "dsAVDTypes.h"
 
 
 #ifdef __cplusplus

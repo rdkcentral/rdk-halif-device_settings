@@ -100,7 +100,7 @@ extern "C" {
 
 #include "dsError.h"
 #include <sys/types.h>
-#include "dsAudioVisualTypes.h"
+#include "dsAVDTypes.h"
 
 /**
  * @brief Initializes the underlying Video Port sub-system.

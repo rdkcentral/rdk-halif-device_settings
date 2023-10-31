@@ -73,7 +73,7 @@
 #ifndef __DS_VIDEO_RESOLUTION_SETTINGS_H__
 #define __DS_VIDEO_RESOLUTION_SETTINGS_H__
 
-#include "dsAudioVisualTypes.h"
+#include "dsAVDTypes.h"
 
 #ifdef __cplusplus
 extern "C" {
