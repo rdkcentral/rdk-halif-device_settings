@@ -18,7 +18,7 @@
 */
 
 /**
- * @file dsAudioVisualTypes.h
+ * @file dsAVDTypes.h
  *
  * @brief HAL types.
  *
@@ -96,21 +96,14 @@
  */
 
 /**
- * @addtogroup dsAudio_HAL DS Audio HAL
- *  @{
- * @par Application API Specification
- * dsAudio HAL provides an interface for managing the Audio settings for the device settings module 
- */
-
-/**
- * @defgroup DSHAL_AUDIO_VISUAL_TYPES DS HAL Audio Visual Types Definitions
- *  @ingroup dsFPD_HAL
+ * @defgroup DSHAL_AVD_TYPES DS HAL Audio Video Display Types Definitions
+ *  @ingroup dsAudio_HAL dsDisplay_HAL dsVideoPort_HAL
  *  @{
  */
 
 
-#ifndef __DS_AUDIO_VISUAL_TYPES_H__
-#define __DS_AUDIO_VISUAL_TYPES_H__
+#ifndef __DS_AVD_TYPES_H__
+#define __DS_AVD_TYPES_H__
 
 #include <sys/types.h>
 #include <stdint.h>
@@ -728,6 +721,7 @@ typedef enum _dsPowerState_t{
 
 /**
  * @brief This enumeration defines the type of display color spaces supported
+ * @note Used in @link dsVideoPort.h @endlink
  */
 typedef enum _dsDisplayColorSpace_t
 {
@@ -742,6 +736,7 @@ typedef enum _dsDisplayColorSpace_t
 
 /**
  * @brief This enumeration defines the type of display quantization ranges
+ * @note Used in @link dsVideoPort.h @endlink
  */
 typedef enum _dsDisplayQuantizationRange_t
 {
@@ -753,6 +748,7 @@ typedef enum _dsDisplayQuantizationRange_t
 
 /**
  * @brief This enumeration defines the type of display Color depth.
+ * @note Used in @link dsVideoPort.h @endlink
  */
 typedef enum _dsDisplayColorDepth_t
 {
@@ -765,6 +761,7 @@ typedef enum _dsDisplayColorDepth_t
 
 /**
  * @brief This enumeration defines the type of Matrix coefficients.
+ * @note Used in @link dsVideoPort.h @endlink
  */
 typedef enum _dsDisplayMatrixCoefficients_t
 {
@@ -789,10 +786,9 @@ typedef enum _dsDisplayMatrixCoefficients_t
  * @}
  */
 
-#endif /* __DS_AUDIO_VISUAL_TYPES_H__ */
+#endif /* __DS_AVD_TYPES_H__ */
 
-/** @} */ // End of DSHAL_AUDIO_VISUAL_TYPES
-/** @} */ // End of DS Audio HAL
+/** @} */ // End of DSHAL_AVD_TYPES
 /** @} */ // End of Device Settings HAL
 /** @} */ // End of Device Settings Module
 /** @} */ // End of HPK
