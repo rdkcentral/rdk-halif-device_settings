@@ -45,7 +45,6 @@
 - `HDCP`   - High-bandwidth Digital Content Protection
 - `HDR`    - High Dynamic Range
 - `SDR`    - Standard Dynamic Range
-- `SCART`  - Syndicat des Constructeurs d'Appareils Radiorécepteurs et Téléviseurs - Radio and Television Receiver Manufacturers' Association
 -  `EDID` - Extended Display Identification Data
 
 
@@ -64,7 +63,7 @@ style z fill:#fcc,stroke:#333,stroke-width:0.3px,align:left
 style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
  ```
 
-`DS` Video Port `HAL` provides a set of `APIs` to initialize, query and set information about the Video ports like getting  video port handle, fetching connected display information such as color depth, color space, matrix coefficients, quantization range, supported video resolutions using the video port handle. It also provides `APIs` to enable or disable content protection like `HDCP` and `DTCP`, to set  the `SCART` parameters , background color and preferred color depth of the video port.
+`DS` Video Port `HAL` provides a set of `APIs` to initialize, query and set information about the Video ports like getting  video port handle, fetching connected display information such as color depth, color space, matrix coefficients, quantization range, supported video resolutions using the video port handle. It also provides `APIs` to enable or disable content protection like `HDCP` and `DTCP`, to set the background color and preferred color depth of the video port.
 
 
 ## Component Runtime Execution Requirements
@@ -165,7 +164,7 @@ The `caller` is expected to have complete control over the life cycle of the `HA
 
 1. Initialize the `HAL` `dsVideoPortInit()` before making any other `APIs` calls.  If `dsVideoPortInit()` call fails, the `HAL` must return the respective error code, so that the `caller` can retry the operation.
 
-2. The `caller` can call `dsEnableDTCP()`, `dsEnableHDCP()`, `dsEnableVideoPort()`, `dsSetResolution()`, `dsSetActiveSource()`, `dsSetForceDisable4KSupport()`, `dsSetScartParameter()`, `dsSetHdmiPreference()`, `dsSetBackgroundColor()`, `dsSetForceHDRMode()` and `dsSetPreferredColorDepth()` to set the needed information.
+2. The `caller` can call `dsEnableDTCP()`, `dsEnableHDCP()`, `dsEnableVideoPort()`, `dsSetResolution()`, `dsSetActiveSource()`, `dsSetForceDisable4KSupport()`, `dsSetHdmiPreference()`, `dsSetBackgroundColor()`, `dsSetForceHDRMode()` and `dsSetPreferredColorDepth()` to set the needed information.
 
 3. The `caller` can call `dsGetVideoPort()`, `dsGetSurroundMode()`, `dsGetResolution()`, `dsIsVideoPortEnabled()`, `dsIsDisplayConnected()`,  `dsIsDisplaySurround()`, `dsGetSurroundMode()`, `dsIsVideoPortActive()`, `dsIsDTCPEnabled()` , `dsIsHDCPEnabled()`, `dsGetResolution()`, `dsGetHDCPStatus()`, `dsGetHDCPProtocol()`, `dsGetHDCPReceiverProtocol()`, `dsGetHDCPCurrentProtocol()`, `dsGetTVHDRCapabilities()`, `dsGetForceDisable4KSupport()`, `dsGetVideoEOTF()`, `dsGetMatrixCoefficients()`, `dsGetColorDepth()` to query the needed information.
 
@@ -248,11 +247,6 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     Caller->>HAL:dsSupportedTvResolutions()
     Note over HAL: Gets the supported resolutions of TV
     HAL->>Driver:Getting the supported resolutions of TV corresponding to specified video port
-    Driver-->>HAL:return
-    HAL-->>Caller:return
-    Caller->>HAL:dsSetScartParameter()
-    Note over HAL: Sets the SCART parameters of Display
-    HAL->>Driver:Setting the SCART parameters of display corresponding to specified video port
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsGetVideoEOTF()
