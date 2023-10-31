@@ -201,7 +201,7 @@ dsError_t dsCompositeInGetNumberOfInputs (uint8_t *pNumberOfInputs);
 dsError_t dsCompositeInGetStatus (dsCompositeInStatus_t *pStatus);
 
 /**
- * @brief Sets the COMPOSITE Input port to be presented.
+ * @brief Sets the COMPOSITE Input port as active available for presentation.
  *
  * This function is used to set the COMPOSITE Input port for presentation.
  *
