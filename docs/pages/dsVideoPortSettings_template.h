@@ -85,15 +85,15 @@ namespace {
 /*
  * Enumerate the supported video port configurations here.
  */
-static const dsVideoPortType_t kSupportedPortTypes[] = { dsVIDEOPORT_TYPE_HDMI };
+static const dsVideoPortType_t kSupportedPortTypes[] = { dsVIDEOPORT_TYPE_INTERNAL };
 
 /* 
  * Enumerate all configurations for each port type. 
  */
 static const dsVideoPortTypeConfig_t kConfigs[]= {
 		{
-		/*.typeId = */				dsVIDEOPORT_TYPE_HDMI,
-		/*.name = */ 				"HDMI",
+		/*.typeId = */				dsVIDEOPORT_TYPE_INTERNAL,
+		/*.name = */ 				"INTERNAL",
 		/*.dtcpSupported = */			false,
 		/*.hdcpSupported = */			true,
 		/*.restrictedResollution = */		-1,
@@ -107,10 +107,15 @@ static const dsVideoPortTypeConfig_t kConfigs[]= {
  */
 static const dsVideoPortPortConfig_t kPorts[] = {
 		{
-		/*.typeId = */ 			{dsVIDEOPORT_TYPE_HDMI, 0},
-		/*.connectedAOP */              {dsAUDIOPORT_TYPE_HDMI, 0},
-		/*.defaultResolution = */	"720p"
+		/*.typeId = */ 			{dsVIDEOPORT_TYPE_INTERNAL, 0},
+		/*.connectedAOP */              {dsAUDIOPORT_TYPE_HDMI_ARC, 0},
+		/*.defaultResolution = */	"1080i50"
 		},
+		{
+                /*.typeId = */                  {dsVIDEOPORT_TYPE_INTERNAL, 0},
+                /*.connectedAOP */              {dsAUDIOPORT_TYPE_SPDIF, 0},
+                /*.defaultResolution = */       "1080i50"
+        },
 };
 
 
