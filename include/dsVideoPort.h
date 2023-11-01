@@ -159,7 +159,7 @@ dsError_t dsVideoPortTerm();
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t  dsGetVideoPort(dsVideoPortType_t type, int index, int *handle);
+dsError_t  dsGetVideoPort(dsVideoPortType_t type, int index, int_ptr_t *handle);
 
 /**
  * @brief Checks whether a video port is enabled or not.
@@ -183,7 +183,7 @@ dsError_t  dsGetVideoPort(dsVideoPortType_t type, int index, int *handle);
  * 
  * @see dsEnableVideoPort()
  */
-dsError_t  dsIsVideoPortEnabled(int handle, bool *enabled);
+dsError_t  dsIsVideoPortEnabled(intptr_t handle, bool *enabled);
 
 /**
  * @brief Checks whether the specific video port is connected to display.
@@ -205,7 +205,7 @@ dsError_t  dsIsVideoPortEnabled(int handle, bool *enabled);
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t  dsIsDisplayConnected(int handle, bool *connected);
+dsError_t  dsIsDisplayConnected(intptr_t handle, bool *connected);
 
 /**
  * @brief Checks if the connected display supports the audio surround.
@@ -226,7 +226,7 @@ dsError_t  dsIsDisplayConnected(int handle, bool *connected);
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t  dsIsDisplaySurround(int handle, bool *surround);
+dsError_t  dsIsDisplaySurround(intptr_t handle, bool *surround);
 
 /**
  * @brief Gets the surround mode of video port
@@ -247,7 +247,7 @@ dsError_t  dsIsDisplaySurround(int handle, bool *surround);
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t  dsGetSurroundMode(int handle, int *surround);
+dsError_t  dsGetSurroundMode(intptr_t handle, int *surround);
 
 /**
  * @brief Callback function to notify the Video Format change event to the clients.
@@ -304,7 +304,7 @@ typedef void (*dsVideoFormatUpdateCB_t)(dsHDRStandard_t videoFormat);
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t  dsIsVideoPortActive(int handle, bool *active);
+dsError_t  dsIsVideoPortActive(intptr_t handle, bool *active);
 
 /**
  * @brief Enables/Disables the DTCP of a video port.
@@ -331,7 +331,7 @@ dsError_t  dsIsVideoPortActive(int handle, bool *active);
  * 
  * @see dsIsDTCPEnabled()
  */
-dsError_t  dsEnableDTCP(int handle, bool contentProtect);
+dsError_t  dsEnableDTCP(intptr_t handle, bool contentProtect);
 
 /**
  * @brief Enables/Disables the HDCP of a video port.
@@ -359,7 +359,7 @@ dsError_t  dsEnableDTCP(int handle, bool contentProtect);
  * 
  * @see dsGetHDCPStatus(), dsIsHDCPEnabled()
  */
-dsError_t  dsEnableHDCP(int handle, bool contentProtect, char *hdcpKey, size_t keySize);
+dsError_t  dsEnableHDCP(intptr_t handle, bool contentProtect, char *hdcpKey, size_t keySize);
 
 /**
  * @brief Indicates whether a video port is DTCP protected.
@@ -385,7 +385,7 @@ dsError_t  dsEnableHDCP(int handle, bool contentProtect, char *hdcpKey, size_t k
  * 
  * @see dsEnableDTCP()
  */
-dsError_t  dsIsDTCPEnabled (int handle, bool* pContentProtected);
+dsError_t  dsIsDTCPEnabled (intptr_t handle, bool* pContentProtected);
 
  /**
  * @brief Indicates whether a video port is HDCP protected.
@@ -411,7 +411,7 @@ dsError_t  dsIsDTCPEnabled (int handle, bool* pContentProtected);
  * 
  * @see dsEnableHDCP()
  */
-dsError_t  dsIsHDCPEnabled (int handle, bool* pContentProtected);
+dsError_t  dsIsHDCPEnabled (intptr_t handle, bool* pContentProtected);
 
  /**
  * @brief Enables/Disables a video port.
@@ -435,7 +435,7 @@ dsError_t  dsIsHDCPEnabled (int handle, bool* pContentProtected);
  * 
  * @see dsIsVideoPortEnabled()
  */
-dsError_t  dsEnableVideoPort(int handle, bool enabled);
+dsError_t  dsEnableVideoPort(intptr_t handle, bool enabled);
 
 /**
  * @brief Sets the display resolution of specified video port.
@@ -458,7 +458,7 @@ dsError_t  dsEnableVideoPort(int handle, bool enabled);
  * 
  * @see dsGetResolution()
  */
-dsError_t  dsSetResolution(int handle, dsVideoPortResolution_t *resolution);
+dsError_t  dsSetResolution(intptr_t handle, dsVideoPortResolution_t *resolution);
 
 /**
  * @brief Gets the display resolution of specified video port.
@@ -481,7 +481,7 @@ dsError_t  dsSetResolution(int handle, dsVideoPortResolution_t *resolution);
  * 
  * @see dsSetResolution()
  */
-dsError_t  dsGetResolution(int handle, dsVideoPortResolution_t *resolution);
+dsError_t  dsGetResolution(intptr_t handle, dsVideoPortResolution_t *resolution);
 
 /**
  * @brief Sets the specified video port as active source.
@@ -501,7 +501,7 @@ dsError_t  dsGetResolution(int handle, dsVideoPortResolution_t *resolution);
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t dsSetActiveSource(int handle);
+dsError_t dsSetActiveSource(intptr_t handle);
 
 /**
  * @brief Callback function to notify the HDCP status change.
@@ -514,7 +514,7 @@ dsError_t dsSetActiveSource(int handle);
  *
  *@pre dsRegisterHdcpStatusCallback()
  */
-typedef void (*dsHDCPStatusCallback_t)(int handle, dsHdcpStatus_t status);
+typedef void (*dsHDCPStatusCallback_t)(intptr_t handle, dsHdcpStatus_t status);
 
 /**
  * @brief Callback Registration for the HDCP status change event.
@@ -540,7 +540,7 @@ typedef void (*dsHDCPStatusCallback_t)(int handle, dsHdcpStatus_t status);
  * 
  * @warning  This API is Not thread safe.
  */
- dsError_t dsRegisterHdcpStatusCallback (int handle, dsHDCPStatusCallback_t cb);
+ dsError_t dsRegisterHdcpStatusCallback (intptr_t handle, dsHDCPStatusCallback_t cb);
 
  /**
  * @brief Gets the current HDCP status of the specified video port.
@@ -561,7 +561,7 @@ typedef void (*dsHDCPStatusCallback_t)(int handle, dsHdcpStatus_t status);
  * 
  * @see dsEnableHDCP()
  */
-dsError_t dsGetHDCPStatus (int handle, dsHdcpStatus_t *status);
+dsError_t dsGetHDCPStatus (intptr_t handle, dsHdcpStatus_t *status);
 
 /**
  * @brief Gets the HDCP protocol version of the device.
@@ -582,7 +582,7 @@ dsError_t dsGetHDCPStatus (int handle, dsHdcpStatus_t *status);
  * 
  * @see dsEnableHDCP()
  */
-dsError_t dsGetHDCPProtocol (int handle, dsHdcpProtocolVersion_t *protocolVersion);
+dsError_t dsGetHDCPProtocol (intptr_t handle, dsHdcpProtocolVersion_t *protocolVersion);
 
 /**
  * @brief Gets the HDCP protocol version of the connected sink device.
@@ -605,7 +605,7 @@ dsError_t dsGetHDCPProtocol (int handle, dsHdcpProtocolVersion_t *protocolVersio
  * 
  * @see dsEnableHDCP()
  */
-dsError_t dsGetHDCPReceiverProtocol (int handle, dsHdcpProtocolVersion_t *protocolVersion);
+dsError_t dsGetHDCPReceiverProtocol (intptr_t handle, dsHdcpProtocolVersion_t *protocolVersion);
 
 /**
  * @brief Gets the current negotiated HDCP protocol version.
@@ -626,7 +626,7 @@ dsError_t dsGetHDCPReceiverProtocol (int handle, dsHdcpProtocolVersion_t *protoc
  * 
  * @see dsEnableHDCP()
  */
-dsError_t dsGetHDCPCurrentProtocol (int handle, dsHdcpProtocolVersion_t *protocolVersion);
+dsError_t dsGetHDCPCurrentProtocol (intptr_t handle, dsHdcpProtocolVersion_t *protocolVersion);
 
 
 /**
@@ -650,7 +650,7 @@ dsError_t dsGetHDCPCurrentProtocol (int handle, dsHdcpProtocolVersion_t *protoco
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t dsGetTVHDRCapabilities(int handle, int *capabilities);
+dsError_t dsGetTVHDRCapabilities(intptr_t handle, int *capabilities);
 
 /**
  * @brief Gets the supported resolutions of TV.
@@ -671,7 +671,7 @@ dsError_t dsGetTVHDRCapabilities(int handle, int *capabilities);
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t dsSupportedTvResolutions(int handle, int *resolutions);
+dsError_t dsSupportedTvResolutions(intptr_t handle, int *resolutions);
 
 /**
  * @brief Sets ForceDisable 4K support variable.
@@ -695,7 +695,7 @@ dsError_t dsSupportedTvResolutions(int handle, int *resolutions);
  * 
  * @see dsGetForceDisable4KSupport()
  */
-dsError_t dsSetForceDisable4KSupport(int handle, bool disable);
+dsError_t dsSetForceDisable4KSupport(intptr_t handle, bool disable);
 
 /**
  * @brief Gets ForceDisable 4K support variable.
@@ -719,7 +719,7 @@ dsError_t dsSetForceDisable4KSupport(int handle, bool disable);
  * 
  * @see dsSetForceDisable4KSupport()
  */
-dsError_t dsGetForceDisable4KSupport(int handle, bool *disable);
+dsError_t dsGetForceDisable4KSupport(intptr_t handle, bool *disable);
 
 /**
  * @brief Gets the current video Electro-Optical Transfer Function (EOT) value.
@@ -740,7 +740,7 @@ dsError_t dsGetForceDisable4KSupport(int handle, bool *disable);
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t dsGetVideoEOTF(int handle, dsHDRStandard_t *video_eotf);
+dsError_t dsGetVideoEOTF(intptr_t handle, dsHDRStandard_t *video_eotf);
 
 /**
  * @brief Gets the current matrix coefficients value.
@@ -761,7 +761,7 @@ dsError_t dsGetVideoEOTF(int handle, dsHDRStandard_t *video_eotf);
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t dsGetMatrixCoefficients(int handle, dsDisplayMatrixCoefficients_t *matrix_coefficients);
+dsError_t dsGetMatrixCoefficients(intptr_t handle, dsDisplayMatrixCoefficients_t *matrix_coefficients);
 
 /**
  * @brief Gets the color depth value of specified video port.
@@ -782,7 +782,7 @@ dsError_t dsGetMatrixCoefficients(int handle, dsDisplayMatrixCoefficients_t *mat
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t dsGetColorDepth(int handle, unsigned int* color_depth);
+dsError_t dsGetColorDepth(intptr_t handle, unsigned int* color_depth);
 
 /**
  * @brief Gets the color space setting of specified video port.
@@ -803,7 +803,7 @@ dsError_t dsGetColorDepth(int handle, unsigned int* color_depth);
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t dsGetColorSpace(int handle, dsDisplayColorSpace_t* color_space);
+dsError_t dsGetColorSpace(intptr_t handle, dsDisplayColorSpace_t* color_space);
  
 
 /**
@@ -825,7 +825,7 @@ dsError_t dsGetColorSpace(int handle, dsDisplayColorSpace_t* color_space);
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t dsGetQuantizationRange(int handle, dsDisplayQuantizationRange_t* quantization_range);
+dsError_t dsGetQuantizationRange(intptr_t handle, dsDisplayQuantizationRange_t* quantization_range);
 
 /**
  * @brief Gets current color space setting, color depth, matrix coefficients, video Electro-Optical Transfer Function (EOT)
@@ -849,7 +849,7 @@ dsError_t dsGetQuantizationRange(int handle, dsDisplayQuantizationRange_t* quant
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t dsGetCurrentOutputSettings(int handle, dsHDRStandard_t* video_eotf, dsDisplayMatrixCoefficients_t* matrix_coefficients, dsDisplayColorSpace_t* color_space, unsigned int* color_depth, dsDisplayQuantizationRange_t* quantization_range);
+dsError_t dsGetCurrentOutputSettings(intptr_t handle, dsHDRStandard_t* video_eotf, dsDisplayMatrixCoefficients_t* matrix_coefficients, dsDisplayColorSpace_t* color_space, unsigned int* color_depth, dsDisplayQuantizationRange_t* quantization_range);
 
 /**
  * @brief Checks if video output is HDR or not.
@@ -872,7 +872,7 @@ dsError_t dsGetCurrentOutputSettings(int handle, dsHDRStandard_t* video_eotf, ds
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t dsIsOutputHDR(int handle, bool* hdr);
+dsError_t dsIsOutputHDR(intptr_t handle, bool* hdr);
 
 /**
  * @brief Resets Video Output to SDR.
@@ -913,7 +913,7 @@ dsError_t dsResetOutputToSDR();
  * 
  * @see dsGetHdmiPreference()
  */
-dsError_t dsSetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentProtocol);
+dsError_t dsSetHdmiPreference(intptr_t handle, dsHdcpProtocolVersion_t *hdcpCurrentProtocol);
 
 /**
  * @brief Gets the preferred HDMI Protocol version of specified video port.
@@ -936,7 +936,7 @@ dsError_t dsSetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentPr
  * 
  * @see dsSetHdmiPreference()
  */
-dsError_t dsGetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentProtocol);
+dsError_t dsGetHdmiPreference(intptr_t handle, dsHdcpProtocolVersion_t *hdcpCurrentProtocol);
 
 /**
  * @brief Gets the IgnoreEDID status variable set in the device.
@@ -957,7 +957,7 @@ dsError_t dsGetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentPr
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t dsGetIgnoreEDIDStatus(int handle, bool* status);
+dsError_t dsGetIgnoreEDIDStatus(intptr_t handle, bool* status);
 
 /**
  * @brief Sets the background color of the specified video port.
@@ -978,7 +978,7 @@ dsError_t dsGetIgnoreEDIDStatus(int handle, bool* status);
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t dsSetBackgroundColor(int handle, dsVideoBackgroundColor_t color);
+dsError_t dsSetBackgroundColor(intptr_t handle, dsVideoBackgroundColor_t color);
 
 /**
  * @brief Sets/Resets the force HDR mode.
@@ -999,7 +999,7 @@ dsError_t dsSetBackgroundColor(int handle, dsVideoBackgroundColor_t color);
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t dsSetForceHDRMode(int handle, dsHDRStandard_t mode);
+dsError_t dsSetForceHDRMode(intptr_t handle, dsHDRStandard_t mode);
 
 /**
  * @brief Gets the color depth capabilities of the specified video port
@@ -1020,7 +1020,7 @@ dsError_t dsSetForceHDRMode(int handle, dsHDRStandard_t mode);
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t dsColorDepthCapabilities(int handle, unsigned int *colorDepthCapability );
+dsError_t dsColorDepthCapabilities(intptr_t handle, unsigned int *colorDepthCapability );
 
 /**
  * @brief Gets the preferred color depth values.
@@ -1043,7 +1043,7 @@ dsError_t dsColorDepthCapabilities(int handle, unsigned int *colorDepthCapabilit
  * 
  * @see dsSetPreferredColorDepth()
  */
-dsError_t dsGetPreferredColorDepth(int handle, dsDisplayColorDepth_t *colorDepth);
+dsError_t dsGetPreferredColorDepth(intptr_t handle, dsDisplayColorDepth_t *colorDepth);
 
 /**
  * @brief Sets the preferred color depth for the specified video port.
@@ -1066,7 +1066,7 @@ dsError_t dsGetPreferredColorDepth(int handle, dsDisplayColorDepth_t *colorDepth
  * 
  * @see dsGetPreferredColorDepth()
  */
-dsError_t dsSetPreferredColorDepth(int handle,dsDisplayColorDepth_t colorDepth);
+dsError_t dsSetPreferredColorDepth(intptr_t handle,dsDisplayColorDepth_t colorDepth);
 
 #ifdef __cplusplus
 }
