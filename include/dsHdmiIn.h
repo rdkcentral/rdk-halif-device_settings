@@ -219,7 +219,8 @@ dsError_t dsHdmiInGetStatus (dsHdmiInStatus_t *pStatus);
  * 
  * @pre dsHdmiInInit() must be called before calling this API.
  * 
- * @note When a port is selected, it should be set isPresented to true in @see dsHdmiInStatus_t for that port
+ * @note When a port is selected, activePort should be set to true in @see dsHdmiInStatus_t for that port
+ *              Also, if thT port has an active connection, it should update isPresented to true as well.
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -306,8 +307,8 @@ dsError_t dsHdmiInGetCurrentVideoMode (dsVideoPortResolution_t *resolution);
  * 
  * @pre dsHdmiInRegisterConnectCB() must be called before this API
  * 
- * @note This should update isPortConnected in @see dsHdmiInStatus_t when this callback is triggered
- *
+ * @note This should update isPortConnected in @see dsHdmiInStatus_t when this callback is triggered.
+ *          If this port is currently active, and presents video after being connected, isPresented should also be updated
  */
 typedef void (*dsHdmiInConnectCB_t)(dsHdmiInPort_t Port, bool isPortConnected);
 
@@ -331,6 +332,8 @@ typedef void (*dsHdmiInSignalChangeCB_t)(dsHdmiInPort_t port, dsHdmiInSignalStat
  * @param[in] inputStatus   - Present hdmi input status. @see dsHdmiInStatus_t
  * 
  * @pre dsHdmiInRegisterStatusChangeCB() must be called before this API
+ * 
+ * @note This should be called whenever dsHdmiInStatus_t is updated
  *
  */
 typedef void (*dsHdmiInStatusChangeCB_t)(dsHdmiInStatus_t inputStatus);
