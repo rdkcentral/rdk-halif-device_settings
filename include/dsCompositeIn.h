@@ -227,11 +227,12 @@ dsError_t dsCompositeInSelectPort (dsCompositeInPort_t Port);
  * This function scales the COMPOSITE input video. The width and height, based on the x, y coordinates, 
  *      cannot exceed that of the current resolution of the device.
  *      e.g.  x(in pixels)+width cannot be greater then the width of the resolution.
+ *      The current resolution will return by @see dsGetResolution()
  *
- * @param[in] x         - x coordinate for the video
- * @param[in] y         - y coordinate for the video
- * @param[in] width     - width of the video
- * @param[in] height    - height of the video
+ * @param[in] x         - x coordinate for the video. Min of 0. Max is based on the current resolution
+ * @param[in] y         - y coordinate for the video. Min of 0. Max is based on the current resolution
+ * @param[in] width     - width of the video. Min of 0. Max is based on the current resolution
+ * @param[in] height    - height of the video. Min of 0. Max is based on the current resolution
  *
  * @return dsError_t                      - Status
  * @retval dsERR_NONE                     - Success
