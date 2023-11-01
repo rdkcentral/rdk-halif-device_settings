@@ -95,7 +95,7 @@ dsError_t  dsVideoPortInit();
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
-dsError_t  dsGetVideoPort(dsVideoPortType_t type, int index, int *handle);
+dsError_t  dsGetVideoPort(dsVideoPortType_t type, int index, intptr_t *handle);
 
 
 /**
@@ -117,7 +117,7 @@ dsError_t  dsGetVideoPort(dsVideoPortType_t type, int index, int *handle);
  * @warning  This API is Not thread safe.
  * @see dsEnableVideoPort()
  */
-dsError_t  dsIsVideoPortEnabled(int handle, bool *enabled);
+dsError_t  dsIsVideoPortEnabled(intptr_t handle, bool *enabled);
 
 
 /**
@@ -138,7 +138,7 @@ dsError_t  dsIsVideoPortEnabled(int handle, bool *enabled);
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
-dsError_t  dsIsDisplayConnected(int handle, bool *connected);
+dsError_t  dsIsDisplayConnected(intptr_t handle, bool *connected);
 
 
 /**
@@ -156,7 +156,7 @@ dsError_t  dsIsDisplayConnected(int handle, bool *connected);
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
-dsError_t  dsIsDisplaySurround(int handle, bool *surround);
+dsError_t  dsIsDisplaySurround(intptr_t handle, bool *surround);
 
 
 /**
@@ -174,7 +174,7 @@ dsError_t  dsIsDisplaySurround(int handle, bool *surround);
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
-dsError_t  dsGetSurroundMode(int handle, int *surround);
+dsError_t  dsGetSurroundMode(intptr_t handle, int *surround);
 
 
 /**
@@ -193,7 +193,7 @@ dsError_t  dsGetSurroundMode(int handle, int *surround);
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
-dsError_t  dsIsVideoPortActive(int handle, bool *active);
+dsError_t  dsIsVideoPortActive(intptr_t handle, bool *active);
 
 
 /**
@@ -217,7 +217,7 @@ dsError_t  dsIsVideoPortActive(int handle, bool *active);
  * @warning  This API is Not thread safe.
  * @see dsIsDTCPEnabled()
  */
-dsError_t  dsEnableDTCP(int handle, bool contentProtect);
+dsError_t  dsEnableDTCP(intptr_t handle, bool contentProtect);
 
 
 /**
@@ -243,7 +243,7 @@ dsError_t  dsEnableDTCP(int handle, bool contentProtect);
  * @warning  This API is Not thread safe.
  * @see dsGetHDCPStatus(), dsIsHDCPEnabled()
  */
-dsError_t  dsEnableHDCP(int handle, bool contentProtect, char *hdcpKey, size_t keySize);
+dsError_t  dsEnableHDCP(intptr_t handle, bool contentProtect, char *hdcpKey, size_t keySize);
 
 
 /**
@@ -268,7 +268,7 @@ dsError_t  dsEnableHDCP(int handle, bool contentProtect, char *hdcpKey, size_t k
  * @warning  This API is Not thread safe.
  * @see dsEnableDTCP()
  */
-dsError_t  dsIsDTCPEnabled (int handle, bool* pContentProtected);
+dsError_t  dsIsDTCPEnabled (intptr_t handle, bool* pContentProtected);
 
 
  /**
@@ -289,7 +289,7 @@ dsError_t  dsIsDTCPEnabled (int handle, bool* pContentProtected);
  * @warning  This API is Not thread safe.
  * @see dsEnableHDCP()
  */
-dsError_t  dsIsHDCPEnabled (int handle, bool* pContentProtected);
+dsError_t  dsIsHDCPEnabled (intptr_t handle, bool* pContentProtected);
 
 
  /**
@@ -311,7 +311,7 @@ dsError_t  dsIsHDCPEnabled (int handle, bool* pContentProtected);
  * @warning  This API is Not thread safe.
  * @see dsIsVideoPortEnabled()
  */
-dsError_t  dsEnableVideoPort(int handle, bool enabled);
+dsError_t  dsEnableVideoPort(intptr_t handle, bool enabled);
 
 
 /**
@@ -333,7 +333,7 @@ dsError_t  dsEnableVideoPort(int handle, bool enabled);
  * @warning  This API is Not thread safe.
  * @see dsGetResolution()
  */
-dsError_t  dsSetResolution(int handle, dsVideoPortResolution_t *resolution, bool persist);
+dsError_t  dsSetResolution(intptr_t handle, dsVideoPortResolution_t *resolution, bool persist);
 
 
 /**
@@ -354,7 +354,7 @@ dsError_t  dsSetResolution(int handle, dsVideoPortResolution_t *resolution, bool
  * @warning  This API is Not thread safe.
  * @see dsSetResolution()
  */
-dsError_t  dsGetResolution(int handle, dsVideoPortResolution_t *resolution);
+dsError_t  dsGetResolution(intptr_t handle, dsVideoPortResolution_t *resolution);
 
 
 /**
@@ -371,7 +371,7 @@ dsError_t  dsGetResolution(int handle, dsVideoPortResolution_t *resolution);
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
-dsError_t dsSetActiveSource(int handle);
+dsError_t dsSetActiveSource(intptr_t handle);
 
 
  /**
@@ -417,7 +417,7 @@ dsError_t  dsInitResolution(dsVideoPortResolution_t *resolution);
  * HAL Implementation should invoke this call back to notify the  HDCP status change event
  * to the application (e.g. Authentication , Failure etc.).
  */
-typedef void (*dsHDCPStatusCallback_t)(int handle, dsHdcpStatus_t status);
+typedef void (*dsHDCPStatusCallback_t)(intptr_t handle, dsHdcpStatus_t status);
 
 
 /**
@@ -442,7 +442,7 @@ typedef void (*dsHDCPStatusCallback_t)(int handle, dsHdcpStatus_t status);
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
- dsError_t dsRegisterHdcpStatusCallback (int handle, dsHDCPStatusCallback_t cb);
+ dsError_t dsRegisterHdcpStatusCallback (intptr_t handle, dsHDCPStatusCallback_t cb);
 
 
  /**
@@ -461,7 +461,7 @@ typedef void (*dsHDCPStatusCallback_t)(int handle, dsHdcpStatus_t status);
  * @warning  This API is Not thread safe.
  * @see dsEnableHDCP()
  */
-dsError_t dsGetHDCPStatus (int handle, dsHdcpStatus_t *status);
+dsError_t dsGetHDCPStatus (intptr_t handle, dsHdcpStatus_t *status);
 
 
 /**
@@ -480,7 +480,7 @@ dsError_t dsGetHDCPStatus (int handle, dsHdcpStatus_t *status);
  * @warning  This API is Not thread safe.
  * @see dsEnableHDCP()
  */
-dsError_t dsGetHDCPProtocol (int handle,dsHdcpProtocolVersion_t *protocolVersion);
+dsError_t dsGetHDCPProtocol (intptr_t handle,dsHdcpProtocolVersion_t *protocolVersion);
 
 
 /**
@@ -499,7 +499,7 @@ dsError_t dsGetHDCPProtocol (int handle,dsHdcpProtocolVersion_t *protocolVersion
  * @warning  This API is Not thread safe.
  * @see dsEnableHDCP()
  */
-dsError_t dsGetHDCPReceiverProtocol (int handle,dsHdcpProtocolVersion_t *protocolVersion);
+dsError_t dsGetHDCPReceiverProtocol (intptr_t handle,dsHdcpProtocolVersion_t *protocolVersion);
 
 
 /**
@@ -518,7 +518,7 @@ dsError_t dsGetHDCPReceiverProtocol (int handle,dsHdcpProtocolVersion_t *protoco
  * @warning  This API is Not thread safe.
  * @see dsEnableHDCP()
  */
-dsError_t dsGetHDCPCurrentProtocol (int handle,dsHdcpProtocolVersion_t *protocolVersion);
+dsError_t dsGetHDCPCurrentProtocol (intptr_t handle,dsHdcpProtocolVersion_t *protocolVersion);
 
 
 /**
@@ -538,7 +538,7 @@ dsError_t dsGetHDCPCurrentProtocol (int handle,dsHdcpProtocolVersion_t *protocol
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
-dsError_t dsGetTVHDRCapabilities(int handle, int *capabilities);
+dsError_t dsGetTVHDRCapabilities(intptr_t handle, int *capabilities);
 
 
 /**
@@ -558,7 +558,7 @@ dsError_t dsGetTVHDRCapabilities(int handle, int *capabilities);
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
-dsError_t dsSupportedTvResolutions(int handle, int *resolutions);
+dsError_t dsSupportedTvResolutions(intptr_t handle, int *resolutions);
 
 
 /**
@@ -579,7 +579,7 @@ dsError_t dsSupportedTvResolutions(int handle, int *resolutions);
  * @warning  This API is Not thread safe.
  * @see dsGetForceDisable4KSupport()
  */
-dsError_t dsSetForceDisable4KSupport(int handle, bool disable);
+dsError_t dsSetForceDisable4KSupport(intptr_t handle, bool disable);
 
 
 /**
@@ -600,7 +600,7 @@ dsError_t dsSetForceDisable4KSupport(int handle, bool disable);
  * @warning  This API is Not thread safe.
  * @see dsSetForceDisable4KSupport()
  */
-dsError_t dsGetForceDisable4KSupport(int handle, bool *disable);
+dsError_t dsGetForceDisable4KSupport(intptr_t handle, bool *disable);
 
 
  /**
@@ -635,7 +635,7 @@ dsError_t dsGetForceDisable4KSupport(int handle, bool *disable);
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
-dsError_t dsSetScartParameter(int handle, const char* parameter_str, const char* value_str);
+dsError_t dsSetScartParameter(intptr_t handle, const char* parameter_str, const char* value_str);
 
 
 /**
@@ -653,7 +653,7 @@ dsError_t dsSetScartParameter(int handle, const char* parameter_str, const char*
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
-dsError_t dsGetVideoEOTF(int handle, dsHDRStandard_t *video_eotf);
+dsError_t dsGetVideoEOTF(intptr_t handle, dsHDRStandard_t *video_eotf);
 
 
 /**
@@ -671,7 +671,7 @@ dsError_t dsGetVideoEOTF(int handle, dsHDRStandard_t *video_eotf);
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
-dsError_t dsGetMatrixCoefficients(int handle, dsDisplayMatrixCoefficients_t *matrix_coefficients);
+dsError_t dsGetMatrixCoefficients(intptr_t handle, dsDisplayMatrixCoefficients_t *matrix_coefficients);
 
 
 /**
@@ -689,7 +689,7 @@ dsError_t dsGetMatrixCoefficients(int handle, dsDisplayMatrixCoefficients_t *mat
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
-dsError_t dsGetColorDepth(int handle, unsigned int* color_depth);
+dsError_t dsGetColorDepth(intptr_t handle, unsigned int* color_depth);
 
 
 /**
@@ -707,7 +707,7 @@ dsError_t dsGetColorDepth(int handle, unsigned int* color_depth);
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
-dsError_t dsGetColorSpace(int handle, dsDisplayColorSpace_t* color_space);
+dsError_t dsGetColorSpace(intptr_t handle, dsDisplayColorSpace_t* color_space);
  
 
 /**
@@ -725,7 +725,7 @@ dsError_t dsGetColorSpace(int handle, dsDisplayColorSpace_t* color_space);
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
-dsError_t dsGetQuantizationRange(int handle, dsDisplayQuantizationRange_t* quantization_range);
+dsError_t dsGetQuantizationRange(intptr_t handle, dsDisplayQuantizationRange_t* quantization_range);
 
 
 /**
@@ -748,7 +748,7 @@ dsError_t dsGetQuantizationRange(int handle, dsDisplayQuantizationRange_t* quant
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
-dsError_t dsGetCurrentOutputSettings(int handle, dsHDRStandard_t* video_eotf, dsDisplayMatrixCoefficients_t* matrix_coefficients, dsDisplayColorSpace_t* color_space, unsigned int* color_depth, dsDisplayQuantizationRange_t* quantization_range);
+dsError_t dsGetCurrentOutputSettings(intptr_t handle, dsHDRStandard_t* video_eotf, dsDisplayMatrixCoefficients_t* matrix_coefficients, dsDisplayColorSpace_t* color_space, unsigned int* color_depth, dsDisplayQuantizationRange_t* quantization_range);
 
 
 /**
@@ -768,7 +768,7 @@ dsError_t dsGetCurrentOutputSettings(int handle, dsHDRStandard_t* video_eotf, ds
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
-dsError_t dsIsOutputHDR(int handle, bool *hdr);
+dsError_t dsIsOutputHDR(intptr_t handle, bool *hdr);
 
 
 /**
@@ -810,7 +810,7 @@ dsError_t dsResetOutputToSDR();
  * @warning  This API is Not thread safe.
  * @see dsGetHdmiPreference()
  */
-dsError_t dsSetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentProtocol);
+dsError_t dsSetHdmiPreference(intptr_t handle, dsHdcpProtocolVersion_t *hdcpCurrentProtocol);
 
 
 /**
@@ -836,7 +836,7 @@ dsError_t dsSetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentPr
  * @warning  This API is Not thread safe.
  * @see dsSetHdmiPreference()
  */
-dsError_t dsGetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentProtocol);
+dsError_t dsGetHdmiPreference(intptr_t handle, dsHdcpProtocolVersion_t *hdcpCurrentProtocol);
 
 
 /**
@@ -856,7 +856,7 @@ dsError_t dsGetHdmiPreference(int handle, dsHdcpProtocolVersion_t *hdcpCurrentPr
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
-dsError_t dsGetIgnoreEDIDStatus(int handle, bool* status);
+dsError_t dsGetIgnoreEDIDStatus(intptr_t handle, bool* status);
 
 
 /**
@@ -876,7 +876,7 @@ dsError_t dsGetIgnoreEDIDStatus(int handle, bool* status);
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
-dsError_t dsSetBackgroundColor(int handle, dsVideoBackgroundColor_t color);
+dsError_t dsSetBackgroundColor(intptr_t handle, dsVideoBackgroundColor_t color);
 
 
 /**
@@ -896,7 +896,7 @@ dsError_t dsSetBackgroundColor(int handle, dsVideoBackgroundColor_t color);
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
-dsError_t dsSetForceHDRMode(int handle, dsHDRStandard_t mode);
+dsError_t dsSetForceHDRMode(intptr_t handle, dsHDRStandard_t mode);
 
 
 /**
@@ -916,7 +916,7 @@ dsError_t dsSetForceHDRMode(int handle, dsHDRStandard_t mode);
  * @pre dsVideoPortInit() should be called before calling this API.
  * @warning  This API is Not thread safe.
  */
-dsError_t dsColorDepthCapabilities(int handle, unsigned int *colorDepthCapability );
+dsError_t dsColorDepthCapabilities(intptr_t handle, unsigned int *colorDepthCapability );
 
 
 /**
@@ -938,7 +938,7 @@ dsError_t dsColorDepthCapabilities(int handle, unsigned int *colorDepthCapabilit
  * @warning  This API is Not thread safe.
  * @see dsSetPreferredColorDepth()
  */
-dsError_t dsGetPreferredColorDepth(int handle, dsDisplayColorDepth_t *colorDepth, bool persist );
+dsError_t dsGetPreferredColorDepth(intptr_t handle, dsDisplayColorDepth_t *colorDepth, bool persist );
 
 
 /**
@@ -960,7 +960,7 @@ dsError_t dsGetPreferredColorDepth(int handle, dsDisplayColorDepth_t *colorDepth
  * @warning  This API is Not thread safe.
  * @see dsGetPreferredColorDepth()
  */
-dsError_t dsSetPreferredColorDepth(int handle,dsDisplayColorDepth_t colorDepth, bool persist );
+dsError_t dsSetPreferredColorDepth(intptr_t handle,dsDisplayColorDepth_t colorDepth, bool persist );
 
 
 /**

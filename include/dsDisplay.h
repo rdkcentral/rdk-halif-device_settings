@@ -86,7 +86,7 @@ typedef enum _dsDisplayEvent_t {
  * @return None.
  */
 
-typedef void (*dsDisplayEventCallback_t)(int handle, dsDisplayEvent_t event, void *eventData/*Optional*/);
+typedef void (*dsDisplayEventCallback_t)(intptr_t handle, dsDisplayEvent_t event, void *eventData/*Optional*/);
 
 /**
  * @brief Initialize the Display sub-system.
@@ -125,7 +125,7 @@ dsError_t dsDisplayInit();
  * @warning  This API is Not thread safe.
  */
 
- dsError_t dsGetDisplay(dsVideoPortType_t vType, int index, int *handle);
+ dsError_t dsGetDisplay(dsVideoPortType_t vType, int index, intptr_t *handle);
   
 /** 
  * @brief Get the EDID information from the specified display device.
@@ -147,7 +147,7 @@ dsError_t dsDisplayInit();
  * @warning  This API is Not thread safe.
  */
 
-dsError_t dsGetEDID(int handle, dsDisplayEDID_t *edid);
+dsError_t dsGetEDID(intptr_t handle, dsDisplayEDID_t *edid);
 
 /**
  * @brief This function is used to get the EDID buffer and its size of the connected display.
@@ -171,7 +171,7 @@ dsError_t dsGetEDID(int handle, dsDisplayEDID_t *edid);
  * @warning  This API is Not thread safe.
  */
 
-dsError_t dsGetEDIDBytes(int handle, unsigned char **edid, int *length);
+dsError_t dsGetEDIDBytes(intptr_t handle, unsigned char **edid, int *length);
 
 /**
  * @brief This function gets the aspect ratio for the display device.
@@ -191,7 +191,7 @@ dsError_t dsGetEDIDBytes(int handle, unsigned char **edid, int *length);
  * @warning  This API is Not thread safe.
  */
 
-dsError_t dsGetDisplayAspectRatio(int handle, dsVideoAspectRatio_t *aspectRatio);
+dsError_t dsGetDisplayAspectRatio(intptr_t handle, dsVideoAspectRatio_t *aspectRatio);
 
 /**
  * @brief This function deinitialize the display sub-system.
@@ -231,7 +231,7 @@ dsError_t dsDisplayTerm();
  * @warning  This API is Not thread safe.
  */
 
-dsError_t dsRegisterDisplayEventCallback(int handle, dsDisplayEventCallback_t cb);
+dsError_t dsRegisterDisplayEventCallback(intptr_t handle, dsDisplayEventCallback_t cb);
 
 /**
  * @}

@@ -126,7 +126,7 @@ dsError_t  dsVideoDeviceInit();
 * 
  * 
  */
-dsError_t  dsGetVideoDevice(int index, int *handle);
+dsError_t  dsGetVideoDevice(int index, intptr_t *handle);
 
 /**
  * @brief Sets the screen zoom mode (decoder format conversion)
@@ -148,7 +148,7 @@ dsError_t  dsGetVideoDevice(int index, int *handle);
  * @see dsGetDFC()
  * 
  */
-dsError_t  dsSetDFC(int handle, dsVideoZoom_t dfc);
+dsError_t  dsSetDFC(intptr_t handle, dsVideoZoom_t dfc);
 
 
 /**
@@ -171,7 +171,7 @@ dsError_t  dsSetDFC(int handle, dsVideoZoom_t dfc);
  * @see dsSetDFC()
  * 
  */
-dsError_t  dsGetDFC(int handle, dsVideoZoom_t *dfc);
+dsError_t  dsGetDFC(intptr_t handle, dsVideoZoom_t *dfc);
 
 
 /**
@@ -215,7 +215,7 @@ dsError_t  dsVideoDeviceTerm();
  * @warning  This function is Not thread safe.
  * 
  */
-dsError_t dsGetHDRCapabilities(int handle, int *capabilities);
+dsError_t dsGetHDRCapabilities(intptr_t handle, int *capabilities);
 
 
 /**
@@ -237,7 +237,7 @@ dsError_t dsGetHDRCapabilities(int handle, int *capabilities);
  * @warning  This function is Not thread safe.
  * 
  */
-dsError_t dsGetSupportedVideoCodingFormats(int handle, unsigned int * supported_formats);
+dsError_t dsGetSupportedVideoCodingFormats(intptr_t handle, unsigned int * supported_formats);
 
 
 /**
@@ -259,7 +259,7 @@ dsError_t dsGetSupportedVideoCodingFormats(int handle, unsigned int * supported_
  * @warning  This function is Not thread safe.
  * 
  */
-dsError_t dsGetVideoCodecInfo(int handle, dsVideoCodingFormat_t codec, dsVideoCodecInfo_t * info); 
+dsError_t dsGetVideoCodecInfo(intptr_t handle, dsVideoCodingFormat_t codec, dsVideoCodecInfo_t * info); 
 
 
 /**
@@ -281,7 +281,7 @@ dsError_t dsGetVideoCodecInfo(int handle, dsVideoCodingFormat_t codec, dsVideoCo
  * @warning  This function is Not thread safe.
  * 
  */
-dsError_t dsForceDisableHDRSupport(int handle, bool disable);
+dsError_t dsForceDisableHDRSupport(intptr_t handle, bool disable);
 
 /**
  * @brief Sets the FRF mode of the device
@@ -304,7 +304,7 @@ dsError_t dsForceDisableHDRSupport(int handle, bool disable);
  * @see dsGetFRFMode()
  * 
  */
-dsError_t dsSetFRFMode(int handle, int frfmode);
+dsError_t dsSetFRFMode(intptr_t handle, int frfmode);
 
 
 /**
@@ -328,7 +328,7 @@ dsError_t dsSetFRFMode(int handle, int frfmode);
  * @see dsSetFRFMode()
  * 
  */
-dsError_t dsGetFRFMode(int handle, int *frfmode);
+dsError_t dsGetFRFMode(intptr_t handle, int *frfmode);
 
 /**
  * @brief Gets the current framerate of the device
@@ -352,7 +352,7 @@ dsError_t dsGetFRFMode(int handle, int *frfmode);
  * @see dsSetDisplayframerate()
  * 
  */
-dsError_t dsGetCurrentDisplayframerate(int handle, char *framerate);
+dsError_t dsGetCurrentDisplayframerate(intptr_t handle, char *framerate);
  
 
 /**
@@ -377,7 +377,7 @@ dsError_t dsGetCurrentDisplayframerate(int handle, char *framerate);
  * @see dsGetCurrentDisplayframerate()
  * 
  */
-dsError_t dsSetDisplayframerate(int handle, char *framerate);
+dsError_t dsSetDisplayframerate(intptr_t handle, char *framerate);
 
 /**
  * @brief Call back function to receive the framerate change event form the HAL side.

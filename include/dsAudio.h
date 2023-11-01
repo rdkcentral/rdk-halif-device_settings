@@ -210,7 +210,7 @@ dsError_t  dsAudioPortTerm();
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t  dsGetAudioPort(dsAudioPortType_t type, int index, int *handle);
+dsError_t  dsGetAudioPort(dsAudioPortType_t type, int index, intptr_t *handle);
 
 /**
  * @brief Gets the encoding type of an audio port
@@ -233,7 +233,7 @@ dsError_t  dsGetAudioPort(dsAudioPortType_t type, int index, int *handle);
  * 
  * @see dsSetAudioEncoding()
  */
-dsError_t  dsGetAudioEncoding(int handle, dsAudioEncoding_t *encoding);
+dsError_t  dsGetAudioEncoding(intptr_t handle, dsAudioEncoding_t *encoding);
 
 /**
  * @brief Sets the encoding type of an audio port
@@ -256,7 +256,7 @@ dsError_t  dsGetAudioEncoding(int handle, dsAudioEncoding_t *encoding);
  * 
  * @see dsGetAudioEncoding()
  */
-dsError_t  dsSetAudioEncoding(int handle, dsAudioEncoding_t encoding);
+dsError_t  dsSetAudioEncoding(intptr_t handle, dsAudioEncoding_t encoding);
 
 /**
  * @brief Gets the current audio format.
@@ -277,7 +277,7 @@ dsError_t  dsSetAudioEncoding(int handle, dsAudioEncoding_t encoding);
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t  dsGetAudioFormat(int handle, dsAudioFormat_t *audioFormat);
+dsError_t  dsGetAudioFormat(intptr_t handle, dsAudioFormat_t *audioFormat);
 
 /**
  * @brief Gets the audio compression of the specified audio port.
@@ -300,7 +300,7 @@ dsError_t  dsGetAudioFormat(int handle, dsAudioFormat_t *audioFormat);
  * 
  * @see dsSetAudioCompression()
  */
-dsError_t  dsGetAudioCompression(int handle, int *compression);
+dsError_t  dsGetAudioCompression(intptr_t handle, int *compression);
 
 /**
  * @brief Sets the audio compression of an audio port.
@@ -323,7 +323,7 @@ dsError_t  dsGetAudioCompression(int handle, int *compression);
  * 
  * @see dsGetAudioCompression()
  */
-dsError_t  dsSetAudioCompression(int handle, int compression);
+dsError_t  dsSetAudioCompression(intptr_t handle, int compression);
 
 /**
  * @brief Gets the Dialog Enhancement level of the audio port.
@@ -346,7 +346,7 @@ dsError_t  dsSetAudioCompression(int handle, int compression);
  * 
  * @see dsSetDialogEnhancement()
  */
-dsError_t  dsGetDialogEnhancement(int handle, int *level);
+dsError_t  dsGetDialogEnhancement(intptr_t handle, int *level);
 
 /**
  * @brief Sets the Dialog Enhancement level of an audio port.
@@ -369,7 +369,7 @@ dsError_t  dsGetDialogEnhancement(int handle, int *level);
  * 
  * @see dsGetDialogEnhancement()
  */
-dsError_t  dsSetDialogEnhancement(int handle, int level);
+dsError_t  dsSetDialogEnhancement(intptr_t handle, int level);
 
 /**
  * @brief Gets the dolby audio mode status of an audio port.
@@ -393,7 +393,7 @@ dsError_t  dsSetDialogEnhancement(int handle, int level);
  * 
  * @see dsSetDolbyVolumeMode()
  */
-dsError_t  dsGetDolbyVolumeMode(int handle, bool *mode);
+dsError_t  dsGetDolbyVolumeMode(intptr_t handle, bool *mode);
 
 /**
  * @brief To enable/disable Dolby Volume Mode.
@@ -417,7 +417,7 @@ dsError_t  dsGetDolbyVolumeMode(int handle, bool *mode);
  * 
  * @see dsGetDolbyVolumeMode()
  */
-dsError_t  dsSetDolbyVolumeMode(int handle, bool mode);
+dsError_t  dsSetDolbyVolumeMode(intptr_t handle, bool mode);
 
 /**
  * @brief Gets the Intelligent Equalizer Mode.
@@ -443,7 +443,7 @@ dsError_t  dsSetDolbyVolumeMode(int handle, bool mode);
  * 
  * @see dsSetIntelligentEqualizerMode()
  */
-dsError_t  dsGetIntelligentEqualizerMode(int handle, int *mode);
+dsError_t  dsGetIntelligentEqualizerMode(intptr_t handle, int *mode);
 
 /**
  * @brief Sets the Intelligent Equalizer Mode.
@@ -467,7 +467,7 @@ dsError_t  dsGetIntelligentEqualizerMode(int handle, int *mode);
  * 
  * @see dsGetIntelligentEqualizerMode()
  */
-dsError_t  dsSetIntelligentEqualizerMode(int handle, int mode);
+dsError_t  dsSetIntelligentEqualizerMode(intptr_t handle, int mode);
 
 /**
  * @brief Gets the Dolby volume leveller settings.
@@ -490,7 +490,7 @@ dsError_t  dsSetIntelligentEqualizerMode(int handle, int mode);
  * 
  * @see dsSetVolumeLeveller()
  */
-dsError_t  dsGetVolumeLeveller(int handle, dsVolumeLeveller_t* volLeveller);
+dsError_t  dsGetVolumeLeveller(intptr_t handle, dsVolumeLeveller_t* volLeveller);
 
 /**
  * @brief Sets the Dolby volume leveller settings.
@@ -513,7 +513,7 @@ dsError_t  dsGetVolumeLeveller(int handle, dsVolumeLeveller_t* volLeveller);
  * 
  * @see dsGetVolumeLeveller()
  */
-dsError_t  dsSetVolumeLeveller(int handle, dsVolumeLeveller_t volLeveller);
+dsError_t  dsSetVolumeLeveller(intptr_t handle, dsVolumeLeveller_t volLeveller);
 
 /**
  * @brief Gets the audio Bass
@@ -536,7 +536,7 @@ dsError_t  dsSetVolumeLeveller(int handle, dsVolumeLeveller_t volLeveller);
  * 
  * @see dsSetBassEnhancer()
  */
-dsError_t  dsGetBassEnhancer(int handle, int *boost);
+dsError_t  dsGetBassEnhancer(intptr_t handle, int *boost);
 
 /**
  * @brief Sets the audio Bass
@@ -559,7 +559,7 @@ dsError_t  dsGetBassEnhancer(int handle, int *boost);
  * 
  * @see dsGetBassEnhancer()
  */
-dsError_t  dsSetBassEnhancer(int handle, int boost);
+dsError_t  dsSetBassEnhancer(intptr_t handle, int boost);
 
 /**
  * @brief Gets the audio Surround Decoder enabled/disabled status
@@ -582,7 +582,7 @@ dsError_t  dsSetBassEnhancer(int handle, int boost);
  * 
  * @see dsEnableSurroundDecoder()
  */
-dsError_t  dsIsSurroundDecoderEnabled(int handle, bool *enabled);
+dsError_t  dsIsSurroundDecoderEnabled(intptr_t handle, bool *enabled);
 
 /**
  * @brief Enables / Disables the audio Surround Decoder.
@@ -605,7 +605,7 @@ dsError_t  dsIsSurroundDecoderEnabled(int handle, bool *enabled);
  * 
  * @see dsIsSurroundDecoderEnabled()
  */
-dsError_t  dsEnableSurroundDecoder(int handle, bool enabled);
+dsError_t  dsEnableSurroundDecoder(intptr_t handle, bool enabled);
 
 /**
  * @brief Gets the DRC Mode of the specified Audio Port.
@@ -630,7 +630,7 @@ dsError_t  dsEnableSurroundDecoder(int handle, bool enabled);
  * 
  * @see dsSetDRCMode()
  */
-dsError_t  dsGetDRCMode(int handle, int *mode);
+dsError_t  dsGetDRCMode(intptr_t handle, int *mode);
 
 /**
  * @brief Sets the DRC Mode of specified audio port.
@@ -653,7 +653,7 @@ dsError_t  dsGetDRCMode(int handle, int *mode);
  * 
  * @see dsGetDRCMode()
  */
-dsError_t  dsSetDRCMode(int handle, int mode);
+dsError_t  dsSetDRCMode(intptr_t handle, int mode);
 
 /**
  * @brief Gets the audio Surround Virtualizer level.
@@ -676,7 +676,7 @@ dsError_t  dsSetDRCMode(int handle, int mode);
  * 
  * @see dsSetSurroundVirtualizer()
  */
-dsError_t  dsGetSurroundVirtualizer(int handle, dsSurroundVirtualizer_t *virtualizer);
+dsError_t  dsGetSurroundVirtualizer(intptr_t handle, dsSurroundVirtualizer_t *virtualizer);
 
 /**
  * @brief Sets the audio Surround Virtualizer level
@@ -699,7 +699,7 @@ dsError_t  dsGetSurroundVirtualizer(int handle, dsSurroundVirtualizer_t *virtual
  * 
  * @see dsGetSurroundVirtualizer()
  */
-dsError_t  dsSetSurroundVirtualizer(int handle, dsSurroundVirtualizer_t virtualizer);
+dsError_t  dsSetSurroundVirtualizer(intptr_t handle, dsSurroundVirtualizer_t virtualizer);
 
 /**
  * @brief Gets the Media Intelligent Steering of the audio port.
@@ -722,7 +722,7 @@ dsError_t  dsSetSurroundVirtualizer(int handle, dsSurroundVirtualizer_t virtuali
  * 
  * @see dsSetMISteering()
  */
-dsError_t  dsGetMISteering(int handle, bool *enabled);
+dsError_t  dsGetMISteering(intptr_t handle, bool *enabled);
 
 /**
  * @brief Set the Media Intelligent Steering of the audio port.
@@ -745,7 +745,7 @@ dsError_t  dsGetMISteering(int handle, bool *enabled);
  * 
  * @see dsGetMISteering()
  */
-dsError_t  dsSetMISteering(int handle, bool enabled);
+dsError_t  dsSetMISteering(intptr_t handle, bool enabled);
 
 /**
  * @brief Gets the Graphic Equalizer Mode.
@@ -770,7 +770,7 @@ dsError_t  dsSetMISteering(int handle, bool enabled);
  * 
  * @see dsSetGraphicEqualizerMode()
  */
-dsError_t  dsGetGraphicEqualizerMode(int handle, int *mode);
+dsError_t  dsGetGraphicEqualizerMode(intptr_t handle, int *mode);
 
 /**
  * @brief Sets the Graphic Equalizer Mode.
@@ -793,7 +793,7 @@ dsError_t  dsGetGraphicEqualizerMode(int handle, int *mode);
  * 
  * @see dsGetGraphicEqualizerMode()
  */
-dsError_t  dsSetGraphicEqualizerMode(int handle, int mode);
+dsError_t  dsSetGraphicEqualizerMode(intptr_t handle, int mode);
 
 /**
  * @brief Gets the supported MS12 audio profiles
@@ -816,7 +816,7 @@ dsError_t  dsSetGraphicEqualizerMode(int handle, int mode);
  * 
  * @see dsSetMS12AudioProfile()
  */
-dsError_t  dsGetMS12AudioProfileList(int handle, dsMS12AudioProfileList_t* profiles);
+dsError_t  dsGetMS12AudioProfileList(intptr_t handle, dsMS12AudioProfileList_t* profiles);
 
 /**
  * @brief Gets current audio profile selection
@@ -839,7 +839,7 @@ dsError_t  dsGetMS12AudioProfileList(int handle, dsMS12AudioProfileList_t* profi
  * 
  * @see dsSetMS12AudioProfile()
  */
-dsError_t  dsGetMS12AudioProfile(int handle, char *profile);
+dsError_t  dsGetMS12AudioProfile(intptr_t handle, char *profile);
 
 /**
  * @brief Gets the supported ARC types of the connected ARC/eARC device
@@ -862,7 +862,7 @@ dsError_t  dsGetMS12AudioProfile(int handle, char *profile);
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t dsGetSupportedARCTypes(int handle, int *types);
+dsError_t dsGetSupportedARCTypes(intptr_t handle, int *types);
 
 /**
  * @brief Sets Short Audio Descriptor retrieved from CEC for the connected ARC device
@@ -885,7 +885,7 @@ dsError_t dsGetSupportedARCTypes(int handle, int *types);
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t dsAudioSetSAD(int handle, dsAudioSADList_t sad_list);
+dsError_t dsAudioSetSAD(intptr_t handle, dsAudioSADList_t sad_list);
 
 /**
  * @brief Enable/Disable ARC/EARC and route audio to connected device.
@@ -907,7 +907,7 @@ dsError_t dsAudioSetSAD(int handle, dsAudioSADList_t sad_list);
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t dsAudioEnableARC(int handle, dsAudioARCStatus_t arcStatus);
+dsError_t dsAudioEnableARC(intptr_t handle, dsAudioARCStatus_t arcStatus);
 
 /**
  * @brief Gets the stereo mode of an audio port.
@@ -933,7 +933,7 @@ dsError_t dsAudioEnableARC(int handle, dsAudioARCStatus_t arcStatus);
  * 
  * @see dsSetStereoMode()
  */
-dsError_t  dsGetStereoMode(int handle, dsAudioStereoMode_t *stereoMode);
+dsError_t  dsGetStereoMode(intptr_t handle, dsAudioStereoMode_t *stereoMode);
 
 /**
  * @brief Sets the stereo mode of an audio port. 
@@ -956,7 +956,7 @@ dsError_t  dsGetStereoMode(int handle, dsAudioStereoMode_t *stereoMode);
  * 
  * @see dsGetStereoMode()
  */
-dsError_t  dsSetStereoMode(int handle, dsAudioStereoMode_t mode);
+dsError_t  dsSetStereoMode(intptr_t handle, dsAudioStereoMode_t mode);
 
 /**
  * @brief Checks if auto mode is enabled or not for the current audio port.
@@ -981,7 +981,7 @@ dsError_t  dsSetStereoMode(int handle, dsAudioStereoMode_t mode);
  * 
  * @see dsSetStereoAuto()
  */	
-dsError_t  dsGetStereoAuto(int handle, int *autoMode);
+dsError_t  dsGetStereoAuto(intptr_t handle, int *autoMode);
 
 /**
  * @brief Sets the Auto Mode to be used on the audio port. 
@@ -1004,7 +1004,7 @@ dsError_t  dsGetStereoAuto(int handle, int *autoMode);
  * 
  * @see dsGetStereoAuto()
  */
-dsError_t  dsSetStereoAuto(int handle, int autoMode);
+dsError_t  dsSetStereoAuto(intptr_t handle, int autoMode);
 
 /**
  * @brief Gets the audio gain of an audio port.
@@ -1028,7 +1028,7 @@ dsError_t  dsSetStereoAuto(int handle, int autoMode);
  * 
  * @see dsSetAudioGain()
  */
-dsError_t  dsGetAudioGain(int handle, float *gain);
+dsError_t  dsGetAudioGain(intptr_t handle, float *gain);
 
 /**
  * @brief Sets the audio gain of an audio port.
@@ -1052,7 +1052,7 @@ dsError_t  dsGetAudioGain(int handle, float *gain);
  * 
  * @see dsGetAudioGain()
  */
-dsError_t  dsSetAudioGain(int handle, float gain);
+dsError_t  dsSetAudioGain(intptr_t handle, float gain);
 
 /**
  * @brief Gets the current audio dB level of an audio port.
@@ -1076,7 +1076,7 @@ dsError_t  dsSetAudioGain(int handle, float gain);
  * 
  * @see dsSetAudioDB()
  */
-dsError_t  dsGetAudioDB(int handle, float *db);
+dsError_t  dsGetAudioDB(intptr_t handle, float *db);
 
 /**
  * @brief Sets the current audio dB level of an audio port.
@@ -1101,7 +1101,7 @@ dsError_t  dsGetAudioDB(int handle, float *db);
  * 
  * @see dsGetAudioDB()
  */
-dsError_t  dsSetAudioDB(int handle, float db);
+dsError_t  dsSetAudioDB(intptr_t handle, float db);
 
 /**
  * @brief Gets the current audio volume level of an audio port.
@@ -1124,7 +1124,7 @@ dsError_t  dsSetAudioDB(int handle, float db);
  * 
  * @see dsSetAudioLevel()
  */
-dsError_t  dsGetAudioLevel(int handle, float *level);
+dsError_t  dsGetAudioLevel(intptr_t handle, float *level);
 
 /**
  * @brief Sets the audio volume level of an audio port.
@@ -1147,7 +1147,7 @@ dsError_t  dsGetAudioLevel(int handle, float *level);
  * 
  * @see dsGetAudioLevel()
  */
-dsError_t  dsSetAudioLevel(int handle, float level);
+dsError_t  dsSetAudioLevel(intptr_t handle, float level);
 
 /**
  * @brief Gets the maximum audio dB level of an audio port.
@@ -1169,7 +1169,7 @@ dsError_t  dsSetAudioLevel(int handle, float level);
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t  dsGetAudioMaxDB(int handle, float *maxDb);
+dsError_t  dsGetAudioMaxDB(intptr_t handle, float *maxDb);
 
 /**
  * @brief Gets the minimum audio dB level of an audio port.
@@ -1191,7 +1191,7 @@ dsError_t  dsGetAudioMaxDB(int handle, float *maxDb);
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t  dsGetAudioMinDB(int handle, float *minDb);
+dsError_t  dsGetAudioMinDB(intptr_t handle, float *minDb);
 
 /**
  * @brief Gets the optimal audio level of an audio port.
@@ -1212,7 +1212,7 @@ dsError_t  dsGetAudioMinDB(int handle, float *minDb);
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t  dsGetAudioOptimalLevel(int handle, float *optimalLevel);
+dsError_t  dsGetAudioOptimalLevel(intptr_t handle, float *optimalLevel);
 
 /**
  * @brief Gets the audio delay (in ms) of an audio port
@@ -1235,7 +1235,7 @@ dsError_t  dsGetAudioOptimalLevel(int handle, float *optimalLevel);
  * 
  * @see dsSetAudioDelay()
  */
-dsError_t dsGetAudioDelay(int handle, uint32_t *audioDelayMs);
+dsError_t dsGetAudioDelay(intptr_t handle, uint32_t *audioDelayMs);
 
 /**
  * @brief Sets the audio delay (in ms) of an audio port.
@@ -1258,7 +1258,7 @@ dsError_t dsGetAudioDelay(int handle, uint32_t *audioDelayMs);
  * 
  * @see dsGetAudioDelay()
  */
-dsError_t dsSetAudioDelay(int handle, const uint32_t audioDelayMs);
+dsError_t dsSetAudioDelay(intptr_t handle, const uint32_t audioDelayMs);
 
 /**
  * @brief Gets the audio delay offset (in ms) of an audio port.
@@ -1281,7 +1281,7 @@ dsError_t dsSetAudioDelay(int handle, const uint32_t audioDelayMs);
  * 
  * @see dsSetAudioDelayOffset()
  */
-dsError_t dsGetAudioDelayOffset(int handle, uint32_t *audioDelayOffsetMs);
+dsError_t dsGetAudioDelayOffset(intptr_t handle, uint32_t *audioDelayOffsetMs);
 
 /**
  * @brief Sets the audio delay offset (in ms) of an audio port.
@@ -1304,7 +1304,7 @@ dsError_t dsGetAudioDelayOffset(int handle, uint32_t *audioDelayOffsetMs);
  * 
  * @see dsGetAudioDelayOffset()
  */
-dsError_t dsSetAudioDelayOffset(int handle, const uint32_t audioDelayOffsetMs);
+dsError_t dsSetAudioDelayOffset(intptr_t handle, const uint32_t audioDelayOffsetMs);
 
 /**
  * @brief Sets the audio ATMOS output mode.
@@ -1325,7 +1325,7 @@ dsError_t dsSetAudioDelayOffset(int handle, const uint32_t audioDelayOffsetMs);
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t dsSetAudioAtmosOutputMode(int handle, bool enable);
+dsError_t dsSetAudioAtmosOutputMode(intptr_t handle, bool enable);
   
 /**
  * @brief Gets the ATMOS capability of the sink device.
@@ -1346,7 +1346,7 @@ dsError_t dsSetAudioAtmosOutputMode(int handle, bool enable);
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t dsGetSinkDeviceAtmosCapability(int handle, dsATMOSCapability_t *capability);
+dsError_t dsGetSinkDeviceAtmosCapability(intptr_t handle, dsATMOSCapability_t *capability);
 
 /**
  * @brief Gets the loop-through mode of an audio port.
@@ -1368,7 +1368,7 @@ dsError_t dsGetSinkDeviceAtmosCapability(int handle, dsATMOSCapability_t *capabi
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t  dsIsAudioLoopThru(int handle, bool *loopThru);
+dsError_t  dsIsAudioLoopThru(intptr_t handle, bool *loopThru);
 
 /**
  * @brief Gets the audio mute status of an audio port corresponding to the specified port handle.
@@ -1392,7 +1392,7 @@ dsError_t  dsIsAudioLoopThru(int handle, bool *loopThru);
  * 
  * @see dsSetAudioMute()
  */
-dsError_t  dsIsAudioMute(int handle, bool *muted);
+dsError_t  dsIsAudioMute(intptr_t handle, bool *muted);
 
 /**
  * @brief Indicates whether the specified Audio port is enabled or not.
@@ -1414,7 +1414,7 @@ dsError_t  dsIsAudioMute(int handle, bool *muted);
  * 
  * @see dsEnableAudioPort()
  */
-dsError_t  dsIsAudioPortEnabled(int handle, bool *enabled);
+dsError_t  dsIsAudioPortEnabled(intptr_t handle, bool *enabled);
 
 /**
  * @brief Enables or Disables the Audio port corresponding to the specified port handle.
@@ -1436,7 +1436,7 @@ dsError_t  dsIsAudioPortEnabled(int handle, bool *enabled);
  * 
  * @see dsIsAudioPortEnabled()
  */
-dsError_t  dsEnableAudioPort(int handle, bool enabled);
+dsError_t  dsEnableAudioPort(intptr_t handle, bool enabled);
 
 /**
  * @brief Enables or Disables MS12 DAPV2 and DE feature
@@ -1459,7 +1459,7 @@ dsError_t  dsEnableAudioPort(int handle, bool enabled);
  * 
  * @see dsGetMS12AudioProfileList(), dsGetMS12AudioProfile()
  */
-dsError_t  dsEnableMS12Config(int handle, dsMS12FEATURE_t feature,const bool enable);
+dsError_t  dsEnableMS12Config(intptr_t handle, dsMS12FEATURE_t feature,const bool enable);
 
 /**
  * @brief Enables or Disables Loudness Equivalence feature.
@@ -1481,7 +1481,7 @@ dsError_t  dsEnableMS12Config(int handle, dsMS12FEATURE_t feature,const bool ena
  * 
  * @see dsGetLEConfig()
  */
-dsError_t  dsEnableLEConfig(int handle, const bool enable);
+dsError_t  dsEnableLEConfig(intptr_t handle, const bool enable);
 
 /**
  * @brief Gets the LE (Loudness Equivalence) configuration.
@@ -1505,7 +1505,7 @@ dsError_t  dsEnableLEConfig(int handle, const bool enable);
  * 
  * @see dsEnableLEConfig()
  */
-dsError_t dsGetLEConfig(int handle, bool *enable);
+dsError_t dsGetLEConfig(intptr_t handle, bool *enable);
 
 /**
  * @brief Sets the MS12 audio profile
@@ -1528,7 +1528,7 @@ dsError_t dsGetLEConfig(int handle, bool *enable);
  * 
  * @see dsGetMS12AudioProfile(), dsGetMS12AudioProfileList()
  */
-dsError_t  dsSetMS12AudioProfile(int handle, const char* profile);
+dsError_t  dsSetMS12AudioProfile(intptr_t handle, const char* profile);
 
 /**
  * @brief Sets the audio ducking level of an audio port. 
@@ -1553,7 +1553,7 @@ dsError_t  dsSetMS12AudioProfile(int handle, const char* profile);
  * @warning  This API is Not thread safe.
  * 
  */
-dsError_t  dsSetAudioDucking(int handle, dsAudioDuckingAction_t action, dsAudioDuckingType_t type, const unsigned char level);
+dsError_t  dsSetAudioDucking(intptr_t handle, dsAudioDuckingAction_t action, dsAudioDuckingType_t type, const unsigned char level);
 
 /**
  * @brief Sets loop-through mode of an audio port.
@@ -1575,7 +1575,7 @@ dsError_t  dsSetAudioDucking(int handle, dsAudioDuckingAction_t action, dsAudioD
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t  dsEnableLoopThru(int handle, bool loopThru);
+dsError_t  dsEnableLoopThru(intptr_t handle, bool loopThru);
 
 /**
  * @brief Mutes or un-mutes an audio port.
@@ -1599,7 +1599,7 @@ dsError_t  dsEnableLoopThru(int handle, bool loopThru);
  * 
  * @see dsIsAudioMute()
  */
-dsError_t  dsSetAudioMute(int handle, bool mute);
+dsError_t  dsSetAudioMute(intptr_t handle, bool mute);
 
 /**
  * @brief Checks whether the audio port supports Dolby MS11 Multistream Decode.
@@ -1621,7 +1621,7 @@ dsError_t  dsSetAudioMute(int handle, bool mute);
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t  dsIsAudioMSDecode(int handle, bool *HasMS11Decode);
+dsError_t  dsIsAudioMSDecode(intptr_t handle, bool *HasMS11Decode);
 
 /**
  * @brief Checks whether the audio port supports Dolby MS12 Multistream Decode.
@@ -1644,7 +1644,7 @@ dsError_t  dsIsAudioMSDecode(int handle, bool *HasMS11Decode);
  * @warning  This API is Not thread safe.
  * 
  */
-dsError_t  dsIsAudioMS12Decode(int handle, bool *hasMS12Decode);
+dsError_t  dsIsAudioMS12Decode(intptr_t handle, bool *hasMS12Decode);
 
 /**
  * @brief Checks if the audio output port is connected or not.
@@ -1666,7 +1666,7 @@ dsError_t  dsIsAudioMS12Decode(int handle, bool *hasMS12Decode);
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t dsAudioOutIsConnected(int handle, bool* isConnected);
+dsError_t dsAudioOutIsConnected(intptr_t handle, bool* isConnected);
 
 /**
  * @brief Registers for the Audio Output Connect Event
@@ -1747,7 +1747,7 @@ dsError_t dsAudioAtmosCapsChangeRegisterCB (dsAtmosCapsChangeCB_t cbFun);
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t dsGetAudioCapabilities(int handle, int *capabilities);
+dsError_t dsGetAudioCapabilities(intptr_t handle, int *capabilities);
 
 /**
  * @brief Gets the MS12 capabilities of audio port supported by the platform.
@@ -1770,7 +1770,7 @@ dsError_t dsGetAudioCapabilities(int handle, int *capabilities);
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t dsGetMS12Capabilities(int handle, int *capabilities);
+dsError_t dsGetMS12Capabilities(intptr_t handle, int *capabilities);
 
 /**
  * @brief Resets the Dialog Enhancement of audio port to default value.
@@ -1791,7 +1791,7 @@ dsError_t dsGetMS12Capabilities(int handle, int *capabilities);
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t dsResetDialogEnhancement(int handle);
+dsError_t dsResetDialogEnhancement(intptr_t handle);
 
 /**
  * @brief Resets the audio bass enhancer to its default value.
@@ -1814,7 +1814,7 @@ dsError_t dsResetDialogEnhancement(int handle);
  *
  * @warning  This API is Not thread safe.
  */
-dsError_t dsResetBassEnhancer(int handle);
+dsError_t dsResetBassEnhancer(intptr_t handle);
 
 /**
  * @brief Resets the audio surround virtualizer level to its default value.
@@ -1837,7 +1837,7 @@ dsError_t dsResetBassEnhancer(int handle);
  *
  * @warning  This API is Not thread safe.
  */
-dsError_t dsResetSurroundVirtualizer(int handle);
+dsError_t dsResetSurroundVirtualizer(intptr_t handle);
 
 /**
  * @brief Resets the Dolby volume leveller of the audio port to its default volume level.
@@ -1861,7 +1861,7 @@ dsError_t dsResetSurroundVirtualizer(int handle);
  * @see dsGetVolumeLeveller(), dsSetVolumeLeveller()
  * 
  */
-dsError_t dsResetVolumeLeveller(int handle);
+dsError_t dsResetVolumeLeveller(intptr_t handle);
 
 /**
  * @brief Enables/Disables associated audio mixing feature.
@@ -1886,7 +1886,7 @@ dsError_t dsResetVolumeLeveller(int handle);
  * 
  * @see dsGetAssociatedAudioMixing()
  */
-dsError_t dsSetAssociatedAudioMixing(int handle, bool mixing);
+dsError_t dsSetAssociatedAudioMixing(intptr_t handle, bool mixing);
 
 /**
  * @brief Gets the Associated Audio Mixing status - enabled/disabled
@@ -1910,7 +1910,7 @@ dsError_t dsSetAssociatedAudioMixing(int handle, bool mixing);
  * 
  * @see dsSetAssociatedAudioMixing()
  */
-dsError_t  dsGetAssociatedAudioMixing(int handle, bool *mixing);
+dsError_t  dsGetAssociatedAudioMixing(intptr_t handle, bool *mixing);
 
 /**
  * @brief Sets the mixerbalance between main and associated audio
@@ -1933,7 +1933,7 @@ dsError_t  dsGetAssociatedAudioMixing(int handle, bool *mixing);
  * 
  * @see dsGetFaderControl()
  */
-dsError_t  dsSetFaderControl(int handle, int mixerbalance);
+dsError_t  dsSetFaderControl(intptr_t handle, int mixerbalance);
 
 /**
  * @brief To get the mixer balance between main and associated audio
@@ -1956,7 +1956,7 @@ dsError_t  dsSetFaderControl(int handle, int mixerbalance);
  * 
  * @see dsSetFaderControl()
  */
-dsError_t  dsGetFaderControl(int handle, int* mixerbalance);
+dsError_t  dsGetFaderControl(intptr_t handle, int* mixerbalance);
 
 /**
  * @brief Sets AC4 Primary language
@@ -1979,7 +1979,7 @@ dsError_t  dsGetFaderControl(int handle, int* mixerbalance);
  * 
  * @see dsGetPrimaryLanguage()
  */
-dsError_t  dsSetPrimaryLanguage(int handle, const char* pLang);
+dsError_t  dsSetPrimaryLanguage(intptr_t handle, const char* pLang);
 
 /**
  * @brief To get AC4 Primary language
@@ -2002,7 +2002,7 @@ dsError_t  dsSetPrimaryLanguage(int handle, const char* pLang);
  * 
  * @see dsSetPrimaryLanguage()
  */
-dsError_t  dsGetPrimaryLanguage(int handle, char* pLang);
+dsError_t  dsGetPrimaryLanguage(intptr_t handle, char* pLang);
 
 /**
  * @brief To set AC4 Secondary language
@@ -2025,7 +2025,7 @@ dsError_t  dsGetPrimaryLanguage(int handle, char* pLang);
  * 
  * @see dsGetSecondaryLanguage()
  */
-dsError_t  dsSetSecondaryLanguage(int handle, const char* sLang);
+dsError_t  dsSetSecondaryLanguage(intptr_t handle, const char* sLang);
 
 /**
  * @brief Gets the AC4 Secondary language
@@ -2048,7 +2048,7 @@ dsError_t  dsSetSecondaryLanguage(int handle, const char* sLang);
  * 
  * @see dsSetSecondaryLanguage()
  */
-dsError_t  dsGetSecondaryLanguage(int handle, char* sLang);
+dsError_t  dsGetSecondaryLanguage(intptr_t handle, char* sLang);
 
 /**
  * @brief Gets the audio HDMI ARC port ID for each platform
