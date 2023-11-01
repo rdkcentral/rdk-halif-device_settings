@@ -141,7 +141,8 @@ typedef void (*dsAudioFormatUpdateCB_t)(dsAudioFormat_t audioFormat);
  * HAL Implementation should call this method to deliver updated atmos capability change event
  * to the `caller`.
  *
- * @param[in] atmosCap  - current atmos capability of the sink device
+ * @param[in] atmosCaps  - current atmos capability of the sink device
+ * @param[in] status     - atmos caps status ( @a true to enable, @a false to disable)
  *
  * @pre - dsAudioAtmosCapsChangeRegisterCB()
  */

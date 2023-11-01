@@ -206,7 +206,7 @@ dsError_t dsHdmiInGetStatus (dsHdmiInStatus_t *pStatus);
  * 
  * This function selects the HDMI input port for presentation.
  *
- * @param[in] ePort             - HDMI input port to be presented. @see dsHdmiInPort_t
+ * @param[in] Port             - HDMI input port to be presented. @see dsHdmiInPort_t
  * @param[in] audioMix    	    - Flag to control the audioMix status ( @a true to enable, @a false to disable)
  * @param[in] evideoPlaneType 	- Video plane to be selected @see dsVideoPlaneType_t
  * 
