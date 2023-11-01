@@ -216,6 +216,9 @@ dsError_t dsCompositeInGetStatus (dsCompositeInStatus_t *pStatus);
  * 
  * @warning  This API is Not thread safe.
  * 
+ * @note When a port is selected, activePort should be set to true in @see dsCompositeInStatus_t for that port
+ *              Also, if thT port has an active connection, it should update isPresented to true as well.
+ * 
  * @pre  dsCompositeInInit() should be called before calling this API.
  */
 
@@ -259,6 +262,9 @@ dsError_t dsCompositeInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t 
  * 
  * @pre  dsCompositeInRegisterConnectCB() should be called before calling this API.
  * 
+ * @note This should update isPortConnected in @see dsCompositeInStatus_t when this callback is triggered.
+ *          If this port is currently active, and presents video after being connected, isPresented should also be updated
+ * 
  * @see dsCompositeInRegisterConnectCB()
  */
 
@@ -295,6 +301,8 @@ typedef void (*dsCompositeInSignalChangeCB_t)(dsCompositeInPort_t port, dsCompIn
  * @pre  dsCompositeInRegisterStatusChangeCB() should be called before calling this API.
  * 
  * @see dsCompositeInRegisterStatusChangeCB()
+ * 
+ * @note This callback should be triggered whenever dsCompositeInStatus_t is updated. @see dsCompositeInSelectPort, dsCompositeInConnectCB_t()
  */
 
 typedef void (*dsCompositeInStatusChangeCB_t)(dsCompositeInStatus_t inputStatus);

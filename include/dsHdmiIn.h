@@ -219,6 +219,8 @@ dsError_t dsHdmiInGetStatus (dsHdmiInStatus_t *pStatus);
  * 
  * @pre dsHdmiInInit() must be called before calling this API.
  * 
+ * @note When a port is selected, it should be set isPresented to true in @see dsHdmiInStatus_t for that port
+ * 
  * @warning  This API is Not thread safe.
  * 
  */
@@ -303,6 +305,8 @@ dsError_t dsHdmiInGetCurrentVideoMode (dsVideoPortResolution_t *resolution);
  *                                  ( @a true to enable, @a false to disable)
  * 
  * @pre dsHdmiInRegisterConnectCB() must be called before this API
+ * 
+ * @note This should update isPortConnected in @see dsHdmiInStatus_t when this callback is triggered
  *
  */
 typedef void (*dsHdmiInConnectCB_t)(dsHdmiInPort_t Port, bool isPortConnected);
