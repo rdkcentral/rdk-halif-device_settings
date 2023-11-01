@@ -114,7 +114,7 @@
 #include "dsError.h"
 #include "dsHdmiInTypes.h"
 #include "dsVideoDeviceTypes.h"
-#include "dsAudioVisualTypes.h"
+#include "dsAVDTypes.h"
 
 #ifdef __cplusplus
 extern "C" {

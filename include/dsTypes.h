@@ -152,8 +152,7 @@
 #include <sys/types.h>
 #include <stdint.h>    
 #include <stdbool.h>
-#include "dsAudioVisualTypes.h"
-#include "dsCompositeInTypes.h"
+#include "dsAVDTypes.h"
 #include "dsFPDTypes.h"
 #include "dsHdmiInTypes.h"
 #include "dsVideoDeviceTypes.h"
