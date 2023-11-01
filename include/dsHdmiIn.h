@@ -233,11 +233,12 @@ dsError_t dsHdmiInSelectPort (dsHdmiInPort_t Port, bool audioMix, dsVideoPlaneTy
  * This function scales the HDMI input video. The width and height, based on the x, y coordinates, 
  *      cannot exceed that of the current resolution of the device.
  *      e.g.  x(in pixels)+width cannot be greater then the width of the resolution.
+ *      The current resolution will return by @see dsGetResolution()
  *
- * @param[in] x         - x coordinate for the video
- * @param[in] y         - y coordinate for the video
- * @param[in] width     - width of the video. Width in pixels.
- * @param[in] height    - height of the video. Height in pixels.
+ * @param[in] x         - x coordinate for the video. Min of 0. Max is based on the current resolution
+ * @param[in] y         - y coordinate for the video. Min of 0. Max is based on the current resolution
+ * @param[in] width     - width of the video. Width in pixels.. Min of 0. Max is based on the current resolution
+ * @param[in] height    - height of the video. Height in pixels.. Min of 0. Max is based on the current resolution
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
