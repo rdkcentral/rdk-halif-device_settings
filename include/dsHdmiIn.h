@@ -333,7 +333,7 @@ typedef void (*dsHdmiInSignalChangeCB_t)(dsHdmiInPort_t port, dsHdmiInSignalStat
  * 
  * @pre dsHdmiInRegisterStatusChangeCB() must be called before this API
  * 
- * @note This should be called whenever dsHdmiInStatus_t is updated
+ * @note This callback should be triggered whenever dsHdmiInStatus_t is updated. @see dsHdmiInSelectPort, dsHdmiInConnectCB_t()
  *
  */
 typedef void (*dsHdmiInStatusChangeCB_t)(dsHdmiInStatus_t inputStatus);

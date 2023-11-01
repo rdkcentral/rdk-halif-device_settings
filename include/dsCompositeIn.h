@@ -197,7 +197,6 @@ dsError_t dsCompositeInGetNumberOfInputs (uint8_t *pNumberOfInputs);
  * 
  * @pre  dsCompositeInInit() should be called before calling this API.
  */
-
 dsError_t dsCompositeInGetStatus (dsCompositeInStatus_t *pStatus);
 
 /**
@@ -216,12 +215,11 @@ dsError_t dsCompositeInGetStatus (dsCompositeInStatus_t *pStatus);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @note When a port is selected, activePort should be set to true in @see dsCompositeInStatus_t for that port
- *              Also, if thT port has an active connection, it should update isPresented to true as well.
+ * @note When a port is selected that port should be set as active in @see dsCompositeInStatus_t for that port
+ *              Also, if there is a signal, once active, isPresented should be set to true as well.
  * 
  * @pre  dsCompositeInInit() should be called before calling this API.
  */
-
 dsError_t dsCompositeInSelectPort (dsCompositeInPort_t Port);
 
 /**
@@ -267,7 +265,6 @@ dsError_t dsCompositeInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t 
  * 
  * @see dsCompositeInRegisterConnectCB()
  */
-
 typedef void (*dsCompositeInConnectCB_t)(dsCompositeInPort_t Port, bool isPortConnected);
 
 /**
@@ -285,7 +282,6 @@ typedef void (*dsCompositeInConnectCB_t)(dsCompositeInPort_t Port, bool isPortCo
  * 
  * @see dsCompositeInRegisterSignalChangeCB()
  */
-
 typedef void (*dsCompositeInSignalChangeCB_t)(dsCompositeInPort_t port, dsCompInSignalStatus_t sigStatus);
 
 /**
@@ -304,7 +300,6 @@ typedef void (*dsCompositeInSignalChangeCB_t)(dsCompositeInPort_t port, dsCompIn
  * 
  * @note This callback should be triggered whenever dsCompositeInStatus_t is updated. @see dsCompositeInSelectPort, dsCompositeInConnectCB_t()
  */
-
 typedef void (*dsCompositeInStatusChangeCB_t)(dsCompositeInStatus_t inputStatus);
 
 /**
@@ -327,7 +322,6 @@ typedef void (*dsCompositeInStatusChangeCB_t)(dsCompositeInStatus_t inputStatus)
  * 
  * @see dsCompositeInConnectCB_t()
  */
-
 dsError_t dsCompositeInRegisterConnectCB (dsCompositeInConnectCB_t CBFunc);
 
 /**
