@@ -198,7 +198,12 @@ The `caller` is expected to have complete control over the life cycle of the `HA
    - `AC4` Primary Language
    - `AC4` Secondary Language 
 
-4. De-initialize the `Audio HAL` using the function: `dsAudioPortTerm()`
+4. Callbacks can be set with:
+    - `dsAudioOutRegisterConnectCB()` -  used when the audio port connection status changes`
+    - `dsAudioFormatUpdateRegisterCB()` -  used when the audio format changes
+    - `dsAudioAtmosCapsChangeRegisterCB()` -  used when the atmos capability changes
+
+5. De-initialize the `Audio HAL` using the function: `dsAudioPortTerm()`
 
 NOTE: The module would operate deterministically if the above call sequence is followed
 
@@ -251,6 +256,24 @@ NOTE: The module would operate deterministically if the above call sequence is f
     HAL->>Driver: Get the HDMI ARC Port ID   
     Driver-->>HAL:return
     HAL-->>Caller:return
+    Caller->>HAL:dsAudioOutRegisterConnectCB()
+    Note over HAL: Registers the callback for when the audio port connection status changes
+    HAL-->>Caller:return
+    Caller->>HAL:dsAudioFormatUpdateRegisterCB()
+    Note over HAL: Registers the callback for when the audio format changes
+    HAL-->>Caller:return
+    Caller->>HAL:dsAudioAtmosCapsChangeRegisterCB()
+    Note over HAL: Registers the callback for when the atmos capability changes
+    HAL-->>Caller:return
+    Note over HAL: Audio Port connection status changed
+    Driver-->>HAL:return
+    HAL-->>Caller:dsAudioOutPortConnectCB_t callback returned
+    Note over HAL: Audio formate has changed
+    Driver-->>HAL:return
+    HAL-->>Caller:dsAudioFormatUpdateCB_t callback returned
+    Note over HAL: Atmos capabilities changed
+    Driver-->>HAL:return
+    HAL-->>Caller:dsAtmosCapsChangeCB_t callback returned
     Caller ->>HAL:dsAudioTerm()
     HAL ->> Driver: 
     Driver-->>HAL:return
