@@ -132,7 +132,7 @@ dsError_t  dsGetVideoDevice(int index, intptr_t *handle);
  * @brief Sets the screen zoom mode (decoder format conversion)
  *
  * @param[in] handle    - The handle returned from the dsGetVideoDevice() function
- * @param[in] dfc       - Type of zoom mode to be used. @see dsVideoZoom_t
+ * @param[in] dfc       - Type of zoom mode to be used.  Please refer ::dsVideoZoom_t
  * 
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
@@ -155,7 +155,7 @@ dsError_t  dsSetDFC(intptr_t handle, dsVideoZoom_t dfc);
  * @brief Gets the screen zoom mode (decoder format conversion)
  *
  * @param[in] handle    - The handle returned from the dsGetVideoDevice() function
- * @param[out] dfc      - Type of zoom mode being used. @see dsVideoZoom_t
+ * @param[out] dfc      - Type of zoom mode being used.  Please refer ::dsVideoZoom_t
  * 
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
@@ -199,7 +199,7 @@ dsError_t  dsVideoDeviceTerm();
  * @brief Gets the HDR capabilities
  *
  * @param[in]  handle       - The handle returned from the dsGetVideoDevice() function
- * @param[out] capabilities - OR-ed values of all supported HDR standards. @see dsHDRStandard_t,
+ * @param[out] capabilities - OR-ed values of all supported HDR standards.  Please refer ::dsHDRStandard_t,
  *                                  dsHDRStandard_t is currently in the audioVisual combined file.
  *
  * 
@@ -223,7 +223,7 @@ dsError_t dsGetHDRCapabilities(intptr_t handle, int *capabilities);
  *
  * @param[in]   handle              - The handle returned from the dsGetVideoDevice() function
  * @param[out]  supported_formats   - OR-ed values of all the supported video codec formats. 
- *                                          @see dsVideoCodingFormat_t
+ *                                           Please refer ::dsVideoCodingFormat_t
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
@@ -244,8 +244,8 @@ dsError_t dsGetSupportedVideoCodingFormats(intptr_t handle, unsigned int * suppo
  * @brief Gets the video codec information
  *
  * @param[in]  handle   - The handle returned from the dsGetVideoDevice() function
- * @param[in]  codec    - OR-ed value of supported video codec formats. @see dsVideoCodingFormat_t.
- * @param[out] info     - Structure containing Video codec information. @see dsVideoCodecInfo_t
+ * @param[in]  codec    - OR-ed value of supported video codec formats.  Please refer ::dsVideoCodingFormat_t.
+ * @param[out] info     - Structure containing Video codec information.  Please refer ::dsVideoCodecInfo_t
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
@@ -288,7 +288,7 @@ dsError_t dsForceDisableHDRSupport(intptr_t handle, bool disable);
  *
  * @param[in] handle    - The handle returned from the dsGetVideoDevice() function
  * @param[in] frfmode   - integer with corresponding Framerate value. 
- *                              @see for dsVideoFrameRate_t max and min framerate.
+ *                               Please refer ::dsVideoFrameRate_t for max and min framerate.
  *
  * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
@@ -312,7 +312,7 @@ dsError_t dsSetFRFMode(intptr_t handle, int frfmode);
  *
  * @param[in]  handle   - The handle returned from the dsGetVideoDevice() function
  * @param[out] frfmode  - integer with corresponding Framerate value of the device. 
- *                              @see for dsVideoFrameRate_t max and min framerate.
+ *                             Please refer :: dsVideoFrameRate_t for max and min framerate.
  *
  * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
@@ -335,7 +335,7 @@ dsError_t dsGetFRFMode(intptr_t handle, int *frfmode);
  *
  * @param[in]  handle       - The handle returned from the dsGetVideoDevice() function
  * @param[out] framerate    - Current frame rate will be represented in FPS
- *                            @see for dsVideoFrameRate_t max and min framerate.
+ *                             Please refer ::dsVideoFrameRate_t for  max and min framerate.
  *                            Updates the value as a string(eg:"60").
  *
  * @return dsError_t                        - Status
@@ -360,7 +360,7 @@ dsError_t dsGetCurrentDisplayframerate(intptr_t handle, char *framerate);
  *
  * @param[in] handle    - The handle returned from the dsGetVideoDevice() function
  * @param[in] framerate - Framerate value to be set frame will be represented in FPS. 
- *                        @see for dsVideoFrameRate_t max and min framerate.
+ *                        Please refer ::dsVideoFrameRate_t for  max and min framerate.
  *                        Expects the value as a string(eg:"60").
  *
  * @return dsError_t                       - Status

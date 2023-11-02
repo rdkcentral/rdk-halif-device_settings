@@ -143,9 +143,9 @@ dsError_t dsVideoPortTerm();
  * This function is used to get the handle of the video port corresponding to specified port type. It must return
  * dsERR_OPERATION_NOT_SUPPORTED if the requested video port is unavailable.
  *
- * @param[in]  type     - Type of video port (e.g. HDMI). @see dsVideoPortType_t
+ * @param[in]  type     - Type of video port (e.g. HDMI).  Please refer ::dsVideoPortType_t
  * @param[in]  index    - Index of the video device (0, 1, ...)  (Index of the port must be 0 if not specified)
- *                          Max index is platform specific. Min value is 0.  @see kSupportedPortTypes
+ *                          Max index is platform specific. Min value is 0.   Please refer ::kSupportedPortTypes
  * @param[out] handle   - The handle used by the Caller to uniquely identify the HAL instance
  * 
  * @return dsError_t                        - Status
@@ -234,7 +234,7 @@ dsError_t  dsIsDisplaySurround(intptr_t handle, bool *surround);
  * This function is used to get the surround mode of the specified video port.
  *
  * @param[in]  handle   - Handle of the video port returned from dsGetVideoPort()
- * @param[out] surround - Surround mode .@see dsSURROUNDMode_t
+ * @param[out] surround - Surround mode .Please refer :: dsSURROUNDMode_t
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -255,7 +255,7 @@ dsError_t  dsGetSurroundMode(intptr_t handle, int *surround);
  * HAL Implementation must call this method to update the Video Format info event
  * to the application.
  *
- * @param[in] videoFormat Current video format. @see dsHDRStandard_t
+ * @param[in] videoFormat Current video format.  Please refer ::dsHDRStandard_t
  *
  * @pre dsVideoFormatUpdateRegisterCB()
  */
@@ -344,7 +344,7 @@ dsError_t  dsEnableDTCP(intptr_t handle, bool contentProtect);
  * @param[in] contentProtect    - Flag to enable/disable DTCP content protection
  *                                  ( @a true to enable, @a false to disable)
  * @param[in] hdcpKey           - HDCP key
- * @param[in] keySize           - HDCP key size. @see HDCP_KEY_MAX_SIZE
+ * @param[in] keySize           - HDCP key size.  Please refer ::HDCP_KEY_MAX_SIZE
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -443,7 +443,7 @@ dsError_t  dsEnableVideoPort(intptr_t handle, bool enabled);
  * This function sets the resolution of the specified video port.
  *
  * @param[in] handle        - Handle of the video port returned from dsGetVideoPort()
- * @param[in] resolution    - Video resolution.@see dsVideoPortResolution_t
+ * @param[in] resolution    - Video resolution. Please refer ::dsVideoPortResolution_t
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -466,7 +466,7 @@ dsError_t  dsSetResolution(intptr_t handle, dsVideoPortResolution_t *resolution)
  * This function gets the current display resolution of the specified video port.
  *
  * @param[in] handle        - Handle of the video port returned from dsGetVideoPort()
- * @param [out] resolution  - Current resolution of the video port. @see dsVideoPortResolution_t
+ * @param [out] resolution  - Current resolution of the video port.  Please refer ::dsVideoPortResolution_t
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -510,7 +510,7 @@ dsError_t dsSetActiveSource(intptr_t handle);
  * to the caller(e.g. Authentication , Failure etc.).
  * 
  * @param[in] handle    - Handle of the video port returned from dsGetVideoPort()
- * @param[in] status    - HDCP status change. @see dsHdcpStatus_t
+ * @param[in] status    - HDCP status change. Please refer :: dsHdcpStatus_t
  *
  *@pre dsRegisterHdcpStatusCallback()
  */
@@ -546,7 +546,7 @@ typedef void (*dsHDCPStatusCallback_t)(intptr_t handle, dsHdcpStatus_t status);
  * @brief Gets the current HDCP status of the specified video port.
  *
  * @param[in] handle    - Handle of the video port returned from dsGetVideoPort()
- * @param[out] status   - HDCP status of the video port. @see dsHdcpStatus_t
+ * @param[out] status   - HDCP status of the video port.  Please refer ::dsHdcpStatus_t
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -567,7 +567,7 @@ dsError_t dsGetHDCPStatus (intptr_t handle, dsHdcpStatus_t *status);
  * @brief Gets the HDCP protocol version of the device.
  *
  * @param[in] handle                - Handle of the video port returned from dsGetVideoPort()
- * @param [out] protocolVersion     - HDCP protocol version. @see dsHdcpProtocolVersion_t
+ * @param [out] protocolVersion     - HDCP protocol version.  Please refer ::dsHdcpProtocolVersion_t
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -590,7 +590,7 @@ dsError_t dsGetHDCPProtocol (intptr_t handle, dsHdcpProtocolVersion_t *protocolV
  * This function is only for source devices.
  *
  * @param[in] handle                - Handle of the video port returned from dsGetVideoPort()
- * @param [out] protocolVersion     - HDCP protocol version. @see dsHdcpProtocolVersion_t
+ * @param [out] protocolVersion     - HDCP protocol version.  Please refer ::dsHdcpProtocolVersion_t
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -611,7 +611,7 @@ dsError_t dsGetHDCPReceiverProtocol (intptr_t handle, dsHdcpProtocolVersion_t *p
  * @brief Gets the current negotiated HDCP protocol version.
  *
  * @param[in] handle                - Handle of the video port returned from dsGetVideoPort()
- * @param [out] protocolVersion     - HDCP protocol version. @see dsHdcpProtocolVersion_t
+ * @param [out] protocolVersion     - HDCP protocol version.  Please refer ::dsHdcpProtocolVersion_t
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -635,7 +635,7 @@ dsError_t dsGetHDCPCurrentProtocol (intptr_t handle, dsHdcpProtocolVersion_t *pr
  * This function is used to get the HDR capabilities of the TV/display device.
  *
  * @param[in] handle            - Handle of the video port(TV) returned from dsGetVideoPort()
- * @param [out] capabilities    - Bitwise OR-ed value of supported HDR standards. @see dsHDRStandard_t
+ * @param [out] capabilities    - Bitwise OR-ed value of supported HDR standards.  Please refer ::dsHDRStandard_t
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -658,7 +658,7 @@ dsError_t dsGetTVHDRCapabilities(intptr_t handle, int *capabilities);
  * This function is used to get TV supported resolutions of TV/display device.
  *
  * @param[in] handle            - Handle of the video port(TV) returned from dsGetVideoPort()
- * @param [out] resolutions     - OR-ed value supported resolutions. @see dsTVResolution_t
+ * @param [out] resolutions     - OR-ed value supported resolutions.  Please refer ::dsTVResolution_t
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -727,7 +727,7 @@ dsError_t dsGetForceDisable4KSupport(intptr_t handle, bool *disable);
  * This function is used to get the current Electro-Optical Transfer Function of the specified video port.
  *
  * @param[in]  handle       - Handle of the video port returned from dsGetVideoPort()
- * @param[out] video_eotf   - EOTF value. @see dsHDRStandard_t
+ * @param[out] video_eotf   - EOTF value.  Please refer ::dsHDRStandard_t
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -748,7 +748,7 @@ dsError_t dsGetVideoEOTF(intptr_t handle, dsHDRStandard_t *video_eotf);
  * This function is used to get the current matrix coefficient value of the specified video port.
  *
  * @param[in]  handle               - Handle of the video port returned from dsGetVideoPort()
- * @param[out] matrix_coefficients  - pointer to matrix coefficients value. @see dsDisplayMatrixCoefficients_t
+ * @param[out] matrix_coefficients  - pointer to matrix coefficients value.  Please refer ::dsDisplayMatrixCoefficients_t
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -769,7 +769,7 @@ dsError_t dsGetMatrixCoefficients(intptr_t handle, dsDisplayMatrixCoefficients_t
  * This fundtion is used to get the current color depth value of specified video port.
  *
  * @param[in]  handle       - Handle of the video port returned from dsGetVideoPort()
- * @param[out] color_depth  - pointer to color depth values. @see dsDisplayColorDepth_t
+ * @param[out] color_depth  - pointer to color depth values.Please refer :: dsDisplayColorDepth_t
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -790,7 +790,7 @@ dsError_t dsGetColorDepth(intptr_t handle, unsigned int* color_depth);
  * This function is used to get the current color space setting of specified video port.
  *
  * @param[in]  handle       - Handle of the video port returned from dsGetVideoPort()
- * @param[out] color_space  - pointer to color space value. @see dsDisplayColorSpace_t
+ * @param[out] color_space  - pointer to color space value. Please refer ::dsDisplayColorSpace_t
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -812,7 +812,7 @@ dsError_t dsGetColorSpace(intptr_t handle, dsDisplayColorSpace_t* color_space);
  * This function is used to get the quantization range of the specified video port.
  *
  * @param[in]  handle               - Handle of the video port returned from dsGetVideoPort()
- * @param[out] quantization_range   - pointer to quantization range. @see dsDisplayQuantizationRange_t
+ * @param[out] quantization_range   - pointer to quantization range.  Please refer ::dsDisplayQuantizationRange_t
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -832,11 +832,11 @@ dsError_t dsGetQuantizationRange(intptr_t handle, dsDisplayQuantizationRange_t* 
  *        and  quantization range in one call of the specified video port
  *
  * @param[in]  handle               - Handle of the video port returned from dsGetVideoPort()
- * @param[out] video_eotf           - pointer to EOTF value. @see dsHDRStandard_t
- * @param[out] matrix_coefficients  - pointer to matrix coefficients value. @see dsDisplayMatrixCoefficients_t
- * @param[out] color_space          - pointer to color space value. @see dsDisplayColorSpace_t
- * @param[out] color_depth          - pointer to color depths value. @see dsDisplayColorDepth_t
- * @param[out] quantization_range   - pointer to quantization range value. @see dsDisplayQuantizationRange_t
+ * @param[out] video_eotf           - pointer to EOTF value.  Please refer ::dsHDRStandard_t
+ * @param[out] matrix_coefficients  - pointer to matrix coefficients value.  Please refer ::dsDisplayMatrixCoefficients_t
+ * @param[out] color_space          - pointer to color space value.  Please refer ::dsDisplayColorSpace_t
+ * @param[out] color_depth          - pointer to color depths value.  Please refer ::dsDisplayColorDepth_t
+ * @param[out] quantization_range   - pointer to quantization range value.  Please refer ::dsDisplayQuantizationRange_t
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -898,7 +898,7 @@ dsError_t dsResetOutputToSDR();
  * This function sets the preferred HDMI Protocol of the specified video port.
  *
  * @param[in] handle                    - Handle of the video port returned from dsGetVideoPort()
- * @param[in] hdcpCurrentProtocol       - HDCP protocol to be set. @see dsHdcpProtocolVersion_t
+ * @param[in] hdcpCurrentProtocol       - HDCP protocol to be set.  Please refer ::dsHdcpProtocolVersion_t
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -921,7 +921,7 @@ dsError_t dsSetHdmiPreference(intptr_t handle, dsHdcpProtocolVersion_t *hdcpCurr
  * This function is used to get the preferred HDMI protocol version of the specified video port.
  *
  * @param[in] handle                    - Handle of the video port returned from dsGetVideoPort()
- * @param [out] hdcpCurrentProtocol     - Preferred HDMI Protocol. @see dsHdcpProtocolVersion_t
+ * @param [out] hdcpCurrentProtocol     - Preferred HDMI Protocol.  Please refer ::dsHdcpProtocolVersion_t
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -965,7 +965,7 @@ dsError_t dsGetIgnoreEDIDStatus(intptr_t handle, bool* status);
  * This function sets the background color of the specified video port.
  *
  * @param[in] handle    - Handle of the video port returned from dsGetVideoPort()
- * @param[in] color     - Background color to be set. @see dsVideoBackgroundColor_t
+ * @param[in] color     - Background color to be set.  Please refer ::dsVideoBackgroundColor_t
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -986,7 +986,7 @@ dsError_t dsSetBackgroundColor(intptr_t handle, dsVideoBackgroundColor_t color);
  * This function is used to set/reset force HDR mode for the specified video port.
  *
  * @param[in] handle    - Handle of the video port returned from dsGetVideoPort()
- * @param[in] mode      - HDR mode to be forced. @see dsHDRStandard_t
+ * @param[in] mode      - HDR mode to be forced.  Please refer ::dsHDRStandard_t
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -1007,7 +1007,7 @@ dsError_t dsSetForceHDRMode(intptr_t handle, dsHDRStandard_t mode);
  * This function is used to get the color depth capabilities of the specified video port.
  *
  * @param[in] handle                    - Handle of the video port returned from dsGetVideoPort()
- * @param [out] colorDepthCapability    - OR-ed value of supported color depth standards. @see dsDisplayColorDepth_t
+ * @param [out] colorDepthCapability    - OR-ed value of supported color depth standards.  Please refer ::dsDisplayColorDepth_t
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -1028,7 +1028,7 @@ dsError_t dsColorDepthCapabilities(intptr_t handle, unsigned int *colorDepthCapa
  * This function is used to get the preferred color depth of the specified video port.
  *
  * @param[in] handle        - Handle of the video port returned from dsGetVideoPort()
- * @param [out] colorDepth  - color depth value. @see dsDisplayColorDepth_t
+ * @param [out] colorDepth  - color depth value.  Please refer ::dsDisplayColorDepth_t
  *   
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -1051,7 +1051,7 @@ dsError_t dsGetPreferredColorDepth(intptr_t handle, dsDisplayColorDepth_t *color
  * This function is used to set the preferred color depth for the specified video port.
  *
  * @param[in] handle        - Handle of the video port returned from dsGetVideoPort()
- * @param[in] colorDepth    - color depth value. @see dsDisplayColorDepth_t
+ * @param[in] colorDepth    - color depth value.Please refer :: dsDisplayColorDepth_t
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
