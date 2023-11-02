@@ -299,7 +299,7 @@ typedef void (*dsCompositeInSignalChangeCB_t)(dsCompositeInPort_t port, dsCompIn
  * 
  * @see dsCompositeInRegisterStatusChangeCB()
  * 
- * @note This callback should be triggered whenever dsCompositeInStatus_t is updated. @see dsCompositeInSelectPort, dsCompositeInConnectCB_t()
+ * @note This callback should be triggered whenever dsCompositeInStatus_t is updated. @see dsCompositeInSelectPort(), dsCompositeInConnectCB_t()
  */
 typedef void (*dsCompositeInStatusChangeCB_t)(dsCompositeInStatus_t inputStatus);
 
