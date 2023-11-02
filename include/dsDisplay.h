@@ -112,7 +112,7 @@ typedef enum _dsDisplayEvent_t {
  * This callback is triggered whenever there is a display related change and it is notified to the caller.
  *
  * @param[in]  handle   - Handle of the display device
- * @param[in]  event    - Display event. @see dsDisplayEvent_t
+ * @param[in]  event    - Display event. Please refer ::dsDisplayEvent_t
  * @param[in] eventData - Data associated with the event(optional parameter)
  *                         eventData contains additional information such as HPD status when a display is connected/disconnected
  *
@@ -149,7 +149,7 @@ dsError_t dsDisplayInit();
  * This function is used to get the handle(as created in dsDisplayInit()) for the connected display device
  * corresponding to the specified video port.
  *
- * @param[in]  vType    - Type of video port. @see dsVideoPortType_t
+ * @param[in]  vType    - Type of video port. Please refer ::dsVideoPortType_t
  * @param[in]  index    - Index of the video port. (Index of the port must be 0 if not specified)
  *                          Max index is platform specific. Min value is 0.
  * @param[out] handle   - Pointer to hold the handle of display device corresponding 
@@ -177,7 +177,7 @@ dsError_t dsDisplayInit();
  * the specified display device handle.
  * 
  * @param[in]  handle   - Handle of the display device
- * @param[out] edid     - EDID info of the specified display device. @see dsDisplayEDID_t
+ * @param[out] edid     - EDID info of the specified display device. Please refer ::dsDisplayEDID_t
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
@@ -204,7 +204,7 @@ dsError_t dsGetEDID(intptr_t handle, dsDisplayEDID_t *edid);
  * @param[out] edid     - Pointer to raw EDID buffer
  * @param[out] length   - length of the EDID buffer data. Min value is 0
  *
- * @note Caller is responsible for allocating memory for edid(@see MAX_EDID_BYTES_LEN) and freeing the EDID buffer
+ * @note Caller is responsible for allocating memory for edid( please refer ::MAX_EDID_BYTES_LEN ) and freeing the EDID buffer
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
@@ -229,7 +229,7 @@ dsError_t dsGetEDIDBytes(intptr_t handle, unsigned char **edid, int *length);
  *
  * @param[in]  handle       - Handle of the display device
  * @param[out] aspectRatio  - Current aspect ratio of the specified display device
- *                              @see dsVideoAspectRatio_t
+ *                              Please refer ::dsVideoAspectRatio_t
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
@@ -278,7 +278,7 @@ dsError_t dsDisplayTerm();
  * required in HAL implementation.
  *
  * @param[in] handle    - Handle of the display device
- * @param[in] cb        - Display Event callback function. @see dsDisplayEventCallback_t
+ * @param[in] cb        - Display Event callback function. Please refer ::dsDisplayEventCallback_t
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success

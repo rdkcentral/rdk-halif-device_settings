@@ -114,6 +114,7 @@
 /**
  * @ingroup DSHAL_VIDEOPORT_TYPES
  * @brief This enumeration defines all of the standard type of Video ports.
+ *
  * @see dsVideoPortType_isValid
  * @note also used in @link dsDisplay.h @endlink
  */

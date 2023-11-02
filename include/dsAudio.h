@@ -115,7 +115,7 @@ extern "C" {
  * HAL Implementation should call this method to deliver updated audio port connection event
  * to the `caller`.
  * 
- * @param[in] portType  - Type of the audio port where connection status is changed. @see dsAudioPortType_t
+ * @param[in] portType  - Type of the audio port where connection status is changed. Please refer ::dsAudioPortType_t
  * @param[in] uiPortNo  - Port number in which the connection status changed. @link dsAudioPORT_NUM_MAX @endlink
  * @param[in] isPortCon - Current connection status of the audio port
  *
@@ -129,7 +129,7 @@ typedef void (*dsAudioOutPortConnectCB_t)(dsAudioPortType_t portType, unsigned i
  * HAL Implementation should call this method to deliver updated audio format event
  * to the `caller`.
  * 
- * @param[in] audioFormat : New audio format of the active port. @see dsAudioFormat_t
+ * @param[in] audioFormat : New audio format of the active port. Please refer ::dsAudioFormat_t
  *
  * @pre - dsAudioFormatUpdateRegisterCB
  */
@@ -196,8 +196,8 @@ dsError_t  dsAudioPortTerm();
  * This function returns the handle for the type of audio port requested. It must return
  * dsERR_OPERATION_NOT_SUPPORTED if an unavailable audio port is requested.
  *
- * @param[in] type     - Type of audio port (HDMI, SPDIF and so on). @see dsAudioPortType_t
- * @param[in] index    - Index of audio port depending on the available ports(0, 1, ...). Maximum value of number of ports is platform specific. @see dsAudioPortConfig_t
+ * @param[in] type     - Type of audio port (HDMI, SPDIF and so on). Please refer ::dsAudioPortType_t
+ * @param[in] index    - Index of audio port depending on the available ports(0, 1, ...). Maximum value of number of ports is platform specific. Please refer ::dsAudioPortConfig_t
  * @param[out] handle  - Pointer to hold the handle of the audio port
  * 
  * @return dsError_t                      -  Status 
@@ -219,7 +219,7 @@ dsError_t  dsGetAudioPort(dsAudioPortType_t type, int index, intptr_t *handle);
  * This function returns the current audio encoding setting for the specified audio port.
  *
  * @param[in] handle     -  Handle for the output audio port
- * @param[out] encoding  -  Pointer to hold the encoding setting of the audio port.@see dsAudioEncoding_t , @link dsAudioSettings_template.h @endlink
+ * @param[out] encoding  -  Pointer to hold the encoding setting of the audio port. Please refer ::dsAudioEncoding_t , @link dsAudioSettings_template.h @endlink
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -242,7 +242,7 @@ dsError_t  dsGetAudioEncoding(intptr_t handle, dsAudioEncoding_t *encoding);
  * This function sets the audio encoding type to be used on the specified audio port.
  *
  * @param[in] handle    - Handle for the output audio port
- * @param[in] encoding  - The encoding type to be used on the audio port. @see dsAudioEncoding_t
+ * @param[in] encoding  - The encoding type to be used on the audio port. Please refer ::dsAudioEncoding_t
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -262,7 +262,7 @@ dsError_t  dsSetAudioEncoding(intptr_t handle, dsAudioEncoding_t encoding);
 /**
  * @brief Gets the current audio format.
  *
- * This function returns the current audio format of the specified audio output port(like PCM, DOLBY AC3).@see dsAudioFormat_t
+ * This function returns the current audio format of the specified audio output port(like PCM, DOLBY AC3). Please refer ::dsAudioFormat_t
  *
  * @param[in] handle         - Handle for the output audio port
  * @param[out] audioFormat   - Pointer to hold the audio format
@@ -476,7 +476,7 @@ dsError_t  dsSetIntelligentEqualizerMode(intptr_t handle, int mode);
  * This function returns the Volume leveller(mode and level) value used in the audio port corresponding to specified port handle.
  *
  * @param[in] handle       - Handle for the output Audio port
- * @param[out] volLeveller - Pointer to Volume Leveller. @see dsVolumeLeveller_t
+ * @param[out] volLeveller - Pointer to Volume Leveller. Please refer ::dsVolumeLeveller_t
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -499,7 +499,7 @@ dsError_t  dsGetVolumeLeveller(intptr_t handle, dsVolumeLeveller_t* volLeveller)
  * This function sets the Volume leveller(mode and level) value to be used in the audio port corresponding to specified port handle.
  *
  * @param[in] handle       - Handle for the output Audio port
- * @param[in] volLeveller  - Volume Leveller setting. @see dsVolumeLeveller_t 
+ * @param[in] volLeveller  - Volume Leveller setting. Please refer ::dsVolumeLeveller_t
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -662,7 +662,7 @@ dsError_t  dsSetDRCMode(intptr_t handle, int mode);
  * This function returns the Surround Virtualizer level(mode and boost) used in the audio port corresponding to specified port handle.
  *
  * @param[in] handle       - Handle for the output Audio port
- * @param[out] virtualizer - Surround virtualizer setting. @see dsSurroundVirtualizer_t
+ * @param[out] virtualizer - Surround virtualizer setting. Please refer ::dsSurroundVirtualizer_t
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -685,7 +685,7 @@ dsError_t  dsGetSurroundVirtualizer(intptr_t handle, dsSurroundVirtualizer_t *vi
  * This function sets the Surround Virtualizer level(mode and boost) to be used in the audio port corresponding to specified port handle.
  *
  * @param[in] handle       - Handle for the output Audio port
- * @param[in] virtualizer  - Surround virtualizer setting. @see dsSurroundVirtualizer_t
+ * @param[in] virtualizer  - Surround virtualizer setting. Please refer ::dsSurroundVirtualizer_t
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -802,7 +802,7 @@ dsError_t  dsSetGraphicEqualizerMode(intptr_t handle, int mode);
  * This function will get the list of supported MS12 audio profiles
  *
  * @param[in] handle     - Handle for the output Audio port
- * @param[out] profiles  - List of supported audio profiles. @see dsMS12AudioProfileList_t
+ * @param[out] profiles  - List of supported audio profiles. Please refer ::dsMS12AudioProfileList_t
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -848,7 +848,7 @@ dsError_t  dsGetMS12AudioProfile(intptr_t handle, char *profile);
  * This function gets the supported ARC types of the connected device on ARC/eARC port.
  *
  * @param[in] handle - Handle for the HDMI ARC/eARC port
- * @param[out] types - Value of supported ARC types. @see dsAudioARCTypes_t
+ * @param[out] types - Value of supported ARC types. Please refer ::dsAudioARCTypes_t
  * 
  * @todo Return enum instead of int * will be done in next phase
  * 
@@ -870,7 +870,7 @@ dsError_t dsGetSupportedARCTypes(intptr_t handle, int *types);
  *
  * This function sets the Short Audio Descriptor based on best available options
  * of Audio capabilities supported by connected ARC device. Required when ARC output
- * mode is Auto/Passthrough. @see dsAudioSADList_t, @see dsSetStereoMode
+ * mode is Auto/Passthrough. Please refer ::dsAudioSADList_t, ::dsSetStereoMode
  * 
  * @param[in] handle   - Handle for the HDMI ARC/eARC port.
  * @param[in] sad_list - All SADs retrieved from CEC for the connected ARC device.
@@ -891,10 +891,10 @@ dsError_t dsAudioSetSAD(intptr_t handle, dsAudioSADList_t sad_list);
 /**
  * @brief Enable/Disable ARC/EARC and route audio to connected device.
  *
- * This function enables/disables ARC/EARC and routes audio to connected device. @see _dsAudioARCStatus_t and dsAudioARCTypes_t
+ * This function enables/disables ARC/EARC and routes audio to connected device. Please refer ::_dsAudioARCStatus_t and ::dsAudioARCTypes_t
  *
  * @param[in] handle    - Handle for the HDMI ARC/eARC port
- * @param[in] arcStatus - ARC/eARC feature. @see _dsAudioARCStatus_t
+ * @param[in] arcStatus - ARC/eARC feature. Please refer ::_dsAudioARCStatus_t
  *                          ( @a true to enable ARC/eARC, @a false to disable )
  *
  * @return dsError_t                      -  Status 
@@ -917,7 +917,7 @@ dsError_t dsAudioEnableARC(intptr_t handle, dsAudioARCStatus_t arcStatus);
  *
  * @param[in] handle      - Handle for the output audio port
  * @param[out] stereoMode - Pointer to hold the stereo mode setting of the
- *                            specified audio port. @see dsAudioStereoMode_t
+ *                            specified audio port. Please refer ::dsAudioStereoMode_t
  * 
  * @todo dsAudioStereoMode_t - naming convention will be corrected in next phase
  *
@@ -942,7 +942,7 @@ dsError_t  dsGetStereoMode(intptr_t handle, dsAudioStereoMode_t *stereoMode);
  * This function sets the stereo mode to be used on the audio port corresponding to specified port handle.
  *
  * @param[in] handle  - Handle for the output audio port
- * @param[in] mode    - Stereo mode to be used on the specified audio port. @see dsAudioStereoMode_t
+ * @param[in] mode    - Stereo mode to be used on the specified audio port. Please refer ::dsAudioStereoMode_t
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -1334,7 +1334,7 @@ dsError_t dsSetAudioAtmosOutputMode(intptr_t handle, bool enable);
  * This function returns the ATMOS capability of the sink device.
  *
  * @param[in] handle       - Handle for the output Audio port
- * @param[out] capability  - ATMOS capability of sink device. @see dsATMOSCapability_t
+ * @param[out] capability  - ATMOS capability of sink device. Please refer ::dsATMOSCapability_t
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -1443,7 +1443,7 @@ dsError_t  dsEnableAudioPort(intptr_t handle, bool enabled);
  * @brief Enables or Disables MS12 DAPV2 and DE feature
  * 
  * @param[in] handle   - Handle of the output audio port
- * @param[in] feature  - Enums for MS12 features. @see dsMS12FEATURE_t
+ * @param[in] feature  - Enums for MS12 features. Please refer ::dsMS12FEATURE_t
  * @param[in] enable   - Flag to control the MS12 features
  *                         ( @a true to enable, @a false to disable)
  *
@@ -1514,7 +1514,7 @@ dsError_t dsGetLEConfig(intptr_t handle, bool *enable);
  * This function will configure the user selected ms12 audio profile
  *
  * @param[in] handle   - Handle for the output audio port
- * @param[in] profile  - Audio profile to be used from the supported list. @see _dsMS12AudioProfileList_t
+ * @param[in] profile  - Audio profile to be used from the supported list. Please refer ::_dsMS12AudioProfileList_t
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -1538,8 +1538,8 @@ dsError_t  dsSetMS12AudioProfile(intptr_t handle, const char* profile);
  * If output mode is expert mode, this will mute the audio.
  *
  * @param[in] handle  - Handle for the output audio port
- * @param[in] action  - action type to start or stop ducking. @see dsAudioDuckingAction_t
- * @param[in] type    - ducking type is absolute or relative to current volume level. @see dsAudioDuckingType_t
+ * @param[in] action  - action type to start or stop ducking. Please refer ::dsAudioDuckingAction_t
+ * @param[in] type    - ducking type is absolute or relative to current volume level. Please refer ::dsAudioDuckingType_t
  * @param[in] level   - The volume level value from 0 to 100 to be used on the audio port
  *
  * @return dsError_t                      -  Status 
@@ -1733,7 +1733,7 @@ dsError_t dsAudioAtmosCapsChangeRegisterCB (dsAtmosCapsChangeCB_t cbFun);
  * This function is used to get the supported Audio capabilities for the input port supported by the platform.
  *
  * @param[in]  handle        - Handle for the output audio port 
- * @param[out] capabilities  - Bitwise OR value of supported Audio standards. @see dsAudioCapabilities_t
+ * @param[out] capabilities  - Bitwise OR value of supported Audio standards. Please refer ::dsAudioCapabilities_t
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -1756,7 +1756,7 @@ dsError_t dsGetAudioCapabilities(intptr_t handle, int *capabilities);
  * This function is used to get the supported MS12 capabilities for the input port supported by the platform.
  *
  * @param[in]  handle        - Handle for the output audio port
- * @param[out] capabilities  - OR-ed value of supported MS12 standards. @see dsMS12Capabilities_t
+ * @param[out] capabilities  - OR-ed value of supported MS12 standards. Please refer ::dsMS12Capabilities_t
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
