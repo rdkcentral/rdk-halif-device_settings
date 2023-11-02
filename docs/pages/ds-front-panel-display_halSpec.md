@@ -233,4 +233,4 @@ dsGetFPColor(),
 dsGetFPTextBrightness(),
 dsGetFPTimeFormat(),
 dsFPGetLEDState(),
-dsFPGetSupportedLEDStates
+dsFPGetSupportedLEDStates()
