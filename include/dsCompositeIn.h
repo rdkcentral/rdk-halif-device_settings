@@ -163,7 +163,7 @@ dsError_t dsCompositeInTerm (void);
  *
  * This function is used to get the number of COMPOSITE Input ports on the specific platform.
  *
- * @param[out] pNumberOfInputs   - number of COMPOSITE Input ports. Min 0. Max @see dsCompositeInPort_t
+ * @param[out] pNumberOfInputs   - number of COMPOSITE Input ports. Min 0. Max please refer ::dsCompositeInPort_t
  *
  * @return dsError_t                      - Status
  * @retval dsERR_NONE                     - Success
@@ -184,7 +184,7 @@ dsError_t dsCompositeInGetNumberOfInputs (uint8_t *pNumberOfInputs);
  *
  * This function is used to get the status of all COMPOSITE Input Status.
  *
- * @param [out] pStatus - status of compositeIn ports. @see dsCompositeInStatus_t
+ * @param [out] pStatus - status of compositeIn ports. Please refer ::dsCompositeInStatus_t
  * 
  * @return dsError_t                      - Status
  * @retval dsERR_NONE                     - Success
@@ -204,7 +204,7 @@ dsError_t dsCompositeInGetStatus (dsCompositeInStatus_t *pStatus);
  *
  * This function is used to set the COMPOSITE Input port for presentation.
  *
- * @param[in] Port  - COMPOSITE Input port to be presented. @see dsCompositeInPort_t
+ * @param[in] Port  - COMPOSITE Input port to be presented. Please refer ::dsCompositeInPort_t
  * 
  * @return dsError_t                      - Status
  * @retval dsERR_NONE                     - Success
@@ -215,8 +215,8 @@ dsError_t dsCompositeInGetStatus (dsCompositeInStatus_t *pStatus);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @note When a port is selected that port should be set as active in @see dsCompositeInStatus_t for that port
- *              Also, if there is a signal, once active, isPresented should be set to true as well.
+ * @note When a port is selected that port should be set as activePort in ::dsCompositeInStatus_t.
+ *              Also, if there is a signal (ie isPortConnected[that port ID] is true), once active, isPresented should be set to true as well.
  * 
  * @pre  dsCompositeInInit() should be called before calling this API.
  */
@@ -227,7 +227,7 @@ dsError_t dsCompositeInSelectPort (dsCompositeInPort_t Port);
  * This function scales the COMPOSITE input video. The width and height, based on the x, y coordinates, 
  *      cannot exceed that of the current resolution of the device.
  *      e.g.  x(in pixels)+width cannot be greater then the width of the resolution.
- *      The current resolution will return by @see dsGetResolution()
+ *      The current resolution will return by ::dsGetResolution()
  *
  * @param[in] x         - x coordinate for the video. Min of 0. Max is based on the current resolution
  * @param[in] y         - y coordinate for the video. Min of 0. Max is based on the current resolution
@@ -254,15 +254,15 @@ dsError_t dsCompositeInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t 
  * HAL Implementation should call this method to deliver COMPOSITE In hot plug status
  * to the application (e.g. Connect/Disconnect for Port 0/1).
  *
- * @param[in] Port              - COMPOSITE Input port. @see dsCompositeInPort_t
- * @param[in] isPortConnected   - Connection state of COMPOSITE In Port. True if connected, false if not
+ * @param[in] Port              - COMPOSITE Input port. Please refer ::dsCompositeInPort_t
+ * @param[in] isPortConnected   - Connection state of COMPOSITE In Port. @a true if connected, @a false if not
  *
  * @return None.
  * 
  * @pre  dsCompositeInRegisterConnectCB() should be called before calling this API.
  * 
- * @note This should update isPortConnected in @see dsCompositeInStatus_t when this callback is triggered.
- *          If this port is currently active, and presents video after being connected, isPresented should also be updated
+ * @note This should update isPortConnected in ::dsCompositeInStatus_t when this callback is triggered.
+ *          If this port is currently active and presents video after being connected, isPresented should also be updated
  * 
  * @see dsCompositeInRegisterConnectCB()
  */
@@ -274,8 +274,8 @@ typedef void (*dsCompositeInConnectCB_t)(dsCompositeInPort_t Port, bool isPortCo
  * HAL Implementation should call this method to deliver Composite In signal change status
  * to the application (e.g. NoSignal/UnstableSignal/NotSupportedSignal/StableSignal for Composite In ports).
  *
- * @param[in] port      - Composite Input port. @see dsCompositeInPort_t
- * @param[in] sigStatus - signal Status of Composite In Port. @see dsCompInSignalStatus_t
+ * @param[in] port      - Composite Input port. Please refer ::dsCompositeInPort_t
+ * @param[in] sigStatus - signal Status of Composite In Port. Please refer ::dsCompInSignalStatus_t
  *
  * @return None.
  * 
@@ -291,7 +291,7 @@ typedef void (*dsCompositeInSignalChangeCB_t)(dsCompositeInPort_t port, dsCompIn
  * HAL Implementation should call this method to deliver Composite Input status
  * to the application (e.g. port, isPresented(true/false) etc. for Composite In ports).
  *
- * @param[in] inputStatus   - Composite Input status of a specific Port. @see dsCompositeInStatus_t
+ * @param[in] inputStatus   - Composite Input status of a specific Port. Please refer ::dsCompositeInStatus_t
  *
  * @return None.
  * 
@@ -299,7 +299,7 @@ typedef void (*dsCompositeInSignalChangeCB_t)(dsCompositeInPort_t port, dsCompIn
  * 
  * @see dsCompositeInRegisterStatusChangeCB()
  * 
- * @note This callback should be triggered whenever dsCompositeInStatus_t is updated. @see dsCompositeInSelectPort(), dsCompositeInConnectCB_t()
+ * @note This callback should be triggered whenever dsCompositeInStatus_t is updated. Please refer ::dsCompositeInSelectPort(), ::dsCompositeInConnectCB_t()
  */
 typedef void (*dsCompositeInStatusChangeCB_t)(dsCompositeInStatus_t inputStatus);
 
@@ -308,7 +308,7 @@ typedef void (*dsCompositeInStatusChangeCB_t)(dsCompositeInStatus_t inputStatus)
  *
  * This function is used to register for the COMPOSITE Input hot plug event.
  *
- * @param[in] CBFunc    - COMPOSITE Input hot plug callback function. @see dsCompositeInConnectCB_t
+ * @param[in] CBFunc    - COMPOSITE Input hot plug callback function. Please refer ::dsCompositeInConnectCB_t
  * 
  * @return dsError_t                      - Status
  * @retval dsERR_NONE                     - Success
@@ -330,7 +330,7 @@ dsError_t dsCompositeInRegisterConnectCB (dsCompositeInConnectCB_t CBFunc);
  *
  * This function is used to register for the Composite Input Signal Change event.
  *
- * @param[in] CBFunc    - Composite Input Signal change callback function. @see dsCompositeInSignalChangeCB_t
+ * @param[in] CBFunc    - Composite Input Signal change callback function. Please refer ::dsCompositeInSignalChangeCB_t
  * 
  * @return dsError_t                      - Status
  * @retval dsERR_NONE                     - Success
@@ -352,7 +352,8 @@ dsError_t dsCompositeInRegisterSignalChangeCB (dsCompositeInSignalChangeCB_t CBF
  *
  * This function is used to register for the Composite Input Status Change event.
  *
- * @param[in] CBFunc    - Composite Input Status change callback function. @see dsCompositeInStatusChangeCB_t
+ * @param[in] CBFunc    - Composite Input Status change callback function. Please refer ::dsCompositeInStatusChangeCB_t
+ *
  * 
  * @return dsError_t                      - Status
  * @retval dsERR_NONE                     - Success

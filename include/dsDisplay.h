@@ -76,11 +76,8 @@
  * dsDisplay HAL provides an interface for managing the display related settings of device settings module
  */
 
-/** @defgroup DSHAL_DISPLAY_API DS Display HAL Public API
+/** @defgroup DSHAL_DISPLAY_API DS Display HAL Public APIs
  * 
- * @brief DS Display HAL Public APIs.
- * This API defines the HAL for the Device Settings Display interface.
- *
  *  @{
  */
  

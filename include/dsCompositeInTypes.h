@@ -52,12 +52,12 @@
  */
 
 /**
- * @defgroup DSHAL_COMPOSITE_IN_TYPES DS HAL Composite Input Public APIs
+ * @defgroup DSHAL_COMPOSITE_IN_TYPES DS HAL Composite Input Type Definitions
  *  @{
  */
 
 /**
- * @file dsTypes.h
+ * @file dsCompositeInTypes.h
  *
  * @brief HAL types.
  *
