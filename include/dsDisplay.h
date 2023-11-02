@@ -68,7 +68,7 @@
  * Described herein are the DeviceSettings HAL types and functions that are part of
  * the Display subsystem. The Display subsystem manages display-specific HAL operations.
  *  @{
- */8
+ */
 
 /** @defgroup dsDisplay_HAL DS Display HAL
  *  @{
