@@ -610,7 +610,8 @@ dsError_t dsFPSetLEDState (dsFPDLedState_t state);
  * 
  * This function gets the supported led states
  *
- * @param[out] states - The bitwise value of all supported led states by the platform. @see dsFPDLedState_t
+ * @param[out] states - The bitwise value of all supported led states by the platform. refer ::dsFPDLedState_t
+ *      e.g. *states = ((1<<dsFPD_LED_DEVICE_ACTIVE)|\(1<<dsFPD_LED_DEVICE_STANDBY))
  *
  * @return dsError_t                      -  Status
  * @retval dsERR_NONE                     -  Success
