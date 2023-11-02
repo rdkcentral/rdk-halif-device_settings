@@ -159,7 +159,7 @@ dsError_t dsVideoPortTerm();
  * 
  * @warning  This API is Not thread safe.
  */
-dsError_t  dsGetVideoPort(dsVideoPortType_t type, int index, int_ptr_t *handle);
+dsError_t  dsGetVideoPort(dsVideoPortType_t type, int index, intptr_t *handle);
 
 /**
  * @brief Checks whether a video port is enabled or not.
