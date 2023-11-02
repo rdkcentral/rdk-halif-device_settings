@@ -195,7 +195,6 @@ typedef enum tv_hdmi_edid_version_e {
 typedef enum dsVideoPlaneType {
     dsVideoPlane_PRIMARY,       /*!< Primary Video Plane*/
     dsVideoPlane_SECONDARY,     /*!< Secondary Video Plane*/
-    dsVideoPlane_INVALID,       /*!< Invalid Video Plane*/
     dsVideoPlane_MAX            /*!< Out of bounds*/
 }dsVideoPlaneType_t;
 
