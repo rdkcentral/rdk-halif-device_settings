@@ -233,12 +233,12 @@ NOTE: The module would operate deterministically if the above call sequence is f
     HAL->>Driver:Specified Audio Port is enabled or disabled 
     Driver-->>HAL:return
     HAL-->>Caller:return
-    Caller->>HAL:dsAudio_SetMethods()
+    Caller->>HAL:dsAudio_SetMethods
     Note over HAL: APIs to set the Audio related parameters 
     HAL->>Driver: Set the Audio Paramters using Audio Port Handle
     Driver-->>HAL:return
     HAL-->>Caller:return
-    Caller->>HAL:dsAudio_GetMethods()
+    Caller->>HAL:dsAudio_GetMethods
     Note over HAL: APIs to get the Audio related parameters 
     HAL->>Driver: Get the Audio Paramters using Audio Port Handle
     Driver-->>HAL:return
