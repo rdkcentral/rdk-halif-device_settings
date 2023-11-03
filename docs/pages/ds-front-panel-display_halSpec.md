@@ -189,12 +189,12 @@ The various `DS` `FP` `LED` states are as follows:
     HAL->>Driver: Allocates required resources for FPD
     Driver-->>HAL:return
     HAL-->>Caller:return
-    Caller->>HAL: ds_FP_SetMethods()
+    Caller->>HAL: ds_FP_SetMethods
     Note over HAL: APIs to set the FPD Parameters
     HAL->>Driver:Sets the FPD Parameters
     Driver-->>HAL:return
     HAL-->>Caller:return
-    Caller->>HAL: ds_FP_GetMethods()
+    Caller->>HAL: ds_FP_GetMethods
     Note over HAL: APIs to get the FPD Parameters
     HAL->>Driver:Gets the FPD Parameters
     Driver-->>HAL:return
@@ -232,4 +232,5 @@ dsGetFPBrightness(),
 dsGetFPColor(),
 dsGetFPTextBrightness(),
 dsGetFPTimeFormat(),
-dsFPGetLEDState()
+dsFPGetLEDState(),
+dsFPGetSupportedLEDStates()

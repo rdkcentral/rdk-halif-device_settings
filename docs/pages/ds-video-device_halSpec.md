@@ -91,7 +91,9 @@ Although this interface is not required to be involved in any of the power manag
 
 ### Asynchronous Notification Model
 
-This interface is not required to support asynchronous notification.
+- The `dsVideoDevice` `API` `dsRegisterFrameratePreChangeCB()` should facilitate asynchronous status notifications using the callback before the framerate is changed using the callback `dsRegisterFrameratePreChangeCB_t`. This callback should used before the framerate is changed.
+- The `dsVideoDevice` `API` `dsRegisterFrameratePostChangeCB()` should facilitate asynchronous status notifications using the callback after the framerate is changed using the callback `dsRegisterFrameratePostChangeCB_t`. This callback should be used after the framerate has been changed.
+
 
 ### Blocking calls
 
@@ -160,7 +162,11 @@ The `caller` is expected to have complete control over the life cycle of the `HA
 
 4. The `caller` can call `dsGetDFC()`, `dsGetHDRCapabilities()`, `dsGetSupportedVideoCodingFormats()`, `dsGetVideoCodecInfo()`, `dsGetFRFMode()`, `dsGetCurrentDisplayframerate()`, to query the needed information.
 
-5. De-initialized the `HAL` using the function: `dsVideoDeviceTerm()`
+5. Callbacks can be set with `dsRegisterFrameratePreChangeCB()` and `dsRegisterFrameratePostChangeCB()`.
+    - `dsRegisterFrameratePreChangeCB()` is used before the framerate is changed.
+    - `dsRegisterFrameratePostChangeCB()` is used after the framerate is changed.
+
+6. De-initialized the `HAL` using the function: `dsVideoDeviceTerm()`
 
 ### Diagrams
 
@@ -186,6 +192,18 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     HAL->>Driver:Getting the Video Device Parameters
     Driver-->>HAL:return
     HAL-->>Caller:return
+    Caller->>HAL:dsRegisterFrameratePreChangeCB()
+    Note over HAL: Registers the callback for the pre-change framerate callback
+    HAL-->>Caller:return
+    Caller->>HAL:dsRegisterFrameratePostChangeCB()
+    Note over HAL: Registers the callback for the post-change framerate callback
+    HAL-->>Caller:return
+    Driver-->>HAL:Frame rate about to change
+    Note over HAL: Framerate about to change
+    HAL-->>Caller:dsRegisterFrameratePreChangeCB_t callback returned
+    Driver-->>HAL:Framerate has changed
+    Note over HAL: Framerate has changed
+    HAL-->>Caller:dsRegisterFrameratePostChangeCB_t callback returned
     Caller ->>HAL:dsVideoDeviceTerm()
     HAL ->> Driver: Releases all the resources allocated during dsVideoDeviceInit()
     Driver-->>HAL:return

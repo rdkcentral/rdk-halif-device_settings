@@ -18,7 +18,7 @@
 */
 
 /**
- * @file
+ * @file dsUtl.h
  *
  * @brief Device Settings HAL utilities
  *

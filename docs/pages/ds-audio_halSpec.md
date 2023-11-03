@@ -107,7 +107,8 @@ Although this interface is not required to be involved in any of the power manag
 
 AudioPort provides the following asynchronous registration : 
 - `dsAudioOutRegisterConnectCB()` - Callback function to notify the audio port connection status to the `caller`
-- `dsAudioFormatUpdateCB()` - Callback funtion to notify the audio format update to the `caller`
+- `dsAudioFormatUpdateRegisterCB()` - Callback function to notify the audio format update to the `caller`
+- `dsAudioAtmosCapsChangeRegisterCB()` - Callback function to notify the atmos capability update to the `caller`
 
 This interface is allowed to establish its own thread context for its operation, ensuring minimal impact on system resources. Additionally, this interface is responsible for releasing the resources it creates for its operation once the respective operation concludes.
 
@@ -197,7 +198,12 @@ The `caller` is expected to have complete control over the life cycle of the `HA
    - `AC4` Primary Language
    - `AC4` Secondary Language 
 
-4. De-initialize the `Audio HAL` using the function: `dsAudioPortTerm()`
+4. Callbacks can be set with:
+    - `dsAudioOutRegisterConnectCB()` -  used when the audio port connection status changes`
+    - `dsAudioFormatUpdateRegisterCB()` -  used when the audio format changes
+    - `dsAudioAtmosCapsChangeRegisterCB()` -  used when the atmos capability changes
+
+5. De-initialize the `Audio HAL` using the function: `dsAudioPortTerm()`
 
 NOTE: The module would operate deterministically if the above call sequence is followed
 
@@ -227,12 +233,12 @@ NOTE: The module would operate deterministically if the above call sequence is f
     HAL->>Driver:Specified Audio Port is enabled or disabled 
     Driver-->>HAL:return
     HAL-->>Caller:return
-    Caller->>HAL:dsAudio_SetMethods()
+    Caller->>HAL:dsAudio_SetMethods
     Note over HAL: APIs to set the Audio related parameters 
     HAL->>Driver: Set the Audio Paramters using Audio Port Handle
     Driver-->>HAL:return
     HAL-->>Caller:return
-    Caller->>HAL:dsAudio_GetMethods()
+    Caller->>HAL:dsAudio_GetMethods
     Note over HAL: APIs to get the Audio related parameters 
     HAL->>Driver: Get the Audio Paramters using Audio Port Handle
     Driver-->>HAL:return
@@ -250,6 +256,24 @@ NOTE: The module would operate deterministically if the above call sequence is f
     HAL->>Driver: Get the HDMI ARC Port ID   
     Driver-->>HAL:return
     HAL-->>Caller:return
+    Caller->>HAL:dsAudioOutRegisterConnectCB()
+    Note over HAL: Registers the callback for when the audio port connection status changes
+    HAL-->>Caller:return
+    Caller->>HAL:dsAudioFormatUpdateRegisterCB()
+    Note over HAL: Registers the callback for when the audio format changes
+    HAL-->>Caller:return
+    Caller->>HAL:dsAudioAtmosCapsChangeRegisterCB()
+    Note over HAL: Registers the callback for when the atmos capability changes
+    HAL-->>Caller:return
+    Note over HAL: Audio Port connection status changed
+    Driver-->>HAL:return
+    HAL-->>Caller:dsAudioOutPortConnectCB_t callback returned
+    Note over HAL: Audio formate has changed
+    Driver-->>HAL:return
+    HAL-->>Caller:dsAudioFormatUpdateCB_t callback returned
+    Note over HAL: Atmos capabilities changed
+    Driver-->>HAL:return
+    HAL-->>Caller:dsAtmosCapsChangeCB_t callback returned
     Caller ->>HAL:dsAudioTerm()
     HAL ->> Driver: 
     Driver-->>HAL:return

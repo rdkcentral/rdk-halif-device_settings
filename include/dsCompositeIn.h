@@ -36,6 +36,46 @@
 */
 
 /**
+ * @addtogroup HPK Hardware Porting Kit
+ * @{
+ * @par The Hardware Porting Kit
+ * HPK is the next evolution of the well-defined Hardware Abstraction Layer
+ * (HAL), but augmented with more comprehensive documentation and test suites
+ * that OEM or SOC vendors can use to self-certify their ports before taking
+ * them to RDKM for validation or to an operator for final integration and
+ * deployment. The Hardware Porting Kit effectively enables an OEM and/or SOC
+ * vendor to self-certify their own Video Accelerator devices, with minimal RDKM
+ * assistance.
+ *
+ */
+
+/**
+ * @addtogroup Device_Settings Device Settings Module
+ * @{
+ */
+
+/**
+ * @addtogroup Device_Settings_HAL Device Settings HAL
+ * @par Application API Specification
+ * Described herein are the DeviceSettings HAL types and functions that are part of
+ * the CompositeIn subsystem. The CompositeIn subsystem manages system-specific HAL operations.
+ *  @{
+ */
+
+/**
+*   @defgroup dsCompositeIn_HAL DS CompositeIn HAL
+ *  @{
+ * @par Application API Specification
+ * dsCompositeIn HAL provides an interface for managing the CompositeIn settings for the device settings module
+ */
+
+/**
+ * @defgroup DSHAL_COMPOSITE_IN_API DS HAL Composite Input Public APIs
+ *  @{
+ */
+
+
+/**
  * @file dsCompositeIn.h
  *
  * @brief Device Settings HAL COMPOSITE Input Public API.
@@ -68,139 +108,142 @@
  *
  */
 
-/**
-* @defgroup devicesettings Device Settings
-* @{
-* @defgroup hal Device Settings HAL
-* @{
-**/
+#ifndef __DS_COMPOSITE_IN_H__
+#define __DS_COMPOSITE_IN_H__
 
-#ifndef _DS_dsCompositeInH_
-#define _DS_dsCompositeInH_
-
-#include <sys/types.h>
 #include "dsError.h"
-#include "dsTypes.h"
+#include "dsCompositeInTypes.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-/** @addtogroup DSHAL_CompositeIn_API Device Settings HAL COMPOSITE Input Public APIs
- *  @ingroup devicesettingshalapi
- *  @{
- */
-
 /**
- * @brief Initialize the underlying COMPOSITE Input sub-system.
+ * @brief Initializes the underlying COMPOSITE Input sub-system.
  *
  * This function must initialize the COMPOSITE Input module and any associated data
  * structures.
  *
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
+ * @return dsError_t                      - Status
+ * @retval dsERR_NONE                     - Success
+ * @retval dsERR_ALREADY_INITIALIZED      - Module is already initialised
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_GENERAL                  - Underlying undefined platform error
+ * 
  * @warning  This API is Not thread safe.
+ * 
  * @see dsCompositeInTerm()
  */
 
 dsError_t dsCompositeInInit (void);
 
 /**
- * @brief Terminate the underlying COMPOSITE Input sub-system.
+ * @brief Terminates the underlying COMPOSITE Input sub-system.
  *
  * This function must terminate the COMPOSITE Input module and any associated data
  * structures.
  *
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  dsCompositeInInit () or  preceding dsCompositeInInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * This usually indicates the underlying unknown platform error.
- * @pre  dsCompositeInInit() should be called before calling this API.
+ * @return dsError_t                      - Status
+ * @retval dsERR_NONE                     - Success
+ * @retval dsERR_NOT_INITIALIZED          - Module is not initialised
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_GENERAL                  - Underlying undefined platform error
+ * 
  * @warning  This API is Not thread safe.
+ * 
+ * @pre  dsCompositeInInit() should be called before calling this API.
+ * 
  * @see dsCompositeInInit()
  */
 
 dsError_t dsCompositeInTerm (void);
 
 /**
- * @brief Get the number of COMPOSITE Input ports on the specific platform.
+ * @brief Gets the number of COMPOSITE Input ports on the specific platform.
  *
- * This function is used to get the number of COMPOSITE Input ports on the specific platform for eg: set-top.
+ * This function is used to get the number of COMPOSITE Input ports on the specific platform.
  *
- * @param[in] pNumberOfInputs   number of COMPOSITE Input ports.
+ * @param[out] pNumberOfInputs   - number of COMPOSITE Input ports. Min 0. Max please refer ::dsCompositeInPort_t
  *
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  dsCompositeInInit () or  preceding dsCompositeInInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * This usually indicates the underlying unknown platform error.
+ * @return dsError_t                      - Status
+ * @retval dsERR_NONE                     - Success
+ * @retval dsERR_INVALID_PARAM            - Parameter passed to this function is invalid
+ * @retval dsERR_NOT_INITIALIZED          - Module is not initialised
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_GENERAL                  - Underlying undefined platform error
+ * 
  * @warning  This API is Not thread safe.
+ * 
+ * @pre  dsCompositeInInit() should be called before calling this API.
  */
 
 dsError_t dsCompositeInGetNumberOfInputs (uint8_t *pNumberOfInputs);
 
 /**
- * @brief Get the COMPOSITE Input Status.
+ * @brief Gets the COMPOSITE Input Status.
  *
- * This function is used to get the current COMPOSITE Input Status.
+ * This function is used to get the status of all COMPOSITE Input Status.
  *
- * @param [out] pStatus   COMPOSITE Input enabled, COMPOSITE Input port connected,
- *                       Active COMPOSITE Input port, and HW Pass-Through enabled.
+ * @param [out] pStatus - status of compositeIn ports. Please refer ::dsCompositeInStatus_t
  * 
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  dsCompositeInInit () or  preceding dsCompositeInInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * This usually indicates the underlying unknown platform error.
+ * @return dsError_t                      - Status
+ * @retval dsERR_NONE                     - Success
+ * @retval dsERR_INVALID_PARAM            - Parameter passed to this function is invalid
+ * @retval dsERR_NOT_INITIALIZED          - Module is not initialised
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_GENERAL                  - Underlying undefined platform error
+ * 
  * @warning  This API is Not thread safe.
+ * 
+ * @pre  dsCompositeInInit() should be called before calling this API.
  */
-
 dsError_t dsCompositeInGetStatus (dsCompositeInStatus_t *pStatus);
 
 /**
- * @brief Select the COMPOSITE Input port to be presented.
+ * @brief Sets the COMPOSITE Input port as active available for presentation.
  *
- * This function is used to select the COMPOSITE Input port for presentation.
+ * This function is used to set the COMPOSITE Input port for presentation.
  *
- * @param[in] Port      COMPOSITE Input port to be presented,
+ * @param[in] Port  - COMPOSITE Input port to be presented. Please refer ::dsCompositeInPort_t
  * 
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  dsCompositeInInit () or  preceding dsCompositeInInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * This usually indicates the underlying unknown platform error.
+ * @return dsError_t                      - Status
+ * @retval dsERR_NONE                     - Success
+ * @retval dsERR_INVALID_PARAM            - Parameter passed to this function is invalid(port is not present or index is out of range)
+ * @retval dsERR_NOT_INITIALIZED          - Module is not initialised
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_GENERAL                  - Underlying undefined platform error
+ * 
  * @warning  This API is Not thread safe.
+ * 
+ * @note When a port is selected that port should be set as activePort in ::dsCompositeInStatus_t.
+ *              Also, if there is a signal (ie isPortConnected[that port ID] is true), once active, isPresented should be set to true as well.
+ * 
+ * @pre  dsCompositeInInit() should be called before calling this API.
  */
-
 dsError_t dsCompositeInSelectPort (dsCompositeInPort_t Port);
 
 /**
- * @brief Scale the COMPOSITE In video
- * This function is used to scale the COMPOSITE In video.
+ * @brief Scales the COMPOSITE In video
+ * This function scales the COMPOSITE input video. The width and height, based on the x, y coordinates, 
+ *      cannot exceed that of the current resolution of the device.
+ *      e.g.  x(in pixels)+width cannot be greater then the width of the resolution.
+ *      The current resolution will return by ::dsGetResolution()
  *
- * @param[in] x          x coordinate for the video
- * @param[in] y          y coordinate for the video
- * @param[in] width      width of the video
- * @param[in] height     height of the video
+ * @param[in] x         - x coordinate for the video. Min of 0. Max is based on the current resolution
+ * @param[in] y         - y coordinate for the video. Min of 0. Max is based on the current resolution
+ * @param[in] width     - width of the video. Min of 0. Max is based on the current resolution
+ * @param[in] height    - height of the video. Min of 0. Max is based on the current resolution
  *
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  dsCompositeInInit () or  preceding dsCompositeInInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * This usually indicates the underlying unknown platform error.
+ * @return dsError_t                      - Status
+ * @retval dsERR_NONE                     - Success
+ * @retval dsERR_INVALID_PARAM            - Parameter passed to this function is invalid
+ * @retval dsERR_NOT_INITIALIZED          - Module is not initialised
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_GENERAL                  - Underlying undefined platform error
+ * 
  * @warning  This API is Not thread safe.
+ * 
+ * @pre  dsCompositeInInit(), dsCompositeInSelectPort() should be called before calling this API.
  */
 
 dsError_t dsCompositeInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t height);
@@ -211,35 +254,19 @@ dsError_t dsCompositeInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t 
  * HAL Implementation should call this method to deliver COMPOSITE In hot plug status
  * to the application (e.g. Connect/Disconnect for Port 0/1).
  *
- * @param[in] Port            COMPOSITE Input port.
- * @param[in] isPortConnected Connection state of COMPOSITE In Port.
+ * @param[in] Port              - COMPOSITE Input port. Please refer ::dsCompositeInPort_t
+ * @param[in] isPortConnected   - Connection state of COMPOSITE In Port. @a true if connected, @a false if not
  *
  * @return None.
- * @warning  This API is Not thread safe.
+ * 
+ * @pre  dsCompositeInRegisterConnectCB() should be called before calling this API.
+ * 
+ * @note This should update isPortConnected in ::dsCompositeInStatus_t when this callback is triggered.
+ *          If this port is currently active and presents video after being connected, isPresented should also be updated
+ * 
  * @see dsCompositeInRegisterConnectCB()
  */
-
 typedef void (*dsCompositeInConnectCB_t)(dsCompositeInPort_t Port, bool isPortConnected);
-
-/**
- * @brief Register for the COMPOSITE Input hot plug event.
- *
- * This function is used to register for the COMPOSITE Input hot plug event.
- *
- * @param[in] CBFunc COMPOSITE Input hot plug callback function.
- * 
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  dsCompositeInInit () or  preceding dsCompositeInInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * This usually indicates the underlying unknown platform error.
- * @warning  This API is Not thread safe.
- * @see dsCompositeInConnectCB_t()
- */
-
-dsError_t dsCompositeInRegisterConnectCB (dsCompositeInConnectCB_t CBFunc);
 
 /**
  * @brief Callback function used to notify applications of Composite In signal change status
@@ -247,35 +274,16 @@ dsError_t dsCompositeInRegisterConnectCB (dsCompositeInConnectCB_t CBFunc);
  * HAL Implementation should call this method to deliver Composite In signal change status
  * to the application (e.g. NoSignal/UnstableSignal/NotSupportedSignal/StableSignal for Composite In ports).
  *
- * @param[in] port       Composite Input port.
- * @param[in] sigStatus  signal Status of Composite In Port.
+ * @param[in] port      - Composite Input port. Please refer ::dsCompositeInPort_t
+ * @param[in] sigStatus - signal Status of Composite In Port. Please refer ::dsCompInSignalStatus_t
  *
  * @return None.
- * @warning  This API is Not thread safe.
+ * 
+ * @pre  dsCompositeInRegisterSignalChangeCB() should be called before calling this API.
+ * 
  * @see dsCompositeInRegisterSignalChangeCB()
  */
-
 typedef void (*dsCompositeInSignalChangeCB_t)(dsCompositeInPort_t port, dsCompInSignalStatus_t sigStatus);
-
-/**
- * @brief Register for the Composite Input Signal Change event.
- *
- * This function is used to register for the Composite Input Signal Change event.
- *
- * @param[in] CBFunc Composite Input Signal change callback function.
- * 
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  dsCompositeInInit () or  preceding dsCompositeInInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * This usually indicates the underlying unknown platform error.
- * @warning  This API is Not thread safe.
- * @see dsCompositeInSignalChangeCB_t()
- */
-
-dsError_t dsCompositeInRegisterSignalChangeCB (dsCompositeInSignalChangeCB_t CBFunc);
 
 /**
  * @brief Callback function used to notify applications of Composite Input status change event.
@@ -283,44 +291,93 @@ dsError_t dsCompositeInRegisterSignalChangeCB (dsCompositeInSignalChangeCB_t CBF
  * HAL Implementation should call this method to deliver Composite Input status
  * to the application (e.g. port, isPresented(true/false) etc. for Composite In ports).
  *
- * @param[in] inputStatus Composite Input status of a specific Port.
+ * @param[in] inputStatus   - Composite Input status of a specific Port. Please refer ::dsCompositeInStatus_t
  *
  * @return None.
- * @warning  This API is Not thread safe.
+ * 
+ * @pre  dsCompositeInRegisterStatusChangeCB() should be called before calling this API.
+ * 
  * @see dsCompositeInRegisterStatusChangeCB()
+ * 
+ * @note This callback should be triggered whenever dsCompositeInStatus_t is updated. Please refer ::dsCompositeInSelectPort(), ::dsCompositeInConnectCB_t()
  */
-
 typedef void (*dsCompositeInStatusChangeCB_t)(dsCompositeInStatus_t inputStatus);
 
 /**
- * @brief Register for the Composite Input Status Change event.
+ * @brief Registers the COMPOSITE Input hot plug event.
+ *
+ * This function is used to register for the COMPOSITE Input hot plug event.
+ *
+ * @param[in] CBFunc    - COMPOSITE Input hot plug callback function. Please refer ::dsCompositeInConnectCB_t
+ * 
+ * @return dsError_t                      - Status
+ * @retval dsERR_NONE                     - Success
+ * @retval dsERR_INVALID_PARAM            - Parameter passed to this function is invalid
+ * @retval dsERR_NOT_INITIALIZED          - Module is not initialised
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_GENERAL                  - Underlying undefined platform error
+ * 
+ * @warning  This API is Not thread safe.
+ * 
+ * @pre  dsCompositeInInit() should be called before calling this API.
+ * 
+ * @see dsCompositeInConnectCB_t()
+ */
+dsError_t dsCompositeInRegisterConnectCB (dsCompositeInConnectCB_t CBFunc);
+
+/**
+ * @brief Registers the Composite Input Signal Change event.
+ *
+ * This function is used to register for the Composite Input Signal Change event.
+ *
+ * @param[in] CBFunc    - Composite Input Signal change callback function. Please refer ::dsCompositeInSignalChangeCB_t
+ * 
+ * @return dsError_t                      - Status
+ * @retval dsERR_NONE                     - Success
+ * @retval dsERR_INVALID_PARAM            - Parameter passed to this function is invalid
+ * @retval dsERR_NOT_INITIALIZED          - Module is not initialised
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_GENERAL                  - Underlying undefined platform error
+ * 
+ * @warning  This API is Not thread safe.
+ * 
+ * @pre  dsCompositeInInit() should be called before calling this API.
+ * 
+ * @see dsCompositeInSignalChangeCB_t()
+ */
+dsError_t dsCompositeInRegisterSignalChangeCB (dsCompositeInSignalChangeCB_t CBFunc);
+
+/**
+ * @brief Registers the Composite Input Status Change event.
  *
  * This function is used to register for the Composite Input Status Change event.
  *
- * @param[in] CBFunc Composite Input Status change callback function.
+ * @param[in] CBFunc    - Composite Input Status change callback function. Please refer ::dsCompositeInStatusChangeCB_t
+ *
  * 
- * @return dsError_t - Device Settings error code
- * @retval dsERR_NONE Indicates the call was successful.
- * @retval dsERR_INVALID_PARAM Indicates error due to invalid parameter value.
- * @retval dsERR_INVALID_STATE Indicates the respective api is called with out calling  dsCompositeInInit () or  preceding dsCompositeInInit has failed
- * @retval dsERR_GENERAL Indicates error due to general failure. In the HAL side implementation, all of the return values will
- * be initialized with this error code. So that any of the undefined error case scenario in the HAL code, will be report as this error code.
- * This usually indicates the underlying unknown platform error.
+ * @return dsError_t                      - Status
+ * @retval dsERR_NONE                     - Success
+ * @retval dsERR_INVALID_PARAM            - Parameter passed to this function is invalid
+ * @retval dsERR_NOT_INITIALIZED          - Module is not initialised
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_GENERAL                  - Underlying undefined platform error
+ * 
  * @warning  This API is Not thread safe.
+ * 
+ * @pre  dsCompositeInInit() should be called before calling this API.
+ * 
  * @see dsCompositeInStatusChangeCB_t()
  */
 
 dsError_t dsCompositeInRegisterStatusChangeCB (dsCompositeInStatusChangeCB_t CBFunc);
 
-/* End of DSHAL_CompositeIn_API doxygen group */
-/**
- * @}
- */
-
 #ifdef __cplusplus
 }
 #endif
-#endif /* _DS_dsCompositeInH_ */
+#endif /* __DS_COMPOSITE_IN_H__ */
 
-/** @} */
-/** @} */
+/** @} */ // End of DS HAL Composite Input Public APIs
+/** @} */ // End of DS CompositeIn HAL
+/** @} */ // End of Device Settings HAL
+/** @} */ // End of Device Settings Module
+/** @} */ // End of HPK

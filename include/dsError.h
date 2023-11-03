@@ -18,7 +18,7 @@
 */
  
 /**
- * @file
+ * @file dsError.h
  *
  * @brief Device Settings HAL error codes.
  *
