@@ -155,7 +155,6 @@ typedef void (*dsAtmosCapsChangeCB_t) (dsATMOSCapability_t atmosCaps, bool statu
  * It must return dsERR_OPERATION_NOT_SUPPORTED when there are no audio ports present in the device 
  * (e.g. a headless gateway device).
  *
- * @todo Proper prefix for all enums and APIs to be added in next phase ie DS_Audio_*
  * 
  * @return dsError_t                      -  Status
  * @retval dsERR_NONE                     -  Success
@@ -163,7 +162,6 @@ typedef void (*dsAtmosCapsChangeCB_t) (dsATMOSCapability_t atmosCaps, bool statu
  * @retval dsERR_ALREADY_INITIALIZED      -  Module is already initialised
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
- * @todo Remove dsERR_GENERAL and add specific error codes in next phase
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -429,7 +427,6 @@ dsError_t  dsSetDolbyVolumeMode(intptr_t handle, bool mode);
  * @param[out] mode  - Pointer to Intelligent Equalizer mode. 0 = OFF, 1 = Open, 2 = Rich, 3 = Focused,
  *                       4 = Balanced, 5 = Warm, 6 = Detailed
  *
- * @todo - Intelligent Equalizer modes will be moved to enums in next phase
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -616,7 +613,6 @@ dsError_t  dsEnableSurroundDecoder(intptr_t handle, bool enabled);
  * @param[in] handle - Handle for the output Audio port
  * @param[out] mode  - Pointer to DRC mode (0 for DRC line mode and 1 for DRC RF mode)
  * 
- * @todo DRC modes will be moved to enums in next phase
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -756,7 +752,6 @@ dsError_t  dsSetMISteering(intptr_t handle, bool enabled);
  * @param[in] handle - Handle for the output audio port.
  * @param[out] mode  - Graphic Equalizer Mode. 0 = EQ OFF, 1 = EQ Open, 2 = EQ Rich and 3 = EQ Focused 
  *
- * @todo Graphic Equalizer modes will be moved to enums in the next phase
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -850,7 +845,6 @@ dsError_t  dsGetMS12AudioProfile(intptr_t handle, char *profile);
  * @param[in] handle - Handle for the HDMI ARC/eARC port
  * @param[out] types - Value of supported ARC types. Please refer ::dsAudioARCTypes_t
  * 
- * @todo Return enum instead of int * will be done in next phase
  * 
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -919,7 +913,6 @@ dsError_t dsAudioEnableARC(intptr_t handle, dsAudioARCStatus_t arcStatus);
  * @param[out] stereoMode - Pointer to hold the stereo mode setting of the
  *                            specified audio port. Please refer ::dsAudioStereoMode_t
  * 
- * @todo dsAudioStereoMode_t - naming convention will be corrected in next phase
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -967,7 +960,6 @@ dsError_t  dsSetStereoMode(intptr_t handle, dsAudioStereoMode_t mode);
  * @param[in] handle     - Handle for the output audio port
  * @param[out] autoMode  - Pointer to hold the auto mode setting ( @a if enabled, @a false if disabled) of the specified audio port
  * 
- * @todo autoMode will be moved to bool in next phase
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -1742,7 +1734,6 @@ dsError_t dsAudioAtmosCapsChangeRegisterCB (dsAtmosCapsChangeCB_t cbFun);
  * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  *
- * @todo return type of capabilities will be changed to dsAudioCapabilities_t in next phase
  * 
  * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
  * 
@@ -1765,7 +1756,6 @@ dsError_t dsGetAudioCapabilities(intptr_t handle, int *capabilities);
  * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
- * @todo return type of capabilities will be changed to dsMS12Capabilities_t in next phase
  * 
  * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
  * 

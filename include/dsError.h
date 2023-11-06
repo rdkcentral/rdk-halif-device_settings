@@ -88,11 +88,10 @@ extern "C" {
  * 
  * A non-zero value indicates an error.
  * 
- * @todo change prefix dsERR to DS_STATUS in later phase
  */
 typedef enum {
-    dsERR_NONE = 0,                 ///< Input output operation is successful          
-    dsERR_GENERAL = 1,              ///< Operation general error. @todo Change to more specific error in later phase.
+    dsERR_NONE = 0,                 ///< Input output operation is successful
+    dsERR_GENERAL = 1,              ///< Operation general error.
     dsERR_INVALID_PARAM,            ///< Invalid parameter is passed to the module
     dsERR_INVALID_STATE,            ///< Module is in an invalid state
     dsERR_ALREADY_INITIALIZED,      ///< Module is already initialised

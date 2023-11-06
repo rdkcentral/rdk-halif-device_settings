@@ -87,14 +87,12 @@ extern "C" {
  *
  * This function allocates required resources for Front Panel and is required to be called before the other APIs in this module.
  * 
- * @todo Proper prefix for all enums and APIs to be added in next phase ie DS_FPD_*
  *
  * @return dsError_t                  -  Status
  * @retval dsERR_NONE                 -  Success
  * @retval dsERR_ALREADY_INITIALIZED  -  Function is already initialized
  * @retval dsERR_GENERAL              -  Underlying undefined platform error
  * 
- * @todo Remove dsERR_GENERAL and add specific error codes in next phase
  *
  * @warning  This API is Not thread safe
  * 
