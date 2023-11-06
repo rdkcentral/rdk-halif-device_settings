@@ -150,7 +150,6 @@ typedef struct _dsVideoPortPortId_t {
 
 /** @addtogroup DSHAL_AUDIO_TYPES Device Settings HAL Audio Types
  *  @{
- * @todo check if these are used.
  */
 
 /**
@@ -326,7 +325,6 @@ typedef struct _dsAudioARCStatus_t {
  * Each bit of uint32_t represent a standard. 
  * If a device supports multiple standards, the capability is the bitwise OR
  * of the standards.
- * @todo Check to see where is used.
  */
 typedef enum _dsMS12Capabilities_t {
     dsMS12SUPPORT_NONE = 0x0,                   ///< MS12 Supported None
@@ -348,7 +346,6 @@ typedef struct _dsMS12AudioProfileList_t {
 
 /**
  * @brief This defines the type of volume leveller mode.
- * @todo Enums for volume leveller modes will be added in next phase
  */
 typedef struct _dsVolumeLeveller_t {
     int mode;   ///< 0 = off, 1 = on, 2 = auto
@@ -516,7 +513,6 @@ typedef enum _dsVideoFrameRate_t{
 /**
  * @brief This enumeration defines all of the standard video port scan modes.
  * @see dsVideoPortScanMode_isValid
- * @todo Check to see where this is used. Might be unused.
  */
 typedef enum _dsVideoScanMode_t{
     dsVIDEO_SCANMODE_INTERLACED,    ///< Interlaced video
@@ -578,7 +574,6 @@ typedef enum _dsVideoAspectRatio_t{
 
 /**
  * @brief Structure that defines video port resolution settings of output video device.
- * @todo Check how the name is used in the actual code
  * @note also used in @link dsHdmiIn.h @endlink
  */
 typedef struct _dsVideoPortResolution_t {
@@ -711,7 +706,6 @@ typedef struct _dsDisplayEDID_t {
 
 /**
  * @brief This enumeration defines the types of powerstate
- * @todo check to see where this is used. Seems unused.
  */
 typedef enum _dsPowerState_t{
     dsPOWER_ON =1,      ///< Host Power-on state
