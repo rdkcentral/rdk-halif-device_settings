@@ -122,7 +122,7 @@ const dsAudioTypeConfig_t 	kConfigs[]= {
  * corresponds to @link kPorts @endlink
  *
  */
-const dsVideoPortPortId_t connectedVOPs[][] = {
+const dsVideoPortPortId_t connectedVOPs[dsAUDIOPORT_TYPE_MAX][dsVIDEOPORT_TYPE_MAX] = {
 		/**
 		 * VOPs connected to LR Audio
 		 *
