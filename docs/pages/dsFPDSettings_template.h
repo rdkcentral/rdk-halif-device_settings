@@ -171,7 +171,7 @@ const dsFPDIndicatorConfig_t kIndicators[] = {
 /**
  * @brief Array that holds Front Panel Text Display Configurations
  */
-const dsFPDTextDisplayConfig_t  kTextDisplays[dsFPD_TEXTDISP_MAX] = {
+const dsFPDTextDisplayConfig_t  kTextDisplays[] = {
 	{
 		dsFPD_TEXTDISP_TEXT,		/**< id	*/
 		"Text",				/**< name */
