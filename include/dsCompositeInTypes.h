@@ -84,6 +84,7 @@
 #define __DS_COMPOSITE_IN_TYPES_H__
 #pragma once
 #include <stdint.h>
+#include <stdbool.h>
 
 /**
  * @brief This enumeration defines the type composite signal status.
