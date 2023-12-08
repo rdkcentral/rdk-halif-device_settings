@@ -192,7 +192,9 @@ dsError_t dsHdmiInGetStatus (dsHdmiInStatus_t *pStatus);
  * @param[in] audioMix    	    - Flag to control the audioMix status ( @a true to enable, @a false to disable)
  * @param[in] evideoPlaneType 	- Video plane to be selected  Please refer ::dsVideoPlaneType_t
  * @param[in] topMost        	- Is the topmost port. ( @a true for topMost port, @a false for not)
- *                                  By default primary video plane will be down and secondary video plane will be on top
+ *                                  If true, Hdmi source rendered in top of all planes,
+ *                                  If false, Hdmi source rendered in bottom of all planes
+ *                                  this is applicable irrespective of hdmi source playing either in primary or secondary 
  *                                  
  * 
  * @return dsError_t                        - Status
