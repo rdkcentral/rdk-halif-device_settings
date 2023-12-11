@@ -138,7 +138,7 @@ dsFPDColorConfig_t  kIndicatorColors_3[] = {
 /**
  * @brief Array that holds Front Panel Indicator Configurations
  */
-const dsFPDIndicatorConfig_t kIndicators[dsFPD_INDICATOR_MAX] = {
+const dsFPDIndicatorConfig_t kIndicators[] = {
 	{
 		dsFPD_INDICATOR_MESSAGE,	/**< id */
 		kIndicatorColors_1,		/**< supportedColors */
@@ -171,7 +171,7 @@ const dsFPDIndicatorConfig_t kIndicators[dsFPD_INDICATOR_MAX] = {
 /**
  * @brief Array that holds Front Panel Text Display Configurations
  */
-const dsFPDTextDisplayConfig_t  kTextDisplays[dsFPD_TEXTDISP_MAX] = {
+const dsFPDTextDisplayConfig_t  kTextDisplays[] = {
 	{
 		dsFPD_TEXTDISP_TEXT,		/**< id	*/
 		"Text",				/**< name */

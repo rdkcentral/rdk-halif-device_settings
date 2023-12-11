@@ -219,7 +219,7 @@ dsError_t dsGetEDID(intptr_t handle, dsDisplayEDID_t *edid);
  * 
  */
 
-dsError_t dsGetEDIDBytes(intptr_t handle, unsigned char **edid, int *length);
+dsError_t dsGetEDIDBytes(intptr_t handle, unsigned char *edid, int *length);
 
 /**
  * @brief Gets the aspect ratio of connected display device.
