@@ -20,9 +20,9 @@
 /**
  * @file dsAVDTypes.h
  *
- * @brief HAL types.
+ * @brief Device Setting Audio,Video and Display HAL types.
  *
- * @brief This API defines common types used by the HAL.
+ * This file defines common types used by the above mentioned DS HAL Submodules.
  *
  * @par Document
  * Document reference.
@@ -467,7 +467,7 @@ typedef enum _dsVideoResolution_t{
 typedef enum _dsTVResolution_t{
     dsTV_RESOLUTION_480i = 0x000001,     ///< 480i Resolution
     dsTV_RESOLUTION_480p = 0x000002,     ///< 480p Resolution
-    dsTV_RESOLUTION_576i = 0x000004,     ///< 576p Resolution
+    dsTV_RESOLUTION_576i = 0x000004,     ///< 576i Resolution
     dsTV_RESOLUTION_576p = 0x000008,     ///< 576p Resolution
     dsTV_RESOLUTION_576p50 = 0x000010,   ///< 576p50 Resolution
     dsTV_RESOLUTION_720p = 0x000020,     ///< 720p Resolution

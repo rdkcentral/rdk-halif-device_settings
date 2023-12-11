@@ -59,9 +59,9 @@
 /**
  * @file dsCompositeInTypes.h
  *
- * @brief HAL types.
+ * @brief Device Setting CompositeIn HAL types.
  *
- * @brief This API defines common types used by the HAL.
+ * This file defines common types used by the above mentioned DS CompositeIn HAL Submodule.
  *
  * @par Document
  * Document reference.

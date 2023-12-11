@@ -20,9 +20,9 @@
 /**
  * @file dsHdmiInTypes.h
  *
- * @brief HAL types.
+ * @brief Device Setting HDMI Input HAL types.
  *
- * @brief This API defines common types used by the HAL.
+ * This file defines common types used by the above mentioned DS HDMI Input HAL Submodule.
  *
  * @par Document
  * Document reference.
