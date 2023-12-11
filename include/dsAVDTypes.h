@@ -484,7 +484,7 @@ typedef enum _dsTVResolution_t{
     dsTV_RESOLUTION_2160p24 = 0x010000,  ///< 2160p24 Resolution
     dsTV_RESOLUTION_2160p25 = 0x020000,  ///< 2160p25 Resolution
     dsTV_RESOLUTION_2160p30 = 0x040000,  ///< 2160p30 Resolution
-    dsTV_RESOLUTION_2160p50 = 0x080000,  ///< 2160p30 Resolution
+    dsTV_RESOLUTION_2160p50 = 0x080000,  ///< 2160p50 Resolution
     dsTV_RESOLUTION_2160p60 = 0x100000,  ///< 2160p60 Resolution
 }dsTVResolution_t;
 

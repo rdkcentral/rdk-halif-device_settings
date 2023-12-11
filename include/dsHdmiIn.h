@@ -191,10 +191,10 @@ dsError_t dsHdmiInGetStatus (dsHdmiInStatus_t *pStatus);
  * @param[in] Port              - HDMI input port to be presented.  Please refer ::dsHdmiInPort_t
  * @param[in] audioMix    	    - Flag to control the audioMix status ( @a true to enable, @a false to disable)
  * @param[in] evideoPlaneType 	- Video plane to be selected  Please refer ::dsVideoPlaneType_t
- * @param[in] topMost        	- Is the topmost port. ( @a true for topMost port, @a false for not)
- *                                  If true, Hdmi source rendered in top of all planes,
- *                                  If false, Hdmi source rendered in bottom of all planes
- *                                  this is applicable irrespective of hdmi source playing either in primary or secondary 
+ * @param[in] topMost        	- Is this the topmost port? ( @a true for topMost port, @a false for not)
+ *                                If true, the plane used by the HDMI input port is over any other video plane
+ *                                If false, the plane used by the HDMI input port is under any other video plane
+ *                                 this is applicable irrespective of HDMI input port is playing either in primary or secondary
  *                                  
  * 
  * @return dsError_t                        - Status
