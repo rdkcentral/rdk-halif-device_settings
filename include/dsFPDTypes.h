@@ -20,9 +20,9 @@
 /**
  * @file dsFPDTypes.h
  *
- * @brief HAL types.
+ * @brief Device Setting Front Panel Display HAL types.
  *
- * @brief This API defines common types used by the HAL.
+ * This file defines common types used by the above mentioned DS Front Panel Display HAL Submodule.
  *
  * @par Document
  * Document reference.

@@ -58,9 +58,9 @@
 /**
  * @file dsVideoDeviceTypes.h
  *
- * @brief HAL types.
+ * @brief Device Setting Video Device HAL types.
  *
- * @brief This API defines common types used by the HAL.
+ * This file defines common types used by the above mentioned DS Video Device HAL Submodule.
  *
  * @par Document
  * Document reference
