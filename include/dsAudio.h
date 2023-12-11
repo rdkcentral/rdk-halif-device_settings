@@ -20,8 +20,8 @@
 /**
  * @file dsAudio.h
  *
- * @brief Device Settings HAL Audio Public API.
- * This API defines the HAL for the Device Settings Audio interface.
+ * @brief Device Settings HAL Audio Public APIs.
+ * These APIs define the HAL for the Device Settings Audio interface.
  *
  * @par Document
  * Document reference.

@@ -20,9 +20,9 @@
 /**
  * @file dsAVDTypes.h
  *
- * @brief HAL types.
+ * @brief Device Setting Audio,Video and Display HAL types.
  *
- * @brief This API defines common types used by the HAL.
+ * This file defines common types used by the above mentioned DS HAL Submodules.
  *
  * @par Document
  * Document reference.
@@ -465,24 +465,27 @@ typedef enum _dsVideoResolution_t{
  *      supported resolution with interlace information.
  */
 typedef enum _dsTVResolution_t{
-    dsTV_RESOLUTION_480i = 0x00001,     ///< 480i Resolution
-    dsTV_RESOLUTION_480p = 0x00002,     ///< 480p Resolution
-    dsTV_RESOLUTION_576i = 0x00004,     ///< 576p Resolution
-    dsTV_RESOLUTION_576p = 0x00008,     ///< 576p Resolution
-    dsTV_RESOLUTION_576p50 = 0x00010,   ///< 576p50 Resolution
-    dsTV_RESOLUTION_720p = 0x00020,     ///< 720p Resolution
-    dsTV_RESOLUTION_720p50 = 0x00040,   ///< 720p50 Resolution
-    dsTV_RESOLUTION_1080i = 0x00080,    ///< 1080i Resolution
-    dsTV_RESOLUTION_1080p = 0x00100,    ///< 1080p Resolution
-    dsTV_RESOLUTION_1080p24 = 0x00200,  ///< 1080p24 Resolution
-    dsTV_RESOLUTION_1080i25 = 0x00400,  ///< 1080i25 Resolution
-    dsTV_RESOLUTION_1080p30 = 0x00800,  ///< 1080p30 Resolution
-    dsTV_RESOLUTION_1080i50 = 0x01000,  ///< 1080i50 Resolution
-    dsTV_RESOLUTION_1080p50 = 0x02000,  ///< 1080p50 Resolution
-    dsTV_RESOLUTION_1080p60 = 0x04000,  ///< 1080p60 Resolution
-    dsTV_RESOLUTION_2160p30 = 0x08000,  ///< 2160p30 Resolution
-    dsTV_RESOLUTION_2160p50 = 0x10000,  ///< 2160p30 Resolution
-    dsTV_RESOLUTION_2160p60 = 0x20000,  ///< 2160p60 Resolution
+    dsTV_RESOLUTION_480i = 0x000001,     ///< 480i Resolution
+    dsTV_RESOLUTION_480p = 0x000002,     ///< 480p Resolution
+    dsTV_RESOLUTION_576i = 0x000004,     ///< 576i Resolution
+    dsTV_RESOLUTION_576p = 0x000008,     ///< 576p Resolution
+    dsTV_RESOLUTION_576p50 = 0x000010,   ///< 576p50 Resolution
+    dsTV_RESOLUTION_720p = 0x000020,     ///< 720p Resolution
+    dsTV_RESOLUTION_720p50 = 0x000040,   ///< 720p50 Resolution
+    dsTV_RESOLUTION_1080i = 0x000080,    ///< 1080i Resolution
+    dsTV_RESOLUTION_1080p = 0x000100,    ///< 1080p Resolution
+    dsTV_RESOLUTION_1080p24 = 0x000200,  ///< 1080p24 Resolution
+    dsTV_RESOLUTION_1080i25 = 0x000400,  ///< 1080i25 Resolution
+    dsTV_RESOLUTION_1080p25 = 0x000800,  ///< 1080p25 Resolution
+    dsTV_RESOLUTION_1080p30 = 0x001000,  ///< 1080p30 Resolution
+    dsTV_RESOLUTION_1080i50 = 0x002000,  ///< 1080i50 Resolution
+    dsTV_RESOLUTION_1080p50 = 0x004000,  ///< 1080p50 Resolution
+    dsTV_RESOLUTION_1080p60 = 0x008000,  ///< 1080p60 Resolution
+    dsTV_RESOLUTION_2160p24 = 0x010000,  ///< 2160p24 Resolution
+    dsTV_RESOLUTION_2160p25 = 0x020000,  ///< 2160p25 Resolution
+    dsTV_RESOLUTION_2160p30 = 0x040000,  ///< 2160p30 Resolution
+    dsTV_RESOLUTION_2160p50 = 0x080000,  ///< 2160p50 Resolution
+    dsTV_RESOLUTION_2160p60 = 0x100000,  ///< 2160p60 Resolution
 }dsTVResolution_t;
 
 /**
