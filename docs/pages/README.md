@@ -1,11 +1,5 @@
 # Device Settings Module
 
-## Version History
-
-| Date(DD/MM/YY) | Comment |
-| --- | --- |
-| 06/11/23 | Initial Release |
-
 ## Table of Contents
 
 - [Acronyms, Terms and Abbreviations](#acronyms-terms-and-abbreviations)
@@ -26,7 +20,7 @@ This document provides the links for the specific sub-modules of the Device Sett
 |SNo|Sub-module Name|`HAL` Specification|Header File(s)|Settings Template File |
 |---|--------------|-----------|-----------------|---------------------|
 |1|`DS` Host|[`DS` Host `HAL` Specification](./docs/pages/ds-audio_halSpec.md)|[dsHost.h](./include/dsHost.h)|N/A|
-|2|`DS` Front Panel Display|[`DS` Front Panel Display `HAL` Specification](./docs/pages/ds-front-panel-display_halSpec.md)|[dsFPD.h](./include/dsFPD.h), [dsFPDTypes.h](./include/dsFPDTypes.h) |[dsFPDSettings_template.h](./docs/pages/dsFPDSettings_template.h)|
+|2|`DS` Front Panel Display|[`DS` Front Panel Display `HAL` Specification](./docs/pages/ds-front-panel-display_halSpec.md)|[dsFPD.h](./include/dsFPD.h), [dsFPDTypes.h](./include/dsFPDTypes.h) |[frontPanelSettings_template.hpp](./docs/pages/frontPanelSettings_template.hpp)|
 |3|`DS` Display|[`DS` Display `HAL` Specification](./docs/pages/ds-display_halSpec.md)|[dsDisplay.h](./include/dsDisplay.h), [dsAVDTypes.h](./include/dsAVDTypes.h) |N/A|
 |4|`DS` HDMI Input|[`DS` HDMI Input `HAL` Specification](./docs/pages/ds-hdmi-in_halSpec.md)|[dsHdmiIn.h](./include/dsHdmiIn.h), [dsHdmiInTypes.h](./include/dsHdmiInTypes.h) |N/A|
 |5|`DS` Composite Input|[`DS` Composite Input `HAL` Specification](./docs/pages/ds-composite-in_halSpec.md)|[dsCompositeIn.h](./include/dsCompositeIn.h), [dsCompositeInTypes.h](./include/dsCompositeInTypes.h) |N/A|
