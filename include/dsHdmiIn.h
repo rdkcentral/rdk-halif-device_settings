@@ -762,6 +762,30 @@ dsError_t dsSetEdid2AllmSupport (dsHdmiInPort_t iHdmiPort, bool allmSupport);
  */
 dsError_t dsGetEdid2AllmSupport (dsHdmiInPort_t iHdmiPort, bool *allmSupport);
 
+/**
+ * @brief Sets the Mixer Volume level for the given gain
+ *
+ * This function sets the mixer volume level for either player/primary volume
+ *
+ * @param[in] gain     - Mixer gain value , (MIXGAIN_SYS/MIXGAIN_TTS)
+ * @param[in] volume - volume to be set (0 to 100)
+ *
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
+ *
+ * @pre dsHdmiInInit() must be called before calling this API
+ *
+ * @warning  This API is Not thread safe
+ *
+ * @see dsSetAudioMixerLevels()
+ *
+ */
+
+dsError_t dsSetAudioMixerLevels (int gain, int volume);
 
 #ifdef __cplusplus
 }
