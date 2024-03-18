@@ -2069,7 +2069,7 @@ dsError_t dsGetHDMIARCPortId(int *portId);
 * This function sets the mixer volume level for either player/primary volume
 *
 * @param[in] handle  - Handle for the output Audio port
-* @param[in] aInput  - dsAudioInputPrimary / dsAudioInputSystem
+* @param[in] aInput  - dsAudioInputPrimary / dsAudioInputSystem. Please refer ::dsAudioInput_t
 * @param[in] volume  - volume to be set (0 to 100)
 *
 * @return dsError_t                        - Status
@@ -2079,7 +2079,7 @@ dsError_t dsGetHDMIARCPortId(int *portId);
 * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
 * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
 *
-* @pre dsAudioPortInit() must be called before calling this API
+* @pre dsAudioPortInit() and and dsGetAudioPort() must be called before calling this API
 *
 * @warning  This API is Not thread safe
 *
