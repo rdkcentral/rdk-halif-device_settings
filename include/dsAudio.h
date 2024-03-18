@@ -2064,9 +2064,9 @@ dsError_t  dsGetSecondaryLanguage(intptr_t handle, char* sLang);
 dsError_t dsGetHDMIARCPortId(int *portId);
 
 /**
-* @brief Sets the Mixer Volume level for the given input
+* @brief Sets the Mixer Volume level for the MS12 input
 *
-* This function sets the mixer volume level for either player/primary volume
+* This function sets the MS12 volume level for either primary/main or system audio input
 *
 * @param[in] handle  - Handle for the output Audio port
 * @param[in] aInput  - dsAudioInputPrimary / dsAudioInputSystem. Please refer ::dsAudioInput_t
