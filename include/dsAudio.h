@@ -2066,7 +2066,7 @@ dsError_t dsGetHDMIARCPortId(int *portId);
 /**
 * @brief Sets the Mixer Volume level for the MS12 input
 *
-* This function sets the MS12 volume level for either primary/main or system audio input
+* This function sets the MS12 volume level for either primary(main audio) or system audio input(Text to Speech/System Beep)
 *
 * @param[in] handle  - Handle for the output Audio port
 * @param[in] aInput  - dsAudioInputPrimary / dsAudioInputSystem. Please refer ::dsAudioInput_t
