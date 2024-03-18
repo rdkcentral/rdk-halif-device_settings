@@ -779,6 +779,13 @@ typedef enum _dsDisplayMatrixCoefficients_t
     dsDISPLAY_MATRIXCOEFFICIENT_MAX            ///< Out of range
 } dsDisplayMatrixCoefficients_t;
 
+typedef enum _dsAudioInput_t
+{
+    dsAudioInputPrimary = 0,   ///< Primary Audio Input to audio mixer
+    dsAudioInputSystem,        ///< System Audio Input to audio mixer
+    dsAudioInputMax            ///< Out of range
+} dsAudioInput_t;
+
 /* End of DSHAL_DISPLAY_TYPES doxygen group */
 /**
  * @}
