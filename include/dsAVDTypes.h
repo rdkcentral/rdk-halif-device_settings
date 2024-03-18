@@ -780,13 +780,13 @@ typedef enum _dsDisplayMatrixCoefficients_t
 } dsDisplayMatrixCoefficients_t;
 
 /**
- * @brief This enumeration defines the type of Audio Input to Audio mixer.
+ * @brief This enumeration defines the type of Audio Input to MS12 Audio mixer.
  * @note Used in @link dsAudio.h @endlink
  */
 typedef enum _dsAudioInput_t
 {
-    dsAudioInputPrimary = 0,   ///< Primary Audio Input, used for main audio input to MS12
-    dsAudioInputSystem,        ///< System Audio Input, used for Text to Speech/System Beep to MS12
+    dsAudioInputPrimary = 0,   ///< Primary Audio Input is main audio input provided to MS12 audio mixer
+    dsAudioInputSystem,        ///< System Audio Input is Text to Speech/System Beep provided to MS12 audio mixer
     dsAudioInputMax            ///< Out of range
 } dsAudioInput_t;
 
