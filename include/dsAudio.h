@@ -2064,10 +2064,9 @@ dsError_t  dsGetSecondaryLanguage(intptr_t handle, char* sLang);
 dsError_t dsGetHDMIARCPortId(int *portId);
 
 /**
-* @brief Sets the Mixer Volume level for the given input
+* @brief Sets the Mixer Volume level of sink device for the given input
 *
 * This function sets the mixer volume level for either primary(main audio) or system audio input(System Beep).
-* This API is specific to Sink devices
 *
 * @param[in] handle  - Handle for the output Audio port
 * @param[in] aInput  - dsAudioInputPrimary / dsAudioInputSystem. Please refer ::dsAudioInput_t
@@ -2081,9 +2080,6 @@ dsError_t dsGetHDMIARCPortId(int *portId);
 * @retval dsERR_GENERAL                    - Underlying undefined platform error
 *
 * @pre dsAudioPortInit() and and dsGetAudioPort() must be called before calling this API
-*
-* @warning  This API is Not thread safe
-*
 *
 */
 dsError_t dsSetAudioMixerLevels (intptr_t handle, dsAudioInput_t aInput, int volume);
