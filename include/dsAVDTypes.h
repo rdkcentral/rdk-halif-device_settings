@@ -786,7 +786,7 @@ typedef enum _dsDisplayMatrixCoefficients_t
 typedef enum _dsAudioInput_t
 {
     dsAudioInputPrimary = 0,   ///< Primary Audio Input is main audio input provided to audio mixer
-    dsAudioInputSystem,        ///< System Audio Input is Text to Speech/System Beep provided to audio mixer
+    dsAudioInputSystem,        ///< System Audio Input to audio mixer , e.g Beep Sounds
     dsAudioInputMax            ///< Out of range
 } dsAudioInput_t;
 
