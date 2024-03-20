@@ -2065,6 +2065,7 @@ dsError_t dsGetHDMIARCPortId(int *portId);
 
 /**
 * @brief Sets the Mixer Volume level of sink device for the given input
+* This API is specific to sink devices
 *
 * This function sets the mixer volume level for either primary(main audio) or system audio input(System Beep).
 *
