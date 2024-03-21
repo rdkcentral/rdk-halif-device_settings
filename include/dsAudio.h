@@ -2069,7 +2069,7 @@ dsError_t dsGetHDMIARCPortId(int *portId);
 *
 * This function sets the mixer volume level for either primary(main audio) or system audio input(System Beep).
 *
-* @param[in] handle  - Handle for the output Audio port
+* @param[in] handle  - Handle for the output Audio port ((Not Used as setting is not port specific))
 * @param[in] aInput  - dsAudioInputPrimary / dsAudioInputSystem. Please refer ::dsAudioInput_t
 * @param[in] volume  - volume to be set (0 to 100)
 *
