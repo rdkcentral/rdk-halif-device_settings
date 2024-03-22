@@ -2063,6 +2063,29 @@ dsError_t  dsGetSecondaryLanguage(intptr_t handle, char* sLang);
  */
 dsError_t dsGetHDMIARCPortId(int *portId);
 
+/**
+* @brief Sets the Mixer Volume level of sink device for the given input
+* This API is specific to sink devices
+*
+* This function sets the mixer volume level for either primary(main audio) or system audio input(System Beep).
+*
+* @param[in] handle  - A valid handle refers to a specific audio port handle on the platform, or a NULL handle refers to use the current active port
+* @param[in] aInput  - dsAudioInputPrimary / dsAudioInputSystem. Please refer ::dsAudioInput_t
+* @param[in] volume  - volume to be set (0 to 100)
+*
+* @return dsError_t                        - Status
+* @retval dsERR_NONE                       - Success
+* @retval dsERR_NOT_INITIALIZED            - Module is not initialised
+* @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+* @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
+* @retval dsERR_GENERAL                    - Underlying undefined platform error
+*
+* @pre dsAudioPortInit() should be called before calling this API
+*      dsGetAudioPort() should be called if a valid handle is used other than NULL
+*
+*/
+dsError_t dsSetAudioMixerLevels (intptr_t handle, dsAudioInput_t aInput, int volume);
+
 #ifdef __cplusplus
 }
 #endif
