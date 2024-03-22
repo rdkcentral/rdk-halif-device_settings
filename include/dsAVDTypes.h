@@ -779,6 +779,17 @@ typedef enum _dsDisplayMatrixCoefficients_t
     dsDISPLAY_MATRIXCOEFFICIENT_MAX            ///< Out of range
 } dsDisplayMatrixCoefficients_t;
 
+/**
+ * @brief This enumeration defines the type of Audio Input to Audio mixer.
+ * @note Used in @link dsAudio.h @endlink
+ */
+typedef enum _dsAudioInput_t
+{
+    dsAUDIO_INPUT_PRIMARY = 0,   ///< Primary Audio Input is main audio input provided to audio mixer
+    dsAUDIO_INPUT_SYSTEM,        ///< System Audio Input to audio mixer , e.g Beep Sounds
+    dsAUDIO_INPUT_MAX            ///< Out of range
+} dsAudioInput_t;
+
 /* End of DSHAL_DISPLAY_TYPES doxygen group */
 /**
  * @}

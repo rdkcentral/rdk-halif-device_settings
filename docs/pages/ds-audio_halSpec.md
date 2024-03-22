@@ -196,7 +196,8 @@ The `caller` is expected to have complete control over the life cycle of the `HA
    - Audio Delay
    - Audio Mixing
    - `AC4` Primary Language
-   - `AC4` Secondary Language 
+   - `AC4` Secondary Language
+   - Audio Mixer Levels(Sink specific)
 
 4. Callbacks can be set with:
     - `dsAudioOutRegisterConnectCB()` -  used when the audio port connection status changes`
@@ -309,7 +310,8 @@ dsSetMS12AudioProfileSetttingsOverride(),
 dsSetAssociatedAudioMixing(),
 dsSetFaderControl(),
 dsSetPrimaryLanguage(),
-dsSetSecondaryLanguage()
+dsSetSecondaryLanguage(),
+dsSetAudioMixerLevels()
 
 <b>dsAudio_GetMethods:</b>
 dsGetAudioEncoding(),
