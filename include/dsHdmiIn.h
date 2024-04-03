@@ -557,13 +557,34 @@ dsError_t dsHdmiInRegisterAviContentTypeChangeCB (dsHdmiInAviContentTypeChangeCB
 dsError_t dsIsHdmiARCPort (dsHdmiInPort_t iPort, bool *isArcPort);
 
 /**
+ * @brief Gets the maximum size of EDID data corresponds to the given input port
+ * 
+ * This function gets the maximum size of EDID data corresponds to the given input port.
+ *
+ * @param[in] iHdmiPort     - HDMI input port.  Please refer ::dsHdmiInPort_t
+ * @param[out] pMaxEDIDSize - length of the EDID data. Min value of 0. Max length 256.
+ *
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
+ * 
+ * @pre dsHdmiInInit() must be called before calling this API
+ * 
+ * @warning  This API is Not thread safe.
+ * 
+ */
+dsError_t dsGetEDIDBytesMaxSize (dsHdmiInPort_t iHdmiPort, int *pMaxEDIDSize);
+
+/**
  * @brief Gets the EDID bytes info corresponds to the given input port
  * 
  * This function gets the EDID bytes info corresponds to the given input port.
  *
- * @param[in] iHdmiPort     - HDMI input port.  Please refer ::dsHdmiInPort_t
- * @param[out] edid         - EDID data for which info is required
- * @param[out] length       - length of the EDID data. Min value of 0. Max length 256.
+ * @param[in]  iHdmiPort    - HDMI input port.  Please refer ::dsHdmiInPort_t
+ * @param[out] pEDIDBuffer  - EDID data for which info is required
+ * @param[in]  pMaxEDIDSize - length of the EDID data.
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
@@ -574,10 +595,12 @@ dsError_t dsIsHdmiARCPort (dsHdmiInPort_t iPort, bool *isArcPort);
  * 
  * @pre dsHdmiInInit() must be called before calling this API
  * 
+ * @see dsGetEDIDBytesLength()
+ *
  * @warning  This API is Not thread safe.
  * 
  */
-dsError_t dsGetEDIDBytesInfo (dsHdmiInPort_t iHdmiPort, unsigned char *edid, int *length);
+dsError_t dsGetEDIDBytesInfo (dsHdmiInPort_t iHdmiPort, unsigned char *pEDIDBuffer, int pMaxEDIDSize);
 
 /**
  * @brief Gets the HDMI SPD info
@@ -586,6 +609,7 @@ dsError_t dsGetEDIDBytesInfo (dsHdmiInPort_t iHdmiPort, unsigned char *edid, int
  *
  * @param[in] iHdmiPort     - HDMI input port. Please refer ::dsHdmiInPort_t
  * @param[out] data         - HDMI SPD info data
+ * @param[out] maxSPDSize   - HDMI SPD data Size
  *                              Should not exceed sizeof(dsSpd_infoframe_st).  Please refer ::dsSpd_infoframe_st
  *
  * @return dsError_t                        - Status
@@ -600,7 +624,7 @@ dsError_t dsGetEDIDBytesInfo (dsHdmiInPort_t iHdmiPort, unsigned char *edid, int
  * @warning  This API is Not thread safe.
  * 
  */
-dsError_t dsGetHDMISPDInfo (dsHdmiInPort_t iHdmiPort, unsigned char *data);
+dsError_t dsGetHDMISPDInfo (dsHdmiInPort_t iHdmiPort, unsigned char *data, int maxSPDSize);
 
 /**
  * @brief Sets the EDID version to be used for a given port id
