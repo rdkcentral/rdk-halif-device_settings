@@ -584,7 +584,7 @@ dsError_t dsGetEDIDBytesMaxSize (dsHdmiInPort_t iHdmiPort, int *pMaxEDIDSize);
  *
  * @param[in]  iHdmiPort    - HDMI input port.  Please refer ::dsHdmiInPort_t
  * @param[out] pEDIDBuffer  - EDID data for which info is required
- * @param[in]  pMaxEDIDSize - length of the EDID data.
+ * @param[in]  maxEDIDSize  - length of the EDID data.
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
@@ -600,7 +600,7 @@ dsError_t dsGetEDIDBytesMaxSize (dsHdmiInPort_t iHdmiPort, int *pMaxEDIDSize);
  * @warning  This API is Not thread safe.
  * 
  */
-dsError_t dsGetEDIDBytesInfo (dsHdmiInPort_t iHdmiPort, unsigned char *pEDIDBuffer, int pMaxEDIDSize);
+dsError_t dsGetEDIDBytesInfo (dsHdmiInPort_t iHdmiPort, unsigned char *pEDIDBuffer, int maxEDIDSize);
 
 /**
  * @brief Gets the HDMI SPD info
