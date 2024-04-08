@@ -188,7 +188,8 @@ dsError_t  dsIsVideoPortEnabled(intptr_t handle, bool *enabled);
 /**
  * @brief Checks whether the specific video port is connected to display.
  * 
- * This function is used to check whether video port is connected to a display or not.
+ * For source devices, this function is used to check whether video port is connected to a display or not.
+ * For sink devices, this function returns display connection status true and dsERR_NONE always.
  *
  * @param[in]  handle       - Handle of the video port returned from dsGetVideoPort()
  * @param[out] connected    - Flag to hold the connection status of display
@@ -231,7 +232,8 @@ dsError_t  dsIsDisplaySurround(intptr_t handle, bool *surround);
 /**
  * @brief Gets the surround mode of video port
  * 
- * This function is used to get the surround mode of the specified video port.
+ * For source devices, this function is used to get the surround mode of the specified video port.
+ * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in]  handle   - Handle of the video port returned from dsGetVideoPort()
  * @param[out] surround - Surround mode .Please refer :: dsSURROUNDMode_t
@@ -284,8 +286,9 @@ typedef void (*dsVideoFormatUpdateCB_t)(dsHDRStandard_t videoFormat);
 /**
  * @brief Checks whether a video port is active or not.
  * 
- * This function is used to indicate whether a video port is active or not. A HDMI output port is active if it is connected 
- * to the active port of sink device. 
+ * For Source devices, this function is used to indicate whether a video port is active or not. A HDMI output port is active if it is connected
+ * to the active port of sink device.
+ * For sink devices, this function shall return video port connection status as active and returns dsERR_NONE always.
  *
  * @param[in]  handle   - Handle of the video port returned from dsGetVideoPort()
  * @param[out] active   - Connection state of the video port 
@@ -364,9 +367,10 @@ dsError_t  dsEnableHDCP(intptr_t handle, bool contentProtect, char *hdcpKey, siz
 /**
  * @brief Indicates whether a video port is DTCP protected.
  * 
- * This function indicates whether the specified video port is configured for DTCP
+ * For source devices, this function indicates whether the specified video port is configured for DTCP
  * content protection. It must return dsERR_OPERATION_NOT_SUPPORTED if DTCP
  * is not supported.
+ * For sink devices, this function returns the authentication status as dsHDCP_STATUS_AUTHENTICATED and returns dsERR_NONE always.
  *
  * @param[in]  handle               - Handle of the video port returned from dsGetVideoPort()
  * @param [out] pContentProtected   - Current DTCP content protection status
@@ -390,9 +394,10 @@ dsError_t  dsIsDTCPEnabled (intptr_t handle, bool* pContentProtected);
  /**
  * @brief Indicates whether a video port is HDCP protected.
  * 
- * This function indicates whether the specified video port is configured for HDCP
+ * For source devices,this function indicates whether the specified video port is configured for HDCP
  * content protection. It must return dsERR_OPERATION_NOT_SUPPORTED if HDCP
  * is not supported.
+ * For sink devices, this function returns the authentication status as dsHDCP_STATUS_AUTHENTICATED and returns dsERR_NONE always.
  *
  * @param[in]  handle               - Handle of the video port returned from dsGetVideoPort()
  * @param [out] pContentProtected   - Current HDCP content protection status
@@ -440,7 +445,8 @@ dsError_t  dsEnableVideoPort(intptr_t handle, bool enabled);
 /**
  * @brief Sets the display resolution of specified video port.
  *
- * This function sets the resolution of the specified video port.
+ * For source devices, this function sets the resolution of the specified video port.
+ * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle        - Handle of the video port returned from dsGetVideoPort()
  * @param[in] resolution    - Video resolution. Please refer ::dsVideoPortResolution_t
@@ -544,6 +550,8 @@ typedef void (*dsHDCPStatusCallback_t)(intptr_t handle, dsHdcpStatus_t status);
 
  /**
  * @brief Gets the current HDCP status of the specified video port.
+ *
+ * For sink devices, this function returns the authentication status as dsHDCP_STATUS_AUTHENTICATED and returns dsERR_NONE always.
  *
  * @param[in] handle    - Handle of the video port returned from dsGetVideoPort()
  * @param[out] status   - HDCP status of the video port.  Please refer ::dsHdcpStatus_t
@@ -941,7 +949,8 @@ dsError_t dsGetHdmiPreference(intptr_t handle, dsHdcpProtocolVersion_t *hdcpCurr
 /**
  * @brief Gets the IgnoreEDID status variable set in the device.
  *
- * This function is used to retrieve the status variable in order to determine whether to ignore the EDID data or not.
+ * For source devices, this function is used to retrieve the status variable in order to determine whether to ignore the EDID data or not.
+ * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle        - Handle of the video port returned from dsGetVideoPort()
  * @param [out] status      - Status of IgnoreEDID variable, ( @a true if EDID data ccan be ignored, @a false otherwise )
@@ -962,7 +971,8 @@ dsError_t dsGetIgnoreEDIDStatus(intptr_t handle, bool* status);
 /**
  * @brief Sets the background color of the specified video port.
  *
- * This function sets the background color of the specified video port.
+ * For source devices, this function sets the background color of the specified video port.
+ * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle    - Handle of the video port returned from dsGetVideoPort()
  * @param[in] color     - Background color to be set.  Please refer ::dsVideoBackgroundColor_t
@@ -1004,7 +1014,8 @@ dsError_t dsSetForceHDRMode(intptr_t handle, dsHDRStandard_t mode);
 /**
  * @brief Gets the color depth capabilities of the specified video port
  *
- * This function is used to get the color depth capabilities of the specified video port.
+ * For source devices, this function is used to get the color depth capabilities of the specified video port.
+ * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle                    - Handle of the video port returned from dsGetVideoPort()
  * @param [out] colorDepthCapability    - OR-ed value of supported color depth standards.  Please refer ::dsDisplayColorDepth_t
@@ -1025,7 +1036,8 @@ dsError_t dsColorDepthCapabilities(intptr_t handle, unsigned int *colorDepthCapa
 /**
  * @brief Gets the preferred color depth values.
  *
- * This function is used to get the preferred color depth of the specified video port.
+ * For source devices, this function is used to get the preferred color depth of the specified video port.
+ * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle        - Handle of the video port returned from dsGetVideoPort()
  * @param [out] colorDepth  - color depth value.  Please refer ::dsDisplayColorDepth_t
@@ -1048,7 +1060,8 @@ dsError_t dsGetPreferredColorDepth(intptr_t handle, dsDisplayColorDepth_t *color
 /**
  * @brief Sets the preferred color depth for the specified video port.
  *
- * This function is used to set the preferred color depth for the specified video port.
+ * For source devices, this function is used to set the preferred color depth for the specified video port.
+ * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle        - Handle of the video port returned from dsGetVideoPort()
  * @param[in] colorDepth    - color depth value.Please refer :: dsDisplayColorDepth_t
