@@ -558,7 +558,7 @@ dsError_t dsIsHdmiARCPort (dsHdmiInPort_t iPort, bool *isArcPort);
 
 /**
  * @brief Gets the maximum size of EDID data corresponds to the given input port
- * 
+ *
  * This function gets the maximum size of EDID data corresponds to the given input port.
  *
  * @param[in] iHdmiPort     - HDMI input port.  Please refer ::dsHdmiInPort_t
@@ -569,11 +569,11 @@ dsError_t dsIsHdmiARCPort (dsHdmiInPort_t iPort, bool *isArcPort);
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
- * 
+ *
  * @pre dsHdmiInInit() must be called before calling this API
- * 
+ *
  * @warning  This API is Not thread safe.
- * 
+ *
  */
 dsError_t dsGetEDIDBytesMaxSize (dsHdmiInPort_t iHdmiPort, int *pMaxEDIDSize);
 
@@ -595,7 +595,7 @@ dsError_t dsGetEDIDBytesMaxSize (dsHdmiInPort_t iHdmiPort, int *pMaxEDIDSize);
  * 
  * @pre dsHdmiInInit() must be called before calling this API
  * 
- * @see dsGetEDIDBytesLength()
+ * @see dsGetEDIDBytesMaxSize()
  *
  * @warning  This API is Not thread safe.
  * 
