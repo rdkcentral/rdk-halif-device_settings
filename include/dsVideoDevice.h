@@ -286,6 +286,8 @@ dsError_t dsForceDisableHDRSupport(intptr_t handle, bool disable);
 /**
  * @brief Sets the FRF mode of the device
  *
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
+ *
  * @param[in] handle    - The handle returned from the dsGetVideoDevice() function
  * @param[in] frfmode   - integer with corresponding Framerate value. 
  *                               Please refer ::dsVideoFrameRate_t for max and min framerate.
@@ -310,6 +312,8 @@ dsError_t dsSetFRFMode(intptr_t handle, int frfmode);
 /**
  * @brief Gets the FRF mode of the device
  *
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
+ *
  * @param[in]  handle   - The handle returned from the dsGetVideoDevice() function
  * @param[out] frfmode  - integer with corresponding Framerate value of the device. 
  *                             Please refer :: dsVideoFrameRate_t for max and min framerate.
@@ -332,6 +336,8 @@ dsError_t dsGetFRFMode(intptr_t handle, int *frfmode);
 
 /**
  * @brief Gets the current framerate of the device
+ *
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in]  handle       - The handle returned from the dsGetVideoDevice() function
  * @param[out] framerate    - Current frame rate will be represented in FPS
@@ -357,6 +363,8 @@ dsError_t dsGetCurrentDisplayframerate(intptr_t handle, char *framerate);
 
 /**
  * @brief Sets the display framerate for the device
+ *
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle    - The handle returned from the dsGetVideoDevice() function
  * @param[in] framerate - Framerate value to be set frame will be represented in FPS. 
@@ -390,6 +398,8 @@ typedef void (*dsRegisterFrameratePreChangeCB_t)(unsigned int tSecond);
 /**
  * @brief This function is used to register the callback function for the Display framerate pre change event.
  *
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
+ *
  * @param[in] CBFunc    - Function callback to register for the event. 
  *                              See dsRegisterFrameratePreChangeCB_t.
  *
@@ -419,6 +429,8 @@ typedef void (*dsRegisterFrameratePostChangeCB_t)(unsigned int tSecond);
 /**
  * @brief This function is used to register a callback function for the Display framerate 
  *                      post change event from the HAL side.
+ *
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] CBFunc    - Function to register for the event. 
  *                                  See dsRegisterFrameratePostChangeCB_t.
