@@ -109,7 +109,8 @@ typedef enum _dsDisplayEvent_t {
 /**
  * @brief Callback function used to notify display related events to the caller.
  * 
- * This callback is triggered whenever there is a display related change and it is notified to the caller.
+ * For source devices, this callback is triggered whenever there is a display related change and it is notified to the caller.
+ * For sink devices, this callback fires display connected once on bootup. Display is always connected for a sink device.
  *
  * @param[in]  handle   - Handle of the display device
  * @param[in]  event    - Display event. Please refer ::dsDisplayEvent_t
@@ -224,8 +225,9 @@ dsError_t dsGetEDIDBytes(intptr_t handle, unsigned char *edid, int *length);
 /**
  * @brief Gets the aspect ratio of connected display device.
  * 
- * This function returns the aspect ratio of the display corresponding to the 
+ * For source devices, this function returns the aspect ratio of the display corresponding to the
  * specified display device handle.
+ * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED as it is handled in TV Settings module
  *
  * @param[in]  handle       - Handle of the display device
  * @param[out] aspectRatio  - Current aspect ratio of the specified display device
