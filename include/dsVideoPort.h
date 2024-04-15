@@ -189,7 +189,7 @@ dsError_t  dsIsVideoPortEnabled(intptr_t handle, bool *enabled);
  * @brief Checks whether the specific video port is connected to display.
  * 
  * For source devices, this function is used to check whether video port is connected to a display or not.
- * For sink devices, this function returns display connection status true and dsERR_NONE always.
+ * For sink devices, this function returns the display connection status as true always. Please refer :: dsVIDEOPORT_TYPE_INTERNAL
  *
  * @param[in]  handle       - Handle of the video port returned from dsGetVideoPort()
  * @param[out] connected    - Flag to hold the connection status of display
@@ -288,7 +288,7 @@ typedef void (*dsVideoFormatUpdateCB_t)(dsHDRStandard_t videoFormat);
  * 
  * For Source devices, this function is used to indicate whether a video port is active or not. A HDMI output port is active if it is connected
  * to the active port of sink device.
- * For sink devices, this function shall return video port connection status as active and returns dsERR_NONE always.
+ * For sink devices, this function returns the active status as true always. Please refer :: dsVIDEOPORT_TYPE_INTERNAL (Sink's own display)
  *
  * @param[in]  handle   - Handle of the video port returned from dsGetVideoPort()
  * @param[out] active   - Connection state of the video port 
@@ -370,7 +370,6 @@ dsError_t  dsEnableHDCP(intptr_t handle, bool contentProtect, char *hdcpKey, siz
  * For source devices, this function indicates whether the specified video port is configured for DTCP
  * content protection. It must return dsERR_OPERATION_NOT_SUPPORTED if DTCP
  * is not supported.
- * For sink devices, this function returns the authentication status as dsHDCP_STATUS_AUTHENTICATED and returns dsERR_NONE always.
  *
  * @param[in]  handle               - Handle of the video port returned from dsGetVideoPort()
  * @param [out] pContentProtected   - Current DTCP content protection status
