@@ -131,6 +131,7 @@ dsError_t  dsGetVideoDevice(int index, intptr_t *handle);
 /**
  * @brief Sets the screen zoom mode (decoder format conversion)
  *
+ * For source devices, this function establishes the zoom mode settings according to the available zoom options for specified video port.
  * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle    - The handle returned from the dsGetVideoDevice() function
@@ -156,6 +157,7 @@ dsError_t  dsSetDFC(intptr_t handle, dsVideoZoom_t dfc);
 /**
  * @brief Gets the screen zoom mode (decoder format conversion)
  *
+ * For source devices, this function gets the zoom mode settings for specified video port.
  * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle    - The handle returned from the dsGetVideoDevice() function
@@ -247,6 +249,7 @@ dsError_t dsGetSupportedVideoCodingFormats(intptr_t handle, unsigned int * suppo
 /**
  * @brief Gets the video codec information
  *
+ * For source devices, this function returns the supported video codecs, codec profile and levels for the specified video port.
  * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in]  handle   - The handle returned from the dsGetVideoDevice() function
@@ -292,6 +295,7 @@ dsError_t dsForceDisableHDRSupport(intptr_t handle, bool disable);
 /**
  * @brief Sets the FRF mode of the device
  *
+ * For sink devices, this function sets the Frame Rate Mode for the specified port handle.
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle    - The handle returned from the dsGetVideoDevice() function
@@ -318,6 +322,7 @@ dsError_t dsSetFRFMode(intptr_t handle, int frfmode);
 /**
  * @brief Gets the FRF mode of the device
  *
+ * For sink devices, thios function returns the Frame Rate Mode for the specified port handle.
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in]  handle   - The handle returned from the dsGetVideoDevice() function
@@ -343,6 +348,7 @@ dsError_t dsGetFRFMode(intptr_t handle, int *frfmode);
 /**
  * @brief Gets the current framerate of the device
  *
+ * For sink devices, this function returns the current framerate for the specified video port.
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in]  handle       - The handle returned from the dsGetVideoDevice() function
@@ -370,6 +376,7 @@ dsError_t dsGetCurrentDisplayframerate(intptr_t handle, char *framerate);
 /**
  * @brief Sets the display framerate for the device
  *
+ * For sink devices, this function sets the framerate for the specified video port.
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle    - The handle returned from the dsGetVideoDevice() function
@@ -405,6 +412,7 @@ typedef void (*dsRegisterFrameratePreChangeCB_t)(unsigned int tSecond);
 /**
  * @brief This function is used to register the callback function for the Display framerate pre change event.
  *
+ * For sink devices, this function registers a callback for Display framerate pre change event.
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] CBFunc    - Function callback to register for the event. 
@@ -439,6 +447,7 @@ typedef void (*dsRegisterFrameratePostChangeCB_t)(unsigned int tSecond);
  * @brief This function is used to register a callback function for the Display framerate 
  *                      post change event from the HAL side.
  *
+ * For sink devices, this function registers a callback for Display framerate post change event.
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] CBFunc    - Function to register for the event. 
