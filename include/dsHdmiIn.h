@@ -244,7 +244,8 @@ dsError_t dsHdmiInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t heigh
 /**
  * @brief Updates the video zoom on the active HDMI input using the provided zoom mode
  * 
- * This function updates the video zoom on the active HDMI input using the provided zoom mode.
+ * For source devices, this function updates the video zoom on the active HDMI input using the provided zoom mode.
+ * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] requestedZoomMode     - HDMI input zoom mode.  Please refer ::dsVideoZoom_t
  *                                          dsVideoZoom_t is within vidoeDeviceTypes.h
