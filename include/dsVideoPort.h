@@ -489,26 +489,6 @@ dsError_t  dsSetResolution(intptr_t handle, dsVideoPortResolution_t *resolution)
 dsError_t  dsGetResolution(intptr_t handle, dsVideoPortResolution_t *resolution);
 
 /**
- * @brief Sets the specified video port as active source.
- * 
- * @param[in] handle    - Handle of the video port returned from dsGetVideoPort()
- *
- * @return dsError_t                      -  Status 
- * @retval dsERR_NONE                     -  Success
- * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
- * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
- * @retval dsERR_GENERAL                  -  Underlying undefined platform error
- * 
- * @pre dsVideoPortInit() and dsGetVideoPort() must be called before calling this API.
- * 
- * @see dsIsVideoPortActive()
- * 
- * @warning  This API is Not thread safe.
- */
-dsError_t dsSetActiveSource(intptr_t handle);
-
-/**
  * @brief Callback function to notify the HDCP status change.
  * 
  * HAL Implementation must invoke this callback to notify the HDCP status change event
@@ -524,8 +504,9 @@ typedef void (*dsHDCPStatusCallback_t)(intptr_t handle, dsHdcpStatus_t status);
 /**
  * @brief Callback Registration for the HDCP status change event.
  *
- * This function registers a callback function to receive the HDCP status change event from
- * the specific HDMI Port
+ * For source devices, this function registers a callback function to receive the HDCP status change event from
+ * the specific HDMI Port.
+ * For sink devices, this function returns dsERR_NONE and callback is triggered with HDCP status as authenticated.
  * 
  * @note Application must install at most one callback function per handle.
  * Multiple listeners are supported at application layer and thus not
