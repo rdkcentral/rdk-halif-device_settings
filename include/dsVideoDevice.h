@@ -274,6 +274,8 @@ dsError_t dsGetVideoCodecInfo(intptr_t handle, dsVideoCodingFormat_t codec, dsVi
 /**
  * @brief Disables, forcefully the HDR support of the device
  *
+ * This function returns dsERR_OPERATION_NOT_SUPPORTED for both source and sink devices.
+ *
  * @param[in] handle    - The handle returned from the dsGetVideoDevice() function
  * @param[in] disable   - Boolean value to force disable HDR or not.
  *                              True to force disable, false to remove force disable
