@@ -322,7 +322,7 @@ dsError_t dsSetFRFMode(intptr_t handle, int frfmode);
 /**
  * @brief Gets the FRF mode of the device
  *
- * For sink devices, thios function returns the Frame Rate Mode for the specified port handle.
+ * For sink devices, this function returns the Frame Rate Mode for the specified port handle.
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in]  handle   - The handle returned from the dsGetVideoDevice() function
@@ -401,7 +401,7 @@ dsError_t dsGetCurrentDisplayframerate(intptr_t handle, char *framerate);
 dsError_t dsSetDisplayframerate(intptr_t handle, char *framerate);
 
 /**
- * @brief Call back function to receive the framerate change event form the HAL side.
+ * @brief Call back function to receive the framerate pre change event from the HAL side.
  * @param [in] tSecond time elapsed after the change. Time in seconds.
  * 
  * @pre dsVideoDeviceInit(), dsRegisterFrameratePreChangeCB() must be called before calling this function.
@@ -434,7 +434,7 @@ typedef void (*dsRegisterFrameratePreChangeCB_t)(unsigned int tSecond);
 dsError_t dsRegisterFrameratePreChangeCB(dsRegisterFrameratePreChangeCB_t CBFunc);
 
 /**
- * @brief Call back function to receive the framerate change is event.
+ * @brief Call back function to receive the framerate post change event.
  * @param [in] tSecond time elapsed after the change.
  * 
  * @pre dsVideoDeviceInit(), dsRegisterFrameratePostChangeCB() must be called before calling this function.
