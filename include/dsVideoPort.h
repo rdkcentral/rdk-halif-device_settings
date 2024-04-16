@@ -506,7 +506,7 @@ typedef void (*dsHDCPStatusCallback_t)(intptr_t handle, dsHdcpStatus_t status);
  *
  * For source devices, this function registers a callback function to receive the HDCP status change event from
  * the specific HDMI Port.
- * For sink devices, this function returns dsERR_NONE and callback is triggered with HDCP status as authenticated.
+ * For sink devices, this function returns dsERR_NONE and callback is triggered once during bootup with HDCP status as authenticated.
  * 
  * @note Application must install at most one callback function per handle.
  * Multiple listeners are supported at application layer and thus not
