@@ -189,7 +189,8 @@ dsError_t  dsIsVideoPortEnabled(intptr_t handle, bool *enabled);
  * @brief Checks whether the specific video port is connected to display.
  * 
  * For source devices, this function is used to check whether video port is connected to a display or not.
- * For sink devices, this function returns the display connection status as true always. Please refer :: dsVIDEOPORT_TYPE_INTERNAL
+ * For sink devices, where the display is always connected (dsVIDEOPORT_TYPE_INTERNAL), this API will consistently return true
+ *   for the display connection status.
  *
  * @param[in]  handle       - Handle of the video port returned from dsGetVideoPort()
  * @param[out] connected    - Flag to hold the connection status of display
@@ -288,7 +289,7 @@ typedef void (*dsVideoFormatUpdateCB_t)(dsHDRStandard_t videoFormat);
  * 
  * For Source devices, this function is used to indicate whether a video port is active or not. A HDMI output port is active if it is connected
  * to the active port of sink device.
- * For sink devices, this function returns the active status as true always. Please refer :: dsVIDEOPORT_TYPE_INTERNAL (Sink's own display)
+ * For Sink devices, where the display is always connected (dsVIDEOPORT_TYPE_INTERNAL), this API will return true for the Video port status.
  *
  * @param[in]  handle   - Handle of the video port returned from dsGetVideoPort()
  * @param[out] active   - Connection state of the video port 
