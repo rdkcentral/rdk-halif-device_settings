@@ -143,7 +143,8 @@ dsError_t dsHdmiInTerm (void);
 /**
  * @brief Gets the number of HDMI input ports on the device
  * 
- * This function gets the number of HDMI input ports on the device.
+ * For sink devices, this function gets the number of HDMI input ports on the device.
+ * For source devices, this function gets the number of HDMI input ports on the device if it has hdmi input support, else returns 0.
  *
  * @param[out] pNumberOfinputs  - number of HDMI input ports. 
  *                                 Please refer  ::dsHdmiInPort_t for max number of inputs. Min is 0
@@ -165,7 +166,8 @@ dsError_t dsHdmiInGetNumberOfInputs (uint8_t *pNumberOfinputs);
 /**
  * @brief Gets the HDMI input port status of all ports
  * 
- * This function gets the HDMI input port status.
+ * For sink devices, this function gets the HDMI input port status.
+ * For source devices, this function gets the HDMI input port status if it has hdmi input support, else returns dsERR_OPERATION_NOT_SUPPORTED
  *
  * @param[out] pStatus  - status of the HDMI input ports. Please refer ::dsHdmiInStatus_t
  *
@@ -186,7 +188,8 @@ dsError_t dsHdmiInGetStatus (dsHdmiInStatus_t *pStatus);
 /**
  * @brief Selects the HDMI input port as active and available for presentation
  * 
- * This function selects the HDMI input port for presentation.
+ * For sink devices, this function selects the HDMI input port for presentation.
+ * For source devices, this function selects the HDMI input port for presentation if it has hdmi input support, else returns dsERR_OPERATION_NOT_SUPPORTED
  *
  * @param[in] Port              - HDMI input port to be presented.  Please refer ::dsHdmiInPort_t
  * @param[in] audioMix    	    - Flag to control the audioMix status ( @a true to enable, @a false to disable)
@@ -217,10 +220,11 @@ dsError_t dsHdmiInSelectPort (dsHdmiInPort_t Port, bool audioMix, dsVideoPlaneTy
 /**
  * @brief Scales the HDMI input video
  *
- * This function scales the HDMI input video. The width and height, based on the x, y coordinates, 
+ * For sink devices, this function scales the HDMI input video. The width and height, based on the x, y coordinates, 
  *      cannot exceed that of the current resolution of the device.
  *      e.g.  x(in pixels)+width cannot be greater then the width of the resolution.
  *      The current resolution will return by  Please refer ::dsGetResolution()
+ * For source devices, this function scales the HDMI input video if it has hdmi input support, else returns dsERR_OPERATION_NOT_SUPPORTED.
  *
  * @param[in] x         - x coordinate for the video. Min of 0. Max is based on the current resolution
  * @param[in] y         - y coordinate for the video. Min of 0. Max is based on the current resolution
@@ -244,7 +248,8 @@ dsError_t dsHdmiInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t heigh
 /**
  * @brief Updates the video zoom on the active HDMI input using the provided zoom mode
  * 
- * This function updates the video zoom on the active HDMI input using the provided zoom mode.
+ * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
+ * For source devices, this function updates the video zoom on the active HDMI input using the provided zoom mode if it has hdmi input support, else returns dsERR_OPERATION_NOT_SUPPORTED.
  *
  * @param[in] requestedZoomMode     - HDMI input zoom mode.  Please refer ::dsVideoZoom_t
  *                                          dsVideoZoom_t is within vidoeDeviceTypes.h
@@ -266,7 +271,8 @@ dsError_t dsHdmiInSelectZoomMode (dsVideoZoom_t requestedZoomMode);
 /**
  * @brief Gets the current HDMI input video mode of the active port
  * 
- * This function gets the current HDMI input video mode of the active port
+ * For sink devices, this function gets the current HDMI input video mode of the active port.
+ * For source devices, this function gets the current HDMI input video mode of the active port if it has hdmi input support, else returns dsERR_OPERATION_NOT_SUPPORTED.
  * 
  * @param[out] resolution              - Current video port resolution.  Please refer ::dsVideoPortResolution_t
  *                                          dsVideoPortResolution_t is currently in the audioVisual combined file.
@@ -382,7 +388,8 @@ typedef void (*dsHdmiInAviContentTypeChangeCB_t)(dsHdmiInPort_t port, dsAviConte
 /**
  * @brief Registers a callback for the HDMI input hot plug event notification
  * 
- * This function registers a callback for the HDMI input hot plug event notification from the HAL side.
+ * For sink devices, this function registers a callback for the HDMI input hot plug event notification from the HAL side.
+ * For source devices, this function registers a callback for the HDMI input hot plug event if it has hdmi input support, else returns dsERR_OPERATION_NOT_SUPPORTED .
  *
  * @param[in] CBFunc    - HDMI input hot plug callback function.  Please refer ::dsHdmiInConnectCB_t
  * 
@@ -403,7 +410,8 @@ dsError_t dsHdmiInRegisterConnectCB (dsHdmiInConnectCB_t CBFunc);
 /**
  * @brief Registers a callback for the HDMI input Signal Change event
  * 
- * This function registers a callback for the HDMI input Signal Change event.
+ * For sink devices, this function registers a callback for the HDMI input Signal Change event.
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] CBFunc    - HDMI input Signal change callback function.  Please refer ::dsHdmiInSignalChangeCB_t
  * 
@@ -424,7 +432,8 @@ dsError_t dsHdmiInRegisterSignalChangeCB (dsHdmiInSignalChangeCB_t CBFunc);
 /**
  * @brief Registers a callback for the HDMI input Status Change event
  * 
- * This function registers a callback for the HDMI input Status Change event.
+ * For sink devices, this function registers a callback for the HDMI input Status Change event.
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] CBFunc    - HDMI input Status change callback function.  Please refer ::dsHdmiInStatusChangeCB_t
  * 
@@ -445,8 +454,9 @@ dsError_t dsHdmiInRegisterStatusChangeCB (dsHdmiInStatusChangeCB_t CBFunc);
 /**
  * @brief Registers a callback for the HDMI input video mode Change event
  * 
- * This function registers a callback for the HDMI input video mode Change event. 
+ * For sink devices, this function registers a callback for the HDMI input video mode Change event. 
  *       The mode change is triggered whenever the video resolution changes.
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] CBFunc    - HDMI input video mode change callback function. 
  *                              Please refer ::dsHdmiInVideoModeUpdateCB_t
@@ -468,7 +478,8 @@ dsError_t dsHdmiInRegisterVideoModeUpdateCB(dsHdmiInVideoModeUpdateCB_t CBFunc);
 /**
  * @brief Registers a callback for the HDMI input ALLM Mode Change event
  * 
- * This function registers a callback for the HDMI input ALLM Mode Change event.
+ * For sink devices, this function registers a callback for the HDMI input ALLM Mode Change event.
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] CBFunc    - HDMI input ALLM Mode change callback function. 
  *                               Please refer ::dsHdmiInAllmChangeCB_t
@@ -490,7 +501,8 @@ dsError_t dsHdmiInRegisterAllmChangeCB (dsHdmiInAllmChangeCB_t CBFunc);
 /**
  * @brief Registers the HDMI In Latency Change event
  *
- * This function registers for the AV Latency Change event.
+ * For sink devices, this function registers for the AV Latency Change event.
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] CBFunc    - HDMI input AV Latency change callback function. 
  *                              Please refer ::dsAVLatencyChangeCB_t
@@ -513,7 +525,8 @@ dsError_t dsHdmiInRegisterAVLatencyChangeCB (dsAVLatencyChangeCB_t CBFunc);
 /**
  * @brief Registers the HDMI Input Content type Change event
  *
- * This function registers for the HDMI Input content type change event.
+ * For sink devices, this function registers for the HDMI Input content type change event.
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] CBFunc    - HDMI input Avi Content Mode change callback function. 
  *                               Please refer ::dsHdmiInAviContentTypeChangeCB_t
@@ -536,7 +549,8 @@ dsError_t dsHdmiInRegisterAviContentTypeChangeCB (dsHdmiInAviContentTypeChangeCB
 /**
  * @brief Checks if the given port is an HDMI ARC port or not
  * 
- * This function checks if the given port is an HDMI ARC port or not
+ * For sink devices, this function checks if the given port is an HDMI ARC port or not.
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] iPort     - HDMI Arc port. Max value is device specific. Min value of 0
  * @param[out] isArcPort - Flag to hold the HDMI Arc port status 
@@ -559,7 +573,8 @@ dsError_t dsIsHdmiARCPort (dsHdmiInPort_t iPort, bool *isArcPort);
 /**
  * @brief Gets the EDID bytes info corresponds to the given input port
  * 
- * This function gets the EDID bytes info corresponds to the given input port.
+ * For sink devices, this function gets the EDID bytes info corresponds to the given input port.
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] iHdmiPort     - HDMI input port.  Please refer ::dsHdmiInPort_t
  * @param[out] edid         - EDID data for which info is required
@@ -582,7 +597,8 @@ dsError_t dsGetEDIDBytesInfo (dsHdmiInPort_t iHdmiPort, unsigned char *edid, int
 /**
  * @brief Gets the HDMI SPD info
  * 
- * This function gets the HDMI SPD info.
+ * For sink devices, this function gets the HDMI SPD info.
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] iHdmiPort     - HDMI input port. Please refer ::dsHdmiInPort_t
  * @param[out] data         - HDMI SPD info data
@@ -605,7 +621,8 @@ dsError_t dsGetHDMISPDInfo (dsHdmiInPort_t iHdmiPort, unsigned char *data);
 /**
  * @brief Sets the EDID version to be used for a given port id
  * 
- * This function sets the EDID version to be used for a given port id
+ * For sink devices, this function sets the EDID version to be used for a given port id.
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] iHdmiPort     - HDMI input port.  Please refer ::dsHdmiInPort_t
  * @param[in] iEdidVersion  - input EDID version number to set.  Please refer ::tv_hdmi_edid_version_t
@@ -629,7 +646,8 @@ dsError_t dsSetEdidVersion (dsHdmiInPort_t iHdmiPort, tv_hdmi_edid_version_t iEd
 /**
  * @brief Gets the EDID version currently being used for the given port id
  * 
- * This function gets the EDID version currently being used for the given port id
+ * For sink devices, this function gets the EDID version currently being used for the given port id.
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] iHdmiPort     - HDMI input port.  Please refer ::dsHdmiInPort_t
  * @param[out] iEdidVersion - input EDID version number.  Please refer ::tv_hdmi_edid_version_t
@@ -653,7 +671,8 @@ dsError_t dsGetEdidVersion (dsHdmiInPort_t iHdmiPort, tv_hdmi_edid_version_t *iE
 /**
  * @brief Checks whether ALLM status is enabled or disabled for the specific HDMI input port
  * 
- * This function checks whether ALLM status is enabled or disabled for the specific HDMI input port
+ * For sink devices, this function checks whether ALLM status is enabled or disabled for the specific HDMI input port.
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] iHdmiPort     - HDMI input port.  Please refer ::dsHdmiInPort_t
  * @param[out] allmStatus   - Flag to control the allm status
@@ -676,7 +695,8 @@ dsError_t dsGetAllmStatus (dsHdmiInPort_t iHdmiPort, bool *allmStatus);
 /**
  * @brief Gets all the supported game features list information
  * 
- * This function gets all the supported game features list information.
+ * For sink devices, this function gets all the supported game features list information.
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[out] features         - List of all supported game features. 
  *                                       Please refer ::dsSupportedGameFeatureList_t
@@ -698,7 +718,8 @@ dsError_t dsGetSupportedGameFeaturesList (dsSupportedGameFeatureList_t* features
 /**
  * @brief Gets the current AV latency
  * 
- * This function gets the current AV latency.
+ * For sink devices, this function gets the current AV latency.
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[out] audio_latency    - Audio latency value. Max value 500ms. Min value 0
  * @param[out] video_latency    - Video latency value. Max value 500ms. Min value 0
@@ -721,7 +742,8 @@ dsError_t dsGetAVLatency (int *audio_latency, int *video_latency);
 /**
  * @brief Sets the EDID ALLM support
  * 
- * This function sets the EDID ALLM support
+ * For sink devices, this function sets the EDID ALLM support.
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] iHdmiPort      - HDMI input port.  Please refer ::dsHdmiInPort_t
  * @param[in] allmSupport    - Allm support. False for disabled, True for enabled
@@ -743,7 +765,8 @@ dsError_t dsSetEdid2AllmSupport (dsHdmiInPort_t iHdmiPort, bool allmSupport);
 /**
  * @brief Sets the EDID ALLM support
  * 
- * This function sets the EDID ALLM support
+ * For sink devices, this function sets the EDID ALLM support.
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] iHdmiPort    - HDMI input port.  Please refer ::dsHdmiInPort_t
  * @param[out] allmSupport - Allm support. False for disabled, True for enabled
