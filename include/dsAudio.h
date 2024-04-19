@@ -1664,7 +1664,8 @@ dsError_t dsAudioOutIsConnected(intptr_t handle, bool* isConnected);
 /**
  * @brief Registers for the Audio Output Connect Event
  *
- * This function is used to register for the Audio Output Connect Event
+ * For sink devices, this function is used to register for the Audio Output Connect Event. This callback is Headphone specific
+ * and will be triggered whenever there is a change in Headphone connection status change.
  *
  * @param[in] CBFunc  - Audio output port connect callback function.
  *
