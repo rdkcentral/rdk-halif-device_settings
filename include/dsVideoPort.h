@@ -394,8 +394,8 @@ dsError_t  dsIsDTCPEnabled (intptr_t handle, bool* pContentProtected);
  /**
  * @brief Indicates whether a video port is HDCP protected.
  * 
- * For sink devices, this function returns the authentication status as dsHDCP_STATUS_AUTHENTICATED 
- * and returns dsERR_NONE always.
+ * For sink devcies, this function always gets the connection status as "true" because the sink display 
+ * is internal(dsVIDEOPORT_TYPE_INTERNAL).
  * For source devices,this function indicates whether the specified video port is configured for HDCP
  * content protection. It must return dsERR_OPERATION_NOT_SUPPORTED if HDCP
  * is not supported.
@@ -934,9 +934,9 @@ dsError_t dsGetHdmiPreference(intptr_t handle, dsHdcpProtocolVersion_t *hdcpCurr
  * @brief Gets the IgnoreEDID status variable set in the device.
  *
  * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
- * For source devices, this function is used to retrieve the status variable in order to determine 
- * whether to ignore the EDID data or not. Used by dsMgr to decide whether it should handle the hdmi resolution settings 
- * or not after hdcp Authentication. If false, dsMgr handles the settings else by the SoC.
+ * For source devices, this function is used to retrieve the status variable in order to determine whether to ignore the EDID data. 
+ * Used by caller to decide whether it should handle the hdmi resolution settings or not after hdcp Authentication. 
+ * If platform doesn't want to set the status, then returns dsERR_OPERATION_NOT_SUPPORTED.
  *
  * @param[in] handle        - Handle of the video port returned from dsGetVideoPort()
  * @param [out] status      - Status of IgnoreEDID variable, ( @a true if EDID data ccan be ignored, @a false otherwise )
