@@ -249,7 +249,7 @@ dsError_t dsGetSupportedVideoCodingFormats(intptr_t handle, unsigned int * suppo
 /**
  * @brief Gets the video codec information of the provided coding format.
  *
- * For source devices, this function returns the supported video codecs, codec profile and levels for the input coding format.
+ * For source devices, this function returns the supported codec profile and levels for the input coding format.
  * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in]  handle   - The handle returned from the dsGetVideoDevice() function
