@@ -394,8 +394,7 @@ dsError_t  dsIsDTCPEnabled (intptr_t handle, bool* pContentProtected);
  /**
  * @brief Indicates whether a video port is HDCP protected.
  * 
- * For sink devcies, this function always gets the connection status as "true" because the sink display 
- * is internal(dsVIDEOPORT_TYPE_INTERNAL).
+ * For sink devices, this function returns dsERR_NONE and the content protection status is true always.
  * For source devices,this function indicates whether the specified video port is configured for HDCP
  * content protection. It must return dsERR_OPERATION_NOT_SUPPORTED if HDCP
  * is not supported.
