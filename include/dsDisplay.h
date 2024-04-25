@@ -217,7 +217,7 @@ dsError_t dsGetEDID(intptr_t handle, dsDisplayEDID_t *edid);
  * 
  */
 
-dsError_t dsGetEDIDBytesSize(intptr_t handle, unsigned int *maxEDIDSize);
+dsError_t dsGetEDIDBytesSize(intptr_t handle, unsigned int *pMaxEDIDSize);
 
 /**
  * @brief Gets the EDID buffer and EDID length of connected display device. 
