@@ -422,6 +422,7 @@ dsError_t  dsSetDolbyVolumeMode(intptr_t handle, bool mode);
  * @brief Gets the Intelligent Equalizer Mode.
  *
  * This function returns the Intelligent Equalizer Mode setting used in the audio port corresponding to specified Port handle.
+ * For source devices, if MS12 DAP Intelligent Equalizer not supported, then this function returns dsERR_OPERATION_NOT_SUPPORTED.
  *
  * @param[in] handle - Handle for the output audio port.
  * @param[out] mode  - Pointer to Intelligent Equalizer mode. 0 = OFF, 1 = Open, 2 = Rich, 3 = Focused,
@@ -447,6 +448,7 @@ dsError_t  dsGetIntelligentEqualizerMode(intptr_t handle, int *mode);
  * @brief Sets the Intelligent Equalizer Mode.
  * 
  * This function sets the Intelligent Equalizer Mode to be used in the audio port corresponding to the specified port handle.
+ * For source devices, if MS12 DAP Intelligent Equalizer not supported, then this function retuns dsERR_OPERATION_NOT_SUPPORTED.
  *
  * @param[in] handle  - Handle for the output audio port.
  * @param[in] mode    - Intelligent Equalizer mode. 0 = OFF, 1 = Open, 2 = Rich, 3 = Focused,
@@ -516,7 +518,8 @@ dsError_t  dsSetVolumeLeveller(intptr_t handle, dsVolumeLeveller_t volLeveller);
 /**
  * @brief Gets the audio Bass
  *
- * This function returns the Bass used in a given audio port
+ * This function returns the Bass used in a given audio port.
+ * For source devices, if MS12 DAP bass enhancer is not supported, then this function returns dsERR_OPERATION_NOT_SUPPORTED.
  *
  * @param[in] handle  - Handle for the output Audio port
  * @param[out] boost  - Pointer to Bass Enhancer boost value (ranging from 0 to 100)
@@ -540,6 +543,7 @@ dsError_t  dsGetBassEnhancer(intptr_t handle, int *boost);
  * @brief Sets the audio Bass
  *
  * This function sets the Bass to be used in the audio port corresponding to specified port handle.
+ * For source devices, if MS12 DAP bass enhancer is not supported, then this function returns dsERR_OPERATION_NOT_SUPPORTED.
  *
  * @param[in] handle  - Handle for the output Audio port
  * @param[in] boost   - Bass Enhancer boost value (ranging from 0 to 100)
@@ -562,7 +566,8 @@ dsError_t  dsSetBassEnhancer(intptr_t handle, int boost);
 /**
  * @brief Gets the audio Surround Decoder enabled/disabled status
  *
- * This function returns enable/disable status of surround decoder
+ * This function returns enable/disable status of surround decoder.
+ * For source devices, if MS12 DAP surround decoder is not supported, then this function returns dsERR_OPERATION_NOT_SUPPORTED.
  *
  * @param[in] handle   - Handle for the output Audio port
  * @param[out] enabled - Pointer to Surround Decoder enabled(1)/disabled(0) value
@@ -586,6 +591,7 @@ dsError_t  dsIsSurroundDecoderEnabled(intptr_t handle, bool *enabled);
  * @brief Enables / Disables the audio Surround Decoder.
  *
  * This function will enable/disable surround decoder of the audio port corresponding to specified port handle.
+ * For source devices, if MS12 DAP surround decoder is not supported, then this function returns dsERR_OPERATION_NOT_SUPPORTED.
  *
  * @param[in] handle   - Handle for the output Audio port
  * @param[in] enabled  - Surround Decoder enabled(1)/disabled(0) value
@@ -656,6 +662,7 @@ dsError_t  dsSetDRCMode(intptr_t handle, int mode);
  * @brief Gets the audio Surround Virtualizer level.
  *
  * This function returns the Surround Virtualizer level(mode and boost) used in the audio port corresponding to specified port handle.
+ * For source devices, if MS12 DAP surround virtualizer is not supported, then this function returns dsERR_OPERATION_NOT_SUPPORTED.
  *
  * @param[in] handle       - Handle for the output Audio port
  * @param[out] virtualizer - Surround virtualizer setting. Please refer ::dsSurroundVirtualizer_t
@@ -679,6 +686,7 @@ dsError_t  dsGetSurroundVirtualizer(intptr_t handle, dsSurroundVirtualizer_t *vi
  * @brief Sets the audio Surround Virtualizer level
  *
  * This function sets the Surround Virtualizer level(mode and boost) to be used in the audio port corresponding to specified port handle.
+ * For source devices, if MS12 DAP surround virtualizer is not supported, then this function returns dsERR_OPERATION_NOT_SUPPORTED.
  *
  * @param[in] handle       - Handle for the output Audio port
  * @param[in] virtualizer  - Surround virtualizer setting. Please refer ::dsSurroundVirtualizer_t
@@ -701,7 +709,8 @@ dsError_t  dsSetSurroundVirtualizer(intptr_t handle, dsSurroundVirtualizer_t vir
 /**
  * @brief Gets the Media Intelligent Steering of the audio port.
  *
- * This function returns enable/disable status of Media Intelligent Steering for the audio port corresponding to specified port handle.
+ * For sink devices, this function returns enable/disable status of Media Intelligent Steering for the audio port corresponding to specified port handle.
+ * For the source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle    - Handle for the output Audio port
  * @param[out] enabled  - MI Steering enabled(1)/disabled(0) value
@@ -724,7 +733,8 @@ dsError_t  dsGetMISteering(intptr_t handle, bool *enabled);
 /**
  * @brief Set the Media Intelligent Steering of the audio port.
  *
- * This function sets the enable/disable status of Media Intelligent Steering for the audio port corresponding to specified port handle.
+ * For sink devices, this function sets the enable/disable status of Media Intelligent Steering for the audio port corresponding to specified port handle.
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle   - Handle for the output Audio port
  * @param[in] enabled  - MI Steering enabled(1)/disabled(0) value 
@@ -747,7 +757,8 @@ dsError_t  dsSetMISteering(intptr_t handle, bool enabled);
 /**
  * @brief Gets the Graphic Equalizer Mode.
  *
- * This function returns the Graphic Equalizer Mode setting used in the audio port corresponding to the specified port handle.
+ * For sink devices, this function returns the Graphic Equalizer Mode setting used in the audio port corresponding to the specified port handle.
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle - Handle for the output audio port.
  * @param[out] mode  - Graphic Equalizer Mode. 0 = EQ OFF, 1 = EQ Open, 2 = EQ Rich and 3 = EQ Focused 
@@ -771,7 +782,8 @@ dsError_t  dsGetGraphicEqualizerMode(intptr_t handle, int *mode);
 /**
  * @brief Sets the Graphic Equalizer Mode.
  *
- * This function sets the Graphic Equalizer Mode setting to be used in the audio port corresponding to the specified port handle.
+ * For sink devices, this function sets the Graphic Equalizer Mode setting to be used in the audio port corresponding to the specified port handle.
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle  - Handle for the output audio port.
  * @param[in] mode    - Graphic Equalizer mode. 0 for EQ OFF, 1 for EQ Open, 2 for EQ Rich and 3 for EQ Focused
@@ -794,7 +806,8 @@ dsError_t  dsSetGraphicEqualizerMode(intptr_t handle, int mode);
 /**
  * @brief Gets the supported MS12 audio profiles
  *
- * This function will get the list of supported MS12 audio profiles
+ * For sink devices, this function will get the list of supported MS12 audio profiles.
+ * For the source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle     - Handle for the output Audio port
  * @param[out] profiles  - List of supported audio profiles. Please refer ::dsMS12AudioProfileList_t
@@ -840,7 +853,8 @@ dsError_t  dsGetMS12AudioProfile(intptr_t handle, char *profile);
 /**
  * @brief Gets the supported ARC types of the connected ARC/eARC device
  *
- * This function gets the supported ARC types of the connected device on ARC/eARC port.
+ * For sink devices, this function gets the supported ARC types of the connected device on ARC/eARC port.
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle - Handle for the HDMI ARC/eARC port
  * @param[out] types - Value of supported ARC types. Please refer ::dsAudioARCTypes_t
@@ -862,9 +876,10 @@ dsError_t dsGetSupportedARCTypes(intptr_t handle, int *types);
 /**
  * @brief Sets Short Audio Descriptor retrieved from CEC for the connected ARC device
  *
- * This function sets the Short Audio Descriptor based on best available options
+ * For sink devices, this function sets the Short Audio Descriptor based on best available options
  * of Audio capabilities supported by connected ARC device. Required when ARC output
- * mode is Auto/Passthrough. Please refer ::dsAudioSADList_t, ::dsSetStereoMode
+ * mode is Auto/Passthrough. Please refer ::dsAudioSADList_t, ::dsSetStereoMode.
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  * 
  * @param[in] handle   - Handle for the HDMI ARC/eARC port.
  * @param[in] sad_list - All SADs retrieved from CEC for the connected ARC device.
@@ -885,7 +900,8 @@ dsError_t dsAudioSetSAD(intptr_t handle, dsAudioSADList_t sad_list);
 /**
  * @brief Enable/Disable ARC/EARC and route audio to connected device.
  *
- * This function enables/disables ARC/EARC and routes audio to connected device. Please refer ::_dsAudioARCStatus_t and ::dsAudioARCTypes_t
+ * For sink devices, this function enables/disables ARC/EARC and routes audio to connected device. Please refer ::_dsAudioARCStatus_t and ::dsAudioARCTypes_t .
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle    - Handle for the HDMI ARC/eARC port
  * @param[in] arcStatus - ARC/eARC feature. Please refer ::_dsAudioARCStatus_t
@@ -955,7 +971,8 @@ dsError_t  dsSetStereoMode(intptr_t handle, dsAudioStereoMode_t mode);
 /**
  * @brief Checks if auto mode is enabled or not for the current audio port.
  * 
- * This function returns the current auto mode of audio port corresponding to specified port handle.
+ * For sink devices, this function returns the current auto mode of audio port corresponding to specified port handle.
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle     - Handle for the output audio port
  * @param[out] autoMode  - Pointer to hold the auto mode setting ( @a if enabled, @a false if disabled) of the specified audio port
@@ -979,7 +996,8 @@ dsError_t  dsGetStereoAuto(intptr_t handle, int *autoMode);
 /**
  * @brief Sets the Auto Mode to be used on the audio port. 
  * 
- * This function sets the auto mode to be used on the specified audio port.
+ * For sink devices, this function sets the auto mode to be used on the specified audio port.
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle    - Handle for the output audio port.
  * @param[in] autoMode  - Indicates the auto mode ( @a true if enabled, @a false if disabled ) to be used on audio port.
@@ -1002,7 +1020,8 @@ dsError_t  dsSetStereoAuto(intptr_t handle, int autoMode);
 /**
  * @brief Gets the audio gain of an audio port.
  * 
- * This function returns the current audio gain for the audio port corresponding to specified port handle.
+ * For sink devices, this function returns the current audio gain for the audio port corresponding to specified port handle.
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle  - Handle for the output audio port
  * @param[out] gain   - Pointer to hold the audio gain value of the specified audio port.
@@ -1026,7 +1045,8 @@ dsError_t  dsGetAudioGain(intptr_t handle, float *gain);
 /**
  * @brief Sets the audio gain of an audio port.
  * 
- * This function sets the gain to be used on the audio port corresponding to specified port handle.
+ * For sink devices, this function sets the gain to be used on the audio port corresponding to specified port handle.
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle  - Handle for the output audio port
  * @param[in] gain    - Audio Gain to be used on the audio port value
@@ -1048,58 +1068,10 @@ dsError_t  dsGetAudioGain(intptr_t handle, float *gain);
 dsError_t  dsSetAudioGain(intptr_t handle, float gain);
 
 /**
- * @brief Gets the current audio dB level of an audio port.
- * 
- * This function returns the current audio dB level for the audio port corresponding to specified port handle.
- * The Audio dB level ranges from -1450 to 180 dB 
- * 
- * @param[in] handle  - Handle for the output audio port
- * @param[out] db     - Pointer to hold the Audio dB level of the specified audio port
- *
- * @return dsError_t                      -  Status 
- * @retval dsERR_NONE                     -  Success
- * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
- * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
- * @retval dsERR_GENERAL                  -  Underlying undefined platform error
- * 
- * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
- * 
- * @warning  This API is Not thread safe.
- * 
- * @see dsSetAudioDB()
- */
-dsError_t  dsGetAudioDB(intptr_t handle, float *db);
-
-/**
- * @brief Sets the current audio dB level of an audio port.
- * 
- * This function sets the dB level to be used on the audio port corresponding to specified port handle.
- * Max dB is 180 and Min dB is -1450
- *
- * @param[in] handle  - Handle for the output audio port
- * @param[in] db      - Audio dB level to be used on the audio port
- * 
- *
- * @return dsError_t                      -  Status 
- * @retval dsERR_NONE                     -  Success
- * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
- * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
- * @retval dsERR_GENERAL                  -  Underlying undefined platform error
- * 
- * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
- * 
- * @warning  This API is Not thread safe.
- * 
- * @see dsGetAudioDB()
- */
-dsError_t  dsSetAudioDB(intptr_t handle, float db);
-
-/**
  * @brief Gets the current audio volume level of an audio port.
  * 
- * This function returns the current audio volume level of audio port corresponding to specified port handle.
+ * For sink devices, this function returns the current audio volume level of audio port corresponding to specified port handle.
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle - Handle for the output audio port
  * @param[out] level - Pointer to hold the audio level value (ranging from 0 to 100) of the specified audio port
@@ -1122,7 +1094,8 @@ dsError_t  dsGetAudioLevel(intptr_t handle, float *level);
 /**
  * @brief Sets the audio volume level of an audio port.
  * 
- * This function sets the audio volume level to be used on the audio port corresponding to specified port handle.
+ * For sink devices, this function sets the audio volume level to be used on the audio port corresponding to specified port handle.
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle  - Handle for the output audio port
  * @param[in] level   - Volume level value (ranging from 0 to 100) to be used on the specified audio port
@@ -1141,71 +1114,6 @@ dsError_t  dsGetAudioLevel(intptr_t handle, float *level);
  * @see dsGetAudioLevel()
  */
 dsError_t  dsSetAudioLevel(intptr_t handle, float level);
-
-/**
- * @brief Gets the maximum audio dB level of an audio port.
- * 
- * This function returns the maximum audio dB level supported by the audio port corresponding to specified port handle(platform specific).
- *
- * @param[in] handle  - Handle for the output audio port
- * @param[out] maxDb  - Pointer to hold the maximum audio dB value (float value e.g:10.0) supported by the specified audio port(platform specific)
- *                        Maximum value can be 180 dB
- * 
- * @return dsError_t                      -  Status 
- * @retval dsERR_NONE                     -  Success
- * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
- * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
- * @retval dsERR_GENERAL                  -  Underlying undefined platform error
- * 
- * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
- * 
- * @warning  This API is Not thread safe.
- */
-dsError_t  dsGetAudioMaxDB(intptr_t handle, float *maxDb);
-
-/**
- * @brief Gets the minimum audio dB level of an audio port.
- * 
- * This function returns the minimum audio dB level supported by the audio port corresponding to specified port handle.
- *
- * @param[in] handle  - Handle for the output audio port
- * @param[out] minDb  - Pointer to hold the minimum audio dB value (float. e.g: 0.0) supported by the specified audio port(platform specific)
- *                        Minimum value can be -1450 dB
- *
- * @return dsError_t                      -  Status 
- * @retval dsERR_NONE                     -  Success
- * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
- * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
- * @retval dsERR_GENERAL                  -  Underlying undefined platform error
- * 
- * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
- * 
- * @warning  This API is Not thread safe.
- */
-dsError_t  dsGetAudioMinDB(intptr_t handle, float *minDb);
-
-/**
- * @brief Gets the optimal audio level of an audio port.
- * 
- * This function returns the optimal audio level (dB) of the audio port corresponding to specified port handle(platform specific).
- *
- * @param[in] handle        - Handle for the output audio port
- * @param[out] optimalLevel - Pointer to hold the optimal level value of the specified audio port(platform specific)
- *
- * @return dsError_t                      -  Status 
- * @retval dsERR_NONE                     -  Success
- * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
- * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
- * @retval dsERR_GENERAL                  -  Underlying undefined platform error
- * 
- * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
- * 
- * @warning  This API is Not thread safe.
- */
-dsError_t  dsGetAudioOptimalLevel(intptr_t handle, float *optimalLevel);
 
 /**
  * @brief Gets the audio delay (in ms) of an audio port
@@ -1342,28 +1250,6 @@ dsError_t dsSetAudioAtmosOutputMode(intptr_t handle, bool enable);
 dsError_t dsGetSinkDeviceAtmosCapability(intptr_t handle, dsATMOSCapability_t *capability);
 
 /**
- * @brief Gets the loop-through mode of an audio port.
- * 
- * This function is used to check if the audio port is configured for loop-through.
- *
- * @param[in] handle     - Handle for the output audio port
- * @param[out] loopThru  - Status of loop-through feature for the specified audio port
- *                           ( @a true when output is looped through, @a false otherwise)
- *
- * @return dsError_t                      -  Status 
- * @retval dsERR_NONE                     -  Success
- * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
- * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
- * @retval dsERR_GENERAL                  -  Underlying undefined platform error
- * 
- * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
- * 
- * @warning  This API is Not thread safe.
- */
-dsError_t  dsIsAudioLoopThru(intptr_t handle, bool *loopThru);
-
-/**
  * @brief Gets the audio mute status of an audio port corresponding to the specified port handle.
  * 
  * This function is used to check whether the audio on a specified port is muted or not.
@@ -1434,6 +1320,8 @@ dsError_t  dsEnableAudioPort(intptr_t handle, bool enabled);
 /**
  * @brief Enables or Disables MS12 DAPV2 and DE feature
  * 
+ * For source devices,this function returns dsERR_OPERATION_NOT_SUPPORTED always.
+ *
  * @param[in] handle   - Handle of the output audio port
  * @param[in] feature  - Enums for MS12 features. Please refer ::dsMS12FEATURE_t
  * @param[in] enable   - Flag to control the MS12 features
@@ -1456,6 +1344,8 @@ dsError_t  dsEnableMS12Config(intptr_t handle, dsMS12FEATURE_t feature,const boo
 
 /**
  * @brief Enables or Disables Loudness Equivalence feature.
+ *
+ * For source devices,if LE not supported, then this function returns dsERR_OPERATION_NOT_SUPPORTED.
  *
  * @param[in] handle  - Handle of the output audio port
  * @param[in] enable  - Flag to control the LE features
@@ -1480,6 +1370,7 @@ dsError_t  dsEnableLEConfig(intptr_t handle, const bool enable);
  * @brief Gets the LE (Loudness Equivalence) configuration.
  *
  * This function is used to Get LE (Loudness Equivalence) feature of the audio port corresponding to specified port handle.
+ * For source devices, if LE not supported, then this function returns dsERR_OPERATION_NOT_SUPPORTED.
  *
  * @param[in] handle   - Handle for the output Audio port
  * @param[out] enable  - Flag which return status of LE features
@@ -1503,7 +1394,8 @@ dsError_t dsGetLEConfig(intptr_t handle, bool *enable);
 /**
  * @brief Sets the MS12 audio profile
  *
- * This function will configure the user selected ms12 audio profile
+ * For sink devices, this function will configure the user selected ms12 audio profile.
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle   - Handle for the output audio port
  * @param[in] profile  - Audio profile to be used from the supported list. Please refer ::_dsMS12AudioProfileList_t
@@ -1522,53 +1414,6 @@ dsError_t dsGetLEConfig(intptr_t handle, bool *enable);
  * @see dsGetMS12AudioProfile(), dsGetMS12AudioProfileList()
  */
 dsError_t  dsSetMS12AudioProfile(intptr_t handle, const char* profile);
-
-/**
- * @brief Sets the audio ducking level of an audio port. 
- * 
- * This function sets the audio ducking level to be used on the specified audio port based on the audio output mode. 
- * If output mode is expert mode, this will mute the audio.
- *
- * @param[in] handle  - Handle for the output audio port
- * @param[in] action  - action type to start or stop ducking. Please refer ::dsAudioDuckingAction_t
- * @param[in] type    - ducking type is absolute or relative to current volume level. Please refer ::dsAudioDuckingType_t
- * @param[in] level   - The volume level value from 0 to 100 to be used on the audio port
- *
- * @return dsError_t                      -  Status 
- * @retval dsERR_NONE                     -  Success
- * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
- * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
- * @retval dsERR_GENERAL                  -  Underlying undefined platform error
- * 
- * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
- * 
- * @warning  This API is Not thread safe.
- * 
- */
-dsError_t  dsSetAudioDucking(intptr_t handle, dsAudioDuckingAction_t action, dsAudioDuckingType_t type, const unsigned char level);
-
-/**
- * @brief Sets loop-through mode of an audio port.
- * 
- * This function enables/disables audio loop-through on the audio port corresponding to the specified port handle.
- *
- * @param[in] handle    - Handle for the output audio port
- * @param[in] loopThru  - Flag to enable/disable loop-through
- *                          ( @a true to enable, @a false to disable)
- *
- * @return dsError_t                      -  Status 
- * @retval dsERR_NONE                     -  Success
- * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
- * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
- * @retval dsERR_GENERAL                  -  Underlying undefined platform error
- * 
- * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
- * 
- * @warning  This API is Not thread safe.
- */
-dsError_t  dsEnableLoopThru(intptr_t handle, bool loopThru);
 
 /**
  * @brief Mutes or un-mutes an audio port.
@@ -1666,6 +1511,7 @@ dsError_t dsAudioOutIsConnected(intptr_t handle, bool* isConnected);
  *
  * For sink devices, this function is used to register for the Audio Output Connect Event. This callback is Headphone specific
  * and will be triggered whenever there is a change in Headphone connection status change.
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] CBFunc  - Audio output port connect callback function.
  *
@@ -1763,98 +1609,7 @@ dsError_t dsGetAudioCapabilities(intptr_t handle, int *capabilities);
  * @warning  This API is Not thread safe.
  */
 dsError_t dsGetMS12Capabilities(intptr_t handle, int *capabilities);
-
-/**
- * @brief Resets the Dialog Enhancement of audio port to default value.
- *
- * This function is used to reset the dialog enhancement of audio port corresponding to the specified port handle to its platform-specific default value.
- *
- * @param[in] handle  - Handle for the output audio port
- *
- * @return dsError_t                      -  Status 
- * @retval dsERR_NONE                     -  Success
- * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
- * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
- * @retval dsERR_OPERATION_FAILED         -  The attempted operation failed
- * @retval dsERR_GENERAL                  -  Underlying undefined platform error
- * 
- * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
- * 
- * @warning  This API is Not thread safe.
- */
-dsError_t dsResetDialogEnhancement(intptr_t handle);
-
-/**
- * @brief Resets the audio bass enhancer to its default value.
- *
- * This function is used to reset the audio bass enhancer of audio port corresponding to port handle to its platform-specific default bass boost value.
- *
- * @param[in] handle  - Handle for the output audio port
- *
- * @return dsError_t                      -  Status 
- * @retval dsERR_NONE                     -  Success
- * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
- * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
- * @retval dsERR_OPERATION_FAILED         -  The attempted operation failed
- * @retval dsERR_GENERAL                  -  Underlying undefined platform error
- * 
- * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
- *
- * @see dsGetBassEnhancer, dsSetBassEnhancer
- *
- * @warning  This API is Not thread safe.
- */
-dsError_t dsResetBassEnhancer(intptr_t handle);
-
-/**
- * @brief Resets the audio surround virtualizer level to its default value.
- *
- * This function is used to reset the audio surround virtualizer level of audio port corresponding to port handle to its platform-specific default boost value.
- *
- * @param[in] handle  - Handle for the output audio port
- * 
- * @return dsError_t                      -  Status 
- * @retval dsERR_NONE                     -  Success
- * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
- * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
- * @retval dsERR_OPERATION_FAILED         -  The attempted operation failed
- * @retval dsERR_GENERAL                  -  Underlying undefined platform error
- * 
- * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
- *
- * @see dsGetSurroundVirtualizer, dsSetSurroundVirtualizer
- *
- * @warning  This API is Not thread safe.
- */
-dsError_t dsResetSurroundVirtualizer(intptr_t handle);
-
-/**
- * @brief Resets the Dolby volume leveller of the audio port to its default volume level.
- *
- * This function is used to reset the Dolby volume leveller of audio port corresponding to port handle to its platform-specific default volume level.
- *
- * @param[in] handle  - Handle for the output audio port
- * 
- * @return dsError_t                      -  Status 
- * @retval dsERR_NONE                     -  Success
- * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
- * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
- * @retval dsERR_OPERATION_FAILED         -  The attempted operation failed
- * @retval dsERR_GENERAL                  -  Underlying undefined platform error
- * 
- * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
- * 
- * @warning  This API is Not thread safe.
- * 
- * @see dsGetVolumeLeveller(), dsSetVolumeLeveller()
- * 
- */
-dsError_t dsResetVolumeLeveller(intptr_t handle);
-
+ 
 /**
  * @brief Enables/Disables associated audio mixing feature.
  *
@@ -2045,7 +1800,8 @@ dsError_t  dsGetSecondaryLanguage(intptr_t handle, char* sLang);
 /**
  * @brief Gets the audio HDMI ARC port ID for each platform
  *
- * This function will get audio HDMI ARC port ID of platform
+ * For sink devices, this function will get audio HDMI ARC port ID of platform.
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] portId  - HDMI ARC port ID
  *
@@ -2068,7 +1824,8 @@ dsError_t dsGetHDMIARCPortId(int *portId);
 * @brief Sets the Mixer Volume level of sink device for the given input
 * This API is specific to sink devices
 *
-* This function sets the mixer volume level for either primary(main audio) or system audio input(System Beep).
+* For sink devices, this function sets the mixer volume level for either primary(main audio) or system audio input(System Beep).
+* For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
 *
 * @param[in] handle  - A valid handle refers to a specific audio port handle on the platform, or a NULL handle refers to use the current active port
 * @param[in] aInput  - dsAudioInputPrimary / dsAudioInputSystem. Please refer ::dsAudioInput_t
