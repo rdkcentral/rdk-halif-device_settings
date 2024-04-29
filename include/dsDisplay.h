@@ -196,14 +196,38 @@ dsError_t dsDisplayInit();
 dsError_t dsGetEDID(intptr_t handle, dsDisplayEDID_t *edid);
 
 /**
+ * @brief Gets the maximum EDID buffer length of connected display device. 
+ * 
+ * This function is used to get the EDID buffer size of the connected display corresponding to
+ * the specified display device handle.
+ *
+ * @param[in] handle       - Handle of the display device
+ * @param[out] maxEDIDSize - length of the EDID buffer data. Min value is 0
+ *
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ * 
+ * @pre  dsDisplayInit() and dsGetDisplay() must be called before calling this API
+ * 
+ * @warning  This API is Not thread safe
+ * 
+ */
+
+dsError_t dsGetEDIDBytesSize(intptr_t handle, unsigned int *pMaxEDIDSize);
+
+/**
  * @brief Gets the EDID buffer and EDID length of connected display device. 
  * 
  * This function is used to get the EDID buffer and EDID size of the connected display corresponding to
  * the specified display device handle.
  *
- * @param[in] handle    - Handle of the display device
- * @param[out] edid     - Pointer to raw EDID buffer
- * @param[out] length   - length of the EDID buffer data. Min value is 0
+ * @param[in] handle      - Handle of the display device
+ * @param[out] edid       - Pointer to raw EDID buffer
+ * @param[in] maxEDIDSize - length of the EDID buffer data. Min value is 0
  *
  * @note Caller is responsible for allocating memory for edid( please refer ::MAX_EDID_BYTES_LEN ) and freeing the EDID buffer
  *
@@ -220,7 +244,7 @@ dsError_t dsGetEDID(intptr_t handle, dsDisplayEDID_t *edid);
  * 
  */
 
-dsError_t dsGetEDIDBytes(intptr_t handle, unsigned char *edid, int *length);
+dsError_t dsGetEDIDBytes(intptr_t handle, unsigned char *edid, unsigned int maxEDIDSize);
 
 /**
  * @brief Gets the aspect ratio of connected display device.

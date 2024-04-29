@@ -157,7 +157,7 @@ The `caller` is expected to have complete control over the life cycle of the `HA
 
 1. Initialize the interface using: `dsDisplayInit()` before making any other `API` calls.  If `dsDisplayInit()` call fails, the `HAL` must return the respective error code, so that the `caller` can retry the operation.
 
-2. The `caller` can call `dsGetEDID()`, `dsGetDisplayAspectRatio()` and `dsGetEDIDBytes()` to query the information of connected display device. This interface is also used to notify `HDCP` Protocol changes of display device to the `caller`.
+2. The `caller` can call `dsGetEDID()`, `dsGetDisplayAspectRatio()` `dsGetEDIDBytesSize()` and `dsGetEDIDBytes()` to query the information of connected display device. This interface is also used to notify `HDCP` Protocol changes of display device to the `caller`.
 
 3. De-initialize the HAL using `dsDisplayTerm()`.
 
@@ -179,6 +179,11 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     Caller->>HAL:dsGetDisplay()
     Note over HAL: Returns the handle for connected display Device 
     HAL->>Driver:Getting the handle for connected display device
+    Driver-->>HAL:return
+    HAL-->>Caller:return
+    Caller->>HAL:dsGetEDIDBytesSize()
+    Note over HAL: Gets the maximum EDID buffer size
+    HAL->>Driver:Get the maximum EDID buffer size
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsGetEDID()
