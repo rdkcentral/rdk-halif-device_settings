@@ -138,9 +138,30 @@ dsError_t dsHostTerm();
 dsError_t dsGetCPUTemperature(float *cpuTemperature);
 
 /**
+ * @brief Returns the SOC ID Length
+ *
+ * @param[out] pSocIDLength - Maximum SOC ID length
+ *
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ *
+ * @pre dsHostInit() must be called before this function
+ *
+ * @warning  This API is Not thread safe.
+ *
+ * @see dsGetSocIDFromSDK
+ */
+dsError_t dsGetSocIDLength(unsigned int *pSocIDLength);
+
+/**
  * @brief Returns the SOC ID
  *
  * @param[out] socID    - 8 byte Chip ID programmed to the CHIP One Time Programmable area
+ * @param[in] socIDLength - length of the SOC ID buffer
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
@@ -148,21 +169,42 @@ dsError_t dsGetCPUTemperature(float *cpuTemperature);
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
- * 
+ *
  * @pre dsHostInit() must be called before this function
- * 
+ *
  * @warning  This API is Not thread safe.
- * 
+ *
+ * @see dsGetSocIDLength
  */
-dsError_t dsGetSocIDFromSDK(char *socID);
+dsError_t dsGetSocIDFromSDK(char *socID, unsigned int socIDLength);
 
 /**
- * @brief Gets the host EDID and length
+ * @brief Gets the host EDID buffer length
+ *
+ * @param[out] pMaxEDIDLength  - length of host EDID. Min value of 0.  Max value of 2048
+ *
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ *
+ * @pre dsHostInit() must be called before this function
+ *
+ * @warning  This API is Not thread safe.
+ *
+ * @see dsGetHostEDID
+ */
+dsError_t dsGetHostEDIDSize(unsigned int *pMaxEDIDLength);
+
+/**
+ * @brief Gets the host EDID
  * 
  * The host EDID will be used on devices supporting HDMI input feature.
  *
- * @param[out] edid     - host EDID.
- * @param[out] length   - length of host EDID. Min value of 0.  Max value of 2048
+ * @param[out] edid            - host EDID.
+ * @param[in]  maxEDIDLength   - length of host EDID. Min value of 0.  Max value of 2048
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
@@ -170,13 +212,14 @@ dsError_t dsGetSocIDFromSDK(char *socID);
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
- * 
+ *
  * @pre dsHostInit() must be called before this function
- * 
+ *
  * @warning  This API is Not thread safe.
- * 
+ *
+ * @see dsGetHostEDIDSize
  */
-dsError_t dsGetHostEDID(unsigned char *edid, int *length);
+dsError_t dsGetHostEDID(unsigned char *edid, unsigned int maxEDIDLength);
 
 /** @} */ // End of DSHAL_HOST_API doxygen group 
 /** @} */ // End of DS Host HAL

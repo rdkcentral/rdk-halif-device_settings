@@ -153,7 +153,7 @@ The `caller` is expected to have complete control over the life cycle of the `HA
 
 1. Initialize the `HAL` using function: `dsHostInit()` before making any other `API` calls.  If `dsHostInit()` call fails, the `HAL` must return the respective error code, so that the `caller` can retry the operation.
 
-2. The `caller` can call `dsGetCPUTemperature()`, `dsGetHostEDID()` and `dsGetSocIDFromSDK()` to query the needed information.
+2. The `caller` can call `dsGetCPUTemperature()`, `dsGetHostEDIDSize()`, `dsGetHostEDID()` `dsGetSocIDLength()` and `dsGetSocIDFromSDK()` to query the needed information.
 
 3. De-initialized the `HAL` using the function: `dsHostTerm()`
 
@@ -177,9 +177,19 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     HAL->>Driver:Getting the current CPU temp
     Driver-->>HAL:return
     HAL-->>Caller:return
+    Caller->>HAL:dsGetSocIDLength()
+    Note over HAL: Returns the SoC ID Buffer length
+    HAL->>Driver:Getting the SoC ID Buffer length
+    Driver-->>HAL:return
+    HAL-->>Caller:return
     Caller->>HAL:dsGetSocIDFromSDK()
     Note over HAL: Returns the SoC ID
     HAL->>Driver:Getting the SoC ID
+    Driver-->>HAL:return
+    HAL-->>Caller:return
+    Caller->>HAL:dsGetHostEDIDSize()
+    Note over HAL: Returns the Host EDID Buffer length
+    HAL->>Driver:Getting the Host EDID Buffer length
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsGetHostEDID()
