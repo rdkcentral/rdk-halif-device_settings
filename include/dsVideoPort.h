@@ -309,33 +309,6 @@ typedef void (*dsVideoFormatUpdateCB_t)(dsHDRStandard_t videoFormat);
 dsError_t  dsIsVideoPortActive(intptr_t handle, bool *active);
 
 /**
- * @brief Enables/Disables the DTCP of a video port.
- * 
- * This function is used to enable/disable the DTCP (Digital Transmission Content Protection) 
- * for the specified video port. It must return dsERR_OPERATION_NOT_SUPPORTED if connected 
- * video port does not support DTCP.
- * 
- *
- * @param[in] handle            - Handle of the video port returned from dsGetVideoPort()
- * @param[in] contentProtect    - Flag to enable/disable DTCP content protection
- *                               ( @a true to enable, @a false to disable)
- * 
- * @return dsError_t                      -  Status 
- * @retval dsERR_NONE                     -  Success
- * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
- * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
- * @retval dsERR_GENERAL                  -  Underlying undefined platform error
- * 
- * @pre dsVideoPortInit() and dsGetVideoPort() must be called before calling this API.
- * 
- * @warning  This API is Not thread safe.
- * 
- * @see dsIsDTCPEnabled()
- */
-dsError_t  dsEnableDTCP(intptr_t handle, bool contentProtect);
-
-/**
  * @brief Enables/Disables the HDCP of a video port.
  * 
  * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
@@ -344,7 +317,7 @@ dsError_t  dsEnableDTCP(intptr_t handle, bool contentProtect);
  * video port does not support HDCP.
  *
  * @param[in] handle            - Handle of the video port returned from dsGetVideoPort()
- * @param[in] contentProtect    - Flag to enable/disable DTCP content protection
+ * @param[in] contentProtect    - Flag to enable/disable HDCP content protection
  *                                  ( @a true to enable, @a false to disable)
  * @param[in] hdcpKey           - HDCP key
  * @param[in] keySize           - HDCP key size.  Please refer ::HDCP_KEY_MAX_SIZE
@@ -363,33 +336,6 @@ dsError_t  dsEnableDTCP(intptr_t handle, bool contentProtect);
  * @see dsGetHDCPStatus(), dsIsHDCPEnabled()
  */
 dsError_t  dsEnableHDCP(intptr_t handle, bool contentProtect, char *hdcpKey, size_t keySize);
-
-/**
- * @brief Indicates whether a video port is DTCP protected.
- * 
- * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
- * For source devices, this function indicates whether the specified video port is configured for DTCP
- * content protection. It must return dsERR_OPERATION_NOT_SUPPORTED if DTCP
- * is not supported.
- *
- * @param[in]  handle               - Handle of the video port returned from dsGetVideoPort()
- * @param [out] pContentProtected   - Current DTCP content protection status
- *                                      ( @a true when enabled, @a false otherwise)
- * 
- * @return dsError_t                      -  Status 
- * @retval dsERR_NONE                     -  Success
- * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
- * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
- * @retval dsERR_GENERAL                  -  Underlying undefined platform error
- * 
- * @pre dsVideoPortInit() and dsGetVideoPort() must be called before calling this API.
- * 
- * @warning  This API is Not thread safe.
- * 
- * @see dsEnableDTCP()
- */
-dsError_t  dsIsDTCPEnabled (intptr_t handle, bool* pContentProtected);
 
  /**
  * @brief Indicates whether a video port is HDCP protected.
