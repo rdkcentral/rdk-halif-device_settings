@@ -115,6 +115,8 @@ extern "C" {
  * @warning  This API is Not thread safe.
  * 
  * @see dsCompositeInTerm()
+ *
+ * @post dsCompositeInTerm() must be called to terminate the module initialized during the init call.
  */
 
 dsError_t dsCompositeInInit (void);

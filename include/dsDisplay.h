@@ -141,6 +141,7 @@ typedef void (*dsDisplayEventCallback_t)(int handle, dsDisplayEvent_t event,
  * 
  * @see dsDisplayTerm()
  * 
+ * @post dsDisplayTerm() must be called to terminate the module initialized during the init call.
  */
 dsError_t dsDisplayInit();
 
