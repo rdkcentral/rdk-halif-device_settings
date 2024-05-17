@@ -664,7 +664,7 @@ dsError_t  dsSetSurroundVirtualizer(intptr_t handle, dsSurroundVirtualizer_t vir
  * @brief Gets the Media Intelligent Steering of the audio port.
  *
  * For sink devices, this function returns enable/disable status of Media Intelligent Steering for the audio port corresponding to specified port handle.
- * For the source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
+ * For source devices, if MS12 DAP Media Intelligent Steering is not supported, then this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle    - Handle for the output Audio port
  * @param[out] enabled  - MI Steering enabled(1)/disabled(0) value
@@ -688,7 +688,7 @@ dsError_t  dsGetMISteering(intptr_t handle, bool *enabled);
  * @brief Set the Media Intelligent Steering of the audio port.
  *
  * For sink devices, this function sets the enable/disable status of Media Intelligent Steering for the audio port corresponding to specified port handle.
- * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
+ * For source devices, if MS12 DAP Media Intelligent Steering is not supported, then this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle   - Handle for the output Audio port
  * @param[in] enabled  - MI Steering enabled(1)/disabled(0) value 
@@ -712,7 +712,7 @@ dsError_t  dsSetMISteering(intptr_t handle, bool enabled);
  * @brief Gets the Graphic Equalizer Mode.
  *
  * For sink devices, this function returns the Graphic Equalizer Mode setting used in the audio port corresponding to the specified port handle.
- * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
+ * For source devices, if MS12 DAP Graphic Equalizer Mode is not supported, then this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle - Handle for the output audio port.
  * @param[out] mode  - Graphic Equalizer Mode. 0 = EQ OFF, 1 = EQ Open, 2 = EQ Rich and 3 = EQ Focused 
@@ -737,7 +737,7 @@ dsError_t  dsGetGraphicEqualizerMode(intptr_t handle, int *mode);
  * @brief Sets the Graphic Equalizer Mode.
  *
  * For sink devices, this function sets the Graphic Equalizer Mode setting to be used in the audio port corresponding to the specified port handle.
- * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
+ * For source devices, if MS12 DAP Graphic Equalizer Mode is not supported, then this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle  - Handle for the output audio port.
  * @param[in] mode    - Graphic Equalizer mode. 0 for EQ OFF, 1 for EQ Open, 2 for EQ Rich and 3 for EQ Focused
@@ -761,7 +761,7 @@ dsError_t  dsSetGraphicEqualizerMode(intptr_t handle, int mode);
  * @brief Gets the supported MS12 audio profiles
  *
  * For sink devices, this function will get the list of supported MS12 audio profiles.
- * For the source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle     - Handle for the output Audio port
  * @param[out] profiles  - List of supported audio profiles. Please refer ::dsMS12AudioProfileList_t
@@ -784,7 +784,8 @@ dsError_t  dsGetMS12AudioProfileList(intptr_t handle, dsMS12AudioProfileList_t* 
 /**
  * @brief Gets current audio profile selection
  *
- * This function gets the current audio profile configured
+ * For sink devices, this function gets the current audio profile configured.
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle    - Handle for the output Audio port
  * @param[out] profile  - Audio profile configured currently
@@ -1395,7 +1396,8 @@ dsError_t  dsIsAudioMS12Decode(intptr_t handle, bool *hasMS12Decode);
 /**
  * @brief Checks if the audio output port is connected or not.
  *
- * This function is used to check if the audio output port is connected or not.
+ * For sink devices, this function is used to check if the audio output port is connected or not.
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle        - Handle for the output Audio port
  * @param[out] isConnected  - Flag for audio port connection status 
