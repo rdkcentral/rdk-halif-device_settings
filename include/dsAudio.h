@@ -214,7 +214,7 @@ dsError_t  dsGetAudioPort(dsAudioPortType_t type, int index, intptr_t *handle);
 /**
  * @brief Gets the current audio format.
  *
- * This function returns the current audio format of the specified audio output port(like PCM, DOLBY AC3). Please refer ::dsAudioFormat_t
+ * This function returns the current audio format of the playback stream(like PCM, DOLBY AC3). Please refer ::dsAudioFormat_t
  *
  * @param[in] handle         - Handle for the output audio port
  * @param[out] audioFormat   - Pointer to hold the audio format
@@ -876,9 +876,10 @@ dsError_t dsAudioSetSAD(intptr_t handle, dsAudioSADList_t sad_list);
 dsError_t dsAudioEnableARC(intptr_t handle, dsAudioARCStatus_t arcStatus);
 
 /**
- * @brief Gets the stereo mode of an audio port.
+ * @brief Gets the digital audio format of an audio port.
  * 
- * This function returns the stereo mode setting for the audio port corresponding to specified port handle.
+ * This function returns the digital audio format on the digital interfaces(HDMI, HDMI ARC/eARC, SPDIF)
+ * corresponding to specified port handle.
  *
  * @param[in] handle      - Handle for the output audio port
  * @param[out] stereoMode - Pointer to hold the stereo mode setting of the
@@ -901,9 +902,10 @@ dsError_t dsAudioEnableARC(intptr_t handle, dsAudioARCStatus_t arcStatus);
 dsError_t  dsGetStereoMode(intptr_t handle, dsAudioStereoMode_t *stereoMode);
 
 /**
- * @brief Sets the stereo mode of an audio port. 
+ * @brief Sets the digital audio format of an audio port.
  * 
- * This function sets the stereo mode to be used on the audio port corresponding to specified port handle.
+ * This function sets the digital audio format to be used on the digital interfaces(HDMI, HDMI ARC/eARC, SPDIF)
+ * corresponding to specified port handle.
  *
  * @param[in] handle  - Handle for the output audio port
  * @param[in] mode    - Stereo mode to be used on the specified audio port. Please refer ::dsAudioStereoMode_t
@@ -975,7 +977,7 @@ dsError_t  dsSetStereoAuto(intptr_t handle, int autoMode);
 /**
  * @brief Gets the audio gain of an audio port.
  * 
- * For sink devices, this function returns the current audio gain for the audio port corresponding to specified port handle.
+ * For sink devices, this function returns the current audio gain for Speaker(dsAUDIOPORT_TYPE_SPEAKER).
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle  - Handle for the output audio port
@@ -1000,7 +1002,7 @@ dsError_t  dsGetAudioGain(intptr_t handle, float *gain);
 /**
  * @brief Sets the audio gain of an audio port.
  * 
- * For sink devices, this function sets the gain to be used on the audio port corresponding to specified port handle.
+ * For sink devices, this function sets the gain to be used for Speaker(dsAUDIOPORT_TYPE_SPEAKER).
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle  - Handle for the output audio port
@@ -1074,9 +1076,10 @@ dsError_t  dsSetAudioLevel(intptr_t handle, float level);
  * @brief Gets the audio delay (in ms) of an audio port
  *
  * This function returns the audio delay (in milliseconds) of audio port with respect to video corresponding to the specified port handle.
+ * The Audio delay ranges from 0 to 200 milliseconds.
  *
  * @param[in] handle        - Handle for the output Audio port
- * @param[out] audioDelayMs - Pointer to Audio delay ( ranges from 0 to 200 milliseconds )
+ * @param[out] audioDelayMs - Pointer to Audio delay
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -1097,6 +1100,7 @@ dsError_t dsGetAudioDelay(intptr_t handle, uint32_t *audioDelayMs);
  * @brief Sets the audio delay (in ms) of an audio port.
  * 
  * This function will set the audio delay (in milliseconds) of audio port corresponding to the specified port handle.
+ * The Audio delay ranges from 0 to 200 milliseconds.
  *
  * @param[in] handle        - Handle for the output Audio port
  * @param[in] audioDelayMs  - Amount of delay(in milliseconds)
@@ -1396,7 +1400,7 @@ dsError_t  dsIsAudioMS12Decode(intptr_t handle, bool *hasMS12Decode);
 /**
  * @brief Checks if the audio output port is connected or not.
  *
- * For sink devices, this function is used to check if the audio output port is connected or not.
+ * For sink devices, this function is used to check if the headphone port is connected or not.
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle        - Handle for the output Audio port
@@ -1417,9 +1421,9 @@ dsError_t  dsIsAudioMS12Decode(intptr_t handle, bool *hasMS12Decode);
 dsError_t dsAudioOutIsConnected(intptr_t handle, bool* isConnected);
 
 /**
- * @brief Registers for the Audio Output Connect Event
+ * @brief Registers for the Audio Output Port Connect Event
  *
- * For sink devices, this function is used to register for the Audio Output Connect Event. This callback is Headphone specific
+ * For sink devices, this function is used to register for Audio Output Connect Event. This callback is Headphone specific
  * and will be triggered whenever there is a change in Headphone connection status change.
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
