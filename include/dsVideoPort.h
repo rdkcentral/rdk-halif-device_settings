@@ -703,7 +703,8 @@ dsError_t dsGetMatrixCoefficients(intptr_t handle, dsDisplayMatrixCoefficients_t
 /**
  * @brief Gets the color depth value of specified video port.
  * 
- * This fundtion is used to get the current color depth value of specified video port.
+ * For sink devices, this function returns the default color depth, which is 10.
+ * For source devices, this function is used to get the current color depth value of specified video port.
  *
  * @param[in]  handle       - Handle of the video port returned from dsGetVideoPort()
  * @param[out] color_depth  - pointer to color depth values.Please refer :: dsDisplayColorDepth_t
@@ -724,7 +725,8 @@ dsError_t dsGetColorDepth(intptr_t handle, unsigned int* color_depth);
 /**
  * @brief Gets the color space setting of specified video port.
  * 
- * This function is used to get the current color space setting of specified video port.
+ * For sink devices, this function returns the default color space setting, which is dsDISPLAY_COLORSPACE_RGB.
+ * For source devices, this function is used to get the current color space setting of specified video port.
  *
  * @param[in]  handle       - Handle of the video port returned from dsGetVideoPort()
  * @param[out] color_space  - pointer to color space value. Please refer ::dsDisplayColorSpace_t
@@ -814,7 +816,8 @@ dsError_t dsIsOutputHDR(intptr_t handle, bool* hdr);
 /**
  * @brief Resets Video Output to SDR.
  *
- * This function resets the video output to SDR.
+ * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
+ * For source devices, this function resets the video output to SDR.
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -924,7 +927,8 @@ dsError_t dsSetBackgroundColor(intptr_t handle, dsVideoBackgroundColor_t color);
 /**
  * @brief Sets/Resets the force HDR mode.
  *
- * This function is used to set/reset force HDR mode for the specified video port.
+ * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
+ * For source devices, this function is used to set/reset force HDR mode for the specified video port.
  *
  * @param[in] handle    - Handle of the video port returned from dsGetVideoPort()
  * @param[in] mode      - HDR mode to be forced.  Please refer ::dsHDRStandard_t
