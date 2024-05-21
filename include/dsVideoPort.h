@@ -821,9 +821,9 @@ dsError_t dsIsOutputHDR(intptr_t handle, bool* hdr);
  * @brief Resets Video Output to SDR.
  *
  * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
+ *
  * For source devices, this function resets the video output to SDR.
  * It forces and locks the HDMI output to SDR mode regardless of the source content format
- * It forces and locks the HDMI output to SDR mode regardless of the source content format..
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
