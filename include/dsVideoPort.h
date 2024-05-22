@@ -706,7 +706,7 @@ dsError_t dsGetMatrixCoefficients(intptr_t handle, dsDisplayMatrixCoefficients_t
  * For sink devices, this function returns the default color depth, which is 10.
  *
  * For source devices, this function is used to get the current color depth value of specified video port.
- * For UHD resolution, the color depth is 12-bit, while for non-UHD resolutions, it is 8-bit
+ * Typically for UHD resolution, the color depth is 10/12-bit, while for non-UHD resolutions, it is 8-bit
  *
  * @param[in]  handle       - Handle of the video port returned from dsGetVideoPort()
  * @param[out] color_depth  - pointer to color depth values.Please refer :: dsDisplayColorDepth_t
@@ -937,7 +937,7 @@ dsError_t dsSetBackgroundColor(intptr_t handle, dsVideoBackgroundColor_t color);
  *
  * For source devices, this function is used to set/reset force HDR mode for the specified video port.
  * It forces and locks the HDMI output to a specified HDR mode regardless of the source content format,
- * until reset by calling the same API with dsHDRSTANDARD_NONE.
+ * if the mode dsHDRSTANDARD_NONE is set, then the HDMI output to follow source contnet format.
  *
  * @param[in] handle    - Handle of the video port returned from dsGetVideoPort()
  * @param[in] mode      - HDR mode to be forced.  Please refer ::dsHDRStandard_t
@@ -982,6 +982,7 @@ dsError_t dsColorDepthCapabilities(intptr_t handle, unsigned int *colorDepthCapa
  *
  * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  * For source devices, this function is used to get the preferred color depth of the specified video port.
+ * Typically for UHD resolution, the color depth is 10/12-bit, while for non-UHD resolutions, it is 8-bit.
  *
  * @param[in] handle        - Handle of the video port returned from dsGetVideoPort()
  * @param [out] colorDepth  - color depth value.  Please refer ::dsDisplayColorDepth_t
