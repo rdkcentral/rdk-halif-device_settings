@@ -661,7 +661,7 @@ dsError_t dsGetForceDisable4KSupport(intptr_t handle, bool *disable);
 /**
  * @brief Gets the current video Electro-Optical Transfer Function (EOT) value.
  * 
- * This function is used to get the current Electro-Optical Transfer Function of the specified video port.
+ * This function is used to get the current HDR format on a specified video port.
  *
  * @param[in]  handle       - Handle of the video port returned from dsGetVideoPort()
  * @param[out] video_eotf   - EOTF value.  Please refer ::dsHDRStandard_t
