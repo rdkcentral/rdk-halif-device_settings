@@ -214,7 +214,7 @@ dsError_t  dsGetAudioPort(dsAudioPortType_t type, int index, intptr_t *handle);
 /**
  * @brief Gets the current audio format.
  *
- * This function returns the current audio format of the playback stream(like PCM, DOLBY AC3) and it is port independent. Please refer ::dsAudioFormat_t
+ * This function returns the audio format of the current playback stream(like PCM, DOLBY AC3 etc.) and it is port independent. Please refer ::dsAudioFormat_t
  *
  * @param[in] handle         - Handle for the output audio port
  * @param[out] audioFormat   - Pointer to hold the audio format
@@ -853,9 +853,9 @@ dsError_t dsGetSupportedARCTypes(intptr_t handle, int *types);
 dsError_t dsAudioSetSAD(intptr_t handle, dsAudioSADList_t sad_list);
 
 /**
- * @brief Enable/Disable ARC/EARC and route audio to connected device.
+ * @brief Enable/Disable ARC/eARC and route audio to connected device.
  *
- * For sink devices, this function enables/disables ARC/EARC and routes audio to connected device. Please refer ::_dsAudioARCStatus_t and ::dsAudioARCTypes_t .
+ * For sink devices, this function enables/disables ARC/eARC and routes audio to connected device. Please refer ::_dsAudioARCStatus_t and ::dsAudioARCTypes_t .
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle    - Handle for the HDMI ARC/eARC port
@@ -878,12 +878,12 @@ dsError_t dsAudioEnableARC(intptr_t handle, dsAudioARCStatus_t arcStatus);
 /**
  * @brief Gets the digital audio output mode of digital interfaces.
  * 
- * For sink devices, this function returns the digital audio output mode(PCM, Passthrough, DD, DD+, Auto) only for the digital interfaces(HDMI ARC/eARC, SPDIF).
- * For source devices, this function returns the digital audio output mode(PCM, Passthrough, DD, DD+, Surround) only for the digital interfaces(HDMI).
+ * For sink devices, this function returns the digital audio output mode(PCM, Passthrough, DD, DD+) only for the digital interfaces(HDMI ARC/eARC, SPDIF).
+ * For source devices, this function returns the digital audio output mode(PCM, Passthrough, DD, DD+, Surround) only for the digital interfaces(HDMI, SPDIF).
  *
  * @param[in] handle      - Handle for the output audio port
  * @param[out] stereoMode - Pointer to hold the stereo mode setting of the
- *                            specified audio port. Please refer ::dsAudioStereoMode_t
+ *                            specified digital interface. Please refer ::dsAudioStereoMode_t
  * 
  *
  * @return dsError_t                      -  Status 
@@ -904,11 +904,11 @@ dsError_t  dsGetStereoMode(intptr_t handle, dsAudioStereoMode_t *stereoMode);
 /**
  * @brief Sets the digital audio output mode of digital interfaces.
  * 
- * For sink devices, this function sets the digital audio output mode(PCM, Passthrough, DD, DD+, Auto) to be used only for the digital interfaces(HDMI, HDMI ARC/eARC, SPDIF).
- * For source devices, this function sets the digital audio output mode(PCM, Passthrough, DD, DD+, Surround) to be used only for the digital interfaces(HDMI).
+ * For sink devices, this function sets the digital audio output mode(PCM, Passthrough, DD, DD+) to be used only for the digital interfaces(HDMI, HDMI ARC/eARC, SPDIF).
+ * For source devices, this function sets the digital audio output mode(PCM, Passthrough, DD, DD+, Surround) to be used only for the digital interfaces(HDMI, SPDIF).
  *
  * @param[in] handle  - Handle for the output audio port
- * @param[in] mode    - Stereo mode to be used on the specified audio port. Please refer ::dsAudioStereoMode_t
+ * @param[in] mode    - Stereo mode to be used on the specified digital interface. Please refer ::dsAudioStereoMode_t
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -926,13 +926,13 @@ dsError_t  dsGetStereoMode(intptr_t handle, dsAudioStereoMode_t *stereoMode);
 dsError_t  dsSetStereoMode(intptr_t handle, dsAudioStereoMode_t mode);
 
 /**
- * @brief Checks if auto mode is enabled or not for the current audio port.
+ * @brief Checks if auto mode is enabled or not for the digital interfaces.
  * 
- * For sink devices, this function returns the current auto mode of audio port corresponding to specified port handle.
+ * For sink devices, this function checks whether the digital audio mode auto is enabled for the digital interfaces (HDMI, HDMI ARC/eARC, SPDIF).
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle     - Handle for the output audio port
- * @param[out] autoMode  - Pointer to hold the auto mode setting ( @a if enabled, @a false if disabled) of the specified audio port
+ * @param[out] autoMode  - Pointer to hold the auto mode setting ( @a true if enabled, @a false if disabled) of the specified digital interface
  * 
  *
  * @return dsError_t                      -  Status 
@@ -953,11 +953,11 @@ dsError_t  dsGetStereoAuto(intptr_t handle, int *autoMode);
 /**
  * @brief Sets the Auto Mode to be used on the audio port. 
  * 
- * For sink devices, this function sets the auto mode to be used on the specified audio port.
+ * For sink devices, this function enables or disables the digital audio mode auto to be used specifically for the digital interfaces(HDMI ARC/eARC, SPDIF).
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
- * @param[in] handle    - Handle for the output audio port.
- * @param[in] autoMode  - Indicates the auto mode ( @a true if enabled, @a false if disabled ) to be used on audio port.
+ * @param[in] handle    - Handle for the output audio port
+ * @param[in] autoMode  - Indicates the auto mode ( @a true if enabled, @a false if disabled ) to be used on specified digital interface
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -977,11 +977,11 @@ dsError_t  dsSetStereoAuto(intptr_t handle, int autoMode);
 /**
  * @brief Gets the audio gain of an audio port.
  * 
- * For sink devices, this function returns the current audio gain for Speaker(dsAUDIOPORT_TYPE_SPEAKER).
+ * For sink devices, this function returns the current Dolby DAP Post gain for Speaker(dsAUDIOPORT_TYPE_SPEAKER).
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle  - Handle for the output audio port
- * @param[out] gain   - Pointer to hold the audio gain value of the specified audio port.
+ * @param[out] gain   - Pointer to hold the audio gain value of the specified audio port
                           The gain ranges between -2080 and 480
  *
  * @return dsError_t                      -  Status 
@@ -1002,7 +1002,7 @@ dsError_t  dsGetAudioGain(intptr_t handle, float *gain);
 /**
  * @brief Sets the audio gain of an audio port.
  * 
- * For sink devices, this function sets the gain to be used for Speaker(dsAUDIOPORT_TYPE_SPEAKER).
+ * For sink devices, this function sets the Dolby DAP Post gain to be used for Speaker(dsAUDIOPORT_TYPE_SPEAKER).
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle  - Handle for the output audio port
@@ -1714,9 +1714,9 @@ dsError_t  dsSetSecondaryLanguage(intptr_t handle, const char* sLang);
 dsError_t  dsGetSecondaryLanguage(intptr_t handle, char* sLang);
 
 /**
- * @brief Gets the audio HDMI ARC port ID for each platform
+ * @brief Gets the HDMI ARC port ID for each platform
  *
- * For sink devices, this function will get audio HDMI ARC port ID of platform.
+ * For sink devices, this function will get HDMI ARC port ID of the platform.
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] portId  - HDMI ARC port ID
