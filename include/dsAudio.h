@@ -124,12 +124,12 @@ extern "C" {
 typedef void (*dsAudioOutPortConnectCB_t)(dsAudioPortType_t portType, unsigned int uiPortNo, bool isPortCon);
 
 /**
- * @brief Callback function used to notify Audio Format change to the `caller`.
+ * @brief Callback function used to notify Audio Format change of playback stream to the `caller`.
  *
  * HAL Implementation should call this method to deliver updated audio format event
  * to the `caller`.
  * 
- * @param[in] audioFormat : New audio format of the active port. Please refer ::dsAudioFormat_t
+ * @param[in] audioFormat : New audio format of the playback stream. Please refer ::dsAudioFormat_t
  *
  * @pre - dsAudioFormatUpdateRegisterCB
  */
@@ -214,7 +214,7 @@ dsError_t  dsGetAudioPort(dsAudioPortType_t type, int index, intptr_t *handle);
 /**
  * @brief Gets the current audio format.
  *
- * This function returns the current audio format of the playback stream(like PCM, DOLBY AC3). Please refer ::dsAudioFormat_t
+ * This function returns the current audio format of the playback stream(like PCM, DOLBY AC3) and it is port independent. Please refer ::dsAudioFormat_t
  *
  * @param[in] handle         - Handle for the output audio port
  * @param[out] audioFormat   - Pointer to hold the audio format
@@ -876,10 +876,10 @@ dsError_t dsAudioSetSAD(intptr_t handle, dsAudioSADList_t sad_list);
 dsError_t dsAudioEnableARC(intptr_t handle, dsAudioARCStatus_t arcStatus);
 
 /**
- * @brief Gets the digital audio format of an audio port.
+ * @brief Gets the digital audio output mode of digital interfaces.
  * 
- * This function returns the digital audio format on the digital interfaces(HDMI, HDMI ARC/eARC, SPDIF)
- * corresponding to specified port handle.
+ * For sink devices, this function returns the digital audio output mode(PCM, Passthrough, DD, DD+, Auto) only for the digital interfaces(HDMI ARC/eARC, SPDIF).
+ * For source devices, this function returns the digital audio output mode(PCM, Passthrough, DD, DD+, Surround) only for the digital interfaces(HDMI).
  *
  * @param[in] handle      - Handle for the output audio port
  * @param[out] stereoMode - Pointer to hold the stereo mode setting of the
@@ -902,10 +902,10 @@ dsError_t dsAudioEnableARC(intptr_t handle, dsAudioARCStatus_t arcStatus);
 dsError_t  dsGetStereoMode(intptr_t handle, dsAudioStereoMode_t *stereoMode);
 
 /**
- * @brief Sets the digital audio format of an audio port.
+ * @brief Sets the digital audio output mode of digital interfaces.
  * 
- * This function sets the digital audio format to be used on the digital interfaces(HDMI, HDMI ARC/eARC, SPDIF)
- * corresponding to specified port handle.
+ * For sink devices, this function sets the digital audio output mode(PCM, Passthrough, DD, DD+, Auto) to be used only for the digital interfaces(HDMI, HDMI ARC/eARC, SPDIF).
+ * For source devices, this function sets the digital audio output mode(PCM, Passthrough, DD, DD+, Surround) to be used only for the digital interfaces(HDMI).
  *
  * @param[in] handle  - Handle for the output audio port
  * @param[in] mode    - Stereo mode to be used on the specified audio port. Please refer ::dsAudioStereoMode_t
@@ -1027,7 +1027,7 @@ dsError_t  dsSetAudioGain(intptr_t handle, float gain);
 /**
  * @brief Gets the current audio volume level of an audio port.
  * 
- * For sink devices, this function returns the current audio volume level of audio port corresponding to specified port handle.
+ * For sink devices, this function returns the current audio volume level of Speaker(dsAUDIOPORT_TYPE_SPEAKER) and Headphone(dsAUDIOPORT_TYPE_HEADPHONE) ports.
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle - Handle for the output audio port
@@ -1075,8 +1075,9 @@ dsError_t  dsSetAudioLevel(intptr_t handle, float level);
 /**
  * @brief Gets the audio delay (in ms) of an audio port
  *
- * This function returns the audio delay (in milliseconds) of audio port with respect to video corresponding to the specified port handle.
+ * For sink devices, this function returns the digital audio delay (in milliseconds) of the digital interfaces(HDMI ARC/eARC, SPDIF).
  * The Audio delay ranges from 0 to 200 milliseconds.
+ * For source devices, this function returns the digital audio delay (in milliseconds) of the digital interfaces(HDMI)
  *
  * @param[in] handle        - Handle for the output Audio port
  * @param[out] audioDelayMs - Pointer to Audio delay
@@ -1099,8 +1100,9 @@ dsError_t dsGetAudioDelay(intptr_t handle, uint32_t *audioDelayMs);
 /**
  * @brief Sets the audio delay (in ms) of an audio port.
  * 
- * This function will set the audio delay (in milliseconds) of audio port corresponding to the specified port handle.
+ * For sink devices, this function will set the audio delay (in milliseconds) of the digital interfaces(HDMI ARC/eARC, SPDIF).
  * The Audio delay ranges from 0 to 200 milliseconds.
+ * For source devices, this function will set the audio delay (in milliseconds) of the digital interfaces(HDMI).
  *
  * @param[in] handle        - Handle for the output Audio port
  * @param[in] audioDelayMs  - Amount of delay(in milliseconds)
@@ -1123,7 +1125,7 @@ dsError_t dsSetAudioDelay(intptr_t handle, const uint32_t audioDelayMs);
 /**
  * @brief Sets the audio ATMOS output mode.
  *
- * This function will set the Audio Atmos output mode.
+ * This function will set the dolby atmos lock provided by MS12 and it is port independent.
  *
  * @param[in] handle  - Handle for the output Audio port
  * @param[in] enable  - Audio ATMOS output mode( @a true to enable  @a false to disable)
@@ -1527,7 +1529,7 @@ dsError_t dsGetMS12Capabilities(intptr_t handle, int *capabilities);
 /**
  * @brief Enables/Disables associated audio mixing feature.
  *
- * This function will enable/disable associated audio mixing feature of audio port corresponding to specified port handle.
+ * This function will enable/disable associated audio mixing feature of playback stream and it is port independent.
  *
  * @param[in] handle  - Handle for the output audio port
  * @param[in] mixing  - Flag to control audio mixing feature
@@ -1552,7 +1554,7 @@ dsError_t dsSetAssociatedAudioMixing(intptr_t handle, bool mixing);
 /**
  * @brief Gets the Associated Audio Mixing status - enabled/disabled
  *
- * This function is used to get the audio mixing status(enabled/disabled) of audio port corresponding to specified port handle.
+ * This function is used to get the audio mixing status(enabled/disabled) of playback stream and it is port independent.
  *
  * @param[in] handle   - Handle for the output Audio port
  * @param[out] mixing  - Associated Audio Mixing status
@@ -1622,7 +1624,7 @@ dsError_t  dsGetFaderControl(intptr_t handle, int* mixerbalance);
 /**
  * @brief Sets AC4 Primary language
  *
- * This function will set AC4 Primary language of audio port corresponding to specified port handle.
+ * This function will set AC4 Primary language of the playback stream and it is port independent.
  *
  * @param[in] handle  - Handle for the output Audio port
  * @param[in] pLang   - char* 3 letter language code string as per ISO 639-3
@@ -1645,7 +1647,7 @@ dsError_t  dsSetPrimaryLanguage(intptr_t handle, const char* pLang);
 /**
  * @brief To get AC4 Primary language
  *
- * This function will get AC4 Primary language of audio port corresponding to specified port handle.
+ * This function will get AC4 Primary language of the playback stream and it is port independent.
  *
  * @param[in] handle  - Handle for the output Audio port
  * @param[out] pLang  - char* 3 letter lang code should be used as per ISO 639-3
@@ -1668,7 +1670,7 @@ dsError_t  dsGetPrimaryLanguage(intptr_t handle, char* pLang);
 /**
  * @brief To set AC4 Secondary language
  *
- * This function will set AC4 Secondary language of audio port corresponding to specified port handle.
+ * This function will set AC4 Secondary language of the playback stream and it is port independent.
  *
  * @param[in] handle  - Handle for the output Audio port (Not Used as setting is not port specific)
  * @param[in] sLang   - char* 3 letter lang code should be used as per ISO 639-3
@@ -1691,7 +1693,7 @@ dsError_t  dsSetSecondaryLanguage(intptr_t handle, const char* sLang);
 /**
  * @brief Gets the AC4 Secondary language
  *
- * This function will get AC4 Secondary language of audio port corresponding to specified port handle.
+ * This function will get AC4 Secondary language of the playback stream and it is port independent.
  *
  * @param[in] handle  - Handle for the output Audio port (Not Used as setting is not port specific)
  * @param[out] sLang  - char* 3 letter lang code should be used as per ISO 639-3
@@ -1738,7 +1740,7 @@ dsError_t dsGetHDMIARCPortId(int *portId);
 * @brief Sets the Mixer Volume level of sink device for the given input
 * This API is specific to sink devices
 *
-* For sink devices, this function sets the mixer volume level for either primary(main audio) or system audio input(System Beep).
+* For sink devices, this function sets the mixer volume level for either primary(main audio) or system audio input(System Beep) and it is port independent.
 * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
 *
 * @param[in] handle  - A valid handle refers to a specific audio port handle on the platform, or a NULL handle refers to use the current active port
