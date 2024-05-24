@@ -1483,9 +1483,9 @@ dsError_t dsAudioFormatUpdateRegisterCB(dsAudioFormatUpdateCB_t cbFun);
 dsError_t dsAudioAtmosCapsChangeRegisterCB (dsAtmosCapsChangeCB_t cbFun);
 
 /**
- * @brief Gets the Audio Format capabilities .
+ * @brief Gets the Audio Format capabilities.
  * 
- * This function is used to get the supported Audio capabilities for the input port supported by the platform.
+ * This function is used to get the supported Audio capabilities of the platform.
  *
  * @param[in]  handle        - Handle for the output audio port 
  * @param[out] capabilities  - Bitwise OR value of supported Audio standards. Please refer ::dsAudioCapabilities_t
@@ -1505,9 +1505,9 @@ dsError_t dsAudioAtmosCapsChangeRegisterCB (dsAtmosCapsChangeCB_t cbFun);
 dsError_t dsGetAudioCapabilities(intptr_t handle, int *capabilities);
 
 /**
- * @brief Gets the MS12 capabilities of audio port supported by the platform.
+ * @brief Gets the MS12 capabilities supported by the platform.
  * 
- * This function is used to get the supported MS12 capabilities for the input port supported by the platform.
+ * This function is used to get the supported MS12 capabilities of the platform.
  *
  * @param[in]  handle        - Handle for the output audio port
  * @param[out] capabilities  - OR-ed value of supported MS12 standards. Please refer ::dsMS12Capabilities_t
