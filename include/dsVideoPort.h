@@ -703,7 +703,7 @@ dsError_t dsGetMatrixCoefficients(intptr_t handle, dsDisplayMatrixCoefficients_t
 /**
  * @brief Gets the color depth value of specified video port.
  * 
- * For sink devices, this function returns the default color depth, which is 10.
+ * For sink devices, this function returns the default color depth, which is platform dependent.
  *
  * For source devices, this function is used to get the current color depth value of specified video port.
  * Typically for UHD resolution, the color depth is 10/12-bit, while for non-UHD resolutions, it is 8-bit
@@ -727,7 +727,7 @@ dsError_t dsGetColorDepth(intptr_t handle, unsigned int* color_depth);
 /**
  * @brief Gets the color space setting of specified video port.
  * 
- * For sink devices, this function returns the default color space setting, which is dsDISPLAY_COLORSPACE_RGB.
+ * For sink devices, this function returns the default color space setting, which is platform dependent.
  *
  * For source devices, this function is used to get the current color space setting of specified video port.
  * The color space is typically YCbCr.
