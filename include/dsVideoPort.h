@@ -683,6 +683,7 @@ dsError_t dsGetVideoEOTF(intptr_t handle, dsHDRStandard_t *video_eotf);
  * @brief Gets the current matrix coefficients value.
  * 
  * This function is used to get the current matrix coefficient value of the specified video port.
+ * For source devices, this function would return dsDISPLAY_MATRIXCOEFFICIENT_UNKNOWN  when TV is not connected.
  *
  * @param[in]  handle               - Handle of the video port returned from dsGetVideoPort()
  * @param[out] matrix_coefficients  - pointer to matrix coefficients value.  Please refer ::dsDisplayMatrixCoefficients_t
@@ -753,6 +754,7 @@ dsError_t dsGetColorSpace(intptr_t handle, dsDisplayColorSpace_t* color_space);
  * @brief Gets the quantization range of specified video port.
  * 
  * This function is used to get the quantization range of the specified video port.
+ * For source devices, this function would return dsDISPLAY_MATRIXCOEFFICIENT_UNKNOWN when TV is not connected.
  *
  * @param[in]  handle               - Handle of the video port returned from dsGetVideoPort()
  * @param[out] quantization_range   - pointer to quantization range.  Please refer ::dsDisplayQuantizationRange_t
@@ -912,6 +914,7 @@ dsError_t dsGetIgnoreEDIDStatus(intptr_t handle, bool* status);
  * @brief Sets the background color of the specified video port.
  *
  * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
+ *
  * For source devices, this function sets the background color of the specified video port.
  *
  * @param[in] handle    - Handle of the video port returned from dsGetVideoPort()
