@@ -204,6 +204,9 @@ dsError_t  dsVideoDeviceTerm();
 /**
  * @brief Gets the HDR capabilities
  *
+ * For sink devices, this function returns the HDR Capabilities of TV
+ * For source devices, this function returns the HDR Capabilities of STB
+ *
  * @param[in]  handle       - The handle returned from the dsGetVideoDevice() function
  * @param[out] capabilities - OR-ed values of all supported HDR standards.  Please refer ::dsHDRStandard_t,
  *                                  dsHDRStandard_t is currently in the audioVisual combined file.
