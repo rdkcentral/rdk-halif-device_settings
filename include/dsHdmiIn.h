@@ -276,6 +276,7 @@ dsError_t dsHdmiInSelectZoomMode (dsVideoZoom_t requestedZoomMode);
  * 
  * @param[out] resolution              - Current video port resolution.  Please refer ::dsVideoPortResolution_t
  *                                          dsVideoPortResolution_t is currently in the audioVisual combined file.
+ *                                          The 'stereoScopicMode' member in the _dsVideoPortResolution_t structure is unused.
  * 
  * 
  * @return dsError_t                        - Status
@@ -341,6 +342,7 @@ typedef void (*dsHdmiInStatusChangeCB_t)(dsHdmiInStatus_t inputStatus);
  * @param[in] port              - Port in which video mode updated. Please refer ::dsHdmiInPort_t
  * @param[in] videoResolution   - current video resolution of the port.  Please refer ::dsVideoPortResolution_t
  *                                  dsVideoPortResolution_t is currently in the audioVisual combined file.
+ *                                  The 'stereoScopicMode' member in the _dsVideoPortResolution_t structure is unused.
  * 
  * @pre dsHdmiInRegisterVideoModeUpdateCB() must be called before this API
  *
