@@ -407,7 +407,7 @@ dsError_t dsSetDisplayframerate(intptr_t handle, char *framerate);
 
 /**
  * @brief Call back function to receive the framerate pre change event from the HAL side.
- * @param [in] tSecond time elapsed after the change. Time in seconds.
+ * @param [in] tSecond - time(in Seconds) during which the framerate will change.
  * 
  * @pre dsVideoDeviceInit(), dsRegisterFrameratePreChangeCB() must be called before calling this function.
  *
@@ -440,7 +440,7 @@ dsError_t dsRegisterFrameratePreChangeCB(dsRegisterFrameratePreChangeCB_t CBFunc
 
 /**
  * @brief Call back function to receive the framerate post change event.
- * @param [in] tSecond time elapsed after the change.
+ * @param [in] tSecond - time elapsed(in Seconds) after framerate change.
  * 
  * @pre dsVideoDeviceInit(), dsRegisterFrameratePostChangeCB() must be called before calling this function.
  * 
