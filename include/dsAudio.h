@@ -164,6 +164,8 @@ typedef void (*dsAtmosCapsChangeCB_t) (dsATMOSCapability_t atmosCaps, bool statu
  * 
  * 
  * @warning  This API is Not thread safe.
+ *
+ * @post dsAudioPortTerm() must be called to release resources.
  * 
  * @see dsAudioPortTerm()
  * 
