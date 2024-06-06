@@ -138,6 +138,8 @@ typedef void (*dsDisplayEventCallback_t)(int handle, dsDisplayEvent_t event,
  * @retval dsERR_GENERAL                - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe
+ *
+ * @post dsDisplayTerm() must be called to release resources.
  * 
  * @see dsDisplayTerm()
  * 
