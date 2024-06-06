@@ -115,6 +115,8 @@ extern "C" {
  * 
  * @warning  This API is Not thread safe.
  * 
+ * @post dsHdmiInTerm must be called to release resources.
+ *
  * @see dsHdmiInTerm()
  * 
  */
