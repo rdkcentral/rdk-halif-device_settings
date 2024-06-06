@@ -98,6 +98,9 @@ extern "C" {
  * @retval dsERR_GENERAL                - Underlying undefined platform error
  *
  * @warning  This function is Not thread safe.
+ *
+ * @post dsVideoDeviceTerm() must be called to release resources.
+ *
  * @see dsVideoDeviceTerm()
  * 
  * 
