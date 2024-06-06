@@ -139,8 +139,6 @@ typedef void (*dsDisplayEventCallback_t)(int handle, dsDisplayEvent_t event,
  * 
  * @warning  This API is Not thread safe
  *
- * @post dsDisplayTerm() must be called to release resources.
- * 
  * @see dsDisplayTerm()
  * 
  * @post dsDisplayTerm() must be called to release resources.
