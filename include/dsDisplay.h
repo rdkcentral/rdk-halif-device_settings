@@ -143,6 +143,7 @@ typedef void (*dsDisplayEventCallback_t)(int handle, dsDisplayEvent_t event,
  * 
  * @see dsDisplayTerm()
  * 
+ * @post dsDisplayTerm() must be called to release resources.
  */
 dsError_t dsDisplayInit();
 
