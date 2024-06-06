@@ -114,6 +114,8 @@ extern "C" {
  * @retval dsERR_GENERAL                - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
+ *
+ * @post dsVideoPortTerm() must be called to release resources.
  * 
  * @see dsVideoPortTerm()
  */
