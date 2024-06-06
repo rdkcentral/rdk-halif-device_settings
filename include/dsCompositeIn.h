@@ -115,6 +115,8 @@ extern "C" {
  * @warning  This API is Not thread safe.
  * 
  * @see dsCompositeInTerm()
+ *
+ * @post dsCompositeInTerm() must be called to release resources.
  */
 
 dsError_t dsCompositeInInit (void);
