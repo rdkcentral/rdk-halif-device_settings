@@ -112,7 +112,8 @@ extern "C" {
  * @retval dsERR_ALREADY_INITIALIZED    - Function is already initialized
  * @retval dsERR_RESOURCE_NOT_AVAILABLE - Resources have failed to allocate
  * @retval dsERR_GENERAL                - Underlying undefined platform error
- * 
+ *
+ * @post dsVideoPortTerm()
  * @warning  This API is Not thread safe.
  * 
  * @see dsVideoPortTerm()
