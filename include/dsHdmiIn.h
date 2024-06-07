@@ -252,6 +252,7 @@ dsError_t dsHdmiInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t heigh
  * 
  * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  * For source devices, this function updates the video zoom on the active HDMI input using the provided zoom mode if it has hdmi input support, else returns dsERR_OPERATION_NOT_SUPPORTED.
+ * The HDMI port has to be selected by calling dsHdmiInSelectPort() before setting the zoom mode.
  *
  * @param[in] requestedZoomMode     - HDMI input zoom mode.  Please refer ::dsVideoZoom_t
  *                                          dsVideoZoom_t is within vidoeDeviceTypes.h
@@ -263,7 +264,7 @@ dsError_t dsHdmiInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t heigh
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * 
- * @pre dsHdmiInInit() must be called before calling this API.
+ * @pre dsHdmiInInit() and dsHdmiInSelectPort() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
  * 
