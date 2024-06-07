@@ -134,7 +134,7 @@ dsError_t  dsGetVideoDevice(int index, intptr_t *handle);
 /**
  * @brief Sets the screen zoom mode (decoder format conversion)
  *
- * For source devices, this function establishes the zoom mode settings according to the available zoom options for specified video port.
+ * For source devices, this function establishes the zoom mode settings according to the available zoom options for specified video device.
  * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle    - The handle returned from the dsGetVideoDevice() function
@@ -160,7 +160,7 @@ dsError_t  dsSetDFC(intptr_t handle, dsVideoZoom_t dfc);
 /**
  * @brief Gets the screen zoom mode (decoder format conversion)
  *
- * For source devices, this function gets the zoom mode settings for specified video port.
+ * For source devices, this function gets the zoom mode settings for specified video device.
  * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle    - The handle returned from the dsGetVideoDevice() function
@@ -303,7 +303,7 @@ dsError_t dsForceDisableHDRSupport(intptr_t handle, bool disable);
 /**
  * @brief Sets the FRF mode of the device
  *
- * For sink devices, this function sets the Frame Rate Mode for the specified port handle.
+ * For sink devices, this function sets the Frame Rate Mode for the video device.
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle    - The handle returned from the dsGetVideoDevice() function
@@ -330,7 +330,7 @@ dsError_t dsSetFRFMode(intptr_t handle, int frfmode);
 /**
  * @brief Gets the FRF mode of the device
  *
- * For sink devices, this function returns the Frame Rate Mode for the specified port handle.
+ * For sink devices, this function returns the Frame Rate Mode of the video device.
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in]  handle   - The handle returned from the dsGetVideoDevice() function
@@ -356,7 +356,7 @@ dsError_t dsGetFRFMode(intptr_t handle, int *frfmode);
 /**
  * @brief Gets the current framerate of the device
  *
- * For sink devices, this function returns the current framerate for the specified video port.
+ * For sink devices, this function returns the current framerate of the video device.
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in]  handle       - The handle returned from the dsGetVideoDevice() function
@@ -384,7 +384,7 @@ dsError_t dsGetCurrentDisplayframerate(intptr_t handle, char *framerate);
 /**
  * @brief Sets the display framerate for the device
  *
- * For sink devices, this function sets the framerate for the specified video port.
+ * For sink devices, this function sets the framerate for the video device.
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle    - The handle returned from the dsGetVideoDevice() function
