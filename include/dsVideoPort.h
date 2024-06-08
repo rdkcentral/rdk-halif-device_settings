@@ -115,6 +115,8 @@ extern "C" {
  *
  * @post dsVideoPortTerm()
  * @warning  This API is Not thread safe.
+ *
+ * @post dsVideoPortTerm() must be called to release resources.
  * 
  * @see dsVideoPortTerm()
  */
@@ -662,7 +664,7 @@ dsError_t dsGetForceDisable4KSupport(intptr_t handle, bool *disable);
 /**
  * @brief Gets the current video Electro-Optical Transfer Function (EOT) value.
  * 
- * This function is used to get the current Electro-Optical Transfer Function of the specified video port.
+ * This function is used to get the current HDR format on a specified video port.
  *
  * @param[in]  handle       - Handle of the video port returned from dsGetVideoPort()
  * @param[out] video_eotf   - EOTF value.  Please refer ::dsHDRStandard_t
@@ -684,6 +686,7 @@ dsError_t dsGetVideoEOTF(intptr_t handle, dsHDRStandard_t *video_eotf);
  * @brief Gets the current matrix coefficients value.
  * 
  * This function is used to get the current matrix coefficient value of the specified video port.
+ * For source devices, this function would return dsDISPLAY_MATRIXCOEFFICIENT_UNKNOWN  when TV is not connected.
  *
  * @param[in]  handle               - Handle of the video port returned from dsGetVideoPort()
  * @param[out] matrix_coefficients  - pointer to matrix coefficients value.  Please refer ::dsDisplayMatrixCoefficients_t
@@ -704,7 +707,10 @@ dsError_t dsGetMatrixCoefficients(intptr_t handle, dsDisplayMatrixCoefficients_t
 /**
  * @brief Gets the color depth value of specified video port.
  * 
- * This fundtion is used to get the current color depth value of specified video port.
+ * For sink devices, this function returns the default color depth, which is platform dependent.
+ *
+ * For source devices, this function is used to get the current color depth value of specified video port.
+ * Typically for UHD resolution, the color depth is 10/12-bit, while for non-UHD resolutions, it is 8-bit
  *
  * @param[in]  handle       - Handle of the video port returned from dsGetVideoPort()
  * @param[out] color_depth  - pointer to color depth values.Please refer :: dsDisplayColorDepth_t
@@ -725,7 +731,10 @@ dsError_t dsGetColorDepth(intptr_t handle, unsigned int* color_depth);
 /**
  * @brief Gets the color space setting of specified video port.
  * 
- * This function is used to get the current color space setting of specified video port.
+ * For sink devices, this function returns the default color space setting, which is platform dependent.
+ *
+ * For source devices, this function is used to get the current color space setting of specified video port.
+ * The color space is typically YCbCr.
  *
  * @param[in]  handle       - Handle of the video port returned from dsGetVideoPort()
  * @param[out] color_space  - pointer to color space value. Please refer ::dsDisplayColorSpace_t
@@ -748,6 +757,7 @@ dsError_t dsGetColorSpace(intptr_t handle, dsDisplayColorSpace_t* color_space);
  * @brief Gets the quantization range of specified video port.
  * 
  * This function is used to get the quantization range of the specified video port.
+ * For source devices, this function would return dsDISPLAY_MATRIXCOEFFICIENT_UNKNOWN when TV is not connected.
  *
  * @param[in]  handle               - Handle of the video port returned from dsGetVideoPort()
  * @param[out] quantization_range   - pointer to quantization range.  Please refer ::dsDisplayQuantizationRange_t
@@ -815,7 +825,10 @@ dsError_t dsIsOutputHDR(intptr_t handle, bool* hdr);
 /**
  * @brief Resets Video Output to SDR.
  *
- * This function resets the video output to SDR.
+ * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
+ *
+ * For source devices, this function resets the video output to SDR.
+ * It forces and locks the HDMI output to SDR mode regardless of the source content format
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -904,6 +917,7 @@ dsError_t dsGetIgnoreEDIDStatus(intptr_t handle, bool* status);
  * @brief Sets the background color of the specified video port.
  *
  * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
+ *
  * For source devices, this function sets the background color of the specified video port.
  *
  * @param[in] handle    - Handle of the video port returned from dsGetVideoPort()
@@ -925,7 +939,11 @@ dsError_t dsSetBackgroundColor(intptr_t handle, dsVideoBackgroundColor_t color);
 /**
  * @brief Sets/Resets the force HDR mode.
  *
- * This function is used to set/reset force HDR mode for the specified video port.
+ * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
+ *
+ * For source devices, this function is used to set/reset force HDR mode for the specified video port.
+ * It forces and locks the HDMI output to a specified HDR mode regardless of the source content format,
+ * if the mode dsHDRSTANDARD_NONE is set, then the HDMI output to follow source contnet format.
  *
  * @param[in] handle    - Handle of the video port returned from dsGetVideoPort()
  * @param[in] mode      - HDR mode to be forced.  Please refer ::dsHDRStandard_t
@@ -970,6 +988,7 @@ dsError_t dsColorDepthCapabilities(intptr_t handle, unsigned int *colorDepthCapa
  *
  * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  * For source devices, this function is used to get the preferred color depth of the specified video port.
+ * Typically for UHD resolution, the color depth is 10/12-bit, while for non-UHD resolutions, it is 8-bit.
  *
  * @param[in] handle        - Handle of the video port returned from dsGetVideoPort()
  * @param [out] colorDepth  - color depth value.  Please refer ::dsDisplayColorDepth_t

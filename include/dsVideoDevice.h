@@ -98,6 +98,9 @@ extern "C" {
  * @retval dsERR_GENERAL                - Underlying undefined platform error
  *
  * @warning  This function is Not thread safe.
+ *
+ * @post dsVideoDeviceTerm() must be called to release resources.
+ *
  * @see dsVideoDeviceTerm()
  * 
  * 
@@ -131,7 +134,7 @@ dsError_t  dsGetVideoDevice(int index, intptr_t *handle);
 /**
  * @brief Sets the screen zoom mode (decoder format conversion)
  *
- * For source devices, this function establishes the zoom mode settings according to the available zoom options for specified video port.
+ * For source devices, this function establishes the zoom mode settings according to the available zoom options for specified video device.
  * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle    - The handle returned from the dsGetVideoDevice() function
@@ -157,7 +160,7 @@ dsError_t  dsSetDFC(intptr_t handle, dsVideoZoom_t dfc);
 /**
  * @brief Gets the screen zoom mode (decoder format conversion)
  *
- * For source devices, this function gets the zoom mode settings for specified video port.
+ * For source devices, this function gets the zoom mode settings for specified video device.
  * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle    - The handle returned from the dsGetVideoDevice() function
@@ -203,6 +206,9 @@ dsError_t  dsVideoDeviceTerm();
 
 /**
  * @brief Gets the HDR capabilities
+ *
+ * For sink devices, this function returns the HDR Capabilities of TV
+ * For source devices, this function returns the HDR Capabilities of STB
  *
  * @param[in]  handle       - The handle returned from the dsGetVideoDevice() function
  * @param[out] capabilities - OR-ed values of all supported HDR standards.  Please refer ::dsHDRStandard_t,
@@ -297,7 +303,7 @@ dsError_t dsForceDisableHDRSupport(intptr_t handle, bool disable);
 /**
  * @brief Sets the FRF mode of the device
  *
- * For sink devices, this function sets the Frame Rate Mode for the specified port handle.
+ * For sink devices, this function sets the Frame Rate Mode for the video device.
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle    - The handle returned from the dsGetVideoDevice() function
@@ -324,7 +330,7 @@ dsError_t dsSetFRFMode(intptr_t handle, int frfmode);
 /**
  * @brief Gets the FRF mode of the device
  *
- * For sink devices, this function returns the Frame Rate Mode for the specified port handle.
+ * For sink devices, this function returns the Frame Rate Mode of the video device.
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in]  handle   - The handle returned from the dsGetVideoDevice() function
@@ -350,7 +356,7 @@ dsError_t dsGetFRFMode(intptr_t handle, int *frfmode);
 /**
  * @brief Gets the current framerate of the device
  *
- * For sink devices, this function returns the current framerate for the specified video port.
+ * For sink devices, this function returns the current framerate of the video device.
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in]  handle       - The handle returned from the dsGetVideoDevice() function
@@ -378,7 +384,7 @@ dsError_t dsGetCurrentDisplayframerate(intptr_t handle, char *framerate);
 /**
  * @brief Sets the display framerate for the device
  *
- * For sink devices, this function sets the framerate for the specified video port.
+ * For sink devices, this function sets the framerate for the video device.
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle    - The handle returned from the dsGetVideoDevice() function
@@ -404,7 +410,7 @@ dsError_t dsSetDisplayframerate(intptr_t handle, char *framerate);
 
 /**
  * @brief Call back function to receive the framerate pre change event from the HAL side.
- * @param [in] tSecond time elapsed after the change. Time in seconds.
+ * @param [in] tSecond - time(in Seconds) during which the framerate will change.
  * 
  * @pre dsVideoDeviceInit(), dsRegisterFrameratePreChangeCB() must be called before calling this function.
  *
@@ -437,7 +443,7 @@ dsError_t dsRegisterFrameratePreChangeCB(dsRegisterFrameratePreChangeCB_t CBFunc
 
 /**
  * @brief Call back function to receive the framerate post change event.
- * @param [in] tSecond time elapsed after the change.
+ * @param [in] tSecond - time elapsed(in Seconds) after framerate change.
  * 
  * @pre dsVideoDeviceInit(), dsRegisterFrameratePostChangeCB() must be called before calling this function.
  * 
