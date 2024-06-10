@@ -1235,6 +1235,8 @@ dsError_t  dsIsAudioPortEnabled(intptr_t handle, bool *enabled);
 dsError_t  dsEnableAudioPort(intptr_t handle, bool enabled);
 
 /**
+ * @note This API is deprecated.
+ *
  * @brief Enables or Disables MS12 DAPV2 and DE feature
  * 
  * For sink and source devices,this function returns dsERR_OPERATION_NOT_SUPPORTED always.
