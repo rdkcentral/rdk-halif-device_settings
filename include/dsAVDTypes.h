@@ -340,7 +340,7 @@ typedef enum _dsMS12Capabilities_t {
 #define MAX_PROFILE_LIST_BUFFER_LEN 1024
 typedef struct _dsMS12AudioProfileList_t {
     char audioProfileList[MAX_PROFILE_LIST_BUFFER_LEN]; ///< buffer containing the list of comma separated audio profile names for menu list
-                                                        ///< (e.g: "Music,Movie,Voice,Night")
+                                                        ///< (Supported MS12 Audio Profiles: "Music,Movie,Sports,Entertainment,Night,Party,User")
     int audioProfileCount;                              ///< Total number of profiles
 } dsMS12AudioProfileList_t;
 
