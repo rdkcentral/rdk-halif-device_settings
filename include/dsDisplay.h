@@ -138,7 +138,7 @@ typedef void (*dsDisplayEventCallback_t)(int handle, dsDisplayEvent_t event,
  * @retval dsERR_GENERAL                - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe
- * 
+ *
  * @see dsDisplayTerm()
  * 
  * @post dsDisplayTerm() must be called to release resources.
@@ -227,8 +227,8 @@ dsError_t dsGetEDIDBytes(intptr_t handle, unsigned char *edid, int *length);
  * @brief Gets the aspect ratio of connected display device.
  * 
  * For source devices, this function returns the aspect ratio of the display corresponding to the
- * specified display device handle.
- * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED as it is handled in TV Settings module
+ * specified display device handle. When no TV connected, this API would return aspect ratio 16:9.
+ * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED as it is handled in TV Settings module.
  *
  * @param[in]  handle       - Handle of the display device
  * @param[out] aspectRatio  - Current aspect ratio of the specified display device
