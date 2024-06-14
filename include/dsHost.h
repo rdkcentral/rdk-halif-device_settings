@@ -140,7 +140,7 @@ dsError_t dsGetCPUTemperature(float *cpuTemperature);
 /**
  * @brief Returns the SOC ID
  *
- * @param[out] socID    - 8 byte Chip ID programmed to the CHIP One Time Programmable area
+ * @param[out] socID    - 20 byte Chip ID programmed including a null terminator to the CHIP One Time Programmable area. 
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
