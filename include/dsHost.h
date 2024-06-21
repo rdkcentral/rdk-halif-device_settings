@@ -95,6 +95,7 @@ extern "C" {
  * 
  * @warning  This API is Not thread safe.
  * @see dsHostTerm()
+ * @post dsHostTerm() must be called to release resources.
  * 
  * 
  * 
