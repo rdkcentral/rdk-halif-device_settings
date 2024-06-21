@@ -544,6 +544,9 @@ dsError_t dsHdmiInRegisterAVLatencyChangeCB (dsAVLatencyChangeCB_t CBFunc);
  * @retval dsERR_GENERAL                    - Underlying undefined platform error
  *
  * @pre dsHdmiInInit() must be called before calling this API
+ *
+ * @note For IP and Tuner Video source, the Picture mode events are updated through SEI info handled from TVSettings module
+ *
  * @see dsHdmiInAviContentTypeChangeCB_t
  * 
  * @warning  This API is Not thread safe.
