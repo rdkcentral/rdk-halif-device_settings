@@ -170,7 +170,7 @@ The `caller` is expected to have complete control over the life cycle of the `HA
 
 2. The `caller` can call `dsHdmiInSelectPort()`, `dsHdmiInScaleVideo()`, `dsSetEdidVersion()` and `dsHdmiInSelectZoomMode()` to set the needed information.
 
-3. The `caller` can call `dsHdmiInGetNumberOfInputs()`, `dsHdmiInGetStatus()`, `dsGetEDIDBytesInfo()`, `dsIsHdmiARCPort()`, `dsGetHDMISPDInfo()`,  `dsGetEdidVersion()`, `dsGetAllmStatus()`, `dsGetSupportedGameFeaturesList()`, `dsGetAVLatency()` and `dsHdmiInGetCurrentVideoMode()` to query the needed information.
+3. The `caller` can call `dsHdmiInGetNumberOfInputs()`, `dsHdmiInGetStatus()`, `dsGetEDIDBytesMaxSize()`, `dsGetEDIDBytesInfo()`, `dsIsHdmiARCPort()`, `dsGetHDMISPDInfo()`,  `dsGetEdidVersion()`, `dsGetAllmStatus()`, `dsGetSupportedGameFeaturesList()`, `dsGetAVLatency()` and `dsHdmiInGetCurrentVideoMode()` to query the needed information.
 
 4. Callbacks can be set with:
     - `dsHdmiInRegisterConnectCB()` - used when the HDMIin port connection status changes
@@ -210,6 +210,11 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     Caller->>HAL:dsHdmiInScaleVideo()
     Note over HAL: Sets the video scale
     HAL->>Driver:Setting the video scale
+    Driver-->>HAL:return
+    HAL-->>Caller:return
+    Caller->>HAL:dsGetEDIDBytesMaxSize()
+    Note over HAL: Gets the EDID buffer maximum size in bytes
+    HAL->>Driver:Getting the EDID buffer maximus size
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsGetEDIDBytesInfo()
