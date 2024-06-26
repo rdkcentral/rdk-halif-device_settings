@@ -105,7 +105,7 @@ dsError_t dsFPInit (void);
  * @brief Sets blink pattern of specified Front Panel Display LED
  * 
  * This function is used to set the individual discrete LED to blink for a specified number of iterations with blink interval.
- * This function must return dsERR_OPERATION_NOT_SUPPORTED if FP State is "OFF". 
+ * This function must return dsERR_OPERATION_NOT_SUPPORTED if FP State is "OFF". To stop the blink, either dsFPSetLEDState() or dsFPTerm() can be invoked.
  *
  * @param[in] eIndicator        -  FPD indicator index. Please refer ::dsFPDIndicator_t
  * @param[in] uBlinkDuration    -  Blink interval. The time in ms the text display will remain ON 
