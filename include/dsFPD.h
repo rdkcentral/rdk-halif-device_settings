@@ -132,7 +132,7 @@ dsError_t dsSetFPBlink (dsFPDIndicator_t eIndicator, unsigned int uBlinkDuration
  * 
  * This function will set the brightness of the specified discrete LED on the Front
  * Panel Display to the specified brightness level. This function must return dsERR_OPERATION_NOT_SUPPORTED
- * if the FP State is "OFF". 
+ * if the FP State is "OFF". The brightness is not persisted in HAL. There isn't a default setting for brightness.
  *
  * @param[in] eIndicator  - FPD indicator index. Please refer ::dsFPDIndicator_t
  * @param[in] eBrightness - The brightness value(0 to 100) for the specified indicator.
