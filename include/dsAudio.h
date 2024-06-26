@@ -1718,29 +1718,6 @@ dsError_t  dsSetSecondaryLanguage(intptr_t handle, const char* sLang);
 dsError_t  dsGetSecondaryLanguage(intptr_t handle, char* sLang);
 
 /**
- * @brief Gets the HDMI ARC port ID for each platform
- *
- * For sink devices, this function will get HDMI ARC port ID of the platform.
- * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
- *
- * @param[in] portId  - HDMI ARC port ID
- *
- * @return dsError_t                      -  Status 
- * @retval dsERR_NONE                     -  Success
- * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
- * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
- * @retval dsERR_GENERAL                  -  Underlying undefined platform error
- * 
- * @pre  dsAudioPortInit() should be called before calling this API.
- * 
- * @warning  This API is Not thread safe.
- * 
- * @see dsGetSupportedARCTypes()
- */
-dsError_t dsGetHDMIARCPortId(int *portId);
-
-/**
 * @brief Sets the Mixer Volume level of sink device for the given input
 * This API is specific to sink devices
 *
