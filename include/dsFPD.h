@@ -92,7 +92,8 @@ extern "C" {
  * @retval dsERR_NONE                 -  Success
  * @retval dsERR_ALREADY_INITIALIZED  -  Function is already initialized
  * @retval dsERR_GENERAL              -  Underlying undefined platform error
- * 
+ *
+ * @post dsFPTerm() must be called to release resources
  *
  * @warning  This API is Not thread safe
  * 
@@ -105,7 +106,8 @@ dsError_t dsFPInit (void);
  * @brief Sets blink pattern of specified Front Panel Display LED
  * 
  * This function is used to set the individual discrete LED to blink for a specified number of iterations with blink interval.
- * This function must return dsERR_OPERATION_NOT_SUPPORTED if FP State is "OFF". To stop the blink, either dsFPSetLEDState() or dsFPTerm() can be invoked.
+ * This function must return dsERR_OPERATION_NOT_SUPPORTED if FP State is "OFF".
+ * To stop the blink, either dsFPSetLEDState() or dsFPTerm() can be invoked.
  *
  * @param[in] eIndicator        -  FPD indicator index. Please refer ::dsFPDIndicator_t
  * @param[in] uBlinkDuration    -  Blink interval. The time in ms the text display will remain ON 
@@ -132,7 +134,7 @@ dsError_t dsSetFPBlink (dsFPDIndicator_t eIndicator, unsigned int uBlinkDuration
  * 
  * This function will set the brightness of the specified discrete LED on the Front
  * Panel Display to the specified brightness level. This function must return dsERR_OPERATION_NOT_SUPPORTED
- * if the FP State is "OFF". The brightness is not persisted in HAL. There isn't a default setting for brightness.
+ * if the FP State is "OFF". HAL will neither retain the brightness value nor set any default brightness value.
  *
  * @param[in] eIndicator  - FPD indicator index. Please refer ::dsFPDIndicator_t
  * @param[in] eBrightness - The brightness value(0 to 100) for the specified indicator.
