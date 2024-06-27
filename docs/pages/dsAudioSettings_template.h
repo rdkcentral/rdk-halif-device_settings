@@ -16,7 +16,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
 */
- 
+
 /**
  * @addtogroup HPK Hardware Porting Kit
  * @{
@@ -131,7 +131,7 @@ const dsVideoPortPortId_t connectedVOPs[dsAUDIOPORT_TYPE_MAX][dsVIDEOPORT_TYPE_M
 
 		},
 		{/*VOPs connected to HDMI Audio */
-				
+
 		},
 		{/*VOPs connected to SPDIF Audio */
 				{dsVIDEOPORT_TYPE_INTERNAL, 0},

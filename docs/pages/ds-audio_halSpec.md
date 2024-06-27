@@ -1,13 +1,5 @@
 # DEVICE SETTINGS AUDIO HAL Documentation
 
-## Version History
-
-| Date(DD/MM/YY) | Comment | Version |
-| ---- | ------- | ------- |
-| 24/08/23 | First Release | 1.0.0 |
-
-
-
 ## Table of Contents
 
 - [Acronyms, Terms and Abbreviations](#acronyms-terms-and-abbreviations)
@@ -56,7 +48,6 @@
 - `CPU`    - Central Processing Unit
 - `SoC`    - System-on-Chip
 
-
 ## Description
 
 The diagram below describes a high-level software architecture of the `DS` Audio module.
@@ -71,11 +62,9 @@ style z fill:#fcc,stroke:#333,stroke-width:0.3px,align:left
 style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
  ```
 
-
-This interface provides a set of `APIs` to facilitate communication to the Audio `SoC` Driver. 
+This interface provides a set of `APIs` to facilitate communication to the Audio `SoC` Driver.
 
 This interface provides control to enable or disable Audio Output ports like TV Internal Speakers, `ARC`/`eARC`, Headphones, `SPDIF` and allows `caller` to configure or retrieve various audio parameters like audio encoding, audio compression, dialog enhancement, dolby volume mode, intelligent equalizer, volume leveller, bass enhancer, `DRC` mode, surround virtualizer, `MI` steering, graphic equalizer, `MS12` audio profile, stereo mode, audio gain, audio `dB`, audio level, audio max and min `dB`, audio delay, fader control, primary language and secondary language. It also provides `APIs` to  enable loop through, set audio ducking, enable `LE`, get the Atmos capability of sink device
-
 
 ## Component Runtime Execution Requirements
 
@@ -85,7 +74,7 @@ Failure to meet these requirements will likely result in undefined and unexpecte
 
 ### Initialization and Startup
 
-`Caller` must initialize by calling `dsAudioPortInit()` before calling any other `APIs`. The `Caller` is expected to have complete control over the life cycle of the `DS` Audio module. 
+`Caller` must initialize by calling `dsAudioPortInit()` before calling any other `APIs`. The `Caller` is expected to have complete control over the life cycle of the `DS` Audio module.
 
 ### Threading Model
 
@@ -105,7 +94,8 @@ Although this interface is not required to be involved in any of the power manag
 
 ### Asynchronous Notification Model
 
-AudioPort provides the following asynchronous registration : 
+AudioPort provides the following asynchronous registration :
+
 - `dsAudioOutRegisterConnectCB()` - Callback function to notify the audio port connection status to the `caller`
 - `dsAudioFormatUpdateRegisterCB()` - Callback function to notify the audio format update to the `caller`
 - `dsAudioAtmosCapsChangeRegisterCB()` - Callback function to notify the atmos capability update to the `caller`
@@ -123,7 +113,6 @@ All the `APIs` must return error synchronously as a return argument. `HAL` is re
 ### Persistence Model
 
 There is no requirement for the interface to persist any setting information. `Caller` is responsible to persist any settings related to this interface.
-
 
 ## Non-functional requirements
 
@@ -153,14 +142,14 @@ The `HAL` implementation is expected to released under the Apache License 2.0.
 ### Build Requirements
 
 The source code must build into a shared library for `DS` as Audio is a part of `DS` and must be named as libdshal.so. The build mechanism must be independent of Yocto.
- 
+
 ### Variability Management
 
 - Any changes in the `APIs` must be reviewed and approved by the component architects.
 - Any modification must support backward compatibility for the generic operations like image upgrade and downgrade.
 - This interface must return the dsERR_OPERATION_NOT_SUPPORTED error code, if any of the interface - `APIs` are not supported by the underlying hardware.
 
-### Platform or Product Customization 
+### Platform or Product Customization
 
 The configuration settings file (dsAudioSettings_template.h) for `DS` Audio can be used for adding platform specific configurations. The sample file is available [<b>here</b>](./dsAudioSettings_template.h "dsAudioSettings_template.h").
 
@@ -212,7 +201,6 @@ NOTE: The module would operate deterministically if the above call sequence is f
 
 #### Operational Call Sequence
 
-
 ```mermaid
 %%{ init : { "theme" : "default", "flowchart" : { "curve" : "stepBefore" }}}%%
    sequenceDiagram
@@ -231,16 +219,16 @@ NOTE: The module would operate deterministically if the above call sequence is f
     HAL-->>Caller:return
     Caller->>HAL:dsEnableAudioPort()
     Note over HAL: API to enable or disable specified Audio Output Port
-    HAL->>Driver:Specified Audio Port is enabled or disabled 
+    HAL->>Driver:Specified Audio Port is enabled or disabled
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsAudio_SetMethods
-    Note over HAL: APIs to set the Audio related parameters 
+    Note over HAL: APIs to set the Audio related parameters
     HAL->>Driver: Set the Audio Paramters using Audio Port Handle
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsAudio_GetMethods
-    Note over HAL: APIs to get the Audio related parameters 
+    Note over HAL: APIs to get the Audio related parameters
     HAL->>Driver: Get the Audio Paramters using Audio Port Handle
     Driver-->>HAL:return
     HAL-->>Caller:return
@@ -254,7 +242,7 @@ NOTE: The module would operate deterministically if the above call sequence is f
     HAL->>Driver:Set the loop-through mode of Specified Audio Output Port
     Caller->>HAL:dsGetHDMIARCPortId()
     Note over HAL: API to get HDMI ARC Port ID of each platform
-    HAL->>Driver: Get the HDMI ARC Port ID   
+    HAL->>Driver: Get the HDMI ARC Port ID
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsAudioOutRegisterConnectCB()
@@ -276,73 +264,7 @@ NOTE: The module would operate deterministically if the above call sequence is f
     Driver-->>HAL:return
     HAL-->>Caller:dsAtmosCapsChangeCB_t callback returned
     Caller ->>HAL:dsAudioTerm()
-    HAL ->> Driver: 
+    HAL ->> Driver:dsAudioTerm()
     Driver-->>HAL:return
     HAL-->>Caller:return
  ```
-
-
-<b>LEGEND:</b>
-
-<b>dsAudio_SetMethods:</b>
-dsSetAudioEncoding(),
-dsSetAudioCompression(),
-dsSetDialogEnhancement(),
-dsSetDolbyVolumeMode(),
-dsSetIntelligentEqualizerMode(),
-dsSetVolumeLeveller(),
-dsSetBassEnhancer(),
-dsSetDRCMode(),
-dsSetSurroundVirtualizer(),
-dsSetMISteering(),
-dsSetGraphicEqualizerMode(),
-dsSetMS12AudioProfile(),
-dsSetStereoMode(),
-dsSetStereoAuto(),
-dsSetAudioGain(),
-dsSetAudioDB(),
-dsSetAudioLevel(),
-dsSetAudioDucking(),
-dsSetAudioMute(),
-dsSetAudioDelay(),
-dsSetAudioDelayOffset(),
-dsSetMS12AudioProfileSetttingsOverride(),
-dsSetAssociatedAudioMixing(),
-dsSetFaderControl(),
-dsSetPrimaryLanguage(),
-dsSetSecondaryLanguage(),
-dsSetAudioMixerLevels()
-
-<b>dsAudio_GetMethods:</b>
-dsGetAudioEncoding(),
-dsGetAudioFormat(),
-dsGetAudioCompression(),
-dsGetDialogEnhancement(),
-dsGetDolbyVolumeMode(),
-dsGetIntelligentEqualizerMode(),
-dsGetVolumeLeveller(),
-dsGetBassEnhancer(),
-dsGetDRCMode(),
-dsGetSurroundVirtualizer(),
-dsGetMISteering(),
-dsGetGraphicEqualizerMode(),
-dsGetMS12AudioProfileList(),
-dsGetMS12AudioProfile(),
-dsGetSupportedARCTypes(),
-dsGetStereoMode(),
-dsGetStereoAuto(),
-dsGetAudioGain(),
-dsGetAudioDB(),
-dsGetAudioLevel(),
-dsGetAudioMaxDB(),
-dsGetAudioMinDB(),
-dsGetAudioOptimalLevel(),
-dsGetAudioDelay(),
-dsGetAudioDelayOffset(),
-dsGetLEConfig(),
-dsGetAudioCapabilities(),
-dsGetMS12Capabilities(),
-dsGetAssociatedAudioMixing(),
-dsGetFaderControl(),
-dsGetPrimaryLanguage(),
-dsGetSecondaryLanguage()
