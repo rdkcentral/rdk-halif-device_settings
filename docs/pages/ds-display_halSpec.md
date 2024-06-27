@@ -1,11 +1,5 @@
 # DEVICE SETTINGS Display HAL Documentation
 
-## Version History
-
-| Date(DD/MM/YY) | Comment | Version |
-| ---- | ------- | ------- |
-| 06/10/23 | First Release  | 1.0.0 |
-
 ## Table of Contents
 
 - [Acronyms, Terms and Abbreviations](#acronyms-terms-and-abbreviations)
@@ -62,7 +56,6 @@ style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
 
 The primary objective of this module is to streamline communication between the `caller` and the `HAL` interface. This allows the `caller` to inquire about information related to the `EDID`, Aspect Ratio and other `HDMI` related information of the connected display device. Additionally, the module notifies the `caller` about Display Device parameters, such as Device Connection/Disconnection, `HDCP` Protocol Changes, and RX Sense ON/OFF etc.
 
-
 ## Component Runtime Execution Requirements
 
 This interface must adeptly manage resources to prevent issues like memory leaks and excessive utilization. It must also meet performance goals for response time, throughput, and resource use as per the platform's capabilities.
@@ -93,8 +86,7 @@ The `DS` Display `HAL` is not involved in the power management operation.
 
 The below mentioned callback registration is used for aysnchronous notification:
 
-- dsDisplayEventCallback_t() - is triggered when there is a change in display related events like Device Connection/Disconnection, HDCP Protocol Changes, and RX Sense                                       ON/OFF 
-
+- dsDisplayEventCallback_t() - is triggered when there is a change in display related events like Device Connection/Disconnection, HDCP Protocol Changes, and RX Sense                                       ON/OFF
 
 ### Blocking calls
 
@@ -131,12 +123,12 @@ This interface will ensure optimal use of memory and `CPU` according to the spec
 
 ### Licensing
 
-The `HAL` implementation is expected to released under the Apache License 2.0. 
+The `HAL` implementation is expected to released under the Apache License 2.0.
 
 ### Build Requirements
 
 The source code must build into a shared library for Device Settings as this module is a part of Device Settings and must be named as `libdshal.so`. The build mechanism must be independent of Yocto.
- 
+
 ### Variability Management
 
 - Any changes in the `APIs` must be reviewed and approved by the component architects.
@@ -172,12 +164,12 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     participant HAL as DS DISPLAY HAL
     participant Driver as SoC
     Caller->>HAL:dsDisplayInit()
-    Note over HAL: SoC initializes the underlying Display subsystem 
+    Note over HAL: SoC initializes the underlying Display subsystem
     HAL->>Driver:Initializes Display sub-system & associated data structures
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsGetDisplay()
-    Note over HAL: Returns the handle for connected display Device 
+    Note over HAL: Returns the handle for connected display Device
     HAL->>Driver:Getting the handle for connected display device
     Driver-->>HAL:return
     HAL-->>Caller:return
@@ -187,7 +179,7 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsGetDisplayAspectRatio()
-    Note over HAL: Gets the Aspect Ratio of connected display device 
+    Note over HAL: Gets the Aspect Ratio of connected display device
     HAL->>Driver:Getting the Aspect Ratio of display device
     Driver-->>HAL:return
     HAL-->>Caller:return

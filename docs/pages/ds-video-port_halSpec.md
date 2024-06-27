@@ -1,11 +1,5 @@
 # Device Settings Video Port HAL Documentation
 
-## Version History
-
-| Date(DD/MM/YY) | Comment | Version |
-| ---- | ------- | ------- |
-| 13/10/23  | First Release | 1.0.0 |
-
 ## Table of Contents
 
 - [Acronyms, Terms and Abbreviations](#acronyms-terms-and-abbreviations)
@@ -45,9 +39,7 @@
 - `HDCP`   - High-bandwidth Digital Content Protection
 - `HDR`    - High Dynamic Range
 - `SDR`    - Standard Dynamic Range
--  `EDID` - Extended Display Identification Data
-
-
+- `EDID` - Extended Display Identification Data
 
 ## Description
 
@@ -64,7 +56,6 @@ style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
  ```
 
 `DS` Video Port `HAL` provides a set of `APIs` to initialize, query and set information about the Video ports like getting  video port handle, fetching connected display information such as color depth, color space, matrix coefficients, quantization range, supported video resolutions using the video port handle. It also provides `APIs` to enable or disable content protection like `HDCP` and `DTCP`, to set the background color and preferred color depth of the video port.
-
 
 ## Component Runtime Execution Requirements
 
@@ -96,12 +87,10 @@ Although this interface is not required to be involved in any of the power manag
 
 This interface must support asynchronous notifications operations:
 
- - `dsHDCPStatusCallback_t` is triggered when the connection status when the HDCP status of video port changes.
- - `dsVideoFormatUpdateCB` is triggered when the video format changes.
- 
+- `dsHDCPStatusCallback_t` is triggered when the connection status when the HDCP status of video port changes.
+- `dsVideoFormatUpdateCB` is triggered when the video format changes.
 
  This interface is allowed to establish its own thread context for its operation, ensuring minimal impact on system resources. Additionally, this interface is responsible for releasing the resources it creates for its operation once the respective operation concludes.
-
 
 ### Blocking calls
 
@@ -138,12 +127,12 @@ This interface will ensure optimal use of memory and `CPU` according to the spec
 
 ### Licensing
 
-The `HAL` implementation is expected to released under the Apache License 2.0. 
+The `HAL` implementation is expected to released under the Apache License 2.0.
 
 ### Build Requirements
 
 The source code must build into a shared library for `DS` as Video Port module is a part of `DS` and must be named as `libdshal.so`. The build mechanism must be independent of Yocto.
- 
+
 ### Variability Management
 
 - Any changes in the `APIs` must be reviewed and approved by the component architects.
@@ -152,7 +141,7 @@ The source code must build into a shared library for `DS` as Video Port module i
 
 ### Platform or Product Customization
 
-The configuration settings file for `DS` Video Port can be used for adding platform specific configurations. The sample files are [<b>dsVideoPortSettings_template.h</b>](./dsVideoPortSettings_template.h ) and [<b>dsVideoResolutionSettings_template.h</b>](./dsVideoResolutionSettings_template.h ) 
+The configuration settings file for `DS` Video Port can be used for adding platform specific configurations. The sample files are [<b>dsVideoPortSettings_template.h</b>](./dsVideoPortSettings_template.h ) and [<b>dsVideoResolutionSettings_template.h</b>](./dsVideoResolutionSettings_template.h )
 
 ## Interface API Documentation
 
@@ -171,13 +160,13 @@ The `caller` is expected to have complete control over the life cycle of the `HA
 4. Callbacks can be set with:
     - `dsRegisterHdcpStatusCallback()` is triggered when there is a change in HDCP status of the video port
     - `dsVideoFormatUpdateCB()` is triggered when there is a change in video format of the content
-    
 
 5. De-initialize the `HAL` using `dsVideoPortTerm()`.
 
 ### Diagrams
 
 #### Operational Call Sequence
+
 ```mermaid
 %%{ init : { "theme" : "default", "flowchart" : { "curve" : "stepBefore" }}}%%
    sequenceDiagram
@@ -210,7 +199,7 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsGetSurroundMode()
-    Note over HAL: Gets the surround mode of display 
+    Note over HAL: Gets the surround mode of display
     HAL->>Driver:Getting the surround mode of display connected to video port
     Driver-->>HAL:return
     HAL-->>Caller:return
@@ -235,7 +224,7 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     Driver-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL:dsGetHDCPReceiverProtocol()
-    Note over HAL: Gets the HDCP protocol version of Receiver/TV 
+    Note over HAL: Gets the HDCP protocol version of Receiver/TV
     HAL->>Driver:Getting the  HDCP protocol version of display corresponding to specified video port
     Driver-->>HAL:return
     HAL-->>Caller:return

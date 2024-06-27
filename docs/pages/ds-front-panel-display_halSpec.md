@@ -1,13 +1,5 @@
 # Device Settings Front Panel Display HAL Documentation
 
-## Version History
-
-| Date(DD/MM/YY) | Comment | Version |
-| ---- | ------- | ------- |
-| 17/08/23 | First Release | 1.0.0 |
-
-
-
 ## Table of Contents
 
 - [Acronyms, Terms and Abbreviations](#acronyms-terms-and-abbreviations)
@@ -67,7 +59,7 @@ The brightness, color and text of Front Panel `LEDs` can be set or retrieved. Th
 
 This interface must adeptly manage resources to prevent issues like memory leaks and excessive utilization. It must also meet performance goals for response time, throughput, and resource use as per the platform's capabilities.
 
-Failure to meet these requirements will likely result in undefined and unexpected behaviour.
+Failure to meet these requirements will likely result in undefined and unexpected behavior.
 
 ### Initialization and Startup
 
@@ -87,7 +79,7 @@ This interface is not required to allocate any memory.
 
 ### Power Management Requirements
 
-The `FPD` `HAL` is not involved in the power management operation directly. 
+The `FPD` `HAL` is not involved in the power management operation directly.
 However, the `caller` will initiate the change in `LED` as part of power management handling.
 
 The `caller` is responsible for driving `LED` status in accordance with power mode change.
@@ -135,7 +127,7 @@ The `HAL` implementation is expected to released under the Apache License 2.0.
 ### Build Requirements
 
 The source code must build into a shared library for Device Settings `HAL` as `FPD` is a part of Device Settings and must be named as `libdshal.so`. The build mechanism must be independent of Yocto.
- 
+
 ### Variability Management
 
 Any changes in the `APIs` must be reviewed and approved by the component architects. `DS` `FPD` must return the dsERR_OPERATION_NOT_SUPPORTED error code if any of the interface `APIs` are not supported by the underlying hardware.
@@ -143,7 +135,6 @@ Any changes in the `APIs` must be reviewed and approved by the component archite
 ### Platform or Product Customization
 
 The configuration settings file (dsFPDSettings.h) for `DS` Front Panel can be used for adding platform specific configurations. The sample file is available [<b>here</b>](./dsFPDSettings_template.h "dsFPDSettings_template.h").
-
 
 ## Interface API Documentation
 
@@ -172,11 +163,9 @@ The various `DS` `FP` `LED` states are as follows:
 - USB Upgrade
 - Software Download Error
 
-
 ### Diagrams
 
 #### Operational Call Sequence
-
 
 ```mermaid
 %%{ init : { "theme" : "default", "flowchart" : { "curve" : "stepBefore" }}}%%
@@ -210,27 +199,3 @@ The various `DS` `FP` `LED` states are as follows:
     HAL-->>Caller:return
 
  ```
-
-<b> LEGEND: </b>
-
-<b>ds_FP_SetMethods:</b>
-dsSetFPBlink(),
-dsSetFPBrightness(),
-dsSetFPState(),
-dsSetFPColor(),
-dsSetFPTime(),
-dsSetFPText(),
-dsSetFPTextBrightness(),
-dsSetFPScroll(),
-dsSetFPTimeFormat(),
-dsSetFPDMode(),
-dsFPSetLEDState()
-
-<b>ds_FP_GetMethods:</b>
-dsGetFPState(),
-dsGetFPBrightness(),
-dsGetFPColor(),
-dsGetFPTextBrightness(),
-dsGetFPTimeFormat(),
-dsFPGetLEDState(),
-dsFPGetSupportedLEDStates()
