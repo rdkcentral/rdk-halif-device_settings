@@ -1,11 +1,5 @@
 # Device Settings HdmiIn HAL Documentation
 
-## Version History
-
-| Date(DD/MM/YY) | Comment | Version |
-| ---- | ------- | ------- |
-| 25/08/23  | First Release | 1.0.0 |
-
 ## Table of Contents
 
 - [Acronyms, Terms and Abbreviations](#acronyms-terms-and-abbreviations)
@@ -95,17 +89,15 @@ Although this interface is not required to be involved in any of the power manag
 
 This interface must support asynchronous notifications operations:
 
- - `dsHdmiInRegisterConnectCB()` must facilitate asynchronous status notifications using the callback when the connection status of the callback `dsHdmiInConnectCB_t`. This callback must be used when the connection status when the HDMI input port changes.
- - `dsHdmiInRegisterSignalChangeCB()` must facilitate asynchronous status notifications using the callback `dsHdmiInSignalChangeCB_t`. This callback must be used when the signal status changes.
- - `dsHdmiInRegisterStatusChangeCB()` must facilitate asynchronous status notifications using the callback `dsHdmiInStatusChangeCB_t`. This callback must be used when the HDMI input status changes.
- - `dsHdmiInRegisterVideoModeUpdateCB()` must facilitate asynchronous status notifications using the callback `dsHdmiInVideoModeUpdateCB_t`. This callback must be used when the video mode changes. This callback must be used when the ALLM mode changes.
- - `dsHdmiInRegisterAllmChangeCB()` must facilitate asynchronous status notifications using the callback `dsHdmiInAllmChangeCB_t`.
- - `dsHdmiInRegisterAVLatencyChangeCB()` must facilitate asynchronous notifications using the callback `dsAVLatencyChangeCB_t` when the AV latency changes.
- - `dsHdmiInRegisterAviContentTypeChangeCB()` must facilitate asynchronous notifications using the call back `dsHdmiInAviContentTypeChangeCB_t` when HDMI input content type changes.
-
+- `dsHdmiInRegisterConnectCB()` must facilitate asynchronous status notifications using the callback when the connection status of the callback `dsHdmiInConnectCB_t`. This callback must be used when the connection status when the HDMI input port changes.
+- `dsHdmiInRegisterSignalChangeCB()` must facilitate asynchronous status notifications using the callback `dsHdmiInSignalChangeCB_t`. This callback must be used when the signal status changes.
+- `dsHdmiInRegisterStatusChangeCB()` must facilitate asynchronous status notifications using the callback `dsHdmiInStatusChangeCB_t`. This callback must be used when the HDMI input status changes.
+- `dsHdmiInRegisterVideoModeUpdateCB()` must facilitate asynchronous status notifications using the callback `dsHdmiInVideoModeUpdateCB_t`. This callback must be used when the video mode changes. This callback must be used when the ALLM mode changes.
+- `dsHdmiInRegisterAllmChangeCB()` must facilitate asynchronous status notifications using the callback `dsHdmiInAllmChangeCB_t`.
+- `dsHdmiInRegisterAVLatencyChangeCB()` must facilitate asynchronous notifications using the callback `dsAVLatencyChangeCB_t` when the AV latency changes.
+- `dsHdmiInRegisterAviContentTypeChangeCB()` must facilitate asynchronous notifications using the call back `dsHdmiInAviContentTypeChangeCB_t` when HDMI input content type changes.
 
  This interface is allowed to establish its own thread context for its operation, ensuring minimal impact on system resources. Additionally, this interface is responsible for releasing the resources it creates for its operation once the respective operation concludes.
-
 
 ### Blocking calls
 
@@ -142,12 +134,12 @@ This interface will ensure optimal use of memory and `CPU` according to the spec
 
 ### Licensing
 
-The `HAL` implementation is expected to released under the Apache License 2.0. 
+The `HAL` implementation is expected to released under the Apache License 2.0.
 
 ### Build Requirements
 
 The source code must build into a shared library for DS as `HdmiIn` module is a part of DS and must be named as `libdshal.so`. The build mechanism must be independent of Yocto.
- 
+
 ### Variability Management
 
 - Any changes in the `APIs` must be reviewed and approved by the component architects.
@@ -186,6 +178,7 @@ The `caller` is expected to have complete control over the life cycle of the `HA
 ### Diagrams
 
 #### Operational Call Sequence
+
 ```mermaid
 %%{ init : { "theme" : "default", "flowchart" : { "curve" : "stepBefore" }}}%%
    sequenceDiagram
@@ -314,7 +307,8 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     HAL-->>Caller:return
  ```
 
- #### Flow Diagram
+#### Flow Diagram
+
 <br/>
 
 ![State Diagram](/docs/pages/images/signal_state_diagram.png)

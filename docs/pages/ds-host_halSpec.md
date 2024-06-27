@@ -1,11 +1,5 @@
 # Device Settings Host HAL Documentation
 
-## Version History
-
-| Date(DD/MM/YY) | Comment | Version |
-| ---- | ------- | ------- |
-| 23/08/23 | First Release  | 1.0.0 |
-
 ## Table of Contents
 
 - [Acronyms, Terms and Abbreviations](#acronyms-terms-and-abbreviations)
@@ -127,12 +121,12 @@ This interface will ensure optimal use of memory and `CPU` according to the spec
 
 ### Licensing
 
-The `HAL` implementation is expected to released under the Apache License 2.0. 
+The `HAL` implementation is expected to released under the Apache License 2.0.
 
 ### Build Requirements
 
 The source code must build into a shared library for Device Settings as this module is a part of Device Settings and must be named as `libdshal.so`. The build mechanism must be independent of Yocto.
- 
+
 ### Variability Management
 
 - Any changes in the `APIs` must be reviewed and approved by the component architects.
