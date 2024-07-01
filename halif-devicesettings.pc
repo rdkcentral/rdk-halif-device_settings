@@ -1,0 +1,9 @@
+# Package Information for pkg-config
+prefix=/usr
+includedir=${prefix}/include
+
+Name: DSHALHeaders
+Description: DeviceSettings HAL Headers
+Version: 1.0.8
+Cflags: -I${includedir}/rdk/halif/ds-hal
+
