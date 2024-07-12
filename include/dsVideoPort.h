@@ -694,7 +694,7 @@ dsError_t dsSetAllmEnabled (intptr_t  handle, bool enabled);
  * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in]  handle   - Handle of the video port returned from dsGetVideoPort()
- * @param[out] enabled  - Flag to hold the enabled status of ALLM mode for given HDMI output video port.
+ * @param[out] enabled  - Pointer to hold the enabled status of ALLM mode for given HDMI output video port.
  *                          ( @a true when ALLM mode is enabled or @a false otherwise)
  *
  * @return dsError_t                      -  Status
