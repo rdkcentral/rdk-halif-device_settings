@@ -665,6 +665,7 @@ dsError_t dsGetForceDisable4KSupport(intptr_t handle, bool *disable);
  *
  * For source devices, this function enables or disables the ALLM mode for specified HDMI output video port.
  * Source ALLM mode(on HF-VSIF) is enabled only if Sink ALLM bit is set (on HF-VSDB) as per HDMI 2.1 Specification
+ * ALLM mode set remains until the hotplug or device reboot
  * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle    - Handle of the video port returned from dsGetVideoPort()
@@ -691,7 +692,7 @@ dsError_t dsSetAllmEnabled (intptr_t  handle, bool enabled);
  * @brief Checks whether ALLM mode of HDMI output video port is enabled or not.
  *
  * For Source devices, this function indicates whether ALLM mode for specified HDMI output video port is enabled or not.
- * By default ALLM mode is disabled on bootup.
+ * By default, ALLM mode is disabled on bootup and after hotplug.
  * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in]  handle   - Handle of the video port returned from dsGetVideoPort()
