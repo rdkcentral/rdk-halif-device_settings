@@ -199,14 +199,14 @@ typedef enum dsVideoPlaneType {
 }dsVideoPlaneType_t;
 
 /**
-* @brief Enum for Hdmi Compatibility version
+* @brief Enum for Hdmi Max Compatibility version
 */
-typedef enum dsHdmiCapabilityVersion{
-    HDMI_CAPABILITY_VERSION_14 = 0, /*!< Hdmi Compatibility Version 1.4 */
-    HDMI_CAPABILITY_VERSION_20,     /*!< Hdmi Compatibility Version 2.0 */
-    HDMI_CAPABILITY_VERSION_21,     /*!< Hdmi Compatibility Version 2.1 */
-    HDMI_CAPABILITY_VERSION_MAX     /*!< Out of bounds */
-}dsHdmiCapabilityVersion_t;
+typedef enum dsHdmiMaxCapabilityVersion{
+    HDMI_COMPATIBILITY_VERSION_14 = 0, /*!< Hdmi Compatibility Version 1.4 */
+    HDMI_COMPATIBILITY_VERSION_20,     /*!< Hdmi Compatibility Version 2.0 */
+    HDMI_COMPATIBILITY_VERSION_21,     /*!< Hdmi Compatibility Version 2.1 */
+    HDMI_COMPATIBILITY_VERSION_MAX     /*!< Out of bounds */
+}dsHdmiMaxCapabilityVersion_t;
 
 #endif // End of __DS_HDMI_IN_TYPES_H__
 
