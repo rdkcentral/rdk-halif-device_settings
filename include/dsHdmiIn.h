@@ -192,6 +192,7 @@ dsError_t dsHdmiInGetStatus (dsHdmiInStatus_t *pStatus);
  * 
  * For sink devices, this function selects the HDMI input port for presentation.
  * For source devices, this function selects the HDMI input port for presentation if it has hdmi input support, else returns dsERR_OPERATION_NOT_SUPPORTED
+ * For source devices, this function does not use the audioMix, eVideoPlaneType, and topMost parameters internally.
  *
  * @param[in] Port              - HDMI input port to be presented.  Please refer ::dsHdmiInPort_t
  * @param[in] audioMix    	    - Flag to control the audioMix status ( @a true to enable, @a false to disable)
