@@ -794,6 +794,8 @@ dsError_t dsSetEdid2AllmSupport (dsHdmiInPort_t iHdmiPort, bool allmSupport);
 dsError_t dsGetEdid2AllmSupport (dsHdmiInPort_t iHdmiPort, bool *allmSupport);
 
 //added changed
+dsError_t dsGetHdmiVersion(dsHdmiInPort_t iHdmiPort, dsHdmiCapabilityVersion_t * capVersion);
+
 #ifdef __cplusplus
 }
 #endif
