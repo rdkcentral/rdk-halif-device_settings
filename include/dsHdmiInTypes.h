@@ -198,6 +198,13 @@ typedef enum dsVideoPlaneType {
     dsVideoPlane_MAX            /*!< Out of bounds*/
 }dsVideoPlaneType_t;
 
+typedef enum dsHdmiCapabilityVersion{
+    HDMI_CAPABILITY_VERSION_14 = 0,
+    HDMI_CAPABILITY_VERSION_20,
+    HDMI_CAPABILITY_VERSION_21,
+    HDMI_CAPABILITY_VERSION_MAX
+}dsHdmiCapabilityVersion_t;
+
 #endif // End of __DS_HDMI_IN_TYPES_H__
 
 /** @} */ // End of dsHdmiIn_HAL_Type_H
