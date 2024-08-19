@@ -793,7 +793,7 @@ dsError_t dsSetEdid2AllmSupport (dsHdmiInPort_t iHdmiPort, bool allmSupport);
  */
 dsError_t dsGetEdid2AllmSupport (dsHdmiInPort_t iHdmiPort, bool *allmSupport);
 
-
+//added changed
 #ifdef __cplusplus
 }
 #endif
