@@ -801,7 +801,7 @@ dsError_t dsGetEdid2AllmSupport (dsHdmiInPort_t iHdmiPort, bool *allmSupport);
 * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
 *
 * @param[in] iHdmiPort                 - HDMI input port.  Please refer ::dsHdmiInPort_t
-* @param[out] maxCompatibilityVersion  - Maximum Compatibility version supported by the given port
+* @param[out] maxCompatibilityVersion  - Maximum Compatibility version supported by the given port. Please refer::dsHdmiMaxCapabilityVersion_t
 *
 * @return dsError_t                        - Status
 * @retval dsERR_NONE                       - Success
