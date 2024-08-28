@@ -192,6 +192,7 @@ dsError_t dsHdmiInGetStatus (dsHdmiInStatus_t *pStatus);
  * 
  * For sink devices, this function selects the HDMI input port for presentation.
  * For source devices, this function selects the HDMI input port for presentation if it has hdmi input support, else returns dsERR_OPERATION_NOT_SUPPORTED
+ * For source devices, this function does not use the audioMix, eVideoPlaneType, and topMost parameters internally.
  *
  * @param[in] Port              - HDMI input port to be presented.  Please refer ::dsHdmiInPort_t
  * @param[in] audioMix    	    - Flag to control the audioMix status ( @a true to enable, @a false to disable)
@@ -793,6 +794,28 @@ dsError_t dsSetEdid2AllmSupport (dsHdmiInPort_t iHdmiPort, bool allmSupport);
  */
 dsError_t dsGetEdid2AllmSupport (dsHdmiInPort_t iHdmiPort, bool *allmSupport);
 
+/**
+* @brief Gets the Maximum HDMI Compatibility Version supported by the given port.
+*
+* For sink devices, this function gets the Maximum HDMI Compatibility Version supported by the given port.
+* For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
+*
+* @param[in] iHdmiPort                 - HDMI input port.  Please refer ::dsHdmiInPort_t
+* @param[out] maxCompatibilityVersion  - Maximum Compatibility version supported by the given port. Please refer::dsHdmiMaxCapabilityVersion_t
+*
+* @return dsError_t                        - Status
+* @retval dsERR_NONE                       - Success
+* @retval dsERR_NOT_INITIALIZED            - Module is not initialised
+* @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+* @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
+* @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
+*
+* @pre dsHdmiInInit() must be called before calling this API
+*
+* @warning  This API is Not thread safe
+*
+*/
+dsError_t dsGetHdmiVersion(dsHdmiInPort_t iHdmiPort, dsHdmiMaxCapabilityVersion_t *maxCompatibilityVersion);
 
 #ifdef __cplusplus
 }

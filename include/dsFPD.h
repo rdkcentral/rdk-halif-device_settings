@@ -185,8 +185,6 @@ dsError_t dsGetFPBrightness (dsFPDIndicator_t eIndicator, dsFPDBrightness_t *pBr
 /**
  * @brief Sets the indicator state of specified discrete Front Panel Display LED
  * 
- * It must return
- * dsERR_OPERATION_NOT_SUPPORTED if the indicator is single-colored or if the FP State is "OFF".
  *
  * @param[in] eIndicator - FPD indicator index. Please refer ::dsFPDIndicator_t
  * @param[in] state      - Indicates the state of the indicator to be set. Please refer ::dsFPDState_t
@@ -210,8 +208,6 @@ dsError_t dsSetFPState (dsFPDIndicator_t eIndicator, dsFPDState_t state);
 /**
  * @brief Gets the indicator state of specified discrete Front Panel Display LED
  * 
- * It must return
- * dsERR_OPERATION_NOT_SUPPORTED if the indicator is single-colored or if the FP State is "OFF".
  * 
  * @param[in]  eIndicator - FPD indicator index. Please refer ::dsFPDIndicator_t
  * @param[out] state      - current state of the specified indicator. Please refer ::dsFPDState_t
@@ -388,7 +384,7 @@ dsError_t dsSetFPTextBrightness (dsFPDTextDisplay_t eIndicator, dsFPDBrightness_
  * Panel Text Display. If there are no 7-segment display LEDs present or if the FP State is "OFF"
  * then dsERR_OPERATION_NOT_SUPPORTED must be returned. 
  * The FP Display Mode must be dsFPD_MODE_CLOCK/dsFPD_MODE_ANY. Please refer ::dsFPDMode_t
- *  *
+ *
  * @note Whether this device has a 7-Segment display LEDs should be within the dsFPDSettings_template file.
  * 
  * @param[in] eIndicator    - FPD Text indicator index. Please refer ::dsFPDTextDisplay_t
