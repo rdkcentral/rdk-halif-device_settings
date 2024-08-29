@@ -307,8 +307,8 @@ dsError_t dsForceDisableHDRSupport(intptr_t handle, bool disable);
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle    - The handle returned from the dsGetVideoDevice() function
- * @param[in] frfmode   - integer with corresponding Framerate value. 
- *                               Please refer ::dsVideoFrameRate_t for max and min framerate.
+ * @param[in] frfmode   - integer value to enable/disable Auto Framerate mode.
+ *                               1 to enable auto framerate mode, 0 to disable auto framerate mode
  *
  * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
@@ -334,8 +334,8 @@ dsError_t dsSetFRFMode(intptr_t handle, int frfmode);
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in]  handle   - The handle returned from the dsGetVideoDevice() function
- * @param[out] frfmode  - integer with corresponding Framerate value of the device. 
- *                             Please refer :: dsVideoFrameRate_t for max and min framerate.
+ * @param[out] frfmode  - integer value corresponding to Auto Framerate mode of the device.
+ *                             1 if auto framerate mode is enabled, 0 if auto framerate mode is disabled
  *
  * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
@@ -360,9 +360,8 @@ dsError_t dsGetFRFMode(intptr_t handle, int *frfmode);
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in]  handle       - The handle returned from the dsGetVideoDevice() function
- * @param[out] framerate    - Current frame rate will be represented in FPS
- *                             Please refer ::dsVideoFrameRate_t for  max and min framerate.
- *                            Updates the value as a string(eg:"60").
+ * @param[out] framerate    - Current frame rate will be represented.
+ *                            Returns the value as a string(eg:"3840x2160px48")
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
@@ -388,9 +387,8 @@ dsError_t dsGetCurrentDisplayframerate(intptr_t handle, char *framerate);
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle    - The handle returned from the dsGetVideoDevice() function
- * @param[in] framerate - Framerate value to be set frame will be represented in FPS. 
- *                        Please refer ::dsVideoFrameRate_t for  max and min framerate.
- *                        Expects the value as a string(eg:"60").
+ * @param[in] framerate - Framerate value to be set.
+ *                        Expects the value as a string(eg:"3840x2160px48")
  *
  * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
