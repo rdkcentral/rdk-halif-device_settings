@@ -1818,6 +1818,8 @@ dsError_t  dsSetAudioEncoding(intptr_t handle, dsAudioEncoding_t encoding);
 dsError_t  dsGetAudioDB(intptr_t handle, float *db);
 
 /**
+ * @note This API is deprecated.
+ *
  * @brief Sets the current audio dB level of an audio port.
  *
  * This function sets the dB level to be used on the audio port corresponding to specified port handle.
