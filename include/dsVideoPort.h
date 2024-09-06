@@ -1085,6 +1085,86 @@ dsError_t dsGetPreferredColorDepth(intptr_t handle, dsDisplayColorDepth_t *color
  */
 dsError_t dsSetPreferredColorDepth(intptr_t handle,dsDisplayColorDepth_t colorDepth);
 
+/**
+ * @note This API is deprecated.
+ *
+ * @brief Sets the specified video port as active source.
+ *
+ * @param[in] handle    - Handle of the video port returned from dsGetVideoPort()
+ *
+ * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ *
+ * @pre dsVideoPortInit() and dsGetVideoPort() must be called before calling this API.
+ *
+ * @see dsIsVideoPortActive()
+ *
+ * @warning  This API is Not thread safe.
+ */
+dsError_t dsSetActiveSource(intptr_t handle);
+
+/**
+ * @note This API is deprecated.
+ *
+ * @brief Enables/Disables the DTCP of a video port.
+ *
+ * This function is used to enable/disable the DTCP (Digital Transmission Content Protection)
+ * for the specified video port. It must return dsERR_OPERATION_NOT_SUPPORTED if connected
+ * video port does not support DTCP.
+ *
+ *
+ * @param[in] handle            - Handle of the video port returned from dsGetVideoPort()
+ * @param[in] contentProtect    - Flag to enable/disable DTCP content protection
+ *                               ( @a true to enable, @a false to disable)
+ *
+ * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ *
+ * @pre dsVideoPortInit() and dsGetVideoPort() must be called before calling this API.
+ *
+ * @warning  This API is Not thread safe.
+ *
+ * @see dsIsDTCPEnabled()
+ */
+dsError_t  dsEnableDTCP(intptr_t handle, bool contentProtect);
+
+/**
+ * @note This API is deprecated.
+ *
+ * @brief Indicates whether a video port is DTCP protected.
+ *
+ * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
+ * For source devices, this function indicates whether the specified video port is configured for DTCP
+ * content protection. It must return dsERR_OPERATION_NOT_SUPPORTED if DTCP
+ * is not supported.
+ *
+ * @param[in]  handle               - Handle of the video port returned from dsGetVideoPort()
+ * @param [out] pContentProtected   - Current DTCP content protection status
+ *                                      ( @a true when enabled, @a false otherwise)
+ *
+ * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ *
+ * @pre dsVideoPortInit() and dsGetVideoPort() must be called before calling this API.
+ *
+ * @warning  This API is Not thread safe.
+ *
+ * @see dsEnableDTCP()
+ */
+dsError_t  dsIsDTCPEnabled (intptr_t handle, bool* pContentProtected);
+
 #ifdef __cplusplus
 }
 #endif

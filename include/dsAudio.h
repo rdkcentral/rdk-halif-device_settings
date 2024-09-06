@@ -1741,6 +1741,427 @@ dsError_t  dsGetSecondaryLanguage(intptr_t handle, char* sLang);
 */
 dsError_t dsSetAudioMixerLevels (intptr_t handle, dsAudioInput_t aInput, int volume);
 
+/**
+ * @note This API is deprecated.
+ *
+ * @brief Gets the encoding type of an audio port
+ *
+ * This function returns the current audio encoding setting for the specified audio port.
+ *
+ * @param[in] handle     -  Handle for the output audio port
+ * @param[out] encoding  -  Pointer to hold the encoding setting of the audio port. Please refer ::dsAudioEncoding_t , @link dsAudioSettings_template.h @endlink
+ *
+ * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ *
+ * @pre  dsAudioPortInit() and dsGetAudioPort() should be called in this order before calling this API.
+ *
+ * @warning  This API is Not thread safe.
+ *
+ * @see dsSetAudioEncoding()
+ */
+dsError_t  dsGetAudioEncoding(intptr_t handle, dsAudioEncoding_t *encoding);
+
+/**
+ * @note This API is deprecated.
+ *
+ * @brief Sets the encoding type of an audio port
+ *
+ * This function sets the audio encoding type to be used on the specified audio port.
+ *
+ * @param[in] handle    - Handle for the output audio port
+ * @param[in] encoding  - The encoding type to be used on the audio port. Please refer ::dsAudioEncoding_t
+ *
+ * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ *
+ * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
+ *
+ * @warning  This API is Not thread safe.
+ *
+ * @see dsGetAudioEncoding()
+ */
+dsError_t  dsSetAudioEncoding(intptr_t handle, dsAudioEncoding_t encoding);
+
+/**
+ * @note This API is deprecated.
+ *
+ * @brief Gets the current audio dB level of an audio port.
+ *
+ * This function returns the current audio dB level for the audio port corresponding to specified port handle.
+ * The Audio dB level ranges from -1450 to 180 dB
+ *
+ * @param[in] handle  - Handle for the output audio port
+ * @param[out] db     - Pointer to hold the Audio dB level of the specified audio port
+ *
+ * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ *
+ * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
+ *
+ * @warning  This API is Not thread safe.
+ *
+ * @see dsSetAudioDB()
+ */
+dsError_t  dsGetAudioDB(intptr_t handle, float *db);
+
+/**
+ * @brief Sets the current audio dB level of an audio port.
+ *
+ * This function sets the dB level to be used on the audio port corresponding to specified port handle.
+ * Max dB is 180 and Min dB is -1450
+ *
+ * @param[in] handle  - Handle for the output audio port
+ * @param[in] db      - Audio dB level to be used on the audio port
+ *
+ *
+ * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ *
+ * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
+ *
+ * @warning  This API is Not thread safe.
+ *
+ * @see dsGetAudioDB()
+ */
+dsError_t  dsSetAudioDB(intptr_t handle, float db);
+
+/**
+ * @note This API is deprecated.
+ *
+ * @brief Gets the maximum audio dB level of an audio port.
+ *
+ * This function returns the maximum audio dB level supported by the audio port corresponding to specified port handle(platform specific).
+ *
+ * @param[in] handle  - Handle for the output audio port
+ * @param[out] maxDb  - Pointer to hold the maximum audio dB value (float value e.g:10.0) supported by the specified audio port(platform specific)
+ *                        Maximum value can be 180 dB
+ *
+ * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ *
+ * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
+ *
+ * @warning  This API is Not thread safe.
+ */
+dsError_t  dsGetAudioMaxDB(intptr_t handle, float *maxDb);
+
+/**
+ * @note This API is deprecated.
+ *
+ * @brief Gets the minimum audio dB level of an audio port.
+ *
+ * This function returns the minimum audio dB level supported by the audio port corresponding to specified port handle.
+ *
+ * @param[in] handle  - Handle for the output audio port
+ * @param[out] minDb  - Pointer to hold the minimum audio dB value (float. e.g: 0.0) supported by the specified audio port(platform specific)
+ *                        Minimum value can be -1450 dB
+ *
+ * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ *
+ * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
+ *
+ * @warning  This API is Not thread safe.
+ */
+dsError_t  dsGetAudioMinDB(intptr_t handle, float *minDb);
+
+/**
+ * @note This API is deprecated.
+ *
+ * @brief Gets the optimal audio level of an audio port.
+ *
+ * This function returns the optimal audio level (dB) of the audio port corresponding to specified port handle(platform specific).
+ *
+ * @param[in] handle        - Handle for the output audio port
+ * @param[out] optimalLevel - Pointer to hold the optimal level value of the specified audio port(platform specific)
+ *
+ * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ *
+ * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
+ *
+ * @warning  This API is Not thread safe.
+ */
+dsError_t  dsGetAudioOptimalLevel(intptr_t handle, float *optimalLevel);
+
+/**
+ * @note This API is deprecated.
+ *
+ * @brief Gets the audio delay offset (in ms) of an audio port.
+ *
+ * This function returns the audio delay offset (in milliseconds) of the audio port corresponding to specified port handle.
+ *
+ * @param[in] handle               - Handle for the output Audio port
+ * @param[out] audioDelayOffsetMs  - Audio delay offset in milliseconds
+ *
+ * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ *
+ * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
+ *
+ * @warning  This API is Not thread safe.
+ *
+ * @see dsSetAudioDelayOffset()
+ */
+dsError_t dsGetAudioDelayOffset(intptr_t handle, uint32_t *audioDelayOffsetMs);
+
+/**
+ * @note This API is deprecated.
+ *
+ * @brief Sets the audio delay offset (in ms) of an audio port.
+ *
+ * This function will set the audio delay offset (in milliseconds) of the audio port corresponding to specified port handle.
+ *
+ * @param[in] handle              - Handle for the output Audio port
+ * @param[in] audioDelayOffsetMs  - Amount of delay offset(in milliseconds)
+ *
+ * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ *
+ * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
+ *
+ * @warning  This API is Not thread safe.
+ *
+ * @see dsGetAudioDelayOffset()
+ */
+dsError_t dsSetAudioDelayOffset(intptr_t handle, const uint32_t audioDelayOffsetMs);
+
+/**
+ * @note This API is deprecated.
+ *
+ * @brief Gets the loop-through mode of an audio port.
+ *
+ * This function is used to check if the audio port is configured for loop-through.
+ *
+ * @param[in] handle     - Handle for the output audio port
+ * @param[out] loopThru  - Status of loop-through feature for the specified audio port
+ *                           ( @a true when output is looped through, @a false otherwise)
+ *
+ * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ *
+ * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
+ *
+ * @warning  This API is Not thread safe.
+ */
+dsError_t  dsIsAudioLoopThru(intptr_t handle, bool *loopThru);
+
+/**
+ * @note This API is deprecated.
+ *
+ * @brief Sets the audio ducking level of an audio port.
+ *
+ * This function sets the audio ducking level to be used on the specified audio port based on the audio output mode.
+ * If output mode is expert mode, this will mute the audio.
+ *
+ * @param[in] handle  - Handle for the output audio port
+ * @param[in] action  - action type to start or stop ducking. Please refer ::dsAudioDuckingAction_t
+ * @param[in] type    - ducking type is absolute or relative to current volume level. Please refer ::dsAudioDuckingType_t
+ * @param[in] level   - The volume level value from 0 to 100 to be used on the audio port
+ *
+ * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ *
+ * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
+ *
+ * @warning  This API is Not thread safe.
+ *
+ */
+dsError_t  dsSetAudioDucking(intptr_t handle, dsAudioDuckingAction_t action, dsAudioDuckingType_t type, const unsigned char level);
+
+/**
+ * @note This API is deprecated.
+ *
+ * @brief Sets loop-through mode of an audio port.
+ *
+ * This function enables/disables audio loop-through on the audio port corresponding to the specified port handle.
+ *
+ * @param[in] handle    - Handle for the output audio port
+ * @param[in] loopThru  - Flag to enable/disable loop-through
+ *                          ( @a true to enable, @a false to disable)
+ *
+ * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ *
+ * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
+ *
+ * @warning  This API is Not thread safe.
+ */
+dsError_t  dsEnableLoopThru(intptr_t handle, bool loopThru);
+
+/**
+ * @note This API is deprecated.
+ *
+ * @brief Resets the Dialog Enhancement of audio port to default value.
+ *
+ * This function is used to reset the dialog enhancement of audio port corresponding to the specified port handle to its platform-specific default value.
+ *
+ * @param[in] handle  - Handle for the output audio port
+ *
+ * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_OPERATION_FAILED         -  The attempted operation failed
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ *
+ * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
+ *
+ * @warning  This API is Not thread safe.
+ */
+dsError_t dsResetDialogEnhancement(intptr_t handle);
+
+/**
+ * @note This API is deprecated.
+ *
+ * @brief Resets the audio bass enhancer to its default value.
+ *
+ * This function is used to reset the audio bass enhancer of audio port corresponding to port handle to its platform-specific default bass boost value.
+ *
+ * @param[in] handle  - Handle for the output audio port
+ *
+ * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_OPERATION_FAILED         -  The attempted operation failed
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ *
+ * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
+ *
+ * @see dsGetBassEnhancer, dsSetBassEnhancer
+ *
+ * @warning  This API is Not thread safe.
+ */
+dsError_t dsResetBassEnhancer(intptr_t handle);
+
+/**
+ * @note This API is deprecated.
+ *
+ * @brief Resets the audio surround virtualizer level to its default value.
+ *
+ * This function is used to reset the audio surround virtualizer level of audio port corresponding to port handle to its platform-specific default boost value.
+ *
+ * @param[in] handle  - Handle for the output audio port
+ *
+ * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_OPERATION_FAILED         -  The attempted operation failed
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ *
+ * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
+ *
+ * @see dsGetSurroundVirtualizer, dsSetSurroundVirtualizer
+ *
+ * @warning  This API is Not thread safe.
+ */
+dsError_t dsResetSurroundVirtualizer(intptr_t handle);
+
+/**
+ * @note This API is deprecated.
+ *
+ * @brief Resets the Dolby volume leveller of the audio port to its default volume level.
+ *
+ * This function is used to reset the Dolby volume leveller of audio port corresponding to port handle to its platform-specific default volume level.
+ *
+ * @param[in] handle  - Handle for the output audio port
+ *
+ * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_OPERATION_FAILED         -  The attempted operation failed
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ *
+ * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
+ *
+ * @warning  This API is Not thread safe.
+ *
+ * @see dsGetVolumeLeveller(), dsSetVolumeLeveller()
+ *
+ */
+dsError_t dsResetVolumeLeveller(intptr_t handle);
+
+/**
+ * @note This API is deprecated.
+ *
+ * @brief Gets the HDMI ARC port ID for each platform
+ *
+ * For sink devices, this function will get HDMI ARC port ID of the platform.
+ * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
+ *
+ * @param[in] portId  - HDMI ARC port ID
+ *
+ * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ *
+ * @pre  dsAudioPortInit() should be called before calling this API.
+ *
+ * @warning  This API is Not thread safe.
+ *
+ * @see dsGetSupportedARCTypes()
+ */
+dsError_t dsGetHDMIARCPortId(int *portId);
+
 #ifdef __cplusplus
 }
 #endif
