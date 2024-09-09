@@ -363,6 +363,7 @@ dsError_t dsGetFRFMode(intptr_t handle, int *frfmode);
  * @param[out] framerate    - Current frame rate will be represented.
  *                            Returns the value as a string(eg:"3840x2160px48")
  *
+ *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialized 
@@ -387,8 +388,9 @@ dsError_t dsGetCurrentDisplayframerate(intptr_t handle, char *framerate);
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle    - The handle returned from the dsGetVideoDevice() function
- * @param[in] framerate - Framerate value to be set.
+ * @param[in] framerate - Framerate value to be set which is platform-specific
  *                        Expects the value as a string(eg:"3840x2160px48")
+ *                        aaaaxbbbbxyy (aaaaxbbbb - Panel Resolution, yy - Panel Refresh Rate)
  *
  * @return dsError_t                       - Status
  * @retval dsERR_NONE                       - Success
