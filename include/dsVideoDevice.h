@@ -354,13 +354,13 @@ dsError_t dsSetFRFMode(intptr_t handle, int frfmode);
 dsError_t dsGetFRFMode(intptr_t handle, int *frfmode);
 
 /**
- * @brief Gets the current framerate of the device
+ * @brief Gets the current panel refresh rate of the device
  *
- * For sink devices, this function returns the current framerate of the video device.
+ * For sink devices, this function returns the current panel refresh rate of the device.
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in]  handle       - The handle returned from the dsGetVideoDevice() function
- * @param[out] framerate    - Current frame rate will be represented.
+ * @param[out] framerate    - Current Panel Refresh Rate will be represented.
  *                            Returns the value as a string(eg:"3840x2160px48")
  *
  *
@@ -382,17 +382,17 @@ dsError_t dsGetCurrentDisplayframerate(intptr_t handle, char *framerate);
  
 
 /**
- * @brief Sets the display framerate for the device
+ * @brief Sets the panel refresh rate for the device
  *
- * For sink devices, this function sets the framerate for the video device.
+ * For sink devices, this function sets the panel refresh rate for the device.
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle    - The handle returned from the dsGetVideoDevice() function
- * @param[in] framerate - Framerate value to be set which is platform-specific
- *                        Expects the value as a string(eg:"3840x2160px48")
+ * @param[in] framerate - Panel Refresh Rate value to be set which is platform-specific.
+ *                        Expects the value as a string(eg:"3840x2160px48").
  *                        aaaaxbbbbxyy (aaaaxbbbb - Panel Resolution, yy - Panel Refresh Rate)
  *
- * @return dsError_t                       - Status
+ * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialized
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
