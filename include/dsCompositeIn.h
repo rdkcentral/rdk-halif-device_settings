@@ -233,30 +233,6 @@ dsError_t dsCompositeInSelectPort (dsCompositeInPort_t Port);
 
 dsError_t dsCompositeInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t height);
 
-
-/**
- * @brief Gets the current Composite input video mode of the active port
- *
- * This function gets the current composite input video mode of the active port
- *
- * @param[out] resolution              - Current video port resolution.  Please refer ::dsVideoPortResolution_t
- *                                          dsVideoPortResolution_t is currently in the audioVisual combined file.
- *
- *
- * @return dsError_t                        - Status
- * @retval dsERR_NONE                       - Success
- * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
- * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
- * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
- *
- * @pre dsCompositeInInit() must be called before calling this API.
- *
- * @warning  This API is Not thread safe.
- *
- */
-dsError_t dsCompositeInGetCurrentVideoMode (dsVideoPortResolution_t *resolution);
-
 /**
  * @brief Gets the current Composite input video mode of the active port
  *
