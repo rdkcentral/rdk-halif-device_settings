@@ -233,6 +233,7 @@ dsError_t dsCompositeInSelectPort (dsCompositeInPort_t Port);
 
 dsError_t dsCompositeInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t height);
 
+
 /**
  * @brief Gets the current Composite input video mode of the active port
  *
