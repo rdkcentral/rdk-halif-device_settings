@@ -95,6 +95,7 @@
 
 #include "dsError.h"
 #include "dsCompositeInTypes.h"
+#include "dsAVDTypes.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -233,6 +234,29 @@ dsError_t dsCompositeInSelectPort (dsCompositeInPort_t Port);
 dsError_t dsCompositeInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t height);
 
 /**
+ * @brief Gets the current Composite input video mode of the active port
+ *
+ * This function gets the current composite input video mode of the active port
+ *
+ * @param[out] resolution              - Current video port resolution.  Please refer ::dsVideoPortResolution_t
+ *                                          dsVideoPortResolution_t is currently in the audioVisual combined file.
+ *
+ *
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
+ *
+ * @pre dsCompositeInInit() must be called before calling this API.
+ *
+ * @warning  This API is Not thread safe.
+ *
+ */
+dsError_t dsCompositeInGetCurrentVideoMode (dsVideoPortResolution_t *resolution);
+
+/**
  * @brief Callback function used to notify applications of COMPOSITE In hot plug status
  *
  * HAL Implementation should call this method to deliver COMPOSITE In hot plug status
@@ -251,6 +275,21 @@ dsError_t dsCompositeInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t 
  * @see dsCompositeInRegisterConnectCB()
  */
 typedef void (*dsCompositeInConnectCB_t)(dsCompositeInPort_t Port, bool isPortConnected);
+
+/**
+ * @brief Notifies applications when the Composite input port video mode changes
+ *
+ * HAL Implementation must call this method to deliver updated Composite input port video mode info
+ * to the Caller
+ *
+ * @param[in] port              - Port in which video mode updated. Please refer ::dsCompositeInPort_t
+ * @param[in] videoResolution   - current video resolution of the port.  Please refer ::dsVideoPortResolution_t
+ *                                  dsVideoPortResolution_t is currently in the audioVisual combined file.
+ *
+ * @pre dsCompositeInRegisterVideoModeUpdateCB() must be called before this API
+ *
+ */
+typedef void (*dsCompositeInVideoModeUpdateCB_t)(dsCompositeInPort_t port, dsVideoPortResolution_t videoResolution);
 
 /**
  * @brief Callback function used to notify applications of Composite In signal change status
@@ -354,6 +393,29 @@ dsError_t dsCompositeInRegisterSignalChangeCB (dsCompositeInSignalChangeCB_t CBF
  */
 
 dsError_t dsCompositeInRegisterStatusChangeCB (dsCompositeInStatusChangeCB_t CBFunc);
+
+/**
+ * @brief Registers a callback for the Composite input video mode Change event
+ *
+ * This function registers a callback for the Composite input video mode Change event.
+ *       The mode change is triggered whenever the video resolution changes.
+ *
+ * @param[in] CBFunc    - HDMI input video mode change callback function.
+ *                              Please refer ::dsCompositeInVideoModeUpdateCB_t
+ *
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
+ *
+ * @pre dsCompositeInInit() must be called before calling this API
+ * @see dsCompositeInVideoModeUpdateCB_t
+ *
+ * @warning  This API is Not thread safe.
+ *
+ */
+dsError_t dsCompositeInRegisterVideoModeUpdateCB(dsCompositeInVideoModeUpdateCB_t CBFunc);
 
 #ifdef __cplusplus
 }
