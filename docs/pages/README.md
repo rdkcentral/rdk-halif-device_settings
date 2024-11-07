@@ -8,8 +8,10 @@
 
 ## Acronyms, Terms and Abbreviations
 
+- `HPK` - Hardware Porting Kit
 - `HAL` \- Hardware Abstraction Layer
 - `DS` \- Device Settings
+- `NA` - Not Applicable
 
 ## Description
 
@@ -18,12 +20,14 @@ This document provides the links for the specific sub-modules of the Device Sett
 ## Device Settings Sub modules details
 
 |SNo|Sub-module Name|`HAL` Specification|Header File(s)|Settings Template File |
-|---|--------------|-----------|-----------------|---------------------|
-|1|`DS` Host|[`DS` Host `HAL` Specification](./docs/pages/ds-audio_halSpec.md)|[dsHost.h](./include/dsHost.h)|N/A|
+|---|---------------|-------------------|--------------|-----------------------|
+|1|`DS` Host|[`DS` Host `HAL` Specification](./docs/pages/ds-host_halSpec.md)|[dsHost.h](./include/dsHost.h)|`NA`|
 |2|`DS` Front Panel Display|[`DS` Front Panel Display `HAL` Specification](./docs/pages/ds-front-panel-display_halSpec.md)|[dsFPD.h](./include/dsFPD.h), [dsFPDTypes.h](./include/dsFPDTypes.h) |[frontPanelSettings_template.hpp](./docs/pages/frontPanelSettings_template.hpp)|
-|3|`DS` Display|[`DS` Display `HAL` Specification](./docs/pages/ds-display_halSpec.md)|[dsDisplay.h](./include/dsDisplay.h), [dsAVDTypes.h](./include/dsAVDTypes.h) |N/A|
-|4|`DS` HDMI Input|[`DS` HDMI Input `HAL` Specification](./docs/pages/ds-hdmi-in_halSpec.md)|[dsHdmiIn.h](./include/dsHdmiIn.h), [dsHdmiInTypes.h](./include/dsHdmiInTypes.h) |N/A|
-|5|`DS` Composite Input|[`DS` Composite Input `HAL` Specification](./docs/pages/ds-composite-in_halSpec.md)|[dsCompositeIn.h](./include/dsCompositeIn.h), [dsCompositeInTypes.h](./include/dsCompositeInTypes.h) |N/A|
+|3|`DS` Display|[`DS` Display `HAL` Specification](./docs/pages/ds-display_halSpec.md)|[dsDisplay.h](./include/dsDisplay.h), [dsAVDTypes.h](./include/dsAVDTypes.h) |`NA`|
+|4|`DS` HDMI Input|[`DS` HDMI Input `HAL` Specification](./docs/pages/ds-hdmi-in_halSpec.md)|[dsHdmiIn.h](./include/dsHdmiIn.h), [dsHdmiInTypes.h](./include/dsHdmiInTypes.h) |`NA`|
+|5|`DS` Composite Input|[`DS` Composite Input `HAL` Specification](./docs/pages/ds-composite-in_halSpec.md)|[dsCompositeIn.h](./include/dsCompositeIn.h), [dsCompositeInTypes.h](./include/dsCompositeInTypes.h) |`NA`|
 |6|`DS` Audio|[`DS` Audio `HAL` Specification](./docs/pages/ds-audio_halSpec.md)|[dsAudio.h](./include/dsAudio.h), [dsAVDTypes.h](./include/dsAVDTypes.h) |[dsAudioSettings_template.h](docs/pages/dsAudioSettings_template.h)|
-|7|`DS` Video Device|[`DS` Video Device `HAL` Specification](./docs/pages/ds-video-device_halSpec.md)|[dsVideoDevice.h](./include/dsVideoDevice.h), [dsVideoDeviceTypes.h](./include/dsVideoDeviceTypes.h)|[dsVideoDeviceSettings_template.h](docs/pages/dsVideoDeviceSettings_template.h)
-|8|`DS` Video Port|[`DS` Video Port `HAL` Specification](./docs/pages/ds-video-port_halSpec.md)|[dsVideoPort.h](./include/dsVideoPort.h), [dsAVDTypes.h](./include/dsAVDTypes.h)|[dsVideoPortSettings_template.h](docs/pages/dsVideoPortSettings_template.h), [dsVideoResolutionSettings_template.h](docs/pages/dsVideoResolutionSettings_template.h)
+|7|`DS` Video Device|[`DS` Video Device `HAL` Specification](./docs/pages/ds-video-device_halSpec.md)|[dsVideoDevice.h](./include/dsVideoDevice.h), [dsVideoDeviceTypes.h](./include/dsVideoDeviceTypes.h)|[dsVideoDeviceSettings_template.h](docs/pages/dsVideoDeviceSettings_template.h)|
+|8|`DS` Video Port|[`DS` Video Port `HAL` Specification](./docs/pages/ds-video-port_halSpec.md)|[dsVideoPort.h](./include/dsVideoPort.h), [dsAVDTypes.h](./include/dsAVDTypes.h)|[dsVideoPortSettings_template.h](docs/pages/dsVideoPortSettings_template.h), [dsVideoResolutionSettings_template.h](docs/pages/dsVideoResolutionSettings_template.h)|
+
+For more information about Test suits and `HPK`,please check [HPK repo](https://github.com/rdkcentral/rdk-hpk-documentation/)
