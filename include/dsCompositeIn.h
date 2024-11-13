@@ -262,7 +262,7 @@ typedef void (*dsCompositeInConnectCB_t)(dsCompositeInPort_t Port, bool isPortCo
  * @param[in] port              - Port in which video mode updated. Please refer ::dsCompositeInPort_t
  * @param[in] videoResolution   - current video resolution of the port.  Please refer ::dsVideoPortResolution_t
  *                                  dsVideoPortResolution_t is currently in the audioVisual combined file.
- *
+ *				    576i, 480i are supported resolutions for the composite input.
  * @pre dsCompositeInRegisterVideoModeUpdateCB() must be called before this API
  *
  */
