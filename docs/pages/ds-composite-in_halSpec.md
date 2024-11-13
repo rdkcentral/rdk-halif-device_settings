@@ -85,6 +85,7 @@ This interface must support asynchronous notifications operations:
 - `dsCompositeInRegisterConnectCB()` must facilitate asynchronous status notifications using the callback when the connection status of the callback `dsCompositeInConnectCB_t`. This callback must be used when the connection status when the Composite input port changes.
 - `dsCompositeInRegisterSignalChangeCB()` must facilitate asynchronous status notifications using the callback `dsCompositeInSignalChangeCB_t`. This callback must be used when the Composite input signal status changes.
 - `dsCompositeInRegisterStatusChangeCB()` must facilitate asynchronous status notifications using the callback `dsCompositeInStatusChangeCB_t`. This callback must be used when the Composite input status changes.
+- `dsCompositeInRegisterVideoModeUpdateCB()` must facilitate asynchronous status notifications using the callback `dsCompositeInVideoModeUpdateCB_t`. This callback must be used when the Composite video mode changes.
 
  This interface is allowed to establish its own thread context for its operation, ensuring minimal impact on system resources. Additionally, this interface is responsible for releasing the resources it creates for its operation once the respective operation concludes.
 
@@ -158,6 +159,7 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     - `dsCompositeInRegisterConnectCB()` - used when the CompositeIn port connection status changes
     - `dsCompositeInRegisterSignalChangeCB()` - used when the CompositeIn signal status changes
     - `dsCompositeInRegisterStatusChangeCB()` - used when the CompositeIn input status changes
+    - `dsCompositeInRegisterVideoModeUpdateCB()` - used when the CompositeIn video mode changes
 
 5. De-initialize the `HAL` using `dsCompositeInTerm()`
 
@@ -205,6 +207,9 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     Caller->>HAL:dsCompositeInRegisterStatusChangeCB()
     Note over HAL: Registers the callback for when the Composite in status changes
     HAL-->>Caller:return
+    Caller->>HAL:dsCompositeInRegisterVideoModeUpdateCB()
+    Note over HAL: Registers the callback for when the CompositeIn video mode changes
+    HAL-->>Caller:return
     Note over HAL: Composite Input hotplug connection has changed
     Driver-->>HAL:return
     HAL-->>Caller:dsCompositeInConnectCB_t callback returned
@@ -214,6 +219,9 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     Note over HAL: The Composite Input status changed
     Driver-->>HAL:return
     HAL-->>Caller:dsCompositeInStatusChangeCB_t callback returned
+    Note over HAL: The Composite Input video mode changed
+    Driver-->>HAL:return
+    HAL-->>Caller:dsCompositeInVideoModeUpdateCB_t callback returned
     Caller ->>HAL:dsCompositeInTerm()
     Note over HAL: Terminates the underlying sub-systems
     HAL->>Driver:Terminates the underlying sub-systems
