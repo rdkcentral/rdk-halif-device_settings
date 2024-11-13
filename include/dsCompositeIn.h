@@ -256,13 +256,15 @@ typedef void (*dsCompositeInConnectCB_t)(dsCompositeInPort_t Port, bool isPortCo
 /**
  * @brief Notifies applications when the Composite input port video mode changes
  *
- * HAL Implementation must call this method to deliver updated Composite input port video mode info
- * to the Caller
+ *The HAL implementation must call this method to provide the updated video mode information for the composite input port after the composite input signal has come to a stable state
+ *
+ * This callback is used for updating the video resolution information in the UI, so the pixelResolution element within the dsVideoPortResolution_t parameter should be updated accordingly with supported resolutions like 576i or 480i.
  *
  * @param[in] port              - Port in which video mode updated. Please refer ::dsCompositeInPort_t
  * @param[in] videoResolution   - current video resolution of the port.  Please refer ::dsVideoPortResolution_t
  *                                  dsVideoPortResolution_t is currently in the audioVisual combined file.
- *				    576i, 480i are supported resolutions for the composite input.
+ *				    The 'stereoScopicMode' member in the _dsVideoPortResolution_t structure is unused.
+ *
  * @pre dsCompositeInRegisterVideoModeUpdateCB() must be called before this API
  *
  */
