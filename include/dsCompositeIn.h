@@ -256,14 +256,20 @@ typedef void (*dsCompositeInConnectCB_t)(dsCompositeInPort_t Port, bool isPortCo
 /**
  * @brief Notifies applications when the Composite input port video mode changes
  *
- *The HAL implementation must call this method to provide the updated video mode information for the composite input port after the composite input signal has come to a stable state
+ * The HAL implementation must call this method to provide the updated video mode information for the composite input port
+ * after the composite input signal has come to a stable state
  *
- * This callback is used for updating the video resolution information in the UI, so the pixelResolution element within the dsVideoPortResolution_t parameter should be updated accordingly with supported resolutions like 576i or 480i.
+ * This callback is used for updating the video resolution information in the UI, so the pixelResolution element within the
+ * dsVideoPortResolution_t parameter should be updated accordingly with supported resolutions like 576i or 480i.
  *
- * @param[in] port              - Port in which video mode updated. Please refer ::dsCompositeInPort_t
- * @param[in] videoResolution   - current video resolution of the port.  Please refer ::dsVideoPortResolution_t
- *                                  dsVideoPortResolution_t is currently in the audioVisual combined file.
- *				    The 'stereoScopicMode' member in the _dsVideoPortResolution_t structure is unused.
+ * @param[out] port              - Port in which video mode updated.
+ * @param[out] videoResolution   - current video resolution of the port.
+ *                                 dsVideoPortResolution_t is currently in the audioVisual combined file.
+ *                                 The 'pixelResolution' member in the _dsVideoPortResolution_t structure can be
+ *                                 dsVIDEO_PIXELRES_720x480 or dsVIDEO_PIXELRES_720x576 according to the composite signal used
+ *                                 The 'stereoScopicMode' member in the _dsVideoPortResolution_t structure is unused and set   *                                 to dsVIDEO_SSMODE_UNKNOWN
+ *                                 The 'frameRate' member in the _dsVideoPortResolution_t structure can be
+ *                                 dsVIDEO_FRAMERATE_25, dsVIDEO_FRAMERATE_29dot97 according to the standard use.
  *
  * @pre dsCompositeInRegisterVideoModeUpdateCB() must be called before this API
  *
