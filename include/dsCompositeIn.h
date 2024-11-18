@@ -267,7 +267,8 @@ typedef void (*dsCompositeInConnectCB_t)(dsCompositeInPort_t Port, bool isPortCo
  *                                 dsVideoPortResolution_t is currently in the audioVisual combined file.
  *                                 The 'pixelResolution' member in the _dsVideoPortResolution_t structure can be
  *                                 dsVIDEO_PIXELRES_720x480 or dsVIDEO_PIXELRES_720x576 according to the composite signal used
- *                                 The 'stereoScopicMode' member in the _dsVideoPortResolution_t structure is unused and set   *                                 to dsVIDEO_SSMODE_UNKNOWN
+ *                                 The 'stereoScopicMode' member in the _dsVideoPortResolution_t structure is unused 
+ *                                 and set to dsVIDEO_SSMODE_UNKNOWN
  *                                 The 'frameRate' member in the _dsVideoPortResolution_t structure can be
  *                                 dsVIDEO_FRAMERATE_25, dsVIDEO_FRAMERATE_29dot97 according to the standard use.
  *
