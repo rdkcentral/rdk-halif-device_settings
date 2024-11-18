@@ -393,7 +393,7 @@ dsError_t dsCompositeInRegisterStatusChangeCB (dsCompositeInStatusChangeCB_t CBF
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: Panel without Composite IN port
  *
  * @pre dsCompositeInInit() must be called before calling this API
  * @see dsCompositeInVideoModeUpdateCB_t
