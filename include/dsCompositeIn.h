@@ -110,7 +110,7 @@ extern "C" {
  * @return dsError_t                      - Status
  * @retval dsERR_NONE                     - Success
  * @retval dsERR_ALREADY_INITIALIZED      - Module is already initialised
- * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: Panel without Composite IN port
  * @retval dsERR_GENERAL                  - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
@@ -131,7 +131,7 @@ dsError_t dsCompositeInInit (void);
  * @return dsError_t                      - Status
  * @retval dsERR_NONE                     - Success
  * @retval dsERR_NOT_INITIALIZED          - Module is not initialised
- * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: Panel without Composite IN port
  * @retval dsERR_GENERAL                  - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
@@ -154,7 +154,7 @@ dsError_t dsCompositeInTerm (void);
  * @retval dsERR_NONE                     - Success
  * @retval dsERR_INVALID_PARAM            - Parameter passed to this function is invalid
  * @retval dsERR_NOT_INITIALIZED          - Module is not initialised
- * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: Panel without Composite IN port
  * @retval dsERR_GENERAL                  - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
@@ -175,7 +175,7 @@ dsError_t dsCompositeInGetNumberOfInputs (uint8_t *pNumberOfInputs);
  * @retval dsERR_NONE                     - Success
  * @retval dsERR_INVALID_PARAM            - Parameter passed to this function is invalid
  * @retval dsERR_NOT_INITIALIZED          - Module is not initialised
- * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: Panel without Composite IN port
  * @retval dsERR_GENERAL                  - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
@@ -195,7 +195,7 @@ dsError_t dsCompositeInGetStatus (dsCompositeInStatus_t *pStatus);
  * @retval dsERR_NONE                     - Success
  * @retval dsERR_INVALID_PARAM            - Parameter passed to this function is invalid(port is not present or index is out of range)
  * @retval dsERR_NOT_INITIALIZED          - Module is not initialised
- * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: Panel without Composite IN port
  * @retval dsERR_GENERAL                  - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
@@ -223,7 +223,7 @@ dsError_t dsCompositeInSelectPort (dsCompositeInPort_t Port);
  * @retval dsERR_NONE                     - Success
  * @retval dsERR_INVALID_PARAM            - Parameter passed to this function is invalid
  * @retval dsERR_NOT_INITIALIZED          - Module is not initialised
- * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: Panel without Composite IN port
  * @retval dsERR_GENERAL                  - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
@@ -323,7 +323,7 @@ typedef void (*dsCompositeInStatusChangeCB_t)(dsCompositeInStatus_t inputStatus)
  * @retval dsERR_NONE                     - Success
  * @retval dsERR_INVALID_PARAM            - Parameter passed to this function is invalid
  * @retval dsERR_NOT_INITIALIZED          - Module is not initialised
- * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: Panel without Composite IN port
  * @retval dsERR_GENERAL                  - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
@@ -345,7 +345,7 @@ dsError_t dsCompositeInRegisterConnectCB (dsCompositeInConnectCB_t CBFunc);
  * @retval dsERR_NONE                     - Success
  * @retval dsERR_INVALID_PARAM            - Parameter passed to this function is invalid
  * @retval dsERR_NOT_INITIALIZED          - Module is not initialised
- * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: Panel without Composite IN port
  * @retval dsERR_GENERAL                  - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
@@ -368,7 +368,7 @@ dsError_t dsCompositeInRegisterSignalChangeCB (dsCompositeInSignalChangeCB_t CBF
  * @retval dsERR_NONE                     - Success
  * @retval dsERR_INVALID_PARAM            - Parameter passed to this function is invalid
  * @retval dsERR_NOT_INITIALIZED          - Module is not initialised
- * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: Panel without Composite IN port
  * @retval dsERR_GENERAL                  - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
