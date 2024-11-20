@@ -239,8 +239,8 @@ dsError_t dsCompositeInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t 
  * HAL Implementation should call this method to deliver COMPOSITE In hot plug status
  * to the application (e.g. Connect/Disconnect for Port 0/1).
  *
- * @param[in] Port              - COMPOSITE Input port. Please refer ::dsCompositeInPort_t
- * @param[in] isPortConnected   - Connection state of COMPOSITE In Port. @a true if connected, @a false if not
+ * @param[out] Port              - COMPOSITE Input port. Please refer ::dsCompositeInPort_t
+ * @param[out] isPortConnected   - Connection state of COMPOSITE In Port. @a true if connected, @a false if not
  *
  * @return None.
  * 
@@ -283,8 +283,8 @@ typedef void (*dsCompositeInVideoModeUpdateCB_t)(dsCompositeInPort_t port, dsVid
  * HAL Implementation should call this method to deliver Composite In signal change status
  * to the application (e.g. NoSignal/UnstableSignal/NotSupportedSignal/StableSignal for Composite In ports).
  *
- * @param[in] port      - Composite Input port. Please refer ::dsCompositeInPort_t
- * @param[in] sigStatus - signal Status of Composite In Port. Please refer ::dsCompInSignalStatus_t
+ * @param[out] port      - Composite Input port. Please refer ::dsCompositeInPort_t
+ * @param[out] sigStatus - signal Status of Composite In Port. Please refer ::dsCompInSignalStatus_t
  *
  * @return None.
  * 
@@ -300,7 +300,7 @@ typedef void (*dsCompositeInSignalChangeCB_t)(dsCompositeInPort_t port, dsCompIn
  * HAL Implementation should call this method to deliver Composite Input status
  * to the application (e.g. port, isPresented(true/false) etc. for Composite In ports).
  *
- * @param[in] inputStatus   - Composite Input status of a specific Port. Please refer ::dsCompositeInStatus_t
+ * @param[out] inputStatus   - Composite Input status of a specific Port. Please refer ::dsCompositeInStatus_t
  *
  * @return None.
  * 
