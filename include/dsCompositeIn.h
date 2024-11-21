@@ -95,6 +95,7 @@
 
 #include "dsError.h"
 #include "dsCompositeInTypes.h"
+#include "dsAVDTypes.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -109,7 +110,7 @@ extern "C" {
  * @return dsError_t                      - Status
  * @retval dsERR_NONE                     - Success
  * @retval dsERR_ALREADY_INITIALIZED      - Module is already initialised
- * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: Panel without Composite IN port
  * @retval dsERR_GENERAL                  - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
@@ -130,7 +131,7 @@ dsError_t dsCompositeInInit (void);
  * @return dsError_t                      - Status
  * @retval dsERR_NONE                     - Success
  * @retval dsERR_NOT_INITIALIZED          - Module is not initialised
- * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: Panel without Composite IN port
  * @retval dsERR_GENERAL                  - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
@@ -153,7 +154,7 @@ dsError_t dsCompositeInTerm (void);
  * @retval dsERR_NONE                     - Success
  * @retval dsERR_INVALID_PARAM            - Parameter passed to this function is invalid
  * @retval dsERR_NOT_INITIALIZED          - Module is not initialised
- * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: Panel without Composite IN port
  * @retval dsERR_GENERAL                  - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
@@ -174,7 +175,7 @@ dsError_t dsCompositeInGetNumberOfInputs (uint8_t *pNumberOfInputs);
  * @retval dsERR_NONE                     - Success
  * @retval dsERR_INVALID_PARAM            - Parameter passed to this function is invalid
  * @retval dsERR_NOT_INITIALIZED          - Module is not initialised
- * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: Panel without Composite IN port
  * @retval dsERR_GENERAL                  - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
@@ -194,7 +195,7 @@ dsError_t dsCompositeInGetStatus (dsCompositeInStatus_t *pStatus);
  * @retval dsERR_NONE                     - Success
  * @retval dsERR_INVALID_PARAM            - Parameter passed to this function is invalid(port is not present or index is out of range)
  * @retval dsERR_NOT_INITIALIZED          - Module is not initialised
- * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: Panel without Composite IN port
  * @retval dsERR_GENERAL                  - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
@@ -222,7 +223,7 @@ dsError_t dsCompositeInSelectPort (dsCompositeInPort_t Port);
  * @retval dsERR_NONE                     - Success
  * @retval dsERR_INVALID_PARAM            - Parameter passed to this function is invalid
  * @retval dsERR_NOT_INITIALIZED          - Module is not initialised
- * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: Panel without Composite IN port
  * @retval dsERR_GENERAL                  - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
@@ -238,8 +239,8 @@ dsError_t dsCompositeInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t 
  * HAL Implementation should call this method to deliver COMPOSITE In hot plug status
  * to the application (e.g. Connect/Disconnect for Port 0/1).
  *
- * @param[in] Port              - COMPOSITE Input port. Please refer ::dsCompositeInPort_t
- * @param[in] isPortConnected   - Connection state of COMPOSITE In Port. @a true if connected, @a false if not
+ * @param[out] Port              - COMPOSITE Input port. Please refer ::dsCompositeInPort_t
+ * @param[out] isPortConnected   - Connection state of COMPOSITE In Port. @a true if connected, @a false if not
  *
  * @return None.
  * 
@@ -253,13 +254,37 @@ dsError_t dsCompositeInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t 
 typedef void (*dsCompositeInConnectCB_t)(dsCompositeInPort_t Port, bool isPortConnected);
 
 /**
+ * @brief Notifies applications when the Composite input port video mode changes
+ *
+ * The HAL implementation must call this method to provide the updated video mode information for the composite input port
+ * after the composite input signal has come to a stable state
+ *
+ * This callback is used for updating the video resolution information in the UI, so the pixelResolution element within the
+ * dsVideoPortResolution_t parameter should be updated accordingly with supported resolutions like 576i or 480i.
+ *
+ * @param[out] port              - Port in which video mode updated.
+ * @param[out] videoResolution   - current video resolution of the port.
+ *                                 dsVideoPortResolution_t is currently in the audioVisual combined file.
+ *                                 The 'pixelResolution' member in the _dsVideoPortResolution_t structure can be
+ *                                 dsVIDEO_PIXELRES_720x480 or dsVIDEO_PIXELRES_720x576 according to the composite signal used
+ *                                 The 'stereoScopicMode' member in the _dsVideoPortResolution_t structure is unused 
+ *                                 and set to dsVIDEO_SSMODE_UNKNOWN
+ *                                 The 'frameRate' member in the _dsVideoPortResolution_t structure can be
+ *                                 dsVIDEO_FRAMERATE_25, dsVIDEO_FRAMERATE_29dot97 according to the standard use.
+ *
+ * @pre dsCompositeInRegisterVideoModeUpdateCB() must be called before this API
+ *
+ */
+typedef void (*dsCompositeInVideoModeUpdateCB_t)(dsCompositeInPort_t port, dsVideoPortResolution_t videoResolution);
+
+/**
  * @brief Callback function used to notify applications of Composite In signal change status
  *
  * HAL Implementation should call this method to deliver Composite In signal change status
  * to the application (e.g. NoSignal/UnstableSignal/NotSupportedSignal/StableSignal for Composite In ports).
  *
- * @param[in] port      - Composite Input port. Please refer ::dsCompositeInPort_t
- * @param[in] sigStatus - signal Status of Composite In Port. Please refer ::dsCompInSignalStatus_t
+ * @param[out] port      - Composite Input port. Please refer ::dsCompositeInPort_t
+ * @param[out] sigStatus - signal Status of Composite In Port. Please refer ::dsCompInSignalStatus_t
  *
  * @return None.
  * 
@@ -275,7 +300,7 @@ typedef void (*dsCompositeInSignalChangeCB_t)(dsCompositeInPort_t port, dsCompIn
  * HAL Implementation should call this method to deliver Composite Input status
  * to the application (e.g. port, isPresented(true/false) etc. for Composite In ports).
  *
- * @param[in] inputStatus   - Composite Input status of a specific Port. Please refer ::dsCompositeInStatus_t
+ * @param[out] inputStatus   - Composite Input status of a specific Port. Please refer ::dsCompositeInStatus_t
  *
  * @return None.
  * 
@@ -298,7 +323,7 @@ typedef void (*dsCompositeInStatusChangeCB_t)(dsCompositeInStatus_t inputStatus)
  * @retval dsERR_NONE                     - Success
  * @retval dsERR_INVALID_PARAM            - Parameter passed to this function is invalid
  * @retval dsERR_NOT_INITIALIZED          - Module is not initialised
- * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: Panel without Composite IN port
  * @retval dsERR_GENERAL                  - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
@@ -320,7 +345,7 @@ dsError_t dsCompositeInRegisterConnectCB (dsCompositeInConnectCB_t CBFunc);
  * @retval dsERR_NONE                     - Success
  * @retval dsERR_INVALID_PARAM            - Parameter passed to this function is invalid
  * @retval dsERR_NOT_INITIALIZED          - Module is not initialised
- * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: Panel without Composite IN port
  * @retval dsERR_GENERAL                  - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
@@ -343,7 +368,7 @@ dsError_t dsCompositeInRegisterSignalChangeCB (dsCompositeInSignalChangeCB_t CBF
  * @retval dsERR_NONE                     - Success
  * @retval dsERR_INVALID_PARAM            - Parameter passed to this function is invalid
  * @retval dsERR_NOT_INITIALIZED          - Module is not initialised
- * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - The attempted operation is not supported; e.g: Panel without Composite IN port
  * @retval dsERR_GENERAL                  - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
@@ -354,6 +379,29 @@ dsError_t dsCompositeInRegisterSignalChangeCB (dsCompositeInSignalChangeCB_t CBF
  */
 
 dsError_t dsCompositeInRegisterStatusChangeCB (dsCompositeInStatusChangeCB_t CBFunc);
+
+/**
+ * @brief Registers a callback for the Composite input video mode Change event
+ *
+ * This function registers a callback for the Composite input video mode Change event.
+ *       The mode change is triggered whenever the video resolution changes.
+ *
+ * @param[in] CBFunc    - HDMI input video mode change callback function.
+ *                              Please refer ::dsCompositeInVideoModeUpdateCB_t
+ *
+ * @return dsError_t                        - Status
+ * @retval dsERR_NONE                       - Success
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: Panel without Composite IN port
+ *
+ * @pre dsCompositeInInit() must be called before calling this API
+ * @see dsCompositeInVideoModeUpdateCB_t
+ *
+ * @warning  This API is Not thread safe.
+ *
+ */
+dsError_t dsCompositeInRegisterVideoModeUpdateCB(dsCompositeInVideoModeUpdateCB_t CBFunc);
 
 #ifdef __cplusplus
 }
