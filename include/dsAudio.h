@@ -286,7 +286,7 @@ dsError_t  dsSetAudioCompression(intptr_t handle, int compression);
  * This function returns the dialog enhancement level of the audio port corresponding to the specified port handle.
  *
  * @param[in] handle - Handle for the output audio port
- * @param[out] level - Pointer to Dialog Enhancement level (Value ranges from 0 to 16)
+ * @param[out] level - Pointer to Dialog Enhancement level (Value ranges from 0 to 12)
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
@@ -309,7 +309,7 @@ dsError_t  dsGetDialogEnhancement(intptr_t handle, int *level);
  * This function sets the dialog enhancement level to be used in the audio port corresponding to specified port handle.
  *
  * @param[in] handle  - Handle for the output audio port.
- * @param[in] level   - Dialog Enhancement level. Level ranges from 0 to 16.
+ * @param[in] level   - Dialog Enhancement level. Level ranges from 0 to 12.
  *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
