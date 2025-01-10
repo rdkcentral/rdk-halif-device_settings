@@ -108,6 +108,8 @@ typedef enum _dsHdmiInPort_t
     dsHDMI_IN_PORT_0,          /*!< HDMI input port index for PORT 0 */
     dsHDMI_IN_PORT_1,          /*!< HDMI input port index for PORT 1 */
     dsHDMI_IN_PORT_2,          /*!< HDMI input port index for PORT 2 */
+    dsHDMI_IN_PORT_3,          /*!< HDMI input port index for PORT 3 */
+    dsHDMI_IN_PORT_4,          /*!< HDMI input port index for PORT 4 */
     dsHDMI_IN_PORT_MAX         /*!< Out of range */
 } dsHdmiInPort_t;
 
