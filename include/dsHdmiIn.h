@@ -241,7 +241,7 @@ dsError_t dsHdmiInSelectPort (dsHdmiInPort_t Port, bool audioMix, dsVideoPlaneTy
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * 
- * @pre dsHdmiInInit() must be called before calling this API.
+ * @pre dsHdmiInInit() and dsHdmiInSelectPort() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -290,7 +290,7 @@ dsError_t dsHdmiInSelectZoomMode (dsVideoZoom_t requestedZoomMode);
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * 
- * @pre dsHdmiInInit() must be called before calling this API.
+ * @pre dsHdmiInInit() and dsHdmiInSelectPort() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
  * 
