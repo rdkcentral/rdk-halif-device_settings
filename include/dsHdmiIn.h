@@ -240,6 +240,7 @@ dsError_t dsHdmiInSelectPort (dsHdmiInPort_t Port, bool audioMix, dsVideoPlaneTy
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid. 
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
+ *                                              e.g: the @pre condition other than initialization is not met
  * 
  * @pre dsHdmiInInit() and dsHdmiInSelectPort() must be called before calling this API.
  * 
@@ -289,6 +290,7 @@ dsError_t dsHdmiInSelectZoomMode (dsVideoZoom_t requestedZoomMode);
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
+ *                                              e.g: the @pre condition other than initialization is not met
  * 
  * @pre dsHdmiInInit() and dsHdmiInSelectPort() must be called before calling this API.
  * 
