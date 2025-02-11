@@ -663,6 +663,30 @@ typedef enum _dsHdcpProtocolVersion_t {
     dsHDCP_VERSION_MAX      ///< Out of range 
 } dsHdcpProtocolVersion_t;
 
+/**
+ * @ingroup DSHAL_VIDEOPORT_TYPES
+ * @brief This enumeration defines all of the AVI InfoFrame content types.
+ */
+typedef enum _dsAVIContentType_t {
+    dsAVI_CONTENT_TYPE_NONE = -1,    ///< No signalling         - ITC=0
+    dsAVI_CONTENT_TYPE_GRAPHICS = 0, ///< Graphics content type - ITC=1, CN1=0, CN0=0
+    dsAVI_CONTENT_TYPE_PHOTO = 1,    ///< Photo content type    - ITC=1, CN1=0, CN0=1
+    dsAVI_CONTENT_TYPE_CINEMA = 2,   ///< Cinema content type   - ITC=1, CN1=1, CN0=0
+    dsAVI_CONTENT_TYPE_GAME = 3,     ///< Game content type     - ITC=1, CN1=1, CN0=1
+    dsAVI_CONTENT_TYPE_MAX           ///< Out of range
+} dsAVIContentType_t;
+
+/**
+ * @ingroup DSHAL_VIDEOPORT_TYPES
+ * @brief This enumeration defines all of the AVI InfoFrame scan information types.
+ */
+typedef enum _dsAVIScanInformation_t {
+    dsAVI_SCAN_TYPE_NO_DATA = 0,    ///< No data signalling    - S1=0, S0=0
+    dsAVI_SCAN_TYPE_OVERSCAN = 0,   ///< Overscan signalling   - S1=0, S0=1
+    dsAVI_SCAN_TYPE_UNDERSCAN = 1,  ///< Underscan signalling  - S1=1, S0=0
+    dsAVI_SCAN_TYPE_MAX           ///< Out of range
+} dsAVIScanInformation_t;
+
 /* End of DSHAL_VIDEOPORT_TYPES doxygen group. */
 /**
  * @}
