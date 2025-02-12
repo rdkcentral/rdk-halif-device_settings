@@ -682,8 +682,8 @@ typedef enum _dsAVIContentType_t {
  */
 typedef enum _dsAVIScanInformation_t {
     dsAVI_SCAN_TYPE_NO_DATA = 0,    ///< No data signalling    - S1=0, S0=0
-    dsAVI_SCAN_TYPE_OVERSCAN = 0,   ///< Overscan signalling   - S1=0, S0=1
-    dsAVI_SCAN_TYPE_UNDERSCAN = 1,  ///< Underscan signalling  - S1=1, S0=0
+    dsAVI_SCAN_TYPE_OVERSCAN = 1,   ///< Overscan signalling   - S1=0, S0=1
+    dsAVI_SCAN_TYPE_UNDERSCAN = 2,  ///< Underscan signalling  - S1=1, S0=0
     dsAVI_SCAN_TYPE_MAX           ///< Out of range
 } dsAVIScanInformation_t;
 
