@@ -228,7 +228,7 @@ dsError_t dsCompositeInSelectPort (dsCompositeInPort_t Port);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @pre  dsCompositeInInit() should be called before calling this API.
+ * @pre  dsCompositeInInit() and dsCompositeInSelectPort() should be called before calling this API.
  */
 
 dsError_t dsCompositeInScaleVideo (int32_t x, int32_t y, int32_t width, int32_t height);
