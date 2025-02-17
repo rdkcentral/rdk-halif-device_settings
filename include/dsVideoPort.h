@@ -1038,7 +1038,7 @@ dsError_t dsSetPreferredColorDepth(intptr_t handle,dsDisplayColorDepth_t colorDe
  * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle      - Handle of the video port returned from dsGetVideoPort()
- * @param[in] contentType - The content type (or none) to signal in the AVI InfoFrame.  Please refer ::dsAVIContentType_t
+ * @param[in] contentType - The content type (or none) to signal in the AVI InfoFrame.  Please refer ::dsAviContentType_t
  *
  * @return dsError_t                      -  Status
  * @retval dsERR_NONE                     -  Success
@@ -1053,7 +1053,7 @@ dsError_t dsSetPreferredColorDepth(intptr_t handle,dsDisplayColorDepth_t colorDe
  *
  * @see dsGetAVIContentType()
  */
-dsError_t dsSetAVIContentType(intptr_t handle, dsAVIContentType_t contentType);
+dsError_t dsSetAVIContentType(intptr_t handle, dsAviContentType_t contentType);
 
 /**
  * @brief Gets the configured AVI InfoFrame content type signalling for HDMI output video port.
@@ -1063,7 +1063,7 @@ dsError_t dsSetAVIContentType(intptr_t handle, dsAVIContentType_t contentType);
  * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle      - Handle of the video port returned from dsGetVideoPort()
- * @param[in] contentType - Pointer that receives the content type configuration set for AVI InfoFrames.  Please refer ::dsAVIContentType_t
+ * @param[in] contentType - Pointer that receives the content type configuration set for AVI InfoFrames.  Please refer ::dsAviContentType_t
  *
  * @return dsError_t                      -  Status
  * @retval dsERR_NONE                     -  Success
@@ -1078,7 +1078,7 @@ dsError_t dsSetAVIContentType(intptr_t handle, dsAVIContentType_t contentType);
  *
  * @see dsSetAVIContentType()
  */
-dsError_t dsGetAVIContentType(intptr_t handle, dsAVIContentType_t* contentType);
+dsError_t dsGetAVIContentType(intptr_t handle, dsAviContentType_t* contentType);
 
 /**
  * @brief Configures the AVI InfoFrame scan information signalling for HDMI output video port.

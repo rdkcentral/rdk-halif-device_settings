@@ -667,14 +667,14 @@ typedef enum _dsHdcpProtocolVersion_t {
  * @ingroup DSHAL_VIDEOPORT_TYPES
  * @brief This enumeration defines all of the AVI InfoFrame content types.
  */
-typedef enum _dsAVIContentType_t {
-    dsAVI_CONTENT_TYPE_NONE = -1,    ///< No signalling         - ITC=0
-    dsAVI_CONTENT_TYPE_GRAPHICS = 0, ///< Graphics content type - ITC=1, CN1=0, CN0=0
-    dsAVI_CONTENT_TYPE_PHOTO = 1,    ///< Photo content type    - ITC=1, CN1=0, CN0=1
-    dsAVI_CONTENT_TYPE_CINEMA = 2,   ///< Cinema content type   - ITC=1, CN1=1, CN0=0
-    dsAVI_CONTENT_TYPE_GAME = 3,     ///< Game content type     - ITC=1, CN1=1, CN0=1
-    dsAVI_CONTENT_TYPE_MAX           ///< Out of range
-} dsAVIContentType_t;
+typedef enum dsAviContentType {
+  dsAVICONTENT_TYPE_GRAPHICS,   /*!< Content type Graphics. - ITC=1, CN1=0, CN0=0 */
+  dsAVICONTENT_TYPE_PHOTO,      /*!< Content type Photo     - ITC=1, CN1=0, CN0=1 */
+  dsAVICONTENT_TYPE_CINEMA,     /*!< Content type Cinema    - ITC=1, CN1=1, CN0=0 */
+  dsAVICONTENT_TYPE_GAME,       /*!< Content type Game      - ITC=1, CN1=1, CN0=1 */
+  dsAVICONTENT_TYPE_INVALID,    /*!< Content type Invalid */
+  dsAVICONTENT_TYPE_MAX,        /*!< Out of range */
+}dsAviContentType_t;
 
 /**
  * @ingroup DSHAL_VIDEOPORT_TYPES
