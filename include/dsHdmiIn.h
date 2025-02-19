@@ -795,7 +795,6 @@ dsError_t dsSetEdid2AllmSupport (dsHdmiInPort_t iHdmiPort, bool allmSupport);
  * @warning  This API is Not thread safe
  * 
  */
-dsError_t dsGetEdid2AllmSupport (dsHdmiInPort_t iHdmiPort, bool *allmSupport);
 
 /**
 * @brief Gets the Maximum HDMI Compatibility Version supported by the given port.
