@@ -250,6 +250,61 @@ dsError_t dsGetEDIDBytes(intptr_t handle, unsigned char *edid, int *length);
 dsError_t dsGetDisplayAspectRatio(intptr_t handle, dsVideoAspectRatio_t *aspectRatio);
 
 /**
+ * @brief Enables/Disables ALLM mode for HDMI output port connected to display.
+ *
+ * For source devices, this function enables or disables the ALLM mode for specified HDMI output port.
+ * Source ALLM mode(on HF-VSIF) is enabled only if Sink ALLM bit is set (on HF-VSDB) as per HDMI 2.1 Specification
+ * ALLM mode set remains until the hotplug or device reboot
+ * This function return dsERR_OPERATION_NOT_SUPPORTED when HDMI disconnected
+ * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
+ *
+ * @param[in] handle    - Handle of the display device from dsGetDisplay()
+ * @param[in] enabled   - Flag to enable/disable the ALLM mode for the HDMI output port
+ *                         ( @a true to enable, @a false to disable)
+ *
+ * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ *
+ * @pre dsDisplayInit() and dsGetDisplay() must be called before calling this API.
+ *
+ * @warning  This API is Not thread safe.
+ *
+ * @see dsGetAllmEnabled()
+ */
+
+dsError_t dsSetAllmEnabled (intptr_t  handle, bool enabled);
+
+/**
+ * @brief Checks whether ALLM mode of HDMI output port connected to display is enabled or not.
+ *
+ * For Source devices, this function indicates whether ALLM mode for specified HDMI output port is enabled or not.
+ * By default, ALLM mode is disabled on bootup and after hotplug.
+ * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
+ *
+ * @param[in]  handle   - Handle of the display device from dsGetDisplay()
+ * @param[out] enabled  - Pointer to hold the enabled status of ALLM mode for given HDMI output port.
+ *                          ( @a true when ALLM mode is enabled or @a false otherwise)
+ *
+ * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ *
+ * @pre dsDisplayInit() and dsGetDisplay() must be called before calling this API.
+ *
+ * @warning  This API is Not thread safe.
+ *
+ * @see dsSetAllmEnabled()
+ */
+dsError_t dsGetAllmEnabled (intptr_t  handle, bool *enabled);
+
+/**
  * @brief Terminates the display sub-system.
  * 
  * This function resets any data structures used within Display sub-system,
