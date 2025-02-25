@@ -283,6 +283,7 @@ dsError_t dsSetAllmEnabled (intptr_t  handle, bool enabled);
  *
  * For Source devices, this function indicates whether ALLM mode for specified HDMI output port is enabled or not.
  * By default, ALLM mode is disabled on bootup and after wakeup/resume.
+ * This function return dsERR_OPERATION_NOT_SUPPORTED when HDMI disconnected
  * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in]  handle   - Handle of the display device from dsGetDisplay()
