@@ -331,6 +331,14 @@ typedef enum _dsMS12Capabilities_t {
     dsMS12SUPPORT_DolbyVolume = 0x01,           ///< MS12 supported Dolby Volume
     dsMS12SUPPORT_InteligentEqualizer = 0x02,   ///< MS12 supported Intelligent Equalizer
     dsMS12SUPPORT_DialogueEnhancer = 0x04,      ///< MS12 Dialogue Enhancer supported
+    dsMS12SUPPORT_Volumeleveller   = 0x08,      ///< MS12 Volume leveller
+    dsMS12SUPPORT_BassEnhancer     = 0x10,      ///< MS12 Bass Enhancer
+    dsMS12SUPPORT_SurroundDecoder  = 0x20,      ///< MS12 Surround Decoder
+    dsMS12SUPPORT_DRCMode          = 0x40,      ///< MS12 DRC Mode
+    dsMS12SUPPORT_SurroundVirtualizer = 0x80,   ///< MS12 Surround Virtualizer
+    dsMS12SUPPORT_MISteering       = 0x100,     ///< MS12 MI Steering
+    dsMS12SUPPORT_GraphicEqualizer = 0x200,     ///< MS12 Graphic equalizer
+    dsMS12SUPPORT_LEConfig         = 0x400,     ///< MS12 LE config
     dsMS12SUPPORT_Invalid = 0x80               ///< Invalid / Out of range
 } dsMS12Capabilities_t;
 
