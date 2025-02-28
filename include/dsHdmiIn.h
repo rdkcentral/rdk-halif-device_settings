@@ -774,7 +774,7 @@ dsError_t dsGetAVLatency (int *audio_latency, int *video_latency);
  */
 dsError_t dsSetEdid2AllmSupport (dsHdmiInPort_t iHdmiPort, bool allmSupport);
 
-/*
+/**
 * @brief Gets the Maximum HDMI Compatibility Version supported by the given port.
 *
 * For sink devices, this function gets the Maximum HDMI Compatibility Version supported by the given port.
