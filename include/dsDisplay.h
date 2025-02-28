@@ -334,7 +334,7 @@ dsError_t dsSetAVIContentType(intptr_t handle, dsAviContentType_t contentType);
  * @brief Gets the configured AVI InfoFrame content type signalling for HDMI output video port.
  *
  * For source devices, this function gets the configuration of the AVI InfoFrame ITC, CN1 and CN0 bits.
- * By default, IT content is dsAVICONTENT_TYPE_NOT_SIGNALLED on bootup and after wakeup/resume.
+ * By default, IT content is dsAVICONTENT_TYPE_INVALID on bootup and after wakeup/resume.
  * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle      - Handle of the display device from dsGetDisplay()
@@ -359,7 +359,6 @@ dsError_t dsGetAVIContentType(intptr_t handle, dsAviContentType_t* contentType);
  * @brief Configures the AVI InfoFrame scan information signalling for HDMI output video port connected to display.
  *
  * For source devices, this function configures the AVI InfoFrame S1 and S0 bits.
- * Source scan info (on AVI) is set only if Sink scan bit is set (on HF-VSDB) as per HDMI 2.1 Specification
  * AVI InfoFrame set remains until the power mode change or device reboot
  * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
