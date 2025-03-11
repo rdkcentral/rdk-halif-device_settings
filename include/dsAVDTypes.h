@@ -664,7 +664,6 @@ typedef enum _dsHdcpProtocolVersion_t {
 } dsHdcpProtocolVersion_t;
 
 /**
- * @ingroup DSHAL_VIDEOPORT_TYPES
  * @brief This enumeration defines all of the AVI InfoFrame content types.
  */
 typedef enum dsAviContentType {
@@ -677,7 +676,6 @@ typedef enum dsAviContentType {
 }dsAviContentType_t;
 
 /**
- * @ingroup DSHAL_VIDEOPORT_TYPES
  * @brief This enumeration defines all of the AVI InfoFrame scan information types.
  */
 typedef enum _dsAVIScanInformation_t {
