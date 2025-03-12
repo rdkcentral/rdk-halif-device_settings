@@ -339,7 +339,7 @@ typedef enum _dsMS12Capabilities_t {
     dsMS12SUPPORT_MISteering       = 0x100,     ///< MS12 MI Steering
     dsMS12SUPPORT_GraphicEqualizer = 0x200,     ///< MS12 Graphic equalizer
     dsMS12SUPPORT_LEConfig         = 0x400,     ///< MS12 LE config
-    dsMS12SUPPORT_Invalid = 0x80               ///< Invalid / Out of range
+    dsMS12SUPPORT_Invalid = 0x800               ///< Invalid / Out of range
 } dsMS12Capabilities_t;
 
 /**
