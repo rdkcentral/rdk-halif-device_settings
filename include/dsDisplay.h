@@ -283,7 +283,6 @@ dsError_t dsSetAllmEnabled (intptr_t  handle, bool enabled);
  *
  * For Source devices, this function indicates whether ALLM mode for specified HDMI output port is enabled or not.
  * By default, ALLM mode is disabled on bootup and after wakeup/resume.
- * This function return dsERR_OPERATION_NOT_SUPPORTED when HDMI disconnected
  * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in]  handle   - Handle of the display device from dsGetDisplay()
@@ -310,7 +309,6 @@ dsError_t dsGetAllmEnabled (intptr_t  handle, bool *enabled);
  *
  * For source devices, this function configures the AVI InfoFrame ITC, CN1 and CN0 bits.
  * AVI InfoFrame set remains until the power mode change or device reboot
- * This function return dsERR_OPERATION_NOT_SUPPORTED when HDMI disconnected
  * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle      - Handle of the display device from dsGetDisplay()
@@ -336,7 +334,6 @@ dsError_t dsSetAVIContentType(intptr_t handle, dsAviContentType_t contentType);
  *
  * For source devices, this function gets the configuration of the AVI InfoFrame ITC, CN1 and CN0 bits.
  * By default, IT content is dsAVICONTENT_TYPE_NOT_SIGNALLED on bootup and after wakeup/resume.
- * This function return dsERR_OPERATION_NOT_SUPPORTED when HDMI disconnected
  * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle       - Handle of the display device from dsGetDisplay()
@@ -389,7 +386,6 @@ dsError_t dsSetAVIScanInformation(intptr_t handle, dsAVIScanInformation_t scanIn
  *
  * For source devices, this function gets the configuration of the AVI InfoFrame S1 and S0 bits.
  * By default, scan info is dsAVI_SCAN_TYPE_NO_DATA on bootup and after wakeup/resume.
- * This function return dsERR_OPERATION_NOT_SUPPORTED when HDMI disconnected.
  * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] handle    - Handle of the display device from dsGetDisplay()
