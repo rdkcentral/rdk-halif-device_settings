@@ -149,18 +149,6 @@ typedef struct _dsHdmiInCap_t
 } dsHdmiInCap_t;
 
 /**
- * @brief This enumeration defines the AVI Content Types
- */
-typedef enum dsAviContentType {
-  dsAVICONTENT_TYPE_GRAPHICS,   /*!< Content type Graphics. */
-  dsAVICONTENT_TYPE_PHOTO,      /*!< Content type Photo */
-  dsAVICONTENT_TYPE_CINEMA,     /*!< Content type Cinema */
-  dsAVICONTENT_TYPE_GAME,       /*!< Content type Game */
-  dsAVICONTENT_TYPE_INVALID,    /*!< Content type Invalid */
-  dsAVICONTENT_TYPE_MAX,        /*!< Out of range */
-}dsAviContentType_t;
-
-/**
  * @brief Structure that captures Supported Game Features list
  */
 typedef struct _dsSupportedGameFeatureList_t {
