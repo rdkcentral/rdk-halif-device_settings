@@ -875,7 +875,7 @@ dsError_t dsHdmiInSetVRRSupport(dsHdmiInPort_t port, bool vrrSupport);
 * @pre dsHdmiInRegisterVRRChangeCB() must be called before this API
 *
 */
-typedef void (*dsHdmiInVRRChangeCB_t)(dsHdmiInPort_t port, dsVRRType_t vrrType);
+void (*dsHdmiInVRRChangeCB_t)(dsHdmiInPort_t port, dsVRRType_t vrrType);
 
 /**
 * @brief Registers a callback for the HDMI input VRR signalling status change event
