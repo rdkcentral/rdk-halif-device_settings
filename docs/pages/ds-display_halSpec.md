@@ -37,6 +37,9 @@
 - `EDID`    - Extended Display Identification Data
 - `HDCP`    - High-bandwidth Digital Content Protection
 - `SoC`     - System on chip
+- `ALLM`    - Auto Low Latency Mode
+- `AVI`     - Auxiliary Video Information InfoFrame
+- `VSIF`    - Vendor Specific Info Frame
 
 ## Description
 
@@ -149,7 +152,7 @@ The `caller` is expected to have complete control over the life cycle of the `HA
 
 1. Initialize the interface using: `dsDisplayInit()` before making any other `API` calls.  If `dsDisplayInit()` call fails, the `HAL` must return the respective error code, so that the `caller` can retry the operation.
 
-2. The `caller` can call `dsGetEDID()`, `dsGetDisplayAspectRatio()` and `dsGetEDIDBytes()` to query the information of connected display device. This interface is also used to notify `HDCP` Protocol changes of display device to the `caller`.
+2. The `caller` can call `dsGetEDID()`, `dsGetDisplayAspectRatio()`, `dsGetEDIDBytes()`, `dsGetAllmEnabled` to query the information of connected display device. `dsSetAVIContentType`, `dsGetAVIContentType`, `dsSetAVIScanInformation`, `dsGetAVIScanInformation` can be called for HDMI AVI signalling. `dsSetAllmEnabled` API can be called to enable ALLM on the VSIF which allows connected display to enter ALLM/Game mode. This interface is also used to notify `HDCP` Protocol changes of display device to the `caller`.
 
 3. De-initialize the HAL using `dsDisplayTerm()`.
 
