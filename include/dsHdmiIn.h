@@ -775,29 +775,6 @@ dsError_t dsGetAVLatency (int *audio_latency, int *video_latency);
 dsError_t dsSetEdid2AllmSupport (dsHdmiInPort_t iHdmiPort, bool allmSupport);
 
 /**
- * @brief Sets the EDID ALLM support
- * 
- * For sink devices, this function sets the EDID ALLM support.
- * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
- *
- * @param[in] iHdmiPort    - HDMI input port.  Please refer ::dsHdmiInPort_t
- * @param[out] allmSupport - Allm support. False for disabled, True for enabled
- *
- * @return dsError_t                        - Status
- * @retval dsERR_NONE                       - Success
- * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
- * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
- * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
- * 
- * @pre dsHdmiInInit() must be called before calling this API
- * 
- * @warning  This API is Not thread safe
- * 
- */
-dsError_t dsGetEdid2AllmSupport (dsHdmiInPort_t iHdmiPort, bool *allmSupport);
-
-/**
 * @brief Gets the Maximum HDMI Compatibility Version supported by the given port.
 *
 * For sink devices, this function gets the Maximum HDMI Compatibility Version supported by the given port.
