@@ -198,6 +198,17 @@ typedef enum dsHdmiMaxCapabilityVersion{
     HDMI_COMPATIBILITY_VERSION_MAX     /*!< Out of bounds */
 }dsHdmiMaxCapabilityVersion_t;
 
+/**
+* @brief Enum for Variable Refresh Rate Types
+*/
+typedef enum dsVRRType {
+    dsVRR_NONE,                    // No VRR support
+    dsVRR_HDMI_VRR,                // VRR (HDMI v2.1 flavour)
+    dsVRR_AMD_FREESYNC,            // AMD FreeSync
+    dsVRR_AMD_FREESYNC_PREMIUM,    // AMD FreeSync Premium
+    dsVRR_AMD_FREESYNC_PREMIUM_PRO // AMD FreeSync Premium Pro
+} dsVRRType_t;
+
 #endif // End of __DS_HDMI_IN_TYPES_H__
 
 /** @} */ // End of dsHdmiIn_HAL_Type_H
