@@ -223,15 +223,18 @@ dsError_t dsGetEDID(intptr_t handle, dsDisplayEDID_t *edid);
 
 dsError_t dsGetEDIDBytes(intptr_t handle, unsigned char *edid, int *length);
 
-/**
- * @brief Gets the aspect ratio of connected display device.
- * 
- * For source devices, this function returns the aspect ratio of the display corresponding to the
- * specified display device handle. When no TV connected, this API would return aspect ratio 16:9.
+ /**
+ * @brief Gets the aspect ratio of the source device based on the resolution.
+ *
+ * This function determines the aspect ratio based on the current resolution of source device.
+ * The source complies with the resolution specifications outlined in the CEA-861 standard.
+ * Below are the source supported display resolutions and the corresponding aspect ratio mappings:
+ * 720x576 / 720x480p  (Region specific) :aspect ratio  4x3
+ * 1280x720, 1920x1080, 3840x2160 : aspect ratio 16x9
  * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED as it is handled in TV Settings module.
  *
  * @param[in]  handle       - Handle of the display device
- * @param[out] aspectRatio  - Current aspect ratio of the specified display device
+ * @param[out] aspectRatio  - Current aspect ratio  based on the resolution config of source device
  *                              Please refer ::dsVideoAspectRatio_t
  *
  * @return dsError_t                        - Status
