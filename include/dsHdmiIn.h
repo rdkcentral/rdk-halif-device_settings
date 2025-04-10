@@ -808,8 +808,8 @@ dsError_t dsGetHdmiVersion(dsHdmiInPort_t iHdmiPort, dsHdmiMaxCapabilityVersion_
 * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
 *
 * @param[in] port         - HDMI input port. Please refer ::dsHdmiInPort_t
-* @param[out] vrrSupport  -  Flag to hold whether the VRR support is enabled/disabled for that port
-*						                        ( @a true if enabled, @a false if disabled)
+* @param[out] vrrSupport  - Flag to hold whether the VRR support is enabled/disabled for that port
+*                            ( @a true if enabled, @a false if disabled)
 *
 * @return dsError_t                        - Status
 * @retval dsERR_NONE                       - Success
@@ -834,7 +834,7 @@ dsError_t dsHdmiInGetVRRSupport(dsHdmiInPort_t port, bool * vrrSupport);
 *
 * @param[in] port        - HDMI input port. Please refer ::dsHdmiInPort_t
 * @param[in] vrrSupport  - Flag to set the VRR support
-*							                     ( @a true to enable, @a false to disable)
+*                           ( @a true to enable, @a false to disable)
 *
 * @return dsError_t                        - Status
 * @retval dsERR_NONE                       - Success
