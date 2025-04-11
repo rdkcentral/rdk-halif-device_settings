@@ -830,6 +830,7 @@ dsError_t dsHdmiInGetVRRSupport(dsHdmiInPort_t port, bool * vrrSupport);
 * This enables the support for HDMI VRR/AMD FreeSync/AMD FreeSync Premium/AMD FreeSync Premium Pro.
 *
 * For sink devices, this function sets the VRR support(enable/disable) for the given port.
+* For a HDMI input port that does not support VRR in HDMI v2.1 mode, this function returns dsERR_OPERATION_NOT_SUPPORTED.
 * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
 *
 * @param[in] port        - HDMI input port. Please refer ::dsHdmiInPort_t
