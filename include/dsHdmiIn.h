@@ -858,7 +858,7 @@ dsError_t dsHdmiInSetVRRSupport(dsHdmiInPort_t port, bool vrrSupport);
 * @param[in] port     - HDMI input port number in which VRR mode changed. Please refer ::dsHdmiInPort_t
 * @param[in] vrrType  - Current VRR type to be notified to the application. Please refer ::dsVRRType_t
 *
-* @pre dsHdmiInRegisterVRRChangeCB() must be called before this API
+* @see dsHdmiInRegisterVRRChangeCB()
 *
 */
 typedef void (*dsHdmiInVRRChangeCB_t)(dsHdmiInPort_t port, dsVRRType_t vrrType);
