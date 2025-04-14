@@ -42,6 +42,7 @@
 - `SPD`    - Source Product Description.
 - `HdmiIn` - HDMI Input
 - `ALLM`   - Auto Low Latency Mode
+- `VRR`    - Variable Refresh Rate
 
 ## Description
 
