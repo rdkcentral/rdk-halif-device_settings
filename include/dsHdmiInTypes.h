@@ -152,7 +152,8 @@ typedef struct _dsHdmiInCap_t
  * @brief Structure that captures Supported Game Features list
  */
 typedef struct _dsSupportedGameFeatureList_t {
-    char gameFeatureList[MAX_FEATURE_LIST_BUFFER_LEN]; /*!< buffer containing the list of comma separated supported game features (e.g: "allm") */
+    char gameFeatureList[MAX_FEATURE_LIST_BUFFER_LEN]; /*!< buffer containing the list of comma separated supported game features (e.g: "allm","vrr_hdmi",
+							 "vrr_amd_freesync","vrr_amd_freesync_premium") */
     int gameFeatureCount;                              /*!< Total number of supported game features */
 } dsSupportedGameFeatureList_t;
 
