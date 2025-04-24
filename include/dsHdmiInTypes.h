@@ -152,7 +152,8 @@ typedef struct _dsHdmiInCap_t
  * @brief Structure that captures Supported Game Features list
  */
 typedef struct _dsSupportedGameFeatureList_t {
-    char gameFeatureList[MAX_FEATURE_LIST_BUFFER_LEN]; /*!< buffer containing the list of comma separated supported game features (e.g: "allm") */
+    char gameFeatureList[MAX_FEATURE_LIST_BUFFER_LEN]; /*!< buffer containing the list of comma separated supported game features (e.g: "allm","vrr_hdmi",
+							 "vrr_amd_freesync","vrr_amd_freesync_premium") */
     int gameFeatureCount;                              /*!< Total number of supported game features */
 } dsSupportedGameFeatureList_t;
 
@@ -197,6 +198,17 @@ typedef enum dsHdmiMaxCapabilityVersion{
     HDMI_COMPATIBILITY_VERSION_21,     /*!< Hdmi Compatibility Version 2.1 */
     HDMI_COMPATIBILITY_VERSION_MAX     /*!< Out of bounds */
 }dsHdmiMaxCapabilityVersion_t;
+
+/**
+* @brief Enum for Variable Refresh Rate Types
+*/
+typedef enum dsVRRType {
+    dsVRR_NONE,                    // No VRR support
+    dsVRR_HDMI_VRR,                // VRR (HDMI v2.1 flavour)
+    dsVRR_AMD_FREESYNC,            // AMD FreeSync - Basic VRR (Variable Refresh Rate) – prevents tearing and stutter
+    dsVRR_AMD_FREESYNC_PREMIUM,    // AMD FreeSync Premium - Adds Low Framerate Compensation (LFC) and requires at least 120Hz at 1080p+
+    dsVRR_AMD_FREESYNC_PREMIUM_PRO // AMD FreeSync Premium Pro - Includes everything above + HDR support and lower latency with HDR content
+} dsVRRType_t;
 
 #endif // End of __DS_HDMI_IN_TYPES_H__
 
