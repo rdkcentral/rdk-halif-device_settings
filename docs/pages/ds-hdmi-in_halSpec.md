@@ -42,6 +42,7 @@
 - `SPD`    - Source Product Description.
 - `HdmiIn` - HDMI Input
 - `ALLM`   - Auto Low Latency Mode
+- `VRR`    - Variable Refresh Rate
 
 ## Description
 
@@ -96,6 +97,7 @@ This interface must support asynchronous notifications operations:
 - `dsHdmiInRegisterAllmChangeCB()` must facilitate asynchronous status notifications using the callback `dsHdmiInAllmChangeCB_t`.
 - `dsHdmiInRegisterAVLatencyChangeCB()` must facilitate asynchronous notifications using the callback `dsAVLatencyChangeCB_t` when the AV latency changes.
 - `dsHdmiInRegisterAviContentTypeChangeCB()` must facilitate asynchronous notifications using the call back `dsHdmiInAviContentTypeChangeCB_t` when HDMI input content type changes.
+- `dsHdmiInRegisterVRRChangeCB` must facilitate asynchronous notifications using the call back `dsHdmiInVRRChangeCB_t` when HDMI input VRR signalling status changes.
 
  This interface is allowed to establish its own thread context for its operation, ensuring minimal impact on system resources. Additionally, this interface is responsible for releasing the resources it creates for its operation once the respective operation concludes.
 
@@ -160,9 +162,9 @@ The `caller` is expected to have complete control over the life cycle of the `HA
 
 1. Initialize the `HAL` `dsHdmiInInit()` before making any other `APIs` calls.  If `dsHdmiInInit()` call fails, the `HAL` must return the respective error code, so that the `caller` can retry the operation.
 
-2. The `caller` can call `dsHdmiInSelectPort()`, `dsHdmiInScaleVideo()`, `dsSetEdidVersion()` and `dsHdmiInSelectZoomMode()` to set the needed information.
+2. The `caller` can call `dsHdmiInSelectPort()`, `dsHdmiInScaleVideo()`, `dsSetEdidVersion()` and `dsHdmiInSelectZoomMode()`, `dsHdmiInSetVRRSupport()` to set the needed information.
 
-3. The `caller` can call `dsHdmiInGetNumberOfInputs()`, `dsHdmiInGetStatus()`, `dsGetEDIDBytesInfo()`, `dsIsHdmiARCPort()`, `dsGetHDMISPDInfo()`,  `dsGetEdidVersion()`, `dsGetAllmStatus()`, `dsGetSupportedGameFeaturesList()`, `dsGetAVLatency()` and `dsHdmiInGetCurrentVideoMode()` to query the needed information.
+3. The `caller` can call `dsHdmiInGetNumberOfInputs()`, `dsHdmiInGetStatus()`, `dsGetEDIDBytesInfo()`, `dsIsHdmiARCPort()`, `dsGetHDMISPDInfo()`,  `dsGetEdidVersion()`, `dsGetAllmStatus()`, `dsGetSupportedGameFeaturesList()`, `dsGetAVLatency()`, `dsHdmiInGetCurrentVideoMode()`, `dsHdmiInGetVRRSupport()` and  `dsHdmiInGetVRRStatus()` to query the needed information.
 
 4. Callbacks can be set with:
     - `dsHdmiInRegisterConnectCB()` - used when the HDMIin port connection status changes
@@ -172,6 +174,7 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     - `dsHdmiInRegisterAllmChangeCB()` - used when the HDMI input ALLM mode changes
     - `dsHdmiInRegisterAVLatencyChangeCB()` - used when the AV latency changes
     - `dsHdmiInRegisterAviContentTypeChangeCB()` - used when the Avi Content type changes
+    - `dsHdmiInRegisterVRRChangeCB` - used when the HDMI input VRR signalling status change
 
 5. De-initialize the `HAL` using `dsHdmiInTerm()`
 
@@ -258,6 +261,21 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     HAL->>Driver:Getting the AV latency
     Driver-->>HAL:return
     HAL-->>Caller:return
+    Caller->>HAL:dsHdmiInGetVRRSupport()
+    Note over HAL: Gets the VRR support(enabled/disabled)
+    HAL->>Driver:Getting the VRR support
+    Driver-->>HAL:return
+    HAL-->>Caller:return
+    Caller->>HAL:dsHdmiInSetVRRSupport()
+    Note over HAL: Sets the VRR support(enable/disable)
+    HAL->>Driver:Setting the VRR support
+    Driver-->>HAL:return
+    HAL-->>Caller:return
+    Caller->>HAL:dsHdmiInGetVRRStatus()
+    Note over HAL: Gets the current VRR signalling type
+    HAL->>Driver:Getting the VRR type
+    Driver-->>HAL:return
+    HAL-->>Caller:return
     Caller->>HAL:dsHdmiInRegisterConnectCB()
     Note over HAL: Creates the callback for when the HDMI connection status changes.
     HAL-->>Caller:return
@@ -278,6 +296,9 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     HAL-->>Caller:return
     Caller->>HAL:dsHdmiInRegisterAviContentTypeChangeCB()
     Note over HAL: Creates the callback for when the Avi Content type changes.
+    HAL-->>Caller:return
+    Caller->>HAL:dsHdmiInRegisterVRRChangeCB()
+    Note over HAL: Creates the callback for when the HDMI input VRR signalling status changes.
     HAL-->>Caller:return
     Note over HAL: HDMI Input connection status changed
     Driver-->>HAL:return
@@ -300,6 +321,9 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     Note over HAL: Avi content type changed
     Driver-->>HAL:return
     HAL-->>Caller:dsHdmiInAviContentTypeChangeCB_t callback returned
+    Note over HAL: VRR signal staus changed
+    Driver-->>HAL:return
+    HAL-->>Caller:dsHdmiInVRRChangeCB_t callback returned
     Caller ->>HAL:dsHdmiInTerm()
     Note over HAL: Terminates the underlying sub-systems
     HAL->>Driver:Terminates the underlying sub-systems

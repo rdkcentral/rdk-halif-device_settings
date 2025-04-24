@@ -710,8 +710,8 @@ dsError_t dsGetAllmStatus (dsHdmiInPort_t iHdmiPort, bool *allmStatus);
  * For sink devices, this function gets all the supported game features list information.
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
- * @param[out] features         - List of all supported game features. 
- *                                       Please refer ::dsSupportedGameFeatureList_t
+ * @param[out] features         - List of all supported game features - "allm","vrr_hdmi","vrr_amd_freesync","vrr_amd_freesync_premium",
+ *                                "vrr_amd_freesync_premium_pro". Please refer ::dsSupportedGameFeatureList_t
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
@@ -796,6 +796,117 @@ dsError_t dsSetEdid2AllmSupport (dsHdmiInPort_t iHdmiPort, bool allmSupport);
 *
 */
 dsError_t dsGetHdmiVersion(dsHdmiInPort_t iHdmiPort, dsHdmiMaxCapabilityVersion_t *maxCompatibilityVersion);
+
+/**
+* @brief Gets the VRR support used for a given HDMI input port.
+* This includes support for HDMI VRR, AMD FreeSync, AMD FreeSync Premium, and AMD FreeSync Premium Pro.
+*
+* The default setting is `true` for HDMI ports that are VRR capable, otherwise `false`.
+*
+* For sink devices, this function returns whether the VRR support is enabled/disabled for the given port.
+* It will return the either the default settings of the port or return the value set successfully by dsHdmiInSetVRRSupport.
+* For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
+*
+* @param[in] port         - HDMI input port. Please refer ::dsHdmiInPort_t
+* @param[out] vrrSupport  - Flag to hold whether the VRR support is enabled/disabled for that port
+*                            ( @a true if enabled, @a false if disabled)
+*
+* @return dsError_t                        - Status
+* @retval dsERR_NONE                       - Success
+* @retval dsERR_NOT_INITIALIZED            - Module is not initialized
+* @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+* @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
+*
+* @pre dsHdmiInInit() must be called before calling this API
+*
+* @warning This API is Not thread safe
+*
+* @see dsHdmiInSetVRRSupport()
+*/
+dsError_t dsHdmiInGetVRRSupport(dsHdmiInPort_t port, bool * vrrSupport);
+
+/**
+* @brief Sets the VRR support for the given HDMI input port when operating in HDMI v2.1 mode.
+* This enables the support for HDMI VRR/AMD FreeSync/AMD FreeSync Premium/AMD FreeSync Premium Pro.
+*
+* For sink devices, this function sets the VRR support(enable/disable) for the given port.
+* For a HDMI input port that does not support VRR in HDMI v2.1 mode, this function returns dsERR_OPERATION_NOT_SUPPORTED.
+* For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
+*
+* @param[in] port        - HDMI input port. Please refer ::dsHdmiInPort_t
+* @param[in] vrrSupport  - Flag to set the VRR support
+*                           ( @a true to enable, @a false to disable)
+*
+* @return dsError_t                        - Status
+* @retval dsERR_NONE                       - Success
+* @retval dsERR_NOT_INITIALIZED            - Module is not initialised
+* @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+* @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices/sink devices when edid version is 1.4
+* @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
+*
+* @pre dsHdmiInInit() must be called before calling this API
+*
+* @warning This API is Not thread safe
+*
+* @see dsHdmiInGetVRRSupport()
+*/
+dsError_t dsHdmiInSetVRRSupport(dsHdmiInPort_t port, bool vrrSupport);
+
+/**
+* @brief Notifies applications when the HDMI input VRR signalling status changes for the active port.
+*
+* @param[in] port     - HDMI input port number in which VRR mode changed. Please refer ::dsHdmiInPort_t
+* @param[in] vrrType  - Current VRR type to be notified to the application. Please refer ::dsVRRType_t
+*
+* @see dsHdmiInRegisterVRRChangeCB()
+*
+*/
+typedef void (*dsHdmiInVRRChangeCB_t)(dsHdmiInPort_t port, dsVRRType_t vrrType);
+
+/**
+* @brief Registers a callback for the HDMI input VRR signalling status change event
+*
+* For sink devices, this function registers a callback for the HDMI input VRR signalling status change event.
+* For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
+*
+* @param[in] cb -  HDMI input VRR status change callback function. Please refer ::dsHdmiInVRRChangeCB_t
+*
+* @return dsError_t                        - Status
+* @retval dsERR_NONE                       - Success
+* @retval dsERR_NOT_INITIALIZED            - Module is not initialized
+* @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+* @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
+*
+* @pre dsHdmiInInit() must be called before calling this API
+* @see dsHdmiInVRRChangeCB_t
+*
+* @warning This API is Not thread safe.
+*
+*/
+dsError_t dsHdmiInRegisterVRRChangeCB(dsHdmiInVRRChangeCB_t cb);
+
+/**
+* @brief Gets the current VRR signalling type for the specified HDMI input port.
+* This includes the current signalling type like HDMI VRR/AMD FreeSync/AMD FreeSync Premium/AMD FreeSync Premium Pro.
+*
+* For sink devices, this function gets current VRR signalling type for the specified HDMI input port.
+* For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
+*
+* @param[in] port      - HDMI input port. Please refer ::dsHdmiInPort_t
+* @param[out] vrrType  - The current VRR type. Please refer ::dsVRRType_t
+*
+* @return dsError_t                        - Status
+* @retval dsERR_NONE                       - Success
+* @retval dsERR_NOT_INITIALIZED            - Module is not initialized
+* @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+* @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
+*
+* @pre dsHdmiInInit() must be called before calling this API
+*
+* @warning This API is Not thread safe
+*
+*/
+dsError_t dsHdmiInGetVRRStatus(dsHdmiInPort_t port, dsVRRType_t *vrrType);
 
 #ifdef __cplusplus
 }
