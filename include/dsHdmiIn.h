@@ -816,6 +816,7 @@ dsError_t dsGetHdmiVersion(dsHdmiInPort_t iHdmiPort, dsHdmiMaxCapabilityVersion_
 * @retval dsERR_NOT_INITIALIZED            - Module is not initialized
 * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
 * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
+* 				             VRR unsupported ports also return dsERR_OPERATION_NOT_SUPPORTED.
 *
 * @pre dsHdmiInInit() must be called before calling this API
 *
@@ -856,7 +857,7 @@ dsError_t dsHdmiInSetVRRSupport(dsHdmiInPort_t port, bool vrrSupport);
 * @brief Notifies applications when the HDMI input VRR signalling status changes for the active port.
 *
 * @param[in] port     - HDMI input port number in which VRR mode changed. Please refer ::dsHdmiInPort_t
-* @param[in] vrrStatus  - Current VRR type and VRR FrameRate to be notified to the application. Please refer ::dsHdmiInVrrStatus_t
+* @param[in] vrrType  - Current VRR Type to be notified to the application. Please refer ::dsVRRType_t
 *
 * @see dsHdmiInRegisterVRRChangeCB()
 *

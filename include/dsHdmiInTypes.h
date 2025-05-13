@@ -216,7 +216,7 @@ typedef enum dsVRRType {
 typedef struct _dsHdmiInVrrStatus_t
 {
     dsVRRType_t vrrType;      /*! Type of VRR */
-    uint32_t   vrrFramerate;  /*! Display VRR FrameRate in Khz */
+    double  vrrFramerate_Hz;  /*! Display VRR FrameRate in Hz */
 } dsHdmiInVrrStatus_t;
 
 #endif // End of __DS_HDMI_IN_TYPES_H__
