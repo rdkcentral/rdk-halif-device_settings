@@ -210,6 +210,13 @@ typedef enum dsVRRType {
     dsVRR_AMD_FREESYNC_PREMIUM_PRO // AMD FreeSync Premium Pro - Includes everything above + HDR support and lower latency with HDR content
 } dsVRRType_t;
 
+typedef struct _dsHdmiInVrrStatus_t
+{
+    dsVRRType_t vrrType;      /*! Type of VRR */
+    uint32_t   vrrFramerate;  /*! Display VRR FrameRate in Khz */
+} dsHdmiInVrrStatus_t;
+
+
 #endif // End of __DS_HDMI_IN_TYPES_H__
 
 /** @} */ // End of dsHdmiIn_HAL_Type_H
