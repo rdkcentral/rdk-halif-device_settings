@@ -856,12 +856,12 @@ dsError_t dsHdmiInSetVRRSupport(dsHdmiInPort_t port, bool vrrSupport);
 * @brief Notifies applications when the HDMI input VRR signalling status changes for the active port.
 *
 * @param[in] port     - HDMI input port number in which VRR mode changed. Please refer ::dsHdmiInPort_t
-* @param[in] vrrType  - Current VRR type to be notified to the application. Please refer ::dsVRRType_t
+* @param[in] vrrStatus  - Current VRR type and VRR FrameRate to be notified to the application. Please refer ::dsHdmiInVrrStatus_t
 *
 * @see dsHdmiInRegisterVRRChangeCB()
 *
 */
-typedef void (*dsHdmiInVRRChangeCB_t)(dsHdmiInPort_t port, dsVRRType_t vrrType);
+typedef void (*dsHdmiInVRRChangeCB_t)(dsHdmiInPort_t port, dsHdmiInVrrStatus_t vrrStatus);
 
 /**
 * @brief Registers a callback for the HDMI input VRR signalling status change event
@@ -893,7 +893,7 @@ dsError_t dsHdmiInRegisterVRRChangeCB(dsHdmiInVRRChangeCB_t cb);
 * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
 *
 * @param[in] port      - HDMI input port. Please refer ::dsHdmiInPort_t
-* @param[out] vrrType  - The current VRR type. Please refer ::dsVRRType_t
+* @param[out] vrrStatus  - The current VRR type and VRR FrameRate to be notified to application. Please refer ::dsHdmiInVrrStatus_t
 *
 * @return dsError_t                        - Status
 * @retval dsERR_NONE                       - Success
@@ -906,7 +906,7 @@ dsError_t dsHdmiInRegisterVRRChangeCB(dsHdmiInVRRChangeCB_t cb);
 * @warning This API is Not thread safe
 *
 */
-dsError_t dsHdmiInGetVRRStatus(dsHdmiInPort_t port, dsVRRType_t *vrrType);
+dsError_t dsHdmiInGetVRRStatus(dsHdmiInPort_t port, dsHdmiInVrrStatus_t *vrrStatus);
 
 #ifdef __cplusplus
 }
