@@ -491,8 +491,7 @@ typedef enum _dsTVResolution_t{
 /**
  * @brief This enumeration defines all of the standard frame rates at which 
  *      video may be played out of the video port.
- * @see dsVideoPortFrameRate_isValid
- * @note Also used in @link dsVideoDevice.h @endlink
+ * For more details on HDMI frame rate, Refer HDMI specification CTA 861-G
  */
 typedef enum _dsVideoFrameRate_t{
     dsVIDEO_FRAMERATE_UNKNOWN,  ///< Unknown frame rate

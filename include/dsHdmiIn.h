@@ -815,9 +815,8 @@ dsError_t dsGetHdmiVersion(dsHdmiInPort_t iHdmiPort, dsHdmiMaxCapabilityVersion_
 * @retval dsERR_NONE                       - Success
 * @retval dsERR_NOT_INITIALIZED            - Module is not initialized
 * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
-* @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
-* 				             VRR unsupported ports also return dsERR_OPERATION_NOT_SUPPORTED.
-*
+* @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices or for sink device, HDMI port that does not support VRR.
+* 				        
 * @pre dsHdmiInInit() must be called before calling this API
 *
 * @warning This API is Not thread safe
