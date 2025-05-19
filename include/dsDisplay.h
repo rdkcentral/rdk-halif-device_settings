@@ -224,27 +224,25 @@ dsError_t dsGetEDID(intptr_t handle, dsDisplayEDID_t *edid);
 dsError_t dsGetEDIDBytes(intptr_t handle, unsigned char *edid, int *length);
 
 /**
- * @brief Gets the aspect ratio of connected display device.
- * 
- * For source devices, this function returns the aspect ratio of the display corresponding to the
- * specified display device handle. When no TV connected, this API would return aspect ratio 16:9.
- * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED as it is handled in TV Settings module.
+ * @brief Get the source device’s aspect ratio based on the resolution.
  *
- * @param[in]  handle       - Handle of the display device
- * @param[out] aspectRatio  - Current aspect ratio of the specified display device
- *                              Please refer ::dsVideoAspectRatio_t
+ * Determines the aspect ratio for source devices in accordance with CTA-861:
+ *   - 720×576, 720×480p (region-specific) → dsVIDEO_ASPECT_RATIO_4x3
+ *   - 1280×720, 1920×1080, 3840×2160      → dsVIDEO_ASPECT_RATIO_16x9
+ * Returns dsERR_OPERATION_NOT_SUPPORTED for sink devices (handled in TV Settings).
  *
- * @return dsError_t                        - Status
- * @retval dsERR_NONE                       - Success
- * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
- * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
- * @retval dsERR_GENERAL                    - Underlying undefined platform error
- * 
- * @pre  dsDisplayInit() and dsGetDisplay() must be called before calling this API
- * 
- * @warning  This API is Not thread safe
- * 
+ * @param[in]   handle        - Handle of the display device
+ * @param[out]  aspectRatio   - Pointer to receive the aspect ratio; must not be NULL.
+ *
+ * @return dsError_t                      - Status
+ * @retval dsERR_NONE                     - Success
+ * @retval dsERR_NOT_INITIALIZED          - Module not initialized
+ * @retval dsERR_INVALID_PARAM            - Invalid handle or NULL pointer
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - Sink devices unsupported
+ * @retval dsERR_GENERAL                  - Underlying platform error
+ *
+ * @pre   dsDisplayInit() and dsGetDisplay() have been called, otherwise result in dsERR_NOT_INITIALIZED
+ * @warning Not thread-safe
  */
 
 dsError_t dsGetDisplayAspectRatio(intptr_t handle, dsVideoAspectRatio_t *aspectRatio);
