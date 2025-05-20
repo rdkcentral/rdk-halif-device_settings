@@ -499,8 +499,7 @@ typedef enum _dsTVResolution_t{
 /**
  * @brief This enumeration defines all of the standard frame rates at which 
  *      video may be played out of the video port.
- * @see dsVideoPortFrameRate_isValid
- * @note Also used in @link dsVideoDevice.h @endlink
+ * For more details on HDMI frame rate, Refer HDMI specification CTA 861-G
  */
 typedef enum _dsVideoFrameRate_t{
     dsVIDEO_FRAMERATE_UNKNOWN,  ///< Unknown frame rate
@@ -512,6 +511,12 @@ typedef enum _dsVideoFrameRate_t{
     dsVIDEO_FRAMERATE_29dot97,  ///< Played at 29.97 frames per second
     dsVIDEO_FRAMERATE_50,       ///< Played at 50 frames per second
     dsVIDEO_FRAMERATE_59dot94,  ///< Played at 59.94 frames per second
+    dsVIDEO_FRAMERATE_100,      ///< Played at 100 frames per second
+    dsVIDEO_FRAMERATE_119dot88, ///< Played at 119.88 frames per second
+    dsVIDEO_FRAMERATE_120,      ///< Played at 120 frames per second
+    dsVIDEO_FRAMERATE_200,      ///< Played at 200 frames per second
+    dsVIDEO_FRAMERATE_239dot76, ///< Played at 239.76 frames per second
+    dsVIDEO_FRAMERATE_240,      ///< Played at 240 frames per second
     dsVIDEO_FRAMERATE_MAX       ///< Out of range
 }dsVideoFrameRate_t;
 
