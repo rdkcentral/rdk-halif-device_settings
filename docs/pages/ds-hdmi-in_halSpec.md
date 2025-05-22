@@ -333,8 +333,21 @@ The `caller` is expected to have complete control over the life cycle of the `HA
 
 #### Flow Diagram
 
-<br/>
+```mermaid
+stateDiagram-v2
+    [*] --> HDMI_PluggedIn : Device plugged in (Hotplug callback)
+    HDMI_PluggedIn --> Select_Port : User selects port
+    Select_Port --> None : Starting at default signal
+    None --> No_Signal
 
-![State Diagram](/docs/pages/images/signal_state_diagram.png)
+    No_Signal --> signal_callback_No_Signal : No port connected 
+    signal_callback_No_Signal --> No_Signal : (Signal change callback)
 
-<br/>
+    No_Signal --> Unstable : Port selected but unstable signal
+    Unstable --> signal_callback_Unstable : Connection still unstable
+    signal_callback_Unstable --> Unstable : (Signal change callback)
+
+    Unstable --> Stable : Connection stabilized
+    Unstable --> Not_Supported : Connection stabilized but connection not supported (Signal change callback)
+    Stable --> HDMI_Port_Started : (Status change callback)
+```
