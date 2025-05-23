@@ -56,7 +56,7 @@ x[Device Settings HdmiIn HAL]<-->z[SOC Drivers];
 style y fill:#99CCFF,stroke:#333,stroke-width:0.3px,align:left
 style z fill:#fcc,stroke:#333,stroke-width:0.3px,align:left
 style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
- ```
+```
 
 DS `HdmiIn` `HAL` provides a set of `APIs` to initialize, query and set information about the HDMI input ports such as getting the number of input ports, getting the current status of a selected input port, setting the video scale, selecting which HDMI input to be selected as active and registering callbacks for asynchronous notifications.
 
@@ -329,12 +329,28 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     HAL->>Driver:Terminates the underlying sub-systems
     Driver-->>HAL:return
     HAL-->>Caller:return
- ```
+```
 
 #### Flow Diagram
 
-<br/>
+```mermaid
+stateDiagram-v2
+HDPI : HDMI Device Plugged In(Hotplug Callback)
+HSP : HDMI Select Port(from user)
+DS : DefaultSignal
+NSiG : No Signal (Signal Change Callback called if port is not connected)
+US : Unstable (Signal Change Callback call if connection doesnot stabilize)
+NS : Not supported(signal change callback)
+Stable : Stable(signal change callback)
+HDPS : HDMI port started(status change callback)
 
-![State Diagram](/docs/pages/images/signal_state_diagram.png)
-
-<br/>
+HDPI --> HSP
+HSP --> DS : Starting at default signal
+DS --> NSiG
+Stable --> HDPS
+NSiG --> US : Port connected but unstable signal
+US --> NS : Connection stabilized but connection not supported
+US --> Stable : Connection stabilized
+NSiG --> NSiG : No Port Connected
+US --> US : connection still unstable
+```

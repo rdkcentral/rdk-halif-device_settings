@@ -50,7 +50,7 @@ x[Device Settings VIDEO DEVICE HAL]<-->z[SOC Drivers];
 style y fill:#99CCFF,stroke:#333,stroke-width:0.3px,align:left
 style z fill:#fcc,stroke:#333,stroke-width:0.3px,align:left
 style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
- ```
+```
 
 `Device Settings Video Device` `HAL` provides a set of `APIs` to initialize, query information about the `SoC`.
 
@@ -203,4 +203,4 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     HAL ->> Driver: Releases all the resources allocated during dsVideoDeviceInit()
     Driver-->>HAL:return
     HAL-->>Caller:return
-``````
+```

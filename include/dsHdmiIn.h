@@ -815,8 +815,8 @@ dsError_t dsGetHdmiVersion(dsHdmiInPort_t iHdmiPort, dsHdmiMaxCapabilityVersion_
 * @retval dsERR_NONE                       - Success
 * @retval dsERR_NOT_INITIALIZED            - Module is not initialized
 * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
-* @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
-*
+* @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices or for sink device, HDMI port that does not support VRR.
+* 				        
 * @pre dsHdmiInInit() must be called before calling this API
 *
 * @warning This API is Not thread safe
@@ -856,7 +856,7 @@ dsError_t dsHdmiInSetVRRSupport(dsHdmiInPort_t port, bool vrrSupport);
 * @brief Notifies applications when the HDMI input VRR signalling status changes for the active port.
 *
 * @param[in] port     - HDMI input port number in which VRR mode changed. Please refer ::dsHdmiInPort_t
-* @param[in] vrrType  - Current VRR type to be notified to the application. Please refer ::dsVRRType_t
+* @param[in] vrrType  - Current VRR Type to be notified to the application. Please refer ::dsVRRType_t
 *
 * @see dsHdmiInRegisterVRRChangeCB()
 *
@@ -893,7 +893,7 @@ dsError_t dsHdmiInRegisterVRRChangeCB(dsHdmiInVRRChangeCB_t cb);
 * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
 *
 * @param[in] port      - HDMI input port. Please refer ::dsHdmiInPort_t
-* @param[out] vrrType  - The current VRR type. Please refer ::dsVRRType_t
+* @param[out] vrrStatus  - The current VRR type and VRR FrameRate to be notified to application. Please refer ::dsHdmiInVrrStatus_t
 *
 * @return dsError_t                        - Status
 * @retval dsERR_NONE                       - Success
@@ -906,7 +906,7 @@ dsError_t dsHdmiInRegisterVRRChangeCB(dsHdmiInVRRChangeCB_t cb);
 * @warning This API is Not thread safe
 *
 */
-dsError_t dsHdmiInGetVRRStatus(dsHdmiInPort_t port, dsVRRType_t *vrrType);
+dsError_t dsHdmiInGetVRRStatus(dsHdmiInPort_t port, dsHdmiInVrrStatus_t *vrrStatus);
 
 #ifdef __cplusplus
 }
