@@ -49,7 +49,7 @@ x[DEVICE SETTINGS FRONT PANEL DISPLAY HAL]<-->z[Front Panel SoC Driver];
 style y fill:#99CCFF,stroke:#333,stroke-width:0.3px,align:left
 style z fill:#fcc,stroke:#333,stroke-width:0.3px,align:left
 style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
- ```
+```
 
 This interface provides a set of `APIs` to facilitate communication to Front Panel `LED` Display `SoC` Drivers.
 
@@ -197,5 +197,4 @@ The various `DS` `FP` `LED` states are as follows:
     HAL ->> Driver: Releases all the resources allocated during FPD init
     Driver-->>HAL:return
     HAL-->>Caller:return
-
- ```
+```
