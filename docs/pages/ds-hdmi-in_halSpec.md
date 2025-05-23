@@ -56,7 +56,7 @@ x[Device Settings HdmiIn HAL]<-->z[SOC Drivers];
 style y fill:#99CCFF,stroke:#333,stroke-width:0.3px,align:left
 style z fill:#fcc,stroke:#333,stroke-width:0.3px,align:left
 style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
- ```
+```
 
 DS `HdmiIn` `HAL` provides a set of `APIs` to initialize, query and set information about the HDMI input ports such as getting the number of input ports, getting the current status of a selected input port, setting the video scale, selecting which HDMI input to be selected as active and registering callbacks for asynchronous notifications.
 
@@ -329,7 +329,7 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     HAL->>Driver:Terminates the underlying sub-systems
     Driver-->>HAL:return
     HAL-->>Caller:return
- ```
+```
 
 #### Flow Diagram
 
