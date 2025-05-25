@@ -1744,6 +1744,124 @@ dsError_t  dsGetSecondaryLanguage(intptr_t handle, char* sLang);
 */
 dsError_t dsSetAudioMixerLevels (intptr_t handle, dsAudioInput_t aInput, int volume);
 
+/**
+* @brief Gets the platform capabilities of the ARC/eARC port.
+*
+* For sink devices, this function gets the supported ARC types of ARC/eARC port.
+* No device needs to be connected to return the port capabilities.
+*
+* For source devices, this function returns @a dsERR_OPERATION_NOT_SUPPORTED always.
+*
+* Note that this function returns the capabilities of the platform HDMI ARC/eARC port
+* and not the connected device.  See @c dsGetSupportedARCTypes() to detect device caps.
+*
+* @param[in] handle - Handle for the HDMI ARC/eARC port
+* @param[out] types - Value of supported ARC types. Please refer to @c ::dsAudioARCTypes_t
+*
+* @return dsError_t                      -  Status
+* @retval dsERR_NONE                     -  Success
+* @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+* @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+* @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+* @retval dsERR_GENERAL                  -  Underlying undefined platform error
+*
+* @pre dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
+*
+* @warning This API is Not thread safe.
+*/
+dsError_t dsGetARCPortCaps(intptr_t handle, int *types);
+
+/**
+* @brief Gets the eARC feature support state.
+*
+* For sink devices that support eARC, this function gets the feature support for eARC.
+* This function does not require a source device to be connected.
+*
+* For source devices and sink devices that do not support eARC,
+* this function returns @a dsERR_OPERATION_NOT_SUPPORTED always.
+*
+* @param[in] handle - Handle for the HDMI ARC/eARC port
+* @param[out] enabled - eARC feature enabled/disabled state
+*                          ( @a true when eARC is enabled, @a false otherwise)
+*
+* @return dsError_t                      -  Status
+* @retval dsERR_NONE                     -  Success
+* @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+* @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+* @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+* @retval dsERR_GENERAL                  -  Underlying undefined platform error
+*
+* @pre dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
+*
+* @warning This API is Not thread safe.
+*/
+dsError_t dsGetEARCSupport(intptr_t handle, bool *enabled);
+
+/**
+* @brief Sets the eARC feature support state.
+*
+* For sink devices that support eARC, this function sets the feature support for eARC.
+* The `dsGetARCPortCaps()` function will inform whether eARC is supported on the device/port.
+* This function does not require a source device to be connected.
+*
+* If an eARC device is already connected when the function is called with enabled=false,
+* the eARC connection is dropped and it shall not perform eARC reconnection.
+* It is accepted that there will be an audio blackout period while the reconnection occurs.
+*
+* When enabled=false, the `dsGetSupportedARCTypes()` shall never return `dsAUDIOARCSUPPORT_eARC`
+* because it cannot discover and connect with an eARC device.
+*
+* If an eARC device is connected when the function is called with enabled=true,
+* if an ARC connection was established it is stopped/disconnected and the eARC device discovery
+* and connection is established.
+* It is accepted that there will be an audio blackout period while the reconnection occurs.
+*
+* For source devices and sink devices that do not support eARC,
+* this function returns @a dsERR_OPERATION_NOT_SUPPORTED always.
+*
+* @param[in] handle - Handle for the HDMI ARC/eARC port
+* @param[in] enabled - eARC feature enabled/disabled state
+*                          ( @a true when eARC is enabled, @a false otherwise)
+*
+* @return dsError_t                      -  Status
+* @retval dsERR_NONE                     -  Success
+* @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+* @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+* @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+* @retval dsERR_GENERAL                  -  Underlying undefined platform error
+*
+* @pre dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
+*
+* @warning This API is Not thread safe.
+*/
+dsError_t dsSetEARCSupport(intptr_t handle, bool enabled);
+
+/**
+* @brief Gets the default eARC feature support state.
+*
+* For sink devices that support eARC, this function gets the default feature support for eARC.
+* This function does not require a source device to be connected.
+*
+* For source devices and sink devices that do not support eARC,
+* this function returns @a dsERR_OPERATION_NOT_SUPPORTED always.
+*
+* @param[in] handle - Handle for the HDMI ARC/eARC port
+* @param[out] enabled - eARC default feature enabled/disabled state
+*                          ( @a true when eARC is default enabled, @a false otherwise)
+*
+* @return dsError_t                      -  Status
+* @retval dsERR_NONE                     -  Success
+* @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+* @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+* @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+* @retval dsERR_GENERAL                  -  Underlying undefined platform error
+*
+* @pre dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
+*
+* @warning This API is Not thread safe.
+*/
+dsError_t dsGetDefaultEARCSupport(intptr_t handle, bool *enabled);
+
 #ifdef __cplusplus
 }
 #endif
