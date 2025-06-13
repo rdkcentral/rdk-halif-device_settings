@@ -1771,39 +1771,39 @@ dsError_t dsSetAudioMixerLevels (intptr_t handle, dsAudioInput_t aInput, int vol
 *
 * @warning This API is Not thread safe.
 */
-dsError_t dsGetARCPortCaps(intptr_t handle, dsAudioARCTypes_t *returnedType);
+dsError_t dsGet_ARCPortCaps(intptr_t handle, dsAudioARCTypes_t *returnedType);
 
 /**
-* @brief Gets the eARC feature support state
-*
-* For sink devices that support eARC, this function returns whether eARC feature is enabled or disabled for the HDMI ARC/eARC port.
-* This function does not require a HDMI device to be connected.
-*
-* For source devices and sink devices that do not support eARC,
-* this function returns @a dsERR_OPERATION_NOT_SUPPORTED always.
-*
-* @param[in] handle           - Handle for the HDMI ARC/eARC port
-* @param[out] enabledDisabled - Flag to hold whether the eARC feature is enabled/disabled for HDMI ARC/eARC port
-*                                ( @a true when eARC is enabled, @a false otherwise)
-*
-* @return dsError_t                      -  Status
-* @retval dsERR_NONE                     -  Success
-* @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
-* @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
-* @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
-*
-* @pre dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
-*
-* @warning This API is Not thread safe.
-*/
-dsError_t dsGetEARCSupport(intptr_t handle, bool *enabledDisabled);
+ * @brief Checks whether the eARC feature is enabled on the HDMI ARC/eARC port
+ *
+ * For sink devices that support eARC, this function returns whether the eARC feature is currently enabled or disabled
+ * for the specified HDMI ARC/eARC port. This function does not require a connected HDMI device.
+ *
+ * For source devices and sink devices that do not support eARC, this function always returns
+ * @a dsERR_OPERATION_NOT_SUPPORTED.
+ *
+ * @param[in] handle      - Handle for the HDMI ARC/eARC port
+ * @param[out] isEnabled  - Pointer to a boolean flag that will be set to indicate whether the eARC feature is enabled
+ *                           (@a true if eARC is enabled, @a false otherwise)
+ *
+ * @return dsError_t                     - Status
+ * @retval dsERR_NONE                    - Success
+ * @retval dsERR_NOT_INITIALIZED         - Module is not initialised
+ * @retval dsERR_INVALID_PARAM           - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED - The attempted operation is not supported
+ *
+ * @pre dsAudioPortInit() and dsGetAudioPort() must be called before invoking this API.
+ *
+ * @warning This API is not thread-safe.
+ */
+dsError_t dsGet_eArcFeatureEnabled(intptr_t handle, bool *isEnabled);
 
 /**
-* @brief Sets the eARC feature support state
+* @brief Enables/Disables the eARC feature on the HDMI ARC/eARC port
 *
 * For sink devices that support eARC, this function enables or disables the eARC support for the HDMI ARC/eARC port.
-* This function does not require a HDMI device to be connected.
-* The `dsGetARCPortCaps()` function will inform whether eARC is supported on the device/port.
+* This function does not require a connected HDMI device.
+* The `dsGet_ARCPortCaps()` function will inform whether eARC is supported on the device/port.
 *
 * If an eARC device is already connected when the function is called with enabled = false, the eARC connection is terminated,
 * and no eARC handshake should be initiated.
@@ -1819,7 +1819,7 @@ dsError_t dsGetEARCSupport(intptr_t handle, bool *enabledDisabled);
 * this function returns dsERR_OPERATION_NOT_SUPPORTED always.
 *
 * @param[in] handle          - Handle for the HDMI ARC/eARC port
-* @param[in] enabledDisabled - Flag to control the eARC feature
+* @param[in] enabledDisabled - Flag to enable/disable the eARC feature
 *                               ( @a true to enable eARC, @a false to disable eARC )
 *
 * @return dsError_t                      -  Status
@@ -1833,7 +1833,7 @@ dsError_t dsGetEARCSupport(intptr_t handle, bool *enabledDisabled);
 *
 * @warning This API is Not thread safe.
 */
-dsError_t dsSet_eARCStatus(intptr_t handle, bool enabledDisabled);
+dsError_t dsSet_eARCFeatureEnabled(intptr_t handle, bool enabledDisabled);
 
 #ifdef __cplusplus
 }
