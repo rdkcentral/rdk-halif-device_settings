@@ -217,7 +217,7 @@ dsError_t  dsGetAudioPort(dsAudioPortType_t type, int index, intptr_t *handle);
  * @brief Gets the current audio format.
  *
  * This function returns the audio format of the current playback content(like PCM, DOLBY AC3 etc.).
- * For sink devices, handle validation can be discarded if no other ports are available.
+ * For sink devices, handle validation can be discarded as the API is port independent.
  * Please refer ::dsAudioFormat_t
  *
  * @param[in] handle         - Handle for the output audio port
