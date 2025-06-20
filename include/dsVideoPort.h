@@ -205,7 +205,7 @@ dsError_t  dsIsVideoPortEnabled(intptr_t handle, bool *enabled);
  * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
- * @pre dsVideoPortInit() and dsGetVideoPort() must be called before calling this API.
+ * @pre dsDisplayInit(), dsVideoPortInit() and dsGetVideoPort() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
  */
@@ -494,7 +494,7 @@ typedef void (*dsHDCPStatusCallback_t)(intptr_t handle, dsHdcpStatus_t status);
  * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
- * @pre dsVideoPortInit() and dsGetVideoPort() must be called before calling this API.
+ * @pre dsVideoPortInit() , dsGetVideoPort() and dsEnableHDCP() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
  * 
