@@ -1765,7 +1765,7 @@ dsError_t dsSetAudioMixerLevels (intptr_t handle, dsAudioInput_t aInput, int vol
 * @retval dsERR_NONE                     -  Success
 * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
 * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
-* @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+* @retval dsERR_OPERATION_NOT_SUPPORTED  -  Returned if the specified port does not have ARC/eARC capability
 *
 * @pre dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
 *
@@ -1790,7 +1790,7 @@ dsError_t dsGet_ARCPortCaps(intptr_t handle, dsAudioARCTypes_t *returnedTy
  * @retval dsERR_NONE                    - Success
  * @retval dsERR_NOT_INITIALIZED         - Module is not initialised
  * @retval dsERR_INVALID_PARAM           - Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED - The attempted operation is not supported
+ * @retval dsERR_OPERATION_NOT_SUPPORTED - Returned if the specified port does not support eARC
  *
  * @pre dsAudioPortInit() and dsGetAudioPort() must be called before invoking this API.
  *
@@ -1826,8 +1826,7 @@ dsError_t dsGet_eArcFeatureEnabled(intptr_t handle, bool *isEnabled);
 * @retval dsERR_NONE                     -  Success
 * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
 * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
-* @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
-* @retval dsERR_GENERAL                  -  Underlying undefined platform error
+* @retval dsERR_OPERATION_NOT_SUPPORTED  -  Returned if the specified port does not support eARC
 *
 * @pre dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
 *
