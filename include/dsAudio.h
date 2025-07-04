@@ -1779,8 +1779,7 @@ dsError_t dsGet_ARCPortCaps(intptr_t handle, dsAudioARCTypes_t *returnedTy
  * For sink devices that support eARC, this function returns whether the eARC feature is currently enabled or disabled
  * for the specified HDMI ARC/eARC port. This function does not require a connected HDMI device.
  *
- * For source devices and sink devices that do not support eARC, this function always returns
- * @a dsERR_OPERATION_NOT_SUPPORTED.
+ * For source devices and sink devices that do not support eARC, this function returns dsERR_OPERATION_NOT_SUPPORTED.
  *
  * @param[in] handle      - Handle for the HDMI ARC/eARC port
  * @param[out] isEnabled  - Pointer to a boolean flag that will be set to indicate whether the eARC feature is enabled
@@ -1801,7 +1800,7 @@ dsError_t dsGet_eArcFeatureEnabled(intptr_t handle, bool *isEnabled);
 /**
 * @brief Enables/Disables the eARC feature on the HDMI ARC/eARC port
 *
-* For sink devices that support eARC, this function enables or disables the eARC support for the HDMI ARC/eARC port.
+* For sink devices that support eARC, this function enables or disables the eARC feature for the HDMI ARC/eARC port.
 * This function does not require a connected HDMI device.
 * The `dsGet_ARCPortCaps()` function will inform whether eARC is supported on the device/port.
 *
@@ -1815,8 +1814,7 @@ dsError_t dsGet_eArcFeatureEnabled(intptr_t handle, bool *isEnabled);
 * and it proceeds with eARC discovery and connection is established.
 * It is accepted that there will be an audio blackout period while the reconnection occurs.
 *
-* For source devices and sink devices that do not support eARC,
-* this function returns dsERR_OPERATION_NOT_SUPPORTED always.
+* For source devices and sink devices that do not support eARC, this function returns dsERR_OPERATION_NOT_SUPPORTED.
 *
 * @param[in] handle          - Handle for the HDMI ARC/eARC port
 * @param[in] enabledDisabled - Flag to enable/disable the eARC feature
