@@ -53,7 +53,7 @@ x[Device Settings Video Port HAL]<-->z[SOC Drivers];
 style y fill:#99CCFF,stroke:#333,stroke-width:0.3px,align:left
 style z fill:#fcc,stroke:#333,stroke-width:0.3px,align:left
 style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
- ```
+```
 
 `DS` Video Port `HAL` provides a set of `APIs` to initialize, query and set information about the Video ports like getting  video port handle, fetching connected display information such as color depth, color space, matrix coefficients, quantization range, supported video resolutions using the video port handle. It also provides `APIs` to enable or disable content protection like `HDCP` and `DTCP`, to set the background color and preferred color depth of the video port.
 
@@ -260,4 +260,4 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     HAL->>Driver:Terminates the underlying Video Port sub-system
     Driver-->>HAL:return
     HAL-->>Caller:return
- ```
+```

@@ -60,7 +60,7 @@ x[DEVICE SETTINGS AUDIO HAL]<-->z[Audio SoC Driver];
 style y fill:#99CCFF,stroke:#333,stroke-width:0.3px,align:left
 style z fill:#fcc,stroke:#333,stroke-width:0.3px,align:left
 style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
- ```
+```
 
 This interface provides a set of `APIs` to facilitate communication to the Audio `SoC` Driver.
 
@@ -267,4 +267,4 @@ NOTE: The module would operate deterministically if the above call sequence is f
     HAL ->> Driver:dsAudioTerm()
     Driver-->>HAL:return
     HAL-->>Caller:return
- ```
+```

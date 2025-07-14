@@ -50,7 +50,7 @@ x[DS Display HAL]<-->z[SOC Drivers];
 style y fill:#99CCFF,stroke:#333,stroke-width:0.3px,align:left
 style z fill:#fcc,stroke:#333,stroke-width:0.3px,align:left
 style x fill:#9f9,stroke:#333,stroke-width:0.3px,align:left
- ```
+```
 
 `DS` Display `HAL` provides a set of `APIs` to manage operations related to display devices connected to `HDMI` Output port of the source devices.
 
@@ -187,4 +187,4 @@ The `caller` is expected to have complete control over the life cycle of the `HA
     HAL->>Driver:Deallocates the associated data structures & releases display specific handles
     Driver-->>HAL:return
     HAL-->>Caller:return
- ```
+```
