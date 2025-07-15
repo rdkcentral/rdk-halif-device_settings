@@ -224,30 +224,185 @@ dsError_t dsGetEDID(intptr_t handle, dsDisplayEDID_t *edid);
 dsError_t dsGetEDIDBytes(intptr_t handle, unsigned char *edid, int *length);
 
 /**
- * @brief Gets the aspect ratio of connected display device.
- * 
- * For source devices, this function returns the aspect ratio of the display corresponding to the
- * specified display device handle. When no TV connected, this API would return aspect ratio 16:9.
- * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED as it is handled in TV Settings module.
+ * @brief Get the source device’s aspect ratio based on the resolution.
  *
- * @param[in]  handle       - Handle of the display device
- * @param[out] aspectRatio  - Current aspect ratio of the specified display device
- *                              Please refer ::dsVideoAspectRatio_t
+ * Determines the aspect ratio for source devices in accordance with CTA-861:
+ *   - 720×576, 720×480p (region-specific) → dsVIDEO_ASPECT_RATIO_4x3
+ *   - 1280×720, 1920×1080, 3840×2160      → dsVIDEO_ASPECT_RATIO_16x9
+ * Returns dsERR_OPERATION_NOT_SUPPORTED for sink devices (handled in TV Settings).
  *
- * @return dsError_t                        - Status
- * @retval dsERR_NONE                       - Success
- * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
- * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
- * @retval dsERR_GENERAL                    - Underlying undefined platform error
- * 
- * @pre  dsDisplayInit() and dsGetDisplay() must be called before calling this API
- * 
- * @warning  This API is Not thread safe
- * 
+ * @param[in]   handle        - Handle of the display device
+ * @param[out]  aspectRatio   - Pointer to receive the aspect ratio; must not be NULL.
+ *
+ * @return dsError_t                      - Status
+ * @retval dsERR_NONE                     - Success
+ * @retval dsERR_NOT_INITIALIZED          - Module not initialized
+ * @retval dsERR_INVALID_PARAM            - Invalid handle or NULL pointer
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - Sink devices unsupported
+ * @retval dsERR_GENERAL                  - Underlying platform error
+ *
+ * @pre   dsDisplayInit() and dsGetDisplay() have been called, otherwise result in dsERR_NOT_INITIALIZED
+ * @warning Not thread-safe
  */
 
 dsError_t dsGetDisplayAspectRatio(intptr_t handle, dsVideoAspectRatio_t *aspectRatio);
+
+/**
+ * @brief Enables/Disables ALLM mode for HDMI output port connected to display.
+ *
+ * For source devices, this function enables or disables the ALLM mode for specified HDMI output port.
+ * Source ALLM mode(on HF-VSIF) is enabled only if Sink ALLM bit is set (on HF-VSDB) as per HDMI 2.1 Specification
+ * ALLM mode set remains until the power mode change or device reboot
+ * This function return dsERR_OPERATION_NOT_SUPPORTED when Sink doesn't support ALLM or HDMI disconnected
+ * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
+ *
+ * @param[in] handle    - Handle of the display device from dsGetDisplay()
+ * @param[in] enabled   - Flag to enable/disable the ALLM mode for the HDMI output port
+ *                         ( @a true to enable, @a false to disable)
+ *
+ * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ *
+ * @pre dsDisplayInit() and dsGetDisplay() must be called before calling this API.
+ *
+ * @warning  This API is Not thread safe.
+ *
+ * @see dsGetAllmEnabled()
+ */
+
+dsError_t dsSetAllmEnabled (intptr_t  handle, bool enabled);
+
+/**
+ * @brief Checks whether ALLM mode of HDMI output port connected to display is enabled or not.
+ *
+ * For Source devices, this function indicates whether ALLM mode for specified HDMI output port is enabled or not.
+ * By default, ALLM mode is disabled on bootup and after wakeup/resume.
+ * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
+ *
+ * @param[in]  handle   - Handle of the display device from dsGetDisplay()
+ * @param[out] enabled  - Pointer to hold the enabled status of ALLM mode for given HDMI output port.
+ *                          ( @a true when ALLM mode is enabled or @a false otherwise)
+ *
+ * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ *
+ * @pre dsDisplayInit() and dsGetDisplay() must be called before calling this API.
+ *
+ * @warning  This API is Not thread safe.
+ *
+ * @see dsSetAllmEnabled()
+ */
+dsError_t dsGetAllmEnabled (intptr_t  handle, bool *enabled);
+
+/**
+ * @brief Configures the AVI InfoFrame content type signalling for HDMI output port connected to display.
+ *
+ * For source devices, this function configures the AVI InfoFrame ITC, CN1 and CN0 bits.
+ * AVI InfoFrame set remains until the power mode change or device reboot
+ * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
+ *
+ * @param[in] handle      - Handle of the display device from dsGetDisplay()
+ * @param[in] contentType - The content type (or none) to signal in the AVI InfoFrame.  Please refer ::dsAviContentType_t
+ *
+ * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ *
+ * @pre dsDisplayInit() and dsGetDisplay() must be called before calling this API.
+ *
+ * @warning  This API is Not thread safe.
+ *
+ * @see dsGetAVIContentType()
+ */
+dsError_t dsSetAVIContentType(intptr_t handle, dsAviContentType_t contentType);
+
+/**
+ * @brief Gets the configured AVI InfoFrame content type signalling for HDMI output port connected to display.
+ *
+ * For source devices, this function gets the configuration of the AVI InfoFrame ITC, CN1 and CN0 bits.
+ * By default, IT content is dsAVICONTENT_TYPE_NOT_SIGNALLED on bootup and after wakeup/resume.
+ * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
+ *
+ * @param[in] handle       - Handle of the display device from dsGetDisplay()
+ * @param[out] contentType - Pointer that receives the content type configuration set for AVI InfoFrames.  Please refer ::dsAviContentType_t
+ *
+ * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ *
+ * @pre dsDisplayInit() and dsGetDisplay() must be called before calling this API.
+ *
+ * @warning  This API is Not thread safe.
+ *
+ * @see dsSetAVIContentType()
+ */
+dsError_t dsGetAVIContentType(intptr_t handle, dsAviContentType_t* contentType);
+
+/**
+ * @brief Configures the AVI InfoFrame scan information signalling for HDMI output port connected to display.
+ *
+ * For source devices, this function configures the AVI InfoFrame S1 and S0 bits.
+ * Source scan info (on AVI) is set only if Sink scan bit is set (on HF-VSDB) as per HDMI 2.1 Specification
+ * AVI InfoFrame set remains until the power mode change or device reboot
+ * This function return dsERR_OPERATION_NOT_SUPPORTED when when Sink doesn't support scan or HDMI disconnected
+ * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
+ *
+ * @param[in] handle      - Handle of the display device from dsGetDisplay()
+ * @param[in] scanInfo    - The scan information to signal in the AVI InfoFrame.  Please refer ::dsAVIScanInformation_t
+ *
+ * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ *
+ * @pre dsDisplayInit() and dsGetDisplay() must be called before calling this API.
+ *
+ * @warning  This API is Not thread safe.
+ *
+ * @see dsGetAVIScanInformation()
+ */
+dsError_t dsSetAVIScanInformation(intptr_t handle, dsAVIScanInformation_t scanInfo);
+
+/**
+ * @brief Gets the configured AVI InfoFrame scan information signalling for HDMI output port connected to display.
+ *
+ * For source devices, this function gets the configuration of the AVI InfoFrame S1 and S0 bits.
+ * By default, scan info is dsAVI_SCAN_TYPE_NO_DATA on bootup and after wakeup/resume.
+ * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
+ *
+ * @param[in] handle    - Handle of the display device from dsGetDisplay()
+ * @param[out] scanInfo - Pointer that receives the scan information configuration set for AVI InfoFrames.  Please refer ::dsAVIScanInformation_t
+ *
+ * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ *
+ * @pre dsDisplayInit() and dsGetDisplay() must be called before calling this API.
+ *
+ * @warning  This API is Not thread safe.
+ *
+ * @see dsSetAVIScanInformation()
+ */
+dsError_t dsGetAVIScanInformation(intptr_t handle, dsAVIScanInformation_t* scanInfo);
 
 /**
  * @brief Terminates the display sub-system.
