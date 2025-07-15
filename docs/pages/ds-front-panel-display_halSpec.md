@@ -134,7 +134,7 @@ Any changes in the `APIs` must be reviewed and approved by the component archite
 
 ### Platform or Product Customization
 
-The configuration settings file (dsFPDSettings.h) for `DS` Front Panel can be used for adding platform specific configurations. The sample file is available [<b>here</b>](frontPanelSettings_template.hpp "frontPanelSettings_template.hpp").
+The configuration settings file (dsFPDSettings.h) for `DS` Front Panel can be used for adding platform specific configurations. The sample file is available [<b>here</b>](./dsFPDSettings_template.h "dsFPDSettings_template.h").
 
 ## Interface API Documentation
 
@@ -197,4 +197,5 @@ The various `DS` `FP` `LED` states are as follows:
     HAL ->> Driver: Releases all the resources allocated during FPD init
     Driver-->>HAL:return
     HAL-->>Caller:return
+
 ```

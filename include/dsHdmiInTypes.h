@@ -149,11 +149,22 @@ typedef struct _dsHdmiInCap_t
 } dsHdmiInCap_t;
 
 /**
+ * @brief This enumeration defines the AVI Content Types
+ */
+typedef enum dsAviContentType {
+  dsAVICONTENT_TYPE_GRAPHICS,   /*!< Content type Graphics. */
+  dsAVICONTENT_TYPE_PHOTO,      /*!< Content type Photo */
+  dsAVICONTENT_TYPE_CINEMA,     /*!< Content type Cinema */
+  dsAVICONTENT_TYPE_GAME,       /*!< Content type Game */
+  dsAVICONTENT_TYPE_INVALID,    /*!< Content type Invalid */
+  dsAVICONTENT_TYPE_MAX,        /*!< Out of range */
+}dsAviContentType_t;
+
+/**
  * @brief Structure that captures Supported Game Features list
  */
 typedef struct _dsSupportedGameFeatureList_t {
-    char gameFeatureList[MAX_FEATURE_LIST_BUFFER_LEN]; /*!< buffer containing the list of comma separated supported game features (e.g: "allm","vrr_hdmi",
-							 "vrr_amd_freesync","vrr_amd_freesync_premium") */
+    char gameFeatureList[MAX_FEATURE_LIST_BUFFER_LEN]; /*!< buffer containing the list of comma separated supported game features (e.g: "allm") */
     int gameFeatureCount;                              /*!< Total number of supported game features */
 } dsSupportedGameFeatureList_t;
 
@@ -198,28 +209,6 @@ typedef enum dsHdmiMaxCapabilityVersion{
     HDMI_COMPATIBILITY_VERSION_21,     /*!< Hdmi Compatibility Version 2.1 */
     HDMI_COMPATIBILITY_VERSION_MAX     /*!< Out of bounds */
 }dsHdmiMaxCapabilityVersion_t;
-
-/**
-* @brief Enum for Variable Refresh Rate Types
-* For HDMI VRR type, Please refer HDMI specification,
-* For AMD FreeSync, Please refer AMD_FreeSync_Specification.
-*/
-typedef enum dsVRRType {
-    dsVRR_NONE,                    
-    dsVRR_HDMI_VRR,                
-    dsVRR_AMD_FREESYNC,           
-    dsVRR_AMD_FREESYNC_PREMIUM,   
-    dsVRR_AMD_FREESYNC_PREMIUM_PRO
-} dsVRRType_t;
-
-/**
- *  @brief Structure for VRR status 
- */
-typedef struct _dsHdmiInVrrStatus_t
-{
-    dsVRRType_t vrrType;      /*! Type of VRR */
-    double  vrrAmdfreesyncFramerate_Hz;  /*! Display VRR FrameRate in Hz */
-} dsHdmiInVrrStatus_t;
 
 #endif // End of __DS_HDMI_IN_TYPES_H__
 

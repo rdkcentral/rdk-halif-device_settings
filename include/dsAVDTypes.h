@@ -327,19 +327,11 @@ typedef struct _dsAudioARCStatus_t {
  * of the standards.
  */
 typedef enum _dsMS12Capabilities_t {
-    dsMS12SUPPORT_NONE = 0x0,                        ///< MS12 Supported None
-    dsMS12SUPPORT_DolbyVolume = (1 << 0),            ///< MS12 supported Dolby Volume
-    dsMS12SUPPORT_InteligentEqualizer = (1 << 1),    ///< MS12 supported Intelligent Equalizer
-    dsMS12SUPPORT_DialogueEnhancer = (1 << 2),       ///< MS12 Dialogue Enhancer supported
-    dsMS12SUPPORT_Volumeleveller   = (1 << 3),       ///< MS12 Volume leveller
-    dsMS12SUPPORT_BassEnhancer     = (1 << 4),       ///< MS12 Bass Enhancer
-    dsMS12SUPPORT_SurroundDecoder  = (1 << 5),       ///< MS12 Surround Decoder
-    dsMS12SUPPORT_DRCMode          = (1 << 6),       ///< MS12 DRC Mode
-    dsMS12SUPPORT_SurroundVirtualizer = (1 << 7),    ///< MS12 Surround Virtualizer
-    dsMS12SUPPORT_MISteering       = (1 << 8),       ///< MS12 MI Steering
-    dsMS12SUPPORT_GraphicEqualizer = (1 << 9),       ///< MS12 Graphic equalizer
-    dsMS12SUPPORT_LEConfig         = (1 << 10),      ///< MS12 LE config
-    dsMS12SUPPORT_Invalid = (1 << 31)                ///< Invalid / Out of range
+    dsMS12SUPPORT_NONE = 0x0,                   ///< MS12 Supported None
+    dsMS12SUPPORT_DolbyVolume = 0x01,           ///< MS12 supported Dolby Volume
+    dsMS12SUPPORT_InteligentEqualizer = 0x02,   ///< MS12 supported Intelligent Equalizer
+    dsMS12SUPPORT_DialogueEnhancer = 0x04,      ///< MS12 Dialogue Enhancer supported
+    dsMS12SUPPORT_Invalid = 0x80               ///< Invalid / Out of range
 } dsMS12Capabilities_t;
 
 /**
@@ -499,7 +491,8 @@ typedef enum _dsTVResolution_t{
 /**
  * @brief This enumeration defines all of the standard frame rates at which 
  *      video may be played out of the video port.
- * For more details on HDMI frame rate, Refer HDMI specification CTA 861-G
+ * @see dsVideoPortFrameRate_isValid
+ * @note Also used in @link dsVideoDevice.h @endlink
  */
 typedef enum _dsVideoFrameRate_t{
     dsVIDEO_FRAMERATE_UNKNOWN,  ///< Unknown frame rate
@@ -511,12 +504,6 @@ typedef enum _dsVideoFrameRate_t{
     dsVIDEO_FRAMERATE_29dot97,  ///< Played at 29.97 frames per second
     dsVIDEO_FRAMERATE_50,       ///< Played at 50 frames per second
     dsVIDEO_FRAMERATE_59dot94,  ///< Played at 59.94 frames per second
-    dsVIDEO_FRAMERATE_100,      ///< Played at 100 frames per second
-    dsVIDEO_FRAMERATE_119dot88, ///< Played at 119.88 frames per second
-    dsVIDEO_FRAMERATE_120,      ///< Played at 120 frames per second
-    dsVIDEO_FRAMERATE_200,      ///< Played at 200 frames per second
-    dsVIDEO_FRAMERATE_239dot76, ///< Played at 239.76 frames per second
-    dsVIDEO_FRAMERATE_240,      ///< Played at 240 frames per second
     dsVIDEO_FRAMERATE_MAX       ///< Out of range
 }dsVideoFrameRate_t;
 
@@ -675,28 +662,6 @@ typedef enum _dsHdcpProtocolVersion_t {
     dsHDCP_VERSION_2X,      ///< HDCP Protocol version 2.x 
     dsHDCP_VERSION_MAX      ///< Out of range 
 } dsHdcpProtocolVersion_t;
-
-/**
- * @brief This enumeration defines all of the AVI InfoFrame content types.
- */
-typedef enum dsAviContentType {
-  dsAVICONTENT_TYPE_GRAPHICS,     /*!< Content type Graphics. - ITC=1, CN1=0, CN0=0 */
-  dsAVICONTENT_TYPE_PHOTO,        /*!< Content type Photo     - ITC=1, CN1=0, CN0=1 */
-  dsAVICONTENT_TYPE_CINEMA,       /*!< Content type Cinema    - ITC=1, CN1=1, CN0=0 */
-  dsAVICONTENT_TYPE_GAME,         /*!< Content type Game      - ITC=1, CN1=1, CN0=1 */
-  dsAVICONTENT_TYPE_NOT_SIGNALLED,/*!< Content type no data   - ITC=0, CN1=0, CN0=0 */
-  dsAVICONTENT_TYPE_MAX,          /*!< Out of range */
-}dsAviContentType_t;
-
-/**
- * @brief This enumeration defines all of the AVI InfoFrame scan information types.
- */
-typedef enum _dsAVIScanInformation_t {
-    dsAVI_SCAN_TYPE_NO_DATA = 0,    ///< No data signalling    - S1=0, S0=0
-    dsAVI_SCAN_TYPE_OVERSCAN = 1,   ///< Overscan signalling   - S1=0, S0=1
-    dsAVI_SCAN_TYPE_UNDERSCAN = 2,  ///< Underscan signalling  - S1=1, S0=0
-    dsAVI_SCAN_TYPE_MAX           ///< Out of range
-} dsAVIScanInformation_t;
 
 /* End of DSHAL_VIDEOPORT_TYPES doxygen group. */
 /**

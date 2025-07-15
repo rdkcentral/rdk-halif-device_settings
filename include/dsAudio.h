@@ -1675,9 +1675,6 @@ dsError_t  dsGetPrimaryLanguage(intptr_t handle, char* pLang);
  * @brief To set AC4 Secondary language
  *
  * This function will set AC4 Secondary language of the playback content and it is port independent.
- * Since language selection is preference-based, the primary language takes the highest priority.
- * If the primary language is not set or its corresponding audio track is unavailable, playback will
- * default to the secondary language configuration if set.
  *
  * @param[in] handle  - Handle for the output Audio port (Not Used as setting is not port specific)
  * @param[in] sLang   - char* 3 letter lang code should be used as per ISO 639-3
