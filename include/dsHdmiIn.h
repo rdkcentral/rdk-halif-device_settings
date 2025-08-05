@@ -181,7 +181,7 @@ dsError_t dsHdmiInGetNumberOfInputs (uint8_t *pNumberOfinputs);
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * 
  * @pre dsHdmiInInit() must be called before calling this API. The HDMI input port status is updated asynchronously via 
- * 'hdmiInStatusChangeCB' callback whenever a change is detected.
+ * 'dsHdmiInStatusChangeCB_t' callback whenever a change is detected.
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -216,7 +216,7 @@ dsError_t dsHdmiInGetStatus (dsHdmiInStatus_t *pStatus);
  * @note When a port is selected, activePort should be set to true in  Please refer ::dsHdmiInStatus_t for that port
  *              Also, if the port has an active connection, it should update isPresented to true as well.
  *      These Changes are applied asynchronously in a separate thread, and will be communicated through the
- *      'hdmiInStatusChangeCB' callback.
+ *      'dsHdmiInStatusChangeCB_t' callback.
  *
  * @warning  This API is Not thread safe.
  * 
