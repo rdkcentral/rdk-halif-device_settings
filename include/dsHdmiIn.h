@@ -180,7 +180,8 @@ dsError_t dsHdmiInGetNumberOfInputs (uint8_t *pNumberOfinputs);
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * 
- * @pre dsHdmiInInit() must be called before calling this API.
+ * @pre dsHdmiInInit() must be called before calling this API. The HDMI input port status is updated asynchronously
+ * by dsHdmiInSelectPort() and communicated via 'hdmiInStatusChangeCB' callback.
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -210,12 +211,11 @@ dsError_t dsHdmiInGetStatus (dsHdmiInStatus_t *pStatus);
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices.
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * 
- * @pre dsHdmiInInit() must be called before calling this API.
- * 
- * @note When a port is selected, activePort should be set to true in  Please refer ::dsHdmiInStatus_t for that port
- *              Also, if thT port has an active connection, it should update isPresented to true as well.
- * 
- * @warning  This API is Not thread safe.
+ * @note When a port is selected, this function:
+ *       - Updates the 'activePort' with the selected port.
+ *       - Sets 'isPresented' to 'true' for the selected port.
+ * These Changes are applied asynchronously in a separate thread, and will be communicated through the
+ * 'hdmiInStatusChangeCB' callback.
  * 
  */
 dsError_t dsHdmiInSelectPort (dsHdmiInPort_t Port, bool audioMix, dsVideoPlaneType_t evideoPlaneType,bool topMost);
