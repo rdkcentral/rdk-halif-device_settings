@@ -103,6 +103,96 @@ extern "C" {
 #include "dsAVDTypes.h"
 
 /**
+ * @def VIDEO_PORT_MAX_CAPABILITIES
+ * @brief Defines the maximum number of Video ports capabilities supported.
+ *
+ * This macro specifies the upper limit for the number of capabilities that a Video ports can support.
+ * It is used to define the size of the array in the videoPortSupportedFeatures_t structure.
+ */
+#define VIDEO_PORT_MAX_CAPABILITIES 16
+
+/**
+ * @struct videoPortFeatures_t
+ * @brief Represents the features and capabilities of a video port.
+ *
+ * This structure contains information about the supported resolutions,
+ * audio output ports, and security features of a video port.
+ *
+ * @var size_t numResolutions
+ * Number of supported resolutions for the video port.
+ *
+ * @var dsVideoPortResolution_t resolutions[dsVideoPortRESOLUTION_NUMMAX]
+ * Array of supported resolutions for the video port.
+ *
+ * @var bool dtcpSupported
+ * Indicates whether DTCP (Digital Transmission Content Protection) is supported.
+ *
+ * @var bool hdcpSupported
+ * Indicates whether HDCP (High-bandwidth Digital Content Protection) is supported.
+ *
+ * @var int32_t restrictedResollution
+ * Specifies the restricted resolution for the video port (-1 if none).
+ *
+ * @var int8_t defaultResIndex
+ * Index of the default resolution in the resolutions array.
+ *
+ * @var size_t numconnectedAOPs
+ * Number of connected audio output ports.
+ *
+ * @var uint8_t connectedAOP[dsAUDIOPORT_TYPE_MAX]
+ * Array of connected audio output ports, represented by their types.
+ */
+typedef struct
+{
+	size_t                  numResolutions;          // Number of supported resolutions
+	dsVideoPortResolution_t resolutions[dsVideoPortRESOLUTION_NUMMAX]; // Array of supported resolutions
+	bool                    dtcpSupported;           // Indicates if DTCP is supported
+	bool                    hdcpSupported;           // Indicates if HDCP is supported
+	int32_t                 restrictedResollution;   // Restricted resolution (-1 if none)
+	int8_t                  defaultResIndex;         // Index of the default resolution
+	size_t                  numconnectedAOPs;        // Number of connected audio output ports
+	uint8_t                 connectedAOP[dsAUDIOPORT_TYPE_MAX]; // Array of connected audio output ports
+} videoPortFeatures_t;
+
+/**
+ * @struct videoPortTypeConfig_t
+ * @brief Represents the configuration for a specific video port type.
+ *
+ * This structure contains information about the video port type, its name,
+ * security features, supported resolutions, and other related configurations.
+ *
+ * @var dsVideoPortType_t typeId
+ * The type identifier of the video port.
+ *
+ * @var const char* name
+ * The name of the video port type.
+ *
+ * @var bool dtcpSupported
+ * Indicates whether DTCP is supported for this video port type.
+ *
+ * @var bool hdcpSupported
+ * Indicates whether HDCP is supported for this video port type.
+ *
+ * @var int32_t restrictedResollution
+ * Specifies the restricted resolution for this video port type (-1 if none).
+ *
+ * @var size_t numSupportedResolutions
+ * Number of supported resolutions for this video port type.
+ *
+ * @var dsVideoPortResolution_t* supportedResolutons
+ * Array of supported resolutions for this video port type.
+ */
+typedef struct
+{
+	size_t                  numVideoPortCapabilities;    // Number of video port capabilities
+	uint16_t                videoPortCapabilities[VIDEO_PORT_MAX_CAPABILITIES]; // Array of video port capabilities
+	size_t                  numcolorDepthCapabilities;   // Number of color depth capabilities
+	uint16_t                colorDepthCapabilities[VIDEO_PORT_MAX_CAPABILITIES]; // Array of color depth capabilities
+	size_t                  numVideoPortTypeSupported;   // Number of supported video port types
+	videoPortFeatures_t     videoFeatures[dsVIDEOPORT_TYPE_MAX]; // Array of video features for each port type
+} videoPortSupportedFeatures_t;
+
+/**
  * @brief Initializes the underlying Video Port sub-system.
  * 
  * This function must initialize all the video specific output ports and any associated resources.
@@ -1030,6 +1120,47 @@ dsError_t dsGetPreferredColorDepth(intptr_t handle, dsDisplayColorDepth_t *color
  * @see dsGetPreferredColorDepth()
  */
 dsError_t dsSetPreferredColorDepth(intptr_t handle,dsDisplayColorDepth_t colorDepth);
+
+/**
+ * @brief Retrieves the list of supported video ports and the number of audio ports.
+ * 
+ * This function populates the provided array with the supported video port types
+ * and returns the number of audio ports available. It is used to query the video
+ * port capabilities of the system.
+ * 
+ * @param[out] kSupportedVideoPorts Pointer to an array where the supported video port types will be stored.
+ *                                  The caller must ensure the array is large enough to hold the data.
+ * @param[out] numAudioPorts Pointer to an integer where the number of audio ports will be stored.
+ * 
+ * @return dsError_t Returns an error code indicating the success or failure of the operation.
+ *                   Possible values include dsERR_NONE for success or other error codes for failure.
+ */
+dsError_t getSupportedVideoPorts(dsVideoPortType_t* kSupportedVideoPorts, int* numAudioPorts);
+
+/**
+ * @brief Retrieves the supported features for a specific video port type.
+ *
+ * This function queries the video settings to determine the features supported
+ * by the given video port type and populates the provided structure with the
+ * supported features.
+ *
+ * @param[in] videoPort The type of video port for which supported features are requested.
+ *                      This should be a valid value of type dsVideoPortType_t.
+ * @param[out] videoSupportedFeature Pointer to a structure where the supported video features
+ *                                    will be stored. The structure should be allocated by the caller.
+ *
+ * @return dsError_t Returns an error code indicating the success or failure of the operation.
+ *                   Possible values include:
+ *                   - dsErrorNone: Operation succeeded.
+ *                   - dsErrorInvalidArgument: Invalid input parameters.
+ *                   - dsErrorNotSupported: The requested video port type is not supported.
+ *                   - dsErrorFailure: General failure during the operation.
+ *
+ * @note Ensure that the videoSupportedFeature pointer is valid and points to
+ *       allocated memory before calling this function.
+ */
+dsError_t getVideoPortSupportedFeatures(dsVideoPortType_t videoPort, videoSupportedFeatures_t *videoSupportedFeature);
+
 
 #ifdef __cplusplus
 }

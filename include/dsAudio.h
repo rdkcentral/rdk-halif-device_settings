@@ -110,6 +110,79 @@ extern "C" {
 #include "dsAVDTypes.h"
 
 /**
+ * @def AUDIO_MAX_CAPABILITIES
+ * @brief Defines the maximum number of Audio ports capabilities supported.
+ *
+ * This macro specifies the upper limit for the number of capabilities that a Audio ports can support.
+ * It is used to define the size of the array in the audioSupportedFeatures_t structure.
+ */
+#define AUDIO_MAX_CAPABILITIES 16
+
+/**
+ * @struct audioFeatures_t
+ * @brief Represents the audio features supported by a device.
+ *
+ * This structure contains information about supported audio encodings, 
+ * compressions, stereo modes, and connected video output ports.
+ *
+ * @var audioFeatures_t::numSupportedEncodings
+ * Number of supported audio encodings.
+ *
+ * @var audioFeatures_t::supportedEncodings
+ * Array of supported audio encodings. The size of the array is defined by dsAUDIO_ENC_MAX.
+ *
+ * @var audioFeatures_t::numSupportedCompressions
+ * Number of supported audio compressions.
+ *
+ * @var audioFeatures_t::supportedCompressions
+ * Array of supported audio compressions. The size of the array is defined by dsAUDIO_CMP_MAX.
+ *
+ * @var audioFeatures_t::numSupportedStereoModes
+ * Number of supported audio stereo modes.
+ *
+ * @var audioFeatures_t::supportedStereoModes
+ * Array of supported audio stereo modes. The size of the array is defined by dsAUDIO_STEREO_MAX.
+ *
+ * @var audioFeatures_t::connectedVOPs
+ * Array of connected video output ports. The size of the array is defined by dsVIDEOPORT_TYPE_MAX.
+ */
+typedef struct
+{
+    size_t                numSupportedEncodings;
+    dsAudioEncoding_t     supportedEncodings[dsAUDIO_ENC_MAX];
+    dsAudioCompression_t  supportedCompressions[dsAUDIO_CMP_MAX ];
+    size_t                numSupportedStereoModes;
+    dsAudioStereoMode_t   supportedStereoModes[dsAUDIO_STEREO_MAX];
+    dsVideoPortPortId_t   connectedVOPs[dsVIDEOPORT_TYPE_MAX];
+}audioFeatures_t;
+
+/**
+ * @struct audioSupportedFeatures_t
+ * @brief Represents the supported features of an audio output port.
+ *
+ * This structure contains information about the audio capabilities, supported port types,
+ * and the features available for each audio port type.
+ *
+ * @var audioSupportedFeatures_t::numAudioCapabilities
+ * Number of audio capabilities supported.
+ *
+ * @var audioSupportedFeatures_t::audioCapabilities
+ * Array of audio capabilities, represented as 16-bit integers.
+ *
+ * @var audioSupportedFeatures_t::numAudioPortTypeSupported
+ * Number of supported audio port types.
+ *
+ * @var audioSupportedFeatures_t::audioFeatures
+ * Array of audio features for each port type, indexed by dsAudioPortType_t.
+ */
+typedef struct
+{
+    size_t            numAudioCapabilities;
+    uint16_t          audioCapabilities[AUDIO_MAX_CAPABILITIES];
+    audioFeatures_t   audioFeatures[dsAUDIOPORT_TYPE_MAX];
+} audioSupportedFeatures_t;
+
+/**
  * @brief Callback function used to notify the Audio port connection status change to the `caller`.
  *
  * HAL Implementation should call this method to deliver updated audio port connection event
@@ -1743,6 +1816,45 @@ dsError_t  dsGetSecondaryLanguage(intptr_t handle, char* sLang);
 *
 */
 dsError_t dsSetAudioMixerLevels (intptr_t handle, dsAudioInput_t aInput, int volume);
+
+/**
+ * @brief Retrieves the list of supported audio output port types and the number of audio ports available.
+ * 
+ * @param[out] kSupportedPortTypes Pointer to an array where the supported audio port types will be stored.
+ *                                 The caller must ensure the array is properly allocated to hold the data.
+ * @param[out] numAudioPorts Pointer to an integer where the number of supported audio ports will be stored.
+ * 
+ * @return dsError_t Returns an error code indicating the success or failure of the operation.
+ *                   Possible values include dsERR_NONE for success or other error codes for failure.
+ * 
+ * @note The caller is responsible for ensuring the validity of the pointers passed to this function.
+ *       Ensure that the array pointed to by `kSupportedPortTypes` is large enough to hold all supported port types.
+ */
+dsError_t getSupportedAudioOutputPorts(dsAudioPortType_t* kSupportedPortTypes,  int* numAudioPorts); 
+
+/**
+ * @brief Retrieves the supported audio features for a specified audio port type.
+ *
+ * This function queries the audio settings to determine the features supported
+ * by the given audio port type and populates the provided structure with the
+ * supported features.
+ *
+ * @param[in] audioPort The type of audio port for which supported features are requested.
+ *                      This should be a valid value of type dsAudioPortType_t.
+ * @param[out] audioSupportedFeature Pointer to a structure where the supported audio features
+ *                                    will be stored. The structure should be allocated by the caller.
+ *
+ * @return dsError_t Returns an error code indicating the success or failure of the operation.
+ *                   Possible values include:
+ *                   - dsErrorNone: Operation succeeded.
+ *                   - dsErrorInvalidArgument: Invalid input parameters.
+ *                   - dsErrorNotSupported: The requested audio port type is not supported.
+ *                   - dsErrorFailure: General failure during the operation.
+ *
+ * @note Ensure that the audioSupportedFeature pointer is valid and points to
+ *       allocated memory before calling this function.
+ */
+dsError_t getSupportedAudioFeatures(dsAudioPortType_t audioPort, audioSupportedFeatures_t *audioSupportedFeature);
 
 #ifdef __cplusplus
 }
