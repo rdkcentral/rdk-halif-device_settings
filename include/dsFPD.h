@@ -674,7 +674,7 @@ dsError_t dsFPGetSupportedLEDIndicatorColours (dsFPDColorConfig_t *indicatorColo
  * @return dsError_t Returns an error code indicating the success or failure of
  *                   the operation.
  */
-dsError_t dsFPGetSupportedLEDIndicator (int id, dsFPDIndicatorConfig_t *indicator);
+dsError_t dsFPGetSupportedLEDIndicator (dsFPDIndicator_t id, dsFPDIndicatorConfig_t *indicator);
 
 #ifdef __cplusplus
 }
