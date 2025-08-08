@@ -550,7 +550,7 @@ dsError_t dsRegisterFrameratePostChangeCB(dsRegisterFrameratePostChangeCB_t CBFu
  * @note Ensure that the videoDeviceSupportedFeatures pointer is valid and points to
  *       allocated memory before calling this function.
  */
-dsError_t getVideoDeviceSupFeatures(videoDeviceSupportedFeatures_t *videoDeviceSupportedFeatures);
+dsError_t getVideoDeviceSupportedFeatures(videoDeviceSupportedFeatures_t *videoDeviceSupportedFeatures);
 
 
 #ifdef __cplusplus
