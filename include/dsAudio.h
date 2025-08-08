@@ -125,6 +125,9 @@ extern "C" {
  * This structure contains information about supported audio encodings, 
  * compressions, stereo modes, and connected video output ports.
  *
+ * @var dsAudioPortId_t typeid
+ * Type of video port (e.g. HDMI, SCART, etc.).
+ * 
  * @var audioFeatures_t::numSupportedEncodings
  * Number of supported audio encodings.
  *
@@ -143,16 +146,22 @@ extern "C" {
  * @var audioFeatures_t::supportedStereoModes
  * Array of supported audio stereo modes. The size of the array is defined by dsAUDIO_STEREO_MAX.
  *
+ * @var audioFeatures_t::numConnectedVOPs
+ * Number of connected video output ports.
+ * 
  * @var audioFeatures_t::connectedVOPs
  * Array of connected video output ports. The size of the array is defined by dsVIDEOPORT_TYPE_MAX.
  */
 typedef struct
 {
+    dsAudioPortId_t       typeid;
     size_t                numSupportedEncodings;
     dsAudioEncoding_t     supportedEncodings[dsAUDIO_ENC_MAX];
+    size_t                numSupportedCompressions;
     dsAudioCompression_t  supportedCompressions[dsAUDIO_CMP_MAX ];
     size_t                numSupportedStereoModes;
     dsAudioStereoMode_t   supportedStereoModes[dsAUDIO_STEREO_MAX];
+    size_t                numConnectedVOPs;
     dsVideoPortPortId_t   connectedVOPs[dsVIDEOPORT_TYPE_MAX];
 }audioFeatures_t;
 
@@ -172,13 +181,14 @@ typedef struct
  * @var audioSupportedFeatures_t::numAudioPortTypeSupported
  * Number of supported audio port types.
  *
- * @var audioSupportedFeatures_t::audioFeatures
+ * @var audioSupportedFeatures_t::audioFeatures_t
  * Array of audio features for each port type, indexed by dsAudioPortType_t.
  */
 typedef struct
 {
     size_t            numAudioCapabilities;
     uint16_t          audioCapabilities[AUDIO_MAX_CAPABILITIES];
+    size_t            numAudioPortTypeSupported;
     audioFeatures_t   audioFeatures[dsAUDIOPORT_TYPE_MAX];
 } audioSupportedFeatures_t;
 
@@ -1854,7 +1864,7 @@ dsError_t getSupportedAudioOutputPorts(dsAudioPortType_t* kSupportedPortTypes,  
  * @note Ensure that the audioSupportedFeature pointer is valid and points to
  *       allocated memory before calling this function.
  */
-dsError_t getSupportedAudioFeatures(dsAudioPortType_t audioPort, audioSupportedFeatures_t *audioSupportedFeature);
+dsError_t getSupportedAudioFeatures(dsAudioPortId_t audioPort, audioSupportedFeatures_t *audioSupportedFeature);
 
 #ifdef __cplusplus
 }

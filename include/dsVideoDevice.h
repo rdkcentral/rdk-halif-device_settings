@@ -119,7 +119,7 @@ typedef struct
     size_t               numSupportedDFCs;           
     dsVideoZoom_t        supportedDFCs[dsVIDEO_ZOOM_MAX];
     dsVideoZoom_t        defaultDFC;
-}videoDevFeatures_t;
+}videoDeviceFeatures_t;
 
 /**
  * @struct videoDeviceSupportedFeatures_t
@@ -141,7 +141,7 @@ typedef struct
 {
     size_t                  numVideoDeviceCapabilities;
     uint16_t                videoDeviceCapabilities[VIDEO_DEVICE_MAX_CAPABILITIES];
-    videoDevFeatures_t      videoDevFeatures;
+    videoDeviceFeatures_t   videoDevFeatures;
 }videoDeviceSupportedFeatures_t;
 
 

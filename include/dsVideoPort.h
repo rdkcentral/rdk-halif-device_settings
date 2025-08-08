@@ -118,6 +118,9 @@ extern "C" {
  * This structure contains information about the supported resolutions,
  * audio output ports, and security features of a video port.
  *
+ * @var dsVideoPortType_t typeid
+ * Type of video port (e.g. HDMI, SCART, etc.).
+ * 
  * @var size_t numResolutions
  * Number of supported resolutions for the video port.
  *
@@ -144,6 +147,7 @@ extern "C" {
  */
 typedef struct
 {
+	dsVideoPortType_t       typeid; 				 // Type of video port (e.g. HDMI, SCART, etc.)
 	size_t                  numResolutions;          // Number of supported resolutions
 	dsVideoPortResolution_t resolutions[dsVideoPortRESOLUTION_NUMMAX]; // Array of supported resolutions
 	bool                    dtcpSupported;           // Indicates if DTCP is supported
