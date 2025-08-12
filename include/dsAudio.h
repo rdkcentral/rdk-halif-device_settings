@@ -128,6 +128,9 @@ extern "C" {
  * @var dsAudioPortId_t typeid
  * Type of video port (e.g. HDMI, SCART, etc.).
  * 
+ * @var const char *name
+ * Name of the audio port type.
+ * 
  * @var audioFeatures_t::numSupportedEncodings
  * Number of supported audio encodings.
  *
@@ -155,6 +158,7 @@ extern "C" {
 typedef struct
 {
     dsAudioPortId_t       typeid;
+    const char            *name;
     size_t                numSupportedEncodings;
     dsAudioEncoding_t     supportedEncodings[dsAUDIO_ENC_MAX];
     size_t                numSupportedCompressions;

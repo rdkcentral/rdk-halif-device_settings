@@ -121,6 +121,9 @@ extern "C" {
  * @var dsVideoPortType_t typeid
  * Type of video port (e.g. HDMI, SCART, etc.).
  * 
+ * @var const char *name
+ * Name of the video port type (e.g. "HDMI", "SCART").
+ * 
  * @var size_t numResolutions
  * Number of supported resolutions for the video port.
  *
@@ -148,6 +151,7 @@ extern "C" {
 typedef struct
 {
 	dsVideoPortType_t       typeid; 				 // Type of video port (e.g. HDMI, SCART, etc.)
+	const char              *name;
 	size_t                  numResolutions;          // Number of supported resolutions
 	dsVideoPortResolution_t resolutions[dsVideoPortRESOLUTION_NUMMAX]; // Array of supported resolutions
 	bool                    dtcpSupported;           // Indicates if DTCP is supported
