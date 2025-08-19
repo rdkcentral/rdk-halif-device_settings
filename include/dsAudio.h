@@ -110,15 +110,6 @@ extern "C" {
 #include "dsAVDTypes.h"
 
 /**
- * @def AUDIO_MAX_CAPABILITIES
- * @brief Defines the maximum number of Audio ports capabilities supported.
- *
- * This macro specifies the upper limit for the number of capabilities that a Audio ports can support.
- * It is used to define the size of the array in the audioSupportedFeatures_t structure.
- */
-#define AUDIO_MAX_CAPABILITIES 16
-
-/**
  * @struct audioFeatures_t
  * @brief Represents the audio features supported by a device.
  *
@@ -167,34 +158,7 @@ typedef struct
     dsAudioStereoMode_t   supportedStereoModes[dsAUDIO_STEREO_MAX];
     size_t                numConnectedVOPs;
     dsVideoPortPortId_t   connectedVOPs[dsVIDEOPORT_TYPE_MAX];
-}audioFeatures_t;
-
-/**
- * @struct audioSupportedFeatures_t
- * @brief Represents the supported features of an audio output port.
- *
- * This structure contains information about the audio capabilities, supported port types,
- * and the features available for each audio port type.
- *
- * @var audioSupportedFeatures_t::numAudioCapabilities
- * Number of audio capabilities supported.
- *
- * @var audioSupportedFeatures_t::audioCapabilities
- * Array of audio capabilities, represented as 16-bit integers.
- *
- * @var audioSupportedFeatures_t::numAudioPortTypeSupported
- * Number of supported audio port types.
- *
- * @var audioSupportedFeatures_t::audioFeatures_t
- * Array of audio features for each port type, indexed by dsAudioPortType_t.
- */
-typedef struct
-{
-    size_t            numAudioCapabilities;
-    uint16_t          audioCapabilities[AUDIO_MAX_CAPABILITIES];
-    size_t            numAudioPortTypeSupported;
-    audioFeatures_t   audioFeatures[dsAUDIOPORT_TYPE_MAX];
-} audioSupportedFeatures_t;
+}dsAudioFeatures_t;
 
 /**
  * @brief Callback function used to notify the Audio port connection status change to the `caller`.
@@ -1844,31 +1808,25 @@ dsError_t dsSetAudioMixerLevels (intptr_t handle, dsAudioInput_t aInput, int vol
  * @note The caller is responsible for ensuring the validity of the pointers passed to this function.
  *       Ensure that the array pointed to by `kSupportedPortTypes` is large enough to hold all supported port types.
  */
-dsError_t getSupportedAudioOutputPorts(dsAudioPortType_t* kSupportedPortTypes,  int* numAudioPorts); 
+dsError_t dsGetSupportedAudioOutputPorts(dsAudioPortType_t* kSupportedPortTypes,  int* numAudioPorts); 
 
 /**
- * @brief Retrieves the supported audio features for a specified audio port type.
+ * @brief Retrieves the supported audio features for a given audio port.
  *
- * This function queries the audio settings to determine the features supported
- * by the given audio port type and populates the provided structure with the
- * supported features.
+ * @param[in] audioPort The identifier of the audio port to query.
+ * @param[out] audioSupportedFeature Pointer to a structure where the supported audio features will be stored.
+ * 
+ * @return dsError_t Returns a status code indicating success or the type of error encountered.
  *
- * @param[in] audioPort The type of audio port for which supported features are requested.
- *                      This should be a valid value of type dsAudioPortType_t.
- * @param[out] audioSupportedFeature Pointer to a structure where the supported audio features
- *                                    will be stored. The structure should be allocated by the caller.
- *
- * @return dsError_t Returns an error code indicating the success or failure of the operation.
  *                   Possible values include:
  *                   - dsErrorNone: Operation succeeded.
  *                   - dsErrorInvalidArgument: Invalid input parameters.
  *                   - dsErrorNotSupported: The requested audio port type is not supported.
  *                   - dsErrorFailure: General failure during the operation.
- *
- * @note Ensure that the audioSupportedFeature pointer is valid and points to
- *       allocated memory before calling this function.
+ * 
+ * @note The caller must ensure that the pointer `audioSupportedFeature` is valid and can store the required data.
  */
-dsError_t getSupportedAudioFeatures(dsAudioPortId_t audioPort, audioSupportedFeatures_t *audioSupportedFeature);
+dsError_t dsGetSupportedAudioFeatures(dsAudioPortId_t audioPort, dsAudioFeatures_t *audioSupportedFeature);
 
 #ifdef __cplusplus
 }

@@ -90,15 +90,6 @@ extern "C" {
 #endif
 
 /**
- * @def VIDEO_DEVICE_MAX_CAPABILITIES
- * @brief Defines the maximum number of video device capabilities supported.
- *
- * This macro specifies the upper limit for the number of capabilities that a video device can support.
- * It is used to define the size of the array in the videoDeviceSupportedFeatures_t structure.
- */
-#define VIDEO_DEVICE_MAX_CAPABILITIES 16
- 
-/**
  * @struct videoDevFeatures_t
  * @brief Represents the video device features supported by the system.
  *
@@ -119,31 +110,7 @@ typedef struct
     size_t               numSupportedDFCs;           
     dsVideoZoom_t        supportedDFCs[dsVIDEO_ZOOM_MAX];
     dsVideoZoom_t        defaultDFC;
-}videoDeviceFeatures_t;
-
-/**
- * @struct videoDeviceSupportedFeatures_t
- * @brief Represents the supported features of a video device.
- *
- * This structure contains information about the capabilities and features supported
- * by a video device, including the number of capabilities and detailed feature information.
- *
- * @var videoDeviceSupportedFeatures_t::numVideoDeviceCapabilities
- * The number of video device capabilities supported.
- *
- * @var videoDeviceSupportedFeatures_t::videoDeviceCapabilities
- * An array of video device capabilities, represented as 16-bit integers.
- *
- * @var videoDeviceSupportedFeatures_t::videoDevFeatures
- * Detailed feature information for the video device, including supported DFCs and the default DFC.
- */ 
-typedef struct
-{
-    size_t                  numVideoDeviceCapabilities;
-    uint16_t                videoDeviceCapabilities[VIDEO_DEVICE_MAX_CAPABILITIES];
-    videoDeviceFeatures_t   videoDevFeatures;
-}videoDeviceSupportedFeatures_t;
-
+}dsVideoDeviceFeatures_t;
 
 /**
  * @brief Initializes all the video devices in the system
@@ -535,22 +502,19 @@ dsError_t dsRegisterFrameratePostChangeCB(dsRegisterFrameratePostChangeCB_t CBFu
 /**
  * @brief Retrieves the supported video device features.
  *
- * This function populates the provided videoDeviceSupportedFeatures_t structure with
- * the supported features of the video device, including capabilities and Display Format Conversions (DFCs).
+ * This function populates the provided dsVideoDeviceFeatures_t structure with
+ * the features supported by the video device.
  *
- * @param[out] videoDeviceSupportedFeatures Pointer to a structure where the supported video device features will be stored.
- *                                          The structure should be allocated by the caller.
- *
- * @return dsError_t Returns an error code indicating the success or failure of the operation.
- *                   Possible values include:
- *                   - dsErrorNone: Operation succeeded.
- *                   - dsErrorInvalidArgument: Invalid input parameters.
- *                   - dsErrorFailure: General failure during the operation.
- *
- * @note Ensure that the videoDeviceSupportedFeatures pointer is valid and points to
- *       allocated memory before calling this function.
+ * @param[out] VideoDeviceSupportedFeatures Pointer to a dsVideoDeviceFeatures_t
+ *                                          structure that will be filled with
+ *                                          the supported features of the video
+ *                                          device.
+ * @return dsError_t Returns an error code indicating the success or failure of
+ *                   the operation.
+ *                   - dsERR_NONE: Operation was successful.
+ *                   - Other error codes indicate specific failure conditions.
  */
-dsError_t getVideoDeviceSupportedFeatures(videoDeviceSupportedFeatures_t *videoDeviceSupportedFeatures);
+dsError_t dsGetVideoDeviceSupportedFeatures(dsVideoDeviceFeatures_t *VideoDeviceSupportedFeatures);
 
 
 #ifdef __cplusplus
