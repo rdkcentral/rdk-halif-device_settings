@@ -1681,14 +1681,14 @@ dsError_t  dsGetPrimaryLanguage(intptr_t handle, char* pLang);
  *
  * @param[in] handle  - Handle for the output Audio port (Not Used as setting is not port specific)
  * @param[in] sLang   - char* 3 letter lang code should be used as per ISO 639-3
- * 
+ *
  * @return dsError_t                      -  Status 
  * @retval dsERR_NONE                     -  Success
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
- * 
+ *
  * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
@@ -1743,6 +1743,42 @@ dsError_t  dsGetSecondaryLanguage(intptr_t handle, char* sLang);
 *
 */
 dsError_t dsSetAudioMixerLevels (intptr_t handle, dsAudioInput_t aInput, int volume);
+
+
+/**
+ * @brief Retrieves the list of supported audio output port types and the number of audio ports available.
+ *
+ * @param[out] kSupportedPortTypes Pointer to an array where the supported audio port types will be stored.
+ *                                 The caller must ensure the array is properly allocated to hold the data.
+ * @param[out] numAudioPorts Pointer to an integer where the number of supported audio ports will be stored.
+ *
+ * @return dsError_t Returns an error code indicating the success or failure of the operation.
+ *                   Possible values include dsERR_NONE for success or other error codes for failure.
+ *
+ * @note The caller is responsible for ensuring the validity of the pointers passed to this function.
+ *       Ensure that the array pointed to by `kSupportedPortTypes` is large enough to hold all supported port types.
+ */
+dsError_t dsGetSupportedAudioOutputPorts(dsAudioPortType_t* kSupportedPortTypes,  int* numAudioPorts); 
+
+/**
+ * @brief Retrieves the supported audio features for a given audio port.
+ *
+ * @param[in] audioPort The identifier of the audio port to query.
+ * @param[out] audioSupportedFeature Pointer to a structure where the supported audio features will be stored.
+ *
+ * @return dsError_t Returns a status code indicating success or the type of error encountered.
+ *
+ *                   Possible values include:
+ *                   - dsErrorNone: Operation succeeded.
+ *                   - dsErrorInvalidArgument: Invalid input parameters.
+ *                   - dsErrorNotSupported: The requested audio port type is not supported.
+ *                   - dsErrorFailure: General failure during the operation.
+ *
+ * @note The caller must use the dsGetSupportedAudioOutputPorts() API to retrieve an array of dsAudioPortType_t.
+ * For each port in the array, the caller should query the port-specific features individually.
+ * Additionally, the caller must ensure that the pointer audioSupportedFeature is valid and has sufficient memory allocated to store the required data.
+ */
+dsError_t dsGetSupportedAudioFeatures(dsAudioPortId_t audioPort, dsAudioFeatures_t *audioSupportedFeature);
 
 #ifdef __cplusplus
 }
