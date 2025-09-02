@@ -1768,11 +1768,10 @@ dsError_t dsGetSupportedAudioOutputPorts(dsAudioPortType_t* kSupportedPortTypes,
  *
  * @return dsError_t Returns a status code indicating success or the type of error encountered.
  *
- *                   Possible values include:
- *                   - dsErrorNone: Operation succeeded.
- *                   - dsErrorInvalidArgument: Invalid input parameters.
- *                   - dsErrorNotSupported: The requested audio port type is not supported.
- *                   - dsErrorFailure: General failure during the operation.
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  *
  * @note The caller must use the dsGetSupportedAudioOutputPorts() API to retrieve an array of dsAudioPortType_t.
  * For each port in the array, the caller should query the port-specific features individually.

@@ -832,29 +832,29 @@ typedef enum _dsAudioInput_t
  * This structure contains information about supported audio encodings,
  * compressions, stereo modes, and connected video output ports.
  *
- * @var dsAudioPortId_t typeid
- * Type of video port (e.g. HDMI, SCART, etc.).
+ * @var dsAudioPortType_t typeid
+ * Type of Audio port (e.g. dsAUDIOPORT_TYPE_ID_LR, dsAUDIOPORT_TYPE_HDMI, dsAUDIOPORT_TYPE_SPDIF, dsAUDIOPORT_TYPE_SPEAKER, dsAUDIOPORT_TYPE_HDMI_ARC and  dsAUDIOPORT_TYPE_HEADPHONE).
  *
  * @var const char *name
- * Name of the audio port type.
+ * Name of the audio port type (e.g. "SPDIF", "SPEAKER" and "HEADPHONE" etc. ).
  *
  * @var audioFeatures_t::numSupportedEncodings
  * Number of supported audio encodings.
  *
  * @var audioFeatures_t::supportedEncodings
- * Array of supported audio encodings. The size of the array is defined by dsAUDIO_ENC_MAX.
+ * Array of dsAudioEncoding_t structure. The size of the array is defined by dsAUDIO_ENC_MAX.
  *
  * @var audioFeatures_t::numSupportedCompressions
  * Number of supported audio compressions.
  *
  * @var audioFeatures_t::supportedCompressions
- * Array of supported audio compressions. The size of the array is defined by dsAUDIO_CMP_MAX.
+ * Array of dsAudioCompression_t structure. The size of the array is defined by dsAUDIO_CMP_MAX.
  *
  * @var audioFeatures_t::numSupportedStereoModes
  * Number of supported audio stereo modes.
  *
  * @var audioFeatures_t::supportedStereoModes
- * Array of supported audio stereo modes. The size of the array is defined by dsAUDIO_STEREO_MAX.
+ * Array of dsAudioStereoMode_t structure. The size of the array is defined by dsAUDIO_STEREO_MAX.
  *
  * @var audioFeatures_t::numConnectedVOPs
  * Number of connected video output ports.
@@ -864,7 +864,7 @@ typedef enum _dsAudioInput_t
  */
 typedef struct
 {
-    dsAudioPortId_t       typeid;
+    dsAudioPortType_t     typeid;
     const char            *name;
     size_t                numSupportedEncodings;
     dsAudioEncoding_t     supportedEncodings[dsAUDIO_ENC_MAX];
@@ -884,10 +884,10 @@ typedef struct
  * audio output ports, and security features of a video port.
  *
  * @var dsVideoPortType_t typeid
- * Type of video port (e.g. HDMI, SCART, etc.).
+ * Type of video port (e.g. dsVIDEOPORT_TYPE_HDMI, dsVIDEOPORT_TYPE_HDMI_INPUT and dsVIDEOPORT_TYPE_INTERNAL etc.).
  *
  * @var const char *name
- * Name of the video port type (e.g. "HDMI", "SCART").
+ * Name of the video port type (e.g. "HDMI", "INTERNAL").
  *
  * @var size_t numResolutions
  * Number of supported resolutions for the video port.
@@ -905,7 +905,7 @@ typedef struct
  * Specifies the restricted resolution for the video port (-1 if none).
  *
  * @var int8_t defaultResIndex
- * Index of the default resolution in the resolutions array.
+ * The default resolution string.
  *
  * @var size_t numconnectedAOPs
  * Number of connected audio output ports.
@@ -922,7 +922,7 @@ typedef struct
 	bool                    dtcpSupported;           // Indicates if DTCP is supported
 	bool                    hdcpSupported;           // Indicates if HDCP is supported
 	int32_t                 restrictedResollution;   // Restricted resolution (-1 if none)
-	int8_t                  defaultResIndex;         // Index of the default resolution
+	const char *            defaultResIndex;         // the default resolution stirng
 	size_t                  numconnectedAOPs;        // Number of connected audio output ports
 	uint8_t                 connectedAOP[dsAUDIOPORT_TYPE_MAX]; // Array of connected audio output ports
 } dsVideoPortFeatures_t;

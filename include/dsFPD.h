@@ -640,27 +640,6 @@ dsError_t dsFPSetLEDState (dsFPDLedState_t state);
  */
 dsError_t dsFPGetSupportedLEDStates (unsigned int* states);
 
-
-/**
- * @brief Retrieves the supported LED indicator colors and their count.
- *
- * This function populates the provided array with the supported LED indicator
- * colors and returns the total number of supported colors. The caller must
- * ensure that the provided array has sufficient space to hold the data.
- *
- * @param[out] indicatorColors Pointer to an array of dsFPDColorConfig_t where
- *                             the supported LED indicator colors will be stored.
- * @param[out] indicatorCount  Pointer to an integer where the total number of
- *                             supported LED indicator colors will be stored.
- *
- * @return dsError_t Returns an error code indicating the success or failure
- *                   of the operation.
- *
- * @note The caller is responsible for allocating memory for the indicatorColors
- *       array before calling this function.
- */
-dsError_t dsFPGetSupportedLEDIndicatorColours (dsFPDColorConfig_t *indicatorColors, int* indicatorCount);
-
 /**
  * @brief Retrieves the supported LED indicator configuration for a given ID.
  *
@@ -670,7 +649,7 @@ dsError_t dsFPGetSupportedLEDIndicatorColours (dsFPDColorConfig_t *indicatorColo
  *
  * @param[in] id The identifier of the LED indicator to query.
  * @param[out] indicator Pointer to a dsFPDIndicatorConfig_t structure where the
- *                       supported configuration will be stored.
+ *                       supported configuration will be stored and get arry of dsFPDColorConfig_t struct.
  *
  * @return dsError_t Returns an error code indicating the success or failure of
  *                   the operation.
