@@ -418,9 +418,9 @@ dsError_t dsSetDisplayframerate(intptr_t handle, char *framerate);
 typedef void (*dsRegisterFrameratePreChangeCB_t)(unsigned int tSecond);
 
 /**
- * @brief This function is used to register the callback function for the Display framerate pre change event.
+ * @brief This function is used to register the callback function for the Display framerate pre change event during HDMI playback.
  *
- * For sink devices, this function registers a callback for Display framerate pre change event.
+ * For sink devices, this function registers a callback for Display framerate pre change event during HDMI playback.
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] CBFunc    - Function callback to register for the event. 
@@ -453,9 +453,9 @@ typedef void (*dsRegisterFrameratePostChangeCB_t)(unsigned int tSecond);
 
 /**
  * @brief This function is used to register a callback function for the Display framerate 
- *                      post change event from the HAL side.
+ *                      post change event from the HAL side during HDMI playback.
  *
- * For sink devices, this function registers a callback for Display framerate post change event.
+ * For sink devices, this function registers a callback for Display framerate post change event during HDMI playback.
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] CBFunc    - Function to register for the event. 
