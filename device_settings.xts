@@ -1,0 +1,4 @@
+test:
+  start:
+    description: "Clone and build the VTS tests"
+    command: "sc docker run rdk-kirkstone 'source /opt/toolchains/rdk-glibc-x86_64-arm-toolchain/environment-setup-armv7vet2hf-neon-oe-linux-gnueabi;cd rdk-halif-device_settings;./build_ut.sh TARGET=arm;cd -'"
