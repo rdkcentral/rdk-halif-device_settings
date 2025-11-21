@@ -190,21 +190,24 @@ typedef enum __dsFPDState_t
  */
 typedef enum __dsFPDLedState_t
 {
-    dsFPD_LED_DEVICE_NONE,                     ///< Default state
-    dsFPD_LED_DEVICE_ACTIVE,                   ///< Device is active.
-    dsFPD_LED_DEVICE_STANDBY,                  ///< Device is in standby mode.
-    dsFPD_LED_DEVICE_WPS_CONNECTING,           ///< Device connecting to WPS.
-    dsFPD_LED_DEVICE_WPS_CONNECTED,            ///< Device connected to WPS.
-    dsFPD_LED_DEVICE_WPS_ERROR,                ///< Error when trying to connect to WPS.
-    dsFPD_LED_DEVICE_WIFI_ERROR,               ///< Error when trying to connect to WIFI.
-    dsFPD_LED_DEVICE_BOOT_IN_PROGRESS,         ///< Bootup is in progress.
-    dsFPD_LED_DEVICE_COLDSTANDBY,              ///< Device is in coldstandby mode.
-    dsFPD_LED_DEVICE_PSU_FAILURE,              ///< Power supply failure.
-    dsFPD_LED_DEVICE_WPS_SES_OVERLAP,          ///< WPS session overlap detected.
-    dsFPD_LED_DEVICE_IP_ACQUIRED,              ///< Device acquired IP address.
-    dsFPD_LED_DEVICE_NO_IP,                    ///< Device did not get any IP address assigned.
-    dsFPD_LED_DEVICE_RCU_COMMAND,              ///< RCU command received by device.
-    dsFPD_LED_DEVICE_MAX                       ///< Out of range.
+    dsFPD_LED_DEVICE_NONE,                      ///< Default state
+    dsFPD_LED_DEVICE_ACTIVE,                    ///< Device is active
+    dsFPD_LED_DEVICE_STANDBY,                   ///< Device is in standby mode
+    dsFPD_LED_DEVICE_WPS_CONNECTING,            ///< Device connecting to WPS
+    dsFPD_LED_DEVICE_WPS_CONNECTED,             ///< Device connected to WPS
+    dsFPD_LED_DEVICE_WPS_ERROR,                 ///< Error when trying to connect to WPS
+    dsFPD_LED_DEVICE_FACTORY_RESET,             ///< Reset Device to factory base
+    dsFPD_LED_DEVICE_USB_UPGRADE,               ///< Updating from USB drive
+    dsFPD_LED_DEVICE_SOFTWARE_DOWNLOAD_ERROR,   ///< Error in downloading new software update
+    dsFPD_LED_DEVICE_WIFI_ERROR,                ///< Error when trying to connect to WIFI
+    dsFPD_LED_DEVICE_BOOT_IN_PROGRESS,          ///< Bootup is in progress
+    dsFPD_LED_DEVICE_COLDSTANDBY,               ///< Device is in coldstandby mode
+    dsFPD_LED_DEVICE_PSU_FAILURE,               ///< Power supply failure
+    dsFPD_LED_DEVICE_WPS_SES_OVERLAP,           ///< WPS session overlap detected
+    dsFPD_LED_DEVICE_IP_ACQUIRED,               ///< Device acquired IP address
+    dsFPD_LED_DEVICE_NO_IP,                     ///< Device did not get any IP address assigned
+    dsFPD_LED_DEVICE_RCU_COMMAND,               ///< RCU command received by device
+    dsFPD_LED_DEVICE_MAX                        ///< Out of range
 }dsFPDLedState_t;
 
 /**
