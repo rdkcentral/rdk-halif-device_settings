@@ -517,6 +517,8 @@ typedef enum _dsVideoFrameRate_t{
     dsVIDEO_FRAMERATE_200,      ///< Played at 200 frames per second
     dsVIDEO_FRAMERATE_239dot76, ///< Played at 239.76 frames per second
     dsVIDEO_FRAMERATE_240,      ///< Played at 240 frames per second
+    dsVIDEO_FRAMERATE_59,       ///< Played at 59 frames per second
+    dsVIDEO_FRAMERATE_23,       ///< Played at 23 frames per second
     dsVIDEO_FRAMERATE_MAX       ///< Out of range
 }dsVideoFrameRate_t;
 
