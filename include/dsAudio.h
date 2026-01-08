@@ -216,7 +216,9 @@ dsError_t  dsGetAudioPort(dsAudioPortType_t type, int index, intptr_t *handle);
 /**
  * @brief Gets the current audio format.
  *
- * This function returns the audio format of the current playback content(like PCM, DOLBY AC3 etc.) and it is port independent. Please refer ::dsAudioFormat_t
+ * This function returns the audio format of the current playback content(like PCM, DOLBY AC3 etc.).
+ * For sink devices, handle validation can be discarded as the API is port independent.
+ * Please refer ::dsAudioFormat_t
  *
  * @param[in] handle         - Handle for the output audio port
  * @param[out] audioFormat   - Pointer to hold the audio format
@@ -1127,7 +1129,8 @@ dsError_t dsSetAudioDelay(intptr_t handle, const uint32_t audioDelayMs);
 /**
  * @brief Sets the audio ATMOS output mode.
  *
- * This function will set the dolby atmos lock provided by MS12 and it is port independent.
+ * This function will set the dolby atmos lock provided by MS12.
+ * For sink devices, handle validation can be discarded as the API is port independent.
  *
  * @param[in] handle  - Handle for the output Audio port
  * @param[in] enable  - Audio ATMOS output mode( @a true to enable  @a false to disable)
@@ -1511,7 +1514,8 @@ dsError_t dsGetAudioCapabilities(intptr_t handle, int *capabilities);
 /**
  * @brief Gets the MS12 capabilities supported by the platform.
  * 
- * This function is used to get the supported MS12 capabilities of the platform and it is port independent.
+ * This function is used to get the supported MS12 capabilities of the platform.
+ * For sink devices, handle validation can be discarded as the API is port independent.
  *
  * @param[in]  handle        - Handle for the output audio port
  * @param[out] capabilities  - OR-ed value of supported MS12 standards. Please refer ::dsMS12Capabilities_t
@@ -1533,7 +1537,8 @@ dsError_t dsGetMS12Capabilities(intptr_t handle, int *capabilities);
 /**
  * @brief Enables/Disables associated audio mixing feature.
  *
- * This function will enable/disable associated audio mixing feature of playback content and it is port independent.
+ * This function will enable/disable associated audio mixing feature of playback content.
+ * For sink devices, handle validation can be discarded as the API is port independent.
  *
  * @param[in] handle  - Handle for the output audio port
  * @param[in] mixing  - Flag to control audio mixing feature
@@ -1558,7 +1563,8 @@ dsError_t dsSetAssociatedAudioMixing(intptr_t handle, bool mixing);
 /**
  * @brief Gets the Associated Audio Mixing status - enabled/disabled
  *
- * This function is used to get the audio mixing status(enabled/disabled) of playback content and it is port independent.
+ * This function is used to get the audio mixing status(enabled/disabled) of playback content.
+ * For sink devices, handle validation can be discarded as the API is port independent.
  *
  * @param[in] handle   - Handle for the output Audio port
  * @param[out] mixing  - Associated Audio Mixing status
@@ -1628,7 +1634,8 @@ dsError_t  dsGetFaderControl(intptr_t handle, int* mixerbalance);
 /**
  * @brief Sets AC4 Primary language
  *
- * This function will set AC4 Primary language of the playback content and it is port independent.
+ * This function will set AC4 Primary language of the playback content.
+ * For sink devices, handle validation can be discarded as the API is port independent.
  *
  * @param[in] handle  - Handle for the output Audio port
  * @param[in] pLang   - char* 3 letter language code string as per ISO 639-3
@@ -1651,7 +1658,8 @@ dsError_t  dsSetPrimaryLanguage(intptr_t handle, const char* pLang);
 /**
  * @brief To get AC4 Primary language
  *
- * This function will get AC4 Primary language of the playback content and it is port independent.
+ * This function will get AC4 Primary language of the playback content.
+ * For sink devices, handle validation can be discarded as the API is port independent.
  *
  * @param[in] handle  - Handle for the output Audio port
  * @param[out] pLang  - char* 3 letter lang code should be used as per ISO 639-3
@@ -1674,10 +1682,11 @@ dsError_t  dsGetPrimaryLanguage(intptr_t handle, char* pLang);
 /**
  * @brief To set AC4 Secondary language
  *
- * This function will set AC4 Secondary language of the playback content and it is port independent.
+ * This function will set AC4 Secondary language of the playback content.
  * Since language selection is preference-based, the primary language takes the highest priority.
  * If the primary language is not set or its corresponding audio track is unavailable, playback will
  * default to the secondary language configuration if set.
+ * For sink devices, handle validation can be discarded as the API is port independent.
  *
  * @param[in] handle  - Handle for the output Audio port (Not Used as setting is not port specific)
  * @param[in] sLang   - char* 3 letter lang code should be used as per ISO 639-3
@@ -1700,7 +1709,8 @@ dsError_t  dsSetSecondaryLanguage(intptr_t handle, const char* sLang);
 /**
  * @brief Gets the AC4 Secondary language
  *
- * This function will get AC4 Secondary language of the playback content and it is port independent.
+ * This function will get AC4 Secondary language of the playback content.
+ * For sink devices, handle validation can be discarded as the API is port independent.
  *
  * @param[in] handle  - Handle for the output Audio port (Not Used as setting is not port specific)
  * @param[out] sLang  - char* 3 letter lang code should be used as per ISO 639-3
@@ -1724,7 +1734,8 @@ dsError_t  dsGetSecondaryLanguage(intptr_t handle, char* sLang);
 * @brief Sets the Mixer Volume level of sink device for the given input
 * This API is specific to sink devices
 *
-* For sink devices, this function sets the mixer volume level for either primary(main audio) or system audio input(System Beep) and it is port independent.
+* For sink devices, this function sets the mixer volume level for either primary(main audio) or system audio input(System Beep).
+* The handle validation can be discarded as the API is port independent.
 * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
 *
 * @param[in] handle  - A valid handle refers to a specific audio port handle on the platform, or a NULL handle refers to use the current active port
