@@ -180,7 +180,9 @@ dsError_t dsCompositeInGetNumberOfInputs (uint8_t *pNumberOfInputs);
  * 
  * @warning  This API is Not thread safe.
  * 
- * @pre  dsCompositeInInit() should be called before calling this API.
+ * @pre  dsCompositeInInit() should be called before calling this API. 
+ *       After every operation, that may change 'dsCompositeInStatus_t',should wait until the 
+ *       'dsCompositeInStatusChangeCB_t' callback is received.
  */
 dsError_t dsCompositeInGetStatus (dsCompositeInStatus_t *pStatus);
 
@@ -202,6 +204,7 @@ dsError_t dsCompositeInGetStatus (dsCompositeInStatus_t *pStatus);
  * 
  * @note When a port is selected that port should be set as activePort in ::dsCompositeInStatus_t.
  *              Also, if there is a signal (ie isPortConnected[that port ID] is true), once active, isPresented should be set to true as well.
+ *       Any change in the variable - 'dsCompositeInStatus_t' will be communicated via the 'dsCompositeInStatusChangeCB_t' callback.
  * 
  * @pre  dsCompositeInInit() should be called before calling this API.
  */
