@@ -121,7 +121,7 @@ typedef enum _dsDisplayEvent_t {
  *
  * @pre dsRegisterDisplayEventCallback()
  */
-typedef void (*dsDisplayEventCallback_t)(int handle, dsDisplayEvent_t event,
+typedef void (*dsDisplayEventCallback_t)(intptr_t handle, dsDisplayEvent_t event,
                                              void* eventData/*Optional*/);
 
 /**
