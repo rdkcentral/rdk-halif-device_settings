@@ -640,6 +640,21 @@ dsError_t dsFPSetLEDState (dsFPDLedState_t state);
  */
 dsError_t dsFPGetSupportedLEDStates (unsigned int* states);
 
+/**
+ * @brief Retrieves the supported LED indicator configuration for a given ID.
+ *
+ * This function fetches the configuration details of a supported LED indicator
+ * based on the provided identifier. The configuration details are returned
+ * through the `indicator` parameter.
+ *
+ * @param[in] id The identifier of the LED indicator to query.
+ * @param[out] indicator Pointer to a dsFPDIndicatorConfig_t structure where the
+ *                       supported configuration will be stored and get arry of dsFPDColorConfig_t struct.
+ *
+ * @return dsError_t Returns an error code indicating the success or failure of
+ *                   the operation.
+ */
+dsError_t dsFPGetSupportedLEDIndicator (dsFPDIndicator_t id, dsFPDIndicatorConfig_t *indicator);
 
 #ifdef __cplusplus
 }

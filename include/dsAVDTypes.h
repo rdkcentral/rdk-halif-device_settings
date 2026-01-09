@@ -827,6 +827,108 @@ typedef enum _dsAudioInput_t
     dsAUDIO_INPUT_MAX            ///< Out of range
 } dsAudioInput_t;
 
+/**
+ * @struct audioFeatures_t
+ * @brief Represents the audio features supported by a device.
+ *
+ * This structure contains information about supported audio encodings,
+ * compressions, stereo modes, and connected video output ports.
+ *
+ * @var dsAudioPortType_t typeid
+ * Type of Audio port (e.g. dsAUDIOPORT_TYPE_ID_LR, dsAUDIOPORT_TYPE_HDMI, dsAUDIOPORT_TYPE_SPDIF, dsAUDIOPORT_TYPE_SPEAKER, dsAUDIOPORT_TYPE_HDMI_ARC and  dsAUDIOPORT_TYPE_HEADPHONE).
+ *
+ * @var const char *name
+ * Name of the audio port type (e.g. "SPDIF", "SPEAKER" and "HEADPHONE" etc. ).
+ *
+ * @var audioFeatures_t::numSupportedEncodings
+ * Number of supported audio encodings.
+ *
+ * @var audioFeatures_t::supportedEncodings
+ * Array of dsAudioEncoding_t structure. The size of the array is defined by dsAUDIO_ENC_MAX.
+ *
+ * @var audioFeatures_t::numSupportedCompressions
+ * Number of supported audio compressions.
+ *
+ * @var audioFeatures_t::supportedCompressions
+ * Array of dsAudioCompression_t structure. The size of the array is defined by dsAUDIO_CMP_MAX.
+ *
+ * @var audioFeatures_t::numSupportedStereoModes
+ * Number of supported audio stereo modes.
+ *
+ * @var audioFeatures_t::supportedStereoModes
+ * Array of dsAudioStereoMode_t structure. The size of the array is defined by dsAUDIO_STEREO_MAX.
+ *
+ * @var audioFeatures_t::numConnectedVOPs
+ * Number of connected video output ports.
+ *
+ * @var audioFeatures_t::connectedVOPs
+ * Array of connected video output ports. The size of the array is defined by dsVIDEOPORT_TYPE_MAX.
+ */
+typedef struct
+{
+    dsAudioPortType_t     typeid;
+    const char            *name;
+    size_t                numSupportedEncodings;
+    dsAudioEncoding_t     supportedEncodings[dsAUDIO_ENC_MAX];
+    size_t                numSupportedCompressions;
+    dsAudioCompression_t  supportedCompressions[dsAUDIO_CMP_MAX ];
+    size_t                numSupportedStereoModes;
+    dsAudioStereoMode_t   supportedStereoModes[dsAUDIO_STEREO_MAX];
+    size_t                numConnectedVOPs;
+    dsVideoPortPortId_t   connectedVOPs[dsVIDEOPORT_TYPE_MAX];
+}dsAudioFeatures_t;
+
+/**
+ * @struct videoPortFeatures_t
+ * @brief Represents the features and capabilities of a video port.
+ *
+ * This structure contains information about the supported resolutions,
+ * audio output ports, and security features of a video port.
+ *
+ * @var dsVideoPortType_t typeid
+ * Type of video port (e.g. dsVIDEOPORT_TYPE_HDMI, dsVIDEOPORT_TYPE_HDMI_INPUT and dsVIDEOPORT_TYPE_INTERNAL etc.).
+ *
+ * @var const char *name
+ * Name of the video port type (e.g. "HDMI", "INTERNAL").
+ *
+ * @var size_t numResolutions
+ * Number of supported resolutions for the video port.
+ *
+ * @var dsVideoPortResolution_t resolutions[dsVideoPortRESOLUTION_NUMMAX]
+ * Array of supported resolutions for the video port.
+ *
+ * @var bool dtcpSupported
+ * Indicates whether DTCP (Digital Transmission Content Protection) is supported.
+ *
+ * @var bool hdcpSupported
+ * Indicates whether HDCP (High-bandwidth Digital Content Protection) is supported.
+ *
+ * @var int32_t restrictedResollution
+ * Specifies the restricted resolution for the video port (-1 if none).
+ *
+ * @var int8_t defaultResIndex
+ * The default resolution string.
+ *
+ * @var size_t numconnectedAOPs
+ * Number of connected audio output ports.
+ *
+ * @var uint8_t connectedAOP[dsAUDIOPORT_TYPE_MAX]
+ * Array of connected audio output ports, represented by their types.
+ */
+typedef struct
+{
+	dsVideoPortType_t       typeid; 				 // Type of video port (e.g. HDMI, SCART, etc.)
+	const char              *name;
+	size_t                  numResolutions;          // Number of supported resolutions
+	dsVideoPortResolution_t resolutions[dsVideoPortRESOLUTION_NUMMAX]; // Array of supported resolutions
+	bool                    dtcpSupported;           // Indicates if DTCP is supported
+	bool                    hdcpSupported;           // Indicates if HDCP is supported
+	int32_t                 restrictedResollution;   // Restricted resolution (-1 if none)
+	const char *            defaultResIndex;         // the default resolution stirng
+	size_t                  numconnectedAOPs;        // Number of connected audio output ports
+	uint8_t                 connectedAOP[dsAUDIOPORT_TYPE_MAX]; // Array of connected audio output ports
+} dsVideoPortFeatures_t;
+
 /* End of DSHAL_DISPLAY_TYPES doxygen group */
 /**
  * @}

@@ -476,6 +476,22 @@ typedef void (*dsRegisterFrameratePostChangeCB_t)(unsigned int tSecond);
  */
 dsError_t dsRegisterFrameratePostChangeCB(dsRegisterFrameratePostChangeCB_t CBFunc);
 
+/**
+ * @brief Retrieves the supported video device features.
+ *
+ * This function populates the provided dsVideoDeviceFeatures_t structure with
+ * the features supported by the video device.
+ *
+ * @param[out] VideoDeviceSupportedFeatures Pointer to a dsVideoDeviceFeatures_t
+ *                                          structure that will be filled with
+ *                                          the supported features of the video
+ *                                          device.
+ * @return dsError_t Returns an error code indicating the success or failure of
+ *                   the operation.
+ *                   - dsERR_NONE: Operation was successful.
+ *                   - Other error codes indicate specific failure conditions.
+ */
+dsError_t dsGetVideoDeviceSupportedFeatures(dsVideoDeviceFeatures_t *VideoDeviceSupportedFeatures);
 
 #ifdef __cplusplus
 }
