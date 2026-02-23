@@ -179,6 +179,27 @@ dsError_t dsGetSocIDFromSDK(char *socID);
  */
 dsError_t dsGetHostEDID(unsigned char *edid, int *length);
 
+/**
+ * @brief Gets hostDataDefault path file name
+ *
+ * This function will get the File path of hostDataDefault configured based on ProjectID.
+ *
+ * @param[out] hostDataPath  - File path of hostDataDefault.
+ *
+ * @return dsError_t                	    - Status
+ * @retval dsERR_NONE               	    - Success
+ * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
+ * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
+ * @retval dsERR_GENERAL                    - Underlying undefined platform error
+ *
+ * @pre dsHostInit() must be called before this function
+ *
+ * @warning  This API is Not thread safe.
+ *
+ */
+dsError_t dsGetHostDataDefault(char *hostDataPath);
+
 /** @} */ // End of DSHAL_HOST_API doxygen group 
 /** @} */ // End of DS Host HAL
 /** @} */ // End of Device Settings HAL
