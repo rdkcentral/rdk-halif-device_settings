@@ -822,7 +822,7 @@ dsError_t dsGetCurrentOutputSettings(intptr_t handle, dsHDRStandard_t* video_eot
 dsError_t dsIsOutputHDR(intptr_t handle, bool* hdr);
 
 /**
- * @brief Resets Video Output to SDR.
+ * @brief Resets Video Output to SDR. THIS API IS DEPRECATED.
  *
  * For sink devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
