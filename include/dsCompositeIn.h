@@ -179,6 +179,9 @@ dsError_t dsCompositeInGetNumberOfInputs (uint8_t *pNumberOfInputs);
  * @retval dsERR_GENERAL                  - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
+ *           After any operation that may change ::dsHdmiInStatus_t, dsHdmiInGetStatus()
+ *           may return stale values until ::dsHdmiInStatusChangeCB_t is received.
+ *           After the callback is received, dsHdmiInGetStatus() will return the updated status.
  * 
  * @pre  dsCompositeInInit() should be called before calling this API.
  */
@@ -202,7 +205,9 @@ dsError_t dsCompositeInGetStatus (dsCompositeInStatus_t *pStatus);
  * 
  * @note When a port is selected that port should be set as activePort in ::dsCompositeInStatus_t.
  *              Also, if there is a signal (ie isPortConnected[that port ID] is true), once active, isPresented should be set to true as well.
- * 
+ *       Changes to ::dsCompositeInStatus_t are communicated asynchronously via the
+ *       ::dsCompositeInStatusChangeCB_t callback.
+ *
  * @pre  dsCompositeInInit() should be called before calling this API.
  */
 dsError_t dsCompositeInSelectPort (dsCompositeInPort_t Port);
