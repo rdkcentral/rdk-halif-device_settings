@@ -452,6 +452,8 @@ dsError_t  dsGetVolumeLeveller(intptr_t handle, dsVolumeLeveller_t* volLeveller)
  * @brief Sets the Dolby volume leveller settings.
  *
  * This function sets the Volume leveller(mode and level) value to be used in the audio port corresponding to specified port handle.
+ * The supported volume leveler modes are ON, OFF and Auto until IDK 2.4
+ * From IDK 2.6 onwards, For TV platforms supported volume leveler modes are ON and OFF
  *
  * @param[in] handle       - Handle for the output Audio port
  * @param[in] volLeveller  - Volume Leveller setting. Please refer ::dsVolumeLeveller_t
