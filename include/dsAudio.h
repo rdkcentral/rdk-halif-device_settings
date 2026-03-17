@@ -1744,6 +1744,28 @@ dsError_t  dsGetSecondaryLanguage(intptr_t handle, char* sLang);
 */
 dsError_t dsSetAudioMixerLevels (intptr_t handle, dsAudioInput_t aInput, int volume);
 
+/**
+ * @brief Sets the continuous audio output mode.
+ * This function enables or disables the continuous audio output mode provided by MS12; this setting is port-independent.
+ * This applies to ARC/eARC output.
+ * When enabled, MS12 continuously outputs an encoded bitstream (silent frames) when the input to MS12 is interrupted briefly.
+ * e.g., when a user switches between tiles/content in an application, brief audio gaps may occur; with this mode enabled, silent frames are output instead of stopping the stream.
+ *
+ * @param[in] handle  - Handle for the output Audio port (unused, as this setting applies to ARC/eARC only)
+ * @param[in] enable  - Continuous Audio output mode ( @a true to enable  @a false to disable)
+ *
+ * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ *
+ * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
+ *
+ */
+dsError_t dsSetContinuousAudioOutputMode(intptr_t handle, bool enable);
+
 #ifdef __cplusplus
 }
 #endif
