@@ -1744,6 +1744,75 @@ dsError_t  dsGetSecondaryLanguage(intptr_t handle, char* sLang);
 */
 dsError_t dsSetAudioMixerLevels (intptr_t handle, dsAudioInput_t aInput, int volume);
 
+/**
+ * @brief  Enables or disables continuous audio output mode on a digital output port.
+ *
+ * When enabled, the MS12 continuously emits valid encoded frames
+ * (silent frames) in the currently-active output format on the digital output
+ * interface whenever the input audio is briefly interrupted (for example during a
+ * content/source transition within an application). This keeps the connected
+ * receiver/soundbar decoder and clock locked to the active format, preventing
+ * audible pops, mutes, or a format re-lock on the downstream device.
+ *
+ * The keep-alive frames MUST match the format currently presented on the port (e.g.
+ * if the port is presenting Dolby Digital Plus 5.1, the frames are valid Dolby
+ * Digital Plus 5.1 silent frames), so the receiver lock is held.
+ *
+ * This setting applies to Auto mode is enabled on digital ports (ARC/eARC, SPDIF).
+ * It is not applicable to non-digital port or speaker port, 
+ * for which the implementation returns dsERR_OPERATION_NOT_SUPPORTED.
+ *
+ * @param[in] handle  - A valid port handle for ARC/eARC or SPDIF audio port, as returned by dsGetAudioPort().
+ * @param[in] enable  - Continuous audio output mode ( @a true to enable  @a false to disable)
+ *
+ * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  When handle is invalid or
+ *                                           Parameter passed to this function is invalid
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  A valid handle on a non-digital port or Speaker port
+ *                                           or if platform/port does not support this mode.
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ *
+ * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
+ * @post The setting is not retained across dsAudioPortTerm() / power cycle,
+ *       Caller should re-apply it as needed.
+ * @note Default state is disabled for continuous audio output mode.
+ * @note If enable is true and the current audio mode is Passthrough or PCM then cache the setting,
+ *       return dsERR_NONE and apply it when auto is enabled.
+ * @note Idempotent - calling with the value already set returns dsERR_NONE.
+ * @warning  This API is Not thread safe.
+ * @see dsGetContinuousAudioOutputMode()
+ *
+ */
+dsError_t dsSetContinuousAudioOutputMode(intptr_t handle, bool enable);
+
+/**
+ * @brief Gets the current continuous audio output mode setting for a digital output port.
+ *
+ * Returns whether continuous audio output mode (see dsSetContinuousAudioOutputMode())
+ * is currently enabled on the given ARC/eARC or SPDIF output port.
+ *
+ * @param[in]  handle  - Valid audio port handle for an ARC/eARC or SPDIF output port.
+ * @param[out] enable  - Set to true if continuous audio output mode is enabled,
+ *                       false otherwise.
+ *
+ * @return dsError_t                      - Status
+ * @retval dsERR_NONE                     - Success
+ * @retval dsERR_NOT_INITIALIZED          - Module is not initialised
+ * @retval dsERR_INVALID_PARAM            - handle is invalid or enable is NULL
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - A valid handle on a non-digital port or Speaker port
+ *                                          or if platform/port does not support this mode.
+ * @retval dsERR_GENERAL                  - Underlying undefined platform error
+ *
+ * @pre  dsAudioPortInit() and dsGetAudioPort() must be called before this API.
+ * @note Default state is disabled for continuous audio output mode.
+ * @warning  This API is Not thread safe.
+ * @see dsSetContinuousAudioOutputMode()
+ *
+ */
+dsError_t dsGetContinuousAudioOutputMode(intptr_t handle, bool* enable);
+
 #ifdef __cplusplus
 }
 #endif
