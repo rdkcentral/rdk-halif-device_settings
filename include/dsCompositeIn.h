@@ -179,9 +179,9 @@ dsError_t dsCompositeInGetNumberOfInputs (uint8_t *pNumberOfInputs);
  * @retval dsERR_GENERAL                  - Underlying undefined platform error
  * 
  * @warning  This API is Not thread safe.
- *           After any operation that may change ::dsHdmiInStatus_t, dsHdmiInGetStatus()
- *           may return stale values until ::dsHdmiInStatusChangeCB_t is received.
- *           After the callback is received, dsHdmiInGetStatus() will return the updated status.
+ *           After any operation that may change ::dsCompositeInStatus_t, dsCompositeInGetStatus()
+ *           may return stale values until ::dsCompositeInStatusChangeCB_t is received.
+ *           After the callback is received, dsCompositeInGetStatus() will return the updated status.
  * 
  * @pre  dsCompositeInInit() should be called before calling this API.
  */
