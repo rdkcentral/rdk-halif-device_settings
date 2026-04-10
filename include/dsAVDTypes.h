@@ -619,7 +619,7 @@ typedef struct _dsVideoPortTypeConfig_t {
 /**
  * @brief Max Key size.
  */
-#define HDCP_KEY_MAX_SIZE  (4*1024)
+#define HDCP_KEY_MAX_SIZE  (10*1024)
 
 /**
  * @brief Enumeration defines all of the standard HDR types.
