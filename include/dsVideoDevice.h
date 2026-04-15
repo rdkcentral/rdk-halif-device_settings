@@ -361,7 +361,7 @@ dsError_t dsGetFRFMode(intptr_t handle, int *frfmode);
  *
  * @param[in]  handle       - The handle returned from the dsGetVideoDevice() function
  * @param[out] framerate    - Current Panel Refresh Rate will be represented.
- *                            Returns the value as a string(eg:"3840x2160px48")
+ *                            Returns the value as a string(eg:"3840x2160px48" or "3840x2160px120")
  *
  *
  * @return dsError_t                        - Status
@@ -389,8 +389,9 @@ dsError_t dsGetCurrentDisplayframerate(intptr_t handle, char *framerate);
  *
  * @param[in] handle    - The handle returned from the dsGetVideoDevice() function
  * @param[in] framerate - Panel Refresh Rate value to be set which is platform-specific.
- *                        Expects the value as a string(eg:"3840x2160px48").
- *                        aaaaxbbbbxyy (aaaaxbbbb - Panel Resolution, yy - Panel Refresh Rate)
+ *                        Expects the value as a string(eg:"3840x2160px48" or "3840x2160px120").
+ *                        aaaaxbbbbxyy or aaaaxbbbbxyyy (aaaaxbbbb - Panel Resolution, yy/yyy - Panel Refresh Rate)        
+ *
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success

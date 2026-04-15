@@ -494,6 +494,8 @@ typedef enum _dsTVResolution_t{
     dsTV_RESOLUTION_2160p30 = 0x040000,  ///< 2160p30 Resolution
     dsTV_RESOLUTION_2160p50 = 0x080000,  ///< 2160p50 Resolution
     dsTV_RESOLUTION_2160p60 = 0x100000,  ///< 2160p60 Resolution
+    dsTV_RESOLUTION_2160p100 = 0x200000, ///< 2160p100 Resolution
+    dsTV_RESOLUTION_2160p120 = 0x400000, ///< 2160p120 Resolution
 }dsTVResolution_t;
 
 /**
@@ -713,7 +715,7 @@ typedef enum _dsAVIScanInformation_t {
 /**
  * @brief Maximum Value  video modes are described in CEA specifictaion
  */
-#define dsEEDID_MAX_VIDEO_CODE  64  ///< Maximum Value EEDID Video Code
+#define dsEEDID_MAX_VIDEO_CODE  256  ///< Maximum Value EEDID Video Code
 
 /**
  * @brief Maximum length for for Connected Display Monitor names.
