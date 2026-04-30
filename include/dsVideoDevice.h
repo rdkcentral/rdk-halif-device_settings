@@ -389,8 +389,8 @@ dsError_t dsGetCurrentDisplayframerate(intptr_t handle, char *framerate);
  *
  * @param[in] handle    - The handle returned from the dsGetVideoDevice() function
  * @param[in] framerate - Panel Refresh Rate value to be set which is platform-specific.
- *                        Expects the value as a string(eg:"3840x2160px48" or "3840x2160px120").
- *                        aaaaxbbbbxyy or aaaaxbbbbxyyy (aaaaxbbbb - Panel Resolution, yy/yyy - Panel Refresh Rate)        
+ *                        Expects the value as a string (eg: "3840x2160px48", "3840x2160px100" or "3840x2160px120").
+ *                        aaaaxbbbbpxyy or aaaaxbbbbpxyyy (aaaaxbbbb - Panel Resolution, p - separator, yy/yyy - Panel Refresh Rate)
  *
  *
  * @return dsError_t                        - Status
