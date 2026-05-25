@@ -742,7 +742,7 @@ typedef struct _dsDisplayEDID_t {
     uint8_t physicalAddressC;          ///<  Physical Address for HDMI node C
     uint8_t physicalAddressD;          ///<  Physical Address for HDMI node D
     int32_t numOfSupportedResolution;  ///<  Number of Supported Resolution
-    dsVideoPortResolution_t suppResolutionList [dsEEDID_MAX_VIDEO_CODE * dsVIDEO_SSMODE_MAX];   ///<  EDID Supported Resoultion List
+    dsVideoPortResolution_t suppResolutionList [dsEEDID_MAX_VIDEO_CODE];   ///<  EDID Supported Resoultion List
     char monitorName[dsEEDID_MAX_MON_NAME_LENGTH];  ///<  Connected Display Monitor Name
 } dsDisplayEDID_t;
 
