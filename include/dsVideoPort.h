@@ -598,7 +598,8 @@ dsError_t dsGetTVHDRCapabilities(intptr_t handle, int *capabilities);
  * @brief Gets the supported resolutions of TV.
  *
  * This function is used to get TV supported resolutions of TV/display device.
- * For source devices, this function gives OR-ed value of TV supported resolutions when HDMI connected.
+ * For source devices, this function returns a bitmask (OR-ed flags) of all video resolutions supported by the currently connected TV, based on its HDMI EDID. 
+ * This value is updated upon HDMI hot-plug events when the EDID is re-read.
  * API returns default value 0 when HDMI not connected.
  *
  * @param[in] handle            - Handle of the video port(TV) returned from dsGetVideoPort()
