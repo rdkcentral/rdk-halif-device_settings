@@ -199,6 +199,16 @@ typedef enum __dsFPDLedState_t
     dsFPD_LED_DEVICE_FACTORY_RESET,             ///< Reset Device to factory base
     dsFPD_LED_DEVICE_USB_UPGRADE,               ///< Updating from USB drive
     dsFPD_LED_DEVICE_SOFTWARE_DOWNLOAD_ERROR,   ///< Error in downloading new software update
+
+    /* Infosys-LGI extensions */
+    dsFPD_LED_DEVICE_COLDSTANDBY,               ///< Device is in Cold Standby mode
+    dsFPD_LED_DEVICE_BOOT_IN_PROGRESS,          ///< Bootup is in progress
+    dsFPD_LED_DEVICE_PSU_FAILURE,               ///< Power supply failure
+    dsFPD_LED_DEVICE_WPS_SES_OVERLAP,           ///< WPS session overlap detected
+    dsFPD_LED_DEVICE_IP_ACQUIRED,               ///< Device acquired IP address
+    dsFPD_LED_DEVICE_NO_IP,                     ///< Device did not get any IP address assigned
+    dsFPD_LED_DEVICE_RCU_COMMAND,               ///< RCU command received by device
+
     dsFPD_LED_DEVICE_MAX                        ///< Out of range 
 }dsFPDLedState_t;
 
