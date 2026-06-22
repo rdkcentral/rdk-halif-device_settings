@@ -1745,9 +1745,9 @@ dsError_t  dsGetSecondaryLanguage(intptr_t handle, char* sLang);
 dsError_t dsSetAudioMixerLevels (intptr_t handle, dsAudioInput_t aInput, int volume);
 
 /**
- * @brief  Enables or disables continuous audio output mode on a digital output port.
+ * @brief  Enables or disables continuous audio output mode on an ARC/eARC or SPDIF output port.
  *
- * When enabled, the MS12 continuously emits valid encoded frames
+ * When enabled, MS12 continuously emits valid encoded frames
  * (silent frames) in the currently-active output format on the digital output
  * interface whenever the input audio is briefly interrupted (for example during a
  * content/source transition within an application). This keeps the connected
@@ -1758,8 +1758,8 @@ dsError_t dsSetAudioMixerLevels (intptr_t handle, dsAudioInput_t aInput, int vol
  * if the port is presenting Dolby Digital Plus 5.1, the frames are valid Dolby
  * Digital Plus 5.1 silent frames), so the receiver lock is held.
  *
- * This setting applies to Auto mode is enabled on digital ports (ARC/eARC, SPDIF).
- * It is not applicable to non-digital port or speaker port, 
+ * This setting applies when Auto mode is enabled on digital ports (ARC/eARC, SPDIF).
+ * It is not applicable to non-digital ports or the speaker port,
  * for which the implementation returns dsERR_OPERATION_NOT_SUPPORTED.
  *
  * @param[in] handle  - A valid port handle for ARC/eARC or SPDIF audio port, as returned by dsGetAudioPort().
@@ -1788,10 +1788,12 @@ dsError_t dsSetAudioMixerLevels (intptr_t handle, dsAudioInput_t aInput, int vol
 dsError_t dsSetContinuousAudioOutputMode(intptr_t handle, bool enable);
 
 /**
- * @brief Gets the current continuous audio output mode setting for a digital output port.
+ * @brief Gets the current continuous audio output mode setting for an ARC/eARC or SPDIF output port.
  *
  * Returns whether continuous audio output mode (see dsSetContinuousAudioOutputMode())
- * is currently enabled on the given ARC/eARC or SPDIF output port.
+ * is currently enabled on the given ARC/eARC or SPDIF output port. This reflects the
+ * most recently requested value (including a value cached while in PCM/Passthrough),
+ * consistent with dsSetContinuousAudioOutputMode().
  *
  * @param[in]  handle  - Valid audio port handle for an ARC/eARC or SPDIF output port.
  * @param[out] enable  - Set to true if continuous audio output mode is enabled,
