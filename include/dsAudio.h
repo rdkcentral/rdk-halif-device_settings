@@ -1762,8 +1762,7 @@ dsError_t dsSetAudioMixerLevels (intptr_t handle, dsAudioInput_t aInput, int vol
  * digital ports (ARC/eARC, SPDIF). It is not applicable to non-digital ports or the
  * speaker port, for which the implementation returns dsERR_OPERATION_NOT_SUPPORTED.
  *
- * @param[in] handle  - A valid handle for an ARC/eARC or SPDIF audio port
- *                      (dsAUDIOPORT_TYPE_HDMI_ARC or dsAUDIOPORT_TYPE_SPDIF), as returned by dsGetAudioPort().
+ * @param[in] handle  - A valid handle for an ARC/eARC or SPDIF output audio port, as returned by dsGetAudioPort().
  * @param[in] enable  - Continuous audio output mode ( @a true to enable, @a false to disable)
  *
  * @return dsError_t                      -  Status
