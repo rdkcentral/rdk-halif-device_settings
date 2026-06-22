@@ -1758,12 +1758,13 @@ dsError_t dsSetAudioMixerLevels (intptr_t handle, dsAudioInput_t aInput, int vol
  * if the port is presenting Dolby Digital Plus 5.1, the frames are valid Dolby
  * Digital Plus 5.1 silent frames), so the receiver lock is held.
  *
- * This setting applies when Auto mode is enabled on digital ports (ARC/eARC, SPDIF).
- * It is not applicable to non-digital ports or the speaker port,
- * for which the implementation returns dsERR_OPERATION_NOT_SUPPORTED.
+ * This setting applies when Stereo Auto mode (see dsSetStereoAuto()) is enabled on
+ * digital ports (ARC/eARC, SPDIF). It is not applicable to non-digital ports or the
+ * speaker port, for which the implementation returns dsERR_OPERATION_NOT_SUPPORTED.
  *
- * @param[in] handle  - A valid port handle for ARC/eARC or SPDIF audio port, as returned by dsGetAudioPort().
- * @param[in] enable  - Continuous audio output mode ( @a true to enable  @a false to disable)
+ * @param[in] handle  - A valid handle for an ARC/eARC or SPDIF audio port
+ *                      (dsAUDIOPORT_TYPE_HDMI_ARC or dsAUDIOPORT_TYPE_SPDIF), as returned by dsGetAudioPort().
+ * @param[in] enable  - Continuous audio output mode ( @a true to enable, @a false to disable)
  *
  * @return dsError_t                      -  Status
  * @retval dsERR_NONE                     -  Success
@@ -1779,7 +1780,7 @@ dsError_t dsSetAudioMixerLevels (intptr_t handle, dsAudioInput_t aInput, int vol
  *       Caller should re-apply it as needed.
  * @note Default state is disabled for continuous audio output mode.
  * @note If enable is true and the current audio mode is Passthrough or PCM then cache the setting,
- *       return dsERR_NONE and apply it when auto is enabled.
+ *       return dsERR_NONE and apply it when Stereo Auto mode (dsSetStereoAuto()) is enabled.
  * @note Idempotent - calling with the value already set returns dsERR_NONE.
  * @warning  This API is Not thread safe.
  * @see dsGetContinuousAudioOutputMode()
