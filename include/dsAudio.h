@@ -1770,7 +1770,7 @@ dsError_t dsSetAudioMixerLevels (intptr_t handle, dsAudioInput_t aInput, int vol
  * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
  * @retval dsERR_INVALID_PARAM            -  When handle is invalid or
  *                                           Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED  -  A valid handle on a non-digital port or Speaker port
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  A valid handle on a non-digital port or speaker port
  *                                           or if platform/port does not support this mode.
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  *
@@ -1803,11 +1803,11 @@ dsError_t dsSetContinuousAudioOutputMode(intptr_t handle, bool enable);
  * @retval dsERR_NONE                     - Success
  * @retval dsERR_NOT_INITIALIZED          - Module is not initialised
  * @retval dsERR_INVALID_PARAM            - handle is invalid or enable is NULL
- * @retval dsERR_OPERATION_NOT_SUPPORTED  - A valid handle on a non-digital port or Speaker port
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  - A valid handle on a non-digital port or speaker port
  *                                          or if platform/port does not support this mode.
  * @retval dsERR_GENERAL                  - Underlying undefined platform error
  *
- * @pre  dsAudioPortInit() and dsGetAudioPort() must be called before this API.
+ * @pre  dsAudioPortInit() and dsGetAudioPort() should be called before calling this API.
  * @note Default state is disabled for continuous audio output mode.
  * @warning  This API is Not thread safe.
  * @see dsSetContinuousAudioOutputMode()
