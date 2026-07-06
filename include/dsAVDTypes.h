@@ -436,6 +436,33 @@ typedef struct _dsAudioPortConfig_t {
     const dsVideoPortPortId_t *connectedVOPs;   ///< Connected video port
 } dsAudioPortConfig_t;
 
+/**
+ * @brief Maximum number of application audio configurations.
+ */
+#define DS_MAX_APPLICATION_AUDIO_CONFIGS 64
+/**
+ * @brief Maximum length of the audio configuration name, including the terminating NUL.
+ */
+#define DS_MAX_APPLICATION_AUDIO_CONFIG_NAME_LEN 64
+
+/**
+ * @brief Structure that holds audio configuration name.
+ * @note Used in @link dsAudio.h @endlink
+ */
+typedef struct _dsApplicationAudioConfig_t {
+    char configName[DS_MAX_APPLICATION_AUDIO_CONFIG_NAME_LEN];  ///< NUL-terminated configuration name
+} dsApplicationAudioConfig_t;
+
+/**
+ * @brief List of supported application audio configurations.
+ * count indicates the number of entries in config[].
+ * @note Used in @link dsAudio.h @endlink
+ */
+typedef struct _dsApplicationAudioConfigList_t {
+    dsApplicationAudioConfig_t config[DS_MAX_APPLICATION_AUDIO_CONFIGS];  ///< Supported configurations
+    int count;                                                ///< Number of valid entries in config[] (0..DS_MAX_APPLICATION_AUDIO_CONFIGS)
+} dsApplicationAudioConfigList_t;
+
 /* End of DSHAL_AUDIO_TYPES doxygen group */
 /**
  * @}
