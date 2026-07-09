@@ -194,6 +194,29 @@ typedef struct
     dsVideoCodecProfileSupport_t entries[10];  /*!< Contains a list of the supported Codex profiles */
 } dsVideoCodecInfo_t;
 
+/**
+ * @struct videoDevFeatures_t
+ * @brief Represents the video device features supported by the system.
+ *
+ * This structure contains information about the supported Display Format Conversions (DFCs)
+ * and the default DFC for a video device.
+ *
+ * @var videoDevFeatures_t::numSupportedDFCs
+ * The number of supported Display Format Conversions (DFCs).
+ *
+ * @var videoDevFeatures_t::supportedDFCs
+ * An array of supported Display Format Conversions (DFCs).
+ *
+ * @var videoDevFeatures_t::defaultDFC
+ * The default Display Format Conversion (DFC) for the video device.
+ */
+typedef struct
+{
+    size_t               numSupportedDFCs;
+    dsVideoZoom_t        supportedDFCs[dsVIDEO_ZOOM_MAX];
+    dsVideoZoom_t        defaultDFC;
+}dsVideoDeviceFeatures_t;
+
 #endif // End of __DS_VIDEO_DEVICE_TYPES_H__
 
 /** @} */ // End of DSHAL_VIDEODEVICE_TYPES

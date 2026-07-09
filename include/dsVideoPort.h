@@ -1031,6 +1031,40 @@ dsError_t dsGetPreferredColorDepth(intptr_t handle, dsDisplayColorDepth_t *color
  */
 dsError_t dsSetPreferredColorDepth(intptr_t handle,dsDisplayColorDepth_t colorDepth);
 
+/**
+ * @brief Retrieves the list of supported video ports and the number of audio ports.
+ *
+ * This function populates the provided array with the supported video port types
+ * and returns the number of audio ports available. It is used to query the video
+ * port capabilities of the system.
+ *
+ * @param[out] kSupportedVideoPorts Pointer to an array where the supported video port types will be stored.
+ *                                  The caller must ensure the array is large enough to hold the data.
+ * @param[out] numAudioPorts Pointer to an integer where the number of audio ports will be stored.
+ *
+ * @return dsError_t Returns an error code indicating the success or failure of the operation.
+ *                   Possible values include dsERR_NONE for success or other error codes for failure.
+ */
+dsError_t dsGetSupportedVideoPorts(dsVideoPortType_t* kSupportedVideoPorts, int* numAudioPorts);
+
+/**
+ * @brief Retrieves the supported features of a specified video port.
+ *
+ * This function queries the capabilities of a given video port and returns
+ * the supported features through the provided pointer.
+ *
+ * @param[in] videoPort The type of the video port to query.
+ * @param[out] videoSupportedFeature Pointer to a structure where the supported
+ *                                    features of the video port will be stored.
+ * @return dsError_t Returns a status code indicating success or the type of error encountered.
+ *
+ * @note The caller must use the dsGetSupportedVideoPorts() API to retrieve an array of dsVideoPortType_t.
+ * For each port in the array, the caller should query the port-specific features individually.
+ * Additionally, the caller must ensure that the pointer dsVideoPortFeatures_t is valid and has sufficient memory allocated to store the required data..
+ */
+dsError_t dsGetVideoPortSupportedFeatures(dsVideoPortType_t videoPort, dsVideoPortFeatures_t *videoSupportedFeature);
+
+
 #ifdef __cplusplus
 }
 #endif
