@@ -436,6 +436,52 @@ typedef struct _dsAudioPortConfig_t {
     const dsVideoPortPortId_t *connectedVOPs;   ///< Connected video port
 } dsAudioPortConfig_t;
 
+/**
+ * @brief Maximum length of the audio configuration name, including the terminating NUL.
+ * This value is frozen, it is part of the inter-process ABI and must never change.
+ */
+#define DS_MAX_APPLICATION_AUDIO_CONFIG_NAME_LEN 64
+
+/**
+ * @brief Default capacity of dsApplicationAudioConfigList_t::config.
+ * Implementations must derive the caller's real capacity from
+ * dsApplicationAudioConfigList_t::size to remain compatible with callers built
+ * against different DS_MAX_APPLICATION_AUDIO_CONFIGS values.
+ */
+#define DS_MAX_APPLICATION_AUDIO_CONFIGS 64
+
+/**
+ * @brief Canonical application audio configuration names.
+ * Platform support is discovered via dsGetApplicationAudioConfigList().
+ */
+#define DS_APPLICATION_AUDIO_CONFIG_CONTINUOUS_AUDIO_OUTPUT "CONTINUOUS_AUDIO_OUTPUT" ///< Digital outputs continuously emit valid silent frames in the currently-active output format across brief input interruptions, keeping the downstream decoder locked
+
+/**
+ * @brief Structure that holds audio configuration name.
+ * Layout is frozen — fields are never added, removed, or reordered.
+ * @note Used in @link dsAudio.h @endlink
+ */
+typedef struct _dsApplicationAudioConfig_t {
+    char configName[DS_MAX_APPLICATION_AUDIO_CONFIG_NAME_LEN];  ///< NUL-terminated configuration name, a NUL must occur within the bound
+} dsApplicationAudioConfig_t;
+
+/**
+ * @brief List of supported application audio configurations.
+ * The caller sets @c size to its compiled sizeof(dsApplicationAudioConfigList_t).
+ * The implementation derives the caller's capacity as
+ * (size - offsetof(dsApplicationAudioConfigList_t, config)) / sizeof(dsApplicationAudioConfig_t)
+ * and writes returnedCount = min(totalCount, capacity) entries.
+ * totalCount > returnedCount means the caller's view was smaller than the platform's
+ * configuration set — truncation is explicit and detectable, never silent.
+ * @note Used in @link dsAudio.h @endlink
+ */
+typedef struct _dsApplicationAudioConfigList_t {
+    uint32_t size;           ///< [in]  sizeof(dsApplicationAudioConfigList_t) as compiled by the caller
+    uint32_t totalCount;     ///< [out] total number of configurations supported by the platform
+    uint32_t returnedCount;  ///< [out] number of entries written to config[]
+    dsApplicationAudioConfig_t config[DS_MAX_APPLICATION_AUDIO_CONFIGS];  ///< [out] configuration entries; config[0..returnedCount-1] are valid
+} dsApplicationAudioConfigList_t;
+
 /* End of DSHAL_AUDIO_TYPES doxygen group */
 /**
  * @}
