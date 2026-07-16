@@ -1744,6 +1744,99 @@ dsError_t  dsGetSecondaryLanguage(intptr_t handle, char* sLang);
 */
 dsError_t dsSetAudioMixerLevels (intptr_t handle, dsAudioInput_t aInput, int volume);
 
+/**
+ * @brief Sets the application-specific audio configuration.
+ *
+ * Some applications may require custom audio settings, such as enabling
+ * continuous audio output to prevent audio glitches, muting, or format
+ * re-lock events on downstream devices when the input stream to MS12 is
+ * temporarily interrupted.
+ *
+ * This interface is designed to be extensible and can accommodate additional
+ * application-specific audio configuration requirements in the future.
+ *
+ * Applications should call dsGetApplicationAudioConfigList() to retrieve the list of supported audio configurations
+ * and then call dsSetApplicationAudioConfig() with a supported audioConfig name (audioConfig->configName).
+ *
+ * @param[in] handle       - Pass 0 for global audio configuration (currently the only supported scope).
+ * @param[in] audioConfig  - Configuration name entry (see ::dsApplicationAudioConfig_t).
+ *                           configName must contain a NUL terminator within
+ *                           DS_MAX_APPLICATION_AUDIO_CONFIG_NAME_LEN bytes; implementations
+ *                           must validate this bound and must not read beyond it.
+ * @param[in] enable       - enable/disable audio configuration ( @a true to enable, @a false to disable)
+ *
+ * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  audioConfig is NULL, configName has no NUL terminator within
+ *                                           DS_MAX_APPLICATION_AUDIO_CONFIG_NAME_LEN bytes, or handle is non-zero
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  When the specified audio configuration is not supported by the platform
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ *
+ * @pre  dsAudioPortInit() should be called before calling this API.
+ * @post The setting is not retained across dsAudioPortTerm() / power cycle,
+ *       Caller should re-apply it as needed.
+ * @note Idempotent - calling with the value already set returns dsERR_NONE.
+ * @note Default state should be disabled for audio configuration.
+ * @warning  This API is Not thread safe.
+ * @see dsGetApplicationAudioConfigList()
+ *
+ */
+dsError_t  dsSetApplicationAudioConfig(intptr_t handle, const dsApplicationAudioConfig_t* audioConfig, bool enable);
+
+/**
+ * @brief Gets the application-specific audio configuration.
+ * Returns whether the requested specific audio configuration (see dsSetApplicationAudioConfig())
+ * is currently enabled or disabled.
+ *
+ * @param[in] handle       - Pass 0 for global audio configuration (currently the only supported scope).
+ * @param[in] audioConfig  - Configuration name entry (see ::dsApplicationAudioConfig_t).
+ *                           configName must contain a NUL terminator within
+ *                           DS_MAX_APPLICATION_AUDIO_CONFIG_NAME_LEN bytes; implementations
+ *                           must validate this bound and must not read beyond it.
+ * @param[out] enable      - True if audio configuration is enabled, false otherwise.
+ *
+ * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  audioConfig is NULL, enable is NULL, configName has no NUL terminator within
+ *                                           DS_MAX_APPLICATION_AUDIO_CONFIG_NAME_LEN bytes, or handle is non-zero
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  When the specified audio configuration is not supported by the platform
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ *
+ * @pre  dsAudioPortInit() should be called before calling this API.
+ * @note Default state should be disabled for audio configuration.
+ * @warning  This API is Not thread safe.
+ * @see dsSetApplicationAudioConfig()
+ *
+ */
+dsError_t  dsGetApplicationAudioConfig(intptr_t handle, const dsApplicationAudioConfig_t* audioConfig, bool *enable);
+
+/**
+ * @brief Gets the list of supported audio configurations.
+ * The caller must set audioConfigList->size = sizeof(dsApplicationAudioConfigList_t)
+ * before calling. See ::dsApplicationAudioConfigList_t for the capacity and
+ * truncation contract.
+ *
+ * @param[in] handle       - Pass 0 for global audio configuration (currently the only supported scope).
+ * @param[in,out] audioConfigList  - pointer to List of supported audio configurations (see ::dsApplicationAudioConfigList_t)
+ *
+ * @return dsError_t                      -  Status
+ * @retval dsERR_NONE                     -  Success
+ * @retval dsERR_NOT_INITIALIZED          -  Module is not initialised
+ * @retval dsERR_INVALID_PARAM            -  audioConfigList is NULL, handle is non-zero, or size is smaller than
+ *                                           offsetof(dsApplicationAudioConfigList_t, config) + sizeof(dsApplicationAudioConfig_t)
+ * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
+ * @retval dsERR_GENERAL                  -  Underlying undefined platform error
+ *
+ * @pre  dsAudioPortInit() should be called before calling this API.
+ *
+ * @warning  This API is Not thread safe.
+ *
+ * @see dsSetApplicationAudioConfig()
+ */
+dsError_t  dsGetApplicationAudioConfigList(intptr_t handle, dsApplicationAudioConfigList_t* audioConfigList);
+
 #ifdef __cplusplus
 }
 #endif
