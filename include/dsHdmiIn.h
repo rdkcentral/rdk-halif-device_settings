@@ -614,7 +614,7 @@ dsError_t dsGetEDIDBytesInfo (dsHdmiInPort_t iHdmiPort, unsigned char *edid, int
  *
  * @param[in] iHdmiPort     - HDMI input port. Please refer ::dsHdmiInPort_t
  * @param[out] data         - HDMI SPD info data
- *                              Should not exceed sizeof(dsSpd_infoframe_st).  Please refer ::dsSpd_infoframe_st
+ *                              Please refer ::dsSpd_infoframe_st.
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
@@ -628,7 +628,7 @@ dsError_t dsGetEDIDBytesInfo (dsHdmiInPort_t iHdmiPort, unsigned char *edid, int
  * @warning  This API is Not thread safe.
  * 
  */
-dsError_t dsGetHDMISPDInfo (dsHdmiInPort_t iHdmiPort, unsigned char *data);
+dsError_t dsGetHDMISPDInfo(dsHdmiInPort_t iHdmiPort, dsSpd_infoframe_st *spdInfo);
 
 /**
  * @brief Sets the EDID version to be used for a given port id
@@ -681,14 +681,14 @@ dsError_t dsSetEdidVersion (dsHdmiInPort_t iHdmiPort, tv_hdmi_edid_version_t iEd
 dsError_t dsGetEdidVersion (dsHdmiInPort_t iHdmiPort, tv_hdmi_edid_version_t *iEdidVersion);
 
 /**
- * @brief Checks whether ALLM status is enabled or disabled for the specific HDMI input port
+ * @brief Gets the current ALLM status for the specified HDMI input port
  * 
- * For sink devices, this function checks whether ALLM status is enabled or disabled for the specific HDMI input port.
+ * For sink devices, this function checks whether ALLM status is enabled or disabled for the specified HDMI input port.
  * For source devices, this function returns dsERR_OPERATION_NOT_SUPPORTED always.
  *
  * @param[in] iHdmiPort     - HDMI input port.  Please refer ::dsHdmiInPort_t
- * @param[out] allmStatus   - Flag to control the allm status
- *                              ( @a true to enable, @a false to disable)
+ * @param[out] allmStatus   - ALLM status of the specified HDMI input port
+ *                              ( @a true if ALLM is enabled, @a false if ALLM is disabled)
  *
  * @return dsError_t                        - Status
  * @retval dsERR_NONE                       - Success
