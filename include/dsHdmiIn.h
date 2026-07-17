@@ -183,6 +183,9 @@ dsError_t dsHdmiInGetNumberOfInputs (uint8_t *pNumberOfinputs);
  * @pre dsHdmiInInit() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
+ *           After any operation that may change ::dsHdmiInStatus_t, dsHdmiInGetStatus()
+ *           may return stale values until ::dsHdmiInStatusChangeCB_t is received.
+ *           After the callback is received, dsHdmiInGetStatus() will return the updated status.
  * 
  */
 dsError_t dsHdmiInGetStatus (dsHdmiInStatus_t *pStatus); 
@@ -213,7 +216,9 @@ dsError_t dsHdmiInGetStatus (dsHdmiInStatus_t *pStatus);
  * @pre dsHdmiInInit() must be called before calling this API.
  * 
  * @note When a port is selected, activePort should be set to true in  Please refer ::dsHdmiInStatus_t for that port
- *              Also, if thT port has an active connection, it should update isPresented to true as well.
+ *              Also, if the port has an active connection, it should update isPresented to true as well.
+ *       Changes to ::dsHdmiInStatus_t are communicated asynchronously via the
+ *       ::dsHdmiInStatusChangeCB_t callback.
  * 
  * @warning  This API is Not thread safe.
  * 
