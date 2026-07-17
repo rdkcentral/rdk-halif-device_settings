@@ -155,7 +155,7 @@ dsError_t dsHdmiInTerm (void);
  * @retval dsERR_NONE                       - Success
  * @retval dsERR_NOT_INITIALIZED            - Module is not initialised
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
- * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
+ * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
  * 
  * @pre dsHdmiInInit() must be called before calling this API.
