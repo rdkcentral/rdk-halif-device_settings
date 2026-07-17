@@ -574,8 +574,9 @@ dsError_t dsHdmiInRegisterAviContentTypeChangeCB (dsHdmiInAviContentTypeChangeCB
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
+ *                                              e.g: the @pre condition other than initialization is not met
  * 
- * @pre dsHdmiInInit() must be called before calling this API
+ * @pre dsHdmiInInit() and dsHdmiInSelectPort() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -598,8 +599,9 @@ dsError_t dsIsHdmiARCPort (dsHdmiInPort_t iPort, bool *isArcPort);
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
+ *                                              e.g: the @pre condition other than initialization is not met
  * 
- * @pre dsHdmiInInit() must be called before calling this API
+ * @pre dsHdmiInInit()and dsHdmiInSelectPort() must be called before calling this API.
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -622,8 +624,9 @@ dsError_t dsGetEDIDBytesInfo (dsHdmiInPort_t iHdmiPort, unsigned char *edid, int
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
+ *                                              e.g: the @pre condition other than initialization is not met 
  * 
- * @pre dsHdmiInInit() must be called before calling this API
+ * @pre dsHdmiInInit() and dsHdmiInSelectPort() must be called before calling this API
  * 
  * @warning  This API is Not thread safe.
  * 
@@ -645,8 +648,9 @@ dsError_t dsGetHDMISPDInfo (dsHdmiInPort_t iHdmiPort, unsigned char *data);
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
+ *                                              e.g: the @pre condition other than initialization is not met
  * 
- * @pre dsHdmiInInit() must be called before calling this API
+ * @pre dsHdmiInInit() and dsHdmiInSelectPort() must be called before calling this API
  * 
  * @warning  This API is Not thread safe
  * 
@@ -670,8 +674,9 @@ dsError_t dsSetEdidVersion (dsHdmiInPort_t iHdmiPort, tv_hdmi_edid_version_t iEd
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
+ *                                              e.g: the @pre condition other than initialization is not met
  * 
- * @pre dsHdmiInInit() must be called before calling this API
+ * @pre dsHdmiInInit() and dsHdmiInSelectPort() must be called before calling this API
  * 
  * @warning  This API is Not thread safe
  * 
@@ -696,8 +701,9 @@ dsError_t dsGetEdidVersion (dsHdmiInPort_t iHdmiPort, tv_hdmi_edid_version_t *iE
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
+ *                                              e.g: the @pre condition other than initialization is not met
  * 
- * @pre dsHdmiInInit() must be called before calling this API
+ * @pre dsHdmiInInit() and dsHdmiInSelectPort() must be called before calling this API
  * 
  * @warning  This API is Not thread safe
  * 
@@ -742,8 +748,9 @@ dsError_t dsGetSupportedGameFeaturesList (dsSupportedGameFeatureList_t* features
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
+ *                                              e.g: the @pre condition other than initialization is not met
  * 
- * @pre dsHdmiInInit() must be called before calling this API
+ * @pre dsHdmiInInit() and dsHdmiInSelectPort() must be called before calling this API
  * 
  * @warning  This API is Not thread safe
  * 
@@ -766,8 +773,9 @@ dsError_t dsGetAVLatency (int *audio_latency, int *video_latency);
  * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
  * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
  * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
+ *                                              e.g: the @pre condition other than initialization is not met
  * 
- * @pre dsHdmiInInit() must be called before calling this API
+ * @pre dsHdmiInInit() and dsHdmiInSelectPort() must be called before calling this API
  * 
  * @warning  This API is Not thread safe
  * 
@@ -789,8 +797,9 @@ dsError_t dsSetEdid2AllmSupport (dsHdmiInPort_t iHdmiPort, bool allmSupport);
 * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
 * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
 * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
+*                                              e.g: the @pre condition other than initialization is not met
 *
-* @pre dsHdmiInInit() must be called before calling this API
+* @pre dsHdmiInInit() and dsHdmiInSelectPort() must be called before calling this API
 *
 * @warning  This API is Not thread safe
 *
@@ -816,8 +825,10 @@ dsError_t dsGetHdmiVersion(dsHdmiInPort_t iHdmiPort, dsHdmiMaxCapabilityVersion_
 * @retval dsERR_NOT_INITIALIZED            - Module is not initialized
 * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
 * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices or for sink device, HDMI port that does not support VRR.
+* @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
+*                                              e.g: the @pre condition other than initialization is not met
 * 				        
-* @pre dsHdmiInInit() must be called before calling this API
+* @pre dsHdmiInInit() and dsHdmiInSelectPort() must be called before calling this API
 *
 * @warning This API is Not thread safe
 *
@@ -843,8 +854,9 @@ dsError_t dsHdmiInGetVRRSupport(dsHdmiInPort_t port, bool * vrrSupport);
 * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
 * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices/sink devices when edid version is 1.4
 * @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
+*                                              e.g: the @pre condition other than initialization is not met
 *
-* @pre dsHdmiInInit() must be called before calling this API
+* @pre dsHdmiInInit() and dsHdmiInSelectPort() must be called before calling this API
 *
 * @warning This API is Not thread safe
 *
@@ -900,8 +912,10 @@ dsError_t dsHdmiInRegisterVRRChangeCB(dsHdmiInVRRChangeCB_t cb);
 * @retval dsERR_NOT_INITIALIZED            - Module is not initialized
 * @retval dsERR_INVALID_PARAM              - Parameter passed to this function is invalid
 * @retval dsERR_OPERATION_NOT_SUPPORTED    - The attempted operation is not supported; e.g: source devices
+* @retval dsERR_OPERATION_FAILED           - The attempted operation has failed
+*                                              e.g: the @pre condition other than initialization is not met
 *
-* @pre dsHdmiInInit() must be called before calling this API
+* @pre dsHdmiInInit() and dsHdmiInSelectPort() must be called before calling this API
 *
 * @warning This API is Not thread safe
 *
