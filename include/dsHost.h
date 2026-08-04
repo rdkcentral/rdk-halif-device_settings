@@ -157,7 +157,7 @@ typedef enum
                                           *   FRONT_PANEL_RESET, TAP_IN_SYSTEM_RESET,
                                           *   HARD_POWER, absent / unmatched values   */
 
-    DS_REBOOT_REASON_MAX                 /**< Sentinel – out-of-range marker, do not use */
+    DS_REBOOT_REASON_MAX                 /**< Sentinel - out-of-range marker, do not use */
 
 } dsRebootReasonType_t;
 
@@ -174,17 +174,17 @@ typedef struct
      *  Stored as an uppercase string, e.g. "WATCHDOG", "3", "0xEF". */
     char rawReason[DS_REBOOT_REASON_STR_LEN];
 
-    /** @brief Normalised reason type corresponding to rebootReason.
+    /** @brief Normalised reason type corresponding to rawReason.
      *  Set by the vendor library so middleware can switch on an integer value
-     *  instead of string-comparing resetReason. */
+     *  instead of string-comparing rawReason. */
     dsRebootReasonType_t reasonType;
 
     /** @brief Camel-case human-readable source, e.g. "KernelPanic", "WatchDog".
      *  Mapped to RebootInfo.source in the middleware classifica    tion pipeline. */
     char rebootInitiatedBy[DS_REBOOT_REASON_STR_LEN];
 
-    /** @brief Platform-specific descriptive variant of resetReason,
-     *  typically identical to resetReason, e.g. "Hardware Register KERNEL_PANIC".
+    /** @brief Platform-specific descriptive variant of rawReason,
+     *  typically identical to rawReason, e.g. "Hardware Register KERNEL_PANIC".
      *  Mapped to RebootInfo.customReason. */
     char customReason[DS_REBOOT_REASON_STR_LEN];
 
