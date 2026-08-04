@@ -82,116 +82,77 @@ extern "C" {
 
 #define EDID_DATA_SIZE 256
 #define EDID_MAX_DATA_SIZE 512
-#define DS_REBOOT_REASON_STR_LEN 128 /**< Maximum length of any reason string field (including NUL) */
-#define DS_REBOOT_REASON_DESC_LEN 256
+#define DS_REBOOT_REASON_STR_LEN 256 /**< Maximum length of the diagnostic log string (including NUL) */
 
 /* -------------------------------------------------------------------------
- * Normalised reboot-reason codes
+ * Normalised reboot-reason enumeration
  *
- * All vendor-specific raw strings from every supported SoC family are
- * collapsed into these platform-agnostic groups.
+ * Mandatory set of platform-agnostic reboot reasons. Vendor HAL
+ * implementations MUST map every hardware-specific reboot cause to one
+ * of these values.
  *
  * ---------------------------------------------------------------------- 
  */
 
 typedef enum
 {
-    DS_REBOOT_REASON_POWER_ON       = 0, /**< Cold boot / power-cable unplug.
-                                          *   Raw tokens: POWER_ON, POWER_ON_RESET,
-                                          *   POWER_ON_REBOOT, HARDWARE, COLD_BOOT    */
+    DS_REBOOT_REASON_POWER_ON       = 0, /**< Cold boot or power-cable reconnect.
+                                          *   Device was fully power-cycled with
+                                          *   no prior software involvement. */
 
-    DS_REBOOT_REASON_SOFTWARE_RESET,     /**< Software / user-initiated reboot.
-                                          *   Raw tokens: SOFTWARE_MASTER_RESET,
-                                          *   SOFTWARE_RESET, SW_RESET,
-                                          *   SOFTWARE_REBOOT, NORMAL_BOOT            */
+    DS_REBOOT_REASON_SOFTWARE_RESET,     /**< Controlled software or user-initiated
+                                          *   reboot (e.g. system call, RDK reboot
+                                          *   command, normal restart). */
 
-    DS_REBOOT_REASON_KERNEL_PANIC,       /**< Kernel oops / panic / crash dump.
-                                          *   Raw tokens: KERNEL_PANIC,
-                                          *   KERNEL_PANIC_RESET, CRASH_DUMP,
-                                          *   CRASH_REBOOT                            */
+    DS_REBOOT_REASON_KERNEL_PANIC,       /**< Kernel oops, panic, or crash dump
+                                          *   triggered an uncontrolled reset. */
 
-    DS_REBOOT_REASON_WATCHDOG,           /**< Any watchdog timer expiry.
-                                          *   Raw tokens: WATCHDOG, WATCHDOG_RESET,
-                                          *   WATCHDOG_TIMER_RESET, WATCH_DOG,
-                                          *   GEN_WATCHDOG_RESET, GEN_WATCHDOG_1_RESET,
-                                          *   WATCHDOG_REBOOT                         */
+    DS_REBOOT_REASON_WATCHDOG,           /**< Hardware or software watchdog timer
+                                          *   expired, forcing a reset. */
 
-    DS_REBOOT_REASON_THERMAL,            /**< Thermal threshold exceeded.
-                                          *   Raw tokens: OVERTEMP, OVERHEAT,
-                                          *   THERMAL, THERMAL_REBOOT                 */
+    DS_REBOOT_REASON_THERMAL,            /**< Thermal protection threshold exceeded;
+                                          *   device reset to prevent damage. */
 
-    DS_REBOOT_REASON_VOLTAGE,            /**< Over- or under-voltage protection.
-                                          *   Raw tokens: OVERVOLTAGE, UNDERVOLTAGE,
-                                          *   OVERVOLTAGE_RESET, UNDERVOLTAGE_RESET,
-                                          *   UNDERVOLTAGE_0_RESET,
-                                          *   UNDERVOLTAGE_1_RESET                    */
+    DS_REBOOT_REASON_VOLTAGE,            /**< Over-voltage or under-voltage
+                                          *   protection triggered a reset. */
 
-    DS_REBOOT_REASON_FACTORY_RESET,      /**< Factory reset reboot.
-                                          *   Raw tokens: FACTORY_RESET,
-                                          *   FACTORY_RESET_REBOOT                    */
+    DS_REBOOT_REASON_FACTORY_RESET,      /**< Device was reset to factory defaults. */
 
-    DS_REBOOT_REASON_STANDBY_WAKEUP,     /**< Wakeup from standby / hibernate.
-                                          *   Raw tokens: S3_WAKEUP_RESET,
-                                          *   SUSPEND_REBOOT, SUSPEND_BOOT,
-                                          *   HIBERNATE_REBOOT, HIBERNATE_BOOT        */
+    DS_REBOOT_REASON_STANDBY_WAKEUP,     /**< Wakeup from standby or hibernate
+                                          *   state (S3 / suspend / hibernate). */
 
-    DS_REBOOT_REASON_SECURITY_RESET,     /**< Security / authentication failure reset.
-                                          *   Raw tokens: SECURITY_MASTER_RESET,
-                                          *   STR_AUTH_FAIL,
-                                          *   AMLOGIC_DDR_SHA2_REBOOT                 */
+    DS_REBOOT_REASON_SECURITY_RESET,     /**< Security or authentication failure
+                                          *   forced a reset (e.g. secure-boot
+                                          *   verification error). */
 
-    DS_REBOOT_REASON_UPDATE,             /**< System upgrade / OTA reboot.
-                                          *   Raw tokens: UPGRADE_SYSTEM_REBOOT,
-                                          *   UPDATE_BOOT                             */
+    DS_REBOOT_REASON_UPDATE,             /**< System firmware / OTA update
+                                          *   triggered a reboot. */
 
-    DS_REBOOT_REASON_UNKNOWN,            /**< Unrecognised or unclassified reason.
-                                          *   Includes: CPU_EJTAG_RESET,
-                                          *   SCPU_EJTAG_RESET, MAIN_CHIP_INPUT_RESET,
-                                          *   MAIN_CHIP_RESET_INPUT, SMARTCARD_INSERT_RESET,
-                                          *   PCIE_HOT_BOOT_RESET, AUX_CHIP_EDGE_RESET,
-                                          *   AUX_CHIP_LEVEL_RESET, MPM_RESET,
-                                          *   RPMPB_REBOOT, FFV_REBOOT,
-                                          *   FASTBOOT_BOOTLOADER, BOOTLOADER_REBOOT,
-                                          *   SHUTDOWN_REBOOT, FASTBOOT_REBOOT,
-                                          *   FAST_BOOT, FRONT_PANEL_4SEC_RESET,
-                                          *   FRONT_PANEL_RESET, TAP_IN_SYSTEM_RESET,
-                                          *   HARD_POWER, absent / unmatched values   */
+    DS_REBOOT_REASON_UNKNOWN,            /**< Reason could not be determined or
+                                          *   does not match any defined category.
+                                          *   Consult logString for vendor detail. */
 
     DS_REBOOT_REASON_MAX                 /**< Sentinel - out-of-range marker, do not use */
 
 } dsRebootReasonType_t;
 
 /**
- * @brief Platform-agnostic reboot reason descriptor populated by the vendor HAL.
- *
- * The middleware maps these fields directly into its internal RebootInfo
- * structure.
+ * @brief Reboot reason descriptor populated by the vendor HAL.
  *
  */
 typedef struct
 {
-    /** @brief Raw value read verbatim from the hardware register / sysfs node.
-     *  Stored as an uppercase string, e.g. "WATCHDOG", "3", "0xEF". */
-    char rawReason[DS_REBOOT_REASON_STR_LEN];
-
-    /** @brief Normalised reason type corresponding to rawReason.
-     *  Set by the vendor library so middleware can switch on an integer value
-     *  instead of string-comparing rawReason. */
+    /** @brief Normalised reboot reason.
+     *  Mandatory. The vendor HAL MUST map the hardware-specific cause to one
+     *  of the @p dsRebootReasonType_t values. */
     dsRebootReasonType_t reasonType;
 
-    /** @brief Camel-case human-readable source, e.g. "KernelPanic", "WatchDog".
-     *  Mapped to RebootInfo.source in the middleware classifica    tion pipeline. */
-    char rebootInitiatedBy[DS_REBOOT_REASON_STR_LEN];
-
-    /** @brief Platform-specific descriptive variant of rawReason,
-     *  typically identical to rawReason, e.g. "Hardware Register KERNEL_PANIC".
-     *  Mapped to RebootInfo.customReason. */
-    char customReason[DS_REBOOT_REASON_STR_LEN];
-
-    /** @brief Free-text human description of the reboot event,
-     *  e.g. "Reboot due to oops dump caused panic".
-     *  Mapped to RebootInfo.otherReason. */
-    char otherReason[DS_REBOOT_REASON_DESC_LEN];
+    /** @brief Optional vendor diagnostic string for logging purposes.
+     *  May contain the raw hardware token, register value, or any other
+     *  platform-specific detail that aids diagnostics, e.g. "WATCHDOG_RESET",
+     *  "0xEF", or "Kernel panic - oops dump". Set to an empty string if not
+     *  applicable. Must not be used for programmatic decision-making. */
+    char rebootReasonString[DS_REBOOT_REASON_STR_LEN];
 
 } dsRebootReason_t;
 
@@ -307,7 +268,7 @@ dsError_t dsGetHostEDID(unsigned char *edid, int *length);
 * @retval dsERR_NONE                     - Success
 * @retval dsERR_NOT_INITIALIZED          - Module not initialized
 * @retval dsERR_INVALID_PARAM            - Invalid parameter
-* @retval dsERR_OPERATION_NOT_SUPPORTED  -Not supported on platform
+* @retval dsERR_OPERATION_NOT_SUPPORTED  - Not supported on platform
 * @retval dsERR_GENERAL                  - Platform-specific failure
 */
 dsError_t dsGetLastRebootReason(dsRebootReason_t *rebootReason);
