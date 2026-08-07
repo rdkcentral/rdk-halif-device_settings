@@ -270,6 +270,11 @@ dsError_t dsGetHostEDID(unsigned char *edid, int *length);
 * @retval dsERR_INVALID_PARAM            - Invalid parameter
 * @retval dsERR_OPERATION_NOT_SUPPORTED  - Not supported on platform
 * @retval dsERR_GENERAL                  - Platform-specific failure
+*
+* @pre dsHostInit() must be called before this function
+* 
+* @warning  This API is Not thread safe.
+* 
 */
 dsError_t dsGetLastRebootReason(dsRebootReason_t *rebootReason);
 
