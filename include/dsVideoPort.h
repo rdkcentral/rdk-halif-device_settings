@@ -205,7 +205,8 @@ dsError_t  dsIsVideoPortEnabled(intptr_t handle, bool *enabled);
  * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
- * @pre dsVideoPortInit() and dsGetVideoPort() must be called before calling this API.
+ * @pre dsDisplayInit() and dsVideoPortInit() must be called before calling this API, otherwise this function returns dsERR_NOT_INITIALIZED.
+ * @pre dsGetVideoPort() must be called to obtain a valid handle before calling this API, otherwise this function returns dsERR_INVALID_PARAM.
  * 
  * @warning  This API is Not thread safe.
  */
@@ -481,8 +482,14 @@ typedef void (*dsHDCPStatusCallback_t)(intptr_t handle, dsHdcpStatus_t status);
  /**
  * @brief Gets the current HDCP status of the specified video port.
  *
- * For sink devices, this function returns the authentication status as dsHDCP_STATUS_AUTHENTICATED and returns dsERR_NONE always.
- * For source device, this function gives current HDCP status of the specified video port. It must return dsERR_OPERATION_NOT_SUPPORTED if connected  video port does not support HDCP.
+ * For sink devices, this function always returns dsERR_NONE with status set to dsHDCP_STATUS_AUTHENTICATED.
+ *
+ * For source devices:
+ * - If the specified video port does not support HDCP, this function returns dsERR_OPERATION_NOT_SUPPORTED.
+ * - If the video port supports HDCP but the HDMI output is not connected to a sink, this function returns
+ *   dsERR_NONE with status set to dsHDCP_STATUS_UNPOWERED.
+ * - If the video port supports HDCP and the HDMI output is connected to a sink, this function returns
+ *   dsERR_NONE with status set to the current HDCP authentication state of the connected link.
  *
  * @param[in] handle    - Handle of the video port returned from dsGetVideoPort()
  * @param[out] status   - HDCP status of the video port.  Please refer ::dsHdcpStatus_t
@@ -572,6 +579,8 @@ dsError_t dsGetHDCPCurrentProtocol (intptr_t handle, dsHdcpProtocolVersion_t *pr
  * @brief Gets the HDR capabilities of the TV/display device
  *
  * This function is used to get the HDR capabilities of the TV/display device.
+ * For source devices, this function gives TV's HDR capabilities when HDMI connected.
+ * API returns default value dsHDRSTANDARD_NONE when HDMI not connected.
  *
  * @param[in] handle            - Handle of the video port(TV) returned from dsGetVideoPort()
  * @param [out] capabilities    - Bitwise OR-ed value of supported HDR standards.  Please refer ::dsHDRStandard_t
@@ -595,6 +604,16 @@ dsError_t dsGetTVHDRCapabilities(intptr_t handle, int *capabilities);
  * @brief Gets the supported resolutions of TV.
  *
  * This function is used to get TV supported resolutions of TV/display device.
+ * For sink devices, this function always returns dsERR_NONE with status set to dsHDCP_STATUS_AUTHENTICATED.
+ *
+ * For source devices:
+ * - If the specified video port does not support HDCP, this function returns dsERR_OPERATION_NOT_SUPPORTED.
+ * - If the video port supports HDCP but the HDMI output is not connected to a sink, this function returns
+ *   dsERR_NONE with status set to dsHDCP_STATUS_UNPOWERED.
+ * - If the video port supports HDCP and the HDMI output is connected to a sink, this function returns
+ *   dsERR_NONE with status set to the current HDCP authentication state of the connected link.
+ * This value is updated upon HDMI hot-plug events when the EDID is re-read.
+ * The API returns a default value of 0 when the HDMI output is not connected to a TV.
  *
  * @param[in] handle            - Handle of the video port(TV) returned from dsGetVideoPort()
  * @param [out] resolutions     - OR-ed value supported resolutions.  Please refer ::dsTVResolution_t
@@ -709,7 +728,7 @@ dsError_t dsGetMatrixCoefficients(intptr_t handle, dsDisplayMatrixCoefficients_t
  * For sink devices, this function returns the default color depth, which is platform dependent.
  *
  * For source devices, this function is used to get the current color depth value of specified video port.
- * Typically for UHD resolution, the color depth is 10/12-bit, while for non-UHD resolutions, it is 8-bit
+ * By default platform should support 8 bit color depth.
  *
  * @param[in]  handle       - Handle of the video port returned from dsGetVideoPort()
  * @param[out] color_depth  - pointer to color depth values.Please refer :: dsDisplayColorDepth_t
