@@ -205,7 +205,8 @@ dsError_t  dsIsVideoPortEnabled(intptr_t handle, bool *enabled);
  * @retval dsERR_OPERATION_NOT_SUPPORTED  -  The attempted operation is not supported
  * @retval dsERR_GENERAL                  -  Underlying undefined platform error
  * 
- * @pre dsDisplayInit(), dsVideoPortInit() and dsGetVideoPort() must be called before calling this API.
+ * @pre dsDisplayInit() and dsVideoPortInit() must be called before calling this API, otherwise this function returns dsERR_NOT_INITIALIZED.
+ * @pre dsGetVideoPort() must be called to obtain a valid handle before calling this API, otherwise this function returns dsERR_INVALID_PARAM.
  * 
  * @warning  This API is Not thread safe.
  */
@@ -481,9 +482,14 @@ typedef void (*dsHDCPStatusCallback_t)(intptr_t handle, dsHdcpStatus_t status);
  /**
  * @brief Gets the current HDCP status of the specified video port.
  *
- * For sink devices, this function returns the authentication status as dsHDCP_STATUS_AUTHENTICATED and returns dsERR_NONE always.
- * For source device, this function gives current HDCP status of the specified video port when HDMI connected.
- * API return dsHDCP_STATUS_UNPOWERED when HDMI not connected.
+ * For sink devices, this function always returns dsERR_NONE with status set to dsHDCP_STATUS_AUTHENTICATED.
+ *
+ * For source devices:
+ * - If the specified video port does not support HDCP, this function returns dsERR_OPERATION_NOT_SUPPORTED.
+ * - If the video port supports HDCP but the HDMI output is not connected to a sink, this function returns
+ *   dsERR_NONE with status set to dsHDCP_STATUS_UNPOWERED.
+ * - If the video port supports HDCP and the HDMI output is connected to a sink, this function returns
+ *   dsERR_NONE with status set to the current HDCP authentication state of the connected link.
  *
  * @param[in] handle    - Handle of the video port returned from dsGetVideoPort()
  * @param[out] status   - HDCP status of the video port.  Please refer ::dsHdcpStatus_t
@@ -598,9 +604,16 @@ dsError_t dsGetTVHDRCapabilities(intptr_t handle, int *capabilities);
  * @brief Gets the supported resolutions of TV.
  *
  * This function is used to get TV supported resolutions of TV/display device.
- * For source devices, this function returns a bitmask (OR-ed flags) of all video resolutions supported by the currently connected TV, based on its HDMI EDID. 
+ * For sink devices, this function always returns dsERR_NONE with status set to dsHDCP_STATUS_AUTHENTICATED.
+ *
+ * For source devices:
+ * - If the specified video port does not support HDCP, this function returns dsERR_OPERATION_NOT_SUPPORTED.
+ * - If the video port supports HDCP but the HDMI output is not connected to a sink, this function returns
+ *   dsERR_NONE with status set to dsHDCP_STATUS_UNPOWERED.
+ * - If the video port supports HDCP and the HDMI output is connected to a sink, this function returns
+ *   dsERR_NONE with status set to the current HDCP authentication state of the connected link.
  * This value is updated upon HDMI hot-plug events when the EDID is re-read.
- * API returns default value 0 when HDMI not connected.
+ * The API returns a default value of 0 when the HDMI output is not connected to a TV.
  *
  * @param[in] handle            - Handle of the video port(TV) returned from dsGetVideoPort()
  * @param [out] resolutions     - OR-ed value supported resolutions.  Please refer ::dsTVResolution_t
